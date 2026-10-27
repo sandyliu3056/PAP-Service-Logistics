@@ -184,55 +184,37 @@
   .tabs button.home .num { display:inline-flex; color:var(--primary); }
   .tabs button.home .ico { width:16px; height:16px; stroke-width:2; }
 
-  /* 網站介紹 */
-  .intro-hero { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:40px; align-items:center; border-radius:18px; padding:40px 44px; color:var(--gold);
-    background:radial-gradient(130% 120% at 100% 0%, var(--primary) 0%, transparent 60%), linear-gradient(145deg, var(--navy) 0%, var(--sel) 100%); box-shadow:0 14px 30px rgba(40,40,30,.16); }
-  .intro-hero .eyebrow { color:var(--hdr-sub); }
-  .intro-title { font-family:var(--font-head); font-size:2.6rem; line-height:1.2; margin:0 0 16px; color:#fff; }
-  .intro-lead { margin:0; font-size:1.05rem; line-height:1.85; max-width:31em; }
-  .intro-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-  .intro-cta .btn { font-size:1rem; padding:9px 20px; border-radius:10px; }
-  .btn.primary { background:var(--gold); color:var(--navy); border-color:var(--gold); }
-  .btn.primary:hover { background:#fff; }
-  .btn.ghost { background:transparent; color:var(--gold); border-color:var(--selline); }
-  .btn.ghost:hover { background:rgba(255,255,255,.1); }
-  .map.intro-map { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2); border-radius:16px; padding:10px; }
-  .intro-map figcaption { font-size:.84rem; color:var(--hdr-sub); margin-top:8px; text-align:center; letter-spacing:.04em; }
-  .intro-map .olabel { cursor:default; }
-  .map svg path.arc { fill:none; stroke:var(--navy); stroke-linecap:round; opacity:.75; animation:pap-dash 6s linear infinite; }
-  @keyframes pap-dash { to { stroke-dashoffset:-40; } }
-  .map .idot { fill:var(--r-pap); stroke:#fff; }
-  .map .idot.hq { fill:var(--navy); stroke:var(--gold); }
-  .intro-sec { margin-top:52px; }
-  .intro-sec > h3 { font-family:var(--font-head); font-size:1.5rem; margin:0 0 18px; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
-  .intro-sec > h3 small { font-family:inherit; color:var(--mute); font-weight:400; font-size:.86rem; }
-  .pi { width:46px; height:46px; border-radius:13px; display:grid; place-items:center; background:var(--hover); color:var(--primary); border:1.5px solid var(--line); }
-  .pillars { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:20px; }
-  .pillar { background:var(--panel); border:1.5px solid var(--line); border-top:4px solid var(--primary); border-radius:14px; padding:22px 24px 20px; display:grid; gap:10px; align-content:start; }
-  .pillar h4 { margin:4px 0 0; font-size:1.1rem; }
-  .pillar p { margin:0; color:var(--mute); font-size:.93rem; line-height:1.75; }
-  .pillar .more { justify-self:start; margin-top:4px; background:none; border:0; padding:0; color:var(--accent); font-family:inherit; font-size:.9rem; font-weight:700; cursor:pointer; }
-  .pillar .more:hover { text-decoration:underline; }
-  .chapters { display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:20px; }
-  .chap { background:var(--panel); border:1.5px solid var(--line); border-radius:14px; padding:20px 22px 18px; display:grid; gap:12px; align-content:start; transition:border-color .15s, box-shadow .15s; }
-  .chap:hover { border-color:var(--selline); box-shadow:0 10px 22px rgba(40,40,30,.08); }
-  .chap-head { display:grid; grid-template-columns:auto minmax(0, 1fr) auto; gap:14px; align-items:center; background:none; border:0; padding:0; font-family:inherit; color:var(--ink); text-align:left; cursor:pointer; }
-  .chap-ico { width:48px; height:48px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--gold); }
-  .chap-t small { display:block; font-family:var(--font-mono); color:var(--mute); font-size:.76rem; letter-spacing:.1em; }
-  .chap-t b { font-family:var(--font-head); font-size:1.22rem; line-height:1.3; }
-  .chap-go { color:var(--primary); font-weight:700; font-size:1.1rem; }
-  .chap-head:hover .chap-go { transform:translateX(3px); }
-  .chap p { margin:0; color:var(--mute); font-size:.92rem; line-height:1.7; }
-  .chap-subs { display:flex; flex-wrap:wrap; gap:7px; padding-top:12px; border-top:1px dashed var(--line); }
-  .chap-subs button { font-family:inherit; font-size:.84rem; background:var(--stripe); border:1px solid var(--line); border-radius:999px; padding:3px 12px; color:var(--ink); cursor:pointer; }
-  .chap-subs button:hover { background:var(--hover); border-color:var(--selline); }
-  .chap-subs .n { font-family:var(--font-mono); color:var(--mute); font-size:.74rem; margin-right:6px; }
-  .howto { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:22px 28px; }
-  .howto > div { display:grid; grid-template-columns:auto minmax(0, 1fr); gap:4px 14px; align-items:start; }
-  .howto .pi { grid-row:span 2; width:42px; height:42px; }
-  .howto b { font-size:1rem; padding-top:2px; }
-  .howto p { margin:0; color:var(--mute); font-size:.9rem; line-height:1.65; }
-  .howto code { font-family:var(--font-mono); font-size:.85em; white-space:nowrap; }
+  /* 網站介紹：淺色、置中、留白 */
+  .intro-hero { position:relative; overflow:hidden; text-align:center; padding:76px 24px 80px; border-radius:16px; background:linear-gradient(180deg, var(--stripe), var(--card)); border:1px solid var(--line); }
+  .intro-bg { position:absolute; inset:0; width:100%; height:100%; opacity:.55; pointer-events:none; }
+  .intro-bg .sea { fill:none; }
+  .intro-bg path { fill:var(--line); stroke:none; }
+  .intro-hero::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 50% 62% at 50% 50%, var(--card) 40%, transparent 100%); pointer-events:none; }
+  .intro-copy { position:relative; z-index:1; max-width:40em; margin:0 auto; }
+  .intro-title { font-family:var(--font-head); font-size:2.6rem; line-height:1.2; margin:0 0 14px; color:var(--navy); }
+  .intro-lead { margin:0 auto; font-size:1.05rem; line-height:1.8; color:var(--mute); max-width:32em; }
+  .tlink { color:var(--ink); font-weight:700; text-decoration:none; border-bottom:2px solid var(--selline); white-space:nowrap; }
+  .tlink:hover { color:var(--primary); border-bottom-color:var(--primary); }
+  .intro-cta { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:30px; }
+  .intro-cta .btn { font-size:1rem; padding:8px 24px; border-radius:999px; }
+  .btn.primary { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+  .btn.primary:hover { background:var(--sel); }
+  .intro-sec { margin:68px auto 0; max-width:980px; }
+  .intro-sec > h3 { font-family:var(--font-head); font-size:1.35rem; margin:0 0 26px; text-align:center; }
+  .pillars { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:44px; text-align:center; }
+  .pillar .pi { display:inline-flex; color:var(--primary); }
+  .pillar .pi .ico { width:30px; height:30px; stroke-width:1.5; }
+  .pillar h4 { margin:10px 0 6px; font-size:1.05rem; }
+  .pillar p { margin:0 auto; max-width:22em; color:var(--mute); font-size:.92rem; line-height:1.7; }
+  .chapters { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0 44px; border-top:1px solid var(--line); }
+  .chap { display:grid; grid-template-columns:2.4em minmax(0, 1fr) auto; gap:14px; align-items:center; width:100%; text-align:left; background:none; border:0; border-bottom:1px solid var(--line); padding:16px 10px; font-family:inherit; color:var(--ink); cursor:pointer; }
+  .chap:hover { background:var(--hover); }
+  .chap-n { font-family:var(--font-mono); color:var(--primary); font-size:.9rem; font-weight:700; }
+  .chap-t b { display:block; font-size:1.05rem; }
+  .chap-t small { display:block; color:var(--mute); font-size:.86rem; margin-top:2px; }
+  .chap-go { color:var(--mute); transition:transform .15s, color .15s; }
+  .chap:hover .chap-go { color:var(--primary); transform:translateX(3px); }
+  .intro-tip { text-align:center; color:var(--mute); font-size:.86rem; margin:60px 0 0; }
 
   /* 全球據點 */
   .office-group { margin-top:32px; }
@@ -282,11 +264,12 @@
   .site-chip b { margin-left:2px; }
 
   @media (max-width:860px) {
-    .intro-hero { grid-template-columns:minmax(0, 1fr); padding:28px 24px; gap:26px; }
+    .intro-hero { padding:52px 18px 56px; }
     .intro-title { font-size:2rem; }
-    .pillars { grid-template-columns:minmax(0, 1fr); }
+    .intro-sec { margin-top:52px; }
+    .pillars { grid-template-columns:minmax(0, 1fr); gap:30px; }
+    .chapters { grid-template-columns:minmax(0, 1fr); }
   }
-  @media (prefers-reduced-motion: reduce) { .map svg path.arc { animation:none; } }
 
   /* 總覽 */
   .hero { display:grid; grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr); gap:36px; align-items:center; background:linear-gradient(135deg, var(--stripe), var(--panel) 55%, var(--hover)); border:1.5px solid var(--line); border-radius:16px; padding:30px 32px; }
@@ -445,6 +428,7 @@
   /* 縮寫 */
   .ab { font:inherit; color:inherit; background:none; border:0; border-bottom:1.5px dotted var(--accent); padding:0 1px; margin:0; cursor:help; line-height:inherit; letter-spacing:inherit; }
   .ab:hover, .ab.on { background:var(--hover); }
+  .ab-wrap { white-space:nowrap; }
   .ab-tools { display:flex; flex-wrap:wrap; gap:12px 16px; align-items:center; margin:0 0 14px; }
   .seg { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 18px; }
   .src-legend { display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.84rem; color:var(--mute); margin:0 0 22px; align-items:center; }
@@ -548,65 +532,49 @@
   <!-- 網站介紹 -->
   <section class="page single" id="page-intro">
     <div class="intro-hero">
+      <svg class="intro-bg" id="map-intro" viewBox="0 15 1000 410" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
       <div class="intro-copy">
         <p class="eyebrow">About this site</p>
-        <h2 class="intro-title"><span class="zh">認識 PAP 服務物流</span><span class="en">Getting to know PAP Service Logistics</span></h2>
-        <p class="intro-lead zh">本網站介紹 Acer 泛亞太區（PAP）服務物流：組織架構、服務據點、HSN 集團、日常作業、料號規則與常用代碼，協助同仁快速掌握服務物流的全貌。</p>
-        <p class="intro-lead en">This site introduces Acer's Pan Asia Pacific (PAP) service logistics: its organisation, service sites, HSN Group, daily operations, part-number rules and common codes, so colleagues can quickly see the whole picture.</p>
+        <h2 class="intro-title"><span class="zh">PAP 服務物流簡介</span><span class="en">Introduction to PAP Service Logistics</span></h2>
+        <p class="intro-lead zh">本網站說明 Acer 泛亞太區（PAP）服務物流之<a class="tlink" href="#org" data-go="org">組織</a>、<a class="tlink" href="#sites" data-go="sites">服務據點</a>、<a class="tlink" href="#hsn" data-go="hsn">HSN 集團</a>、<a class="tlink" href="#ops" data-go="ops">作業流程</a>、<a class="tlink" href="#pn" data-go="pn">料號規則</a>與<a class="tlink" href="#ref" data-go="ref">常用代碼</a>。</p>
+        <p class="intro-lead en">This site describes the <a class="tlink" href="#org" data-go="org">organisation</a>, <a class="tlink" href="#sites" data-go="sites">service sites</a>, <a class="tlink" href="#hsn" data-go="hsn">HSN Group</a>, <a class="tlink" href="#ops" data-go="ops">operations</a>, <a class="tlink" href="#pn" data-go="pn">part-number rules</a> and <a class="tlink" href="#ref" data-go="ref">common codes</a> of Acer's Pan Asia Pacific (PAP) service logistics.</p>
         <div class="intro-cta">
-          <button class="btn primary" type="button" data-go="overview"><span class="zh">開始閱讀 →</span><span class="en">Start reading →</span></button>
-          <button class="btn ghost" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
+          <button class="btn primary" type="button" data-go="overview"><span class="zh">進入總覽 →</span><span class="en">Go to overview →</span></button>
+          <button class="btn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
         </div>
       </div>
-      <figure class="map intro-map">
-        <svg id="map-intro" viewBox="688 100 304 278" role="img" aria-label="PAP and its nation subsidiaries"></svg>
-        <figcaption><span class="zh">PAP 與各國子公司（NS）</span><span class="en">PAP and its nation subsidiaries (NS)</span></figcaption>
-      </figure>
     </div>
 
     <section class="intro-sec">
-      <h3><span class="zh">PAP 服務物流在做什麼</span><span class="en">What PAP service logistics does</span></h3>
+      <h3><span class="zh">PAP 服務物流主要職掌</span><span class="en">Core responsibilities</span></h3>
       <div class="pillars">
-        <article class="pillar">
+        <div class="pillar">
           <span class="pi" data-ico="ro"></span>
           <h4><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></h4>
-          <p class="zh">介於總部（HQ）與各國子公司（NS）之間，統籌泛亞太區的服務物流。</p>
-          <p class="en">Sits between headquarters (HQ) and the nation subsidiaries (NS), coordinating service logistics across Pan Asia Pacific.</p>
-          <button class="more" type="button" data-go="org-pap"><span class="zh">PAP 組織 →</span><span class="en">PAP organisation →</span></button>
-        </article>
-        <article class="pillar">
+          <p class="zh">介於總部（HQ）與各國子公司（NS）之間，統籌泛亞太區服務物流。</p>
+          <p class="en">Sits between headquarters (HQ) and the nation subsidiaries (NS), coordinating service logistics across the region.</p>
+        </div>
+        <div class="pillar">
           <span class="pi" data-ico="plan"></span>
           <h4><span class="zh">備品規劃與採購</span><span class="en">Spare-parts planning and purchasing</span></h4>
-          <p class="zh">彙整各 NS 的需求預測，依規劃向 ODM 下達採購單（PO）。</p>
+          <p class="zh">彙整各 NS 需求預測，向 ODM 下達採購單（PO）。</p>
           <p class="en">Consolidates NS demand forecasts and places purchase orders (POs) with the ODM.</p>
-          <button class="more" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button>
-        </article>
-        <article class="pillar">
+        </div>
+        <div class="pillar">
           <span class="pi" data-ico="box"></span>
           <h4><span class="zh">庫存與料號管理</span><span class="en">Inventory and part numbers</span></h4>
-          <p class="zh">管理中央倉庫與庫存，並維護 Service BOM 與服務料號。</p>
-          <p class="en">Manages the central warehouse and inventory, and maintains the Service BOM and service part numbers.</p>
-          <button class="more" type="button" data-go="ops-bom"><span class="zh">Service BOM →</span><span class="en">Service BOM →</span></button>
-        </article>
+          <p class="zh">管理中央倉庫與庫存，維護 Service BOM 與服務料號。</p>
+          <p class="en">Manages the central warehouse and inventory, and maintains the Service BOM and part numbers.</p>
+        </div>
       </div>
     </section>
 
     <section class="intro-sec">
-      <h3><span class="zh">網站內容</span><span class="en">What's inside</span><small><span class="zh">依序閱讀，或直接點選想看的頁面</span><span class="en">Read in order, or jump straight to a page</span></small></h3>
+      <h3><span class="zh">網站架構</span><span class="en">Site structure</span></h3>
       <div class="chapters" id="chapters"></div>
     </section>
 
-    <section class="intro-sec">
-      <h3><span class="zh">使用方式</span><span class="en">How to use this site</span></h3>
-      <div class="howto">
-        <div><span class="pi" data-ico="lang"></span><b><span class="zh">中文／English</span><span class="en">中文 / English</span></b><p class="zh">右上角切換網站語言。</p><p class="en">Switch the language at the top right.</p></div>
-        <div><span class="pi" data-ico="info"></span><b><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></b><p class="zh">內文中以虛線標示的縮寫可點選，查看全名與說明。</p><p class="en">Select any dotted abbreviation to see its full name and meaning.</p></div>
-        <div><span class="pi" data-ico="palette"></span><b><span class="zh">主題與字型</span><span class="en">Theme and font</span></b><p class="zh">可選土色、綠色、藍色主題，以及手寫、黑體、等寬字型。</p><p class="en">Choose an earth, green or blue theme and a handwritten, sans or mono font.</p></div>
-        <div><span class="pi" data-ico="link"></span><b><span class="zh">分享連結</span><span class="en">Share a page</span></b><p class="zh">每個子頁都有自己的網址，例如 <code>#org-pap</code>，可直接分享。</p><p class="en">Every page has its own address, such as <code>#org-pap</code>, so you can share it directly.</p></div>
-      </div>
-    </section>
-
-    <p class="notice"><span class="zh">本網站內容屬公司內部資料（<b>CONFIDENTIAL</b>），僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information (<b>CONFIDENTIAL</b>) for internal use only. Original documents prevail.</span></p>
+    <p class="intro-tip"><span class="zh">語言、字型與主題可於右上角切換；內文中以虛線標示之縮寫，點選後可檢視全稱與說明。</span><span class="en">Language, font and theme can be changed at the top right. Abbreviations with a dotted underline can be selected to view their full names and definitions.</span></p>
   </section>
 
   <!-- 1 總覽 -->
@@ -626,7 +594,7 @@
     </div>
 
     <div class="block" style="margin-top:38px">
-      <h3><span class="zh">PAP 的位置</span><span class="en">Where PAP sits</span></h3>
+      <h3><span class="zh">組織定位與供應流程</span><span class="en">Organisational position and supply flow</span></h3>
       <div class="box">
         <div class="prow">
           <span class="plabel"><span class="zh">組織</span><span class="en">Organisation</span></span>
@@ -687,8 +655,8 @@
 
       <section class="sub" id="sub-org-offices">
         <h2><span class="zh">全球據點</span><span class="en">Acer around the world</span></h2>
-        <p class="lead zh">Acer 於全球設有總部、區域總部與各國公司。以下依「Acer Around the World」據點名錄整理。</p>
-        <p class="lead en">Acer has headquarters, regional headquarters and country offices worldwide. The list below follows the "Acer Around the World" directory.</p>
+        <p class="lead zh">Acer 於全球設有總部、區域總部與各國公司。下列資料依「Acer Around the World」據點名錄彙整。</p>
+        <p class="lead en">Acer has headquarters, regional headquarters and country offices worldwide. The information below is compiled from the "Acer Around the World" directory.</p>
         <div class="kpis" id="office-kpis"></div>
         <div class="block">
           <div class="seg" id="office-views" role="group" aria-label="Map view"></div>
@@ -696,8 +664,8 @@
             <svg id="map-offices" viewBox="0 15 1000 410" role="img" aria-label="Acer offices worldwide"></svg>
             <figcaption class="legend-chips" id="office-legend"></figcaption>
           </figure>
-          <p class="note zh">歐洲與亞太據點較密集，可切換「歐洲」「亞太」檢視完整名稱；點選圓點或名稱，即可在下方查看該據點資料。</p>
-          <p class="note en">Offices in Europe and Asia Pacific are close together; switch to "Europe" or "Asia Pacific" to see every name. Select a dot or name to see that office below.</p>
+          <p class="note zh">歐洲與亞太據點分布較密集，請切換至「歐洲」或「亞太」檢視完整名稱；點選圓點或名稱，可於下方檢視該據點資料。</p>
+          <p class="note en">Offices in Europe and Asia Pacific are densely located; switch to the Europe or Asia Pacific view for full labels. Select a dot or label to view the office details below.</p>
         </div>
         <div class="block">
           <div class="ab-tools">
@@ -787,7 +755,7 @@
             <li><span class="zh">PAP 團隊為區域辦公室（RO），代表 PAP 執行服務物流業務。</span><span class="en">The PAP team is the regional office (RO) and runs service logistics on behalf of PAP.</span></li>
             <li><span class="zh">業務範圍以 PAP（TW 與 AAP）為主；ACCN（中國區）獨立運作。</span><span class="en">The scope is PAP (TW and AAP); ACCN (China) operates independently.</span></li>
             <li><span class="zh">五個 RO 於 2010 年以前各自獨立運作；整併後仍尊重各區既有之作業方式。</span><span class="en">The five ROs operated independently before 2010; each region's established practices are respected after the merger.</span></li>
-            <li><span class="zh">2016/2017 年以前由 ASSB 擔任主導子公司；馬來西亞由海伯特與 Acer 共同營運，並由 ASSB 與海伯特共同負責。</span><span class="en">Before 2016/2017 ASSB was the lead subsidiary; Malaysia was operated jointly by 海伯特 (HSN) and Acer, with ASSB and 海伯特 jointly responsible.</span></li>
+            <li><span class="zh">2016/2017 年以前由 ASSB 擔任主導子公司；馬來西亞由海柏特與 Acer 共同營運，並由 ASSB 與海柏特共同負責。</span><span class="en">Before 2016/2017 ASSB was the lead subsidiary; Malaysia was operated jointly by 海柏特 (HSN) and Acer, with ASSB and 海柏特 jointly responsible.</span></li>
             <li><span class="zh">韓國（AKC）由日本（AJC）管理。</span><span class="en">Korea (AKC) is managed by Japan (AJC).</span></li>
             <li><span class="zh">核心簡碼：RO、NS、HSN。</span><span class="en">Core abbreviations: RO, NS and HSN.</span></li>
           </ol>
@@ -901,15 +869,15 @@
 
       <section class="sub" id="sub-hsn-about">
         <h2><span class="zh">HSN 集團概要</span><span class="en">HSN Group overview</span></h2>
-        <p class="lead zh">HSN Group（海伯特集團，Highpoint Service Network）為源自馬來西亞之電腦維修集團。</p>
-        <p class="lead en">HSN Group (海伯特集團, Highpoint Service Network) is a computer repair group that originated in Malaysia.</p>
+        <p class="lead zh">HSN Group（海柏特集團，Highpoint Service Network）為源自馬來西亞之電腦維修集團。</p>
+        <p class="lead en">HSN Group (海柏特集團, Highpoint Service Network) is a computer repair group that originated in Malaysia.</p>
         <div class="block">
           <h3><span class="zh">概要</span><span class="en">Overview</span></h3>
           <div class="box">
             <ul class="dots">
               <li><span class="zh">提供電腦維修服務，包括主機板維修。</span><span class="en">Provides computer repair services, including mainboard repair.</span></li>
               <li><span class="zh">HSN Group GM 由 Jacky Lin（AVP）兼任。</span><span class="en">Jacky Lin (AVP) also serves as GM of HSN Group.</span></li>
-              <li><span class="zh">2016/2017 年以前，馬來西亞由海伯特與 Acer 共同營運，並由 ASSB 與海伯特共同負責。</span><span class="en">Before 2016/2017, Malaysia was operated jointly by 海伯特 and Acer, with ASSB and 海伯特 jointly responsible.</span></li>
+              <li><span class="zh">2016/2017 年以前，馬來西亞由海柏特與 Acer 共同營運，並由 ASSB 與海柏特共同負責。</span><span class="en">Before 2016/2017, Malaysia was operated jointly by 海柏特 and Acer, with ASSB and 海柏特 jointly responsible.</span></li>
             </ul>
           </div>
         </div>
@@ -919,7 +887,7 @@
             <ul class="dots">
               <li><span class="zh">提供保固外（OOW）售後維修服務（CS）。</span><span class="en">Out-of-warranty (OOW) after-sales repair (CS).</span></li>
               <li><span class="zh">於各國設立公司，服務範圍涵蓋 Acer 及其他品牌產品。</span><span class="en">Companies in each country, serving Acer and other brands.</span></li>
-              <li><span class="zh">各國設立海伯特售後服務之規劃於疫情前提出，並已呈報 CEO。</span><span class="en">The plan for 海伯特 after-sales service in each country was proposed before the pandemic and presented to the CEO.</span></li>
+              <li><span class="zh">各國設立海柏特售後服務之規劃於疫情前提出，並已呈報 CEO。</span><span class="en">The plan for 海柏特 after-sales service in each country was proposed before the pandemic and presented to the CEO.</span></li>
             </ul>
           </div>
         </div>
@@ -966,7 +934,7 @@
         <div class="block">
           <ul class="dots">
             <li><span class="zh">PAP 向 ODM 採購整機或料件，並供應予各 NS。</span><span class="en">PAP purchases units and parts from the ODM and supplies them to the NS.</span></li>
-            <li><span class="zh">自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group（海伯特）供應。</span><span class="en">From 1 December 2026, parts purchased by PAP are supplied through HSN Group (海伯特).</span></li>
+            <li><span class="zh">自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group（海柏特）供應。</span><span class="en">From 1 December 2026, parts purchased by PAP are supplied through HSN Group (海柏特).</span></li>
             <li><span class="zh">Angelin、Hannah、Sherry 轉任 HSN Group；其餘成員續代表 PAP。</span><span class="en">Angelin, Hannah and Sherry transfer to HSN Group; the remaining members continue to represent PAP.</span></li>
           </ul>
         </div>
@@ -1316,10 +1284,10 @@
 
       <section class="sub" id="sub-ref-other">
         <h2><span class="zh">其他國家與單位</span><span class="en">Other countries and units</span></h2>
-        <p class="lead zh">下列國家／地區沒有自己的國家子公司（NS）代碼，由鄰近國家的子公司負責。數字為 Q2 2025 服務據點數。</p>
-        <p class="lead en">These countries and regions have no nation subsidiary (NS) code of their own and are handled by a neighbouring subsidiary. Figures are Q2 2025 service-site counts.</p>
+        <p class="lead zh">下列國家／地區未設立獨立之國家子公司（NS）代碼，由鄰近國家之子公司管轄；數字為 Q2 2025 服務據點數。</p>
+        <p class="lead en">These countries and regions do not have a separate nation subsidiary (NS) code and fall under a neighbouring subsidiary. Figures are Q2 2025 service-site counts.</p>
         <div class="cover-grid" id="code-other"></div>
-        <p class="note"><span class="zh">各類據點的定義見</span><span class="en">Site types are defined in</span> <button class="btn sm" type="button" data-go="sites-types"><span class="zh">3.4 據點類型 →</span><span class="en">3.4 Site types →</span></button></p>
+        <p class="note"><span class="zh">各類據點之定義，請參閱</span><span class="en">For definitions of each site type, see</span> <button class="btn sm" type="button" data-go="sites-types"><span class="zh">3.4 據點類型 →</span><span class="en">3.4 Site types →</span></button></p>
       </section>
 
       <section class="sub" id="sub-ref-hsn">
@@ -1398,11 +1366,7 @@
     review: '<path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.6 1.6L8 4.8M3.5 12l1.6 1.6L8 10.8M3.5 18l1.6 1.6L8 16.8"/>',
     ro: '<path d="M4 21V8l8-4.5L20 8v13"/><path d="M9.5 21v-5h5v5M8.5 11h2M13.5 11h2"/>',
     plan: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>',
-    box: '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/>',
-    lang: '<path d="M3 5h9M7.5 3v2M5 5c.9 3 2.9 5.4 6 7M10 5c-.9 3-3 5.6-6 7"/><path d="m12.5 21 4-9 4 9M14 17.8h5"/>',
-    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/>',
-    palette: '<path d="M12 3a9 9 0 1 0 0 18c1.3 0 1.7-1.1 1.1-2.1-.7-1.2 0-2.6 1.4-2.6H17a4 4 0 0 0 4-4C21 7.3 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="10" cy="7" r="1.1"/><circle cx="15" cy="7.4" r="1.1"/>',
-    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>'
+    box: '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/>'
   };
   var ico = function (id) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICON[id] + "</svg>"; };
   var mark = function (v) { return v ? '<span class="yes" aria-label="yes">✓</span>' : '<span class="no" aria-label="no">—</span>'; };
@@ -1421,7 +1385,7 @@
       subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-team", "團隊架構", "Team structure"], ["org-points", "組織要點", "Key points"]] },
     { id: "sites", zh: "服務據點", en: "Service sites", dzh: "據點分布、倉庫、標案與據點類型", den: "Footprint, warehouses, tenders and site types",
       subs: [["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"], ["sites-types", "據點類型", "Site types"]] },
-    { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海伯特集團概要、各國公司與流程調整", den: "Overview, companies and process change",
+    { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團概要、各國公司與流程調整", den: "Overview, companies and process change",
       subs: [["hsn-about", "概要", "Overview"], ["hsn-companies", "各國公司", "Companies by country"], ["hsn-change", "流程調整", "Process change"]] },
     { id: "ops", zh: "作業", en: "Operations", dzh: "團隊職責、主要職能、系統、SPL 流程與 Service BOM", den: "Responsibilities, functions, systems, SPL flow and Service BOM",
       subs: [["ops-role", "團隊職責", "Team responsibilities"], ["ops-functions", "主要職能", "Main functions"], ["ops-systems", "系統", "Systems"], ["ops-spl", "SPL 定義流程", "SPL definition flow"], ["ops-bom", "Service BOM", "Service BOM"]] },
@@ -1486,7 +1450,9 @@
   }
   document.addEventListener("click", function (e) {
     var g = e.target.closest ? e.target.closest("[data-go]") : null;
-    if (g) go(g.getAttribute("data-go"), true);
+    if (!g) return;
+    if (g.tagName === "A") e.preventDefault();
+    go(g.getAttribute("data-go"), true);
   });
   window.addEventListener("hashchange", function () { go(location.hash.slice(1), false); });
 
@@ -1786,7 +1752,7 @@
   $("office-kpis").innerHTML = OKPI.map(function (k) { return '<div class="kpi"><div class="k">' + B(k[1], k[2]) + '</div><div class="v">' + k[0] + "</div></div>"; }).join("");
   $("office-legend").innerHTML = OREG.map(function (r) {
     return '<span><i style="background:var(--' + r[3] + ')"></i>' + B(r[1], r[2]) + "</span>";
-  }).join("") + '<span><i class="hqdot"></i>' + B("較大圓點為總部", "Larger dot = headquarters") + "</span>";
+  }).join("") + '<span><i class="hqdot"></i>' + B("大圓點：總部", "Large dot: headquarters") + "</span>";
 
   var oSel = -1, oReg = "all", oView = "world";
   // w：設計寬度（px），用來換算圓點與文字大小
@@ -1892,7 +1858,7 @@
       html += '<section class="office-group"><h3><i style="background:var(--' + r[3] + ')"></i>' + B(r[1], r[2]) + ' <span class="count">' + items.length + '</span></h3><div class="office-grid">' + items.join("") + "</div></section>";
     });
     $("office-list").innerHTML = html || '<p class="ab-empty">' + B("查無「" + esc(q) + "」相關據點。", 'No offices match "' + esc(q) + '".') + "</p>";
-    $("office-count").innerHTML = B("共 " + n + " 個據點", n + (n === 1 ? " office" : " offices"));
+    $("office-count").innerHTML = B("共 " + n + " 處據點", n + (n === 1 ? " office" : " offices"));
   }
   $("office-regions").innerHTML = [["all", "全部", "All", OFFICES.length]].concat(OREG.map(function (r) {
     return [r[0], r[1], r[2], OFFICES.filter(function (o) { return o[0] === r[0]; }).length];
@@ -1929,46 +1895,22 @@
 
   /* ---------- 網站介紹 ---------- */
   var CH = {
-    overview: ["PAP 服務物流的定位、涵蓋區域與重點數字。", "PAP's role, coverage and key figures."],
-    org: ["Acer 全球區域與各地據點、PAP 國家子公司，以及團隊分工。", "Acer's regions and offices worldwide, PAP's nation subsidiaries and the team structure."],
-    sites: ["服務中心、授權服務商（ASP）、客服中心與備品中心的分布，以及倉庫、Uni-load 與標案。", "Where service centres, ASPs, call centres and parts hubs are, plus warehouses, Uni-load and tenders."],
-    hsn: ["HSN Group 的角色、各國公司，以及 2026 年 12 月 1 日起的供應流程調整。", "HSN Group's role, its companies and the supply change from 1 December 2026."],
-    ops: ["團隊職責、主要職能、使用的系統、SPL 定義流程與 Service BOM。", "Responsibilities, main functions, systems, the SPL definition flow and the Service BOM."],
-    pn: ["服務料號的命名規則；輸入料號即可逐碼解析。", "How service part numbers are built; enter a part number to decode it."],
-    ref: ["子公司、區域與 HSN 代碼，以及常用縮寫的全名與說明。", "Subsidiary, region and HSN codes, and the full names of common abbreviations."],
-    review: ["19 題重點複習，確認重要觀念。", "19 questions to check the key points."]
+    overview: ["定位、涵蓋區域與重點數據", "Role, coverage and key figures"],
+    org: ["全球區域、全球據點、PAP 組織與團隊", "Regions, offices, PAP organisation and team"],
+    sites: ["服務據點分布、倉庫、Uni-load 與標案", "Service sites, warehouses, Uni-load and tenders"],
+    hsn: ["HSN Group 概要與 2026/12/1 起之流程調整", "HSN Group overview and the process change effective 1 Dec 2026"],
+    ops: ["職責、職能、系統、SPL 流程與 Service BOM", "Responsibilities, functions, systems, SPL and Service BOM"],
+    pn: ["料號命名規則與逐碼解析", "Part-number rules and decoder"],
+    ref: ["子公司、區域、HSN 代碼與縮寫", "Subsidiary, region and HSN codes, abbreviations"],
+    review: ["19 題重點複習", "19 review questions"]
   };
   $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p) {
     var d = CH[p.id];
-    return '<article class="chap"><button type="button" class="chap-head" data-go="' + p.id + '"><span class="chap-ico">' + ico(p.id) + '</span><span class="chap-t"><small>' + (p.num < 10 ? "0" : "") + p.num + "</small><b>" + B(p.zh, p.en) + '</b></span><span class="chap-go" aria-hidden="true">→</span></button>' +
-      "<p>" + B(d[0], d[1]) + "</p>" +
-      (p.subs.length ? '<div class="chap-subs">' + p.subs.map(function (s) { return '<button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span>" + B(s[1], s[2]) + "</button>"; }).join("") + "</div>" : "") + "</article>";
+    return '<button type="button" class="chap" data-go="' + p.id + '"><span class="chap-n">' + (p.num < 10 ? "0" : "") + p.num + '</span><span class="chap-t"><b>' + B(p.zh, p.en) + "</b><small>" + B(d[0], d[1]) + '</small></span><span class="chap-go" aria-hidden="true">→</span></button>';
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
-
-  // 首頁地圖：PAP 與各國子公司
-  function drawIntro() {
-    var svg = $("map-intro"), vb = [688, 100, 304, 278], k = vb[2] / 520;
-    if (!svg || !window.PAP_WORLD) return;
-    drawMap(svg, vb, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); }, [], []);
-    var at = function (cc) { for (var i = 0; i < OFFICES.length; i++) if (OFFICES[i][1] === cc && OFFICES[i][0] !== "am") return OFFICES[i]; return null; };
-    var tw = at("tw"), ox = px(tw[10]), oy = py(tw[11]);
-    var dots = [{ x: ox, y: oy, r: 7.5 * k, hq: true }], items = [{ x: ox, y: oy, r: 7.5 * k, name: "PAP", cls: "olabel hq" }], arcs = "";
-    NSC.filter(function (n) { return n[1]; }).forEach(function (n, j) {
-      var o = at(n[1]);
-      if (!o) return;
-      var x = px(o[10]), y = py(o[11]), dx = x - ox, dy = y - oy;
-      var cx = (ox + x) / 2 - dy * .22, cy = (oy + y) / 2 + dx * .22;
-      arcs += '<path class="arc" d="M' + ox.toFixed(1) + " " + oy.toFixed(1) + " Q" + cx.toFixed(1) + " " + cy.toFixed(1) + " " + x.toFixed(1) + " " + y.toFixed(1) +
-        '" style="stroke-width:' + (1.5 * k).toFixed(2) + ";stroke-dasharray:" + (4 * k).toFixed(2) + " " + (3 * k).toFixed(2) + ";animation-delay:-" + (j * .7).toFixed(1) + 's"></path>';
-      dots.push({ x: x, y: y, r: 4.6 * k });
-      items.push({ x: x, y: y, r: 4.6 * k, name: n[0], cls: "olabel" });
-    });
-    var lay = placeLabels(vb, k, dots, items);
-    svg.insertAdjacentHTML("beforeend", arcs + lay.leads + dots.map(function (d) {
-      return '<circle class="idot' + (d.hq ? " hq" : "") + '" cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
-    }).join("") + lay.texts);
-  }
+  // 首頁背景：淡色世界地圖
+  function drawIntro() { drawMap($("map-intro"), [0, 15, 1000, 410], function () { return ""; }, [], []); }
 
   /* ---------- 總覽 ---------- */
   var STATS = [[11, "國家子公司（NS）", "Nation subsidiaries (NS)"], [20, "設有據點之國家／地區", "Countries and regions with sites"], [507, "授權服務商（ASP）", "Authorized service providers"], [5, "HSN Group 公司", "HSN Group companies"]];
@@ -2107,7 +2049,7 @@
     ["twn", ["TWN"], "TWN", "Taiwan", "台灣區", "s", "org", "台灣區，2016/2017 年與 AAP 整併為 PAP。料號第 6 碼 T 代表 TWN；第 7 碼 T 則代表泰國（ATH）。", "Taiwan region, merged with AAP into PAP in 2016/2017. T as the 6th character denotes TWN; as the 7th character, T denotes Thailand (ATH)."],
     ["aap", ["AAP"], "AAP", null, "亞太區", "m", "org", "亞太區，2016/2017 年與 TWN 整併為 PAP。料號第 6 碼 S 代表 AAP；第 7 碼國別代碼適用於 AAP 各國。", "Asia Pacific region, merged with TWN into PAP in 2016/2017. S as the 6th character denotes AAP; 7th-character country codes apply to AAP countries.", "Asia Pacific region"],
     ["ns", ["NS"], "NS", "Nation Subsidiary", "國家子公司", "m", "org", "PAP 轄下之各國子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控各 NS 之績效（502/503 aging、庫存、採購、達交、HFP），並彙整其需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。", "A subsidiary in one country under PAP, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS."],
-    ["assb", ["ASSB", "ASSSB"], "ASSB", null, "馬來西亞國家子公司", "m", "org", "馬來西亞國家子公司，HSNM 隸屬其下。2016/2017 年以前為主導子公司；當時馬來西亞由海伯特與 Acer 共同營運。料號國別代碼 M；設有倉庫及 Uni-load。", "The Malaysia subsidiary, with HSNM under it. It was the lead subsidiary before 2016/2017, when Malaysia was operated jointly by 海伯特 and Acer. Country code M; has a warehouse and Uni-load.", "Malaysia subsidiary"],
+    ["assb", ["ASSB", "ASSSB"], "ASSB", null, "馬來西亞國家子公司", "m", "org", "馬來西亞國家子公司，HSNM 隸屬其下。2016/2017 年以前為主導子公司；當時馬來西亞由海柏特與 Acer 共同營運。料號國別代碼 M；設有倉庫及 Uni-load。", "The Malaysia subsidiary, with HSNM under it. It was the lead subsidiary before 2016/2017, when Malaysia was operated jointly by 海柏特 and Acer. Country code M; has a warehouse and Uni-load.", "Malaysia subsidiary"],
     ["aca", ["ACA"], "ACA", null, "澳洲國家子公司", "m", "org", "澳洲國家子公司，ACNZ（紐西蘭）隸屬其下。料號國別代碼 A（例：DG.B88SA.001）；設有倉庫及 Uni-load。", "The Australia subsidiary, with ACNZ (New Zealand) under it. Country code A (e.g. DG.B88SA.001); has a warehouse and Uni-load.", "Australia subsidiary"],
     ["acnz", ["ACNZ"], "ACNZ", null, "紐西蘭子公司", "m", "org", "紐西蘭子公司，隸屬 ACA，未設獨立料號國別代碼。設有倉庫，未設 Uni-load。", "The New Zealand subsidiary, under ACA, without a separate country code. Has a warehouse but no Uni-load.", "New Zealand subsidiary"],
     ["ail", ["AIL"], "AIL", null, "印度國家子公司", "m", "org", "印度國家子公司，Bangladesh（孟加拉）隸屬其下。料號國別代碼 I。印度為 PAP 據點最多之國家，包括 172 個外包服務中心及 126 個 ASP；設有倉庫及 Uni-load。", "The India subsidiary, with Bangladesh under it. Country code I. India has the most PAP sites, including 172 outsourced service centres and 126 ASPs; it has a warehouse and Uni-load.", "India subsidiary"],
@@ -2120,7 +2062,7 @@
     ["afe", ["AFE"], "AFE", null, "國家子公司", "m", "org", "PAP 國家子公司之一，所屬國家未載明，亦未列於倉庫表與料號國別代碼表。", "One of the PAP subsidiaries. Its country is not specified, and it is not in the warehouse table or the country-code list.", "Nation subsidiary"],
     ["aphi", ["APHI"], "APHI", null, "菲律賓國家子公司", "m", "org", "菲律賓國家子公司，料號國別代碼 P；設有倉庫，未設 Uni-load。", "The Philippines subsidiary. Country code P; it has a warehouse but no Uni-load.", "Philippines subsidiary"],
     ["acs", ["ACS"], "ACS", null, "新加坡國家子公司", "m", "org", "新加坡國家子公司，Sri Lanka、Mongolia、Nepal 隸屬其下。料號國別代碼 S（第 6 碼 S 則為 AAP）；設有倉庫及 Uni-load。", "The Singapore subsidiary, with Sri Lanka, Mongolia and Nepal under it. Country code S (as the 6th character, S denotes AAP); it has a warehouse and Uni-load.", "Singapore subsidiary"],
-    ["hsn", ["HSN", "海伯特"], "HSN", "Highpoint Service Network", "海伯特集團", "k", "org", "源自馬來西亞之電腦維修集團，提供保固外（OOW）售後維修服務，包括主機板維修；於各國設立公司，服務範圍涵蓋 Acer 及其他品牌。自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group 供應。", "A computer repair group from Malaysia providing out-of-warranty (OOW) after-sales repair, including mainboard repair. It has companies in each country and serves Acer and other brands. From 1 December 2026, parts purchased by PAP are supplied through HSN Group."],
+    ["hsn", ["HSN", "海柏特"], "HSN", "Highpoint Service Network", "海柏特集團", "k", "org", "源自馬來西亞之電腦維修集團，提供保固外（OOW）售後維修服務，包括主機板維修；於各國設立公司，服務範圍涵蓋 Acer 及其他品牌。自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group 供應。", "A computer repair group from Malaysia providing out-of-warranty (OOW) after-sales repair, including mainboard repair. It has companies in each country and serves Acer and other brands. From 1 December 2026, parts purchased by PAP are supplied through HSN Group."],
     ["hsnm", ["HSNM"], "HSNM", null, "HSN Group 馬來西亞公司", "k", "org", "HSN Group 馬來西亞公司，隸屬 ASSB。", "HSN Group's Malaysian company, under ASSB.", "HSN Group, Malaysia"],
     ["hsni", ["HSNI"], "HSNI", null, "HSN Group 印尼公司", "k", "org", "HSN Group 印尼公司。", "HSN Group's Indonesian company.", "HSN Group, Indonesia"],
     ["hsnv", ["HSNV"], "HSNV", null, "HSN Group 越南公司", "k", "org", "HSN Group 越南公司。", "HSN Group's Vietnamese company.", "HSN Group, Vietnam"],
@@ -2313,25 +2255,25 @@
   var SITE_KIND = [["自有服務中心", "Own service centre", 3], ["外包服務中心", "Outsourced service centre", 4], ["授權服務商 ASP", "ASP", 5], ["客服中心", "Call centre", 6], ["備品中心", "Parts hub", 7]];
   function siteChips(cc) {
     var r = INFRA_BY[cc];
-    if (!r) return '<span class="no">' + B("無據點資料", "No site data") + "</span>";
+    if (!r) return '<span class="no">' + B("未列示據點", "No sites listed") + "</span>";
     return SITE_KIND.filter(function (s) { return r[s[2]]; }).map(function (s) { return '<span class="site-chip">' + B(s[0], s[1]) + " <b>" + r[s[2]] + "</b></span>"; }).join("");
   }
-  // [負責單位, 國旗, 中文, English, 說明（中）, 說明（英）, 國家／地區]
+  // [管轄單位, 國旗, 中文, English, 說明（中）, 說明（英）, 國家／地區]
   var COVER = [
-    ["TWN → PAP", "tw", "原 TWN 區域", "Former TWN region", "台灣原為獨立的 TWN 區域，2016/2017 年與 AAP 整併為 PAP。", "Taiwan was the separate TWN region; it merged with AAP into PAP in 2016/2017.", [["tw", "台灣", "Taiwan"]]],
+    ["TWN → PAP", "tw", "原 TWN 區域", "Former TWN region", "台灣原為獨立之 TWN 區域，於 2016/2017 年與 AAP 整併為 PAP。", "Taiwan was the separate TWN region; it merged with AAP into PAP in 2016/2017.", [["tw", "台灣", "Taiwan"]]],
     ["AIL", "in", "印度子公司", "India subsidiary", "", "", [["bd", "孟加拉", "Bangladesh"]]],
     ["ATH", "th", "泰國子公司", "Thailand subsidiary", "", "", [["", "中南半島", "Indo-china"]]],
     ["ACS", "sg", "新加坡子公司", "Singapore subsidiary", "", "", [["lk", "斯里蘭卡", "Sri Lanka"], ["mn", "蒙古", "Mongolia"], ["np", "尼泊爾", "Nepal"]]],
-    ["", "", "負責單位未載明", "Responsible unit not specified", "列於 Q2 2025 據點統計，但未載明由哪一家子公司負責。", "Listed in the Q2 2025 site counts, but the responsible subsidiary is not specified.", [["hk", "香港", "Hong Kong"], ["mm", "緬甸", "Myanmar"], ["la", "寮國", "Laos"], ["kh", "柬埔寨", "Cambodia"]]]
+    ["", "", "管轄單位未載明", "Responsible subsidiary not specified", "列於 Q2 2025 據點統計，惟未載明管轄之子公司。", "Listed in the Q2 2025 site counts, but the responsible subsidiary is not specified.", [["hk", "香港", "Hong Kong"], ["mm", "緬甸", "Myanmar"], ["la", "寮國", "Laos"], ["kh", "柬埔寨", "Cambodia"]]]
   ];
   $("code-other").innerHTML = COVER.map(function (g) {
-    var n = g[6].length, sub = g[0] && g[1] !== "tw" ? B("負責 " + n + " 個國家／地區", "Covers " + n + (n === 1 ? " country or region" : " countries or regions")) : "";
+    var n = g[6].length, sub = g[0] && g[1] !== "tw" ? B("管轄 " + n + " 個國家／地區", "Covers " + n + (n === 1 ? " country or region" : " countries or regions")) : "";
     return '<article class="cover"><div class="cover-head">' + (g[0] ? '<span class="cover-code">' + esc(g[0]) + "</span>" : "") +
       "<div><b>" + flag(g[1]) + B(g[2], g[3]) + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</div></div>" +
       (g[4] ? '<p class="cover-note">' + B(g[4], g[5]) + "</p>" : "") +
       '<ul class="cover-list">' + g[6].map(function (c) {
         var r = INFRA_BY[c[0]];
-        return '<li><span class="cover-name">' + flag(c[0]) + B(c[1], c[2]) + '</span><span class="cover-total">' + (r ? "<b>" + r.total + "</b> " + B("個據點", r.total === 1 ? "site" : "sites") : "") + "</span>" +
+        return '<li><span class="cover-name">' + flag(c[0]) + B(c[1], c[2]) + '</span><span class="cover-total">' + (r ? "<b>" + r.total + "</b> " + B("處據點", r.total === 1 ? "site" : "sites") : "") + "</span>" +
           '<span class="site-chips">' + siteChips(c[0]) + "</span></li>";
       }).join("") + "</ul></article>";
   }).join("");
@@ -2355,8 +2297,8 @@
     ["NPI 與 MP Service BOM 有何不同？", "How do the NPI and MP Service BOMs differ?", "NPI：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後建立 Acer P/N。MP：由 ODM 每月定期更新。", "NPI: after the FRU meeting the ODM drafts the FRU list, and Acer P/Ns are created after review. MP: updated monthly by the ODM."],
     ["Create PO 與 Confirm PO to ODM 分別於哪個系統執行？", "In which systems are Create PO and Confirm PO to ODM done?", "Create PO 於 CSS；Confirm PO to ODM 於 PLS。", "Create PO in CSS; Confirm PO to ODM in PLS."],
     ["料號前兩碼為 86 代表何種子類別？", "Which sub-category does the prefix 86 denote?", "SCREW（螺絲），Product group Y9。", "SCREW, product group Y9."],
-    ["HSN 代表什麼？", "What is HSN?", "HSN Group，即海伯特集團（Highpoint Service Network），源自馬來西亞之電腦維修集團。", "HSN Group, 海伯特集團 (Highpoint Service Network), a computer repair group from Malaysia."],
-    ["自 2026 年 12 月 1 日起，PAP 採購之料件改經由何者供應？", "From 1 December 2026, through whom are parts purchased by PAP supplied?", "HSN Group（海伯特）。", "HSN Group (海伯特)."],
+    ["HSN 代表什麼？", "What is HSN?", "HSN Group，即海柏特集團（Highpoint Service Network），源自馬來西亞之電腦維修集團。", "HSN Group, 海柏特集團 (Highpoint Service Network), a computer repair group from Malaysia."],
+    ["自 2026 年 12 月 1 日起，PAP 採購之料件改經由何者供應？", "From 1 December 2026, through whom are parts purchased by PAP supplied?", "HSN Group（海柏特）。", "HSN Group (海柏特)."],
     ["ASP 是否提供維修服務？", "Do ASPs provide repairs?", "否。ASP 不具維修能力，提供收件（收機）服務。", "No. ASPs do not repair; they take in units."],
     ["設置 Uni-load 的主要目的為何？", "What is the main purpose of Uni-load?", "滿足當地客戶（如標案）之規格與成本要求，例如澳洲向 ODM 採購半成品，並於當地採購 SSD、HDD 組裝。", "To meet local customers' specifications and costs (e.g. tenders); Australia, for example, buys semi-finished parts from the ODM and assembles them with locally sourced SSDs and HDDs."],
     ["PAP 服務物流的三個核心簡碼為何？", "What are the three core abbreviations of PAP service logistics?", "RO、NS、HSN。", "RO, NS and HSN."],
@@ -2400,13 +2342,23 @@
         if (langs.every(function (l) { return seen[l + id]; })) continue;
         langs.forEach(function (l) { seen[l + id] = 1; });
         frag = frag || document.createDocumentFragment();
-        var start = m.index + m[1].length;
-        if (start > last) frag.appendChild(document.createTextNode(s.slice(last, start)));
+        var start = m.index + m[1].length, end = start + m[2].length;
+        // 與前後括號、標點綁在一起，避免「（NS」與「）」分在兩行
+        var pre = start > last && /[（(「『]/.test(s.charAt(start - 1)) ? 1 : 0;
+        var post = (/^[）)」』、，。；：,.;:]+/.exec(s.slice(end)) || [""])[0].length;
+        if (start - pre > last) frag.appendChild(document.createTextNode(s.slice(last, start - pre)));
         var b = document.createElement("button");
         b.type = "button"; b.className = "ab"; b.setAttribute("data-ab", id); b.textContent = m[2];
-        frag.appendChild(b);
-        last = start + m[2].length;
-        AB_RE.lastIndex = last;
+        if (pre || post) {
+          var w = document.createElement("span");
+          w.className = "ab-wrap";
+          if (pre) w.appendChild(document.createTextNode(s.charAt(start - 1)));
+          w.appendChild(b);
+          if (post) w.appendChild(document.createTextNode(s.substr(end, post)));
+          frag.appendChild(w);
+        } else frag.appendChild(b);
+        last = end + post;
+        AB_RE.lastIndex = post ? last - 1 : last;
       }
       if (!frag) return;
       if (last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
@@ -2460,7 +2412,7 @@
   setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
   setLang(store.get("pap.lang") || "zh");
-  $$("#page-overview, main .sub").forEach(linkAbbr);
+  $$("#page-intro, #page-overview, main .sub").forEach(linkAbbr);
   go(location.hash.slice(1), false);
 })();
 </script>
