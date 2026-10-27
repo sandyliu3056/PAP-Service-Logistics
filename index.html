@@ -206,14 +206,19 @@
   .pillar .pi .ico { width:30px; height:30px; stroke-width:1.5; }
   .pillar h4 { margin:10px 0 6px; font-size:1.05rem; }
   .pillar p { margin:0 auto; max-width:22em; color:var(--mute); font-size:.92rem; line-height:1.7; }
-  .chapters { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0 44px; border-top:1px solid var(--line); }
-  .chap { display:grid; grid-template-columns:2.4em minmax(0, 1fr) auto; gap:14px; align-items:center; width:100%; text-align:left; background:none; border:0; border-bottom:1px solid var(--line); padding:16px 10px; font-family:inherit; color:var(--ink); cursor:pointer; }
-  .chap:hover { background:var(--hover); }
-  .chap-n { font-family:var(--font-mono); color:var(--primary); font-size:.9rem; font-weight:700; }
-  .chap-t b { display:block; font-size:1.05rem; }
-  .chap-t small { display:block; color:var(--mute); font-size:.86rem; margin-top:2px; }
-  .chap-go { color:var(--mute); transition:transform .15s, color .15s; }
-  .chap:hover .chap-go { color:var(--primary); transform:translateX(3px); }
+  .toc-sum { text-align:center; color:var(--mute); font-size:.86rem; margin:-16px 0 20px; }
+  .toc { border-top:2px solid var(--navy); }
+  .toc-ch { display:grid; grid-template-columns:3em minmax(0, 1fr); gap:2px 16px; padding:18px 6px 16px; border-bottom:1px solid var(--line); }
+  .toc-n { font-family:var(--font-mono); color:var(--primary); font-weight:700; font-size:1.05rem; padding-top:3px; }
+  .toc-t { background:none; border:0; padding:0; font-family:inherit; color:var(--ink); text-align:left; cursor:pointer; justify-self:start; }
+  .toc-t b { display:block; font-family:var(--font-head); font-size:1.18rem; line-height:1.3; }
+  .toc-t small { display:block; color:var(--mute); font-size:.86rem; margin-top:2px; }
+  .toc-t:hover b { color:var(--primary); }
+  .toc-subs { grid-column:2; margin-top:10px; padding-left:14px; border-left:2px solid var(--line); display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:4px 18px; }
+  .toc-subs button { display:grid; grid-template-columns:2.8em minmax(0, 1fr); align-items:baseline; background:none; border:0; padding:3px 0; font-family:inherit; font-size:.95rem; color:var(--ink); text-align:left; cursor:pointer; }
+  .toc-subs button .n { font-family:var(--font-mono); color:var(--mute); font-size:.8rem; }
+  .toc-subs button:hover span:last-child { color:var(--primary); text-decoration:underline; }
+  .toc-single { color:var(--mute); font-size:.84rem; }
   .intro-tip { text-align:center; color:var(--mute); font-size:.86rem; margin:60px 0 0; }
 
   /* 全球據點 */
@@ -268,7 +273,6 @@
     .intro-title { font-size:2rem; }
     .intro-sec { margin-top:52px; }
     .pillars { grid-template-columns:minmax(0, 1fr); gap:30px; }
-    .chapters { grid-template-columns:minmax(0, 1fr); }
   }
 
   .pg-abbr { margin-top:44px; padding:16px 20px 18px; background:var(--stripe); border:1.5px solid var(--line); border-radius:12px; }
@@ -673,7 +677,8 @@
 
     <section class="intro-sec">
       <h3><span class="zh">網站架構</span><span class="en">Site structure</span></h3>
-      <div class="chapters" id="chapters"></div>
+      <p class="toc-sum" id="toc-sum"></p>
+      <div class="toc" id="chapters"></div>
     </section>
 
     <p class="intro-tip"><span class="zh">語言、字型與主題可於右上角切換；內文中以虛線標示之縮寫，點選後可檢視全稱與說明。</span><span class="en">Language, font and theme can be changed at the top right. Abbreviations with a dotted underline can be selected to view their full names and definitions.</span></p>
@@ -804,9 +809,26 @@
 
       <section class="sub" id="sub-org-pap">
         <h2><span class="zh">PAP 組織</span><span class="en">PAP organisation</span></h2>
-        <p class="lead zh">PAP 為區域辦公室（RO），轄下設有 11 個國家子公司（NS），部分子公司另轄有其他國家或單位。</p>
-        <p class="lead en">PAP is the regional office (RO), with 11 nation subsidiaries (NS); some subsidiaries also cover other countries or units.</p>
+        <p class="lead zh">PAP（泛亞太區）是 Acer 總部之下的區域辦公室（RO），負責統籌亞太地區的服務物流。PAP 之下有 11 個國家子公司（NS），各自負責所在國家的營運與服務；其中部分子公司同時代管鄰近未設子公司的國家，例如澳洲（ACA）代管紐西蘭。</p>
+        <p class="lead en">PAP (Pan Asia Pacific) is the regional office (RO) under Acer headquarters and coordinates service logistics across Asia Pacific. Under PAP are 11 nation subsidiaries (NS), each running operations and service in its own country; some of them also look after neighbouring countries that have no subsidiary of their own, e.g. Australia (ACA) covers New Zealand.</p>
         <div class="block">
+          <h3><span class="zh">組織層級</span><span class="en">Levels of the organisation</span></h3>
+          <div class="box">
+            <div class="prow">
+              <span class="pnode"><b>HQ</b><small><span class="zh">Acer 總部</span><span class="en">Acer headquarters</span></small></span><span class="parr">→</span>
+              <span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></small></span><span class="parr">→</span>
+              <span class="pnode"><b>NS × 11</b><small><span class="zh">國家子公司</span><span class="en">Nation subsidiaries</span></small></span><span class="parr">→</span>
+              <span class="pnode"><b><span class="zh">代管國家</span><span class="en">Covered countries</span></b><small><span class="zh">由鄰近子公司負責</span><span class="en">Handled by a neighbouring NS</span></small></span>
+            </div>
+          </div>
+          <ul class="dots">
+            <li><span class="zh"><b>區域辦公室（RO）</b>：即 PAP 本身，位於總部與各國之間，負責整個泛亞太區的備品規劃與採購。</span><span class="en"><b>Regional office (RO)</b>: PAP itself, between headquarters and the countries, responsible for spare-parts planning and purchasing for the whole region.</span></li>
+            <li><span class="zh"><b>國家子公司（NS）</b>：各國的 Acer 公司，以代碼表示，例如 ASSB 為馬來西亞、ACA 為澳洲；每家子公司負責自己國家的營運與服務據點。</span><span class="en"><b>Nation subsidiary (NS)</b>: Acer's company in each country, shown by a code such as ASSB for Malaysia or ACA for Australia; each runs operations and service sites in its own country.</span></li>
+            <li><span class="zh"><b>代管國家或單位</b>：未設子公司的國家由鄰近子公司負責，例如紐西蘭由澳洲（ACA）負責，斯里蘭卡、蒙古、尼泊爾由新加坡（ACS）負責。</span><span class="en"><b>Covered countries or units</b>: countries without a subsidiary are handled by a neighbouring one, e.g. New Zealand by Australia (ACA), and Sri Lanka, Mongolia and Nepal by Singapore (ACS).</span></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3><span class="zh">子公司分布</span><span class="en">Where the subsidiaries are</span></h3>
           <figure class="map ap">
             <div class="map-scroll"><svg id="map-ns" viewBox="688 100 304 278" role="img" aria-label="PAP nation subsidiaries"></svg></div>
             <figcaption class="legend-chips">
@@ -2007,9 +2029,16 @@
     ref: ["子公司、區域、HSN 代碼與縮寫", "Subsidiary, region and HSN codes, abbreviations"],
     review: ["18 題重點複習", "18 review questions"]
   };
+  var nSubs = 0;
+  NAV.forEach(function (p) { nSubs += p.subs.length; });
+  $("toc-sum").innerHTML = B("主頁 → 子頁，共 " + navN + " 個主要章節、" + nSubs + " 個子頁；點選即可前往。", navN + " sections and " + nSubs + " pages; select one to open it.");
   $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p) {
     var d = CH[p.id];
-    return '<button type="button" class="chap" data-go="' + p.id + '"><span class="chap-n">' + (p.num < 10 ? "0" : "") + p.num + '</span><span class="chap-t"><b>' + B(p.zh, p.en) + "</b><small>" + B(d[0], d[1]) + '</small></span><span class="chap-go" aria-hidden="true">→</span></button>';
+    return '<div class="toc-ch"><span class="toc-n">' + (p.num < 10 ? "0" : "") + p.num + '</span>' +
+      '<button type="button" class="toc-t" data-go="' + p.id + '"><b>' + B(p.zh, p.en) + "</b><small>" + B(d[0], d[1]) + "</small></button>" +
+      '<div class="toc-subs">' + (p.subs.length ? p.subs.map(function (s) {
+        return '<button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span><span>" + B(s[1], s[2]) + "</span></button>";
+      }).join("") : '<span class="toc-single">' + B("單頁，無子頁", "Single page") + "</span>") + "</div></div>";
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
@@ -2456,7 +2485,7 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每頁第一次出現時加上可點的虛線 ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .chap, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
