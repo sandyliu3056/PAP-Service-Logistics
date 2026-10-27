@@ -272,6 +272,31 @@
   .src.s { background:var(--panel); color:var(--ok); border-color:var(--ok); }
   .src.g { background:var(--panel); color:var(--orange); border-color:var(--orange); }
   .src.n { background:var(--panel); color:var(--mute); border-color:var(--line); }
+  .src.k { background:var(--hover); color:var(--navy); border-color:var(--navy); }
+
+  /* 上課筆記：流程鏈、重點清單 */
+  .pflow { display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; }
+  .pnode { background:var(--panel); border:2px solid var(--navy); border-radius:8px; padding:4px 12px; line-height:1.35; }
+  .pnode b { display:block; }
+  .pnode small { display:block; color:var(--mute); font-size:.8rem; }
+  .pnode.hq { background:var(--navy); color:var(--gold); }
+  .pnode.hq small { color:var(--hdr-sub); }
+  .pnode.hot { background:var(--hover); }
+  .parr { color:var(--navy); font-weight:700; }
+  .plabel { font-weight:700; color:var(--mute); font-size:.86rem; min-width:5.5em; }
+  .prow { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; padding:8px 0; border-bottom:1px dashed var(--line); }
+  .prow:last-child { border-bottom:0; }
+  .team-box { border:2px dashed var(--orange); border-radius:10px; padding:8px 10px; display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; }
+  .tag { display:inline-block; font-size:.74rem; font-weight:700; background:var(--orange); color:#fff; border-radius:4px; padding:0 6px; margin-left:4px; vertical-align:1px; }
+  .dots { margin:6px 0 0; padding-left:1.2em; display:grid; gap:6px; }
+  .dots li::marker { color:var(--orange); }
+  .from-notes { display:inline-block; font-size:.78rem; font-weight:700; color:var(--navy); background:var(--hover); border:1.5px solid var(--navy); border-radius:999px; padding:0 9px; }
+  .hsn-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:8px; }
+  .hsn { background:var(--panel); border:2px solid var(--navy); border-radius:9px; padding:8px 12px; display:grid; gap:2px; }
+  .hsn.plan { border-style:dashed; background:var(--card); }
+  .hsn-code { font-weight:700; font-size:1.15rem; display:flex; justify-content:space-between; gap:8px; align-items:baseline; }
+  .hsn-code em { font-style:normal; font-size:1rem; color:var(--orange); }
+  .hsn small { color:var(--mute); font-size:.84rem; }
   @media (max-width:600px) {
     .ab-pop { position:fixed; left:8px !important; right:8px; top:auto !important; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); width:auto; }
   }
@@ -346,6 +371,7 @@
     <button type="button" role="tab" data-tab="org"><span class="ico">🏢</span><span class="zh">組織</span><span class="en">Organisation</span></button>
     <button type="button" role="tab" data-tab="sites"><span class="ico">🌏</span><span class="zh">服務據點</span><span class="en">Service Sites</span></button>
     <button type="button" role="tab" data-tab="codes"><span class="ico">🏷️</span><span class="zh">代碼</span><span class="en">Codes</span></button>
+    <button type="button" role="tab" data-tab="hsn"><span class="ico">🛠️</span><span class="zh">HSN 集團</span><span class="en">HSN Group</span></button>
     <button type="button" role="tab" data-tab="functions"><span class="ico">🧭</span><span class="zh">主要職能</span><span class="en">Functions</span></button>
     <button type="button" role="tab" data-tab="systems"><span class="ico">💻</span><span class="zh">系統</span><span class="en">Systems</span></button>
     <button type="button" role="tab" data-tab="spl"><span class="ico">🔄</span><span class="zh">SPL 流程</span><span class="en">SPL Flow</span></button>
@@ -422,6 +448,106 @@
     </div>
     <p class="note zh">國家對應取自教材的「PAP Service Org.」表。AFE、HSNM 在教材中未標示國家；HSNM 在原圖以紅框標示，教材未說明。AKC 在組織圖上以箭頭連向 AJC，料號國碼兩者同為 <b>J</b>。</p>
     <p class="note en">Country mapping comes from the "PAP Service Org." table. AFE and HSNM have no country in the material; HSNM is boxed in red on the original chart without explanation. On the org chart AKC points to AJC, and both use country code <b>J</b> in part numbers.</p>
+
+    <div class="section"><span class="zh">我們的團隊</span><span class="en">Our team</span><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <div class="box">
+      <div class="prow">
+        <span class="plabel">PAP</span>
+        <span class="pnode hq"><b>Andrew Hou</b><small>GM · <span class="zh">看業績</span><span class="en">owns the numbers</span></small></span>
+      </div>
+      <div class="prow">
+        <span class="plabel">Service</span>
+        <span class="pnode"><b>Jacky Lin</b><small>AVP <span class="zh">協理</span> · <span class="zh">也是 HSN Group 的 GM</span><span class="en">also GM of HSN Group</span></small></span>
+        <span class="parr">→</span>
+        <span class="pnode"><b>Dicky</b></span>
+        <span class="parr">→</span>
+        <span class="team-box">
+          <span class="pnode"><b>Vivian</b></span><span class="parr">→</span>
+          <span class="pnode hot"><b>Angelin</b></span><span class="parr">→</span>
+          <span class="pnode"><b>Chloe</b></span><span class="parr">→</span>
+          <span class="pnode hot"><b>Sherry</b></span><span class="parr">→</span>
+          <span class="pnode hot"><b>Hannah</b></span><span class="parr">→</span>
+          <span class="pnode"><b>Sandy</b></span>
+        </span>
+      </div>
+      <div class="prow">
+        <span class="plabel"><span class="zh">PAP 職能</span><span class="en">PAP roles</span></span>
+        <span class="chip">Customer (NS-Service)</span><span class="chip">Quality</span><span class="chip">Planner</span><span class="chip">Purchase</span>
+      </div>
+      <div class="prow">
+        <span class="plabel"><span class="zh">例會</span><span class="en">Meeting</span></span>
+        <span><span class="zh">每週二 11:00–12:00 weekly meeting</span><span class="en">Weekly meeting every Tuesday, 11:00–12:00</span></span>
+      </div>
+      <p class="note zh">橘底的 Angelin、Sherry、Hannah：2026/12/1 起轉為 HSN 的人（見 HSN 集團分頁）。我們團隊代表 PAP。</p>
+      <p class="note en">Highlighted: Angelin, Sherry and Hannah move to HSN from 2026/12/1 (see the HSN Group tab). Our team represents PAP.</p>
+    </div>
+
+    <div class="section"><span class="zh">組織重點</span><span class="en">Key points</span><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <div class="box">
+      <ol class="dots">
+        <li><span class="zh">我們（PAP 團隊）就是 RO（Regional Office），我們的團隊代表 PAP。</span><span class="en">We, the PAP team, are the RO (regional office) and represent PAP.</span></li>
+        <li><span class="zh">重點放在 PAP（TW＋AAP）；ACCN（中國）自己負責，不需要花心思。</span><span class="en">Focus on PAP (TW + AAP). ACCN (China) runs itself, so no need to spend effort there.</span></li>
+        <li><span class="zh">5 個 RO 在 2010 年以前各自獨立；即使合併了，也要尊重各區有自己的做法。</span><span class="en">The five ROs were independent before 2010. Even after merging, respect that each region has its own way of working.</span></li>
+        <li><span class="zh">2016/2017 年以前 ASSB 是主管（像班長）；馬來西亞由海伯特加上 Acer，ASSB 跟海伯特一起負責。</span><span class="en">Before 2016/2017 ASSB was the lead subsidiary. In Malaysia, 海伯特 (HSN) and Acer ran things together, with ASSB and 海伯特 jointly responsible.</span></li>
+        <li><span class="zh">韓國（AKC）請日本（AJC）管。</span><span class="en">Korea (AKC) is managed by Japan (AJC).</span></li>
+        <li><span class="zh">要背起來：RO、NS、HSN 三個簡碼，以及教材第 2、3 頁的組織圖。</span><span class="en">Memorise: the three abbreviations RO, NS and HSN, and the org charts on pages 2 and 3 of the deck.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- HSN 集團 -->
+  <section class="tab" id="tab-hsn" role="tabpanel">
+    <div class="section"><span class="zh">HSN 集團（海伯特）</span><span class="en">HSN Group (海伯特)</span><small>Highpoint Service Network</small><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <p class="caption zh">這一頁整理自上課筆記，不是教材內容。</p>
+    <p class="caption en">This tab comes from class notes, not from the training deck.</p>
+    <div class="two" style="margin-top:8px">
+      <div class="box">
+        <h3><span class="zh">是什麼</span><span class="en">What it is</span></h3>
+        <ul class="dots">
+          <li><span class="zh">HSN Group＝海伯特集團（Highpoint Service Network），源自馬來西亞，做電腦維修，例如維修主機板。</span><span class="en">HSN Group is 海伯特集團 (Highpoint Service Network), a computer repair business from Malaysia, e.g. mainboard repair.</span></li>
+          <li><span class="zh">Jacky Lin（AVP）同時是 HSN Group 的 GM。</span><span class="en">Jacky Lin (AVP) is also the GM of HSN Group.</span></li>
+          <li><span class="zh">2016/2017 年以前，馬來西亞由海伯特加上 Acer 負責，ASSB 跟海伯特一起負責。</span><span class="en">Before 2016/2017, 海伯特 and Acer ran Malaysia together, with ASSB and 海伯特 jointly responsible.</span></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3><span class="zh">為什麼成立</span><span class="en">Why it was set up</span></h3>
+        <ul class="dots">
+          <li><span class="zh">保固外（OOW）的客服維修（CS）每年都很賺。</span><span class="en">Out-of-warranty (OOW) customer service (CS) repairs earn a lot every year.</span></li>
+          <li><span class="zh">Andrew Hou 舉的例子：主機板維修向消費者收約 8,000，淨賺約 3,000。</span><span class="en">Andrew Hou's example: a mainboard repair charges the customer about 8,000 and nets about 3,000.</span></li>
+          <li><span class="zh">所以建議 Andrew 成立海伯特集團，在各國開公司；既然能修 Acer 的產品，也能幫其他品牌維修。</span><span class="en">So the idea put to Andrew was to form the 海伯特 group and open companies in each country; if it can repair Acer products, it can repair other brands too.</span></li>
+          <li><span class="zh">疫情前就提出在各國設海伯特售後服務，並往上報給 CEO。</span><span class="en">Before the pandemic, the plan for 海伯特 after-sales service in each country was proposed and reported up to the CEO.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section"><span class="zh">各國的 HSN 公司</span><span class="en">HSN companies by country</span></div>
+    <div class="hsn-grid" id="hsn-grid"></div>
+    <p class="note zh">筆記旁註「2～4 年」，並在泰國標 ✓、澳洲標 △、日本標 ?，筆記沒有寫明這些記號的意思。HSNM 筆記寫的是 (TW)，但教材組織圖把 HSNM 放在 ASSB（馬來西亞）之下，其他公司的字尾 I、V、P、T 也都是國名，M 應是 Malaysia，請再確認。</p>
+    <p class="note en">The notes add "2–4 years" beside the list and mark Thailand ✓, Australia △ and Japan ?, without saying what the marks mean. The notes write HSNM as (TW), but the deck places HSNM under ASSB (Malaysia) and the other suffixes I, V, P, T are country initials, so M most likely means Malaysia; please confirm.</p>
+
+    <div class="section"><span class="zh">Markup 轉給 HSN</span><span class="en">Markup moves to HSN</span><small><span class="zh">2026/12/1 生效</span><span class="en">effective 2026/12/1</span></small></div>
+    <div class="box">
+      <div class="prow">
+        <span class="plabel"><span class="zh">現在</span><span class="en">Now</span></span>
+        <span class="pnode"><b>ODM</b><small><span class="zh">例：仁寶</span><span class="en">e.g. Compal</span></small></span><span class="parr">→</span>
+        <span class="pnode hq"><b>PAP</b><small><span class="zh">RO 採購，加 markup</span><span class="en">RO purchasing, adds markup</span></small></span><span class="parr">→</span>
+        <span class="pnode"><b>NS</b></span>
+      </div>
+      <div class="prow">
+        <span class="plabel"><span class="zh">2026/12/1 起</span><span class="en">From 2026/12/1</span></span>
+        <span class="pnode"><b>ODM</b></span><span class="parr">→</span>
+        <span class="pnode hq"><b>PAP</b><small><span class="zh">RO 採購</span><span class="en">RO purchasing</span></small></span><span class="parr">→</span>
+        <span class="pnode hot"><b>HSN Group</b><small><span class="zh">賺 markup 3.5%～10%</span><span class="en">earns 3.5–10% markup</span></small></span><span class="parr">→</span>
+        <span class="pnode"><b>NS</b><small><span class="zh">（我的理解）</span><span class="en">(my reading)</span></small></span>
+      </div>
+      <ul class="dots">
+        <li><span class="zh">我們跟 ODM 買進主機或料件，再賣給 NS，中間加一個百分比（markup）賺取營利。</span><span class="en">We buy units or parts from the ODM and sell them to the NS, adding a percentage (markup) as profit.</span></li>
+        <li><span class="zh">三位老闆認為 markup 是好生意，決定讓 HSN Group 來賺這段 markup（3.5%～10%），2026/12/1 生效；我們採購進來的東西會轉賣給海伯特。</span><span class="en">The three bosses see markup as good business and decided HSN Group should earn it (3.5–10%), effective 2026/12/1. What we buy is resold to 海伯特.</span></li>
+        <li><span class="zh">Angelin、Hannah、Sherry 會變成 HSN 的人；我們團隊代表 PAP。</span><span class="en">Angelin, Hannah and Sherry become HSN staff; our team represents PAP.</span></li>
+      </ul>
+      <p class="note zh">最後一段「HSN → NS」是依筆記推論，筆記沒有直接寫出。</p>
+      <p class="note en">The last hop (HSN → NS) is inferred from the notes, which do not state it directly.</p>
+    </div>
   </section>
 
   <!-- 服務據點 -->
@@ -461,6 +587,31 @@
     </div>
     <p class="note zh"><b>Uni-load</b>：在當地有產線、組裝廠（教材手寫註記）。11 國都有倉庫，其中 6 國同時有 Uni-load。Malaysia 在原表帶有「*」註記，教材未說明。</p>
     <p class="note en"><b>Uni-load</b>: a local production line or assembly plant (handwritten note in the material). All 11 countries have a warehouse; 6 also have Uni-load. Malaysia carries an asterisk in the original table, without explanation.</p>
+
+    <div class="section"><span class="zh">標案與 Uni-load</span><span class="en">Tenders and Uni-load</span><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <div class="two">
+      <div class="box sop">
+        <h3><span class="zh">標案怎麼走</span><span class="en">How a tender works</span></h3>
+        <ol>
+          <li><span>1</span><span><span class="zh">客戶（例如政府、警局）開標書，也就是規格書。</span><span class="en">The customer (e.g. a government agency or the police) issues a tender document, i.e. a spec sheet.</span></span></li>
+          <li><span>2</span><span><span class="zh">各品牌看規格書來競標，產品要滿足規格。</span><span class="en">Brands bid against the spec sheet; the product must meet the spec.</span></span></li>
+          <li><span>3</span><span><span class="zh">依規格請 ODM（例如仁寶）生產成品（FG）。</span><span class="en">An ODM (e.g. Compal) builds finished goods (FG) to the spec.</span></span></li>
+          <li><span>4</span><span><span class="zh">如果成品成本超過標書價格，澳洲的做法是：向 ODM 買半成品（螢幕、主機板），在當地買比較便宜的 SSD、HDD，自己組裝。</span><span class="en">If the FG cost is above the tender price, Australia buys semi-finished parts (screen, mainboard) from the ODM, buys cheaper SSDs and HDDs locally, and assembles them.</span></span></li>
+          <li><span>5</span><span><span class="zh">這樣能壓到標書的成本價，標案仍有機會有營利。</span><span class="en">That brings the cost down to the tender price, so the tender can still make a profit.</span></span></li>
+        </ol>
+      </div>
+      <div class="box">
+        <h3><span class="zh">為什麼要 Uni-load</span><span class="en">Why Uni-load</span></h3>
+        <ul class="dots">
+          <li><span class="zh">Uni-load 大多是為了滿足當地客戶的規格要求。</span><span class="en">Uni-load mostly exists to meet local customers' spec requirements.</span></li>
+          <li><span class="zh">主機板要用高精密設備製作，所以跟 ODM 買；SSD、HDD 在當地買比較便宜。</span><span class="en">Mainboards need high-precision equipment, so they come from the ODM; SSDs and HDDs are cheaper to buy locally.</span></li>
+          <li><span class="zh">澳洲很常開警局標案；例如 ACA 有兩萬台筆電的標案規格。</span><span class="en">Australia often runs police tenders; for example, ACA had a tender spec for 20,000 notebooks.</span></li>
+          <li><span class="zh">AMI 是印尼 Uni-load 組裝廠公司的簡碼。</span><span class="en">AMI is the abbreviation for the Indonesian Uni-load assembly company.</span></li>
+        </ul>
+        <p class="note zh">還要問清楚：標案的規格怎麼定？CPU？SSD？</p>
+        <p class="note en">Still to ask: how is the tender spec set? CPU? SSD?</p>
+      </div>
+    </div>
   </section>
 
   <!-- 代碼 -->
@@ -487,6 +638,14 @@
       </table>
     </div>
 
+    <div class="section"><span class="zh">HSN 集團代碼</span><span class="en">HSN Group codes</span><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th><span class="zh">代碼</span><span class="en">Code</span></th><th><span class="zh">國家</span><span class="en">Country</span></th><th><span class="zh">狀態</span><span class="en">Status</span></th><th><span class="zh">說明</span><span class="en">Notes</span></th></tr></thead>
+        <tbody id="code-hsn"></tbody>
+      </table>
+    </div>
+
     <div class="section"><span class="zh">據點類型</span><span class="en">Site types</span><small>CSD Q2 2025 Infrastructure</small></div>
     <div class="tbl">
       <table>
@@ -498,6 +657,15 @@
 
   <!-- 主要職能 -->
   <section class="tab" id="tab-functions" role="tabpanel">
+    <div class="section"><span class="zh">我們的角色：RO 採購</span><span class="en">Our role: RO purchasing</span><span class="from-notes"><span class="zh">上課筆記</span><span class="en">Class notes</span></span></div>
+    <div class="box" style="margin-bottom:6px">
+      <ul class="dots" style="margin-top:0">
+        <li><span class="zh">我們（PAP 團隊）就是 RO，也是採購。</span><span class="en">We, the PAP team, are the RO and the purchasers.</span></li>
+        <li><span class="zh">收到 planning 後，依客戶（NS）當初下的採購數量，向 ODM（例如仁寶）下 PO。</span><span class="en">Once planning comes in, we place POs with the ODM (e.g. Compal) for the quantities the customer (NS) originally ordered.</span></li>
+        <li><span class="zh">跟 ODM 買進主機或料件，再賣給 NS，中間加一個百分比（markup）賺取營利；2026/12/1 起這段 markup 改由 HSN Group 賺。</span><span class="en">We buy units or parts from the ODM and sell them to the NS with a markup; from 2026/12/1 HSN Group earns that markup.</span> <button class="btn sm" type="button" data-go="hsn"><span class="zh">看 HSN 集團 →</span><span class="en">See HSN Group →</span></button></li>
+      </ul>
+    </div>
+
     <div class="section"><span class="zh">PAP 服務物流的主要職能</span><span class="en">Main functions of PAP service logistics</span><small>Service Logistics Org. Main Functions</small></div>
     <div class="two">
       <article class="box fn">
@@ -821,7 +989,7 @@
   $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value); });
 
   /* ---------- 分頁（網址 #org 等可直接開到該分頁） ---------- */
-  var TABS = ["overview", "org", "sites", "codes", "functions", "systems", "spl", "bom", "pn", "abbr", "quiz"];
+  var TABS = ["overview", "org", "sites", "codes", "hsn", "functions", "systems", "spl", "bom", "pn", "abbr", "quiz"];
   function showTab(name, fromUser) {
     if (TABS.indexOf(name) === -1) name = "overview";
     Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {
@@ -871,13 +1039,14 @@
     ["org", "🏢", "組織", "Organisation", "Acer 全球區域與 PAP 的 11 個國家子公司", "Acer's global regions and PAP's 11 nation subsidiaries"],
     ["sites", "🌏", "服務據點", "Service sites", "Q2 2025 服務據點地圖、倉庫與 Uni-load", "Q2 2025 footprint map, warehouses and Uni-load"],
     ["codes", "🏷️", "代碼", "Codes", "每個國家子公司、區域、其他國家與據點類型的代碼說明", "What each subsidiary, region, country and site-type code means"],
-    ["functions", "🧭", "主要職能", "Functions", "備品規劃、下單、績效監控與月報", "Planning, ordering, performance monitoring and monthly reports"],
+    ["hsn", "🛠️", "HSN 集團", "HSN Group", "海伯特集團是什麼、各國公司、2026/12/1 起 markup 轉給 HSN", "What 海伯特 is, its companies, and the markup moving to HSN from 2026/12/1"],
+    ["functions", "🧭", "主要職能", "Functions", "我們的 RO 採購角色、備品規劃、下單、績效監控與月報", "Our RO purchasing role, planning, ordering, monitoring and monthly reports"],
     ["systems", "💻", "系統", "Systems", "RO、NS、ASP 各用哪些系統", "Which systems ROs, NS and ASPs use"],
     ["spl", "🔄", "SPL 流程", "SPL flow", "從 B 樣品到發布 SPL 的 8 個步驟", "Eight steps from B sample to SPL release"],
     ["bom", "📋", "Service BOM", "Service BOM", "NPI 與 MP 的 SOP、24 類備品", "NPI and MP SOPs, 24 spare-part categories"],
     ["pn", "🔢", "料號規則", "P/N rule", "拆解 AA.BBBCD.EEE 與子類別對照", "Decode AA.BBBCD.EEE and look up sub-categories"],
     ["abbr", "🔤", "縮寫", "Abbreviations", "每個縮寫的完整字與詳細說明", "Full form and explanation for every abbreviation"],
-    ["quiz", "✅", "自我測驗", "Quiz", "12 題複習", "12 review questions"]
+    ["quiz", "✅", "自我測驗", "Quiz", "19 題複習", "19 review questions"]
   ];
   $("ov-list").innerHTML = CH.map(function (c) {
     return '<button type="button" data-go="' + c[0] + '"><span>' + c[1] + "</span><span><b>" + B(c[2], c[3]) + "</b><small>" + B(c[4], c[5]) + "</small></span></button>";
@@ -1111,11 +1280,13 @@
     m: ["教材", "Material", "取自教材", "From the training material"],
     s: ["通用", "Standard", "業界通用的縮寫", "Standard industry abbreviation"],
     g: ["推測", "Inferred", "依命名慣例推測，請與內部確認", "Inferred from naming; confirm internally"],
-    n: ["未提供", "Not given", "教材沒有寫出全名", "Not spelled out in the material"]
+    n: ["未提供", "Not given", "教材沒有寫出全名", "Not spelled out in the material"],
+    k: ["筆記", "Notes", "取自上課筆記", "From class notes"]
   };
   var CATS_AB = [
     ["org", "組織與區域", "Organisation & regions"],
     ["ns", "國家子公司", "Nation subsidiaries"],
+    ["hsn", "HSN 集團", "HSN Group"],
     ["site", "據點", "Sites"],
     ["sys", "系統", "Systems"],
     ["part", "料件與 BOM", "Parts & BOM"],
@@ -1132,28 +1303,42 @@
     ["aap", ["AAP"], "AAP", "Acer Asia Pacific", "亞太區", "g", "org", "亞太區，2016/2017 年與 TWN 合併成 PAP。料號第 6 碼 S 代表 AAP；第 7 碼的國碼表（M、A、S、I…）只列出 AAP 底下的國家。", "The Asia Pacific region, merged with TWN into PAP in 2016/2017. S as the 6th character of a part number means AAP, and the country-code list for the 7th character (M, A, S, I…) only covers countries under AAP."],
     ["accn", ["ACCN"], "ACCN", "Acer China", "中國區", "g", "org", "中國區，與 PAP 平行、直屬 HQ。料號第 6 碼 C 代表 ACCN。", "The China region, a peer of PAP directly under HQ. C as the 6th character of a part number means ACCN."],
     ["pap", ["PAP"], "PAP", "Pan Asia Pacific", "泛亞太區", "s", "org", "泛亞太區，由 TWN（台灣）與 AAP（亞太）在 2016/2017 年合併而成，是這份教材的主角。PAP 下轄 11 個國家子公司（NS），服務物流團隊負責備品規劃與下單、中央倉庫、RMA、績效監控與月報。", "Pan Asia Pacific, formed when TWN (Taiwan) and AAP (Asia Pacific) merged in 2016/2017, and the subject of this training. PAP has 11 nation subsidiaries (NS); its service logistics team handles spare-parts planning and ordering, the central warehouse, RMA, performance monitoring and monthly reports."],
-    ["ro", ["RO"], "RO", "Regional Office", "區域辦公室", "m", "org", "區域辦公室，例如 PAP。RO 使用 PLM、PLS、GLS、CSS 四個系統，是唯一使用 PLS 的角色。SPL 定義流程的最後一步是把 SPL 發布給各 RO；料號第 6 碼就是 RO 代碼。", "A regional office, such as PAP. ROs use all four systems (PLM, PLS, GLS, CSS) and are the only role that uses PLS. The last step of the SPL flow releases the SPL to every RO, and the 6th character of a part number is the RO code."],
+    ["ro", ["RO"], "RO", "Regional Office", "區域辦公室", "m", "org", "區域辦公室，例如 PAP；上課筆記：我們（PAP 團隊）就是 RO，也是採購。RO 使用 PLM、PLS、GLS、CSS 四個系統，是唯一使用 PLS 的角色。SPL 定義流程的最後一步是把 SPL 發布給各 RO；料號第 6 碼就是 RO 代碼。5 個 RO 在 2010 年以前各自獨立，合併後也要尊重各區的做法。", "A regional office, such as PAP; per the class notes, our PAP team is the RO and does the purchasing. ROs use all four systems (PLM, PLS, GLS, CSS) and are the only role that uses PLS. The last step of the SPL flow releases the SPL to every RO, and the 6th character of a part number is the RO code. The five ROs were independent before 2010; respect each region's way of working even after the merger."],
+    ["gm", ["GM"], "GM", "General Manager", "總經理", "s", "org", "總經理。上課筆記：PAP 的 GM 是 Andrew Hou（看業績）；Jacky Lin 也是 HSN Group 的 GM。", "General manager. Per the class notes, PAP's GM is Andrew Hou, who owns the numbers; Jacky Lin is also GM of HSN Group."],
+    ["avp", ["AVP"], "AVP", "Assistant Vice President", "協理", "s", "org", "協理。上課筆記：Jacky Lin 是 Service 的 AVP，同時是 HSN Group 的 GM。", "Assistant vice president. Per the class notes, Jacky Lin is AVP of Service and also GM of HSN Group."],
     ["ns", ["NS"], "NS", "Nation Subsidiary", "國家子公司", "m", "org", "各國的子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控 NS 的績效（502/503 aging、庫存、採購、達交、HFP），並彙整 NS 的需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。", "A subsidiary in one country, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS."],
     ["csd", ["CSD"], "CSD", "Customer Service Division", "客服單位", "g", "org", "出現在「CSD Q2 2025 Infrastructure」投影片標題，是統計各國服務據點的單位。教材沒有寫出全名。", "Appears in the slide title \"CSD Q2 2025 Infrastructure\", the unit that counts service sites by country. The material does not spell it out."],
 
-    ["assb", ["ASSB", "ASSSB"], "ASSB", "Acer Sales & Services Sdn Bhd", "Acer 馬來西亞子公司", "g", "ns", "馬來西亞的國家子公司（原表寫作 ASSSB*）。組織圖上 HSNM 掛在 ASSB 之下。料號國碼 M。有倉庫，也有 Uni-load。", "The Malaysia subsidiary (written ASSSB* in the original table). HSNM sits under ASSB on the org chart. Country code M. Has a warehouse and Uni-load."],
+    ["assb", ["ASSB", "ASSSB"], "ASSB", "Acer Sales & Services Sdn Bhd", "Acer 馬來西亞子公司", "g", "ns", "馬來西亞的國家子公司（原表寫作 ASSSB*）。組織圖上 HSNM 掛在 ASSB 之下。上課筆記：2016/2017 年以前 ASSB 是主管（像班長），馬來西亞由海伯特加上 Acer 負責。料號國碼 M。有倉庫，也有 Uni-load。", "The Malaysia subsidiary (written ASSSB* in the original table). HSNM sits under ASSB on the org chart. Per the class notes, ASSB was the lead subsidiary before 2016/2017, and 海伯特 and Acer ran Malaysia together. Country code M. Has a warehouse and Uni-load."],
     ["aca", ["ACA"], "ACA", "Acer Computer Australia", "Acer 澳洲子公司", "g", "ns", "澳洲的國家子公司，下轄 ACNZ（紐西蘭）。料號國碼 A，例如 DG.B88SA.001。有倉庫與 Uni-load。", "The Australia subsidiary; ACNZ (New Zealand) sits under it. Country code A, as in DG.B88SA.001. Has a warehouse and Uni-load."],
     ["acnz", ["ACNZ"], "ACNZ", "Acer Computer New Zealand", "Acer 紐西蘭子公司", "g", "ns", "紐西蘭，在組織圖上掛在 ACA 之下，料號國碼表中沒有單獨列出。有倉庫，沒有 Uni-load。", "New Zealand. It sits under ACA on the org chart and has no country code of its own in the list. Has a warehouse but no Uni-load."],
     ["ail", ["AIL"], "AIL", "Acer India Ltd", "Acer 印度子公司", "g", "ns", "印度的國家子公司，下轄 Bangladesh（孟加拉）。料號國碼 I。印度是 PAP 據點最多的國家：172 個外包服務中心、126 個 ASP。有倉庫與 Uni-load。", "The India subsidiary; Bangladesh sits under it. Country code I. India has the most sites in PAP: 172 outsourced service centres and 126 ASPs. Has a warehouse and Uni-load."],
     ["ath", ["ATH"], "ATH", "Acer Thailand", "Acer 泰國子公司", "g", "ns", "泰國的國家子公司，下轄 Indo-china（中南半島）。料號國碼 T（第 6 碼的 T 則是 TWN）。有 12 個自有服務中心與 109 個 ASP，有倉庫與 Uni-load。", "The Thailand subsidiary; Indo-china sits under it. Country code T (T as the 6th character means TWN instead). 12 own service centres and 109 ASPs; has a warehouse and Uni-load."],
     ["ain", ["AIN"], "AIN", "Acer Indonesia", "Acer 印尼子公司", "g", "ns", "印尼的國家子公司，倉庫表寫作 AIN (AMI)。料號國碼 N 或 D，是唯一有兩個國碼的國家。有倉庫與 Uni-load。", "The Indonesia subsidiary, shown as AIN (AMI) in the warehouse table. Country code N or D, the only country with two codes. Has a warehouse and Uni-load."],
-    ["ami", ["AMI"], "AMI", null, "", "n", "ns", "出現在倉庫表的「Indonesia (AIN) (AMI)」。教材沒有說明 AMI 是什麼，也沒有說明它和 AIN 的關係。", "Appears in the warehouse table as \"Indonesia (AIN) (AMI)\". The material does not say what AMI is or how it relates to AIN."],
+    ["ami", ["AMI"], "AMI", null, "印尼 Uni-load 組裝廠公司", "k", "ns", "上課筆記：AMI 是印尼 Uni-load 組裝廠公司的簡碼，所以倉庫表把印尼寫成「Indonesia (AIN) (AMI)」。全名筆記沒有寫。", "Per the class notes, AMI is the abbreviation for the Indonesian Uni-load assembly company, which is why the warehouse table shows \"Indonesia (AIN) (AMI)\". The notes do not give its full name.", "Indonesian Uni-load assembly company"],
     ["avn", ["AVN"], "AVN", "Acer Vietnam", "Acer 越南子公司", "g", "ns", "越南的國家子公司，料號國碼 V。有倉庫，沒有 Uni-load。", "The Vietnam subsidiary. Country code V. Has a warehouse but no Uni-load."],
     ["ajc", ["AJC"], "AJC", "Acer Japan Corp.", "Acer 日本子公司", "g", "ns", "日本的國家子公司，料號國碼 J。組織圖上 AKC 以箭頭連向 AJC，兩者國碼都是 J。有倉庫，沒有 Uni-load。", "The Japan subsidiary. Country code J. On the org chart AKC points to AJC, and both use J. Has a warehouse but no Uni-load."],
-    ["akc", ["AKC"], "AKC", "Acer Korea", "Acer 韓國子公司", "g", "ns", "韓國的國家子公司，組織圖上以箭頭連向 AJC，料號國碼同為 J。有倉庫，沒有 Uni-load。", "The Korea subsidiary. It points to AJC on the org chart and shares country code J. Has a warehouse but no Uni-load."],
+    ["akc", ["AKC"], "AKC", "Acer Korea", "Acer 韓國子公司", "g", "ns", "韓國的國家子公司，組織圖上以箭頭連向 AJC，料號國碼同為 J；上課筆記：韓國請日本管。有倉庫，沒有 Uni-load。", "The Korea subsidiary. It points to AJC on the org chart and shares country code J; per the class notes, Japan manages Korea. Has a warehouse but no Uni-load."],
     ["afe", ["AFE"], "AFE", null, "", "n", "ns", "PAP 組織圖上的國家子公司之一。教材沒有標示國家，也不在倉庫表與料號國碼表中。", "One of the subsidiaries on the PAP org chart. The material gives no country for it, and it is not in the warehouse table or the country-code list."],
     ["aphi", ["APHI"], "APHI", "Acer Philippines", "Acer 菲律賓子公司", "g", "ns", "菲律賓的國家子公司，料號國碼 P。有倉庫，沒有 Uni-load。", "The Philippines subsidiary. Country code P. Has a warehouse but no Uni-load."],
     ["acs", ["ACS"], "ACS", "Acer Computer Singapore", "Acer 新加坡子公司", "g", "ns", "新加坡的國家子公司，下轄 Sri Lanka、Mongolia、Nepal。料號國碼 S（第 6 碼的 S 則是 AAP）。有倉庫與 Uni-load。", "The Singapore subsidiary; Sri Lanka, Mongolia and Nepal sit under it. Country code S (S as the 6th character means AAP instead). Has a warehouse and Uni-load."],
-    ["hsnm", ["HSNM"], "HSNM", null, "", "n", "ns", "PAP 組織圖上位於 ASSB 之下，原圖以紅框標示。教材沒有說明 HSNM 的意思。", "Sits under ASSB on the PAP org chart and is boxed in red on the original. The material does not explain it."],
 
-    ["asp", ["ASP"], "ASP", "Authorized Service Provider", "授權服務商", "m", "site", "經 Acer 授權、代為提供維修服務的外部服務商。Q2 2025 PAP 全區有 507 家，最多的是印度 126、泰國 109、印尼 91。ASP 使用 PLM 與 CSS。", "An outside company authorised to repair Acer products. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS."],
+    ["hsn", ["HSN", "海伯特"], "HSN", "Highpoint Service Network", "海伯特集團", "k", "hsn", "海伯特集團，源自馬來西亞的電腦維修集團（例如維修主機板）。因為保固外（OOW）維修很賺，所以在各國開公司，也能幫其他品牌維修。2026/12/1 起由 HSN Group 賺 3.5%～10% 的 markup。RO、NS、HSN 是要背起來的三個簡碼。", "海伯特集團, a computer repair group from Malaysia (e.g. mainboard repair). Out-of-warranty (OOW) repair is profitable, so it opened companies in each country and can repair other brands too. From 2026/12/1 HSN Group earns the 3.5–10% markup. RO, NS and HSN are the three abbreviations to memorise."],
+    ["hsnm", ["HSNM"], "HSNM", "HSN Malaysia", "HSN 馬來西亞（推論）", "k", "hsn", "HSN 集團的公司之一。教材組織圖把 HSNM 放在 ASSB（馬來西亞）之下並以紅框標示；其他 HSN 公司的字尾 I、V、P、T 都是國名，所以 M 應是 Malaysia。但上課筆記寫的是 HSNM (TW)，請再確認。", "One of the HSN companies. The deck places HSNM under ASSB (Malaysia), boxed in red, and the other HSN suffixes I, V, P, T are country initials, so M most likely means Malaysia. The class notes, however, write HSNM (TW); please confirm."],
+    ["hsni", ["HSNI"], "HSNI", "HSN Indonesia", "HSN 印尼", "k", "hsn", "HSN 集團在印尼的公司（上課筆記）。", "HSN Group's company in Indonesia (class notes)."],
+    ["hsnv", ["HSNV"], "HSNV", "HSN Vietnam", "HSN 越南", "k", "hsn", "HSN 集團在越南的公司（上課筆記）。", "HSN Group's company in Vietnam (class notes)."],
+    ["hsnp", ["HSNP"], "HSNP", "HSN Philippines", "HSN 菲律賓", "k", "hsn", "HSN 集團在菲律賓的公司（上課筆記）。", "HSN Group's company in the Philippines (class notes)."],
+    ["hsnt", ["HSNT"], "HSNT", "HSN Thailand", "HSN 泰國", "k", "hsn", "HSN 集團在泰國的公司，筆記上標了 ✓（上課筆記）。", "HSN Group's company in Thailand, ticked ✓ in the class notes."],
+    ["oow", ["OOW"], "OOW", "Out of Warranty", "保固外", "s", "hsn", "超過保固期的維修，要向消費者收費。上課筆記：保固外的客服維修每年都很賺，這是成立 HSN 集團的原因；例如主機板維修收約 8,000，淨賺約 3,000。", "Repairs after the warranty ends, paid by the customer. Per the class notes, OOW customer-service repairs earn a lot every year, which is why HSN Group was set up; e.g. a mainboard repair charges about 8,000 and nets about 3,000."],
+    ["cs", ["CS"], "CS", "Customer Service", "客服／售後服務", "s", "hsn", "客戶服務、售後維修。上課筆記寫「CS OOW」：保固外的售後維修。", "Customer service and after-sales repair. The class notes write \"CS OOW\": out-of-warranty after-sales repair."],
+
+    ["asp", ["ASP"], "ASP", "Authorized Service Provider", "授權服務商", "m", "site", "經 Acer 授權的外部服務商。上課筆記：ASP 沒有能力幫忙維修，但可以幫忙收機。Q2 2025 PAP 全區有 507 家，最多的是印度 126、泰國 109、印尼 91。ASP 使用 PLM 與 CSS。", "An outside company authorised by Acer. Per the class notes, an ASP cannot do repairs itself but can take in units from customers. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS."],
+    ["callc", ["Call Centre"], "Call Centre", null, "客服中心", "k", "site", "客戶打電話給客服的地方。Q2 2025 PAP 全區有 8 個：印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 個。", "Where customers phone for support. PAP had 8 in Q2 2025, one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines.", "Customer phone support"],
+    ["lph", ["Local Parts Hub"], "Local Parts Hub", null, "當地備品中心（各國總倉）", "k", "site", "上課筆記：每個國家的總倉（倉庫、庫房），存放零件；每個據點也都有自己的庫房。Q2 2025 PAP 全區有 18 個，台灣 7 個最多。", "Per the class notes, each country's main warehouse for parts; every site also has its own storeroom. PAP had 18 in Q2 2025, the most in Taiwan (7).", "Each country's main parts warehouse"],
+    ["rsph", ["Regional Spare Parts Hub", "Regional Spared Part Hub"], "Regional Spare Parts Hub", null, "區域備品中心", "k", "site", "服務整個區域的備品中心，PAP 全區 1 個，地圖上沒有標出位置。上課筆記在這裡提到「台北總倉」，可能就是它，請再確認。", "One spare-parts hub serving the whole region; the map does not show where. The class notes mention the Taipei main warehouse here, which may be it; please confirm.", "Region-wide spare parts hub"],
     ["wh", ["W/H"], "W/H", "Warehouse", "倉庫", "s", "site", "倉庫。PAP 的 11 個國家都有倉庫；Central W/H management（中央倉庫管理）是 PAP 的主要職能之一。", "Warehouse. All 11 PAP countries have one, and central warehouse management is one of PAP's main functions."],
-    ["uniload", ["Uni-load", "Uni-Load"], "Uni-load", null, "當地產線／組裝廠", "m", "site", "教材手寫註記：「Uni-Load 在當地有產線、組裝廠」。有 Uni-load 的是澳洲、印度、馬來西亞、泰國、印尼、新加坡。", "Handwritten note in the material: the country has a local production line or assembly plant. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load.", "Local production line / assembly plant"],
+    ["uniload", ["Uni-load", "Uni-Load"], "Uni-load", null, "當地產線／組裝廠", "m", "site", "教材手寫註記：「Uni-Load 在當地有產線、組裝廠」。上課筆記：大多是為了滿足當地客戶（例如標案）的規格與成本，例如澳洲向 ODM 買半成品，在當地買 SSD、HDD 組裝。有 Uni-load 的是澳洲、印度、馬來西亞、泰國、印尼、新加坡；印尼的組裝廠公司簡碼是 AMI。", "Handwritten note in the material: the country has a local production line or assembly plant. Per the class notes, it mostly exists to meet local customers' specs and costs (e.g. tenders): Australia buys semi-finished parts from the ODM and adds locally bought SSDs and HDDs. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load; Indonesia's assembly company is AMI.", "Local production line / assembly plant"],
+    ["tender", ["標案"], "標案 · Tender", null, "政府或機構的採購招標", "k", "site", "客戶（例如政府、警局）開出標書（規格書），各品牌依規格競標。得標後請 ODM 生產；成本太高時，澳洲會買半成品並在當地組裝（Uni-load），壓到標書的成本價。例如 ACA 有兩萬台筆電的標案規格。", "The customer (e.g. a government agency or the police) issues a tender with a spec sheet and brands bid against it. The winner has an ODM build the product; if the cost is too high, Australia buys semi-finished parts and assembles locally (Uni-load) to hit the tender price. ACA, for example, had a tender spec for 20,000 notebooks.", "Public procurement tender"],
 
     ["plm", ["PLM"], "PLM", "Product Lifecycle Management", "產品生命週期管理系統", "s", "sys", "管理料件與 BOM 的系統。教材中用來：為新料件申請料號（Apply P/N on PLM）、把 Service BOM 匯入 Service PLM、把新增料件匯入 Service PLM。RO、NS、ASP 都會用。", "The system that manages parts and BOMs. In the material it is used to apply for P/Ns for new items, import the Service BOM into Service PLM, and add new parts to Service PLM. ROs, NS and ASPs all use it."],
     ["pls", ["PLS"], "PLS", null, "", "n", "sys", "教材中用來向 ODM 確認採購單（Confirm PO to ODM）。只有 RO 使用。", "Used to confirm POs to the ODM. Only ROs use it."],
@@ -1179,7 +1364,10 @@
     ["aml", ["AML"], "AML", null, "", "n", "part", "NB NPI 階段的需求報表之一，和 BML、PPB1/2 並列。教材沒有寫出全名。", "One of the notebook NPI demand reports, listed with BML and PPB1/2. The material does not spell it out."],
     ["ppb", ["PPB1/2", "PPB"], "PPB1/2", null, "", "n", "part", "NB NPI 階段的需求報表，和 BML、AML 並列；「1/2」應是兩個版本或階段。教材沒有寫出全名。", "A notebook NPI demand report listed with BML and AML; \"1/2\" likely means two versions or stages. The material does not spell it out."],
 
-    ["odm", ["ODM"], "ODM", "Original Design Manufacturer", "委託設計製造商", "s", "flow", "替 Acer 設計與生產產品的代工廠。SPL 流程中負責 B 樣品、SPL 草稿與報價；MP Service BOM 也由 ODM 每月更新。PAP 透過 PLS 向 ODM 確認採購單。", "The contract manufacturer that designs and builds products for Acer. In the SPL flow it provides the B sample, the SPL draft and the quotation; it also updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS."],
+    ["odm", ["ODM"], "ODM", "Original Design Manufacturer", "委託設計製造商", "s", "flow", "替 Acer 設計與生產產品的代工廠，例如仁寶。SPL 流程中負責 B 樣品、SPL 草稿與報價；MP Service BOM 也由 ODM 每月更新。PAP 透過 PLS 向 ODM 確認採購單，跟 ODM 買進主機或料件再賣給 NS。", "The contract manufacturer that designs and builds products for Acer, such as Compal. In the SPL flow it provides the B sample, the SPL draft and the quotation; it also updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS and buys units or parts from it to sell on to the NS."],
+    ["compal", ["仁寶", "Compal"], "仁寶 · Compal", "Compal Electronics", "仁寶電腦", "s", "flow", "台灣的筆電 ODM 代工廠。上課筆記用仁寶舉例：依規格請 ODM 生產，我們向 ODM 下 PO 採購。", "A Taiwanese notebook ODM. The class notes use Compal as the example ODM that builds to spec and receives our POs."],
+    ["fg", ["FG"], "FG", "Finished Goods", "成品", "k", "flow", "已組裝完成、可以出貨的整機。上課筆記：標案時若成品成本超過標書價格，就改買半成品（螢幕、主機板）在當地組裝。", "Fully assembled units ready to ship. Per the class notes, if the FG cost of a tender is above the tender price, semi-finished parts (screen, mainboard) are bought instead and assembled locally."],
+    ["keycomp", ["Key component"], "Key component", null, "關鍵零件", "k", "flow", "關鍵零件，例如主機板、螢幕、SSD。主機板要用高精密設備製作，所以向 ODM 買。", "Key parts such as the mainboard, screen and SSD. Mainboards need high-precision equipment, so they come from the ODM.", "Key parts"],
     ["qsbu", ["QSBU"], "QSBU", null, "", "n", "flow", "SPL 定義流程的泳道之一（QSBU/GCSD），負責 FRU 審查會議、申請料號、Markup Review、上傳 SPL 系統並發布 SPL。教材沒有寫出全名。", "One lane of the SPL flow (QSBU/GCSD): runs the FRU review, applies for P/Ns, reviews markup, uploads to the SPL system and releases the SPL. The material does not spell it out."],
     ["gcsd", ["GCSD"], "GCSD", null, "", "n", "flow", "和 QSBU 同一個泳道（QSBU/GCSD），工作內容相同。教材沒有寫出全名。", "Shares the QSBU/GCSD lane of the SPL flow and the same tasks. The material does not spell it out."],
     ["pm", ["PM"], "PM", "Product Management", "產品管理", "g", "flow", "和 HQ 同一個泳道（HQ/PM），在 SPL 流程中提供 Matrix table、AVLC、MB/KB P/N 與 Carcass price。", "Shares the HQ/PM lane of the SPL flow and provides the matrix table, AVLC, MB/KB P/Ns and the carcass price."],
@@ -1194,7 +1382,7 @@
     ["agingstock", ["Aging Stock"], "Aging Stock", null, "庫齡過久的庫存", "m", "ops", "庫齡過久的庫存，是每月服務與營運報告的內容之一。", "Inventory held too long; part of the monthly service and operation report.", "Old inventory"],
 
     ["carcass", ["Carcass price"], "Carcass price", null, "Markup Review 的輸入", "m", "term", "Markup Review 的輸入之一，由 HQ/PM 在 C sample ready 階段提供。維修業的 carcass 通常指回收的不良品（core），教材沒有進一步說明。", "One input to the markup review, provided by HQ/PM at the C sample stage. In repair, carcass usually means the returned defective unit (core); the material says no more.", "An input to the markup review"],
-    ["markup", [], "Markup", null, "加價率", "m", "term", "加價（率）。NPI 時審核 B/S 與一般料件的 markup %；SPL 流程的 Markup Review 不通過時會退回 ODM 重新提供草稿。", "Price uplift. NPI reviews the markup % for B/S and general parts; if the SPL markup review fails, the ODM must redo the draft.", "Price uplift"],
+    ["markup", ["Markup", "markup"], "Markup", null, "加價率", "m", "term", "加價（率）。跟 ODM 買進、賣給 NS 時加上的百分比就是營利來源。NPI 時審核 B/S 與一般料件的 markup %；SPL 流程的 Markup Review 不通過時會退回 ODM 重新提供草稿。上課筆記：2026/12/1 起 3.5%～10% 的 markup 交給 HSN Group 賺。", "Price uplift: the percentage added when parts bought from the ODM are sold to the NS, which is where the profit comes from. NPI reviews the markup % for B/S and general parts; if the SPL markup review fails, the ODM must redo the draft. Per the class notes, from 2026/12/1 HSN Group earns the 3.5–10% markup.", "Price uplift"],
     ["emob", [], "e-Mobility", null, "電動載具產品群", "m", "term", "電動載具產品群。料號子類別中 OT_ 開頭的（例如 OT_MOTOR、OT_TIRE、OT_BRAKE SYSTEM）屬於 e-Mobility。", "The electric mobility product group. Sub-categories starting with OT_ (e.g. OT_MOTOR, OT_TIRE, OT_BRAKE SYSTEM) belong to it.", "Electric mobility"],
     ["sbom", [], "Service BOM", null, "服務用 BOM", "m", "term", "維修用的 BOM，分 NPI 與 MP 兩種，各有一套 SOP。", "The BOM used for service, in NPI and MP versions, each with its own SOP.", "The BOM used for service"],
     ["sop", ["SOP"], "SOP", "Standard Operating Procedure", "標準作業程序", "s", "term", "標準作業程序。教材有 Service BOM SOP，分 NPI（1.1–1.6）與 MP（2.1–2.7）兩套步驟。", "Standard operating procedure. The material has a Service BOM SOP with NPI (1.1–1.6) and MP (2.1–2.7) steps."]
@@ -1335,7 +1523,7 @@
     ["la", "寮國", "Laos", "—", "出現在據點地圖上，組織圖沒有標示所屬（可能屬於 ATH 的 Indo-china）。", "On the site map; the org chart does not say who it reports to (possibly ATH's Indo-china)."],
     ["kh", "柬埔寨", "Cambodia", "—", "出現在據點地圖上，組織圖沒有標示所屬（可能屬於 ATH 的 Indo-china）。", "On the site map; the org chart does not say who it reports to (possibly ATH's Indo-china)."],
     ["", "HSNM", "HSNM", "ASSB", "組織圖上掛在 ASSB（馬來西亞）之下，原圖以紅框標示，教材沒有說明。", "Sits under ASSB (Malaysia), boxed in red on the original; the material does not explain it."],
-    ["", "AMI", "AMI", "AIN?", "倉庫表寫作「Indonesia (AIN) (AMI)」，教材沒有說明。", "Written \"Indonesia (AIN) (AMI)\" in the warehouse table; the material does not explain it."]
+    ["", "AMI", "AMI", "AIN", "印尼 Uni-load 組裝廠公司的簡碼（上課筆記），倉庫表寫作「Indonesia (AIN) (AMI)」。", "The Indonesian Uni-load assembly company (class notes); shown as \"Indonesia (AIN) (AMI)\" in the warehouse table."]
   ];
   $("code-other").innerHTML = OTHER.map(function (o) {
     return "<tr><td>" + flag(o[0]) + B(o[1], o[2]) + "</td><td>" + esc(o[3]) + "</td><td>" + (o[0] ? sitesLine(o[0]) : '<span class="no">—</span>') + '</td><td class="wrap">' + B(o[4], o[5]) + "</td></tr>";
@@ -1344,13 +1532,34 @@
   var STYPES = [
     ["Service Centre (Own by Acer)", "自有服務中心", 38, "Acer 自己經營的維修中心。馬來西亞 14、泰國 12、台灣 6 最多。", "Repair centres run by Acer itself. Malaysia (14), Thailand (12) and Taiwan (6) have the most."],
     ["Service Centre (Outsource)", "外包服務中心", 216, "委託外部經營的服務中心，其中印度就有 172 個。", "Service centres run by an outside company; India alone has 172."],
-    ["Authorized Service Provider (ASP)", "授權服務商", 507, "經授權代為維修的外部服務商，數量最多的據點類型。", "Outside companies authorised to repair; the most common site type."],
-    ["Call Centre", "客服中心", 8, "接聽客戶電話的客服中心，印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 個。", "Customer phone support; one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines."],
-    ["Local Parts Hub", "當地備品中心", 18, "各國當地的備品倉，台灣 7 個最多。", "In-country spare-parts stock points; Taiwan has the most (7)."],
-    ["Regional Spared Part Hub", "區域備品中心", 1, "服務整個區域的備品中心，地圖上沒有標出位置。", "One spare-parts hub serving the whole region; the map does not show where it is."],
+    ["Authorized Service Provider (ASP)", "授權服務商", 507, "經 Acer 授權的外部服務商，數量最多的據點類型。上課筆記：ASP 沒有能力維修，但可以幫忙收機。", "Outside companies authorised by Acer; the most common site type. Per the class notes, ASPs cannot repair but can take in units."],
+    ["Call Centre", "客服中心", 8, "客戶打電話給客服的地方。印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 個。", "Where customers phone for support; one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines."],
+    ["Local Parts Hub", "當地備品中心", 18, "每個國家的總倉（倉庫、庫房），存放零件；每個據點也有自己的庫房。台灣 7 個最多。", "Each country's main parts warehouse; every site also has its own storeroom. Taiwan has the most (7)."],
+    ["Regional Spared Part Hub", "區域備品中心", 1, "服務整個區域的備品中心，地圖上沒有標出位置。上課筆記提到「台北總倉」，可能就是它，請再確認。", "One spare-parts hub serving the whole region; the map does not show where. The class notes mention the Taipei main warehouse, which may be it; please confirm."],
     ["Warehouse (W/H)", "倉庫", "11", "PAP Service Org. 表中 11 個國家都有倉庫。", "All 11 countries in the PAP Service Org. table have one."],
     ["Uni-load", "當地產線／組裝廠", "6", "當地有產線或組裝廠：澳洲、印度、馬來西亞、泰國、印尼、新加坡。", "Local production or assembly: Australia, India, Malaysia, Thailand, Indonesia, Singapore."]
   ];
+  // HSN 集團各國公司（上課筆記）：[代碼, 旗幟, 中文, English, 筆記記號, 已成立]
+  var HSNC = [
+    ["HSNM", "my", "馬來西亞？（筆記寫 TW）", "Malaysia? (notes say TW)", "", 1],
+    ["HSNI", "id", "印尼", "Indonesia", "", 1],
+    ["HSNV", "vn", "越南", "Vietnam", "", 1],
+    ["HSNP", "ph", "菲律賓", "Philippines", "", 1],
+    ["HSNT", "th", "泰國", "Thailand", "✓", 1],
+    ["HSN + India", "in", "印度", "India", "→", 0],
+    ["HSN + Australia", "au", "澳洲", "Australia", "△", 0],
+    ["HSN + Japan", "jp", "日本", "Japan", "?", 0]
+  ];
+  $("hsn-grid").innerHTML = HSNC.map(function (h) {
+    return '<div class="hsn' + (h[5] ? "" : " plan") + '"><span class="hsn-code"><span>' + flag(h[1]) + esc(h[0]) + "</span>" + (h[4] ? "<em>" + h[4] + "</em>" : "") + "</span>" +
+      "<span>" + B(h[2], h[3]) + "</span><small>" + (h[5] ? B("筆記列出的公司", "Listed in the notes") : B("筆記列為下一步", "Listed as a next step")) + "</small></div>";
+  }).join("");
+  $("code-hsn").innerHTML = HSNC.map(function (h) {
+    var a = AB_BY[h[0].toLowerCase()];
+    return "<tr><td><b>" + esc(h[0]) + "</b></td><td>" + flag(h[1]) + B(h[2], h[3]) + "</td><td>" + (h[5] ? B("已列出", "Listed") : B("下一步", "Next step")) + (h[4] ? " " + h[4] : "") +
+      '</td><td class="wrap">' + (a ? B(esc(a[7]), esc(a[8])) : B("HSN 集團擴展到這個國家的計畫（筆記）。", "Plan to extend HSN Group to this country (notes).")) + "</td></tr>";
+  }).join("");
+
   $("code-sitetype").innerHTML = STYPES.map(function (s) {
     return "<tr><td><b>" + esc(s[0]) + '</b> <span class="caption zh">' + s[1] + '</span></td><td class="num"><b>' + s[2] + '</b></td><td class="wrap">' + B(s[3], s[4]) + "</td></tr>";
   }).join("");
@@ -1449,7 +1658,14 @@
     ["NS 使用哪些系統？", "Which systems do NS use?", "PLM、GLS、CSS。PLS 只有 RO 使用。", "PLM, GLS and CSS. Only ROs use PLS."],
     ["NPI Service BOM 和 MP Service BOM 有什麼不同？", "How do the NPI and MP Service BOMs differ?", "NPI：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後在 Service BOM 建立 Acer P/N。MP：由 ODM 每月定期更新。", "NPI: after the FRU meeting the ODM drafts the FRU list, which is reviewed before Acer P/Ns are created. MP: the ODM updates it monthly."],
     ["Create PO 和 Confirm PO to ODM 分別在哪個系統做？", "Which systems handle Create PO and Confirm PO to ODM?", "Create PO 在 CSS；Confirm PO to ODM 在 PLS。", "Create PO in CSS; Confirm PO to ODM in PLS."],
-    ["料號開頭 86 是什麼子類別？", "Which sub-category starts with 86?", "SCREW（螺絲），Product group Y9。", "SCREW, product group Y9."]
+    ["料號開頭 86 是什麼子類別？", "Which sub-category starts with 86?", "SCREW（螺絲），Product group Y9。", "SCREW, product group Y9."],
+    ["HSN 是什麼？", "What is HSN?", "HSN Group，海伯特集團（Highpoint Service Network），源自馬來西亞的電腦維修集團。", "HSN Group, 海伯特集團 (Highpoint Service Network), a computer repair group from Malaysia."],
+    ["2026/12/1 起 markup 由誰賺？比例多少？", "From 2026/12/1, who earns the markup, and how much is it?", "HSN Group，3.5%～10%。", "HSN Group; 3.5–10%."],
+    ["ASP 會幫忙維修嗎？", "Do ASPs do repairs?", "上課筆記：ASP 沒有能力維修，但可以幫忙收機。", "Per the class notes, no: they cannot repair but can take in units."],
+    ["為什麼要有 Uni-load？", "Why have Uni-load?", "大多是為了滿足當地客戶（例如標案）的規格與成本：例如澳洲向 ODM 買半成品，在當地買 SSD、HDD 組裝，壓到標書價格。", "Mostly to meet local customers' specs and costs, e.g. for tenders: Australia buys semi-finished parts from the ODM and adds locally bought SSDs and HDDs to hit the tender price."],
+    ["哪三個簡碼一定要背起來？", "Which three abbreviations must you memorise?", "RO、NS、HSN。", "RO, NS and HSN."],
+    ["韓國（AKC）由誰管？", "Who manages Korea (AKC)?", "日本（AJC）。", "Japan (AJC)."],
+    ["團隊的 weekly meeting 是什麼時候？", "When is the team's weekly meeting?", "每週二 11:00–12:00。", "Every Tuesday, 11:00–12:00."]
   ];
   $("quiz-count").textContent = QZ.length + " Q";
   $("quiz-list").innerHTML = QZ.map(function (q, i) {
