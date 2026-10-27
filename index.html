@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-lang="zh" data-theme="green" data-font="hand">
+<html lang="zh-Hant" data-lang="zh" data-theme="earth" data-font="hand">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -14,7 +14,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
 <style>
   /* 介面沿用 RMA 平台的版型（深色標題列、分頁列、與分頁相連的卡片），配色為綠、藍、土三色。
-     主題：綠（預設）／藍／土；地圖一律以藍色海洋、土色陸地、綠色重點呈現。 */
+     主題：土（預設）／綠／藍；地圖一律以藍色海洋、土色陸地、綠色重點呈現。 */
   :root, html[data-theme="green"] {
     --navy:#22463B; --gold:#EBDDBE; --tabbar:#B9A27C; --tab:#E2D5BC; --bg:#F2EEE6; --card:#FBF9F5; --panel:#FFFFFF;
     --line:#E0D8CA; --ink:#25302B; --mute:#6B6A5F; --primary:#3D7A5F; --accent:#2D6F92; --hover:#E8F0E6; --stripe:#F7F4EE;
@@ -177,6 +177,116 @@
   .map .rlabel { font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif; font-weight:700; font-size:15px; fill:#fff; paint-order:stroke; stroke:rgba(30,45,40,.55); stroke-width:3px; letter-spacing:.04em; }
   .legend-chips { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.86rem; color:var(--mute); }
   .legend-chips i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+  .legend-chips i.hqdot { width:14px; height:14px; border-radius:50%; background:var(--navy); vertical-align:-2px; }
+
+  /* 線條圖示 */
+  .ico { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; display:block; }
+  .tabs button.home .num { display:inline-flex; color:var(--primary); }
+  .tabs button.home .ico { width:16px; height:16px; stroke-width:2; }
+
+  /* 網站介紹 */
+  .intro-hero { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:40px; align-items:center; border-radius:18px; padding:40px 44px; color:var(--gold);
+    background:radial-gradient(130% 120% at 100% 0%, var(--primary) 0%, transparent 60%), linear-gradient(145deg, var(--navy) 0%, var(--sel) 100%); box-shadow:0 14px 30px rgba(40,40,30,.16); }
+  .intro-hero .eyebrow { color:var(--hdr-sub); }
+  .intro-title { font-family:var(--font-head); font-size:2.6rem; line-height:1.2; margin:0 0 16px; color:#fff; }
+  .intro-lead { margin:0; font-size:1.05rem; line-height:1.85; max-width:31em; }
+  .intro-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .intro-cta .btn { font-size:1rem; padding:9px 20px; border-radius:10px; }
+  .btn.primary { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+  .btn.primary:hover { background:#fff; }
+  .btn.ghost { background:transparent; color:var(--gold); border-color:var(--selline); }
+  .btn.ghost:hover { background:rgba(255,255,255,.1); }
+  .map.intro-map { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2); border-radius:16px; padding:10px; }
+  .intro-map figcaption { font-size:.84rem; color:var(--hdr-sub); margin-top:8px; text-align:center; letter-spacing:.04em; }
+  .intro-map .olabel { cursor:default; }
+  .map svg path.arc { fill:none; stroke:var(--navy); stroke-linecap:round; opacity:.75; animation:pap-dash 6s linear infinite; }
+  @keyframes pap-dash { to { stroke-dashoffset:-40; } }
+  .map .idot { fill:var(--r-pap); stroke:#fff; }
+  .map .idot.hq { fill:var(--navy); stroke:var(--gold); }
+  .intro-sec { margin-top:52px; }
+  .intro-sec > h3 { font-family:var(--font-head); font-size:1.5rem; margin:0 0 18px; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
+  .intro-sec > h3 small { font-family:inherit; color:var(--mute); font-weight:400; font-size:.86rem; }
+  .pi { width:46px; height:46px; border-radius:13px; display:grid; place-items:center; background:var(--hover); color:var(--primary); border:1.5px solid var(--line); }
+  .pillars { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:20px; }
+  .pillar { background:var(--panel); border:1.5px solid var(--line); border-top:4px solid var(--primary); border-radius:14px; padding:22px 24px 20px; display:grid; gap:10px; align-content:start; }
+  .pillar h4 { margin:4px 0 0; font-size:1.1rem; }
+  .pillar p { margin:0; color:var(--mute); font-size:.93rem; line-height:1.75; }
+  .pillar .more { justify-self:start; margin-top:4px; background:none; border:0; padding:0; color:var(--accent); font-family:inherit; font-size:.9rem; font-weight:700; cursor:pointer; }
+  .pillar .more:hover { text-decoration:underline; }
+  .chapters { display:grid; grid-template-columns:repeat(auto-fill, minmax(310px, 1fr)); gap:20px; }
+  .chap { background:var(--panel); border:1.5px solid var(--line); border-radius:14px; padding:20px 22px 18px; display:grid; gap:12px; align-content:start; transition:border-color .15s, box-shadow .15s; }
+  .chap:hover { border-color:var(--selline); box-shadow:0 10px 22px rgba(40,40,30,.08); }
+  .chap-head { display:grid; grid-template-columns:auto minmax(0, 1fr) auto; gap:14px; align-items:center; background:none; border:0; padding:0; font-family:inherit; color:var(--ink); text-align:left; cursor:pointer; }
+  .chap-ico { width:48px; height:48px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--gold); }
+  .chap-t small { display:block; font-family:var(--font-mono); color:var(--mute); font-size:.76rem; letter-spacing:.1em; }
+  .chap-t b { font-family:var(--font-head); font-size:1.22rem; line-height:1.3; }
+  .chap-go { color:var(--primary); font-weight:700; font-size:1.1rem; }
+  .chap-head:hover .chap-go { transform:translateX(3px); }
+  .chap p { margin:0; color:var(--mute); font-size:.92rem; line-height:1.7; }
+  .chap-subs { display:flex; flex-wrap:wrap; gap:7px; padding-top:12px; border-top:1px dashed var(--line); }
+  .chap-subs button { font-family:inherit; font-size:.84rem; background:var(--stripe); border:1px solid var(--line); border-radius:999px; padding:3px 12px; color:var(--ink); cursor:pointer; }
+  .chap-subs button:hover { background:var(--hover); border-color:var(--selline); }
+  .chap-subs .n { font-family:var(--font-mono); color:var(--mute); font-size:.74rem; margin-right:6px; }
+  .howto { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:22px 28px; }
+  .howto > div { display:grid; grid-template-columns:auto minmax(0, 1fr); gap:4px 14px; align-items:start; }
+  .howto .pi { grid-row:span 2; width:42px; height:42px; }
+  .howto b { font-size:1rem; padding-top:2px; }
+  .howto p { margin:0; color:var(--mute); font-size:.9rem; line-height:1.65; }
+  .howto code { font-family:var(--font-mono); font-size:.85em; white-space:nowrap; }
+
+  /* 全球據點 */
+  .office-group { margin-top:32px; }
+  .office-group:first-child { margin-top:0; }
+  .office-group > h3 { font-size:1.08rem; margin:0 0 14px; display:flex; gap:10px; align-items:center; }
+  .office-group > h3 i { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .office-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px, 1fr)); gap:16px; align-items:start; }
+  .office { background:var(--panel); border:1.5px solid var(--line); border-top:4px solid var(--oc, var(--line)); border-radius:12px; padding:14px 18px 16px; display:grid; gap:8px; scroll-margin-top:80px; }
+  .office.on { outline:3px solid var(--accent); outline-offset:2px; }
+  .office-head { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
+  .office-head b { font-size:1.04rem; }
+  .office-tags { display:flex; gap:6px; flex-wrap:wrap; }
+  .rtag { font-size:.72rem; font-weight:700; border-radius:999px; padding:1px 10px; background:var(--navy); color:var(--gold); white-space:nowrap; }
+  .nstag { font-size:.74rem; font-weight:700; border-radius:999px; padding:0 9px; border:1.5px solid var(--r-pap); color:var(--ok); white-space:nowrap; font-family:var(--font-mono); }
+  .office-name { font-weight:700; line-height:1.45; }
+  .office-addr { color:var(--mute); font-size:.9rem; line-height:1.6; }
+  .office-contact { display:grid; grid-template-columns:auto minmax(0, 1fr); gap:0 12px; font-size:.88rem; font-variant-numeric:tabular-nums; }
+  .office-contact > span:nth-child(odd) { color:var(--mute); }
+  .office-web { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:.88rem; }
+  .office-web a { color:var(--accent); text-decoration:none; }
+  .office-web a:hover { text-decoration:underline; }
+  #map-offices { margin:0 auto; }
+  .map .odot { cursor:pointer; stroke:#fff; }
+  .map .odot.hq { stroke:var(--navy); }
+  .map .odot:hover, .map .odot.on { stroke:var(--accent); }
+  .map .olabel { font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif; font-weight:700; fill:var(--ink); paint-order:stroke; stroke:#fff; stroke-linejoin:round; cursor:pointer; }
+  .map .olabel.hq { fill:var(--navy); }
+  .map .olabel.on { fill:var(--accent); }
+  .map .olead { stroke:var(--navy); opacity:.5; }
+
+  /* 其他國家與單位 */
+  .cover-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:18px; align-items:start; }
+  .cover { background:var(--panel); border:1.5px solid var(--line); border-radius:14px; overflow:hidden; }
+  .cover-head { display:flex; gap:14px; align-items:center; padding:14px 18px; background:var(--stripe); border-bottom:1.5px solid var(--line); }
+  .cover-head b { display:block; font-size:1.02rem; }
+  .cover-head small { display:block; color:var(--mute); font-size:.82rem; }
+  .cover-code { font-family:var(--font-mono); font-weight:700; font-size:1rem; background:var(--navy); color:var(--gold); border-radius:8px; padding:4px 11px; white-space:nowrap; }
+  .cover-note { margin:0; padding:12px 18px 0; color:var(--mute); font-size:.88rem; line-height:1.6; }
+  .cover-list { list-style:none; margin:0; padding:4px 18px 10px; }
+  .cover-list li { display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:8px 12px; align-items:center; padding:12px 0; border-bottom:1px dashed var(--line); }
+  .cover-list li:last-child { border-bottom:0; }
+  .cover-name { font-weight:700; }
+  .cover-total { color:var(--mute); font-size:.84rem; white-space:nowrap; }
+  .cover-total b { color:var(--ink); font-size:1.3rem; font-variant-numeric:tabular-nums; }
+  .site-chips { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:6px; }
+  .site-chip { font-size:.8rem; border-radius:999px; padding:1px 10px; background:var(--hover); border:1px solid var(--line); white-space:nowrap; }
+  .site-chip b { margin-left:2px; }
+
+  @media (max-width:860px) {
+    .intro-hero { grid-template-columns:minmax(0, 1fr); padding:28px 24px; gap:26px; }
+    .intro-title { font-size:2rem; }
+    .pillars { grid-template-columns:minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) { .map svg path.arc { animation:none; } }
 
   /* 總覽 */
   .hero { display:grid; grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr); gap:36px; align-items:center; background:linear-gradient(135deg, var(--stripe), var(--panel) 55%, var(--hover)); border:1.5px solid var(--line); border-radius:16px; padding:30px 32px; }
@@ -188,16 +298,6 @@
   .hero-stats b { display:block; font-size:1.7rem; line-height:1.2; font-variant-numeric:tabular-nums; }
   .hero-stats span { color:var(--mute); font-size:.86rem; }
   .hero .map { background:transparent; border:0; padding:0; }
-  .sitemap { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:18px; }
-  .smc { background:var(--panel); border:1.5px solid var(--line); border-radius:12px; padding:16px 18px 14px; }
-  .smc-head { display:flex; gap:10px; align-items:baseline; border:0; background:none; padding:0; font-family:inherit; color:var(--ink); cursor:pointer; text-align:left; }
-  .smc-head .n { font-family:var(--font-mono); color:var(--primary); font-weight:700; }
-  .smc-head b { font-family:var(--font-head); font-size:1.12rem; }
-  .smc p { margin:4px 0 10px; color:var(--mute); font-size:.86rem; }
-  .smc ul { list-style:none; margin:0; padding:10px 0 0; border-top:1px dashed var(--line); display:grid; gap:2px; }
-  .smc li button { display:grid; grid-template-columns:2.6em minmax(0, 1fr); width:100%; text-align:left; background:none; border:0; border-radius:6px; padding:4px 6px; font-family:inherit; font-size:.9rem; color:var(--ink); cursor:pointer; }
-  .smc li button .n { font-family:var(--font-mono); font-size:.78rem; color:var(--mute); }
-  .smc li button:hover { background:var(--hover); }
 
   /* 組織圖 */
   .orgchart { display:grid; justify-items:center; padding:8px 0 4px; }
@@ -436,7 +536,7 @@
         <button type="button" data-setlang="en" lang="en">English</button>
       </div>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
-      <select id="theme-sel" title="Theme / 主題"><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option><option value="earth" data-zh="土色" data-en="Earth">土色</option></select>
+      <select id="theme-sel" title="Theme / 主題"><option value="earth" data-zh="土色" data-en="Earth">土色</option><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option></select>
       <button class="hbtn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
     </div>
   </header>
@@ -444,6 +544,70 @@
   <nav class="tabs" id="tabs" role="tablist"></nav>
 
   <main class="card" id="main">
+
+  <!-- 網站介紹 -->
+  <section class="page single" id="page-intro">
+    <div class="intro-hero">
+      <div class="intro-copy">
+        <p class="eyebrow">About this site</p>
+        <h2 class="intro-title"><span class="zh">認識 PAP 服務物流</span><span class="en">Getting to know PAP Service Logistics</span></h2>
+        <p class="intro-lead zh">本網站介紹 Acer 泛亞太區（PAP）服務物流：組織架構、服務據點、HSN 集團、日常作業、料號規則與常用代碼，協助同仁快速掌握服務物流的全貌。</p>
+        <p class="intro-lead en">This site introduces Acer's Pan Asia Pacific (PAP) service logistics: its organisation, service sites, HSN Group, daily operations, part-number rules and common codes, so colleagues can quickly see the whole picture.</p>
+        <div class="intro-cta">
+          <button class="btn primary" type="button" data-go="overview"><span class="zh">開始閱讀 →</span><span class="en">Start reading →</span></button>
+          <button class="btn ghost" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
+        </div>
+      </div>
+      <figure class="map intro-map">
+        <svg id="map-intro" viewBox="688 100 304 278" role="img" aria-label="PAP and its nation subsidiaries"></svg>
+        <figcaption><span class="zh">PAP 與各國子公司（NS）</span><span class="en">PAP and its nation subsidiaries (NS)</span></figcaption>
+      </figure>
+    </div>
+
+    <section class="intro-sec">
+      <h3><span class="zh">PAP 服務物流在做什麼</span><span class="en">What PAP service logistics does</span></h3>
+      <div class="pillars">
+        <article class="pillar">
+          <span class="pi" data-ico="ro"></span>
+          <h4><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></h4>
+          <p class="zh">介於總部（HQ）與各國子公司（NS）之間，統籌泛亞太區的服務物流。</p>
+          <p class="en">Sits between headquarters (HQ) and the nation subsidiaries (NS), coordinating service logistics across Pan Asia Pacific.</p>
+          <button class="more" type="button" data-go="org-pap"><span class="zh">PAP 組織 →</span><span class="en">PAP organisation →</span></button>
+        </article>
+        <article class="pillar">
+          <span class="pi" data-ico="plan"></span>
+          <h4><span class="zh">備品規劃與採購</span><span class="en">Spare-parts planning and purchasing</span></h4>
+          <p class="zh">彙整各 NS 的需求預測，依規劃向 ODM 下達採購單（PO）。</p>
+          <p class="en">Consolidates NS demand forecasts and places purchase orders (POs) with the ODM.</p>
+          <button class="more" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button>
+        </article>
+        <article class="pillar">
+          <span class="pi" data-ico="box"></span>
+          <h4><span class="zh">庫存與料號管理</span><span class="en">Inventory and part numbers</span></h4>
+          <p class="zh">管理中央倉庫與庫存，並維護 Service BOM 與服務料號。</p>
+          <p class="en">Manages the central warehouse and inventory, and maintains the Service BOM and service part numbers.</p>
+          <button class="more" type="button" data-go="ops-bom"><span class="zh">Service BOM →</span><span class="en">Service BOM →</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="intro-sec">
+      <h3><span class="zh">網站內容</span><span class="en">What's inside</span><small><span class="zh">依序閱讀，或直接點選想看的頁面</span><span class="en">Read in order, or jump straight to a page</span></small></h3>
+      <div class="chapters" id="chapters"></div>
+    </section>
+
+    <section class="intro-sec">
+      <h3><span class="zh">使用方式</span><span class="en">How to use this site</span></h3>
+      <div class="howto">
+        <div><span class="pi" data-ico="lang"></span><b><span class="zh">中文／English</span><span class="en">中文 / English</span></b><p class="zh">右上角切換網站語言。</p><p class="en">Switch the language at the top right.</p></div>
+        <div><span class="pi" data-ico="info"></span><b><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></b><p class="zh">內文中以虛線標示的縮寫可點選，查看全名與說明。</p><p class="en">Select any dotted abbreviation to see its full name and meaning.</p></div>
+        <div><span class="pi" data-ico="palette"></span><b><span class="zh">主題與字型</span><span class="en">Theme and font</span></b><p class="zh">可選土色、綠色、藍色主題，以及手寫、黑體、等寬字型。</p><p class="en">Choose an earth, green or blue theme and a handwritten, sans or mono font.</p></div>
+        <div><span class="pi" data-ico="link"></span><b><span class="zh">分享連結</span><span class="en">Share a page</span></b><p class="zh">每個子頁都有自己的網址，例如 <code>#org-pap</code>，可直接分享。</p><p class="en">Every page has its own address, such as <code>#org-pap</code>, so you can share it directly.</p></div>
+      </div>
+    </section>
+
+    <p class="notice"><span class="zh">本網站內容屬公司內部資料（<b>CONFIDENTIAL</b>），僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information (<b>CONFIDENTIAL</b>) for internal use only. Original documents prevail.</span></p>
+  </section>
 
   <!-- 1 總覽 -->
   <section class="page single" id="page-overview">
@@ -462,8 +626,23 @@
     </div>
 
     <div class="block" style="margin-top:38px">
-      <h3><span class="zh">網站架構</span><span class="en">Site map</span><small><span class="zh">點選主頁或子頁直接前往</span><span class="en">Select a section or page to open it</span></small></h3>
-      <div class="sitemap" id="sitemap"></div>
+      <h3><span class="zh">PAP 的位置</span><span class="en">Where PAP sits</span></h3>
+      <div class="box">
+        <div class="prow">
+          <span class="plabel"><span class="zh">組織</span><span class="en">Organisation</span></span>
+          <span class="pnode"><b>HQ</b><small><span class="zh">總部</span><span class="en">Headquarters</span></small></span><span class="parr">→</span>
+          <span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></small></span><span class="parr">→</span>
+          <span class="pnode"><b>NS</b><small><span class="zh">各國子公司</span><span class="en">Nation subsidiaries</span></small></span>
+        </div>
+        <div class="prow">
+          <span class="plabel"><span class="zh">供應</span><span class="en">Supply</span></span>
+          <span class="pnode"><b>ODM</b><small><span class="zh">例：仁寶</span><span class="en">e.g. Compal</span></small></span><span class="parr">→</span>
+          <span class="pnode hq"><b>PAP</b><small><span class="zh">採購</span><span class="en">Purchasing</span></small></span><span class="parr">→</span>
+          <span class="pnode hot"><b>HSN Group</b><small><span class="zh">2026/12/1 起</span><span class="en">From 1 Dec 2026</span></small></span><span class="parr">→</span>
+          <span class="pnode"><b>NS</b></span>
+        </div>
+      </div>
+      <p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">4.3 流程調整 →</span><span class="en">4.3 Process change →</span></button></p>
     </div>
 
     <p class="notice"><span class="zh">本網站內容屬公司內部資料（<b>CONFIDENTIAL</b>），僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information (<b>CONFIDENTIAL</b>) for internal use only. Original documents prevail.</span></p>
@@ -503,6 +682,30 @@
           </figure>
           <p class="note zh">地圖依區域概略標示；未著色之國家不在本網站說明範圍內。</p>
           <p class="note en">The map shows regions approximately; uncoloured countries are outside the scope of this site.</p>
+        </div>
+      </section>
+
+      <section class="sub" id="sub-org-offices">
+        <h2><span class="zh">全球據點</span><span class="en">Acer around the world</span></h2>
+        <p class="lead zh">Acer 於全球設有總部、區域總部與各國公司。以下依「Acer Around the World」據點名錄整理。</p>
+        <p class="lead en">Acer has headquarters, regional headquarters and country offices worldwide. The list below follows the "Acer Around the World" directory.</p>
+        <div class="kpis" id="office-kpis"></div>
+        <div class="block">
+          <div class="seg" id="office-views" role="group" aria-label="Map view"></div>
+          <figure class="map world">
+            <svg id="map-offices" viewBox="0 15 1000 410" role="img" aria-label="Acer offices worldwide"></svg>
+            <figcaption class="legend-chips" id="office-legend"></figcaption>
+          </figure>
+          <p class="note zh">歐洲與亞太據點較密集，可切換「歐洲」「亞太」檢視完整名稱；點選圓點或名稱，即可在下方查看該據點資料。</p>
+          <p class="note en">Offices in Europe and Asia Pacific are close together; switch to "Europe" or "Asia Pacific" to see every name. Select a dot or name to see that office below.</p>
+        </div>
+        <div class="block">
+          <div class="ab-tools">
+            <input type="search" id="office-search" data-ph-zh="搜尋國家、城市或公司名稱" data-ph-en="Search country, city or company" placeholder="搜尋國家、城市或公司名稱" style="width:min(100%, 320px)">
+            <span class="count" id="office-count"></span>
+          </div>
+          <div class="seg" id="office-regions"></div>
+          <div id="office-list"></div>
         </div>
       </section>
 
@@ -1113,14 +1316,10 @@
 
       <section class="sub" id="sub-ref-other">
         <h2><span class="zh">其他國家與單位</span><span class="en">Other countries and units</span></h2>
-        <p class="lead zh">未設獨立 NS 代碼之國家、地區與單位。</p>
-        <p class="lead en">Countries, regions and units without a separate NS code.</p>
-        <div class="tbl">
-          <table>
-            <thead><tr><th><span class="zh">名稱</span><span class="en">Name</span></th><th><span class="zh">所屬</span><span class="en">Under</span></th><th><span class="zh">Q2 2025 據點</span><span class="en">Q2 2025 sites</span></th><th><span class="zh">說明</span><span class="en">Notes</span></th></tr></thead>
-            <tbody id="code-other"></tbody>
-          </table>
-        </div>
+        <p class="lead zh">下列國家／地區沒有自己的國家子公司（NS）代碼，由鄰近國家的子公司負責。數字為 Q2 2025 服務據點數。</p>
+        <p class="lead en">These countries and regions have no nation subsidiary (NS) code of their own and are handled by a neighbouring subsidiary. Figures are Q2 2025 service-site counts.</p>
+        <div class="cover-grid" id="code-other"></div>
+        <p class="note"><span class="zh">各類據點的定義見</span><span class="en">Site types are defined in</span> <button class="btn sm" type="button" data-go="sites-types"><span class="zh">3.4 據點類型 →</span><span class="en">3.4 Site types →</span></button></p>
       </section>
 
       <section class="sub" id="sub-ref-hsn">
@@ -1186,6 +1385,26 @@
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var B = function (zh, en) { return '<span class="zh">' + zh + '</span><span class="en">' + en + "</span>"; };
   var flag = function (cc) { return cc ? '<img class="flag" src="flags/' + cc + '.svg" alt="" loading="lazy">' : ""; };
+  // 線條圖示（24×24，顏色跟隨文字）
+  var ICON = {
+    intro: '<path d="M3 11l9-7 9 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/>',
+    overview: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',
+    org: '<rect x="9" y="3" width="6" height="5" rx="1.2"/><rect x="2.5" y="16" width="6" height="5" rx="1.2"/><rect x="9" y="16" width="6" height="5" rx="1.2"/><rect x="15.5" y="16" width="6" height="5" rx="1.2"/><path d="M12 8v8M5.5 16v-4h13v4"/>',
+    sites: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+    hsn: '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M10.8 7.2 6.2 15.8M13.2 7.2l4.6 8.6M7.5 18h9"/>',
+    ops: '<rect x="3" y="4" width="7.5" height="6" rx="1.3"/><rect x="13.5" y="14" width="7.5" height="6" rx="1.3"/><path d="M10.5 7H14a3.2 3.2 0 0 1 3.2 3.2V14"/><path d="m15 11.8 2.2 2.2 2.2-2.2"/>',
+    pn: '<path d="M4 5v14M7 5v14M11 5v14M14 5v14M18 5v14M20.5 5v14"/>',
+    ref: '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 7.5h6M9 11h4"/>',
+    review: '<path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.6 1.6L8 4.8M3.5 12l1.6 1.6L8 10.8M3.5 18l1.6 1.6L8 16.8"/>',
+    ro: '<path d="M4 21V8l8-4.5L20 8v13"/><path d="M9.5 21v-5h5v5M8.5 11h2M13.5 11h2"/>',
+    plan: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>',
+    box: '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/>',
+    lang: '<path d="M3 5h9M7.5 3v2M5 5c.9 3 2.9 5.4 6 7M10 5c-.9 3-3 5.6-6 7"/><path d="m12.5 21 4-9 4 9M14 17.8h5"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/>',
+    palette: '<path d="M12 3a9 9 0 1 0 0 18c1.3 0 1.7-1.1 1.1-2.1-.7-1.2 0-2.6 1.4-2.6H17a4 4 0 0 0 4-4C21 7.3 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="10" cy="7" r="1.1"/><circle cx="15" cy="7.4" r="1.1"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>'
+  };
+  var ico = function (id) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICON[id] + "</svg>"; };
   var mark = function (v) { return v ? '<span class="yes" aria-label="yes">✓</span>' : '<span class="no" aria-label="no">—</span>'; };
   var store = {
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
@@ -1196,9 +1415,10 @@
 
   /* ---------- 網站架構：主頁 → 子頁 ---------- */
   var NAV = [
+    { id: "intro", home: true, zh: "網站介紹", en: "About", subs: [] },
     { id: "overview", zh: "總覽", en: "Overview", subs: [] },
-    { id: "org", zh: "組織", en: "Organisation", dzh: "全球區域、PAP 組織、團隊架構與組織要點", den: "Global regions, PAP organisation, team and key points",
-      subs: [["org-global", "全球區域", "Global regions"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-team", "團隊架構", "Team structure"], ["org-points", "組織要點", "Key points"]] },
+    { id: "org", zh: "組織", en: "Organisation", dzh: "全球區域、全球據點、PAP 組織、團隊架構與組織要點", den: "Regions, offices worldwide, PAP organisation, team and key points",
+      subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-team", "團隊架構", "Team structure"], ["org-points", "組織要點", "Key points"]] },
     { id: "sites", zh: "服務據點", en: "Service sites", dzh: "據點分布、倉庫、標案與據點類型", den: "Footprint, warehouses, tenders and site types",
       subs: [["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"], ["sites-types", "據點類型", "Site types"]] },
     { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海伯特集團概要、各國公司與流程調整", den: "Overview, companies and process change",
@@ -1211,16 +1431,16 @@
       subs: [["ref-ns", "子公司代碼", "Subsidiary codes"], ["ref-region", "區域代碼", "Region codes"], ["ref-other", "其他國家與單位", "Other countries and units"], ["ref-hsn", "HSN 代碼", "HSN codes"], ["ref-abbr", "縮寫說明", "Abbreviations"]] },
     { id: "review", zh: "重點複習", en: "Review", dzh: "19 題重點複習", den: "19 review questions", subs: [] }
   ];
-  var ORDER = [];
-  NAV.forEach(function (p, i) {
-    p.num = i + 1;
+  var ORDER = [], navN = 0;
+  NAV.forEach(function (p) {
+    p.num = p.home ? "" : ++navN;
     if (!p.subs.length) ORDER.push({ page: p, sub: null });
     p.subs.forEach(function (s, j) { s.num = p.num + "." + (j + 1); ORDER.push({ page: p, sub: s }); });
   });
   var label = function (o) { return o.sub ? B(o.sub[1], o.sub[2]) : B(o.page.zh, o.page.en); };
 
   $("tabs").innerHTML = NAV.map(function (p) {
-    return '<button type="button" role="tab" data-go="' + p.id + '"><span class="num">' + p.num + "</span>" + B(p.zh, p.en) + "</button>";
+    return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + '><span class="num">' + (p.home ? ico("intro") : p.num) + "</span>" + B(p.zh, p.en) + "</button>";
   }).join("");
   $$(".subnav").forEach(function (a) {
     var p = NAV.filter(function (x) { return x.id === a.getAttribute("data-page"); })[0];
@@ -1286,10 +1506,11 @@
     drawAllMaps();
   }
   function setFont(f) { f = /^(hand|sans|mono)$/.test(f) ? f : "hand"; root.setAttribute("data-font", f); $("font-sel").value = f; store.set("pap.font", f); }
-  function setTheme(t) { t = /^(green|blue|earth)$/.test(t) ? t : "green"; root.setAttribute("data-theme", t); $("theme-sel").value = t; store.set("pap.theme", t); }
+  // 只記住使用者自己選的主題；沒選過就用預設的土色
+  function setTheme(t, save) { t = /^(green|blue|earth)$/.test(t) ? t : "earth"; root.setAttribute("data-theme", t); $("theme-sel").value = t; if (save) store.set("pap.color", t); }
   $$(".lang-toggle button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); }); });
   $("font-sel").addEventListener("change", function (e) { setFont(e.target.value); });
-  $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value); });
+  $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value, true); });
 
   /* ---------- 條碼（裝飾） ---------- */
   (function () {
@@ -1456,6 +1677,8 @@
     var worldCls = function (iso) { return REGION[iso] || ""; };
     drawMap($("map-hero"), [0, 15, 1000, 410], worldCls, [], WORLD_LABELS);
     drawMap($("map-world"), [0, 15, 1000, 410], worldCls, [], WORLD_LABELS);
+    drawOffices();
+    drawIntro();
     var AP = [688, 100, 304, 278];
     drawMap($("map-sites"), AP, function (iso) { return INFRA.some(function (r) { return ISO[r[0]] === iso; }) ? "r-pap" : ""; },
       INFRA.map(function (r) {
@@ -1490,14 +1713,266 @@
     var p = e.target.closest ? e.target.closest(".pin") : null; if (p) { e.preventDefault(); pickPin(p.getAttribute("data-cc")); }
   });
 
+  /* ---------- 全球據點（Acer Around the World） ---------- */
+  var OREG = [
+    ["cn", "中國與台灣", "China & Taiwan", "r-accn"],
+    ["emea", "歐洲、中東與非洲", "Europe, Middle East & Africa", "r-emea"],
+    ["am", "美洲", "The Americas", "r-pa"],
+    ["ap", "亞太", "Asia Pacific", "r-pap"]
+  ];
+  var OREG_BY = {};
+  OREG.forEach(function (r) { OREG_BY[r[0]] = r; });
+  var OROLE = {
+    ghq: ["全球暨區域總部", "World & regional HQ"],
+    rhq: ["區域總部", "Regional HQ"],
+    ro: ["區域辦公室", "Regional office"],
+    oro: ["大洋洲區域辦公室", "Oceania regional office"]
+  };
+  // [區域, 國旗, 中文, English, 角色, 公司, 地址, 電話, 傳真, 網站, 經度, 緯度, 子公司代碼, 地圖名稱（同國有兩處時區分）]
+  var OFFICES = [
+    ["cn", "tw", "台灣", "Taiwan", "ghq", "Acer Inc.", "8F, 88, Sec. 1, Xintai 5th Rd., Xizhi, New Taipei City 221, Taiwan", ["+886-2-2696-1234", "+886-2-2696-3131"], "+886-2-2696-3535", ["www.acer.com", "www.acer.com.tw"], 121.65, 25.06, ""],
+    ["cn", "cn", "中國", "China", "rhq", "Acer Computer (Shanghai) Ltd.", "3F, Headquarters Building, No. 168, Xizang Middle Rd., Shanghai 200001, P.R. China", ["+86-21-5117-8999"], "+86-21-6352-8628", ["www.acer.com.cn"], 121.47, 31.23, ""],
+    ["cn", "hk", "香港", "Hong Kong", "", "Acer Computer (Far East) Ltd.", "Unit 2301-02 & 08, Level 23, Tower 1, Millennium City 1, 388 Kwun Tong Rd., Kowloon, Hong Kong", ["+852-2821-0200"], "+852-2861-3758", ["www.acer.com.hk"], 114.22, 22.31, ""],
+
+    ["emea", "ch", "瑞士", "Switzerland", "rhq", "Acer Europe SA", "Via della Posta 28, 6934 Bioggio, Switzerland", ["+41-(0)91-261-0111"], "+41-(0)91-261-0322", ["www.acer-euro.com"], 8.91, 46.01, "", ["瑞士（區域總部）", "Switzerland (regional HQ)"]],
+    ["emea", "at", "奧地利", "Austria", "", "Acer Austria GmbH", "Europaring F14 202, 2345 Brunn am Gebirge, Austria", ["+43-2236-3075-200"], "+43-2236-3075-250", ["www.acer.at"], 16.29, 48.11, ""],
+    ["emea", "nl", "比荷盧", "Benelux", "", "Acer Computer B.V.", "Europalaan 89, 5232 BC 's-Hertogenbosch, The Netherlands", ["+31-(0)73-645-9645"], "+31-(0)73-645-9693", ["www.acer.nl", "www.acer.be", "www.acer.lu"], 5.30, 51.69, ""],
+    ["emea", "cz", "捷克", "Czech Republic", "", "Acer Czech Republic s.r.o.", "Na Hřebenech II 1718/10, 140 00 Praha 4, Czech Republic", ["+420-244-112-555"], "+420-244-112-599", ["www.acer.cz"], 14.42, 50.06, ""],
+    ["emea", "dk", "丹麥", "Denmark", "", "Acer Denmark A/S", "Linde Allé 5B, 2850 Naerum, Denmark", ["+45-3916-8800"], "+45-3916-8801", ["www.acer.dk"], 12.53, 55.82, ""],
+    ["emea", "de", "東歐", "Eastern Europe", "", "Acer Eastern Europe, Acer Computer GmbH", "Kornkamp 4, 22926 Ahrensburg, Germany", ["+49-4102-4880"], "+49-4102-488-270", [], 10.24, 53.67, ""],
+    ["emea", "fi", "芬蘭", "Finland", "", "Acer Finland Oy", "Konalantie 47 C, 00390 Helsinki, Finland", ["+35-8922-526-90"], "+35-8922-526-916", ["www.acer.fi"], 24.94, 60.17, ""],
+    ["emea", "fr", "法國", "France", "", "Acer Computer France SAS", "Parc des Reflets - Paris Nord 2, Bâtiment K, 165 Avenue du Bois de la Pie, BP 51301 Roissy en France, 95940 Roissy Charles de Gaulle Cedex, France", ["+33-1-48-635-151"], "+33-1-48-635-252", ["www.acer.fr"], 2.55, 49.00, ""],
+    ["emea", "de", "德國", "Germany", "", "Acer Computer GmbH", "Kornkamp 4, 22926 Ahrensburg, Hamburg, Germany", ["+49-4102-4880"], "+49-4102-488-101", ["www.acer.de"], 10.24, 53.67, ""],
+    ["emea", "hu", "匈牙利", "Hungary", "", "Acer Magyarorszag", "1023 Budapest, Árpád Fejedelem útja 26-28, Hungary", [], "+36-1-336-3309", ["www.acer.hu"], 19.04, 47.50, ""],
+    ["emea", "it", "義大利", "Italy", "", "Acer Italy s.r.l", "Via Lepetit, 40, 20020 Lainate (MI), Italy", ["+39-02-939-921"], "+39-02-9399-2913", ["www.acer.it"], 9.03, 45.57, ""],
+    ["emea", "no", "挪威", "Norway", "", "Acer Computer Norway AS", "Dølasletta 3, 3408 Tranby, Norway", ["+47-3284-3000"], "+47-3284-3001", ["www.acer.no"], 10.27, 59.78, ""],
+    ["emea", "pl", "波蘭", "Poland", "", "Acer Polska", "ul. Domaniewska 41a, 02-672 Warszawa, Poland", ["+48-22-471-0600"], "+48-22-471-0700", ["www.acer.pl"], 21.01, 52.23, ""],
+    ["emea", "ru", "俄羅斯", "Russia", "", "Acer Marketing Services LLC", "\"HI-TEC House\", 5A, Bolshaya Akademicheskaya str., Moscow, 127299, Russia", ["+7-495-212-2888"], "+7-495-212-2889", ["www.acer.ru"], 37.62, 55.75, ""],
+    ["emea", "sk", "斯洛伐克", "Slovakia", "", "Acer Slovakia s.r.o.", "Trnavska cesta 50/B, 821 02 Bratislava, Slovakia", ["+421-2-4920-7000"], "+421-2-4920-7033", ["www.acer.sk"], 17.11, 48.15, ""],
+    ["emea", "es", "西班牙／葡萄牙", "Spain / Portugal", "", "Acer Computer Ibérica", "Gavà Park, C/ Disseny, 3-5, 08850 Gavà, Barcelona, Spain", ["+34-93-492-2400"], "+34-93-492-2499", ["www.acer.es", "www.acer.pt"], 1.99, 41.31, ""],
+    ["emea", "se", "瑞典", "Sweden", "", "Acer Sweden AB", "Mariehällsvägen 37B, SE-168 65 Bromma, Sweden", ["+46-(0)8-505-573-00"], "+46-(0)8-505-573-20", ["www.acercomputer.se"], 17.94, 59.34, ""],
+    ["emea", "ch", "瑞士", "Switzerland", "", "Acer Computer (Switzerland) AG", "Moosmattstrasse 30, 8953 Dietikon, Switzerland", ["+41-(0)44-745-5858"], "+41-(0)44-742-0616", ["www.acer.ch"], 8.40, 47.40, ""],
+    ["emea", "ua", "烏克蘭", "Ukraine", "", "Acer BSEC Inc.", "Business Center \"Forum Park Plaza\", 9 Moskovsky Ave., Office 4-404, Kiev 04073, Ukraine", ["+380-44-498-05-95"], "+380-44-498-05-97", ["www.acer.ua"], 30.52, 50.45, ""],
+    ["emea", "gb", "英國", "United Kingdom", "", "Acer UK Ltd.", "Acer House, Heathrow Boulevard III, 282 Bath Road, West Drayton, Middlesex, UB7 0DQ, England", ["+44-(0)208-283-3000"], "+44-(0)208-283-3001", ["www.acer.co.uk"], -0.47, 51.50, ""],
+    ["emea", "ae", "中東", "Middle East", "", "Acer Computer (M.E.) Ltd.", "P.O. Box 16951, Jebel Ali Free Zone, Dubai, UAE", ["+971-4-805-6000"], "+971-4-881-2200", ["www.acer.ae"], 55.03, 25.01, ""],
+    ["emea", "tr", "土耳其", "Turkey", "", "Acer Bilişim Teknolojileri Ltd. Şirketi", "Veko Giz Plaza, Meydan Sokak No: 20, Daire: 27-28 34396, Maslak-Istanbul, Turkey", ["+90-212-290-2610"], "+90-212-290-2614", ["www.acer.com.tr"], 29.02, 41.11, ""],
+    ["emea", "za", "非洲", "Africa", "", "Acer Africa (Pty) Ltd.", "Metropolitan Park, 82 Wessels Road, Rivonia, Sandton, Private Bag X28, Halfway House, 1685, South Africa", ["+27-11-233-6100"], "+27-11-233-6200", ["www.acer.co.za"], 28.06, -26.11, ""],
+
+    ["am", "us", "美國", "United States", "rhq", "Acer America Corp.", "333 W. San Carlos Street, Suite 1500, San Jose, CA 95110, USA", ["+1-408-533-7700"], "+1-408-533-4555", ["www.acer.com/us"], -121.89, 37.34, ""],
+    ["am", "br", "巴西", "Brazil", "", "AGP Tecnologia em Informática do Brasil Ltda", "Rua Flórida, 1758, 4º andar, São Paulo, SP 04565-001, Cidade Monções, Brasil", ["+55-11-5503-3588"], "+55-11-5503-3591", ["www.acer.com.br"], -46.63, -23.55, ""],
+    ["am", "ca", "加拿大", "Canada", "", "Acer America Corp. (Canada)", "5600 Explorer Drive, Suite 201, Mississauga, Ontario, Canada L4W 4Y1", ["+1-905-755-7570"], "+1-905-755-7591", ["www.acer.ca"], -79.64, 43.59, ""],
+    ["am", "us", "拉丁美洲", "Latin America", "ro", "Acer Latin America, Inc.", "3750 N.W. 87th Ave., Suite 640, Doral, FL 33178, USA", ["+1-305-392-7000"], "+1-305-477-5963", ["www.acer.com/latinoamerica"], -80.36, 25.82, ""],
+    ["am", "mx", "墨西哥", "Mexico", "", "Acer Computec México, S.A. de C.V.", "Avenida Ejército Nacional No. 579, Piso 1, Col. Granada, 11520 México, D.F.", ["+52-55-5999-9400"], "+52-55-5999-9401", ["www.acer.com.mx"], -99.13, 19.43, ""],
+
+    ["ap", "my", "馬來西亞", "Malaysia", "rhq", "Acer Sales & Services Sdn Bhd.", "Level 24, Menara Ambank, No. 8 Jalan Yap Kwan Seng, 50450 Kuala Lumpur, Malaysia", ["+60-3-2162-1388"], "+60-3-2162-4949", ["www.acer.com.my"], 101.69, 3.14, "ASSB"],
+    ["ap", "au", "澳洲", "Australia", "oro", "Acer Computer Australia Pty. Ltd.", "8 Baywater Drive, Wentworth Point, NSW 2127, Australia", ["+61-2-8762-3000"], "+61-2-9764-2958", ["www.acer.com.au"], 151.07, -33.83, "ACA"],
+    ["ap", "in", "印度", "India", "", "Acer India (Pvt) Ltd.", "Embassy Heights, 6th Floor, No. 13 Magrath Rd. (Next to Hosmat Hospital), Bangalore 560025, India", ["+91-80-3940-8700"], "+91-80-2532-9535", ["www.acer.co.in"], 77.59, 12.97, "AIL"],
+    ["ap", "id", "印尼", "Indonesia", "", "PT Acer Indonesia", "The Plaza Office Tower, 42nd Floor, Jl. M.H. Thamrin Kav. 28-30, Jakarta 10350, Indonesia", ["+62-21-2992-2345"], "+62-21-2992-2346", ["www.acer.co.id"], 106.83, -6.19, "AIN"],
+    ["ap", "jp", "日本", "Japan", "", "Acer Japan Corp.", "18F Nishi Shinjuku Mitsui Building, 6-24-1, Nishi Shinjuku, Shinjuku-ku, Tokyo, Japan, 160-0023", ["+81-3-5324-2788", "+81-3-5324-2789"], "+81-3-5324-2786", ["www.acer.co.jp"], 139.69, 35.69, "AJC"],
+    ["ap", "kr", "韓國", "Korea", "", "Acer Asia Pacific", "No. 603 6F Chung-Jin B/D 53-5, Wonhyoro 3-ga, Yongsan-gu, Seoul, Korea", ["+82-1644-2225"], "+82-2-3775-1534", ["www.acer.co.kr"], 126.97, 37.54, "AKC"],
+    ["ap", "nz", "紐西蘭", "New Zealand", "", "Acer Computer New Zealand Ltd.", "Suite 2, Ground Floor, Building A, Millenium Phase II, 600 Great South Road, Ellerslie, Auckland 1051, New Zealand", ["+64-9-969-5600"], "+64-9-526-5002", ["www.acer.co.nz"], 174.79, -36.88, "ACNZ"],
+    ["ap", "ph", "菲律賓", "Philippines", "", "Acer Philippines, Inc.", "Unit A, B, C & F, Level 9, W Fifth Ave., Bonifacio Global City, Taguig City, 1634 Philippines", ["+632-815-3388"], "+632-815-4940", ["www.acer.com.ph"], 121.05, 14.55, "APHI"],
+    ["ap", "sg", "新加坡", "Singapore", "", "Acer Computer (Singapore) Pte. Ltd.", "29 International Business Park, #01-01 Acer Building, Tower A, Singapore 609923", ["+65-6563-6563"], "+65-6567-6676", ["www.acer.com.sg"], 103.70, 1.33, "ACS"],
+    ["ap", "th", "泰國", "Thailand", "", "Acer Computer Co., Ltd.", "191/62-63, 16th Floor, CTI Tower, Rachadapisek Rd., Klongtoey, Bangkok 10110, Thailand", ["+662-661-9700"], "+662-661-9721", ["www.acer.co.th"], 100.56, 13.72, "ATH"],
+    ["ap", "vn", "越南", "Vietnam", "", "Acer Vietnam Co., Ltd.", "5th Floor, Rosana Building, 60 Nguyen Dinh Chieu St., Da Kao Ward, Dist. 1, Ho Chi Minh City, Vietnam", ["+848-3910-6888"], "+848-3910-1234", ["www.acer.com.vn"], 106.70, 10.78, "AVN"]
+  ];
+  var isHQ = function (o) { return o[4] === "ghq" || o[4] === "rhq"; };
+  var OKPI = [
+    [OFFICES.length, "據點", "Offices"],
+    [OREG.length, "區域", "Regions"],
+    [OFFICES.filter(isHQ).length, "總部（含全球總部）", "Headquarters (incl. world HQ)"],
+    [OFFICES.filter(function (o) { return o[4] === "ro" || o[4] === "oro"; }).length, "區域辦公室", "Regional offices"]
+  ];
+  $("office-kpis").innerHTML = OKPI.map(function (k) { return '<div class="kpi"><div class="k">' + B(k[1], k[2]) + '</div><div class="v">' + k[0] + "</div></div>"; }).join("");
+  $("office-legend").innerHTML = OREG.map(function (r) {
+    return '<span><i style="background:var(--' + r[3] + ')"></i>' + B(r[1], r[2]) + "</span>";
+  }).join("") + '<span><i class="hqdot"></i>' + B("較大圓點為總部", "Larger dot = headquarters") + "</span>";
+
+  var oSel = -1, oReg = "all", oView = "world";
+  // w：設計寬度（px），用來換算圓點與文字大小
+  var OVIEW = {
+    world: { vb: [0, 15, 1000, 410], w: 900, zh: "全球", en: "World" },
+    eu: { vb: [461, 72, 172, 80], w: 900, zh: "歐洲", en: "Europe" },
+    ap: { vb: [677, 118, 330, 272], w: 700, zh: "亞太", en: "Asia Pacific" }
+  };
+  var WORLD_NAMED = ["ae", "za", "in", "jp", "au", "nz"];
+  // 地圖名稱：依序試放右、左、斜角、上、下，避開圓點與已放的名稱；放不下就拉遠並加引線
+  function placeLabels(vb, k, dots, items) {
+    var boxes = dots.map(function (p) { return { x: p.x - p.r, y: p.y - p.r, w: 2 * p.r, h: 2 * p.r }; });
+    var pad = 2.5 * k, leads = "", texts = "";
+    var free = function (b) {
+      if (b.x < vb[0] + pad || b.y < vb[1] + pad || b.x + b.w > vb[0] + vb[2] - pad || b.y + b.h > vb[1] + vb[3] - pad) return false;
+      return !boxes.some(function (c) { return b.x < c.x + c.w + pad && b.x + b.w + pad > c.x && b.y < c.y + c.h + pad && b.y + b.h + pad > c.y; });
+    };
+    var DIRS = [[1, 0], [-1, 0], [.7, -.7], [.7, .7], [-.7, -.7], [-.7, .7], [0, -1], [0, 1]];
+    items.forEach(function (p) {
+      var w = (labelW(p.name) + 6) * k, h = 16 * k, pick = null;
+      [0, 14, 30, 50, 74].some(function (d) {
+        var g = p.r + (4 + d) * k;
+        return DIRS.some(function (dir) {
+          var cx = p.x + dir[0] * g, cy = p.y + dir[1] * g;
+          var b = { x: dir[0] > 0 ? cx : dir[0] < 0 ? cx - w : cx - w / 2, y: dir[1] > 0 ? cy : dir[1] < 0 ? cy - h : cy - h / 2, w: w, h: h };
+          if (free(b)) { pick = b; pick.d = d; return true; }
+          return false;
+        });
+      });
+      if (!pick) pick = { x: p.x + p.r + 4 * k, y: p.y - h / 2, w: w, h: h, d: 0 };
+      boxes.push(pick);
+      if (pick.d) {
+        var ex = Math.max(pick.x, Math.min(p.x, pick.x + w)), ey = Math.max(pick.y, Math.min(p.y, pick.y + h));
+        leads += '<line class="olead" x1="' + p.x.toFixed(1) + '" y1="' + p.y.toFixed(1) + '" x2="' + ex.toFixed(1) + '" y2="' + ey.toFixed(1) + '" style="stroke-width:' + k.toFixed(2) + '"></line>';
+      }
+      texts += '<text class="' + p.cls + '"' + (p.attrs || "") + ' x="' + (pick.x + w / 2).toFixed(1) + '" y="' + (pick.y + h * .74).toFixed(1) + '" text-anchor="middle" style="font-size:' + (12.5 * k).toFixed(2) + "px;stroke-width:" + (3.4 * k).toFixed(2) + 'px">' + esc(p.name) + "</text>";
+    });
+    return { leads: leads, texts: texts };
+  }
+  function labelW(s) { var w = 0; for (var i = 0; i < s.length; i++) { var c = s.charAt(i); w += /[⺀-鿿＀-￯]/.test(c) ? 12.4 : /[A-Z]/.test(c) ? 8.4 : c === " " ? 3.6 : 6.8; } return w; }
+  function drawOffices() {
+    var svg = $("map-offices"), v = OVIEW[oView], vb = v.vb, k = vb[2] / v.w;
+    if (!svg || !window.PAP_WORLD) return;
+    svg.setAttribute("viewBox", vb.join(" "));
+    svg.style.maxWidth = oView === "ap" ? v.w + "px" : "";
+    drawMap(svg, vb, function () { return ""; }, [], []);
+    var inView = function (x, y) { return x > vb[0] && x < vb[0] + vb[2] && y > vb[1] && y < vb[1] + vb[3]; };
+    var pts = OFFICES.map(function (o, i) {
+      var hq = isHQ(o);
+      return { i: i, o: o, hq: hq, x: px(o[10]), y: py(o[11]), r: (hq ? 7 : 4.6) * k };
+    }).filter(function (p) { return inView(p.x, p.y); });
+    var named = pts.filter(function (p) { return oView !== "world" || p.hq || p.o[0] === "am" || WORLD_NAMED.indexOf(p.o[1]) !== -1; });
+    // 總部先放，其次是附近據點較多者
+    named.forEach(function (p) { p.near = pts.filter(function (q) { return Math.abs(q.x - p.x) < 40 * k && Math.abs(q.y - p.y) < 40 * k; }).length; });
+    named.sort(function (a, b) { return (b.hq - a.hq) || (b.near - a.near) || (a.i - b.i); });
+    var lay = placeLabels(vb, k, pts, named.map(function (p) {
+      return { x: p.x, y: p.y, r: p.r, name: p.o[13] ? nm(p.o[13][0], p.o[13][1]) : nm(p.o[2], p.o[3]), cls: "olabel" + (p.hq ? " hq" : "") + (p.i === oSel ? " on" : ""), attrs: ' data-i="' + p.i + '"' };
+    }));
+    var dots = pts.sort(function (a, b) { return a.hq - b.hq; }).map(function (p) {
+      var t = nm(p.o[2], p.o[3]) + " · " + p.o[5];
+      return '<circle class="odot' + (p.hq ? " hq" : "") + (p.i === oSel ? " on" : "") + '" data-i="' + p.i + '" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + p.r.toFixed(2) + '" style="fill:var(--' + OREG_BY[p.o[0]][3] + ');stroke-width:' + ((p.hq ? 1.8 : 1.2) * k).toFixed(2) + '" tabindex="0" role="button" aria-label="' + esc(t) + '"><title>' + esc(t) + "</title></circle>";
+    }).join("");
+    svg.insertAdjacentHTML("beforeend", lay.leads + dots + lay.texts);
+  }
+  $("office-views").innerHTML = Object.keys(OVIEW).map(function (key) {
+    return '<button class="btn sm' + (key === oView ? " active" : "") + '" type="button" data-view="' + key + '">' + B(OVIEW[key].zh, OVIEW[key].en) + "</button>";
+  }).join("");
+  $("office-views").addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-view]") : null;
+    if (!b) return;
+    oView = b.getAttribute("data-view");
+    $$("#office-views .btn").forEach(function (x) { x.classList.toggle("active", x === b); });
+    drawOffices();
+  });
+  function officeCard(o, i) {
+    var reg = OREG_BY[o[0]], role = OROLE[o[4]];
+    var tels = o[7].map(function (t, k) {
+      return "<span>" + (k === 1 && o[1] === "jp" ? B("電話（業務）", "Tel (sales)") : B("電話", "Tel")) + "</span><span>" + esc(t) + "</span>";
+    }).join("");
+    return '<article class="office' + (i === oSel ? " on" : "") + '" id="office-' + i + '" style="--oc:var(--' + reg[3] + ')">' +
+      '<div class="office-head"><b>' + flag(o[1]) + B(o[2], o[3]) + '</b><span class="office-tags">' +
+      (role ? '<span class="rtag">' + B(role[0], role[1]) + "</span>" : "") +
+      (o[12] ? '<span class="nstag" title="' + esc(nm("子公司代碼", "Subsidiary code")) + '">' + o[12] + "</span>" : "") + "</span></div>" +
+      '<div class="office-name">' + esc(o[5]) + "</div>" +
+      '<div class="office-addr">' + esc(o[6]) + "</div>" +
+      '<div class="office-contact">' + tels + "<span>" + B("傳真", "Fax") + "</span><span>" + esc(o[8]) + "</span></div>" +
+      (o[9].length ? '<div class="office-web">' + o[9].map(function (w) { return '<a href="https://' + w + '" target="_blank" rel="noopener">' + w + "</a>"; }).join("") + "</div>" : "") +
+      "</article>";
+  }
+  function renderOffices() {
+    var q = $("office-search").value.trim().toLowerCase(), n = 0, html = "";
+    $$("#office-regions .btn").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-reg") === oReg); });
+    OREG.forEach(function (r) {
+      if (oReg !== "all" && oReg !== r[0]) return;
+      var items = [];
+      OFFICES.forEach(function (o, i) {
+        if (o[0] !== r[0]) return;
+        if (q && [o[2], o[3], o[5], o[6], o[12], o[4] ? OROLE[o[4]].join(" ") : ""].join(" ").toLowerCase().indexOf(q) === -1) return;
+        items.push(officeCard(o, i));
+      });
+      if (!items.length) return;
+      n += items.length;
+      html += '<section class="office-group"><h3><i style="background:var(--' + r[3] + ')"></i>' + B(r[1], r[2]) + ' <span class="count">' + items.length + '</span></h3><div class="office-grid">' + items.join("") + "</div></section>";
+    });
+    $("office-list").innerHTML = html || '<p class="ab-empty">' + B("查無「" + esc(q) + "」相關據點。", 'No offices match "' + esc(q) + '".') + "</p>";
+    $("office-count").innerHTML = B("共 " + n + " 個據點", n + (n === 1 ? " office" : " offices"));
+  }
+  $("office-regions").innerHTML = [["all", "全部", "All", OFFICES.length]].concat(OREG.map(function (r) {
+    return [r[0], r[1], r[2], OFFICES.filter(function (o) { return o[0] === r[0]; }).length];
+  })).map(function (r) {
+    return '<button class="btn sm" type="button" data-reg="' + r[0] + '">' + B(r[1], r[2]) + " · " + r[3] + "</button>";
+  }).join("");
+  $("office-regions").addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-reg]") : null;
+    if (!b) return;
+    oReg = b.getAttribute("data-reg");
+    renderOffices();
+  });
+  $("office-search").addEventListener("input", renderOffices);
+  function pickOffice(i) {
+    oSel = i;
+    var o = OFFICES[i];
+    if (oReg !== "all" && oReg !== o[0]) oReg = "all";
+    $("office-search").value = "";
+    renderOffices();
+    $$("#map-offices .odot, #map-offices .olabel").forEach(function (d) { d.classList.toggle("on", +d.getAttribute("data-i") === i); });
+    var card = $("office-" + i);
+    if (card && card.scrollIntoView) card.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+  $("map-offices").addEventListener("click", function (e) {
+    var d = e.target.closest ? e.target.closest(".odot, .olabel") : null;
+    if (d) pickOffice(+d.getAttribute("data-i"));
+  });
+  $("map-offices").addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var d = e.target.closest ? e.target.closest(".odot, .olabel") : null;
+    if (d) { e.preventDefault(); pickOffice(+d.getAttribute("data-i")); }
+  });
+  renderOffices();
+
+  /* ---------- 網站介紹 ---------- */
+  var CH = {
+    overview: ["PAP 服務物流的定位、涵蓋區域與重點數字。", "PAP's role, coverage and key figures."],
+    org: ["Acer 全球區域與各地據點、PAP 國家子公司，以及團隊分工。", "Acer's regions and offices worldwide, PAP's nation subsidiaries and the team structure."],
+    sites: ["服務中心、授權服務商（ASP）、客服中心與備品中心的分布，以及倉庫、Uni-load 與標案。", "Where service centres, ASPs, call centres and parts hubs are, plus warehouses, Uni-load and tenders."],
+    hsn: ["HSN Group 的角色、各國公司，以及 2026 年 12 月 1 日起的供應流程調整。", "HSN Group's role, its companies and the supply change from 1 December 2026."],
+    ops: ["團隊職責、主要職能、使用的系統、SPL 定義流程與 Service BOM。", "Responsibilities, main functions, systems, the SPL definition flow and the Service BOM."],
+    pn: ["服務料號的命名規則；輸入料號即可逐碼解析。", "How service part numbers are built; enter a part number to decode it."],
+    ref: ["子公司、區域與 HSN 代碼，以及常用縮寫的全名與說明。", "Subsidiary, region and HSN codes, and the full names of common abbreviations."],
+    review: ["19 題重點複習，確認重要觀念。", "19 questions to check the key points."]
+  };
+  $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p) {
+    var d = CH[p.id];
+    return '<article class="chap"><button type="button" class="chap-head" data-go="' + p.id + '"><span class="chap-ico">' + ico(p.id) + '</span><span class="chap-t"><small>' + (p.num < 10 ? "0" : "") + p.num + "</small><b>" + B(p.zh, p.en) + '</b></span><span class="chap-go" aria-hidden="true">→</span></button>' +
+      "<p>" + B(d[0], d[1]) + "</p>" +
+      (p.subs.length ? '<div class="chap-subs">' + p.subs.map(function (s) { return '<button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span>" + B(s[1], s[2]) + "</button>"; }).join("") + "</div>" : "") + "</article>";
+  }).join("");
+  $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
+
+  // 首頁地圖：PAP 與各國子公司
+  function drawIntro() {
+    var svg = $("map-intro"), vb = [688, 100, 304, 278], k = vb[2] / 520;
+    if (!svg || !window.PAP_WORLD) return;
+    drawMap(svg, vb, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); }, [], []);
+    var at = function (cc) { for (var i = 0; i < OFFICES.length; i++) if (OFFICES[i][1] === cc && OFFICES[i][0] !== "am") return OFFICES[i]; return null; };
+    var tw = at("tw"), ox = px(tw[10]), oy = py(tw[11]);
+    var dots = [{ x: ox, y: oy, r: 7.5 * k, hq: true }], items = [{ x: ox, y: oy, r: 7.5 * k, name: "PAP", cls: "olabel hq" }], arcs = "";
+    NSC.filter(function (n) { return n[1]; }).forEach(function (n, j) {
+      var o = at(n[1]);
+      if (!o) return;
+      var x = px(o[10]), y = py(o[11]), dx = x - ox, dy = y - oy;
+      var cx = (ox + x) / 2 - dy * .22, cy = (oy + y) / 2 + dx * .22;
+      arcs += '<path class="arc" d="M' + ox.toFixed(1) + " " + oy.toFixed(1) + " Q" + cx.toFixed(1) + " " + cy.toFixed(1) + " " + x.toFixed(1) + " " + y.toFixed(1) +
+        '" style="stroke-width:' + (1.5 * k).toFixed(2) + ";stroke-dasharray:" + (4 * k).toFixed(2) + " " + (3 * k).toFixed(2) + ";animation-delay:-" + (j * .7).toFixed(1) + 's"></path>';
+      dots.push({ x: x, y: y, r: 4.6 * k });
+      items.push({ x: x, y: y, r: 4.6 * k, name: n[0], cls: "olabel" });
+    });
+    var lay = placeLabels(vb, k, dots, items);
+    svg.insertAdjacentHTML("beforeend", arcs + lay.leads + dots.map(function (d) {
+      return '<circle class="idot' + (d.hq ? " hq" : "") + '" cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
+    }).join("") + lay.texts);
+  }
+
   /* ---------- 總覽 ---------- */
   var STATS = [[11, "國家子公司（NS）", "Nation subsidiaries (NS)"], [20, "設有據點之國家／地區", "Countries and regions with sites"], [507, "授權服務商（ASP）", "Authorized service providers"], [5, "HSN Group 公司", "HSN Group companies"]];
   $("hero-stats").innerHTML = STATS.map(function (s) { return "<div><b>" + s[0] + "</b><span>" + B(s[1], s[2]) + "</span></div>"; }).join("");
-  $("sitemap").innerHTML = NAV.filter(function (p) { return p.id !== "overview"; }).map(function (p) {
-    return '<div class="smc"><button type="button" class="smc-head" data-go="' + p.id + '"><span class="n">' + p.num + "</span><b>" + B(p.zh, p.en) + "</b></button><p>" + B(p.dzh, p.den) + "</p>" +
-      (p.subs.length ? "<ul>" + p.subs.map(function (s) { return '<li><button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span><span>" + B(s[1], s[2]) + "</span></button></li>"; }).join("") + "</ul>" : "") + "</div>";
-  }).join("");
-
   /* ---------- 作業 ---------- */
   var SYS = [["RO", "Regional Office", "區域辦公室", 1, 1, 1, 1], ["NS", "Nation Subsidiary", "國家子公司", 1, 0, 1, 1], ["ASP", "Authorized Service Provider", "授權服務商", 1, 0, 0, 1]];
   $("sys-body").innerHTML = SYS.map(function (s) {
@@ -1835,22 +2310,30 @@
     return "<tr><td><b>" + a[2] + "</b></td><td>" + nameOf(a) + '</td><td class="c"><b class="mono">' + r[1] + '</b></td><td class="wrap">' + B(r[2], r[3]) + "</td></tr>";
   }).join("");
 
-  var UNDER_ACS = ["隸屬 ACS（新加坡）。", "Under ACS (Singapore)."];
-  var SITE_ONLY = ["列於據點統計，所屬單位未載明。", "Included in site counts; reporting unit not specified."];
-  var OTHER = [
-    ["tw", "台灣", "Taiwan", "TWN → PAP", "原 TWN 區域，2016/2017 年併入 PAP。", "Former TWN region, merged into PAP in 2016/2017."],
-    ["bd", "孟加拉", "Bangladesh", "AIL", "隸屬 AIL（印度）。", "Under AIL (India)."],
-    ["", "中南半島", "Indo-china", "ATH", "隸屬 ATH（泰國）。", "Under ATH (Thailand)."],
-    ["lk", "斯里蘭卡", "Sri Lanka", "ACS"].concat(UNDER_ACS),
-    ["mn", "蒙古", "Mongolia", "ACS"].concat(UNDER_ACS),
-    ["np", "尼泊爾", "Nepal", "ACS"].concat(UNDER_ACS),
-    ["hk", "香港", "Hong Kong", "—"].concat(SITE_ONLY),
-    ["mm", "緬甸", "Myanmar", "—"].concat(SITE_ONLY),
-    ["la", "寮國", "Laos", "—"].concat(SITE_ONLY),
-    ["kh", "柬埔寨", "Cambodia", "—"].concat(SITE_ONLY)
+  var SITE_KIND = [["自有服務中心", "Own service centre", 3], ["外包服務中心", "Outsourced service centre", 4], ["授權服務商 ASP", "ASP", 5], ["客服中心", "Call centre", 6], ["備品中心", "Parts hub", 7]];
+  function siteChips(cc) {
+    var r = INFRA_BY[cc];
+    if (!r) return '<span class="no">' + B("無據點資料", "No site data") + "</span>";
+    return SITE_KIND.filter(function (s) { return r[s[2]]; }).map(function (s) { return '<span class="site-chip">' + B(s[0], s[1]) + " <b>" + r[s[2]] + "</b></span>"; }).join("");
+  }
+  // [負責單位, 國旗, 中文, English, 說明（中）, 說明（英）, 國家／地區]
+  var COVER = [
+    ["TWN → PAP", "tw", "原 TWN 區域", "Former TWN region", "台灣原為獨立的 TWN 區域，2016/2017 年與 AAP 整併為 PAP。", "Taiwan was the separate TWN region; it merged with AAP into PAP in 2016/2017.", [["tw", "台灣", "Taiwan"]]],
+    ["AIL", "in", "印度子公司", "India subsidiary", "", "", [["bd", "孟加拉", "Bangladesh"]]],
+    ["ATH", "th", "泰國子公司", "Thailand subsidiary", "", "", [["", "中南半島", "Indo-china"]]],
+    ["ACS", "sg", "新加坡子公司", "Singapore subsidiary", "", "", [["lk", "斯里蘭卡", "Sri Lanka"], ["mn", "蒙古", "Mongolia"], ["np", "尼泊爾", "Nepal"]]],
+    ["", "", "負責單位未載明", "Responsible unit not specified", "列於 Q2 2025 據點統計，但未載明由哪一家子公司負責。", "Listed in the Q2 2025 site counts, but the responsible subsidiary is not specified.", [["hk", "香港", "Hong Kong"], ["mm", "緬甸", "Myanmar"], ["la", "寮國", "Laos"], ["kh", "柬埔寨", "Cambodia"]]]
   ];
-  $("code-other").innerHTML = OTHER.map(function (o) {
-    return "<tr><td>" + flag(o[0]) + B(o[1], o[2]) + "</td><td>" + esc(o[3]) + "</td><td>" + (o[0] ? sitesLine(o[0]) : '<span class="no">—</span>') + '</td><td class="wrap">' + B(o[4], o[5]) + "</td></tr>";
+  $("code-other").innerHTML = COVER.map(function (g) {
+    var n = g[6].length, sub = g[0] && g[1] !== "tw" ? B("負責 " + n + " 個國家／地區", "Covers " + n + (n === 1 ? " country or region" : " countries or regions")) : "";
+    return '<article class="cover"><div class="cover-head">' + (g[0] ? '<span class="cover-code">' + esc(g[0]) + "</span>" : "") +
+      "<div><b>" + flag(g[1]) + B(g[2], g[3]) + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</div></div>" +
+      (g[4] ? '<p class="cover-note">' + B(g[4], g[5]) + "</p>" : "") +
+      '<ul class="cover-list">' + g[6].map(function (c) {
+        var r = INFRA_BY[c[0]];
+        return '<li><span class="cover-name">' + flag(c[0]) + B(c[1], c[2]) + '</span><span class="cover-total">' + (r ? "<b>" + r.total + "</b> " + B("個據點", r.total === 1 ? "site" : "sites") : "") + "</span>" +
+          '<span class="site-chips">' + siteChips(c[0]) + "</span></li>";
+      }).join("") + "</ul></article>";
   }).join("");
   $("code-hsn").innerHTML = HSNC.map(function (h) {
     var a = AB_BY[h[0].toLowerCase()], st = HSN_ST[h[4]];
@@ -1895,7 +2378,7 @@
   var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&"); };
   var KEYS = Object.keys(KEYMAP).sort(function (x, y) { return y.length - x.length; }).map(reEsc);
   var AB_RE = new RegExp("(^|[^A-Za-z0-9_])(" + KEYS.join("|") + ")(?=s?(?:[^A-Za-z0-9_]|$))", "g");
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, .ab-pop, .subnav, .crumb, .pager, .smc, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .chap, .cover-code, .site-chip, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
@@ -1974,7 +2457,7 @@
   window.addEventListener("resize", function () { closePop(false); });
 
   /* ---------- 啟動 ---------- */
-  setTheme(store.get("pap.theme"));
+  setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
   setLang(store.get("pap.lang") || "zh");
   $$("#page-overview, main .sub").forEach(linkAbbr);
