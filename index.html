@@ -928,11 +928,8 @@
   .logo-box:not(.has) .initial { background:var(--mute); opacity:.75; }
   .logo-box.sm .initial { width:34px; height:34px; font-size:1rem; border-radius:9px; }
   /* 資料查證 */
-  .ver-tbl td { white-space:normal; vertical-align:top; font-size:1rem; line-height:1.6; min-width:9em; }
-  .ver-tbl td.co { white-space:nowrap; font-weight:700; font-family:var(--font-head); font-size:1.25rem; color:var(--navy); }
   .ver-tbl a { color:var(--accent); text-decoration:none; font-weight:700; }
   .ver-tbl a:hover { text-decoration:underline; }
-  .ver-tbl small { display:block; color:var(--mute); font-size:.88rem; }
   .vs { display:inline-block; font-size:.74rem; font-weight:700; border-radius:999px; padding:0 9px; white-space:nowrap; border:1.5px solid; line-height:1.7; }
   .vs.verified { color:var(--ok); border-color:var(--ok); background:#EEF6F0; }
   .vs.single { color:#7A4E12; border-color:#D9A95A; background:#FFF4DC; }
@@ -1072,19 +1069,26 @@
   .logo-box { border:0 !important; background:transparent !important; box-shadow:none !important; }
   .logo-box::before { display:none !important; }
 
-  /* 滿版：資料查證頁收起左側選單，表格以整個版面寬度呈現，各欄固定比例、內容換行 */
-  .page.active.wide { grid-template-columns:minmax(0, 1fr); }
-  .page.wide > .subnav { display:none; }
-  .ver-tbl { table-layout:fixed; width:100%; }
-  .ver-tbl td, .ver-tbl th { min-width:0 !important; white-space:normal !important; overflow-wrap:anywhere; word-break:normal; }
-  .ver-tbl td.co { white-space:normal !important; overflow-wrap:normal; }
-  .ver-tbl th:nth-child(1) { width:7%; } .ver-tbl th:nth-child(2) { width:14%; } .ver-tbl th:nth-child(3) { width:27%; }
-  .ver-tbl th:nth-child(4) { width:11%; } .ver-tbl th:nth-child(5) { width:11%; } .ver-tbl th:nth-child(6) { width:6%; }
-  .ver-tbl th:nth-child(7) { width:18%; } .ver-tbl th:nth-child(8) { width:6%; }
-  .ver-tbl td { padding:10px 10px; }
-  .ver-tbl td:nth-child(7) { font-size:.92rem; }
+
+  /* 資料查證：每一句話一張卡片，由上往下讀 */
+  .vcards { display:grid; gap:14px; }
+  .vcard { border:1.5px solid var(--line); border-radius:12px; background:var(--panel); padding:14px 18px 12px; }
+  .vcard.hide { display:none; }
+  .vcard header { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px; }
+  .vcard .vco { font-family:var(--font-head); font-size:1.5rem; color:var(--navy); margin-right:4px; }
+  .vcard .vhelp { color:var(--mute); font-size:.95rem; }
+  .vcard .vdate { margin-left:auto; color:var(--mute); font-size:.85rem; }
+  .vcard .vk { display:inline-block; font-weight:700; color:var(--accent); margin-right:8px; white-space:nowrap; }
+  .vcard .vsay { margin:0 0 8px; line-height:1.75; }
+  .vcard .vsrc { list-style:none; margin:0; padding:0; display:grid; gap:4px; }
+  .vcard .vsrc li { line-height:1.5; }
+  .vcard .vsrc a { color:var(--accent); font-weight:700; text-decoration:none; }
+  .vcard .vsrc a:hover { text-decoration:underline; }
+  .vcard .vsrc small { display:block; color:var(--mute); font-size:.85rem; }
+  .vcard details { margin-top:8px; }
+  .vcard summary { cursor:pointer; color:var(--mute); font-size:.92rem; }
+  .vcard details > div { margin-top:6px; padding:8px 12px; background:var(--stripe); border-radius:8px; font-size:.95rem; line-height:1.7; overflow-wrap:anywhere; }
   .intro-sec { max-width:none; }
-  @media (max-width:860px) { .ver-tbl { table-layout:auto; min-width:880px; } #sub-corp-verify .tbl { overflow-x:auto; max-width:100%; } }
 </style>
 </head>
 <body>
@@ -1208,7 +1212,20 @@
 
       <section class="sub" id="sub-corp-service"><h2><span class="zh">服務夥伴</span><span class="en">Service partners</span></h2><p class="lead zh">亞太地區的售後維修由各國子公司（NS）的服務中心、授權服務商（ASP）與海柏特（HSN）共同提供。以下為公開資料可查得的服務夥伴與相關據點。</p><p class="lead en">After-sales repair in Asia Pacific is provided by the nation subsidiaries' service centres, authorised service providers (ASPs) and HSN. The partners and sites below are those found in public sources.</p><div class="block"><h3><span class="zh">各國服務夥伴</span><span class="en">Partners by country</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">國家／地區</span><span class="en">Country / region</span></th><th><span class="zh">服務夥伴</span><span class="en">Service partner</span></th><th><span class="zh">由來與說明</span><span class="en">Background</span></th><th class="num"><span class="zh">來源</span><span class="en">Source</span></th></tr></thead><tbody><tr><td><span class="zh">馬來西亞</span><span class="en">Malaysia</span></td><td>HSN（HSNM）</td><td class="wrap"><span class="zh">海柏特的發源地：Acer 官方服務商，於馬來西亞設有 16 處 Acer 客服中心。</span><span class="en">Where HSN began: Acer's official service provider, with 16 Acer customer service centres in Malaysia.</span></td><td class="num">V1</td></tr><tr><td><span class="zh">菲律賓</span><span class="en">Philippines</span></td><td>HSN（HSNP）</td><td class="wrap"><span class="zh">Acer 菲律賓官網列為 Master ASP：Highpoint Services Network Philippines（馬尼拉）。</span><span class="en">Listed on Acer Philippines' site as the Master ASP: Highpoint Services Network Philippines (Manila).</span></td><td class="num">V2</td></tr><tr><td><span class="zh">泰國</span><span class="en">Thailand</span></td><td>HSN（HSNT）</td><td class="wrap"><span class="zh">Rama 3 服務中心於 2025 年 9 月整修啟用。泰國另為中南半島的物流與備品中心，售後週轉由 17–20 天縮短至 3 天（約 2016 年）。</span><span class="en">The Rama 3 service centre reopened after renovation in September 2025. Thailand also serves as the logistics and spare-parts hub for Indochina, cutting after-sales turnaround from 17–20 days to 3 (c. 2016).</span> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></td><td class="num">V3, V5</td></tr><tr><td><span class="zh">越南</span><span class="en">Vietnam</span></td><td>HSN（HSNV）</td><td class="wrap"><span class="zh">越南公司於 2020 年 12 月設立。</span><span class="en">The Vietnamese company was set up in December 2020.</span> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></td><td class="num">V4</td></tr><tr><td><span class="zh">澳洲</span><span class="en">Australia</span></td><td><span class="zh">Acer Managed Services 與 ASP</span><span class="en">Acer Managed Services and ASPs</span></td><td class="wrap"><span class="zh">由 Acer Managed Services 技術人員與授權服務商（ASP）組成的服務網絡，涵蓋全澳含偏遠地區；2025 年 5 月推出 ANZ Accelerate 夥伴計畫（銀、金、白金三級）。</span><span class="en">A service network of Acer Managed Services technicians and authorised service providers (ASPs) covering Australia including regional and remote areas; the ANZ Accelerate partner programme (Silver, Gold, Platinum) launched in May 2025.</span></td><td class="num">V6, V7</td></tr><tr><td><span class="zh">印度</span><span class="en">India</span></td><td>F1 Info Solutions</td><td class="wrap"><span class="zh">Acer 印度官方支援網絡（apn.acer.co.in）列為授權服務夥伴（含清奈 Kilpauk 據點），服務桌上型電腦、伺服器、顯示器、投影機與筆記型電腦；2012 年成立，2017 年 9 月由 Flipkart 收購。</span><span class="en">Listed on Acer India's official support network (apn.acer.co.in) as an authorised service partner (including a Kilpauk, Chennai branch) for desktops, servers, monitors, projectors and notebooks; founded in 2012 and acquired by Flipkart in September 2017.</span></td><td class="num">V8</td></tr><tr><td><span class="zh">歐洲（對照）</span><span class="en">Europe (for comparison)</span></td><td>Enfinitec</td><td class="wrap"><span class="zh">Acer 於 2023 年成立、2024 年 1 月公布的維修、整新與物流子公司，涵蓋瑞士等 8 國，備品物流與整新中心位於波蘭 Wrocław。</span><span class="en">Acer's repair, refurbishment and logistics subsidiary, set up in 2023 and announced in January 2024, covering eight European countries including Switzerland, with its parts-logistics and refurbishment hub in Wrocław, Poland.</span></td><td class="num">V9, V10</td></tr></tbody></table></div></div><div class="block"><h3><span class="zh">與 PAP 作業的關係</span><span class="en">Relevance to PAP operations</span></h3><div class="story"><p class="zh">各類據點的定義與數量見「據點類型」頁；ASP 提供收件服務，不具維修能力。泰國作為中南半島的備品中心，與教材中「中南半島隸屬 ATH」的安排相符。未找到可信來源指名 Acer 亞太備品的第三方物流商。<sup class="cite" title="資料來源編號 / Source numbers">V5；教材</sup></p><p class="en">Definitions and counts of each site type are on the Site types page; ASPs take in units but do not repair them. Thailand's role as the Indochina parts hub matches the training material, where Indo-china falls under ATH. No credible source names a third-party logistics provider for Acer's Asia Pacific spare parts.<sup class="cite" title="資料來源編號 / Source numbers">V5；教材</sup></p><p class="note"><button class="btn sm" type="button" data-go="sites-types"><span class="zh">據點類型 →</span><span class="en">Site types →</span></button></p></div></div><details class="refs-wrap"><summary><span class="zh">資料來源（服務夥伴）</span><span class="en">Sources (service partners)</span></summary><h4><span class="zh">服務夥伴 V1–V10</span><span class="en">Service partners V1–V10</span></h4><ol class="refs" start="1"><li><a href="https://www.acer.com/my-en/support/service-network/highpoint-service-network" target="_blank" rel="noopener">Highpoint Service Network</a><small>Acer Malaysia</small></li><li><a href="https://www.acer.com/ph-en/support/contact-acer/service-contact" target="_blank" rel="noopener">Service contact（Master ASP：Highpoint Services Network Philippines）</a><small>Acer Philippines</small></li><li><a href="https://www.thaipost.net/economy-news/860484/" target="_blank" rel="noopener">HSNT Rama 3 服務中心整修啟用</a><small>Thai Post · 2025-09-12</small></li><li><a href="https://vietnamworks.com/nha-tuyen-dung/highpoint-service-network-vietnam-company-limited-c353098" target="_blank" rel="noopener">Highpoint Service Network Vietnam Company Limited</a><small>VietnamWorks</small></li><li><a href="https://www.bangkokpost.com/life/tech/855660/acer-to-use-thailand-as-parts-hub-for-indochina" target="_blank" rel="noopener">Acer to use Thailand as parts hub for Indochina</a><small>Bangkok Post · 2016</small></li><li><a href="https://www.acer.com/au-en/managed-services/onsite-support" target="_blank" rel="noopener">Managed services · onsite support</a><small>Acer Australia</small></li><li><a href="https://www2.bluechipit.com.au/eMarketing/Marketing/acer/2025/Acer%20ANZ%20Accelerate%20Partner%20Program%20PDF.pdf" target="_blank" rel="noopener">Acer ANZ Accelerate Partner Program</a><small>Acer ANZ · 2025</small></li><li><a href="https://channeldrive.in/applications/flipkart-acquires-mobiles-products-service-chain-f1-info-solutions/" target="_blank" rel="noopener">Flipkart acquires F1 Info Solutions</a><small>ChannelDrive · 2017</small></li><li><a href="https://www.netzwoche.ch/news/2024-01-25/acer-gruendet-tochterfirma-fuer-reparaturen-und-refurbishment" target="_blank" rel="noopener">Acer gründet Tochterfirma für Reparaturen und Refurbishment (Enfinitec)</a><small>Netzwoche · 2024-01-25</small></li><li><a href="https://www.taiwannews.com.tw/news/6197765" target="_blank" rel="noopener">Acer Enfinitec</a><small>Taiwan News · 2024</small></li></ol><p class="note"><span class="zh">公開網路資料，查詢日期 2026 年 10 月；每項陳述之查證狀態見「資料查證」頁。與內部文件不一致時，以內部文件為準。</span><span class="en">Public web sources, retrieved October 2026; the verification status of each statement is on the Verification page. Where they differ from internal documents, the internal documents prevail.</span> <button class="btn sm" type="button" data-go="corp-verify"><span class="zh">資料查證 →</span><span class="en">Verification →</span></button></p></details></section>
 
-      <section class="sub" id="sub-corp-verify" data-noabbr><h2><span class="zh">資料查證</span><span class="en">Verification register</span></h2><p class="lead zh">公司介紹中每一條公開事實的查證紀錄：原始敘述、查證後敘述、兩個獨立來源、查證結果與限制。狀態說明：已核實＝兩個以上獨立來源一致；單一來源＝僅一個來源；來源衝突＝來源互異；查無＝未找到可靠來源；內部文件＝僅見於內部教材。</p><p class="lead en">The verification record for every public statement in the company pages: original statement, verified statement, two independent sources, result and limitations. Verified = two or more independent sources agree; Single source = one source only; Conflicting = sources differ; Not found = no reliable source; Internal document = training material only.</p><div class="ab-tools"><div class="seg" id="ver-filter"></div><span class="count" id="ver-count"></span></div><div class="tbl ver-tbl"><table><thead><tr><th><span class="zh">公司</span><span class="en">Company</span></th><th><span class="zh">原始敘述</span><span class="en">Original statement</span></th><th><span class="zh">查證後敘述</span><span class="en">Verified statement</span></th><th><span class="zh">來源 1</span><span class="en">Source 1</span></th><th><span class="zh">來源 2</span><span class="en">Source 2</span></th><th><span class="zh">結果</span><span class="en">Result</span></th><th><span class="zh">衝突或限制</span><span class="en">Conflicts / limits</span></th><th><span class="zh">更新</span><span class="en">Updated</span></th></tr></thead><tbody id="ver-body"></tbody></table></div><p class="note"><span class="zh">第二輪網路查證已於 2026 年 10 月 27 日完成：每項敘述均搜尋兩個獨立來源，再由另一位查核者逐項複核。結果為 47 項經兩個獨立來源證實、16 項僅有單一來源、4 項來源說法不一、2 項查無可靠來源、2 項僅見於內部文件。</span><span class="en">The second round of web verification was completed on 27 October 2026: each statement was searched for two independent sources and then re-checked item by item by a second reviewer. Result: 47 statements verified by two independent sources, 16 with a single source, 4 with conflicting sources, 2 with no reliable source and 2 found only in internal documents.</span></p></section>
+      <section class="sub" id="sub-corp-verify" data-noabbr>
+        <h2><span class="zh">資料查證</span><span class="en">Verification register</span></h2>
+        <p class="lead zh">公司介紹裡每一句來自公開資料的話，都已逐句核對來源；每張卡片列出網站的寫法、證據來源與要留意的地方。</p>
+        <p class="lead en">Every statement in the company pages that comes from public sources was checked against its sources; each card lists the site's wording, the evidence and anything to note.</p>
+        <div class="ab-tools">
+          <div class="seg" id="ver-filter"></div>
+          <span class="count" id="ver-count"></span>
+        </div>
+        <div class="vcards" id="ver-body"></div>
+        <p class="note">
+          <span class="zh">查證方式：每一句話都搜尋兩個互相獨立的來源，再由另一位查核者逐項複核；最近一次查證為 2026 年 10 月 27 日。</span>
+          <span class="en">Method: each statement was searched for two independent sources and then re-checked item by item by a second reviewer; the latest check was on 27 October 2026.</span>
+        </p>
+      </section>
 
       <div class="pager"></div>
     </div>
@@ -2086,7 +2103,6 @@
     });
     $$("main .page").forEach(function (s) { s.classList.toggle("active", s.id === "page-" + p.id); });
     var page = $("page-" + p.id);
-    page.classList.toggle("wide", !!o.sub && o.sub[0] === "corp-verify");
     $$(".sub", page).forEach(function (s) { s.classList.toggle("active", !!o.sub && s.id === "sub-" + o.sub[0]); });
     $$(".subnav button", page).forEach(function (b) { b.classList.toggle("active", !!o.sub && b.getAttribute("data-go") === o.sub[0]); });
     var crumb = page.querySelector(".crumb");
@@ -3172,6 +3188,11 @@
 
   /* ---------- 資料查證：每條公開事實的查證紀錄（資料：verify.js） ---------- */
   var VS = { verified: ["已核實", "Verified"], single: ["單一來源", "Single source"], conflict: ["來源衝突", "Conflicting sources"], notfound: ["查無可靠來源", "Not found"], internal: ["內部文件", "Internal document"], pending: ["教材未載明全稱", "Full name not stated in the material"], standard: ["通用名詞", "Standard term"] };
+  var VS_HELP = { verified: ["兩個互相獨立的來源都這樣說，可以放心引用。", "Two independent sources say the same thing; safe to rely on."],
+    single: ["只找到一個來源這樣說，還沒有第二個來源佐證。", "Only one source says this; no second source yet."],
+    conflict: ["不同來源的說法不一樣，網站上把各方說法都列出來。", "Sources disagree; the site states each version."],
+    notfound: ["網路上找不到可靠的來源，網站上不當作確定的事實。", "No reliable source was found; the site does not present it as settled."],
+    internal: ["只有公司內部教材提到，公開資料查不到。", "Mentioned only in the internal training material; not found in public sources."] };
   var verFilter = "all";
   function vsTag(st) { var v = VS[st] || VS.pending; return '<span class="vs ' + st + '">' + B(v[0], v[1]) + "</span>"; }
   function verSrc(x) {
@@ -3179,18 +3200,27 @@
     if (!x.u) return esc(x.t) + (x.p ? "<small>" + esc(x.p) + "</small>" : "");
     return '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + "</a><small>" + esc(x.p) + (x.d ? " · " + esc(x.d) : "") + "</small>";
   }
+  function verSrcCard(x, n) {
+    if (!x) return "";
+    var t = x.u ? '<a href="' + esc(x.u) + '" target="_blank" rel="noopener">' + esc(x.t) + "</a>" : esc(x.t);
+    return '<li><span class="vk">' + B("來源 " + n, "Source " + n) + "</span>" + t + (x.p ? '<small>' + esc(x.p) + (x.d ? " · " + esc(x.d) : "") + "</small>" : "") + "</li>";
+  }
   function renderVer() {
     var V = window.PAP_VER || [], n = 0;
     $("ver-body").innerHTML = V.map(function (r) {
       var show = verFilter === "all" || r.status === verFilter;
       if (show) n++;
-      return "<tr" + (show ? "" : ' class="hide"') + ' id="ver-' + r.id + '"><td class="co">' + esc(r.co) + "</td><td>" + B(esc(r.zh), esc(r.en)) + "</td><td>" + B(esc(r.vz), esc(r.ve)) +
-        "</td><td>" + verSrc(r.s1) + "</td><td>" + verSrc(r.s2) + (r.more && r.more.length ? "<small>" + B("另 " + r.more.length + " 個來源", r.more.length + " more") + "</small>" : "") +
-        "</td><td>" + vsTag(r.status) + "</td><td>" + (r.nz || r.ne ? B(esc(r.nz), esc(r.ne)) : '<span class="no">—</span>') + "</td><td>" + esc(r.date) + "</td></tr>";
+      var changed = r.vz !== r.zh || r.ve !== r.en, help = VS_HELP[r.status];
+      var notes = (r.nz || r.ne) ? '<details class="vnote"><summary>' + B("要留意的地方", "Things to note") + "</summary><div>" + B(esc(r.nz), esc(r.ne)) + "</div></details>" : "";
+      return '<article class="vcard' + (show ? "" : " hide") + '" id="ver-' + r.id + '"><header><b class="vco">' + esc(r.co) + "</b>" + vsTag(r.status) + (help ? '<span class="vhelp">' + B(help[0], help[1]) + "</span>" : "") + '<span class="vdate">' + esc(r.date) + "</span></header>" +
+        '<p class="vsay"><span class="vk">' + B("網站的寫法", "What the site says") + "</span>" + B(esc(r.vz), esc(r.ve)) + "</p>" +
+        (changed ? '<details class="vorig"><summary>' + B("查證前原本的寫法", "Wording before the check") + "</summary><div>" + B(esc(r.zh), esc(r.en)) + "</div></details>" : "") +
+        '<ul class="vsrc">' + verSrcCard(r.s1, 1) + verSrcCard(r.s2, 2) + (r.more && r.more.length ? "<li><small>" + B("另有 " + r.more.length + " 個來源", r.more.length + " more sources") + "</small></li>" : "") + "</ul>" + notes + "</article>";
     }).join("");
     $("ver-count").innerHTML = B(n + " / " + V.length + " 條", n + " of " + V.length);
     $$("#ver-filter .btn").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-vs") === verFilter); });
   }
+
   (function () {
     var V = window.PAP_VER || [], counts = {};
     V.forEach(function (r) { counts[r.status] = (counts[r.status] || 0) + 1; });
