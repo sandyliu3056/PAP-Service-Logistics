@@ -1,0 +1,228 @@
+[
+ {
+  "id": "emerging-board",
+  "keys": [
+   "Emerging board"
+  ],
+  "code": "Emerging board",
+  "full": "Emerging Stock Board",
+  "zh": "興櫃",
+  "en": null,
+  "src": "m",
+  "cat": "term",
+  "dzh": "上市櫃前之交易市場。",
+  "den": "A pre-listing market for companies preparing to list.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "forecast",
+  "keys": [
+   "Forecast"
+  ],
+  "code": "Forecast",
+  "full": null,
+  "zh": "預測",
+  "en": null,
+  "src": "m",
+  "cat": "ops",
+  "dzh": "PAP 彙整提交 HQ 之需求預估。",
+  "den": "The consolidated demand estimate PAP submits to HQ.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "part-abc",
+  "keys": [
+   "Part ABC"
+  ],
+  "code": "Part ABC",
+  "full": null,
+  "zh": "料件分級",
+  "en": null,
+  "src": "m",
+  "cat": "ops",
+  "dzh": "決定最後採購階段之料件分級。",
+  "den": "Classification of spare parts into A, B and C, which determines the LTB stage.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "mass-lock-ml",
+  "keys": [
+   "Mass Lock (ML)"
+  ],
+  "code": "Mass Lock (ML)",
+  "full": null,
+  "zh": "量產鎖定",
+  "en": null,
+  "src": "m",
+  "cat": "ops",
+  "dzh": "EOL 前 3 個月，彙整全球成品最後需求。",
+  "den": "EOL − 3 m; the worldwide FG last demand is called to the ODMs.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "fulfillment",
+  "keys": [
+   "Fulfillment"
+  ],
+  "code": "Fulfillment",
+  "full": null,
+  "zh": "達交",
+  "en": null,
+  "src": "m",
+  "cat": "ops",
+  "dzh": "訂單依承諾交付。",
+  "den": "Delivery of orders as committed.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "b-c-sample",
+  "keys": [
+   "B / C sample",
+   "C sample"
+  ],
+  "code": "B / C sample",
+  "full": null,
+  "zh": "B／C 樣品",
+  "en": null,
+  "src": "m",
+  "cat": "part",
+  "dzh": "工程樣品階段。",
+  "den": "Successive engineering sample stages; the B sample starts the SPL flow, the C sample precedes the quotation.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "sp-template",
+  "keys": [
+   "SP template"
+  ],
+  "code": "SP template",
+  "full": null,
+  "zh": "備品範本",
+  "en": null,
+  "src": "m",
+  "cat": "part",
+  "dzh": "上傳 SPL 之範本。",
+  "den": "The template used to upload the SPL.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "master-asp",
+  "keys": [
+   "Master ASP"
+  ],
+  "code": "Master ASP",
+  "full": "Master ASP",
+  "zh": "",
+  "en": null,
+  "src": "m",
+  "cat": "site",
+  "dzh": "Acer 菲律賓官網對海柏特之標示。",
+  "den": "The designation given to HSN Philippines on Acer Philippines' website.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ },
+ {
+  "id": "parts-hub",
+  "keys": [
+   "Parts Hub"
+  ],
+  "code": "Parts Hub",
+  "full": null,
+  "zh": "備品中心",
+  "en": null,
+  "src": "m",
+  "cat": "site",
+  "dzh": "當地或區域備品存放點。",
+  "den": "Local or regional parts stocking point.",
+  "cc": null,
+  "region": null,
+  "org": null,
+  "urls": [
+   {
+    "t": "PAP Service Logistics Guide · Chapter 26",
+    "p": "本簡冊",
+    "u": ""
+   }
+  ],
+  "vs": "internal"
+ }
+]

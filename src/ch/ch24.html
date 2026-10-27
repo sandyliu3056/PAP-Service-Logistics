@@ -1,0 +1,69 @@
+<div class="box obj">
+  <h4><span class="en">In this chapter</span><span class="zh">本章學習目標</span></h4>
+  <ul class="bl">
+    <li><span class="en">Decode part numbers step by step.</span><span class="zh">逐步解析料號。</span></li>
+  </ul>
+</div>
+
+<div class="box start">
+  <h4><span class="en">Start here</span><span class="zh">先從這裡開始</span></h4>
+  <p class="en">Practice makes the rule automatic. This chapter works through real examples one character at a time, including the common mistake of reading a country code where none exists.</p>
+  <p class="zh">練習可使規則成為直覺。本章逐字解析實際範例，並包含一項常見錯誤：於不存在國別碼之處誤讀國別碼。</p>
+</div>
+
+<h3 class="sec" id="s24-1"><span class="num">24.1</span><span class="en">The Four-Step Method</span><span class="zh">四步驟解析法</span></h3>
+<ol class="steps">
+  <li><span class="n">1</span><div><b><span class="en">Remove the dots</span><span class="zh">去除小數點</span></b><p class="en">Write the ten characters in sequence.</p><p class="zh">依序寫出 10 個字元。</p></div></li>
+  <li><span class="n">2</span><div><b><span class="en">Read character 6</span><span class="zh">讀第 6 碼</span></b><p class="en">Identify the region.</p><p class="zh">判定區域。</p></div></li>
+  <li><span class="n">3</span><div><b><span class="en">Read character 7 if S</span><span class="zh">第 6 碼為 S 時讀第 7 碼</span></b><p class="en">Identify the country within AAP.</p><p class="zh">判定 AAP 內之國家。</p></div></li>
+  <li><span class="n">4</span><div><b><span class="en">Read the AA prefix</span><span class="zh">讀前兩碼</span></b><p class="en">Look up the sub-category.</p><p class="zh">查子類別。</p></div></li>
+</ol>
+<!-- WIDGET:decoder -->
+
+<h3 class="sec" id="s24-2"><span class="num">24.2</span><span class="en">Example: DG.B88SA.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">D</span><span class="pn-ch">G</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">A</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = S → AAP; 7th = A → ACA (Australia).</p>
+<p class="zh">AAP 區、澳洲用料號。</p>
+
+<h3 class="sec" id="s24-3"><span class="num">24.3</span><span class="en">Example: DG.B88SM.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">D</span><span class="pn-ch">G</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">M</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = S → AAP; 7th = M → ASSB (Malaysia). Compared with 24.2, only the 7th character differs: the same part, supplied to a different country.</p>
+<p class="zh">與 24.2 僅第 7 碼不同：同一料件、不同國家。</p>
+
+<h3 class="sec" id="s24-4"><span class="num">24.4</span><span class="en">Example: 86.B88SM.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">8</span><span class="pn-ch">6</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">M</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = S → AAP; 7th = M → Malaysia. The prefix 86 identifies a different sub-category.</p>
+<p class="zh">AAP 區、馬來西亞；前兩碼 86 表示另一子類別。</p>
+
+<h3 class="sec" id="s24-5"><span class="num">24.5</span><span class="en">Example: 6M.B88SJ.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">6</span><span class="pn-ch">M</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">J</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = S → AAP; 7th = J → AJC or AKC (Japan or Korea), which share the letter J.</p>
+<p class="zh">AAP 區；J 為日本／韓國共用。</p>
+
+<h3 class="sec" id="s24-6"><span class="num">24.6</span><span class="en">Example: DG.B88SS.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">D</span><span class="pn-ch">G</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">S</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = S → AAP; 7th = S → ACS (Singapore). The same letter carries a different meaning in each position.</p>
+<p class="zh">AAP 區、新加坡；同一字母於不同位置意義不同。</p>
+
+<h3 class="sec" id="s24-7"><span class="num">24.7</span><span class="en">Example: 23.B88TA.001</span><span class="zh">範例</span></h3>
+<figure class="fig plain">
+  <div class="pn"><span class="pn-ch">2</span><span class="pn-ch">3</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">T</span><span class="pn-ch">A</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+</figure>
+<p class="en">6th = T → TWN. Because the 6th character is not S, the 7th character is not read as an AAP country code.</p>
+<p class="zh">第 6 碼為 T（台灣）；非 S，故第 7 碼不依 AAP 國別判讀。</p>
+
+<div class="box key">
+  <h4><span class="en">KEY POINT</span><span class="zh">重點</span></h4>
+  <p class="en">The most frequent error is reading the 7th character when the 6th character is not S.</p>
+  <p class="zh">最常見之錯誤為第 6 碼非 S 時仍判讀第 7 碼。</p>
+</div>

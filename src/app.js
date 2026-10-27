@@ -159,10 +159,10 @@
   var WORLD_LABELS = [[225, 150, "PA"], [540, 215, "EMEA"], [790, 160, "ACCN"], [840, 300, "PAP"]];
   var HSNC = [
     ["HSNM", "my", "馬來西亞", "Malaysia", "est", "MYS"],
-    ["HSNI", "id", "印尼", "Indonesia", "est", "IDN"],
-    ["HSNV", "vn", "越南", "Vietnam", "est", "VNM"],
     ["HSNP", "ph", "菲律賓", "Philippines", "est", "PHL"],
     ["HSNT", "th", "泰國", "Thailand", "est", "THA"],
+    ["HSNI", "id", "印尼", "Indonesia", "est", "IDN"],
+    ["HSNV", "vn", "越南", "Vietnam", "est", "VNM"],
     ["HSN + India", "in", "印度", "India", "plan", "IND"],
     ["HSN + Australia", "au", "澳洲", "Australia", "plan", "AUS"],
     ["HSN + Japan", "jp", "日本", "Japan", "evalu", "JPN"]
@@ -1298,11 +1298,11 @@
   AB.forEach(function (a) { AB_BY_CODE[glKey(a.code)] = a.id; a.keys.forEach(function (k) { if (!AB_BY_CODE[glKey(k)]) AB_BY_CODE[glKey(k)] = a.id; }); });
   function glEntry(t) {
     var abid = AB_BY_CODE[glKey(t.code)];
-    var full = t.full ? esc(t.full) : NA("原始資料未載明全稱", "Full name not specified in the source");
-    return '<article class="gl" data-code="' + esc(glKey(t.code)) + '"' + (abid ? ' data-ab-id="' + abid + '"' : "") + '><span class="code">' + esc(t.code) + '</span><div><div class="gl-t">' + full +
+    var full = t.full ? esc(t.full) : (t.fullNotSpecified ? NA("原始資料未載明全稱", "Full name not specified in the source") : esc(t.code));
+    return '<article class="gl" data-code="' + esc(glKey(t.code)) + '"' + (abid ? ' data-ab-id="' + abid + '"' : "") + '>' + (abid ? '<button type="button" class="code" data-ab="' + abid + '" title="' + esc(t.code) + '">' + esc(t.code) + "</button>" : '<span class="code">' + esc(t.code) + "</span>") + '<div><div class="gl-t">' + full +
       (t.fullNotSpecified && t.full ? ' <span class="na">' + B("原始資料未載明", "not stated in the source") + "</span>" : "") + (t.zh ? ' <span class="zh">' + esc(t.zh) + "</span>" : "") + "</div>" +
       '<p class="en">' + esc(t.den) + '</p><p class="zh">' + esc(t.dzh) + "</p>" +
-      (abid ? '<div class="gl-meta"><button type="button" class="btn sm" data-ab="' + abid + '">' + B("代碼說明", "Code details") + "</button></div>" : "") + "</div></article>";
+      "</div></article>";
   }
   function renderGloss() {
     var box = $id("gl-groups"); if (!box || !GL) return;

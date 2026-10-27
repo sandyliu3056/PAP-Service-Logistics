@@ -1,0 +1,88 @@
+<div class="box obj">
+  <h4><span class="en">In this chapter</span><span class="zh">本章學習目標</span></h4>
+  <ul class="bl">
+    <li><span class="en">State the format AA.BBBCD.EEE.</span><span class="zh">說明格式 AA.BBBCD.EEE。</span></li>
+    <li><span class="en">Read the 6th and 7th characters correctly.</span><span class="zh">正確判讀第 6 碼與第 7 碼。</span></li>
+  </ul>
+</div>
+
+<div class="box start">
+  <h4><span class="en">Start here</span><span class="zh">先從這裡開始</span></h4>
+  <p class="en">Every spare part has a ten-character code called a part number. The code is not random: two of its positions state which region and which country the part is for. Learning to read those two positions is the single most useful skill in this guide.</p>
+  <p class="zh">每件備品皆有一組十字元代碼，稱為料號。此代碼並非隨機：其中兩個位置指出該零件所屬之區域與國家。學會判讀這兩個位置，是本簡冊中最實用的技能。</p>
+</div>
+
+<h3 class="sec" id="s23-1"><span class="num">23.1</span><span class="en">Format</span><span class="zh">格式</span></h3>
+<p class="en">A part number follows the format <b>AA.BBBCD.EEE</b> and contains ten characters; the dots are not counted. The first two characters (AA) are the sub-category code, the 6th character is the RO code, and the 7th character is the country code.</p>
+<p class="zh">料號格式為 AA.BBBCD.EEE，共 10 個字元（小數點不計）；前兩碼為子類別代碼，第 6 碼為區域（RO），第 7 碼為國別。</p>
+
+<figure class="fig">
+  <div class="pn"><span class="pn-ch">D</span><span class="pn-ch">G</span><span class="pn-dot">.</span><span class="pn-ch">B</span><span class="pn-ch">8</span><span class="pn-ch">8</span><span class="pn-ch hl">S</span><span class="pn-ch hl">A</span><span class="pn-dot">.</span><span class="pn-ch">0</span><span class="pn-ch">0</span><span class="pn-ch">1</span></div>
+  <div class="pn-legend">
+    <span><b>AA · 1–2</b> <span class="en">sub-category</span><span class="zh">子類別</span></span>
+    <span><b>BBB · 3–5</b> <span class="en">not specified</span><span class="zh">未載明</span></span>
+    <span><b>6</b> <span class="en">RO</span><span class="zh">區域</span></span>
+    <span><b>7</b> <span class="en">country</span><span class="zh">國別</span></span>
+    <span><b>EEE · 8–10</b> <span class="en">not specified</span><span class="zh">未載明</span></span>
+  </div>
+  <figcaption><b>Figure 23-1</b> <span class="en">DG.B88SA.001</span><span class="zh">料號結構</span></figcaption>
+</figure>
+
+<h3 class="sec" id="s23-2"><span class="num">23.2</span><span class="en">Segment by Segment</span><span class="zh">各段說明</span></h3>
+<div class="tblw">
+<table class="tbl">
+  <thead><tr><th><span class="en">Segment</span> <span class="zh">段</span></th><th><span class="en">Position</span> <span class="zh">位置</span></th><th><span class="en">Meaning</span> <span class="zh">意義</span></th></tr></thead>
+  <tbody>
+    <tr><td class="code">AA</td><td>1–2</td><td><span class="en">Sub-category code; see the sub-category table.</span> <span class="zh">子類別代碼。</span></td></tr>
+    <tr><td class="code">BBB</td><td>3–5</td><td><span class="en">Not specified in the source.</span> <span class="zh">未載明。</span></td></tr>
+    <tr><td class="code">C</td><td>6</td><td><span class="en">RO code — the region.</span> <span class="zh">區域代碼。</span></td></tr>
+    <tr><td class="code">D</td><td>7</td><td><span class="en">Country code within the AAP region.</span> <span class="zh">AAP 內之國別代碼。</span></td></tr>
+    <tr><td class="code">EEE</td><td>8–10</td><td><span class="en">Not specified in the source.</span> <span class="zh">未載明。</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="sec" id="s23-3"><span class="num">23.3</span><span class="en">The 6th Character — RO Code</span><span class="zh">第 6 碼：區域代碼</span></h3>
+<div class="tblw">
+<table class="tbl">
+  <thead><tr><th><span class="en">6th char</span> <span class="zh">第 6 碼</span></th><th><span class="en">Region</span> <span class="zh">區域</span></th></tr></thead>
+  <tbody>
+    <tr><td class="code">S</td><td><span class="en">AAP (Asia Pacific)</span> <span class="zh">亞太</span></td></tr>
+    <tr><td class="code">T</td><td><span class="en">TWN (Taiwan)</span> <span class="zh">台灣</span></td></tr>
+    <tr><td class="code">C</td><td><span class="en">ACCN (China)</span> <span class="zh">中國</span></td></tr>
+    <tr><td class="code">E</td><td><span class="en">EMEA</span></td></tr>
+    <tr><td class="code">A</td><td><span class="en">PA (Americas)</span> <span class="zh">美洲</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="sec" id="s23-4"><span class="num">23.4</span><span class="en">The 7th Character — Country Code</span><span class="zh">第 7 碼：國別代碼</span></h3>
+<p class="en">The 7th character is read <b>only when the 6th character is S (AAP)</b>. It identifies the country within the AAP region.</p>
+<p class="zh">僅當第 6 碼為 S（AAP）時才判讀第 7 碼，表示 AAP 區內之國家。</p>
+<div class="tblw">
+<table class="tbl">
+  <thead><tr><th><span class="en">7th char</span> <span class="zh">第 7 碼</span></th><th><span class="en">Subsidiary</span> <span class="zh">子公司</span></th><th><span class="en">Country</span> <span class="zh">國家</span></th></tr></thead>
+  <tbody>
+    <tr><td class="code">M</td><td class="code">ASSB</td><td><span class="en">Malaysia</span> <span class="zh">馬來西亞</span></td></tr>
+    <tr><td class="code">A</td><td class="code">ACA</td><td><span class="en">Australia</span> <span class="zh">澳洲</span></td></tr>
+    <tr><td class="code">S</td><td class="code">ACS</td><td><span class="en">Singapore</span> <span class="zh">新加坡</span></td></tr>
+    <tr><td class="code">I</td><td class="code">AIL</td><td><span class="en">India</span> <span class="zh">印度</span></td></tr>
+    <tr><td class="code">T</td><td class="code">ATH</td><td><span class="en">Thailand</span> <span class="zh">泰國</span></td></tr>
+    <tr><td class="code">N or D</td><td class="code">AIN</td><td><span class="en">Indonesia</span> <span class="zh">印尼</span></td></tr>
+    <tr><td class="code">J</td><td class="code">AJC or AKC</td><td><span class="en">Japan or Korea</span> <span class="zh">日本或韓國</span></td></tr>
+    <tr><td class="code">P</td><td class="code">APHI</td><td><span class="en">Philippines</span> <span class="zh">菲律賓</span></td></tr>
+    <tr><td class="code">V</td><td class="code">AVN</td><td><span class="en">Vietnam</span> <span class="zh">越南</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box key">
+  <h4><span class="en">KEY POINT</span><span class="zh">重點</span></h4>
+  <p class="en">Two letters are shared or doubled: <b>J</b> serves both Japan and Korea, and Indonesia uses either <b>N</b> or <b>D</b>. The letters S and T also appear as RO codes in the 6th position; their meaning depends on the position.</p>
+  <p class="zh">J 為日本、韓國共用；印尼使用 N 或 D。S 與 T 亦為第 6 碼之區域代碼，意義依位置而定。</p>
+</div>
+
+<h3 class="sec" id="s23-5"><span class="num">23.5</span><span class="en">The Sub-category Code (AA)</span><span class="zh">子類別代碼</span></h3>
+<p class="en">The first two characters map to a sub-category, a category (product model) and a product group in the sub-category table. Prefixes not found in the table, such as DG, require confirmation.</p>
+<p class="zh">前兩碼對應子類別對照表中之子類別、類別與產品群組；未列之代碼（如 DG）須另行確認。</p>
+<!-- WIDGET:subcat -->

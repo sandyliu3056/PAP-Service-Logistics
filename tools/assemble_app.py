@@ -49,7 +49,17 @@ mapcore = patch(mapcore, 'var NAV_OF = { "map-ns": "nav-ns", "map-sites": "nav-s
                 'var NAV_OF = { "map-ns": "nav-ns", "map-sites": "nav-sites", "map-hsn": "nav-hsn" };', name="NAV_OF")
 mapcore = patch(mapcore, 'var nm = function (zh, en) { return LANG === "en" ? en : zh; };', 'var nm = function (zh, en) { return LANG === "en" ? en : zh; };', name="nm")
 parts.append(mapcore)
-parts.append(block(r"^  var WORLD_LABELS", r"^  var NS_ISO = .*$"))
+wl = block(r"^  var WORLD_LABELS", r"^  var NS_ISO = .*$")
+# HSN Group companies in the guide's order (Table 16.3): Malaysia, Philippines, Thailand, Indonesia, Vietnam
+_rows = re.findall(r'^    \["HSN[MIVPT]".*$', wl, re.M)
+_order = {"HSNM": 0, "HSNP": 1, "HSNT": 2, "HSNI": 3, "HSNV": 4}
+_sorted = sorted(_rows, key=lambda r: _order[r[6:10]])
+for _o, _n in zip(_rows, _sorted):
+    pass
+_blk = "\n".join(_rows)
+assert _blk in wl, "HSN rows not contiguous"
+wl = wl.replace(_blk, "\n".join(r.rstrip(",") + "," for r in _sorted))
+parts.append(wl)
 pick = block(r"^  function pickPin\(cc\) \{", r"^  \}$")
 pick += '''  (function () {
     var m = $id("map-sites"); if (!m) return;

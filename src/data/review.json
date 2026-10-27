@@ -1,0 +1,38 @@
+{
+  "questions": [
+    {"n": 1, "qen": "Where does the PAP service logistics team sit in the organisation?", "qzh": "PAP 位於組織何處？", "aen": "Between the nation subsidiaries (NS) and headquarters (HQ), as the regional office (RO).", "azh": "介於 NS 與 HQ 之間，為 RO。"},
+    {"n": 2, "qen": "Name the five stages in the journey of a spare part.", "qzh": "備品旅程五階段？", "aen": "Demand planning, purchasing, warehousing and part numbers, supply to the countries, repair.", "azh": "需求規劃、採購、倉儲與料號、供應各國、維修。"},
+    {"n": 3, "qen": "Which business model describes Acer's cooperation with Compal?", "qzh": "宏碁與仁寶屬何種模式？", "aen": "ODM — Compal designs and builds to Acer's requirements.", "azh": "ODM。"},
+    {"n": 4, "qen": "Why must the term OEM be read in context?", "qzh": "OEM 為何須依上下文判讀？", "aen": "In Taiwan it usually means building to a client's design; in the Western PC industry 'PC OEM' often means the brand itself.", "azh": "台灣與歐美用法不同。"},
+    {"n": 5, "qen": "What is Acer's stock code and year of founding?", "qzh": "宏碁股票代號與創立年？", "aen": "2353; 1976 (as Multitech).", "azh": "2353；1976 年。"},
+    {"n": 6, "qen": "Which two regions merged to form PAP, and when?", "qzh": "PAP 由哪兩區整併？", "aen": "TWN and AAP, in 2016/2017.", "azh": "TWN 與 AAP，2016/2017 年。"},
+    {"n": 7, "qen": "What does the M in HSNM represent?", "qzh": "HSNM 之 M 代表？", "aen": "Malaysia.", "azh": "馬來西亞。"},
+    {"n": 8, "qen": "State the HSN strategy.", "qzh": "海柏特之策略？", "aen": "Multi-country, multi-product, multi-brand.", "azh": "多國、多品項、多品牌。"},
+    {"n": 9, "qen": "List Compal's three duties toward PAP.", "qzh": "仁寶對 PAP 之三項職責？", "aen": "Receives POs (via CSS/PLS); provides B sample, SPL draft and quotation; updates the MP Service BOM monthly.", "azh": "接受 PO；提供樣品、草稿與報價；每月更新 MP BOM。"},
+    {"n": 10, "qen": "Name Taiwan's five major notebook ODMs.", "qzh": "台灣五大筆電代工廠？", "aen": "Quanta, Compal, Wistron, Inventec, Pegatron.", "azh": "廣達、仁寶、緯創、英業達、和碩。"},
+    {"n": 11, "qen": "What does ABW stand for?", "qzh": "ABW 代表？", "aen": "Acer, BenQ, Wistron.", "azh": "宏碁、明基、緯創。"},
+    {"n": 12, "qen": "Which subsidiary is Acer's general agent in Taiwan?", "qzh": "宏碁台灣總代理？", "aen": "Weblink International (展碁), since July 2014.", "azh": "展碁。"},
+    {"n": 13, "qen": "Which NS covers New Zealand, and which covers Sri Lanka, Mongolia and Nepal?", "qzh": "代管國家之管轄？", "aen": "ACA (through ACNZ); ACS (Singapore).", "azh": "ACA；ACS。"},
+    {"n": 14, "qen": "Which six countries have Uni-load?", "qzh": "哪六國設有 Uni-load？", "aen": "Australia, India, Malaysia, Thailand, Indonesia and Singapore.", "azh": "澳、印、馬、泰、印尼、新加坡。"},
+    {"n": 15, "qen": "How many ASPs and outsourced service centres does PAP have (CSD Q2 2025)?", "qzh": "ASP 與外包服務中心數量？", "aen": "507 ASPs and 216 outsourced service centres.", "azh": "507 處與 216 處。"},
+    {"n": 16, "qen": "Which systems can an ASP use?", "qzh": "ASP 可使用哪些系統？", "aen": "PLM and CSS.", "azh": "PLM 與 CSS。"},
+    {"n": 17, "qen": "At which NB stage are C, B and A parts last bought?", "qzh": "C、B、A 類於何階段最後採購？", "aen": "C at AML, B at PPB1, A at PPB2.", "azh": "AML、PPB1、PPB2。"},
+    {"n": 18, "qen": "Which MOQ applies during and after MP?", "qzh": "量產期間與之後之 MOQ？", "aen": "Acer MOQ during MP; ODM MOQ after MP.", "azh": "期間 Acer MOQ；之後 ODM MOQ。"},
+    {"n": 19, "qen": "Who manages Korea (AKC)?", "qzh": "韓國由誰管理？", "aen": "Japan (AJC).", "azh": "日本（AJC）。"},
+    {"n": 20, "qen": "Does an ASP repair units?", "qzh": "ASP 是否維修？", "aen": "No. An ASP receives units; repairs are performed at service centres.", "azh": "否，僅收件。"},
+    {"n": 21, "qen": "Describe the Australian approach for tenders.", "qzh": "澳洲模式？", "aen": "Buy semi-finished parts from the ODM, source SSD/HDD locally and assemble locally to meet the tender price.", "azh": "半成品向 ODM 採購，SSD/HDD 當地採購並組裝。"},
+    {"n": 22, "qen": "What changes on 1 December 2026?", "qzh": "2026/12/1 之調整？", "aen": "Parts purchased by PAP are supplied through HSN Group before reaching the NS.", "azh": "PAP 採購之料件改經 HSN Group 供應。"},
+    {"n": 23, "qen": "Define HFP.", "qzh": "HFP 定義？", "aen": "Hold For Part — repair cases delayed by parts on backorder.", "azh": "待料。"},
+    {"n": 24, "qen": "In which system is a PO created, and in which is it confirmed?", "qzh": "PO 於何系統建立與確認？", "aen": "Created in CSS; confirmed to the ODM in PLS.", "azh": "CSS 建立；PLS 確認。"},
+    {"n": 25, "qen": "When is the SPL released, and what happens if the markup review fails?", "qzh": "SPL 何時發布？未通過如何？", "aen": "At FCS minus one week; the flow returns to step 03 for a new SPL draft.", "azh": "FCS 前一週；退回 03。"},
+    {"n": 26, "qen": "Who updates the MP Service BOM and how often?", "qzh": "MP BOM 由誰、多久更新？", "aen": "The ODM, monthly.", "azh": "ODM，每月。"},
+    {"n": 27, "qen": "Decode DG.B88SM.001.", "qzh": "解析 DG.B88SM.001。", "aen": "6th = S (AAP); 7th = M (ASSB, Malaysia).", "azh": "AAP 區、馬來西亞。"},
+    {"n": 28, "qen": "Which country does 7th character V or P represent?", "qzh": "第 7 碼 V、P 代表？", "aen": "V = AVN (Vietnam); P = APHI (Philippines).", "azh": "越南；菲律賓。"},
+    {"n": 29, "qen": "Why is the 7th character of 23.B88TA.001 not read as a country?", "qzh": "23.B88TA.001 第 7 碼為何不判讀？", "aen": "Because the 6th character is T (TWN), not S.", "azh": "第 6 碼為 T，非 S。"},
+    {"n": 30, "qen": "What is AMI?", "qzh": "AMI 是什麼？", "aen": "The company code of the Indonesian Uni-load assembly company.", "azh": "印尼 Uni-load 組裝廠代碼。"}
+  ],
+  "sources": {
+    "en": "Company profiles and milestones are compiled from public sources retrieved in October 2026, including Acer, Compal and AUO corporate publications, the Central News Agency, Commercial Times (工商時報), DIGITIMES, TechNews (科技新報), Business Next (數位時代), Business Today (今周刊), Taipei Times, Bangkok Post and Wikipedia. Organisational and operational content follows the internal training material PAP Service Logistics. Where public sources differ from internal documents, internal documents prevail.",
+    "zh": "公司簡介與沿革整理自 2026 年 10 月查詢之公開資料；組織與作業內容依 PAP 內部教材。公開資料與內部文件不一致時，以內部文件為準。"
+  }
+}
