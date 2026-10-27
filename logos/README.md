@@ -11,3 +11,4 @@
 ## 手繪示意 logo
 
 `hsn`、`compal`、`quanta`、`wistron`、`inventec`、`pegatron`、`foxconn`、`auo`、`qisda`、`weblink`、`acsi`、`aeb`、`ast`、`aopen`、`acergaming`、`acergadget`、`acerpure`、`acermedical`、`enfinitec` 目前為本站自行繪製的示意圖（公司名稱＋首字圓章，角落註明 hand-drawn），僅供內部自用，不是各公司的官方商標；網站上會標示「手繪示意」。取得官方素材後以同檔名覆蓋即可。
+- `acergadget.svg`：倚天酷碁（Acer Gadget）logo，依官方樣式以 Acer 字標加中文名稱「倚天酷碁」組成，商標屬宏碁所有。

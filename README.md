@@ -32,6 +32,7 @@ PAP 服務物流組織與作業介紹網站（中文／English），版型沿用
 - `org.js`：企業架構圖的節點、連線與版面資料
 - `verify.js`、`VERIFICATION.md`：資料查證清單（同一份資料，分別供網頁與閱讀用），由 `python3 tools/build_verify.py` 依 `src/data/ver_data.json` 與 `src/data/ver_sources.json` 產生
 - `world.js`：世界地圖輪廓
+- `vendor/rough.js`：手繪線條（[rough.js](https://github.com/rough-stuff/rough) 4.6.6，MIT，授權見 `vendor/rough-LICENSE.txt`），用於架構圖與各流程圖的方框、連線與箭頭
 - `flags/`：國旗圖示；`logos/`：公司 logo
 - `favicon.svg`
 

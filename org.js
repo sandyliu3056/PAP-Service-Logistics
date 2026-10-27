@@ -115,9 +115,11 @@ window.PAP_ORG = (function () {
   ];
   var LAYOUT = {
     root: "acer",
-    left: "g-odm", right: "g-svc",
+    // 第二層：左側為外部（ODM、服務夥伴），右側為宏碁持股之子公司與泛宏碁集團，由宏碁沿右側連線
+    band2: ["g-odm", "g-svc", "g-subs", "g-fam"],
+    band2Parent: { "g-subs": "acer", "g-fam": "acer" },
     kids: {
-      acer: { mode: "row", kids: ["g-hq", "g-reg", "g-subs", "g-fam"] },
+      acer: { mode: "row", kids: ["g-hq", "g-reg"] },
       "g-hq": { mode: "list", kids: ["hqpm", "qsbu", "csd"] },
       "g-reg": { mode: "row", kids: ["pa", "emea", "pap", "accn"] },
       pap: { mode: "cols", cols: 2, kids: ["assb", "aca", "ail", "ath", "ain", "avn", "ajc", "akc", "afe", "aphi", "acs"] },
