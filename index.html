@@ -650,6 +650,7 @@
   .regions.five > .node { margin-top:14px; min-width:96px; }
   .pap-group.merge { padding:12px 16px 14px; gap:2px; }
   .pap-group.merge .pap-from .node { min-width:96px; }
+  .ro-tag { display:block; margin:6px 0 -2px; padding:2px 12px; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--mute); font-size:.8rem; position:relative; z-index:1; }
   .merge-arrow { color:var(--r-pap); font-weight:700; font-size:1.3rem; line-height:1.1; margin-top:6px; }
   .merge-tag { color:var(--mute); font-size:.78rem; margin:0 0 6px; }
   .pap-tag { position:absolute; left:50%; bottom:-11px; transform:translateX(-50%); background:var(--card); color:var(--mute); font-size:.66rem; font-weight:400; padding:0 9px; border:1px solid var(--line); border-radius:999px; white-space:nowrap; }
@@ -1330,12 +1331,13 @@
     <nav class="subnav" data-page="org"></nav>
     <div class="subbody">
       <section class="sub" id="sub-org-global"><h2><span class="zh">全球區域</span><span class="en">Global regions</span></h2><div data-noabbr>
-        <p class="lead zh">Acer 總部（HQ）底下分為五個區域：PA（US）、EMEA（EU）、TWN（TW，台灣）、AAP（亞太地區）與 ACCN（China）；其中 TWN 與 AAP 於 2016/2017 年合併為 PAP。</p>
-        <p class="lead en">Under Acer headquarters (HQ) are five regions: PA (US), EMEA (EU), TWN (TW, Taiwan), AAP (Asia Pacific) and ACCN (China). TWN and AAP merged into PAP in 2016/2017.</p>
+        <p class="lead zh">Acer 總部（HQ）底下有五個區域辦公室（RO）：PA（US）、EMEA（EU）、TWN（TW，台灣）、AAP（亞太地區）與 ACCN（China），2010 年以前各自獨立運作；其中 TWN 與 AAP 於 2016/2017 年合併為 PAP。</p>
+        <p class="lead en">Under Acer headquarters (HQ) are five regional offices (RO): PA (US), EMEA (EU), TWN (TW, Taiwan), AAP (Asia Pacific) and ACCN (China), which operated independently before 2010. TWN and AAP merged into PAP in 2016/2017.</p>
         <div class="block">
           <div class="orgchart" role="img" aria-label="HQ → PA (US), EMEA (EU), TWN (TW), AAP (Asia Pacific), ACCN (China); TWN + AAP = PAP">
             <span class="node hq"><span class="code">HQ</span><small><span class="zh">總部</span><span class="en">Headquarters</span></small></span>
             <span class="stem"></span>
+            <span class="ro-tag"><span class="zh">五個區域辦公室（RO）· 2010 年以前各自獨立</span><span class="en">Five regional offices (RO) · independent before 2010</span></span>
             <div class="regions five">
               <span class="node"><span class="code">PA</span><small><span class="zh">US · 美國</span><span class="en">US</span></small></span>
               <span class="node"><span class="code">EMEA</span><small><span class="zh">EU · 歐洲</span><span class="en">EU</span></small></span>
@@ -1354,9 +1356,17 @@
           </div>
         </div>
         <div class="block">
+          <h3><span class="zh">區域的演變</span><span class="en">How the regions changed</span></h3>
+          <div class="steps">
+            <div><span class="sn">1</span><b><span class="zh">五個 RO 各自獨立</span><span class="en">Five independent ROs</span></b><p><span class="zh">HQ 底下的 PA、EMEA、TWN、AAP、ACCN 各自獨立運作。</span><span class="en">PA, EMEA, TWN, AAP and ACCN under HQ each operated on their own.</span></p><small><span class="zh">2010 年以前</span><span class="en">Before 2010</span></small></div>
+            <div><span class="sn">2</span><b><span class="zh">TWN 與 AAP 合併</span><span class="en">TWN and AAP merge</span></b><p><span class="zh">台灣區（TWN）與亞太地區（AAP）合併為泛亞太區（PAP）。</span><span class="en">The Taiwan region (TWN) and Asia Pacific (AAP) merged into Pan Asia Pacific (PAP).</span></p><small>2016/2017</small></div>
+            <div><span class="sn">3</span><b><span class="zh">現行架構</span><span class="en">Today</span></b><p><span class="zh">HQ 底下為 PA、EMEA、PAP 與 ACCN；各區既有的作業方式仍受尊重。</span><span class="en">HQ oversees PA, EMEA, PAP and ACCN; each region's established way of working is still respected.</span></p></div>
+          </div>
+        </div>
+        <div class="block">
           <h3><span class="zh">AAP 與 PAP 的差別</span><span class="en">AAP and PAP: the difference</span></h3>
           <div class="cards wide">
-            <div><b>AAP</b><small><span class="zh">Asia Pacific · 亞太地區</span><span class="en">Asia Pacific</span></small><p><span class="zh">整併前五個區域之一，涵蓋台灣以外的亞太各國，與台灣區（TWN）並列。整併後其代碼仍用於料號第 6 碼（S），第 7 碼的國別代碼即適用於 AAP 各國。</span><span class="en">One of the five regions before the merger, covering the Asia Pacific countries other than Taiwan, alongside the Taiwan region (TWN). Its code lives on as the 6th character of part numbers (S), and the 7th-character country codes apply to the AAP countries.</span></p></div>
+            <div><b>AAP</b><small><span class="zh">Asia Pacific · 亞太地區</span><span class="en">Asia Pacific</span></small><p><span class="zh">整併前五個 RO 之一，涵蓋台灣以外的亞太各國，與台灣區（TWN）並列。整併後其代碼仍用於料號第 6 碼（S），第 7 碼的國別代碼即適用於 AAP 各國。</span><span class="en">One of the five ROs before the merger, covering the Asia Pacific countries other than Taiwan, alongside the Taiwan region (TWN). Its code lives on as the 6th character of part numbers (S), and the 7th-character country codes apply to the AAP countries.</span></p></div>
             <div><b>TWN</b><small><span class="zh">TW · 台灣區</span><span class="en">TW · Taiwan</span></small><p><span class="zh">整併前獨立的台灣區，料號第 6 碼為 T。</span><span class="en">The separate Taiwan region before the merger; T as the 6th character of part numbers.</span></p></div>
             <div><b>PAP</b><small><span class="zh">Pan Asia Pacific · 泛亞太區</span><span class="en">Pan Asia Pacific</span></small><p><span class="zh">2016/2017 年由 TWN 與 AAP 整併而成的現行區域，即區域辦公室（RO），轄下設有 11 個國家子公司（NS）。PAP 本身沒有料號代碼，沿用 AAP 的 S 與 TWN 的 T。</span><span class="en">The current region formed in 2016/2017 by merging TWN and AAP; it is the regional office (RO) with 11 nation subsidiaries (NS). PAP has no part-number code of its own and keeps AAP's S and TWN's T.</span></p></div>
           </div>
@@ -2932,7 +2942,7 @@
   ];
   // [id, 內文中要標示的字, 顯示名稱, 全稱, 中文名稱, 來源, 分類, 中文說明, English, English 名稱（無全稱時）]
   var AB = [
-    {"id":"hq","keys":["HQ"],"code":"HQ","full":"Headquarters","zh":"總部","en":null,"src":"s","cat":"org","dzh":"Acer 總部，轄下設有 PA、EMEA、TWN、AAP、ACCN 等區域。PAP 彙整各 NS 之需求預測與特殊支援需求後提交 HQ。","den":"Acer headquarters, overseeing PA, EMEA, TWN, AAP and ACCN. PAP consolidates demand forecasts and special support requests from the NS and submits them to HQ.","cc":null,"region":null,"org":"Acer Inc.","urls":[{"t":"Headquarters","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Headquarters"},{"t":"內部教材 第 2 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"hq","keys":["HQ"],"code":"HQ","full":"Headquarters","zh":"總部","en":null,"src":"s","cat":"org","dzh":"Acer 總部，轄下設有 PA（US）、EMEA（EU）、TWN（TW）、AAP（亞太地區）、ACCN（China）五個區域辦公室（RO），2010 年以前各自獨立運作；其中 TWN 與 AAP 後來合併為 PAP。PAP 彙整各 NS 之需求預測與特殊支援需求後提交 HQ。","den":"Acer headquarters, overseeing five regional offices (RO): PA (US), EMEA (EU), TWN (TW), AAP (Asia Pacific) and ACCN (China), which operated independently before 2010; TWN and AAP later merged into PAP. PAP consolidates demand forecasts and special support requests from the NS and submits them to HQ.","cc":null,"region":null,"org":"Acer Inc.","urls":[{"t":"Headquarters","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Headquarters"},{"t":"內部教材 第 2 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"pa","keys":["PA"],"code":"PA","full":"Pan America","zh":"泛美區（US）","en":null,"src":"s","cat":"org","dzh":"Acer 美洲區域，與 EMEA、TWN、AAP、ACCN 同屬 HQ 轄下。料號第 6 碼 A 代表 PA。","den":"Acer's Americas region, alongside EMEA, TWN, AAP and ACCN under HQ. A as the 6th character of a part number denotes PA.","cc":null,"region":"PA","org":"Acer Inc.","urls":[{"t":"Acer 4Q23 investor presentation（區域劃分）","p":"Acer · 2024","u":"https://images.acer.com/is/content/acer/Acer%204Q23%20Investor%20presentation-Engpdf"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"emea","keys":["EMEA"],"code":"EMEA","full":"Europe, Middle East & Africa","zh":"歐洲、中東與非洲區（EU）","en":null,"src":"s","cat":"org","dzh":"Acer 歐洲、中東與非洲區域。料號第 6 碼 E 代表 EMEA。","den":"Acer's Europe, Middle East and Africa region. E as the 6th character of a part number denotes EMEA.","cc":null,"region":"EMEA","org":"Acer Inc.","urls":[{"t":"Acer announces EMEA management changes","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"accn","keys":["ACCN"],"code":"ACCN","full":null,"zh":"中國區（China）","en":"China","src":"m","cat":"org","dzh":"中國區，與 PAP 同屬 HQ 轄下，獨立運作。料號第 6 碼 C 代表 ACCN。","den":"China region, a peer of PAP under HQ that operates independently. C as the 6th character of a part number denotes ACCN.","cc":"cn","region":"ACCN","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
