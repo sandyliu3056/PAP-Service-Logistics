@@ -407,7 +407,6 @@
   .pnode.hq small { color:var(--hdr-sub); }
   .pnode.hot { background:var(--hover); border-color:var(--primary); }
   .parr { color:var(--navy); font-weight:700; }
-  .team-box { border:2px dashed var(--r-pap); border-radius:12px; padding:10px 12px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; }
 
   /* 職能卡 */
   .fn h3 small { display:block; color:var(--accent); font-size:.76rem; font-weight:700; letter-spacing:.1em; }
@@ -831,45 +830,6 @@
           <p class="note zh">國家對應依據「PAP Service Org.」。AKC 由 AJC 管理，兩者料號國別代碼皆為 J；AFE 未載明所屬國家。</p>
           <p class="note en">Country mapping follows the "PAP Service Org." table. AKC is managed by AJC, and both use country code J in part numbers. No country is specified for AFE.</p>
         </div>
-      </section>
-
-      <section class="sub" id="sub-org-team">
-        <h2><span class="zh">團隊架構</span><span class="en">Team structure</span></h2>
-        <p class="lead zh">PAP 服務物流團隊之匯報關係與週會時間。</p>
-        <p class="lead en">Reporting line of the PAP service logistics team and its weekly meeting.</p>
-        <div class="box">
-          <div class="prow">
-            <span class="plabel">PAP</span>
-            <span class="pnode hq"><b>Andrew Hou</b><small>GM</small></span>
-          </div>
-          <div class="prow">
-            <span class="plabel">Service</span>
-            <span class="pnode"><b>Jacky Lin</b><small>AVP <span class="zh">協理</span> · <span class="zh">兼任 HSN Group GM</span><span class="en">also GM, HSN Group</span></small></span>
-            <span class="parr">→</span>
-            <span class="pnode"><b>Dicky</b></span>
-          </div>
-          <div class="prow">
-            <span class="plabel"><span class="zh">團隊成員</span><span class="en">Team members</span></span>
-            <span class="team-box">
-              <span class="pnode"><b>Vivian</b></span><span class="parr">→</span>
-              <span class="pnode hot"><b>Angelin</b></span><span class="parr">→</span>
-              <span class="pnode"><b>Chloe</b></span><span class="parr">→</span>
-              <span class="pnode hot"><b>Sherry</b></span><span class="parr">→</span>
-              <span class="pnode hot"><b>Hannah</b></span><span class="parr">→</span>
-              <span class="pnode"><b>Sandy</b></span>
-            </span>
-          </div>
-          <div class="prow">
-            <span class="plabel"><span class="zh">職能分工</span><span class="en">Functions</span></span>
-            <span class="chip">Customer (NS-Service)</span><span class="chip">Quality</span><span class="chip">Planner</span><span class="chip">Purchase</span>
-          </div>
-          <div class="prow">
-            <span class="plabel"><span class="zh">週會</span><span class="en">Weekly meeting</span></span>
-            <span><span class="zh">每週二 11:00–12:00</span><span class="en">Tuesdays, 11:00–12:00</span></span>
-          </div>
-        </div>
-        <p class="note zh">標示者（Angelin、Sherry、Hannah）自 2026 年 12 月 1 日起轉任 HSN Group。</p>
-        <p class="note en">Highlighted members (Angelin, Sherry, Hannah) transfer to HSN Group effective 1 December 2026.</p>
       </section>
 
       <section class="sub" id="sub-org-points">
@@ -1519,8 +1479,8 @@
     { id: "overview", zh: "總覽", en: "Overview", subs: [] },
     { id: "corp", zh: "企業介紹", en: "Companies", dzh: "企業關係、宏碁、海柏特、仁寶、ODM 與 OEM 及相關報導", den: "Relationships, Acer, HSN, Compal, ODM vs OEM and articles",
       subs: [["corp-map", "企業關係", "How they relate"], ["corp-acer", "宏碁 Acer", "Acer"], ["corp-hsn", "海柏特 HSN", "HSN"], ["corp-compal", "仁寶 Compal", "Compal"], ["corp-odm", "ODM 與 OEM", "ODM and OEM"], ["corp-news", "相關報導", "Related articles"]] },
-    { id: "org", zh: "組織", en: "Organisation", dzh: "全球區域、全球據點、PAP 組織、團隊架構與組織要點", den: "Regions, offices worldwide, PAP organisation, team and key points",
-      subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-team", "團隊架構", "Team structure"], ["org-points", "組織要點", "Key points"]] },
+    { id: "org", zh: "組織", en: "Organisation", dzh: "全球區域、全球據點、PAP 組織與組織要點", den: "Regions, offices worldwide, PAP organisation and key points",
+      subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-points", "組織要點", "Key points"]] },
     { id: "sites", zh: "服務據點", en: "Service sites", dzh: "據點分布、倉庫、標案與據點類型", den: "Footprint, warehouses, tenders and site types",
       subs: [["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"], ["sites-types", "據點類型", "Site types"]] },
     { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
@@ -1531,7 +1491,7 @@
       subs: [["pn-rule", "命名規則", "Naming rule"], ["pn-decode", "料號解析", "Decoder"], ["pn-subcat", "子類別對照", "Sub-categories"]] },
     { id: "ref", zh: "代碼與縮寫", en: "Codes & terms", dzh: "子公司、區域、HSN 代碼與縮寫說明", den: "Subsidiary, region and HSN codes, abbreviations",
       subs: [["ref-ns", "子公司代碼", "Subsidiary codes"], ["ref-region", "區域代碼", "Region codes"], ["ref-other", "其他國家與單位", "Other countries and units"], ["ref-hsn", "HSN 代碼", "HSN codes"], ["ref-abbr", "縮寫說明", "Abbreviations"]] },
-    { id: "review", zh: "重點複習", en: "Review", dzh: "19 題重點複習", den: "19 review questions", subs: [] }
+    { id: "review", zh: "重點複習", en: "Review", dzh: "18 題重點複習", den: "18 review questions", subs: [] }
   ];
   var ORDER = [], navN = 0;
   NAV.forEach(function (p) {
@@ -2039,13 +1999,13 @@
   var CH = {
     overview: ["定位、涵蓋區域與重點數據", "Role, coverage and key figures"],
     corp: ["宏碁、海柏特、仁寶之沿革與業務，ODM 與 OEM 說明", "Acer, HSN and Compal: history and business; ODM and OEM explained"],
-    org: ["全球區域、全球據點、PAP 組織與團隊", "Regions, offices, PAP organisation and team"],
+    org: ["全球區域、全球據點、PAP 組織與組織要點", "Regions, offices, PAP organisation and key points"],
     sites: ["服務據點分布、倉庫、Uni-load 與標案", "Service sites, warehouses, Uni-load and tenders"],
     hsn: ["Highpoint Service Network（海柏特）概要與 2026/12/1 起之流程調整", "Highpoint Service Network overview and the process change effective 1 Dec 2026"],
     ops: ["PAP 團隊之日常工作：職責、職能、系統、SPL 定義流程與 Service BOM", "The PAP team's day-to-day work: responsibilities, functions, systems, SPL flow and Service BOM"],
     pn: ["料號命名規則與逐碼解析", "Part-number rules and decoder"],
     ref: ["子公司、區域、HSN 代碼與縮寫", "Subsidiary, region and HSN codes, abbreviations"],
-    review: ["19 題重點複習", "19 review questions"]
+    review: ["18 題重點複習", "18 review questions"]
   };
   $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p) {
     var d = CH[p.id];
@@ -2484,8 +2444,7 @@
     ["ASP 是否提供維修服務？", "Do ASPs provide repairs?", "否。ASP 不具維修能力，提供收件（收機）服務。", "No. ASPs do not repair; they take in units."],
     ["設置 Uni-load 的主要目的為何？", "What is the main purpose of Uni-load?", "滿足當地客戶（如標案）之規格與成本要求，例如澳洲向 ODM 採購半成品，並於當地採購 SSD、HDD 組裝。", "To meet local customers' specifications and costs (e.g. tenders); Australia, for example, buys semi-finished parts from the ODM and assembles them with locally sourced SSDs and HDDs."],
     ["PAP 服務物流的三個核心簡碼為何？", "What are the three core abbreviations of PAP service logistics?", "RO、NS、HSN。", "RO, NS and HSN."],
-    ["韓國（AKC）由哪個子公司管理？", "Which subsidiary manages Korea (AKC)?", "日本（AJC）。", "Japan (AJC)."],
-    ["團隊週會於何時舉行？", "When is the team's weekly meeting?", "每週二 11:00–12:00。", "Tuesdays, 11:00–12:00."]
+    ["韓國（AKC）由哪個子公司管理？", "Which subsidiary manages Korea (AKC)?", "日本（AJC）。", "Japan (AJC)."]
   ];
   $("quiz-count").innerHTML = B(QZ.length + " 題", QZ.length + " questions");
   $("quiz-list").innerHTML = QZ.map(function (q, i) {
