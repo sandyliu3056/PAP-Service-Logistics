@@ -33,14 +33,15 @@
   :root {
     --sea:#D9E7EF; --land:#ECE5D6; --land-line:#CDBFA4;
     --r-pap:#4E9A72; --r-pap2:#AFD3BC; --r-pa:#5A8FB5; --r-emea:#C9A97A; --r-accn:#A6957F;
-    --font-head:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif;
+    --font-head:"Reprice Sketch","Comic Neue","Comic Sans MS","LXGW WenKai TC","霞鶩文楷 TC","芫荽","Iansui","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif;
     --font-mono:Consolas,"Cascadia Mono","SFMono-Regular",Menlo,ui-monospace,monospace;
     color-scheme:light;
   }
   html[data-font="sans"] body { font-family:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   /* 字型與 RMA 售後零件規劃平台相同 */
-  html[data-font="hand"] body { font-family:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif; }
-  html[data-font="hand"] { --font-head:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif; }
+  html[data-font="hand"] body { font-family:"Reprice Sketch","Comic Neue","Comic Sans MS","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; }
+  html[data-font="hand"] { --font-head:"Reprice Sketch","Comic Neue","Comic Sans MS","LXGW WenKai TC","霞鶩文楷 TC","芫荽","Iansui","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; }
+  h1, h2, h3, h4, .tabs button, .subnav .pt, .subnav button.active, .ftitle, .intro-title, .hero-title, .block > h3, .btn, .pnode b, .node, .onode b, .corp-head h3, .pcard-head b, .org-panel header b, .ab-pop header b, .kf-v, .intro-nums b, .defbox b, .step-t, .tnode > summary .k { font-weight:700; }
   html[data-font="sans"] { --font-head:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   html[data-font="mono"] body { font-family:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
   html[data-font="mono"] { --font-head:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
@@ -49,12 +50,18 @@
   [hidden] { display:none !important; }
 
   * { box-sizing:border-box; }
+  /* 手繪風：卡片與按鈕採略帶不規則的圓角，像用筆畫出來的框 */
+  .box, .pcard, .kpi, .folder, .office, .cover, .tnode, .code-nav .cn, .corp-head, .defbox, .howread, .notice, .extra-box, .refs-wrap, .pg-abbr, .tbl, .map, .waybill, .org-stage, .org-panel, .ab-pop, .quiz details, .bz, .facts > div, .kf, .hero { border-radius:14px 11px 15px 10px / 11px 15px 10px 14px !important; }
+  .btn, .pnode, .node, .intro-nums span, .site-chip, .chip, .rtag, .cover-code, .vs, .src, .na, .stag, .pg { border-radius:9px 7px 10px 6px / 7px 10px 6px 9px !important; }
+  .tabs button { border-radius:12px 10px 0 0 / 10px 12px 0 0 !important; }
+  .card { border-radius:0 16px 14px 15px / 0 14px 16px 13px !important; }
+  .box, .pcard, .kpi, .folder, .office, .cover, .corp-head, .defbox, .notice, .map, .waybill { box-shadow:2px 3px 0 rgba(74,58,43,.08); }
   html, body { margin:0; background:var(--bg); color:var(--ink); font-size:15px; line-height:1.7; }
   body { padding-bottom:env(safe-area-inset-bottom, 0px); }
   .mono, .code { font-family:var(--font-mono); }
   :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   img { max-width:100%; }
-  h1, h2, h3 { text-wrap:balance; }
+  h1, h2, h3 { text-wrap:balance; font-weight:700; }
 
   /* 標題列 */
   .hdr { background:var(--navy); color:var(--gold); padding:calc(12px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) 12px max(24px, env(safe-area-inset-left, 0px)); display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; }
@@ -75,7 +82,7 @@
   /* 主分頁 */
   .tabs { display:flex; flex-wrap:wrap; gap:5px; background:var(--tabbar); padding:9px max(10px, env(safe-area-inset-right, 0px)) 0 max(10px, env(safe-area-inset-left, 0px)); }
   .tabs button { position:relative; display:flex; align-items:center; gap:8px; background:var(--tab); color:var(--ink); border:2px solid var(--navy); border-radius:10px 10px 0 0; padding:7px 16px 8px; font-weight:700; font-family:inherit; font-size:.95rem; cursor:pointer; }
-  .tabs button .num { font-family:var(--font-mono); font-size:.74rem; color:var(--mute); font-weight:400; }
+  .tabs button .emo { font-size:1rem; line-height:1; }
   .tabs button:hover { background:var(--hover); }
   .tabs button.active { background:var(--card); border-bottom-color:var(--card); z-index:2; margin-bottom:-2px; }
   .card { margin:0 max(10px, env(safe-area-inset-right, 0px)) 32px max(10px, env(safe-area-inset-left, 0px)); background:var(--card); border:2px solid var(--navy); border-radius:0 14px 14px 14px; padding:30px 34px 36px; box-shadow:0 10px 26px rgba(40,40,30,.10); min-height:520px; }
@@ -165,6 +172,10 @@
   .map.ap svg { min-width:520px; }
   .map .sea { fill:var(--sea); }
   .map path { fill:var(--land); stroke:var(--land-line); stroke-width:.35; }
+  .map svg > path, .map svg > .sea { filter:url(#sketch2); }
+  .map .pin rect, .map .opin rect { filter:url(#sketch); }
+  .ico { filter:url(#sketch2); }
+  .wb-map path.arc { filter:none; }
   .map.world path { stroke-width:.5; }
   .map path.r-pap { fill:var(--r-pap); stroke:#fff; }
   .map path.r-pap2 { fill:var(--r-pap2); stroke:#fff; }
@@ -217,8 +228,7 @@
 
   /* 線條圖示 */
   .ico { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; display:block; }
-  .tabs button.home .num { display:inline-flex; color:var(--primary); }
-  .tabs button.home .ico { width:16px; height:16px; stroke-width:2; }
+
 
   /* 網站介紹：託運單式的首頁 */
   .waybill { display:grid; grid-template-columns:minmax(0, 1.08fr) 26px minmax(0, .92fr); background:var(--panel); border:1.5px solid var(--line); border-radius:18px; box-shadow:0 18px 40px rgba(40,40,30,.10); position:relative; overflow:hidden; }
@@ -228,7 +238,7 @@
   .wb-code { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 9px; }
   .intro-title { font-family:var(--font-head); font-size:2.3rem; line-height:1.22; margin:0 0 12px; color:var(--navy); }
   .intro-title em { font-style:normal; position:relative; display:inline-block; }
-  .intro-title em::after { content:""; position:absolute; left:-.04em; right:-.04em; bottom:-.1em; height:.4em; background:var(--accent); opacity:.8; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; transform-origin:left center; animation:uline .9s .35s cubic-bezier(.2,.7,.2,1) both; }
+  .intro-title em::after { display:none; }
   @keyframes uline { from { transform:scaleX(0); } to { transform:scaleX(1); } }
   .intro-lead { margin:0; font-size:1.02rem; line-height:1.85; color:var(--mute); max-width:30em; }
   .tlink { color:var(--ink); font-weight:700; text-decoration:none; border-bottom:2px solid var(--selline); white-space:nowrap; }
@@ -237,19 +247,9 @@
   .intro-cta .btn { font-size:1rem; padding:8px 24px; border-radius:999px; }
   .btn.primary { background:var(--navy); color:var(--gold); border-color:var(--navy); }
   .btn.primary:hover { background:var(--sel); }
-  .kfacts { margin:24px 0 0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
-  .kf { position:relative; background:var(--panel); border:1.5px solid var(--line); border-radius:12px; padding:10px 12px 11px 50px; display:grid; gap:1px; }
-  .kf-i { position:absolute; left:12px; top:12px; width:28px; height:28px; border-radius:8px; background:var(--hover); color:var(--primary); display:grid; place-items:center; }
-  .kf-i .ico { width:18px; height:18px; }
-  .kf-l { font-size:.76rem; color:var(--mute); letter-spacing:.02em; }
-  .kf-v { font-family:var(--font-head); font-size:1.5rem; line-height:1.15; color:var(--navy); }
-  .kf-d { font-size:.78rem; color:var(--mute); line-height:1.45; }
-  .roles3 { margin:14px 0 0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; }
-  .r3-t { grid-column:1 / -1; font-size:.76rem; color:var(--mute); letter-spacing:.04em; }
-  .roles3 .r3 { display:grid; gap:2px; text-align:left; background:var(--stripe); border:1.5px dashed var(--line); border-radius:10px; padding:7px 10px 8px; font-family:inherit; color:var(--ink); cursor:pointer; border-bottom-style:dashed; }
-  .roles3 .r3:hover { background:var(--hover); border-color:var(--selline); }
-  .roles3 .r3 b { font-family:var(--font-mono); font-size:.95rem; color:var(--primary); }
-  .roles3 .r3 span { font-size:.76rem; color:var(--mute); line-height:1.4; }
+  .intro-nums { margin:22px 0 0; display:flex; flex-wrap:wrap; gap:10px; font-size:.8rem; color:var(--mute); }
+  .intro-nums span { display:inline-flex; align-items:baseline; gap:6px; background:var(--stripe); border:1.5px dashed var(--selline); border-radius:12px; padding:5px 12px 6px; line-height:1.3; }
+  .intro-nums b { font-family:var(--font-head); font-size:1.3rem; color:var(--navy); }
   .wb-foot { grid-column:1 / -1; border-top:2px dashed var(--line); padding:14px 26px 20px; }
   .wb-foot-t { font-size:.8rem; color:var(--mute); margin-bottom:8px; }
   .ns-key.code-nav { grid-template-columns:repeat(6, minmax(0, 1fr)); gap:6px; margin-top:0; }
@@ -373,8 +373,6 @@
     .wb-cut::after { left:auto; right:-35px; }
     .map.wb-map { padding:18px 18px 16px; }
     .ns-key.code-nav { grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    .kfacts { grid-template-columns:minmax(0, 1fr); }
-    .roles3 { grid-template-columns:minmax(0, 1fr); }
     .wb-foot { padding:14px 18px 18px; }
     .intro-title { font-size:1.9rem; }
     .intro-sec { margin-top:52px; }
@@ -558,10 +556,10 @@
   .eyebrow { font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 6px; font-weight:700; }
   .hero-title { font-family:var(--font-head); font-size:2.2rem; line-height:1.25; margin:0 0 12px; }
   .hero p.zh, .hero p.en { margin:0; font-size:1rem; }
-  .hero-stats { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px 22px; margin-top:22px; }
-  .hero-stats div { border-left:3px solid var(--primary); padding-left:12px; }
-  .hero-stats b { display:block; font-size:1.7rem; line-height:1.2; font-variant-numeric:tabular-nums; }
-  .hero-stats span { color:var(--mute); font-size:.86rem; }
+  .extra-box { margin:34px 0 0; background:var(--stripe); border:1.5px dashed var(--line); border-radius:12px; padding:12px 18px 14px; }
+  .extra-box h4 { margin:0 0 8px; font-size:.82rem; color:var(--mute); font-weight:700; letter-spacing:.04em; }
+  .extra-stats { display:flex; flex-wrap:wrap; gap:6px 24px; font-size:.8rem; color:var(--mute); }
+  .extra-stats b { font-size:1rem; color:var(--ink); margin-right:4px; font-variant-numeric:tabular-nums; }
   .hero .map { background:transparent; border:0; padding:0; }
 
   /* 組織圖 */
@@ -863,6 +861,88 @@
   .vs.internal { color:var(--accent); border-color:var(--accent); background:#EAF1F6; }
   .vs.pending { color:#7A4E12; border-color:#D9A95A; background:#FFF4DC; }
   .ver-tbl tr.hide { display:none; }
+  /* 企業架構圖 */
+  .org-wrap { display:block; }
+  .org-stage { position:relative; background:var(--panel); background-image:linear-gradient(var(--stripe) 1px, transparent 1px), linear-gradient(90deg, var(--stripe) 1px, transparent 1px); background-size:24px 24px; border:1.5px solid var(--line); border-radius:16px; overflow:hidden; height:640px; touch-action:none; user-select:none; }
+  .org-stage svg { width:100%; height:100%; display:block; cursor:grab; }
+  .org-stage.drag svg { cursor:grabbing; }
+  .org-tools { position:absolute; top:10px; left:10px; display:flex; gap:4px; z-index:2; }
+  .org-tools select { height:34px; border-radius:999px; border:1.5px solid var(--line); background:var(--panel); font-family:inherit; font-size:.84rem; color:var(--ink); padding:0 10px; max-width:220px; }
+  .org-tools button { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--line); background:var(--panel); font-family:inherit; font-size:1.1rem; font-weight:700; color:var(--ink); cursor:pointer; box-shadow:0 2px 6px rgba(40,40,30,.08); }
+  .org-tools button:hover { background:var(--hover); border-color:var(--selline); }
+  .org-panel { position:absolute; top:10px; right:10px; bottom:10px; width:min(330px, calc(100% - 20px)); background:var(--panel); border:1.5px solid var(--navy); border-radius:16px; overflow:auto; font-size:.9rem; box-shadow:0 10px 30px rgba(0,0,0,.18); z-index:3; }
+  .org-panel header { display:flex; align-items:flex-start; gap:10px; padding:10px 12px 10px 16px; background:var(--navy); color:var(--gold); position:sticky; top:0; z-index:1; }
+  .org-panel header b { font-size:1.05rem; line-height:1.3; }
+  .org-panel header small { display:block; color:var(--hdr-sub); font-weight:400; font-size:.78rem; }
+  .org-panel header button { margin-left:auto; background:none; border:0; color:var(--gold); font-size:1.1rem; cursor:pointer; font-family:inherit; padding:0 4px; flex:none; }
+  .org-panel .org-in { padding:12px 16px 16px; display:grid; gap:10px; }
+  .org-panel .kvl > div { grid-template-columns:6.2em minmax(0, 1fr); }
+  .org-panel .logo-box { width:96px; height:52px; }
+  .org-kids { display:flex; flex-wrap:wrap; gap:5px; }
+  .org-kids button, .org-par { font-family:inherit; font-size:.8rem; background:var(--stripe); border:1.5px solid var(--line); border-radius:999px; padding:1px 10px; color:var(--ink); cursor:pointer; }
+  .org-kids button:hover { background:var(--hover); border-color:var(--selline); }
+  .org-legend { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:12px; font-size:.82rem; color:var(--mute); align-items:center; }
+  .org-legend .lg { display:inline-flex; align-items:center; gap:6px; }
+  .org-legend .lg i { display:inline-block; width:14px; height:11px; border-radius:3px; border:1.5px solid var(--navy); background:#fff; }
+  .org-legend .lg i.l-region { background:var(--tab); }
+  .org-legend .lg i.l-ro { background:var(--r-pap); border-color:var(--r-pap); }
+  .org-legend .lg i.l-ns { border-color:var(--r-pap); }
+  .org-legend .lg i.l-unit { border-style:dashed; border-color:var(--selline); background:var(--stripe); }
+  .org-legend .lg i.l-dept { background:var(--hl); border-color:var(--accent); }
+  .org-legend .lg i.l-odm { border-color:var(--r-pa); }
+  .org-legend .lg i.l-partner { border-style:dashed; border-color:var(--mute); }
+  .org-legend .lg i.l-fam { border-color:var(--r-emea); }
+  .org-legend .lg s { display:inline-block; width:26px; border-top:2px solid var(--navy); text-decoration:none; }
+  .org-legend .lg s.l-collab { border-top:2px dashed var(--mute); }
+  .org-legend .lg s.l-proc { border-top:2px solid var(--accent); }
+  .org-legend .lg s.l-spin { border-top:2px dotted var(--r-emea); }
+  .org-legend .lg s.l-pend { border-top:2px solid #D9A95A; }
+  .org-legend .lg b.q { display:inline-grid; place-items:center; width:15px; height:15px; border-radius:50%; background:#FFF4DC; border:1px solid #D9A95A; color:#7A4E12; font-size:.66rem; }
+  #org-g .on { cursor:pointer; }
+  #org-g .on rect.box { fill:#fff; stroke:var(--navy); stroke-width:1.5; filter:url(#sketch); }
+  #org-g .on.t-region rect.box { fill:#F6E7C8; stroke:#C4A174; }
+  #org-g .on.t-ro rect.box { fill:var(--r-pap); stroke:var(--r-pap); }
+  #org-g .on.t-ro text { fill:#fff; }
+  #org-g .on.t-ns rect.box { fill:#EEF7F0; stroke:var(--r-pap); }
+  #org-g .on.t-unit rect.box, #org-g .on.t-country rect.box { stroke:var(--selline); stroke-dasharray:3 2; fill:#FBF7EF; }
+  #org-g .on.t-dept rect.box { fill:#E7F0F6; stroke:var(--accent); }
+  #org-g .on.t-odm rect.box { fill:#EDF3F8; stroke:var(--r-pa); }
+  #org-g .on.t-hsn rect.box { fill:#EEF7F0; stroke:var(--r-pap); stroke-width:2; }
+  #org-g .on.planned rect.box { stroke-dasharray:4 3; fill:#FBF7EF; }
+  #org-g .on.t-partner rect.box { fill:#F7F3EC; stroke:var(--mute); stroke-dasharray:3 2; }
+  #org-g .on.fam rect.box { fill:#FBF1E4; stroke:var(--r-emea); }
+  #org-g .on.t-acer rect.box { fill:var(--navy); stroke:var(--navy); }
+  #org-g .on.t-acer text { fill:var(--gold); }
+  #org-g .on.t-group text { fill:var(--mute); font-weight:700; font-size:12px; font-family:var(--font-head); }
+  #org-g .on.t-group line { stroke:var(--line); stroke-width:1.5; stroke-dasharray:3 3; }
+  #org-g .on text { font-family:var(--font-head); font-size:11.5px; fill:var(--ink); pointer-events:none; }
+  #org-g .on text.code { font-family:var(--font-mono); font-weight:700; font-size:13px; }
+  #org-g .e-own, #org-g .e-collab, #org-g .e-proc, #org-g .e-spin { stroke-linecap:round; stroke-linejoin:round; }
+  #org-g .on.t-ro text.code { font-size:19px; letter-spacing:.08em; }
+  #org-g .on.t-acer text.code { font-size:15px; }
+  #org-g .on text.sub { font-size:9px; fill:var(--mute); }
+  #org-g .on.t-ro text.sub { fill:#E6F2EA; }
+  #org-g .on.t-acer text.sub { fill:var(--hdr-sub); }
+  #org-g .on:hover rect.box { filter:drop-shadow(0 2px 4px rgba(0,0,0,.18)); }
+  #org-g .on.sel rect.box { stroke:var(--accent) !important; stroke-width:3 !important; }
+  #org-g .on.dim { opacity:.35; }
+  #org-g .badge circle { fill:#FFF4DC; stroke:#D9A95A; stroke-width:1; }
+  #org-g .badge text { font-size:9px; font-weight:700; fill:#7A4E12; }
+  #org-g .e-own { stroke:var(--navy); stroke-width:1.5; fill:none; filter:url(#sketch); }
+  #org-g .e-collab { stroke:var(--mute); stroke-dasharray:5 4; stroke-width:1.4; fill:none; }
+  #org-g .e-proc { stroke:var(--accent); stroke-width:2; fill:none; marker-end:url(#arr); }
+  #org-g .e-spin { stroke:var(--r-emea); stroke-dasharray:2 3; stroke-width:1.8; fill:none; }
+  #org-g .e-pending { stroke:#D9A95A !important; }
+  #org-g .hi { stroke-width:3 !important; }
+  #org-g .edim { opacity:.18; }
+  .arrhead { fill:var(--accent); }
+  #org-g .elab rect { fill:#fff; fill-opacity:.92; stroke:none; }
+  #org-g .elab text { font-size:9px; fill:var(--mute); font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif; }
+  @media (max-width:900px) {
+    .org-stage { height:480px; }
+    .org-panel { position:fixed; top:auto; left:8px; right:8px; width:auto; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); max-height:62vh; z-index:26; box-shadow:0 -8px 30px rgba(0,0,0,.2); }
+    .org-tools select { max-width:130px; }
+  }
 </style>
 </head>
 <body>
@@ -873,16 +953,14 @@
     </div>
     <div class="ctl">
       <span class="pill"><span class="dot"></span>CONFIDENTIAL</span>
-      <div class="lang-toggle" role="group" aria-label="Language / 語言">
-        <button type="button" data-setlang="zh" lang="zh-Hant">中文</button>
-        <button type="button" data-setlang="en" lang="en">English</button>
-      </div>
+      <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="zh" lang="zh-Hant">中文</option><option value="en" lang="en">English</option></select>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
       <select id="theme-sel" title="Theme / 主題"><option value="earth" data-zh="土色" data-en="Earth">土色</option><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option></select>
       <button class="hbtn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
     </div>
   </header>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="sketch" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter><filter id="sketch2" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.1" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
   <nav class="tabs" id="tabs" role="tablist"></nav>
 
   <main class="card" id="main">
@@ -899,8 +977,7 @@
           <button class="btn primary" type="button" data-go="overview"><span class="zh">進入總覽 →</span><span class="en">Go to overview →</span></button>
           <button class="btn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
         </div>
-        <div class="kfacts" id="kfacts"></div>
-        <div class="roles3" id="roles3"></div>
+        <p class="intro-nums" id="intro-nums"></p>
       </div>
       <div class="wb-cut" aria-hidden="true"></div>
       <figure class="map wb-map">
@@ -943,7 +1020,6 @@
         <h2 class="hero-title"><span class="zh">PAP 服務物流</span><span class="en">PAP Service Logistics</span></h2>
         <p class="zh">泛亞太區（PAP）服務物流團隊介於各國子公司（NS）與總部（HQ）之間，負責備品規劃、採購下單、庫存管理，以及 Service BOM 與料號維護。</p>
         <p class="en">The Pan Asia Pacific (PAP) service logistics team operates between the nation subsidiaries (NS) and headquarters (HQ), covering spare-parts planning, purchasing, inventory management, and Service BOM and part-number maintenance.</p>
-        <div class="hero-stats" id="hero-stats"></div>
       </div>
       <figure class="map world">
         <svg id="map-hero" viewBox="0 15 1000 410" role="img" aria-label="Acer regions"></svg>
@@ -971,6 +1047,7 @@
       <p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh"><span data-num="hsn-change"></span> 流程調整 →</span><span class="en"><span data-num="hsn-change"></span> Process change →</span></button></p>
     </div>
 
+    <aside class="extra-box"><h4><span class="zh">補充：數字一覽</span><span class="en">Supplementary: key numbers</span></h4><div class="extra-stats" id="hero-stats"></div></aside>
     <p class="notice"><span class="zh">本網站內容屬公司內部資料（<b>CONFIDENTIAL</b>），僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information (<b>CONFIDENTIAL</b>) for internal use only. Original documents prevail.</span></p>
   </section>
 
@@ -980,7 +1057,7 @@
     <div class="subbody">
       <div class="crumb"></div>
 
-      <section class="sub" id="sub-corp-map"><h2><span class="zh">企業關係</span><span class="en">How the companies relate</span></h2><p class="lead zh">以宏碁（Acer）為中心，相關企業分為五類：上游的 ODM 代工廠、2000 年分拆後獨立的泛宏碁集團、宏碁持股的集團子公司、下游的服務夥伴，以及客戶。點選公司名稱可前往其介紹。</p><p class="lead en">Around Acer sit five groups: upstream ODM manufacturers, the Acer family companies independent since the 2000 split, Acer's majority-owned subsidiaries, downstream service partners, and customers. Select a company to open its page.</p><div class="block"><h3><span class="zh">企業關係圖</span><span class="en">Company map</span></h3><div class="otree wide"><ul><li><div class="onode hq"><b>宏碁 Acer</b><small><span class="zh">品牌商（OBM）· 總部 HQ → 泛亞太區 PAP → 各國子公司 NS</span><span class="en">Brand owner (OBM) · HQ → PAP → nation subsidiaries (NS)</span></small></div><ul><li><span class="elabel"><span class="zh">上游 · 設計與生產</span><span class="en">Upstream · design and build</span></span><div class="onode ext"><b><span class="zh">ODM 代工廠</span><span class="en">ODM manufacturers</span></b><small><span class="zh">依 Acer 規格設計、生產</span><span class="en">Design and build to Acer's specification</span></small></div><ol class="members"><li><button type="button" data-go="corp-suppliers">廣達 Quanta</button></li><li><button type="button" data-go="corp-suppliers">仁寶 Compal<i><span class="zh">教材所載</span><span class="en">In the training material</span></i></button></li><li><button type="button" data-go="corp-suppliers">緯創 Wistron<i><span class="zh">宏碁分拆</span><span class="en">Spun off from Acer</span></i></button></li><li><button type="button" data-go="corp-suppliers">英業達 Inventec</button></li><li><button type="button" data-go="corp-suppliers">和碩 Pegatron</button></li><li><button type="button" data-go="corp-suppliers">鴻海 Foxconn<i><span class="zh">桌機</span><span class="en">Desktops</span></i></button></li></ol></li><li><span class="elabel"><span class="zh">分拆後獨立</span><span class="en">Independent since the split</span></span><div class="onode ext"><b><span class="zh">泛宏碁集團</span><span class="en">The Acer family</span></b><small><span class="zh">2000 年再造分出</span><span class="en">From the 2000 re-engineering</span></small></div><ol class="members"><li><button type="button" data-go="corp-acer">明基 BenQ／佳世達 Qisda</button></li><li><button type="button" data-go="corp-acer">友達 AUO</button></li><li><button type="button" data-go="corp-suppliers">緯創 Wistron<i><span class="zh">見代工廠</span><span class="en">See manufacturers</span></i></button></li></ol></li><li><span class="elabel"><span class="zh">宏碁持股</span><span class="en">Majority-owned by Acer</span></span><div class="onode pap"><b><span class="zh">集團子公司</span><span class="en">Group subsidiaries</span></b><small><span class="zh">內部創業後上市櫃</span><span class="en">Internal ventures taken public</span></small></div><ol class="members"><li><button type="button" data-go="corp-subs">海柏特 HSN<i><span class="zh">售後維修</span><span class="en">After-sales repair</span></i></button></li><li><button type="button" data-go="corp-subs">展碁 Weblink<i><span class="zh">台灣總代理</span><span class="en">Taiwan distributor</span></i></button></li><li><button type="button" data-go="corp-subs">安碁資訊 ACSI</button></li><li><button type="button" data-go="corp-subs">宏碁資訊 AEB</button></li><li><button type="button" data-go="corp-subs">智聯服務 AST</button></li><li><button type="button" data-go="corp-subs">建碁 AOpen</button></li><li><button type="button" data-go="corp-subs">宏碁遊戲</button></li><li><button type="button" data-go="corp-subs">倚天酷碁</button></li><li><button type="button" data-go="corp-subs">宏碁智新 Acerpure</button></li><li><button type="button" data-go="corp-subs">宏碁智醫</button></li></ol></li><li><span class="elabel"><span class="zh">下游 · 維修</span><span class="en">Downstream · repair</span></span><div class="onode"><b><span class="zh">服務夥伴</span><span class="en">Service partners</span></b><small><span class="zh">各國售後維修</span><span class="en">After-sales repair by country</span></small></div><ol class="members"><li><button type="button" data-go="corp-service"><span class="zh">各國子公司服務中心</span><span class="en">Subsidiary service centres</span></button></li><li><button type="button" data-go="corp-service"><span class="zh">授權服務商（ASP）</span><span class="en">Authorised service providers (ASP)</span></button></li><li><button type="button" data-go="corp-service"><span class="zh">海柏特各國公司</span><span class="en">HSN country companies</span></button></li><li><button type="button" data-go="corp-service">Enfinitec<i><span class="zh">歐洲</span><span class="en">Europe</span></i></button></li></ol></li><li><span class="elabel"><span class="zh">終端</span><span class="en">End</span></span><div class="onode"><b><span class="zh">客戶</span><span class="en">Customers</span></b></div><ol class="members"><li><span><span class="zh">消費者</span><span class="en">Consumers</span></span></li><li><span><span class="zh">企業客戶</span><span class="en">Business customers</span></span></li><li><button type="button" data-go="sites-tender"><span class="zh">標案客戶</span><span class="en">Tender customers</span><i><span class="zh">政府、警政</span><span class="en">Government, police</span></i></button></li></ol></li></ul></li></ul></div><p class="note"><span class="zh">虛線框為外部或已獨立之公司；實線框為宏碁及其持股之公司。</span><span class="en">Dashed boxes are external or independent companies; solid boxes are Acer and the companies it controls.</span></p></div><div class="block"><h3><span class="zh">備品供應流程</span><span class="en">Spare-parts supply flow</span></h3><div class="box"><div class="prow"><span class="pnode"><b><span class="zh">仁寶</span><span class="en">Compal</span></b><small>ODM</small></span><span class="parr">→</span><span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO），負責採購</span><span class="en">Regional office (RO); does the purchasing</span></small></span><span class="parr">→</span><span class="pnode hot"><b>HSN Group</b><small><span class="zh">2026/12/1 起</span><span class="en">From 1 Dec 2026</span></small></span><span class="parr">→</span><span class="pnode"><b>NS</b><small><span class="zh">各國子公司</span><span class="en">Nation subsidiaries</span></small></span></div></div><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></section>
+      <section class="sub" id="sub-corp-map"><h2><span class="zh">企業架構圖</span><span class="en">Enterprise architecture chart</span></h2><p class="lead zh">以宏碁（Acer）為中心的正式組織與相關公司：總部單位、區域與 PAP 轄下的國家子公司、宏碁持股的集團子公司（含海柏特各國公司）、分拆後獨立的泛宏碁集團、外部 ODM 代工廠與服務夥伴。實線為組織隸屬，虛線為跨部門協作，藍色箭頭為採購流程；未經證實的關係以琥珀色標示。</p><p class="lead en">The formal organisation around Acer: headquarters units, the regions and the nation subsidiaries under PAP, the group subsidiaries Acer controls (including HSN's country companies), the Acer family companies independent since the split, the external ODM manufacturers and the service partners. Solid lines are reporting lines, dashed lines are cross-unit collaboration, blue arrows are the procurement flow; unverified relationships are marked in amber.</p><div class="block"><h3><span class="zh">企業架構圖</span><span class="en">Architecture chart</span><small><span class="zh">點選節點查看詳細資訊；可拖曳、滾輪縮放，手機可雙指縮放</span><span class="en">Select a node for details; drag to pan, scroll or pinch to zoom</span></small></h3><div class="org-wrap"><div class="org-stage" id="org-stage"><svg id="org-svg" role="application" aria-label="Enterprise architecture chart"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" class="arrhead"></path></marker></defs><g id="org-g"></g></svg><div class="org-tools"><select id="org-jump" aria-label="Go to node"></select><button type="button" data-org="in" aria-label="zoom in" title="放大 / Zoom in">+</button><button type="button" data-org="out" aria-label="zoom out" title="縮小 / Zoom out">−</button><button type="button" data-org="fit" aria-label="fit all" title="顯示全部 / Fit all">⤢</button><button type="button" data-org="home" aria-label="reset view" title="回到 PAP / Back to PAP">⟲</button></div><aside class="org-panel" id="org-panel" hidden></aside></div></div><div class="org-legend" id="org-legend"></div></div><div class="block"><h3><span class="zh">備品供應流程</span><span class="en">Spare-parts supply flow</span></h3><div class="box"><div class="prow"><span class="pnode"><b><span class="zh">仁寶</span><span class="en">Compal</span></b><small>ODM</small></span><span class="parr">→</span><span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO），負責採購</span><span class="en">Regional office (RO); does the purchasing</span></small></span><span class="parr">→</span><span class="pnode hot"><b>HSN Group</b><small><span class="zh">2026/12/1 起</span><span class="en">From 1 Dec 2026</span></small></span><span class="parr">→</span><span class="pnode"><b>NS</b><small><span class="zh">各國子公司</span><span class="en">Nation subsidiaries</span></small></span></div></div><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></section>
 
       <section class="sub" id="sub-corp-acer"><h2><span class="zh">宏碁 Acer</span><span class="en">Acer</span></h2><div class="corp-head c-acer"><span class="logo-box" data-logo="acer"><span class="initial">A</span></span><div><h3><span class="zh">宏碁股份有限公司</span><span class="en">Acer Incorporated</span></h3><span class="rtag"><span class="zh">品牌商（OBM）</span><span class="en">Brand owner (OBM)</span></span><p><span class="zh">創立於 1976 年的台灣資訊科技品牌，總部位於新北市汐止區；2026 年適逢創立 50 週年。PAP 為其泛亞太區組織。</span><span class="en">A Taiwanese technology brand founded in 1976 and headquartered in Xizhi, New Taipei; 2026 marks its 50th anniversary. PAP is its Pan Asia Pacific organisation.</span></p></div></div><div class="facts-row"><span><i><span class="zh">創立</span><span class="en">Founded</span></i><span class="zh">1976 年 8 月 1 日</span><span class="en">1 August 1976</span></span><span><i><span class="zh">總部</span><span class="en">Headquarters</span></i><span class="zh">新北市汐止區</span><span class="en">Xizhi, New Taipei</span></span><span><i><span class="zh">股票代號</span><span class="en">Stock code</span></i><span class="zh">2353（臺灣證券交易所）</span><span class="en">2353 (TWSE)</span></span><span><i><span class="zh">董事長暨執行長</span><span class="en">Chairman and CEO</span></i><span class="zh">陳俊聖</span><span class="en">Jason Chen</span></span><span><i><span class="zh">營運模式</span><span class="en">Business model</span></i><span class="zh">OBM 自有品牌</span><span class="en">OBM, own brand</span></span></div><div class="block"><h3><span class="zh">歷史由來</span><span class="en">Origins</span></h3><div class="story"><p class="zh">1976 年 8 月，施振榮、葉紫華、邰中和、黃少華、林家和五位創辦人以新台幣 100 萬元在台北創立宏碁的前身 Multitech，以微處理器技術起家。1982 年推出的小教授二號（MicroProfessor-II），宏碁稱其為台灣第一部 8 位元家用電腦；1987 年改以源自拉丁文、意為「敏銳、能幹」的 Acer 作為品牌與公司名稱，並於 1988 年 4 月首次公開發行股票。<sup class="cite" title="資料來源編號 / Source numbers">1–5, 18</sup></p><p class="en">In August 1976 Stan Shih, Carolyn Yeh, Ken Tai, George Huang and Fred Lin founded Multitech, the forerunner of Acer, in Taipei with NT$1 million in capital and a focus on microprocessor technology. The MicroProfessor-II of 1982 is described by Acer as Taiwan's first 8-bit home computer; in 1987 the company adopted the name Acer, from the Latin for sharp and able, and it completed its initial public offering in April 1988.<sup class="cite" title="資料來源編號 / Source numbers">1–5, 18</sup></p><p class="zh">2000 年底宣布的「第二次再造」把集團分為三家公司：研製服務部門於 2001 年 5 月分立為緯創資通，通訊與多媒體事業同年 12 月更名為明基，宏碁自此專注於自有品牌。其後透過 2007 年收購美國 Gateway（含 eMachines 品牌）與 2008 年取得歐洲 Packard Bell 75% 股權，擴大歐美市場。<sup class="cite" title="資料來源編號 / Source numbers">1, 7–9</sup></p><p class="en">The "second re-engineering" announced at the end of 2000 split the group in three: the design and manufacturing division became Wistron in May 2001, the communications and multimedia business was renamed BenQ that December, and Acer concentrated on its own brand. It then grew in the Americas and Europe by acquiring Gateway (with the eMachines brand) in 2007 and a 75% stake in Packard Bell in 2008.<sup class="cite" title="資料來源編號 / Source numbers">1, 7–9</sup></p><p class="zh">2014 年陳俊聖出任總經理暨執行長（2017 年起兼任董事長），同年 8 月中國、台灣與亞太整合為泛亞太區營運；2016 年 3 月營運再分為核心事業與新事業，侯知遠（Andrew Hou）出任泛亞太區總裁。2026 年，宏碁集團邁入創立 50 週年。<sup class="cite" title="資料來源編號 / Source numbers">2–4, 10–15</sup></p><p class="en">Jason Chen became President and CEO in 2014 (and Chairman from 2017); from August that year China, Taiwan and Asia Pacific were grouped into one Pan Asia Pacific operation. In March 2016 the business was split into core and new businesses, and Andrew Hou was appointed President of Pan Asia Pacific. In 2026 the Acer group marks fifty years since its founding.<sup class="cite" title="資料來源編號 / Source numbers">2–4, 10–15</sup></p><p class="note"><span class="na"><span class="zh">來源衝突</span><span class="en">Sources conflict</span></span> <span class="zh">公開資料（含宏碁法說簡報）將全球分為泛美、EMEA 與泛亞太三區，且泛亞太區自 2014 年起包含中國；教材則將中國區（ACCN）獨立列出，並載明 TWN 與 AAP 於 2016/2017 年整併為 PAP。兩者可能反映對外報表與內部組織的不同劃分。現今上市主體（2353）為 2002 年與宏碁科技合併後之公司，其掛牌日為 1996 年 9 月 18 日。</span><span class="en">Public sources, including Acer's investor presentations, describe three regions (Pan America, EMEA and Pan Asia Pacific) with China inside Pan Asia Pacific since 2014; the training material lists China (ACCN) separately and records the merger of TWN and AAP into PAP in 2016/2017. The two may reflect external reporting versus the internal organisation. The entity listed today under 2353 is the company formed by the 2002 merger with Acer Sertek, listed on 18 September 1996.</span><sup class="cite" title="資料來源編號 / Source numbers">5, 12, 13, 16</sup></p></div></div><div class="block"><h3><span class="zh">業務與區域組織</span><span class="en">Business and regional organisation</span></h3><div class="story"><p class="zh">宏碁以筆記型電腦（含 Chromebook）與桌上型電腦為主要產品，並銷售顯示器、平板與周邊，以及伺服器與儲存設備等商用產品；售後服務由各國子公司（NS）、授權服務據點與海柏特提供。<sup class="cite" title="資料來源編號 / Source numbers">1, 2</sup></p><p class="en">Acer's main products are notebooks (including Chromebooks) and desktops, alongside monitors, tablets and peripherals, and servers, storage and other business products. After-sales service is provided by the nation subsidiaries (NS), authorised service sites and HSN.<sup class="cite" title="資料來源編號 / Source numbers">1, 2</sup></p><p class="zh">總部（HQ）之下依教材分為泛美（PA）、歐洲中東非洲（EMEA）、泛亞太（PAP，由 TWN 與 AAP 整併）與中國（ACCN）四個區域；PAP 之下設有 11 個國家子公司。區域與據點的細節見「組織與據點」章。</p><p class="en">Under headquarters (HQ) the training material lists four regions: Pan America (PA), Europe, Middle East and Africa (EMEA), Pan Asia Pacific (PAP, formed from TWN and AAP) and China (ACCN). PAP has 11 nation subsidiaries; see the Organisation chapter for details.</p><p class="note"><button class="btn sm" type="button" data-go="org-global"><span class="zh">全球區域 →</span><span class="en">Global regions →</span></button> <button class="btn sm" type="button" data-go="org-pap"><span class="zh">PAP 組織 →</span><span class="en">PAP organisation →</span></button> <button class="btn sm" type="button" data-go="corp-map"><span class="zh">企業架構圖 →</span><span class="en">Architecture chart →</span></button></p></div></div><div class="block"><h3><span class="zh">泛宏碁集團</span><span class="en">The Acer family</span></h3><div class="story"><p class="zh">2000 年以前，宏碁集團同時擁有品牌、代工製造與周邊產品事業。2000 年 12 月 26 日宣布的「第二次再造」將集團分為宏碁（品牌）、明基與緯創三家，創辦人施振榮其後建議以「ABW family」（Acer、BenQ、Wistron）取代「泛宏碁集團」的稱呼；分出的公司各自獨立發展，宏碁並於 2006 年出清明基持股。緯創現為 Acer 的代工廠之一，其介紹列於 ODM 代工廠頁。<sup class="cite" title="資料來源編號 / Source numbers">F1–F5, F8</sup></p><p class="en">Before 2000 the Acer group combined the brand, contract manufacturing and peripherals. The "second re-engineering" announced on 26 December 2000 split it into Acer (brand), BenQ and Wistron; founder Stan Shih later suggested the name "ABW family" (Acer, BenQ, Wistron) in place of the pan-Acer group. The companies have developed independently, and Acer sold its BenQ stake in 2006. Wistron is now one of Acer's ODMs and is profiled on the ODM page.<sup class="cite" title="資料來源編號 / Source numbers">F1–F5, F8</sup></p></div><div class="pcards"><article class="pcard pc-fam" id="co-benq"><div class="pcard-head"><span class="logo-box sm" data-logo="benq"><span class="initial">明</span></span><div><b><span class="zh">明基 BenQ／佳世達 Qisda</span><span class="en">BenQ / Qisda</span></b><small><span class="zh">股票代號 2352（佳世達）</span><span class="en">Stock code 2352 (Qisda)</span></small></div></div><div class="pstory"><h4><span class="zh">歷史由來</span><span class="en">Origins</span></h4><p class="zh">1984 年成立的明碁電腦原為宏碁旗下的周邊產品公司，2001 年 12 月啟用 BenQ 品牌並改名 BenQ Corp.（中文名稱於 2002 年改為明基電通）。2007 年 9 月，原上市公司（2352）更名為佳世達（Qisda）並保留代工製造業務，品牌業務則分出新設的 BenQ Corp。<sup class="cite" title="資料來源編號 / Source numbers">F6–F10</sup> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></p><p class="en">Acer Peripherals, founded in 1984 as Acer's peripherals company, launched the BenQ brand in December 2001 and became BenQ Corp. In September 2007 the listed company (2352) was renamed Qisda and kept the manufacturing business, while the brand business moved into a newly formed BenQ Corp.<sup class="cite" title="資料來源編號 / Source numbers">F6–F10</sup> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></p></div><div class="pstory"><h4><span class="zh">業務與和 Acer 的關係</span><span class="en">Business and relationship with Acer</span></h4><p class="zh">BenQ 為顯示器、投影機等自有品牌；佳世達為代工製造與多元事業集團。宏碁於 2006 年出清持股並退出董事會，兩者現均獨立於宏碁。<sup class="cite" title="資料來源編號 / Source numbers">F8</sup></p><p class="en">BenQ is the brand for monitors and projectors; Qisda is the contract-manufacturing and diversified business group. Acer sold its shares and left the board in 2006, so both are now independent of Acer.<sup class="cite" title="資料來源編號 / Source numbers">F8</sup></p></div><div class="pcard-foot"><span class="srcs"><span class="zh">來源 </span><span class="en">Sources </span>F6–F10</span></div></article><article class="pcard pc-fam" id="co-auo"><div class="pcard-head"><span class="logo-box sm" data-logo="auo"><span class="initial">友</span></span><div><b><span class="zh">友達光電</span><span class="en">AU Optronics (AUO)</span></b><small><span class="zh">股票代號 2409</span><span class="en">Stock code 2409</span></small></div></div><div class="pstory"><h4><span class="zh">歷史由來</span><span class="en">Origins</span></h4><p class="zh">1996 年 8 月於新竹科學園區成立的達碁科技，原為宏碁集團的顯示器面板公司；2001 年與聯友光電合併並於 9 月 1 日更名為友達光電，其後於 2006 年合併廣輝電子、2016 年合併台灣國際彩光。<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p><p class="en">Acer Display Technology, founded in the Hsinchu Science Park in August 1996, was the Acer group's display-panel company. It merged with Unipac Optoelectronics and became AU Optronics on 1 September 2001, later absorbing Quanta Display in 2006 and Taiwan Color Optics in 2016.<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p></div><div class="pstory"><h4><span class="zh">業務與和 Acer 的關係</span><span class="en">Business and relationship with Acer</span></h4><p class="zh">顯示器面板製造商，現為獨立公司，與宏碁已無持股關係。<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p><p class="en">A display-panel maker, now an independent company with no shareholding link to Acer.<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p></div><div class="pcard-foot"><span class="srcs"><span class="zh">來源 </span><span class="en">Sources </span>F11, F12</span></div></article></div></div><details class="refs-wrap"><summary><span class="zh">資料來源（宏碁、泛宏碁集團）</span><span class="en">Sources (Acer, the Acer family)</span></summary><h4><span class="zh">宏碁 1–18</span><span class="en">Acer 1–18</span></h4><ol class="refs" start="1"><li><a href="https://www.acer.com/corporate/en/overview/milestones" target="_blank" rel="noopener">Acer Milestones（公司沿革）</a><small>Acer</small></li><li><a href="https://www.acer.com/50-years/us-en" target="_blank" rel="noopener">Acer – 50 Years of Breaking Barriers</a><small>Acer</small></li><li><a href="https://www.cna.com.tw/news/afe/202604270074.aspx" target="_blank" rel="noopener">宏碁50週年 施振榮：最大貢獻在為台灣培育人才</a><small>中央社 CNA · 2026-04-27</small></li><li><a href="https://www.taiwannews.com.tw/news/6348606" target="_blank" rel="noopener">Acer founder on 50 years</a><small>Taiwan News · 2026-04</small></li><li><a href="https://ww2.money-link.com.tw/TWStock/StockBasic.aspx?SymId=2353" target="_blank" rel="noopener">宏碁（2353）基本資料（現行上市主體掛牌日）</a><small>Money-Link</small></li><li><a href="https://www.acer.com/tw-zh/legal" target="_blank" rel="noopener">宏碁法律資訊頁（公司地址）</a><small>Acer</small></li><li><a href="https://www.benq.com/en-ca/news/products/1007539200-38-169.html" target="_blank" rel="noopener">Acer CM renamed BenQ</a><small>BenQ · 2001-12</small></li><li><a href="https://www.eweek.com/de/pc-hardware/acer-acquiring-gateway-for-710-million/" target="_blank" rel="noopener">Acer acquiring Gateway for $710 million</a><small>eWeek · 2007</small></li><li><a href="https://www.computerweekly.com/microscope/news/2240153056/Acer-acquires-Gateway" target="_blank" rel="noopener">Acer acquires Gateway</a><small>Computer Weekly · 2007</small></li><li><a href="https://www.industryweek.com/global-economy/taiwans-acer-names-new-ceo-after-3q-losses" target="_blank" rel="noopener">Acer names new CEO (Jason Chen)</a><small>IndustryWeek · 2013-12</small></li><li><a href="https://news.acer.com/acer-board-appoints-jason-chen-as-chairman" target="_blank" rel="noopener">Acer board appoints Jason Chen as chairman</a><small>Acer News · 2017</small></li><li><a href="https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/" target="_blank" rel="noopener">Luca Rossi appointed president for Acer EMEA; Pan-Asia Pacific formed</a><small>PCR · 2014-07-11</small></li><li><a href="https://it-online.co.za/?p=86194" target="_blank" rel="noopener">Acer announces management changes</a><small>IT-Online · 2014-07</small></li><li><a href="https://news.acer.com/acer-separates-new-and-core-businesses-to-accelerate-corporate-transformation" target="_blank" rel="noopener">Acer Separates New and Core Businesses</a><small>Acer News · 2016-03</small></li><li><a href="https://www.acer.com/corporate/en/overview/management/andrew-hou" target="_blank" rel="noopener">Andrew Hou · Management</a><small>Acer</small></li><li><a href="https://digitimes.com/news/a20240115PD226.html" target="_blank" rel="noopener">Acer 泛亞太區在地製造（印度、印尼）</a><small>DIGITIMES · 2024-01-15</small></li><li><a href="https://images.acer.com/is/content/acer/Acer%204Q23%20Investor%20presentation-Engpdf" target="_blank" rel="noopener">Acer 4Q23 investor presentation（區域劃分）</a><small>Acer · 2024</small></li><li><a href="https://finance.ettoday.net/news/139065" target="_blank" rel="noopener">宏碁五位創辦人</a><small>ETtoday</small></li></ol><h4><span class="zh">泛宏碁集團 F1–F12</span><span class="en">The Acer family F1–F12</span></h4><ol class="refs" start="1"><li><a href="https://www.gvm.com.tw/article/9731" target="_blank" rel="noopener">宏碁第二次再造：分為宏碁、明基、緯創</a><small>遠見雜誌</small></li><li><a href="https://www.businesstoday.com.tw/article/category/183015/post/202308090013/" target="_blank" rel="noopener">施振榮談 ABW family</a><small>今周刊 · 2023-08-09</small></li><li><a href="https://ec.ltn.com.tw/article/breakingnews/4400116" target="_blank" rel="noopener">緯創分割與上市歷程</a><small>自由時報</small></li><li><a href="https://www.gvm.com.tw/article/8569" target="_blank" rel="noopener">林憲銘與緯創分割</a><small>遠見雜誌</small></li><li><a href="https://www.cnyes.com/twstock/3231/company/profile" target="_blank" rel="noopener">緯創資通 公司資料（分割基準日）</a><small>鉅亨網</small></li><li><a href="https://www.taipeitimes.com/News/biz/archives/2007/04/30/2003358934" target="_blank" rel="noopener">BenQ history (name changes)</a><small>Taipei Times · 2007-04-30</small></li><li><a href="https://www.weblio.jp/content/Qisda" target="_blank" rel="noopener">Qisda（明基電通沿革）</a><small>Weblio</small></li><li><a href="https://www.techpartner.news/news/benq-no-longer-part-of-acer-finalises-billion-dollar-deal-36811" target="_blank" rel="noopener">BenQ no longer part of Acer</a><small>techpartner.news · 2006</small></li><li><a href="https://www.taipeitimes.com/News/biz/archives/2007/04/26/2003358338" target="_blank" rel="noopener">BenQ to split brand and manufacturing</a><small>Taipei Times · 2007-04-26</small></li><li><a href="https://ec.ltn.com.tw/article/paper/1308390" target="_blank" rel="noopener">明基分割為佳世達與 BenQ</a><small>自由時報</small></li><li><a href="https://www.ithome.com.tw/news/11958" target="_blank" rel="noopener">達碁與聯友合併為友達</a><small>iThome</small></li><li><a href="https://www.nstock.tw/%E5%8F%8B%E9%81%94%E5%81%9A%E4%BB%80%E9%BA%BC.html" target="_blank" rel="noopener">友達做什麼（公司沿革）</a><small>nstock</small></li></ol><p class="note"><span class="zh">公開網路資料，查詢日期 2026 年 10 月；每項陳述之查證狀態見「資料查證」頁。與內部文件不一致時，以內部文件為準。</span><span class="en">Public web sources, retrieved October 2026; the verification status of each statement is on the Verification page. Where they differ from internal documents, the internal documents prevail.</span> <button class="btn sm" type="button" data-go="corp-verify"><span class="zh">資料查證 →</span><span class="en">Verification →</span></button></p></details></section>
 
@@ -1316,12 +1393,12 @@
               <div><dt><span class="zh">角色</span><span class="en">Role</span></dt><dd><span class="zh">PAP 位於總部（HQ）與各國子公司（NS）之間：彙整各 NS 的需求、向 ODM（代工廠，例如仁寶）下採購單、管理中央倉庫與不良品退回（RMA），並監控各 NS 的採購、庫存與達交績效。</span><span class="en">PAP sits between headquarters (HQ) and the nation subsidiaries (NS): it consolidates NS demand, places purchase orders with the ODM (the contract manufacturer, e.g. Compal), manages the central warehouse and returns (RMA), and monitors each NS's purchasing, inventory and fulfilment.</span></dd></div>
             </dl>
             <ol class="steps-plain" style="margin-top:14px">
-              <li><span class="zh"><b>需求</b>：各 NS 依規劃模式提出需求報表（Demand Report）。</span><span class="en"><b>Demand</b>: each NS submits a demand report under the planning mode.</span> <span class="stag doc">教材 7、25</span></li>
-              <li><span class="zh"><b>彙整</b>：PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en"><b>Consolidation</b>: PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span> <span class="stag doc">教材 7</span></li>
-              <li><span class="zh"><b>下單</b>：PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en"><b>Ordering</b>: PAP creates the PO in CSS and confirms it to the ODM in PLS.</span> <span class="stag doc">教材 7、16</span></li>
-              <li><span class="zh"><b>追蹤</b>：持續更新並追蹤預計出貨日（ETD）。</span><span class="en"><b>Follow-up</b>: the estimated time of departure (ETD) is updated and followed up.</span> <span class="stag doc">教材 7</span></li>
-              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc">教材 · 補充說明</span></li>
-              <li><span class="zh"><b>檢視</b>：PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en"><b>Review</b>: PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span> <span class="stag doc">教材 8</span></li>
+              <li><span class="zh"><b>需求</b>：各 NS 依規劃模式提出需求報表（Demand Report）。</span><span class="en"><b>Demand</b>: each NS submits a demand report under the planning mode.</span> <span class="stag doc"><span class="zh">教材 7、25</span><span class="en">Deck p. 7, 25</span></span></li>
+              <li><span class="zh"><b>彙整</b>：PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en"><b>Consolidation</b>: PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
+              <li><span class="zh"><b>下單</b>：PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en"><b>Ordering</b>: PAP creates the PO in CSS and confirms it to the ODM in PLS.</span> <span class="stag doc"><span class="zh">教材 7、16</span><span class="en">Deck p. 7, 16</span></span></li>
+              <li><span class="zh"><b>追蹤</b>：持續更新並追蹤預計出貨日（ETD）。</span><span class="en"><b>Follow-up</b>: the estimated time of departure (ETD) is updated and followed up.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
+              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc"><span class="zh">教材 · 補充說明</span><span class="en">Deck p. · 補充說明</span></span></li>
+              <li><span class="zh"><b>檢視</b>：PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en"><b>Review</b>: PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span> <span class="stag doc"><span class="zh">教材 8</span><span class="en">Deck p. 8</span></span></li>
             </ol>
             <p class="note"><span class="na"><span class="zh">待內部確認</span><span class="en">Pending internal confirmation</span></span> <span class="zh">付款責任、跨國運輸與關務安排，以及 HSN Group 介入後的訂單流向細節，教材未載明。</span><span class="en">Payment responsibility, cross-border transport and customs arrangements, and the detailed order flow once HSN Group is involved are not specified in the material.</span></p>
           </div>
@@ -1776,6 +1853,7 @@
 
 <script src="world.js"></script>
 <script src="verify.js"></script>
+<script src="org.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1813,19 +1891,19 @@
 
   /* ---------- 網站架構：主頁 → 子頁 ---------- */
   var NAV = [
-    { id: "intro", home: true, zh: "網站介紹", en: "About", subs: [] },
-    { id: "overview", zh: "總覽", en: "Overview", subs: [] },
-    { id: "corp", zh: "公司介紹", en: "Companies", dzh: "企業架構圖、宏碁與泛宏碁集團、集團子公司、ODM 代工廠、服務夥伴、資料查證", den: "Architecture chart, Acer and its family, subsidiaries, ODM manufacturers, service partners, verification",
-      subs: [["corp-map", "企業關係", "How they relate"], ["corp-acer", "宏碁 Acer", "Acer"], ["corp-subs", "集團子公司", "Group subsidiaries"], ["corp-suppliers", "ODM 代工廠", "ODM manufacturers"], ["corp-service", "服務夥伴", "Service partners"], ["corp-verify", "資料查證", "Verification"]] },
-    { id: "org", zh: "組織與據點", en: "Organisation & sites", dzh: "全球區域與據點、PAP 組織、服務據點類型與分布、倉庫與標案", den: "Regions and offices, PAP organisation, service sites, warehouses and tenders",
+    { id: "intro", home: true, emoji: "🏠", zh: "網站介紹", en: "About", subs: [] },
+    { id: "overview", emoji: "🌏", zh: "總覽", en: "Overview", subs: [] },
+    { id: "corp", emoji: "🏢", zh: "公司介紹", en: "Companies", dzh: "企業架構圖、宏碁與泛宏碁集團、集團子公司、ODM 代工廠、服務夥伴、資料查證", den: "Architecture chart, Acer and its family, subsidiaries, ODM manufacturers, service partners, verification",
+      subs: [["corp-map", "企業架構圖", "Architecture chart"], ["corp-acer", "宏碁 Acer", "Acer"], ["corp-subs", "集團子公司", "Group subsidiaries"], ["corp-suppliers", "ODM 代工廠", "ODM manufacturers"], ["corp-service", "服務夥伴", "Service partners"], ["corp-verify", "資料查證", "Verification"]] },
+    { id: "org", emoji: "📍", zh: "組織與據點", en: "Organisation & sites", dzh: "全球區域與據點、PAP 組織、服務據點類型與分布、倉庫與標案", den: "Regions and offices, PAP organisation, service sites, warehouses and tenders",
       subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-points", "組織要點", "Key points"], ["sites-types", "據點類型", "Site types"], ["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"]] },
-    { id: "ops", zh: "作業與料號", en: "Operations & part numbers", dzh: "PAP 團隊之日常工作：採購角色、職能、系統、SPL 流程、Service BOM、規劃模式與料號規則", den: "The PAP team's day-to-day work: purchasing role, functions, systems, SPL flow, Service BOM, planning modes and part numbers",
+    { id: "ops", emoji: "📦", zh: "作業與料號", en: "Operations & part numbers", dzh: "PAP 團隊之日常工作：採購角色、職能、系統、SPL 流程、Service BOM、規劃模式與料號規則", den: "The PAP team's day-to-day work: purchasing role, functions, systems, SPL flow, Service BOM, planning modes and part numbers",
       subs: [["ops-role", "團隊職責", "Team responsibilities"], ["ops-functions", "主要職能", "Main functions"], ["ops-systems", "系統", "Systems"], ["ops-spl", "SPL 定義流程", "SPL definition flow"], ["ops-bom", "Service BOM", "Service BOM"], ["ops-plan", "規劃模式", "Planning modes"], ["pn-rule", "料號命名規則", "Part number rule"], ["pn-decode", "料號解析", "Decoder"], ["pn-subcat", "子類別對照", "Sub-categories"]] },
-    { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
+    { id: "hsn", emoji: "🔧", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
       subs: [["hsn-about", "概要", "Overview"], ["hsn-companies", "各國公司", "Companies by country"], ["hsn-change", "流程調整", "Process change"]] },
-    { id: "ref", zh: "名詞與代碼", en: "Terms & codes", dzh: "營運模式等產業名詞、區域與子公司代碼、縮寫說明", den: "Industry terms, region and subsidiary codes, abbreviations",
+    { id: "ref", emoji: "📖", zh: "名詞與代碼", en: "Terms & codes", dzh: "營運模式等產業名詞、區域與子公司代碼、縮寫說明", den: "Industry terms, region and subsidiary codes, abbreviations",
       subs: [["terms-model", "營運模式", "Business models"], ["terms-chain", "供應鏈角色", "Supply-chain roles"], ["terms-service", "售後服務名詞", "After-sales terms"], ["terms-market", "證券市場名詞", "Stock-market terms"], ["ref-region", "區域代碼", "Region codes"], ["ref-ns", "子公司代碼", "Subsidiary codes"], ["ref-other", "其他國家與單位", "Other countries and units"], ["ref-hsn", "HSN 代碼", "HSN codes"], ["ref-abbr", "縮寫說明", "Abbreviations"]] },
-    { id: "review", zh: "重點複習", en: "Review", dzh: "18 題重點複習", den: "18 review questions", subs: [] }
+    { id: "review", emoji: "✅", zh: "重點複習", en: "Review", dzh: "18 題重點複習", den: "18 review questions", subs: [] }
   ];
   var ORDER = [], navN = 0;
   NAV.forEach(function (p) {
@@ -1840,7 +1918,7 @@
   var label = function (o) { return o.sub ? B(o.sub[1], o.sub[2]) : B(o.page.zh, o.page.en); };
 
   $("tabs").innerHTML = NAV.map(function (p) {
-    return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + '><span class="num">' + (p.home ? ico("intro") : p.num) + "</span>" + B(p.zh, p.en) + "</button>";
+    return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + '><span class="emo" aria-hidden="true">' + p.emoji + "</span>" + B(p.zh, p.en) + "</button>";
   }).join("");
   $$(".subnav").forEach(function (a) {
     var p = NAV.filter(function (x) { return x.id === a.getAttribute("data-page"); })[0];
@@ -1860,6 +1938,7 @@
   function go(id, fromUser) {
     current = findRoute(id);
     var o = ORDER[current], p = o.page;
+    if (o.sub && o.sub[0] === "corp-map") setTimeout(orgShow, 0);
     $$("#tabs button").forEach(function (b) {
       var on = b.getAttribute("data-go") === p.id;
       b.classList.toggle("active", on);
@@ -1893,24 +1972,22 @@
   window.addEventListener("hashchange", function () { go(location.hash.slice(1), false); });
 
   /* ---------- 設定：語言、字型、主題 ---------- */
+  function orgShow() { if (!ORG) return; orgRender(); requestAnimationFrame(function () { orgHome(); if (orgSel) orgSelect(orgSel); }); }
   function setLang(l) {
     LANG = l === "en" ? "en" : "zh";
     root.setAttribute("data-lang", LANG);
     root.setAttribute("lang", LANG === "en" ? "en" : "zh-Hant");
-    $$(".lang-toggle button").forEach(function (b) {
-      var on = b.getAttribute("data-setlang") === LANG;
-      b.classList.toggle("active", on);
-      b.setAttribute("aria-pressed", on ? "true" : "false");
-    });
+    $("lang-sel").value = LANG;
     $$("option[data-zh]").forEach(function (o) { o.textContent = o.getAttribute("data-" + LANG); });
     $$("[data-ph-zh]").forEach(function (el) { el.placeholder = el.getAttribute("data-ph-" + LANG); });
     store.set("pap.lang", LANG);
     drawAllMaps();
+    if (typeof orgReady !== "undefined" && orgReady) orgRender();
   }
   function setFont(f) { f = /^(hand|sans|mono)$/.test(f) ? f : "hand"; root.setAttribute("data-font", f); $("font-sel").value = f; store.set("pap.font", f); }
   // 只記住使用者自己選的主題；沒選過就用預設的土色
   function setTheme(t, save) { t = /^(green|blue|earth)$/.test(t) ? t : "earth"; root.setAttribute("data-theme", t); $("theme-sel").value = t; if (save) store.set("pap.color", t); }
-  $$(".lang-toggle button").forEach(function (b) { b.addEventListener("click", function () { setLang(b.getAttribute("data-setlang")); }); });
+  $("lang-sel").addEventListener("change", function () { setLang(this.value); });
   $("font-sel").addEventListener("change", function (e) { setFont(e.target.value); });
   $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value, true); });
 
@@ -2002,7 +2079,7 @@
     ["Uni-load", "當地產線／組裝廠", "6", "於當地設有產線或組裝廠：澳洲、印度、馬來西亞、泰國、印尼、新加坡。", "Local production or assembly: Australia, India, Malaysia, Thailand, Indonesia, Singapore."]
   ];
   $("code-sitetype").innerHTML = STYPES.map(function (s) {
-    return "<tr><td><b>" + esc(s[0]) + '</b><br><span class="caption">' + s[1] + '</span></td><td class="num"><b>' + s[2] + '</b></td><td class="wrap">' + B(s[3], s[4]) + "</td></tr>";
+    return "<tr><td><b>" + esc(s[0]) + '</b><br><span class="caption zh">' + s[1] + '</span></td><td class="num"><b>' + s[2] + '</b></td><td class="wrap">' + B(s[3], s[4]) + "</td></tr>";
   }).join("");
 
   /* ---------- 組織 ---------- */
@@ -2436,23 +2513,12 @@
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
-  // 首頁重點數字與三個關鍵角色（由資料計算；給第一次接觸的同仁看）
+  // 首頁一行重點數字（由資料計算）
   (function () {
     var sites = 0;
     INFRA.forEach(function (r) { sites += r.total; });
-    var F = [
-      ["ro", "PAP 是什麼", "What PAP is", "RO", "Acer 泛亞太區的區域辦公室，設於台灣", "Acer's regional office for Asia Pacific, based in Taiwan"],
-      ["org", "服務哪些公司", "Who it serves", NSC.length, "個國家子公司（NS），即各國的 Acer 公司", "nation subsidiaries (NS): Acer's companies in each country"],
-      ["sites", "涵蓋範圍", "Coverage", INFRA.length, "個設有服務據點的國家／地區", "countries and regions with service sites"],
-      ["box", "服務據點", "Service sites", sites, "處維修與服務據點（CSD 2025 年第二季統計）", "repair and service sites (CSD, second quarter 2025)"]
-    ];
-    $("kfacts").innerHTML = F.map(function (f) {
-      return '<div class="kf"><span class="kf-i">' + ico(f[0]) + '</span><span class="kf-l">' + B(f[1], f[2]) + '</span><b class="kf-v">' + f[3] + '</b><span class="kf-d">' + B(f[4], f[5]) + "</span></div>";
-    }).join("");
-    var R = [["ro", "RO", "區域辦公室：就是 PAP 本身", "Regional office: PAP itself"], ["ns", "NS", "國家子公司：各國的 Acer 公司", "Nation subsidiary: Acer's company in each country"], ["hsn", "HSN", "海柏特：2026/12/1 起供應料件的集團公司", "HSN: the group company supplying parts from 1 Dec 2026"]];
-    $("roles3").innerHTML = '<span class="r3-t">' + B("先認識三個代碼", "Three codes to know first") + "</span>" + R.map(function (r) {
-      return '<button type="button" class="r3 ab" data-ab="' + r[0] + '"><b>' + r[1] + "</b><span>" + B(r[2], r[3]) + "</span></button>";
-    }).join("");
+    $("intro-nums").innerHTML = [[NSC.length, "個國家子公司", "nation subsidiaries"], [INFRA.length, "個設有據點的國家／地區", "countries and regions with sites"], [sites, "處服務據點", "service sites"]]
+      .map(function (f) { return "<span><b>" + f[0] + "</b> " + B(f[1], f[2]) + "</span>"; }).join("");
   })();
   // 首頁地圖：PAP（台灣）至各國子公司的供應路線；標籤含國旗，沿線有移動的小點
   function drawIntro() {
@@ -2613,20 +2679,20 @@
     {"id":"pa","keys":["PA"],"code":"PA","full":"Pan America","zh":"泛美區","en":null,"src":"s","cat":"org","dzh":"Acer 美洲區域，與 EMEA、TWN、AAP、ACCN 同屬 HQ 轄下。料號第 6 碼 A 代表 PA。","den":"Acer's Americas region, alongside EMEA, TWN, AAP and ACCN under HQ. A as the 6th character of a part number denotes PA.","cc":null,"region":"PA","org":"Acer Inc.","urls":[{"t":"Acer 4Q23 investor presentation（區域劃分）","p":"Acer · 2024","u":"https://images.acer.com/is/content/acer/Acer%204Q23%20Investor%20presentation-Engpdf"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"emea","keys":["EMEA"],"code":"EMEA","full":"Europe, Middle East & Africa","zh":"歐洲、中東與非洲區","en":null,"src":"s","cat":"org","dzh":"Acer 歐洲、中東與非洲區域。料號第 6 碼 E 代表 EMEA。","den":"Acer's Europe, Middle East and Africa region. E as the 6th character of a part number denotes EMEA.","cc":null,"region":"EMEA","org":"Acer Inc.","urls":[{"t":"Acer announces EMEA management changes","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"accn","keys":["ACCN"],"code":"ACCN","full":null,"zh":"中國區","en":"China region","src":"m","cat":"org","dzh":"中國區，與 PAP 同屬 HQ 轄下，獨立運作。料號第 6 碼 C 代表 ACCN。","den":"China region, a peer of PAP under HQ that operates independently. C as the 6th character of a part number denotes ACCN.","cc":"cn","region":"ACCN","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
-    {"id":"pap","keys":["PAP"],"code":"PAP","full":"Pan Asia Pacific","zh":"泛亞太區","en":null,"src":"s","cat":"org","dzh":"泛亞太區，由 TWN 與 AAP 於 2016/2017 年整併而成，為區域辦公室（RO），轄下設有 11 個國家子公司（NS）。PAP 服務物流負責備品規劃與採購、中央倉庫管理、RMA 與各 NS 績效監控；向 ODM 採購的料件自 2026 年 12 月 1 日起改經由 HSN Group 供應。與 AAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後涵蓋台灣與亞太的現行區域；PAP 本身沒有料號代碼，料號第 6 碼沿用 AAP 的 S 與 TWN 的 T。","den":"Pan Asia Pacific, formed in 2016/2017 by merging TWN and AAP; it is the regional office (RO) with 11 nation subsidiaries (NS) under it. PAP service logistics covers spare-parts planning and purchasing, central warehouse management, RMA and NS performance monitoring; from 1 December 2026 the parts it buys from the ODM are supplied through HSN Group. Difference from AAP: AAP was the pre-merger Asia Pacific region without Taiwan, while PAP is the current merged region covering Taiwan and Asia Pacific. PAP has no part-number code of its own; the 6th character keeps AAP's S and TWN's T.","cc":null,"region":"PAP","org":"Acer Inc. · PAP 區域辦公室","urls":[{"t":"Acer announces EMEA management changes（Pan-Asia Pacific formed）","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"Andrew Hou · Management","p":"Acer","u":"https://www.acer.com/corporate/en/overview/management/andrew-hou"},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"verified"},
+    {"id":"pap","keys":["PAP"],"code":"PAP","full":"Pan Asia Pacific","zh":"泛亞太區","en":null,"src":"s","cat":"org","dzh":"泛亞太區，由 TWN 與 AAP 於 2016/2017 年整併而成，為區域辦公室（RO），轄下設有 11 個國家子公司（NS）。PAP 服務物流負責備品規劃與採購、中央倉庫管理、RMA 與各 NS 績效監控；向 ODM 採購的料件自 2026 年 12 月 1 日起改經由 HSN Group 供應。與 AAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後涵蓋台灣與亞太的現行區域；PAP 本身沒有料號代碼，料號第 6 碼沿用 AAP 的 S 與 TWN 的 T。","den":"Pan Asia Pacific, formed in 2016/2017 by merging TWN and AAP; it is the regional office (RO) with 11 nation subsidiaries (NS) under it. PAP service logistics covers spare-parts planning and purchasing, central warehouse management, RMA and NS performance monitoring; from 1 December 2026 the parts it buys from the ODM are supplied through HSN Group. Difference from AAP: AAP was the pre-merger Asia Pacific region without Taiwan, while PAP is the current merged region covering Taiwan and Asia Pacific. PAP has no part-number code of its own; the 6th character keeps AAP's S and TWN's T.","cc":null,"region":"PAP","org":"Acer Inc. · PAP regional office (RO)","urls":[{"t":"Acer announces EMEA management changes（Pan-Asia Pacific formed）","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"Andrew Hou · Management","p":"Acer","u":"https://www.acer.com/corporate/en/overview/management/andrew-hou"},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"verified"},
     {"id":"twn","keys":["TWN"],"code":"TWN","full":"Taiwan","zh":"台灣區","en":null,"src":"s","cat":"org","dzh":"台灣區，2016/2017 年與 AAP 整併為 PAP。料號第 6 碼 T 代表 TWN；第 7 碼 T 則代表泰國（ATH）。","den":"Taiwan region, merged with AAP into PAP in 2016/2017. T as the 6th character denotes TWN; as the 7th character, T denotes Thailand (ATH).","cc":"tw","region":"TWN","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"aap","keys":["AAP"],"code":"AAP","full":null,"zh":"亞太區","en":"Asia Pacific","src":"m","cat":"org","dzh":"亞太區（Asia Pacific）。整併前五個區域之一，涵蓋台灣以外的亞太各國，與台灣區（TWN）並列；2016/2017 年與 TWN 整併為 PAP。整併後 AAP 的代碼仍用於料號第 6 碼（S），第 7 碼國別代碼適用於 AAP 各國。與 PAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後的現行區域。縮寫原文教材未載明；據點表中韓國辦公室的公司名稱為 Acer Asia Pacific。","den":"The Asia Pacific region: one of the five regions before the merger, covering the Asia Pacific countries other than Taiwan, alongside the Taiwan region (TWN); merged with TWN into PAP in 2016/2017. Its code lives on as the 6th character of part numbers (S), and the 7th-character country codes apply to the AAP countries. Difference from PAP: AAP is the pre-merger region without Taiwan, PAP the current merged region. The expansion of the abbreviation is not given in the material; the Korea office is listed under the company name Acer Asia Pacific.","cc":null,"region":"AAP","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
-    {"id":"ns","keys":["NS"],"code":"NS","full":"Nation Subsidiary","zh":"國家子公司","en":null,"src":"m","cat":"org","dzh":"PAP 轄下之各國子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控各 NS 之績效（502/503 aging、庫存、採購、達交、HFP），並彙整其需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。","den":"A subsidiary in one country under PAP, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS.","cc":null,"region":null,"org":"Acer 各國子公司","urls":[{"t":"內部教材 第 3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ns","keys":["NS"],"code":"NS","full":"Nation Subsidiary","zh":"國家子公司","en":null,"src":"m","cat":"org","dzh":"PAP 轄下之各國子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控各 NS 之績效（502/503 aging、庫存、採購、達交、HFP），並彙整其需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。","den":"A subsidiary in one country under PAP, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS.","cc":null,"region":null,"org":"Acer nation subsidiaries (NS)","urls":[{"t":"內部教材 第 3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"assb","keys":["ASSB","ASSSB"],"code":"ASSB","full":null,"zh":"馬來西亞國家子公司","en":"Malaysia subsidiary","src":"m","cat":"org","dzh":"馬來西亞國家子公司，HSNM 隸屬其下。2016/2017 年以前為主導子公司；當時馬來西亞由海柏特與 Acer 共同營運。料號國別代碼 M；設有倉庫及 Uni-load。","den":"The Malaysia subsidiary, with HSNM under it. It was the lead subsidiary before 2016/2017, when Malaysia was operated jointly by HSN (Highpoint Service Network) and Acer. Country code M; has a warehouse and Uni-load.","cc":"my","region":"PAP","org":"Acer Sales & Services Sdn Bhd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"aca","keys":["ACA"],"code":"ACA","full":null,"zh":"澳洲國家子公司","en":"Australia subsidiary","src":"m","cat":"org","dzh":"澳洲國家子公司，ACNZ（紐西蘭）隸屬其下。料號國別代碼 A（例：DG.B88SA.001）；設有倉庫及 Uni-load。","den":"The Australia subsidiary, with ACNZ (New Zealand) under it. Country code A (e.g. DG.B88SA.001); has a warehouse and Uni-load.","cc":"au","region":"PAP","org":"Acer Computer Australia Pty. Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"acnz","keys":["ACNZ"],"code":"ACNZ","full":null,"zh":"紐西蘭子公司","en":"New Zealand subsidiary","src":"m","cat":"org","dzh":"紐西蘭子公司，隸屬 ACA，未設獨立料號國別代碼。設有倉庫，未設 Uni-load。","den":"The New Zealand subsidiary, under ACA, without a separate country code. Has a warehouse but no Uni-load.","cc":"nz","region":"PAP","org":"Acer Computer New Zealand Ltd.","urls":[{"t":"內部教材 第 3–4 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"ail","keys":["AIL"],"code":"AIL","full":null,"zh":"印度國家子公司","en":"India subsidiary","src":"m","cat":"org","dzh":"印度國家子公司，Bangladesh（孟加拉）隸屬其下。料號國別代碼 I。印度為 PAP 據點最多之國家，包括 172 個外包服務中心及 126 個 ASP；設有倉庫及 Uni-load。","den":"The India subsidiary, with Bangladesh under it. Country code I. India has the most PAP sites, including 172 outsourced service centres and 126 ASPs; it has a warehouse and Uni-load.","cc":"in","region":"PAP","org":"Acer India (Pvt) Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"ath","keys":["ATH"],"code":"ATH","full":null,"zh":"泰國國家子公司","en":"Thailand subsidiary","src":"m","cat":"org","dzh":"泰國國家子公司，Indo-china（中南半島）隸屬其下。料號國別代碼 T（第 6 碼 T 則為 TWN）。設有 12 個自有服務中心及 109 個 ASP，並設有倉庫及 Uni-load。","den":"The Thailand subsidiary, with Indo-china under it. Country code T (as the 6th character, T denotes TWN). It has 12 own service centres, 109 ASPs, a warehouse and Uni-load.","cc":"th","region":"PAP","org":"Acer Computer Co., Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"ain","keys":["AIN"],"code":"AIN","full":null,"zh":"印尼國家子公司","en":"Indonesia subsidiary","src":"m","cat":"org","dzh":"印尼國家子公司，倉庫表列為 AIN (AMI)。料號國別代碼 N 或 D，為唯一具兩個國別代碼之國家；設有倉庫及 Uni-load。","den":"The Indonesia subsidiary, listed as AIN (AMI) in the warehouse table. Country code N or D, the only country with two codes; it has a warehouse and Uni-load.","cc":"id","region":"PAP","org":"PT Acer Indonesia","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
-    {"id":"ami","keys":["AMI"],"code":"AMI","full":null,"zh":"印尼 Uni-load 組裝廠","en":"Indonesian Uni-load assembly company","src":"k","cat":"org","dzh":"印尼 Uni-load 組裝廠之公司代碼，倉庫表列為 Indonesia (AIN) (AMI)。","den":"Code for the Indonesian Uni-load assembly company, listed as Indonesia (AIN) (AMI) in the warehouse table.","cc":"id","region":"PAP","org":"AIN（印尼）","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"ami","keys":["AMI"],"code":"AMI","full":null,"zh":"印尼 Uni-load 組裝廠","en":"Indonesian Uni-load assembly company","src":"k","cat":"org","dzh":"印尼 Uni-load 組裝廠之公司代碼，倉庫表列為 Indonesia (AIN) (AMI)。","den":"Code for the Indonesian Uni-load assembly company, listed as Indonesia (AIN) (AMI) in the warehouse table.","cc":"id","region":"PAP","org":"AIN (Indonesia)","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
     {"id":"avn","keys":["AVN"],"code":"AVN","full":null,"zh":"越南國家子公司","en":"Vietnam subsidiary","src":"m","cat":"org","dzh":"越南國家子公司，料號國別代碼 V；設有倉庫，未設 Uni-load。","den":"The Vietnam subsidiary. Country code V; it has a warehouse but no Uni-load.","cc":"vn","region":"PAP","org":"Acer Vietnam Co., Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"ajc","keys":["AJC"],"code":"AJC","full":null,"zh":"日本國家子公司","en":"Japan subsidiary","src":"m","cat":"org","dzh":"日本國家子公司，料號國別代碼 J，並負責管理 AKC（韓國）；設有倉庫，未設 Uni-load。","den":"The Japan subsidiary. Country code J; it also manages AKC (Korea). It has a warehouse but no Uni-load.","cc":"jp","region":"PAP","org":"Acer Japan Corp.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
-    {"id":"akc","keys":["AKC"],"code":"AKC","full":null,"zh":"韓國國家子公司","en":"Korea subsidiary","src":"m","cat":"org","dzh":"韓國國家子公司，由 AJC（日本）管理，料號國別代碼同為 J；設有倉庫，未設 Uni-load。","den":"The Korea subsidiary, managed by AJC (Japan) and sharing country code J. It has a warehouse but no Uni-load.","cc":"kr","region":"PAP","org":"Acer Asia Pacific（韓國辦公室）","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"akc","keys":["AKC"],"code":"AKC","full":null,"zh":"韓國國家子公司","en":"Korea subsidiary","src":"m","cat":"org","dzh":"韓國國家子公司，由 AJC（日本）管理，料號國別代碼同為 J；設有倉庫，未設 Uni-load。","den":"The Korea subsidiary, managed by AJC (Japan) and sharing country code J. It has a warehouse but no Uni-load.","cc":"kr","region":"PAP","org":"Acer Asia Pacific (Korea office)","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"afe","keys":["AFE"],"code":"AFE","full":null,"zh":"國家子公司","en":"Nation subsidiary","src":"m","cat":"org","dzh":"PAP 國家子公司之一，所屬國家未載明，亦未列於倉庫表與料號國別代碼表。","den":"One of the PAP subsidiaries. Its country is not specified, and it is not in the warehouse table or the country-code list.","cc":null,"region":"PAP","org":"Acer PAP","urls":[{"t":"內部教材 第 3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"aphi","keys":["APHI"],"code":"APHI","full":null,"zh":"菲律賓國家子公司","en":"Philippines subsidiary","src":"m","cat":"org","dzh":"菲律賓國家子公司，料號國別代碼 P；設有倉庫，未設 Uni-load。","den":"The Philippines subsidiary. Country code P; it has a warehouse but no Uni-load.","cc":"ph","region":"PAP","org":"Acer Philippines, Inc.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"acs","keys":["ACS"],"code":"ACS","full":null,"zh":"新加坡國家子公司","en":"Singapore subsidiary","src":"m","cat":"org","dzh":"新加坡國家子公司，Sri Lanka、Mongolia、Nepal 隸屬其下。料號國別代碼 S（第 6 碼 S 則為 AAP）；設有倉庫及 Uni-load。","den":"The Singapore subsidiary, with Sri Lanka, Mongolia and Nepal under it. Country code S (as the 6th character, S denotes AAP); it has a warehouse and Uni-load.","cc":"sg","region":"PAP","org":"Acer Computer (Singapore) Pte. Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
@@ -2646,7 +2712,7 @@
     {"id":"callc","keys":["Call Centre"],"code":"Call Centre","full":null,"zh":"客服中心","en":"Customer service phone centre","src":"m","cat":"site","dzh":"客戶服務電話中心。Q2 2025 PAP 全區共 8 處：印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 處。","den":"Customer service phone centre. PAP had 8 in Q2 2025, one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"lph","keys":["Local Parts Hub"],"code":"Local Parts Hub","full":null,"zh":"當地備品中心","en":"Local parts hub","src":"m","cat":"site","dzh":"各國之零件總倉，負責存放備品；各據點另設有庫房。Q2 2025 PAP 全區共 18 處，以台灣 7 處最多。","den":"Each country's main parts warehouse, with storerooms at each site. PAP had 18 in Q2 2025, the most in Taiwan (7).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"rsph","keys":["Regional Spare Parts Hub","Regional Spared Part Hub"],"code":"Regional Spare Parts Hub","full":null,"zh":"區域備品中心","en":"Regional spare parts hub","src":"m","cat":"site","dzh":"服務整個區域之備品中心，PAP 全區共 1 處。","den":"A spare-parts hub serving the whole region; PAP has one.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
-    {"id":"tender","keys":["標案"],"code":"標案 · Tender","full":null,"zh":"採購招標","en":"Procurement tender","src":"k","cat":"site","dzh":"政府機關或企業之採購招標。客戶（如警政單位）發布標書（規格書），各品牌依規格投標；得標後委託 ODM 生產，必要時於當地組裝（Uni-load）以符合標案價格。例如 ACA 之標案規模達兩萬台筆電。","den":"Public or corporate procurement. The customer (e.g. the police) issues a tender with a specification and brands bid against it; the winner has an ODM build the product, assembling locally (Uni-load) where needed to meet the tender price. One ACA tender, for example, covered 20,000 notebooks.","cc":null,"region":null,"org":null,"urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"tender","keys":["標案"],"code":"Tender","full":null,"zh":"採購招標","en":"Procurement tender","src":"k","cat":"site","dzh":"政府機關或企業之採購招標。客戶（如警政單位）發布標書（規格書），各品牌依規格投標；得標後委託 ODM 生產，必要時於當地組裝（Uni-load）以符合標案價格。例如 ACA 之標案規模達兩萬台筆電。","den":"Public or corporate procurement. The customer (e.g. the police) issues a tender with a specification and brands bid against it; the winner has an ODM build the product, assembling locally (Uni-load) where needed to meet the tender price. One ACA tender, for example, covered 20,000 notebooks.","cc":null,"region":null,"org":null,"urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
     {"id":"plm","keys":["PLM"],"code":"PLM","full":"Product Lifecycle Management","zh":"產品生命週期管理系統","en":null,"src":"s","cat":"sys","dzh":"負責料件與 BOM 管理：為新料件申請料號、將 Service BOM 及新增料件匯入 Service PLM。RO、NS、ASP 皆使用。","den":"Manages parts and BOMs: applying for P/Ns for new items and importing the Service BOM and new parts into Service PLM. Used by ROs, NS and ASPs.","cc":null,"region":null,"org":null,"urls":[{"t":"Product lifecycle","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Product_lifecycle"},{"t":"內部教材 第 16–17 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
     {"id":"pls","keys":["PLS"],"code":"PLS","full":null,"zh":"","en":null,"src":"n","cat":"sys","dzh":"用於向 ODM 確認採購單（Confirm PO to ODM），僅供 RO 使用。","den":"Used to confirm POs to the ODM; used by ROs only.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 16、18 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
     {"id":"gls","keys":["GLS"],"code":"GLS","full":null,"zh":"","en":null,"src":"n","cat":"sys","dzh":"用於中央備品規劃（Central SP Planning），RO 與 NS 使用。","den":"Used for central spare-parts planning; used by ROs and NS.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 16、19 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
@@ -2669,8 +2735,8 @@
     {"id":"bml","keys":["BML"],"code":"BML","full":"Before Mass Lock","zh":"量產鎖定前","en":null,"src":"m","cat":"part","dzh":"New Proactive（筆記型電腦）規劃模式之階段：量產鎖定前，每月 15 日提出 A、B、C 類料件之需求報表，備品於下單後 10 個工作天出貨。","den":"A stage of the New Proactive (notebook) planning mode: before Mass Lock, the demand report for A, B and C parts is submitted on the 15th of each month and spare parts ship 10 working days after the PO.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"aml","keys":["AML"],"code":"AML","full":"After Mass Lock","zh":"量產鎖定後","en":null,"src":"m","cat":"part","dzh":"New Proactive 規劃模式之階段，於量產鎖定（ML）後 2 個月：所有料件仍可向 ODM 採購，C 類料件於此時最後採購（LTB），MOQ 與價格沿用 BML。","den":"A New Proactive stage two months after Mass Lock (ML): all parts can still be bought from the ODM, C parts are placed on last-time buy (LTB), and MOQ and price follow BML.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
     {"id":"ppb","keys":["PPB1/2","PPB1","PPB2","PPB"],"code":"PPB1/2","full":"Post Production Buy 1 / 2","zh":"停產後採購 1／2","en":null,"src":"m","cat":"part","dzh":"New Proactive 規劃模式之停產後採購階段：PPB1 於 EOL 後 3 個月（AML + 6 個月）最後採購 B 類料件，PPB2 於 EOL 後 9 個月最後採購 A 類料件；MOQ 與價格重新議定，ODM 依 6 個月排程分批供貨。","den":"The post-production buy stages of the New Proactive mode: PPB1, three months after EOL (AML + 6 months), is the last-time buy of B parts; PPB2, nine months after EOL, is the last-time buy of A parts. MOQ and price are renegotiated and the ODM supplies in partial 6-month schedules.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
-    {"id":"odm","keys":["ODM"],"code":"ODM","full":"Original Design Manufacturer","zh":"委託設計製造商","en":null,"src":"s","cat":"flow","dzh":"為 Acer 設計與生產產品之代工廠，例如仁寶（Compal）。SPL 流程中負責 B 樣品、SPL 草稿及報價，並每月更新 MP Service BOM。PAP 透過 PLS 向 ODM 確認採購單，採購整機或料件後供應予各 NS。","den":"The contract manufacturer that designs and builds products for Acer, such as Compal. In the SPL flow it provides the B sample, the SPL draft and the quotation, and it updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS and supplies the purchased units and parts to the NS.","cc":null,"region":null,"org":"例：仁寶 Compal","urls":[{"t":"Original design manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_design_manufacturer"},{"t":"內部教材 第 7、11–13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
-    {"id":"compal","keys":["仁寶","Compal"],"code":"仁寶 · Compal","full":"Compal Electronics, Inc.","zh":"仁寶電腦","en":null,"src":"p","cat":"flow","dzh":"仁寶電腦工業股份有限公司，1984 年創立於台灣，為全球主要筆記型電腦 ODM 廠商之一；依 Acer 規格設計與生產產品，並接受 PAP 之採購單。","den":"Compal Electronics, founded in Taiwan in 1984, is one of the world's leading notebook ODMs. It designs and builds products to Acer's specification and receives POs from PAP.","cc":"tw","region":null,"org":"Compal Electronics, Inc.","urls":[{"t":"仁寶（2324）公司資料","p":"Yahoo 股市","u":"https://tw.stock.yahoo.com/quote/2324.TW/profile"},{"t":"仁寶電腦 公司資料","p":"鉅亨網","u":"https://www.cnyes.com/archive/twstock/profile/2324.htm"}],"vs":"verified"},
+    {"id":"odm","keys":["ODM"],"code":"ODM","full":"Original Design Manufacturer","zh":"委託設計製造商","en":null,"src":"s","cat":"flow","dzh":"為 Acer 設計與生產產品之代工廠，例如仁寶（Compal）。SPL 流程中負責 B 樣品、SPL 草稿及報價，並每月更新 MP Service BOM。PAP 透過 PLS 向 ODM 確認採購單，採購整機或料件後供應予各 NS。","den":"The contract manufacturer that designs and builds products for Acer, such as Compal. In the SPL flow it provides the B sample, the SPL draft and the quotation, and it updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS and supplies the purchased units and parts to the NS.","cc":null,"region":null,"org":"e.g. Compal (仁寶)","urls":[{"t":"Original design manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_design_manufacturer"},{"t":"內部教材 第 7、11–13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"compal","keys":["仁寶","Compal"],"code":"Compal","full":"Compal Electronics, Inc.","zh":"仁寶電腦","en":null,"src":"p","cat":"flow","dzh":"仁寶電腦工業股份有限公司，1984 年創立於台灣，為全球主要筆記型電腦 ODM 廠商之一；依 Acer 規格設計與生產產品，並接受 PAP 之採購單。","den":"Compal Electronics, founded in Taiwan in 1984, is one of the world's leading notebook ODMs. It designs and builds products to Acer's specification and receives POs from PAP.","cc":"tw","region":null,"org":"Compal Electronics, Inc.","urls":[{"t":"仁寶（2324）公司資料","p":"Yahoo 股市","u":"https://tw.stock.yahoo.com/quote/2324.TW/profile"},{"t":"仁寶電腦 公司資料","p":"鉅亨網","u":"https://www.cnyes.com/archive/twstock/profile/2324.htm"}],"vs":"verified"},
     {"id":"oem","keys":["OEM"],"code":"OEM","full":"Original Equipment Manufacturer","zh":"原廠委託製造","en":null,"src":"s","cat":"flow","dzh":"代工廠依品牌商提供之設計與規格生產，產品以品牌商之品牌銷售。歐美 PC 產業中，「PC OEM」亦常指品牌電腦廠商本身。","den":"The manufacturer builds to the brand's design and specification, and the product is sold under the brand. In the Western PC industry, a \"PC OEM\" often means the brand itself.","cc":null,"region":null,"org":null,"urls":[{"t":"Original equipment manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_equipment_manufacturer"}],"vs":"standard"},
     {"id":"obm","keys":["OBM"],"code":"OBM","full":"Original Brand Manufacturer","zh":"自有品牌","en":null,"src":"s","cat":"flow","dzh":"以自有品牌行銷與銷售產品，並主導產品定義；生產可自行或委託 ODM／OEM。Acer 屬此模式。","den":"Markets and sells under its own brand and defines the product; production may be in-house or outsourced to an ODM or OEM. Acer works this way.","cc":null,"region":null,"org":null,"urls":[{"t":"Original brand manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_design_manufacturer"}],"vs":"standard"},
     {"id":"qsbu","keys":["QSBU"],"code":"QSBU","full":null,"zh":"","en":null,"src":"n","cat":"flow","dzh":"SPL 定義流程之負責單位之一（QSBU/GCSD），負責 FRU 審查會議、申請料號、Markup Review、上傳 SPL 系統及發布 SPL。","den":"One of the units responsible for the SPL flow (QSBU/GCSD): it holds the FRU review, applies for P/Ns, reviews markup, uploads to the SPL system and releases the SPL.","cc":null,"region":null,"org":"Acer","urls":[{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
@@ -2999,6 +3065,257 @@
     $("ver-filter").addEventListener("click", function (e) { var b = e.target.closest ? e.target.closest("[data-vs]") : null; if (!b) return; verFilter = b.getAttribute("data-vs"); renderVer(); });
     renderVer();
   })();
+
+  /* ---------- 企業架構圖（資料：org.js） ---------- */
+  var ORG = window.PAP_ORG, LAY = ORG ? ORG.layout : null, POS = {}, orgSel = null, orgReady = false;
+  var ORG_V = { k: 1, x: 0, y: 0 }, ORG_BOX = { w: 0, h: 0 };
+  var SZ = { company: [164, 50], region: [120, 48], ro: [176, 70], ns: [134, 46], unit: [128, 40], country: [128, 38], dept: [144, 46], odm: [164, 48], hsn: [138, 42], partner: [164, 46], group: [170, 30], acer: [196, 66] };
+  var TYPE_NAME = { company: ["法人公司", "Company"], region: ["區域", "Region"], ro: ["區域辦公室", "Regional office"], ns: ["國家子公司", "Nation subsidiary"], unit: ["下轄單位", "Unit"], country: ["代管國家", "Covered country"], dept: ["總部單位", "Headquarters unit"], odm: ["外部代工廠", "External manufacturer"], hsn: ["HSN 集團公司", "HSN Group company"], partner: ["服務夥伴", "Service partner"], group: ["分組", "Group"], acer: ["集團母公司", "Parent company"] };
+  var GAP = { row: 18, list: 8, v: 34, indent: 22 };
+  // 節點寬度依目前語言的文字計算（字不超出框框）
+  function orgTextW(t, px, mono) { var w = 0; for (var i = 0; i < t.length; i++) { var c = t.charAt(i); w += /[⺀-鿿＀-￯]/.test(c) ? px * 1.02 : mono ? px * .62 : /[A-Z]/.test(c) ? px * .68 : c === " " ? px * .3 : px * .54; } return w; }
+  function orgSize(n) {
+    var base = SZ[n.id === "acer" ? "acer" : n.type] || SZ.company, w = base[0], h = base[1];
+    if (n.type === "group") return [Math.max(w, orgTextW(nm(n.zh, n.en), 12) + 8), h];
+    var tx = (n.cc && n.type !== "ro" && n.id !== "acer") ? 30 : (n.id === "acer" ? 80 : 10), big = n.type === "ro" || n.id === "acer";
+    var name = nm(n.zh, n.en), need = Math.max(n.code ? orgTextW(n.code, big ? (n.type === "ro" ? 19 : 15) : 13, true) : 0, orgTextW(name, 11.5), n.sub && big ? orgTextW(nm(n.sub[0], n.sub[1]), 9) : 0);
+    return [Math.max(w, Math.ceil(tx + need + 12)), h];
+  }
+  function orgMeasure(id) {
+    var n = ORG.byId[id], sz = orgSize(n), spec = LAY.kids[id], m = { w: sz[0], h: sz[1], nw: sz[0], nh: sz[1] };
+    if (spec) {
+      var kids = spec.kids.map(orgMeasure);
+      if (spec.mode === "row") {
+        var kw = 0, kh = 0; kids.forEach(function (k, i) { kw += k.w + (i ? GAP.row : 0); kh = Math.max(kh, k.h); });
+        m.kw = kw; m.w = Math.max(sz[0], kw); m.h = sz[1] + GAP.v + kh;
+      } else if (spec.mode === "cols") {
+        var per = Math.ceil(kids.length / spec.cols), cw = [], ch = [];
+        for (var c = 0; c < spec.cols; c++) { cw[c] = 0; ch[c] = 0; }
+        kids.forEach(function (k, i) { var c = Math.floor(i / per); cw[c] = Math.max(cw[c], k.w); ch[c] += k.h + GAP.list; });
+        m.cw = cw; m.per = per; m.w = Math.max(sz[0], GAP.indent + cw.reduce(function (a, b) { return a + b + GAP.row; }, 0) - GAP.row); m.h = sz[1] + 14 + Math.max.apply(null, ch);
+      } else {
+        var mw = 0, hh = 0; kids.forEach(function (k) { mw = Math.max(mw, k.w); hh += k.h + GAP.list; });
+        m.w = Math.max(sz[0], GAP.indent + mw); m.h = sz[1] + hh;
+      }
+    }
+    POS[id] = m; return m;
+  }
+  function orgPlace(id, x, y) {
+    var m = POS[id], spec = LAY.kids[id];
+    m.x = (!spec || spec.mode === "row") ? x + (m.w - m.nw) / 2 : x; m.y = y;
+    if (!spec) return;
+    if (spec.mode === "row") { var cx = x + (m.w - m.kw) / 2; spec.kids.forEach(function (k) { orgPlace(k, cx, y + m.nh + GAP.v); cx += POS[k].w + GAP.row; }); }
+    else if (spec.mode === "cols") {
+      var colX = [], xx = x + GAP.indent; m.cw.forEach(function (w) { colX.push(xx); xx += w + GAP.row; });
+      var cys = colX.map(function () { return y + m.nh + 14 + GAP.list; });
+      spec.kids.forEach(function (k, i) { var c = Math.floor(i / m.per); orgPlace(k, colX[c], cys[c]); cys[c] += POS[k].h + GAP.list; });
+      m.colX = colX;
+    }
+    else { var cy = y + m.nh + GAP.list; spec.kids.forEach(function (k) { orgPlace(k, x + GAP.indent, cy); cy += POS[k].h + GAP.list; }); }
+  }
+  var orgParent = {};
+  function orgLayout() {
+    POS = {}; orgParent = {};
+    Object.keys(LAY.kids).forEach(function (pid) { LAY.kids[pid].kids.forEach(function (k) { orgParent[k] = pid; }); });
+    var L = orgMeasure(LAY.left), T = orgMeasure(LAY.root), R = orgMeasure(LAY.right);
+    var pad = 24, colGap = 70, top = pad;
+    var papY = POS[LAY.root].nh + GAP.v + POS["g-reg"].nh + GAP.v;   // 區域列的高度，側欄對齊此高度
+    orgPlace(LAY.left, pad, top + papY);
+    orgPlace(LAY.root, pad + L.w + colGap, top);
+    orgPlace(LAY.right, pad + L.w + colGap + T.w + colGap, top + papY);
+    ORG_BOX.w = pad * 2 + L.w + T.w + R.w + colGap * 2;
+    ORG_BOX.h = pad * 2 + Math.max(T.h, papY + L.h, papY + R.h);
+  }
+  function orgCenter(id, side) {
+    var m = POS[id];
+    if (side === "top") return [m.x + m.nw / 2, m.y];
+    if (side === "bottom") return [m.x + m.nw / 2, m.y + m.nh];
+    if (side === "left") return [m.x, m.y + m.nh / 2];
+    return [m.x + m.nw, m.y + m.nh / 2];
+  }
+  function orgNodeSVG(n) {
+    var m = POS[n.id], w = m.nw, h = m.nh, cls = "on t-" + (n.id === "acer" ? "acer" : n.type) + (n.planned ? " planned" : "") + (orgParent[n.id] === "g-fam" ? " fam" : "");
+    var out = '<g class="' + cls + '" data-id="' + n.id + '" transform="translate(' + m.x.toFixed(1) + "," + m.y.toFixed(1) + ')" tabindex="0" role="button" aria-label="' + esc(n.code || n.en) + '">';
+    if (n.type === "group") {
+      out += '<text x="0" y="14">' + esc(nm(n.zh, n.en)) + "</text>" + '<line x1="0" y1="22" x2="' + w + '" y2="22"></line>';
+      return out + "</g>";
+    }
+    out += '<rect class="box" x="0" y="0" width="' + w + '" height="' + h + '" rx="11"></rect>';
+    var tx = 10, big = n.type === "ro" || n.id === "acer";
+    if (n.cc && n.type !== "ro" && n.id !== "acer") { out += '<image href="flags/' + n.cc + '.svg" x="8" y="' + ((h - 11) / 2 - (n.type === "country" ? 0 : 7)).toFixed(1) + '" width="16" height="11" preserveAspectRatio="xMidYMid slice"></image>'; tx = 30; }
+    if (n.id === "acer") { out += '<image href="logos/acer.svg" x="12" y="' + ((h - 22) / 2).toFixed(1) + '" width="58" height="22" preserveAspectRatio="xMidYMid meet" onerror="this.remove()"></image>'; tx = 80; }
+    var name = function (cls2, y) { return '<text class="' + cls2 + '" x="' + tx + '" y="' + y + '">' + esc(nm(n.zh, n.en)) + "</text>"; };
+    if (n.type === "country" || (!n.code)) out += name("", h / 2 + 4);
+    else if (big) {
+      out += '<text class="code" x="' + tx + '" y="' + (n.type === "ro" ? 24 : 22) + '">' + esc(n.code) + "</text>" + name("", n.type === "ro" ? 40 : 38);
+      if (n.sub) out += '<text class="sub" x="' + tx + '" y="' + (n.type === "ro" ? 55 : 53) + '">' + esc(nm(n.sub[0], n.sub[1])) + "</text>";
+    } else {
+      out += '<text class="code" x="' + tx + '" y="' + (h / 2 - 3) + '">' + esc(n.code) + "</text>" + name("", h / 2 + 11);
+    }
+    if (n.vs === "pending" || n.vs === "notfound" || n.vs === "conflict") out += '<g class="badge"><title>' + nm("待確認 Pending verification", "Pending verification") + '</title><circle cx="' + (w - 1) + '" cy="1" r="7"></circle><text x="' + (w - 1) + '" y="4.5" text-anchor="middle">?</text></g>';
+    return out + "</g>";
+  }
+  function orgTreeEdges() {
+    var out = "";
+    Object.keys(LAY.kids).forEach(function (pid) {
+      var spec = LAY.kids[pid], pm = POS[pid], kind = spec.kind || "own";
+      if (spec.mode === "row") {
+        var b = orgCenter(pid, "bottom"), mid = b[1] + GAP.v / 2;
+        spec.kids.forEach(function (k) {
+          var t = orgCenter(k, "top"), pend = /pending|notfound|conflict/.test(ORG.byId[k].vs);
+          out += '<path class="e-' + kind + (pend ? " e-pending" : "") + '" data-a="' + pid + '" data-b="' + k + '" d="M' + b[0].toFixed(1) + " " + b[1].toFixed(1) + " V" + mid.toFixed(1) + " H" + t[0].toFixed(1) + " V" + t[1].toFixed(1) + '"></path>';
+        });
+      } else if (spec.mode === "cols") {
+        var bus = pm.y + pm.nh + 10, bc = orgCenter(pid, "bottom"), sx = pm.colX.map(function (cx) { return cx - 11; });
+        out += '<path class="e-own" data-a="' + pid + '" data-b="' + pid + '" d="M' + bc[0].toFixed(1) + " " + bc[1].toFixed(1) + " V" + bus + " M" + sx[0] + " " + bus + " H" + sx[sx.length - 1] + '"></path>';
+        spec.kids.forEach(function (k, i) {
+          var km = POS[k], ky = km.y + km.nh / 2, c = Math.floor(i / pm.per), pend = /pending|notfound|conflict/.test(ORG.byId[k].vs);
+          out += '<path class="e-own' + (pend ? " e-pending" : "") + '" data-a="' + pid + '" data-b="' + k + '" d="M' + sx[c] + " " + bus + " V" + ky.toFixed(1) + " H" + km.x.toFixed(1) + '"></path>';
+        });
+      } else {
+        var x = pm.x + 11, y0 = pm.y + pm.nh;
+        spec.kids.forEach(function (k) {
+          var km = POS[k], ky = km.y + km.nh / 2, pend = /pending|notfound|conflict/.test(ORG.byId[k].vs);
+          out += '<path class="e-' + kind + (pend ? " e-pending" : "") + '" data-a="' + pid + '" data-b="' + k + '" d="M' + x + " " + y0.toFixed(1) + " V" + ky.toFixed(1) + " H" + km.x.toFixed(1) + '"></path>';
+        });
+      }
+    });
+    return out;
+  }
+  function orgExtraEdges() {
+    var out = "";
+    ORG.edges.forEach(function (e, i) {
+      var A = POS[e.from], Bm = POS[e.to];
+      if (!A || !Bm) return;
+      var a, b;
+      if (e.toSpine) { a = orgCenter(e.from, A.x > Bm.x ? "left" : "right"); b = [Bm.colX ? Bm.colX[Bm.colX.length - 1] - 11 : Bm.x + 11, Bm.y + Bm.nh + 10]; }
+      else if (Bm.x > A.x + A.nw + 10) { a = orgCenter(e.from, "right"); b = orgCenter(e.to, "left"); }
+      else if (Bm.x + Bm.nw + 10 < A.x) { a = orgCenter(e.from, "left"); b = orgCenter(e.to, "right"); }
+      else if (Bm.y > A.y) { a = orgCenter(e.from, "bottom"); b = orgCenter(e.to, "top"); }
+      else { a = orgCenter(e.from, "top"); b = orgCenter(e.to, "bottom"); }
+      var dx = (b[0] - a[0]) * .45, dy = (b[1] - a[1]) * .3, horiz = Math.abs(b[0] - a[0]) > Math.abs(b[1] - a[1]);
+      var d = horiz ? "M" + a[0].toFixed(1) + " " + a[1].toFixed(1) + " C" + (a[0] + dx).toFixed(1) + " " + a[1].toFixed(1) + " " + (b[0] - dx).toFixed(1) + " " + b[1].toFixed(1) + " " + b[0].toFixed(1) + " " + b[1].toFixed(1)
+        : "M" + a[0].toFixed(1) + " " + a[1].toFixed(1) + " C" + a[0].toFixed(1) + " " + (a[1] + dy * 2).toFixed(1) + " " + b[0].toFixed(1) + " " + (b[1] - dy * 2).toFixed(1) + " " + b[0].toFixed(1) + " " + b[1].toFixed(1);
+      var pend = /pending|notfound|conflict/.test(e.vs);
+      out += '<path class="e-' + e.kind + (pend ? " e-pending" : "") + '" data-a="' + e.from + '" data-b="' + e.to + '" d="' + d + '"><title>' + esc(nm(e.label[0], e.label[1])) + "</title></path>";
+      var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, lab = nm(e.label[0], e.label[1]), lw = labelW(lab) * .72 + 8;
+      out += '<g class="elab" data-a="' + e.from + '" data-b="' + e.to + '"><rect x="' + (mx - lw / 2).toFixed(1) + '" y="' + (my - 7).toFixed(1) + '" width="' + lw.toFixed(1) + '" height="13" rx="3"></rect><text x="' + mx.toFixed(1) + '" y="' + (my + 3).toFixed(1) + '" text-anchor="middle">' + esc(lab) + "</text></g>";
+    });
+    return out;
+  }
+  function orgRender() {
+    if (!ORG || !$("org-g")) return;
+    orgLayout();
+    $("org-g").innerHTML = orgTreeEdges() + ORG.nodes.filter(function (n) { return POS[n.id]; }).map(orgNodeSVG).join("");
+    $("org-jump").innerHTML = '<option value="">' + nm("前往節點…", "Go to node…") + "</option>" + Object.keys(TYPE_NAME).filter(function (t) { return t !== "group" && t !== "acer"; }).map(function (t) {
+      var items = ORG.nodes.filter(function (n) { return n.type === t && POS[n.id]; });
+      return items.length ? '<optgroup label="' + esc(nm(TYPE_NAME[t][0], TYPE_NAME[t][1])) + '">' + items.map(function (n) { return '<option value="' + n.id + '">' + esc((n.code ? n.code + " · " : "") + nm(n.zh, n.en)) + "</option>"; }).join("") + "</optgroup>" : "";
+    }).join("");
+    orgApply();
+    if (orgSel) orgMark(orgSel);
+    orgReady = true;
+  }
+  function orgApply() { $("org-g").setAttribute("transform", "translate(" + ORG_V.x.toFixed(1) + "," + ORG_V.y.toFixed(1) + ") scale(" + ORG_V.k.toFixed(3) + ")"); }
+  function orgFit() {
+    var st = $("org-stage"); if (!st || !ORG_BOX.w) return;
+    var W = st.clientWidth, H = st.clientHeight; if (!W) return;
+    var k = Math.min(1.1, (W - 16) / ORG_BOX.w, (H - 16) / ORG_BOX.h);
+    ORG_V = { k: k, x: (W - ORG_BOX.w * k) / 2, y: (H - ORG_BOX.h * k) / 2 };
+    orgApply();
+  }
+  // 預設視圖：以可讀的比例顯示 Acer → 區域 → PAP 的核心
+  function orgHome() {
+    var st = $("org-stage"); if (!st || !ORG_BOX.w) return;
+    var W = st.clientWidth, H = st.clientHeight, fit = Math.min(1.1, (W - 16) / ORG_BOX.w, (H - 16) / ORG_BOX.h);
+    var k = Math.max(fit, W < 600 ? .62 : .72), pm = POS.pap, am = POS.acer;
+    ORG_V = { k: k, x: W / 2 - (pm.x + pm.nw / 2) * k, y: 14 - (am.y - 8) * k };
+    orgApply();
+  }
+  function orgZoom(f, cx, cy) {
+    var st = $("org-stage"); cx = cx === undefined ? st.clientWidth / 2 : cx; cy = cy === undefined ? st.clientHeight / 2 : cy;
+    var k = Math.min(3, Math.max(.25, ORG_V.k * f)), r = k / ORG_V.k;
+    ORG_V = { k: k, x: cx - (cx - ORG_V.x) * r, y: cy - (cy - ORG_V.y) * r };
+    orgApply();
+  }
+  function orgMark(id) {
+    orgSel = id;
+    var rel = {}; rel[id] = 1;
+    $$("#org-g path[data-a], #org-g .elab").forEach(function (e) {
+      var on = e.getAttribute("data-a") === id || e.getAttribute("data-b") === id;
+      if (on) { rel[e.getAttribute("data-a")] = 1; rel[e.getAttribute("data-b")] = 1; }
+      e.classList.toggle("hi", on && e.tagName === "path"); e.classList.toggle("edim", !on);
+    });
+    $$("#org-g .on").forEach(function (g) { var i = g.getAttribute("data-id"); g.classList.toggle("sel", i === id); g.classList.toggle("dim", !rel[i] && orgParent[i] !== id && orgParent[id] !== i); });
+  }
+  function orgClear() { orgSel = null; $$("#org-g .hi, #org-g .edim, #org-g .sel, #org-g .dim").forEach(function (e) { e.classList.remove("hi", "edim", "sel", "dim"); }); $("org-panel").hidden = true; }
+  function orgSelect(id) {
+    if (!orgReady) orgRender();
+    var n = ORG.byId[id]; if (!n) return;
+    orgMark(id); orgPanel(n);
+    // 將節點移到視窗中央（保留目前縮放）
+    var st = $("org-stage"), m = POS[id];
+    if (st && m) { ORG_V.x = st.clientWidth / 2 - (m.x + m.nw / 2) * ORG_V.k; ORG_V.y = st.clientHeight / 2 - (m.y + m.nh / 2) * ORG_V.k; orgApply(); }
+  }
+  function orgPanel(n) {
+    var pn = $("org-panel"), rows = [], kids = (LAY.kids[n.id] || { kids: [] }).kids, par = orgParent[n.id];
+    var typeName = TYPE_NAME[n.id === "acer" ? "acer" : n.type];
+    var logoBox = n.logo ? '<span class="logo-box sm" data-logo="' + n.logo + '" data-pz="Logo 待補" data-pe="Logo pending"><span class="initial">' + esc((n.zh || n.en).charAt(0)) + "</span></span>" : "";
+    rows.push([B("名稱", "Name"), "<b>" + esc(n.zh) + "</b><br>" + esc(n.en) + (n.official ? '<br><small class="caption">' + esc(n.official) + "</small>" : "")]);
+    if (logoBox) rows.push(["Logo", logoBox]);
+    rows.push([B("組織類型", "Type"), '<span class="chip rg">' + B(typeName[0], typeName[1]) + "</span>"]);
+    if (par && ORG.byId[par]) {
+      var pp = ORG.byId[par], kind = (LAY.kids[par].kind || "own"), kn = { own: ["組織隸屬／持股", "Reporting line / ownership"], spin: ["分拆後獨立（歷史關係）", "Independent since the split (historical)"] }[kind];
+      rows.push([B("上層單位", "Parent"), '<button type="button" class="org-par" data-org-go="' + par + '">' + esc(nm(pp.zh, pp.en)) + "</button> <small class=\"caption\">" + B(kn[0], kn[1]) + "</small> " + vsChip(n.vs)]);
+    }
+    if (kids.length) rows.push([B("下屬單位", "Units below"), '<div class="org-kids">' + kids.map(function (k) { var kk = ORG.byId[k]; return '<button type="button" data-org-go="' + k + '">' + esc(kk.code || nm(kk.zh, kk.en)) + "</button>"; }).join("") + "</div>"]);
+    var place = "";
+    if (n.cc && CNAME[n.cc]) place += flag(n.cc) + B(CNAME[n.cc][0], CNAME[n.cc][1]);
+    if (n.region) place += (place ? " " : "") + '<span class="chip rg">' + B("區域 ", "Region ") + esc(n.region) + "</span>";
+    if (place) rows.push([B("國家／區域", "Country / region"), place]);
+    rows.push([B("業務角色", "Business role"), B(esc(n.role[0]), esc(n.role[1]))]);
+    if (n.type === "ns" && n.cc && INFRA_BY[n.cc]) rows.push([B("據點", "Sites"), sitesLine(n.cc)]);
+    var rel = ORG.edges.filter(function (e) { return e.from === n.id || e.to === n.id; });
+    if (rel.length) rows.push([B("其他關係", "Other links"), '<ul class="src-list">' + rel.map(function (e) {
+      var other = ORG.byId[e.from === n.id ? e.to : e.from], kn = { collab: ["協作", "Collaboration"], proc: ["採購流程", "Procurement"], spin: ["分拆", "Spin-off"] }[e.kind];
+      return "<li>" + B(kn[0], kn[1]) + "：<button type=\"button\" class=\"org-par\" data-org-go=\"" + other.id + "\">" + esc(nm(other.zh, other.en)) + "</button> <small>" + B(esc(e.label[0]), esc(e.label[1])) + "</small> " + (/pending|notfound|conflict/.test(e.vs) ? vsChip(e.vs) : "") + "</li>";
+    }).join("") + "</ul>"]);
+    if (n.flows && n.flows.length) rows.push([B("相關流程", "Related processes"), '<div class="pop-acts">' + n.flows.map(function (f) { return '<button class="btn sm" type="button" data-go="' + f[2] + '">' + B(f[0], f[1]) + " →</button>"; }).join("") + "</div>"]);
+    rows.push([B("資料來源", "Sources"), srcList({ urls: n.src })]);
+    rows.push([B("查證狀態", "Verification"), vsChip(n.vs) + (n.note ? ' <small class="caption">' + B(esc(n.note[0]), esc(n.note[1])) + "</small>" : "")]);
+    var acts = (n.ab && AB_BY[n.ab] ? '<button class="btn sm ab" type="button" data-ab="' + n.ab + '">' + B("代碼說明", "Code details") + "</button>" : "") + (n.code && officeIdx(n.code) >= 0 ? '<button class="btn sm" type="button" data-office-go="' + officeIdx(n.code) + '">' + B("據點資料 →", "Office details →") + "</button>" : "");
+    pn.innerHTML = '<header><div><b>' + esc(n.code || nm(n.zh, n.en)) + "</b><small>" + B(esc(n.zh), esc(n.en)) + '</small></div><button type="button" aria-label="close" data-org-close>✕</button></header><div class="org-in"><dl class="kvl">' +
+      rows.map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + r[1] + "</dd></div>"; }).join("") + "</dl>" + (acts ? '<div class="pop-acts">' + acts + "</div>" : "") + "</div>";
+    pn.hidden = false;
+    $$(".logo-box[data-logo]", pn).forEach(function (box) { var id = box.getAttribute("data-logo"); if (LOGOS[id]) setLogo(box, id); else probeLogo(id, function (src) { if (src) setLogo(box, id, src); }); });
+  }
+  (function () {
+    var st = $("org-stage"); if (!st || !ORG) return;
+    $("org-legend").innerHTML = [["l-ro", "區域辦公室（PAP）", "Regional office (PAP)"], ["l-region", "區域", "Region"], ["l-ns", "國家子公司", "Nation subsidiary"], ["l-unit", "代管國家／下轄單位", "Covered country / unit"], ["", "法人公司（宏碁持股）", "Company (Acer-controlled)"], ["l-fam", "分拆後獨立", "Independent since the split"], ["l-dept", "總部單位", "Headquarters unit"], ["l-odm", "外部代工廠", "External manufacturer"], ["l-partner", "服務夥伴", "Service partner"]]
+      .map(function (l) { return '<span class="lg"><i class="' + l[0] + '"></i>' + B(l[1], l[2]) + "</span>"; }).join("") +
+      [["", "組織隸屬／持股", "Reporting line / ownership"], ["l-collab", "跨部門協作", "Cross-unit collaboration"], ["l-proc", "採購流程", "Procurement flow"], ["l-spin", "分拆／整併（歷史）", "Spin-off / merger (historical)"], ["l-pend", "未經證實（Pending Verification）", "Pending verification"]]
+      .map(function (l) { return '<span class="lg"><s class="' + l[0] + '"></s>' + B(l[1], l[2]) + "</span>"; }).join("") + '<span class="lg"><b class="q">?</b>' + B("待確認的節點", "Node pending verification") + "</span>";
+    var drag = null, pts = {}, pinch = null;
+    st.addEventListener("pointerdown", function (e) { if (e.target.closest("button")) return; st.setPointerCapture(e.pointerId); pts[e.pointerId] = [e.clientX, e.clientY]; var ids = Object.keys(pts); if (ids.length === 1) { drag = { x: e.clientX, y: e.clientY, vx: ORG_V.x, vy: ORG_V.y, moved: false }; st.classList.add("drag"); } else if (ids.length === 2) { var a = pts[ids[0]], b = pts[ids[1]]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), k: ORG_V.k }; drag = null; } });
+    st.addEventListener("pointermove", function (e) {
+      if (!pts[e.pointerId]) return; pts[e.pointerId] = [e.clientX, e.clientY];
+      var ids = Object.keys(pts);
+      if (pinch && ids.length === 2) { var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a[0] - b[0], a[1] - b[1]), r = st.getBoundingClientRect(); orgZoom((pinch.k * d / pinch.d) / ORG_V.k, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); return; }
+      if (drag) { var dx = e.clientX - drag.x, dy = e.clientY - drag.y; if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true; ORG_V.x = drag.vx + dx; ORG_V.y = drag.vy + dy; orgApply(); }
+    });
+    var up = function (e) { delete pts[e.pointerId]; if (!Object.keys(pts).length) { pinch = null; st.classList.remove("drag"); } if (drag && !drag.moved) { var g = e.target.closest ? e.target.closest(".on") : null; if (g) orgSelect(g.getAttribute("data-id")); else if (!e.target.closest("button")) orgClear(); } drag = null; };
+    st.addEventListener("pointerup", up); st.addEventListener("pointercancel", up);
+    st.addEventListener("wheel", function (e) { e.preventDefault(); var r = st.getBoundingClientRect(); orgZoom(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+    st.addEventListener("keydown", function (e) { if (e.key !== "Enter" && e.key !== " ") return; var g = e.target.closest ? e.target.closest(".on") : null; if (g) { e.preventDefault(); orgSelect(g.getAttribute("data-id")); } });
+    document.addEventListener("click", function (e) {
+      var t = e.target, b = t.closest ? t.closest("[data-org]") : null;
+      if (b) { var a = b.getAttribute("data-org"); if (a === "in") orgZoom(1.25); else if (a === "out") orgZoom(1 / 1.25); else if (a === "fit") orgFit(); else orgHome(); return; }
+      if (t.closest && t.closest("[data-org-close]")) { orgClear(); return; }
+      var g = t.closest ? t.closest("#org-panel [data-org-go], .pop-acts [data-org-go]") : null;
+      if (g && t.closest("#org-panel")) { orgSelect(g.getAttribute("data-org-go")); }
+    });
+    window.addEventListener("resize", function () { if (orgReady && $("sub-corp-map").classList.contains("active")) orgHome(); });
+    $("org-jump").addEventListener("change", function () { if (this.value) { orgSelect(this.value); this.value = ""; } });
+  })();
   /* ---------- 重點複習 ---------- */
   var QZ = [
     ["PAP 由哪兩個區域整併而成？", "Which two regions merged to form PAP?", "TWN（台灣）與 AAP（亞太），於 2016/2017 年整併。", "TWN (Taiwan) and AAP (Asia Pacific), in 2016/2017."],
@@ -3030,7 +3347,7 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .kfacts, .roles3, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .intro-nums, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
