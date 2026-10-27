@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- 網頁字型不阻擋顯示：載入完成前先用系統字型 -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Iansui&family=Comic+Neue:wght@400;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Iansui&family=Comic+Neue:wght@400;700&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
 <style>
   /* 介面沿用 RMA 平台的版型（深色標題列、分頁列、與分頁相連的卡片），配色為綠、藍、土三色。
      主題：綠（預設）／藍／土；地圖一律以藍色海洋、土色陸地、綠色重點呈現。 */
@@ -33,14 +33,17 @@
   :root {
     --sea:#D9E7EF; --land:#ECE5D6; --land-line:#CDBFA4;
     --r-pap:#4E9A72; --r-pap2:#AFD3BC; --r-pa:#5A8FB5; --r-emea:#C9A97A; --r-accn:#A6957F;
-    --font-head:"Noto Serif TC","Songti TC","PMingLiU",serif;
+    --font-head:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif;
     --font-mono:Consolas,"Cascadia Mono","SFMono-Regular",Menlo,ui-monospace,monospace;
     color-scheme:light;
   }
-  html[data-font="sans"] body { font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC","Segoe UI",sans-serif; }
-  html[data-font="hand"] body { font-family:"Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Comic Neue","Microsoft JhengHei",sans-serif; }
-  html[data-font="hand"] { --font-head:"Iansui","LXGW WenKai TC","霞鶩文楷 TC","Comic Neue",serif; }
+  html[data-font="sans"] body { font-family:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
+  /* 字型與 RMA 售後零件規劃平台相同 */
+  html[data-font="hand"] body { font-family:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif; }
+  html[data-font="hand"] { --font-head:"Reprice Sketch","王漢宗標楷體空心","Sketch Block","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif; }
+  html[data-font="sans"] { --font-head:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   html[data-font="mono"] body { font-family:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
+  html[data-font="mono"] { --font-head:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
   /* 語言：同一處放中英兩份，依 data-lang 顯示其中一份 */
   html[data-lang="en"] .zh, html[data-lang="zh"] .en { display:none !important; }
   [hidden] { display:none !important; }
