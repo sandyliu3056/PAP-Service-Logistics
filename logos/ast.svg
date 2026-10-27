@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 160" width="420" height="160">
+  <!-- hand-drawn placeholder mark for AST (internal use; not the official logo) -->
+  <path d="M129.8 80.0 Q129.8 102.6 115.0 119.0 Q98.3 133.9 76.0 135.3 Q54.5 134.2 39.7 116.3 Q22.2 102.5 25.7 80.0 Q22.4 57.1 38.5 42.5 Q53.5 26.2 76.0 27.7 Q99.1 26.5 115.8 40.2 Q129.7 57.2 129.8 80.0 Z" fill="#DFEBD9" stroke="#4A3226" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M122.6 80.0 Q120.3 97.2 105.7 109.7 Q93.2 124.3 76.0 126.9 Q58.7 124.3 46.0 110.0 Q32.0 97.9 32.2 80.0 Q32.3 61.3 43.2 47.2 Q57.1 36.4 76.0 36.9 Q94.4 36.2 107.1 48.9 Q120.1 62.3 122.6 80.0 Z" fill="#5A7B4A" stroke="none" opacity=".95"/>
+  <circle cx="60" cy="66" r="7" fill="#FFFDF7" opacity=".55"/>
+  <circle cx="63" cy="92" r="3.5" fill="#4A3226"/><circle cx="89" cy="92" r="3.5" fill="#4A3226"/>
+  <path d="M68 102 q8 7 16 0" fill="none" stroke="#4A3226" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="54" cy="100" r="5" fill="#F2A7A0" opacity=".8"/><circle cx="98" cy="100" r="5" fill="#F2A7A0" opacity=".8"/>
+  <text x="76" y="72" text-anchor="middle" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="34" fill="#FFFDF7">A</text>
+  <text x="150" y="100" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="64" fill="#5A7B4A" stroke="#4A3226" stroke-width="1.2" paint-order="stroke" textLength="107" lengthAdjust="spacingAndGlyphs">AST</text>
+  <path d="M152 114 C 190 108, 240 120, 259 112" fill="none" stroke="#5A7B4A" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+  <path d="M263 34 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/><path d="M118 112 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/>
+</svg>

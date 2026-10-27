@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 160" width="420" height="160">
+  <!-- hand-drawn placeholder mark for AEB (internal use; not the official logo) -->
+  <path d="M129.6 80.0 Q129.8 102.5 114.5 118.5 Q97.8 134.1 76.0 137.2 Q54.4 134.2 38.0 118.0 Q22.1 102.3 21.9 80.0 Q22.2 57.6 37.3 41.3 Q53.0 26.4 76.0 28.4 Q98.8 26.3 114.2 41.8 Q129.8 57.6 129.6 80.0 Z" fill="#DCEBD6" stroke="#4A3226" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M120.0 80.0 Q119.9 98.3 107.4 111.4 Q93.9 124.0 76.0 125.9 Q58.4 124.2 45.7 110.3 Q32.1 98.2 33.1 80.0 Q32.3 61.3 44.0 48.0 Q57.6 36.2 76.0 36.1 Q94.0 36.0 106.5 49.5 Q120.0 62.0 120.0 80.0 Z" fill="#4F7F3F" stroke="none" opacity=".95"/>
+  <circle cx="60" cy="66" r="7" fill="#FFFDF7" opacity=".55"/>
+  <circle cx="63" cy="92" r="3.5" fill="#4A3226"/><circle cx="89" cy="92" r="3.5" fill="#4A3226"/>
+  <path d="M68 102 q8 7 16 0" fill="none" stroke="#4A3226" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="54" cy="100" r="5" fill="#F2A7A0" opacity=".8"/><circle cx="98" cy="100" r="5" fill="#F2A7A0" opacity=".8"/>
+  <text x="76" y="72" text-anchor="middle" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="34" fill="#FFFDF7">A</text>
+  <text x="150" y="100" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="64" fill="#4F7F3F" stroke="#4A3226" stroke-width="1.2" paint-order="stroke" textLength="107" lengthAdjust="spacingAndGlyphs">AEB</text>
+  <path d="M152 114 C 190 108, 240 120, 259 112" fill="none" stroke="#4F7F3F" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+  <path d="M263 34 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/><path d="M118 112 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/>
+</svg>
