@@ -2149,7 +2149,7 @@
       return '<li><button type="button" data-go="' + go + '">' + (num ? '<span class="n">' + num + "</span>" : "") + '<span class="t">' + label + '</span><span class="dots"></span><span class="go" aria-hidden="true">→</span></button></li>';
     };
     return '<article class="folder" style="--fc:' + FC[i % FC.length] + '"><span class="ftab">' + n + '</span><span class="fbig" aria-hidden="true">' + n + "</span>" +
-      '<button type="button" class="ftitle" data-go="' + p.id + '">' + B(p.zh, p.en) + "</button><p>" + B(d[0], d[1]) + '</p><ol class="' + (p.subs.length >= 8 ? "two" : "") + '">' +
+      '<button type="button" class="ftitle" data-go="' + p.id + '">' + B(p.zh, p.en) + "</button><p>" + B(d[0], d[1]) + "</p><ol>" +
       (p.subs.length ? p.subs.map(function (s) { return row(s[0], s.num, B(s[1], s[2])); }).join("") : row(p.id, "", B("單頁，直接閱讀", "Single page"))) + "</ol></article>";
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
