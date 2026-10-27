@@ -7,3 +7,7 @@
   `hsn`, `compal`, `quanta`, `wistron`, `inventec`, `pegatron`, `foxconn`, `benq`, `auo`, `weblink`, `acsi`, `aeb`, `ast`, `aopen`, `acergaming`, `acergadget`, `acerpure`, `acermedical`（副檔名 `.svg` 或 `.png`，建議透明背景、寬度 400 px 以上）。
 
 商標為各公司所有，僅供內部介紹使用。
+
+## 手繪示意 logo
+
+`hsn`、`compal`、`quanta`、`wistron`、`inventec`、`pegatron`、`foxconn`、`auo`、`qisda`、`weblink`、`acsi`、`aeb`、`ast`、`aopen`、`acergaming`、`acergadget`、`acerpure`、`acermedical`、`enfinitec` 目前為本站自行繪製的示意圖（公司名稱＋首字圓章，角落註明 hand-drawn），僅供內部自用，不是各公司的官方商標；網站上會標示「手繪示意」。取得官方素材後以同檔名覆蓋即可。

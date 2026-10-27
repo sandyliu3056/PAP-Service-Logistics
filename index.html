@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
 <style>
+  /* 手寫字型（與 UPS Reprice 平台相同）：標題 Caveat、內文 Patrick Hand，皆 SIL Open Font License；只涵蓋英數，中文接手寫中文字型 */
+  @font-face { font-family:"Caveat Hand"; src:url("fonts/caveat.woff2") format("woff2"); font-weight:400 900; font-style:normal; font-display:swap; unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+  @font-face { font-family:"Patrick Hand"; src:url("fonts/patrick-hand.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
   /* 介面沿用 RMA 平台的版型（深色標題列、分頁列、與分頁相連的卡片），配色為綠、藍、土三色。
      主題：土（預設）／綠／藍；地圖一律以藍色海洋、土色陸地、綠色重點呈現。 */
   :root, html[data-theme="green"] {
@@ -31,16 +34,31 @@
     --sel:#5A4733; --selline:#B09676; --hdr-sub:#DCCBB1; --warn:#A8503F; --ok:#2F7A4F; --field:#D3C1A6; --hl:#F3E6CF;
   }
   :root {
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23g)' opacity='0.035'/></svg>");
+    --paper-tex:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.62 0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.55'/></feComponentTransfer></filter><rect width='180' height='180' filter='url(%23p)' opacity='0.12'/></svg>");
+    --brush:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M2 5.6C40 2.8 68 7.6 100 4.8 132 2.0 168 6.8 198 4.4L198 7.2C168 9.6 132 4.8 100 7.6 68 10.4 40 5.6 2 8.4Z' fill='%23000'/></svg>");
     --sea:#D9E7EF; --land:#ECE5D6; --land-line:#CDBFA4;
     --r-pap:#4E9A72; --r-pap2:#AFD3BC; --r-pa:#5A8FB5; --r-emea:#C9A97A; --r-accn:#A6957F;
-    --font-head:"Reprice Sketch","Comic Neue","Comic Sans MS","LXGW WenKai TC","霞鶩文楷 TC","芫荽","Iansui","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif;
+    --font-head:"Caveat Hand","Reprice Sketch","芫荽","Iansui","Hannotate TC","HanziPen TC","手札體-信","翩翩體-繁","LXGW WenKai TC","霞鶩文楷 TC","DFKai-SB","標楷體","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif;
     --font-mono:Consolas,"Cascadia Mono","SFMono-Regular",Menlo,ui-monospace,monospace;
     color-scheme:light;
   }
   html[data-font="sans"] body { font-family:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   /* 字型與 RMA 售後零件規劃平台相同 */
-  html[data-font="hand"] body { font-family:"Reprice Sketch","Comic Neue","Comic Sans MS","芫荽","Iansui","LXGW WenKai TC","霞鶩文楷 TC","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; }
-  html[data-font="hand"] { --font-head:"Reprice Sketch","Comic Neue","Comic Sans MS","LXGW WenKai TC","霞鶩文楷 TC","芫荽","Iansui","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; }
+  html[data-font="hand"] body { font-family:"Patrick Hand","Reprice Sketch","芫荽","Iansui","Hannotate TC","HanziPen TC","手札體-信","翩翩體-繁","LXGW WenKai TC","霞鶩文楷 TC","DFKai-SB","標楷體","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; font-size:15.5px; }
+  html[data-font="hand"] { --font-head:"Caveat Hand","Reprice Sketch","芫荽","Iansui","Hannotate TC","HanziPen TC","手札體-信","翩翩體-繁","LXGW WenKai TC","霞鶩文楷 TC","DFKai-SB","標楷體","王漢宗標楷體空心","Sketch Block","Segoe Print","Ink Free","Microsoft JhengHei",sans-serif; }
+  /* Caveat 的字面比黑體小一圈，標題字級補回來 */
+  html[data-font="hand"] .hdr h1 { font-size:1.9rem; letter-spacing:.1em; }
+  html[data-font="hand"] .sub > h2, html[data-font="hand"] .page.single h2.ptitle { font-size:2.1rem; }
+  html[data-font="hand"] .block > h3 { font-size:1.35rem; }
+  html[data-font="hand"] .intro-title { font-size:2.7rem; }
+  html[data-font="hand"] .hero-title { font-size:2.6rem; }
+  html[data-font="hand"] .subnav .pt { font-size:1.55rem; }
+  html[data-font="hand"] .ftitle { font-size:1.5rem; }
+  html[data-font="hand"] .tabs button { font-size:1.05rem; }
+  html[data-font="hand"] .corp-head h3 { font-size:1.6rem; }
+  html[data-font="hand"] .pcard-head b { font-size:1.2rem; }
+  html[data-font="hand"] .btn { font-size:1rem; }
   h1, h2, h3, h4, .tabs button, .subnav .pt, .subnav button.active, .ftitle, .intro-title, .hero-title, .block > h3, .btn, .pnode b, .node, .onode b, .corp-head h3, .pcard-head b, .org-panel header b, .ab-pop header b, .kf-v, .intro-nums b, .defbox b, .step-t, .tnode > summary .k { font-weight:700; }
   html[data-font="sans"] { --font-head:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   html[data-font="mono"] body { font-family:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
@@ -57,11 +75,36 @@
   .card { border-radius:0 16px 14px 15px / 0 14px 16px 13px !important; }
   .box, .pcard, .kpi, .folder, .office, .cover, .corp-head, .defbox, .notice, .map, .waybill { box-shadow:2px 3px 0 rgba(74,58,43,.08); }
   html, body { margin:0; background:var(--bg); color:var(--ink); font-size:15px; line-height:1.7; }
+  body, .card, .panel-paper { background-image:var(--paper-tex); }
+  .box, .pcard, .kpi, .office, .cover, .corp-head, .defbox, .extra-box, .map, .folder, .bz, .facts > div, .kf, .hsn, .tnode, .code-nav .cn { background-image:var(--grain); }
+  /* 濕筆抖線：框線畫在虛擬元素上，字不會跟著歪 */
+  .box, .pcard, .kpi, .office, .cover, .corp-head, .defbox, .extra-box, .map, .folder, .bz, .facts > div, .kf, .hsn, .notice, .howread, .pg-abbr, .refs-wrap, .waybill, .org-stage, .hero { position:relative; }
+  .box::before, .pcard::before, .kpi::before, .office::before, .cover::before, .corp-head::before, .defbox::before, .extra-box::before, .map::before, .folder::before, .bz::before, .facts > div::before, .kf::before, .hsn::before, .notice::before, .howread::before, .pg-abbr::before, .refs-wrap::before, .waybill::before, .org-stage::before, .hero::before {
+    content:""; position:absolute; inset:-2px; border:1.5px solid var(--selline); border-radius:inherit; pointer-events:none; filter:url(#wobble-damp); opacity:.85; }
+  .corp-head::before { border-left-width:6px; border-left-color:var(--cc); }
+  .pcard::before { border-top-width:4px; border-top-color:var(--pc, var(--line)); }
+  .kpi::before { border-top-width:4px; border-top-color:var(--primary); }
+  .folder::before { border-top-width:2px; border-top-color:var(--fc); }
+  .defbox::before, .howread::before, .notice::before { border-left-width:5px; border-left-color:var(--primary); }
+  .office::before { border-top-width:4px; border-top-color:var(--oc, var(--line)); }
+  .box, .pcard, .kpi, .office, .cover, .corp-head, .defbox, .extra-box, .map, .folder, .bz, .facts > div, .kf, .hsn, .notice, .howread, .pg-abbr, .refs-wrap, .waybill, .org-stage, .hero { border-color:transparent !important; }
+  /* 顏料溢出邊線：兩塊偏移的平色 */
+  .box, .pcard, .corp-head, .defbox, .map, .folder, .office, .cover, .kf, .waybill, .hero { box-shadow:4px 5px 0 -2px color-mix(in srgb, var(--tab) 55%, transparent), -3px 3px 0 -2px color-mix(in srgb, var(--hover) 70%, transparent) !important; }
+  .btn { box-shadow:2px 3px 0 -1px color-mix(in srgb, var(--primary) 25%, transparent); }
+  .btn:active { transform:translate(1px, 1px); box-shadow:1px 1px 0 -1px color-mix(in srgb, var(--primary) 25%, transparent); }
+  /* 頁面標題底下畫一條筆刷 */
+  .sub > h2, .page.single h2.ptitle { position:relative; padding-bottom:10px; }
+  .sub > h2::after, .page.single h2.ptitle::after { content:""; position:absolute; left:0; bottom:0; width:min(100%, 18em); height:7px; background:var(--selline); -webkit-mask:var(--brush) left bottom/100% 100% no-repeat; mask:var(--brush) left bottom/100% 100% no-repeat; opacity:.8; }
+  /* 畫面四周壓一層極淡的暈 */
+  .card { background-image:var(--paper-tex), radial-gradient(130% 92% at 50% 0%, transparent 56%, color-mix(in srgb, var(--primary) 8%, transparent) 100%); }
+  @media (prefers-reduced-motion:reduce) { .box::before, .pcard::before, .map::before, .folder::before, .org-stage::before { filter:none; } }
   body { padding-bottom:env(safe-area-inset-bottom, 0px); }
   .mono, .code { font-family:var(--font-mono); }
   :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   img { max-width:100%; }
   h1, h2, h3 { text-wrap:balance; font-weight:700; }
+  html[data-font="hand"] h1, html[data-font="hand"] h2, html[data-font="hand"] h3, html[data-font="hand"] .intro-sec > h3, html[data-font="hand"] .subnav .pt, html[data-font="hand"] .ftitle, html[data-font="hand"] .tabs button, html[data-font="hand"] .block > h3 { font-weight:800; -webkit-text-stroke:.45px currentColor; paint-order:stroke fill; }
+  html[data-font="hand"] .intro-sec > h3 { font-size:1.7rem; }
 
   /* 標題列 */
   .hdr { background:var(--navy); color:var(--gold); padding:calc(12px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) 12px max(24px, env(safe-area-inset-left, 0px)); display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; }
@@ -92,7 +135,30 @@
   .page.active { display:grid; grid-template-columns:240px minmax(0, 1fr); gap:44px; }
   .page.single.active { display:block; }
   .subnav { position:sticky; top:18px; align-self:start; }
-  .subnav .pt { font-family:var(--font-head); font-size:1.3rem; font-weight:700; padding-bottom:12px; margin-bottom:12px; border-bottom:2px solid var(--navy); line-height:1.3; }
+  .subnav .pt { font-family:var(--font-head); font-size:1.3rem; font-weight:700; padding-bottom:12px; margin-bottom:12px; border-bottom:2px solid var(--navy); line-height:1.3; position:relative; padding-right:70px; }
+  .mzwrap { position:absolute; right:6px; bottom:-9px; width:66px; height:41px; pointer-events:none; line-height:0; }
+  .mz { width:66px; height:41px; overflow:visible; display:block; }
+  .mz .fur { fill:#f6e8cf; stroke:#4a3226; stroke-width:2; stroke-linejoin:round; }
+  .mz-dog .fur { fill:#f2bd7a; }
+  .mz .pt { fill:#7a5236; stroke:#4a3226; stroke-width:1.6; stroke-linejoin:round; }
+  .mz .innr { fill:#f2b8ad; stroke:none; }
+  .mz .ln { stroke:#4a3226; fill:none; stroke-linecap:round; }
+  .mz .flop { fill:#d99050; stroke:#4a3226; stroke-width:1.6; stroke-linejoin:round; }
+  .mz .snout { fill:#fdf3e3; stroke:#4a3226; stroke-width:1.6; }
+  .mz .collar { stroke:#c74a3a; fill:none; stroke-linecap:round; }
+  .mz .mz-lid { stroke:#4a3226; stroke-width:1.3; fill:none; opacity:0; }
+  .mz .mz-eyes { transform-box:fill-box; transform-origin:center; animation:mzblink 4.6s ease-in-out infinite; }
+  .mz-dog .mz-eyes { animation-delay:1.3s; }
+  .mz .mz-head { transform-box:fill-box; transform-origin:50% 90%; animation:mzbob 3.8s ease-in-out infinite alternate; }
+  .mz .mz-flop { transform-box:fill-box; transform-origin:10% 20%; animation:mzflop 2.4s ease-in-out infinite alternate; }
+  .mz .mz-prop { transform-box:fill-box; transform-origin:center; animation:mzfloat 3.2s ease-in-out infinite alternate; }
+  @keyframes mzblink { 0%, 90%, 100% { transform:scaleY(1); } 93% { transform:scaleY(.08); } }
+  @keyframes mzbob { from { transform:rotate(-1.6deg); } to { transform:rotate(1.6deg) translateY(-.6px); } }
+  @keyframes mzflop { from { transform:rotate(-5deg); } to { transform:rotate(6deg); } }
+  @keyframes mzfloat { from { transform:translateY(0); } to { transform:translateY(-1.6px) rotate(2deg); } }
+  .single-title { position:relative; display:inline-block; padding-right:76px; }
+  .single-title .mzwrap { bottom:-6px; }
+  @media (prefers-reduced-motion:reduce) { .mz .mz-eyes, .mz .mz-head, .mz .mz-flop, .mz .mz-prop { animation:none; } }
   .subnav .pt small { display:block; font-family:inherit; color:var(--mute); font-size:.8rem; font-weight:400; letter-spacing:.04em; }
   .subnav nav { display:grid; gap:3px; }
   .subnav button { display:grid; grid-template-columns:2.6em minmax(0, 1fr); align-items:baseline; width:100%; text-align:left; background:none; border:0; border-radius:8px; padding:9px 12px; font-family:inherit; font-size:.95rem; color:var(--ink); cursor:pointer; line-height:1.4; }
@@ -845,6 +911,9 @@
   .logo-box:not(.has)::after { position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); font-size:.6rem; line-height:1.5; padding:0 6px; border-radius:999px; background:#FFF4DC; color:#7A4E12; border:1px solid #D9A95A; white-space:nowrap; }
   html[data-lang="zh"] .logo-box:not(.has)::after { content:attr(data-pz); }
   html[data-lang="en"] .logo-box:not(.has)::after { content:attr(data-pe); }
+  .logo-box.hand::after { position:absolute; right:-6px; top:-8px; font-size:.58rem; line-height:1.5; padding:0 5px; border-radius:999px; background:var(--stripe); color:var(--mute); border:1px solid var(--line); white-space:nowrap; }
+  html[data-lang="zh"] .logo-box.hand::after { content:attr(data-hz); }
+  html[data-lang="en"] .logo-box.hand::after { content:attr(data-he); }
   .logo-box:not(.has) .initial { background:var(--mute); opacity:.75; }
   .logo-box.sm .initial { width:34px; height:34px; font-size:1rem; border-radius:9px; }
   /* 資料查證 */
@@ -960,7 +1029,7 @@
     </div>
   </header>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="sketch" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter><filter id="sketch2" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.1" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="sketch" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter><filter id="wobble-wet" x="-14%" y="-14%" width="128%" height="128%"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="21" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"></feDisplacementMap><feGaussianBlur in="d" stdDeviation="0.4"></feGaussianBlur></filter><filter id="wobble-damp" x="-14%" y="-14%" width="128%" height="128%"><feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="31" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="d"></feDisplacementMap><feGaussianBlur in="d" stdDeviation="0.25"></feGaussianBlur></filter><filter id="sketch2" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.1" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
   <nav class="tabs" id="tabs" role="tablist"></nav>
 
   <main class="card" id="main">
@@ -985,7 +1054,7 @@
         <figcaption><i></i><span class="zh">PAP（台灣）至各國子公司（NS）之備品供應路線</span><span class="en">Spare-parts routes from PAP (Taiwan) to the nation subsidiaries (NS)</span></figcaption>
       </figure>
       <div class="wb-foot">
-        <div class="wb-foot-t"><span class="zh">點選代碼可查看各國子公司的說明，地圖上的標記會同步標示</span><span class="en">Select a code to read about that subsidiary; the map marker is highlighted at the same time</span></div>
+        <div class="wb-foot-t"><span class="zh">11 個國家子公司（NS）</span><span class="en">The 11 nation subsidiaries (NS)</span></div>
         <div class="ns-key code-nav" id="ns-key"></div>
       </div>
     </div>
@@ -1009,7 +1078,7 @@
       <div class="toc" id="chapters"></div>
     </section>
 
-    <p class="intro-tip"><span class="zh">語言、字型與主題可於右上角切換；內文中以虛線標示之縮寫，點選後可檢視全稱與說明。</span><span class="en">Language, font and theme can be changed at the top right. Abbreviations with a dotted underline can be selected to view their full names and definitions.</span></p>
+
   </section>
 
   <!-- 1 總覽 -->
@@ -1057,7 +1126,7 @@
     <div class="subbody">
       <div class="crumb"></div>
 
-      <section class="sub" id="sub-corp-map"><h2><span class="zh">企業架構圖</span><span class="en">Enterprise architecture chart</span></h2><p class="lead zh">以宏碁（Acer）為中心的正式組織與相關公司：總部單位、區域與 PAP 轄下的國家子公司、宏碁持股的集團子公司（含海柏特各國公司）、分拆後獨立的泛宏碁集團、外部 ODM 代工廠與服務夥伴。實線為組織隸屬，虛線為跨部門協作，藍色箭頭為採購流程；未經證實的關係以琥珀色標示。</p><p class="lead en">The formal organisation around Acer: headquarters units, the regions and the nation subsidiaries under PAP, the group subsidiaries Acer controls (including HSN's country companies), the Acer family companies independent since the split, the external ODM manufacturers and the service partners. Solid lines are reporting lines, dashed lines are cross-unit collaboration, blue arrows are the procurement flow; unverified relationships are marked in amber.</p><div class="block"><h3><span class="zh">企業架構圖</span><span class="en">Architecture chart</span><small><span class="zh">點選節點查看詳細資訊；可拖曳、滾輪縮放，手機可雙指縮放</span><span class="en">Select a node for details; drag to pan, scroll or pinch to zoom</span></small></h3><div class="org-wrap"><div class="org-stage" id="org-stage"><svg id="org-svg" role="application" aria-label="Enterprise architecture chart"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" class="arrhead"></path></marker></defs><g id="org-g"></g></svg><div class="org-tools"><select id="org-jump" aria-label="Go to node"></select><button type="button" data-org="in" aria-label="zoom in" title="放大 / Zoom in">+</button><button type="button" data-org="out" aria-label="zoom out" title="縮小 / Zoom out">−</button><button type="button" data-org="fit" aria-label="fit all" title="顯示全部 / Fit all">⤢</button><button type="button" data-org="home" aria-label="reset view" title="回到 PAP / Back to PAP">⟲</button></div><aside class="org-panel" id="org-panel" hidden></aside></div></div><div class="org-legend" id="org-legend"></div></div><div class="block"><h3><span class="zh">備品供應流程</span><span class="en">Spare-parts supply flow</span></h3><div class="box"><div class="prow"><span class="pnode"><b><span class="zh">仁寶</span><span class="en">Compal</span></b><small>ODM</small></span><span class="parr">→</span><span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO），負責採購</span><span class="en">Regional office (RO); does the purchasing</span></small></span><span class="parr">→</span><span class="pnode hot"><b>HSN Group</b><small><span class="zh">2026/12/1 起</span><span class="en">From 1 Dec 2026</span></small></span><span class="parr">→</span><span class="pnode"><b>NS</b><small><span class="zh">各國子公司</span><span class="en">Nation subsidiaries</span></small></span></div></div><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></section>
+      <section class="sub" id="sub-corp-map"><h2><span class="zh">企業架構圖</span><span class="en">Enterprise architecture chart</span></h2><p class="lead zh">以宏碁（Acer）為中心的正式組織與相關公司：總部單位、區域與 PAP 轄下的國家子公司、宏碁持股的集團子公司（含海柏特各國公司）、分拆後獨立的泛宏碁集團、外部 ODM 代工廠與服務夥伴。實線為組織隸屬，虛線為跨部門協作，藍色箭頭為採購流程；未經證實的關係以琥珀色標示。</p><p class="lead en">The formal organisation around Acer: headquarters units, the regions and the nation subsidiaries under PAP, the group subsidiaries Acer controls (including HSN's country companies), the Acer family companies independent since the split, the external ODM manufacturers and the service partners. Solid lines are reporting lines, dashed lines are cross-unit collaboration, blue arrows are the procurement flow; unverified relationships are marked in amber.</p><div class="block"><h3><span class="zh">企業架構圖</span><span class="en">Architecture chart</span></h3><div class="org-wrap"><div class="org-stage" id="org-stage"><svg id="org-svg" role="application" aria-label="Enterprise architecture chart"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" class="arrhead"></path></marker></defs><g id="org-g"></g></svg><div class="org-tools"><select id="org-jump" aria-label="Go to node"></select><button type="button" data-org="in" aria-label="zoom in" title="放大 / Zoom in">+</button><button type="button" data-org="out" aria-label="zoom out" title="縮小 / Zoom out">−</button><button type="button" data-org="fit" aria-label="fit all" title="顯示全部 / Fit all">⤢</button><button type="button" data-org="home" aria-label="reset view" title="回到 PAP / Back to PAP">⟲</button></div><aside class="org-panel" id="org-panel" hidden></aside></div></div><div class="org-legend" id="org-legend"></div></div><div class="block"><h3><span class="zh">備品供應流程</span><span class="en">Spare-parts supply flow</span></h3><div class="box"><div class="prow"><span class="pnode"><b><span class="zh">仁寶</span><span class="en">Compal</span></b><small>ODM</small></span><span class="parr">→</span><span class="pnode hq"><b>PAP</b><small><span class="zh">區域辦公室（RO），負責採購</span><span class="en">Regional office (RO); does the purchasing</span></small></span><span class="parr">→</span><span class="pnode hot"><b>HSN Group</b><small><span class="zh">2026/12/1 起</span><span class="en">From 1 Dec 2026</span></small></span><span class="parr">→</span><span class="pnode"><b>NS</b><small><span class="zh">各國子公司</span><span class="en">Nation subsidiaries</span></small></span></div></div><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></section>
 
       <section class="sub" id="sub-corp-acer"><h2><span class="zh">宏碁 Acer</span><span class="en">Acer</span></h2><div class="corp-head c-acer"><span class="logo-box" data-logo="acer"><span class="initial">A</span></span><div><h3><span class="zh">宏碁股份有限公司</span><span class="en">Acer Incorporated</span></h3><span class="rtag"><span class="zh">品牌商（OBM）</span><span class="en">Brand owner (OBM)</span></span><p><span class="zh">創立於 1976 年的台灣資訊科技品牌，總部位於新北市汐止區；2026 年適逢創立 50 週年。PAP 為其泛亞太區組織。</span><span class="en">A Taiwanese technology brand founded in 1976 and headquartered in Xizhi, New Taipei; 2026 marks its 50th anniversary. PAP is its Pan Asia Pacific organisation.</span></p></div></div><div class="facts-row"><span><i><span class="zh">創立</span><span class="en">Founded</span></i><span class="zh">1976 年 8 月 1 日</span><span class="en">1 August 1976</span></span><span><i><span class="zh">總部</span><span class="en">Headquarters</span></i><span class="zh">新北市汐止區</span><span class="en">Xizhi, New Taipei</span></span><span><i><span class="zh">股票代號</span><span class="en">Stock code</span></i><span class="zh">2353（臺灣證券交易所）</span><span class="en">2353 (TWSE)</span></span><span><i><span class="zh">董事長暨執行長</span><span class="en">Chairman and CEO</span></i><span class="zh">陳俊聖</span><span class="en">Jason Chen</span></span><span><i><span class="zh">營運模式</span><span class="en">Business model</span></i><span class="zh">OBM 自有品牌</span><span class="en">OBM, own brand</span></span></div><div class="block"><h3><span class="zh">歷史由來</span><span class="en">Origins</span></h3><div class="story"><p class="zh">1976 年 8 月，施振榮、葉紫華、邰中和、黃少華、林家和五位創辦人以新台幣 100 萬元在台北創立宏碁的前身 Multitech，以微處理器技術起家。1982 年推出的小教授二號（MicroProfessor-II），宏碁稱其為台灣第一部 8 位元家用電腦；1987 年改以源自拉丁文、意為「敏銳、能幹」的 Acer 作為品牌與公司名稱，並於 1988 年 4 月首次公開發行股票。<sup class="cite" title="資料來源編號 / Source numbers">1–5, 18</sup></p><p class="en">In August 1976 Stan Shih, Carolyn Yeh, Ken Tai, George Huang and Fred Lin founded Multitech, the forerunner of Acer, in Taipei with NT$1 million in capital and a focus on microprocessor technology. The MicroProfessor-II of 1982 is described by Acer as Taiwan's first 8-bit home computer; in 1987 the company adopted the name Acer, from the Latin for sharp and able, and it completed its initial public offering in April 1988.<sup class="cite" title="資料來源編號 / Source numbers">1–5, 18</sup></p><p class="zh">2000 年底宣布的「第二次再造」把集團分為三家公司：研製服務部門於 2001 年 5 月分立為緯創資通，通訊與多媒體事業同年 12 月更名為明基，宏碁自此專注於自有品牌。其後透過 2007 年收購美國 Gateway（含 eMachines 品牌）與 2008 年取得歐洲 Packard Bell 75% 股權，擴大歐美市場。<sup class="cite" title="資料來源編號 / Source numbers">1, 7–9</sup></p><p class="en">The "second re-engineering" announced at the end of 2000 split the group in three: the design and manufacturing division became Wistron in May 2001, the communications and multimedia business was renamed BenQ that December, and Acer concentrated on its own brand. It then grew in the Americas and Europe by acquiring Gateway (with the eMachines brand) in 2007 and a 75% stake in Packard Bell in 2008.<sup class="cite" title="資料來源編號 / Source numbers">1, 7–9</sup></p><p class="zh">2014 年陳俊聖出任總經理暨執行長（2017 年起兼任董事長），同年 8 月中國、台灣與亞太整合為泛亞太區營運；2016 年 3 月營運再分為核心事業與新事業，侯知遠（Andrew Hou）出任泛亞太區總裁。2026 年，宏碁集團邁入創立 50 週年。<sup class="cite" title="資料來源編號 / Source numbers">2–4, 10–15</sup></p><p class="en">Jason Chen became President and CEO in 2014 (and Chairman from 2017); from August that year China, Taiwan and Asia Pacific were grouped into one Pan Asia Pacific operation. In March 2016 the business was split into core and new businesses, and Andrew Hou was appointed President of Pan Asia Pacific. In 2026 the Acer group marks fifty years since its founding.<sup class="cite" title="資料來源編號 / Source numbers">2–4, 10–15</sup></p><p class="note"><span class="na"><span class="zh">來源衝突</span><span class="en">Sources conflict</span></span> <span class="zh">公開資料（含宏碁法說簡報）將全球分為泛美、EMEA 與泛亞太三區，且泛亞太區自 2014 年起包含中國；教材則將中國區（ACCN）獨立列出，並載明 TWN 與 AAP 於 2016/2017 年整併為 PAP。兩者可能反映對外報表與內部組織的不同劃分。現今上市主體（2353）為 2002 年與宏碁科技合併後之公司，其掛牌日為 1996 年 9 月 18 日。</span><span class="en">Public sources, including Acer's investor presentations, describe three regions (Pan America, EMEA and Pan Asia Pacific) with China inside Pan Asia Pacific since 2014; the training material lists China (ACCN) separately and records the merger of TWN and AAP into PAP in 2016/2017. The two may reflect external reporting versus the internal organisation. The entity listed today under 2353 is the company formed by the 2002 merger with Acer Sertek, listed on 18 September 1996.</span><sup class="cite" title="資料來源編號 / Source numbers">5, 12, 13, 16</sup></p></div></div><div class="block"><h3><span class="zh">業務與區域組織</span><span class="en">Business and regional organisation</span></h3><div class="story"><p class="zh">宏碁以筆記型電腦（含 Chromebook）與桌上型電腦為主要產品，並銷售顯示器、平板與周邊，以及伺服器與儲存設備等商用產品；售後服務由各國子公司（NS）、授權服務據點與海柏特提供。<sup class="cite" title="資料來源編號 / Source numbers">1, 2</sup></p><p class="en">Acer's main products are notebooks (including Chromebooks) and desktops, alongside monitors, tablets and peripherals, and servers, storage and other business products. After-sales service is provided by the nation subsidiaries (NS), authorised service sites and HSN.<sup class="cite" title="資料來源編號 / Source numbers">1, 2</sup></p><p class="zh">總部（HQ）之下依教材分為泛美（PA）、歐洲中東非洲（EMEA）、泛亞太（PAP，由 TWN 與 AAP 整併）與中國（ACCN）四個區域；PAP 之下設有 11 個國家子公司。區域與據點的細節見「組織與據點」章。</p><p class="en">Under headquarters (HQ) the training material lists four regions: Pan America (PA), Europe, Middle East and Africa (EMEA), Pan Asia Pacific (PAP, formed from TWN and AAP) and China (ACCN). PAP has 11 nation subsidiaries; see the Organisation chapter for details.</p><p class="note"><button class="btn sm" type="button" data-go="org-global"><span class="zh">全球區域 →</span><span class="en">Global regions →</span></button> <button class="btn sm" type="button" data-go="org-pap"><span class="zh">PAP 組織 →</span><span class="en">PAP organisation →</span></button> <button class="btn sm" type="button" data-go="corp-map"><span class="zh">企業架構圖 →</span><span class="en">Architecture chart →</span></button></p></div></div><div class="block"><h3><span class="zh">泛宏碁集團</span><span class="en">The Acer family</span></h3><div class="story"><p class="zh">2000 年以前，宏碁集團同時擁有品牌、代工製造與周邊產品事業。2000 年 12 月 26 日宣布的「第二次再造」將集團分為宏碁（品牌）、明基與緯創三家，創辦人施振榮其後建議以「ABW family」（Acer、BenQ、Wistron）取代「泛宏碁集團」的稱呼；分出的公司各自獨立發展，宏碁並於 2006 年出清明基持股。緯創現為 Acer 的代工廠之一，其介紹列於 ODM 代工廠頁。<sup class="cite" title="資料來源編號 / Source numbers">F1–F5, F8</sup></p><p class="en">Before 2000 the Acer group combined the brand, contract manufacturing and peripherals. The "second re-engineering" announced on 26 December 2000 split it into Acer (brand), BenQ and Wistron; founder Stan Shih later suggested the name "ABW family" (Acer, BenQ, Wistron) in place of the pan-Acer group. The companies have developed independently, and Acer sold its BenQ stake in 2006. Wistron is now one of Acer's ODMs and is profiled on the ODM page.<sup class="cite" title="資料來源編號 / Source numbers">F1–F5, F8</sup></p></div><div class="pcards"><article class="pcard pc-fam" id="co-benq"><div class="pcard-head"><span class="logo-box sm" data-logo="benq"><span class="initial">明</span></span><div><b><span class="zh">明基 BenQ／佳世達 Qisda</span><span class="en">BenQ / Qisda</span></b><small><span class="zh">股票代號 2352（佳世達）</span><span class="en">Stock code 2352 (Qisda)</span></small></div></div><div class="pstory"><h4><span class="zh">歷史由來</span><span class="en">Origins</span></h4><p class="zh">1984 年成立的明碁電腦原為宏碁旗下的周邊產品公司，2001 年 12 月啟用 BenQ 品牌並改名 BenQ Corp.（中文名稱於 2002 年改為明基電通）。2007 年 9 月，原上市公司（2352）更名為佳世達（Qisda）並保留代工製造業務，品牌業務則分出新設的 BenQ Corp。<sup class="cite" title="資料來源編號 / Source numbers">F6–F10</sup> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></p><p class="en">Acer Peripherals, founded in 1984 as Acer's peripherals company, launched the BenQ brand in December 2001 and became BenQ Corp. In September 2007 the listed company (2352) was renamed Qisda and kept the manufacturing business, while the brand business moved into a newly formed BenQ Corp.<sup class="cite" title="資料來源編號 / Source numbers">F6–F10</sup> <span class="na"><span class="zh">單一來源</span><span class="en">Single source</span></span></p></div><div class="pstory"><h4><span class="zh">業務與和 Acer 的關係</span><span class="en">Business and relationship with Acer</span></h4><p class="zh">BenQ 為顯示器、投影機等自有品牌；佳世達為代工製造與多元事業集團。宏碁於 2006 年出清持股並退出董事會，兩者現均獨立於宏碁。<sup class="cite" title="資料來源編號 / Source numbers">F8</sup></p><p class="en">BenQ is the brand for monitors and projectors; Qisda is the contract-manufacturing and diversified business group. Acer sold its shares and left the board in 2006, so both are now independent of Acer.<sup class="cite" title="資料來源編號 / Source numbers">F8</sup></p></div><div class="pcard-foot"><span class="srcs"><span class="zh">來源 </span><span class="en">Sources </span>F6–F10</span></div></article><article class="pcard pc-fam" id="co-auo"><div class="pcard-head"><span class="logo-box sm" data-logo="auo"><span class="initial">友</span></span><div><b><span class="zh">友達光電</span><span class="en">AU Optronics (AUO)</span></b><small><span class="zh">股票代號 2409</span><span class="en">Stock code 2409</span></small></div></div><div class="pstory"><h4><span class="zh">歷史由來</span><span class="en">Origins</span></h4><p class="zh">1996 年 8 月於新竹科學園區成立的達碁科技，原為宏碁集團的顯示器面板公司；2001 年與聯友光電合併並於 9 月 1 日更名為友達光電，其後於 2006 年合併廣輝電子、2016 年合併台灣國際彩光。<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p><p class="en">Acer Display Technology, founded in the Hsinchu Science Park in August 1996, was the Acer group's display-panel company. It merged with Unipac Optoelectronics and became AU Optronics on 1 September 2001, later absorbing Quanta Display in 2006 and Taiwan Color Optics in 2016.<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p></div><div class="pstory"><h4><span class="zh">業務與和 Acer 的關係</span><span class="en">Business and relationship with Acer</span></h4><p class="zh">顯示器面板製造商，現為獨立公司，與宏碁已無持股關係。<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p><p class="en">A display-panel maker, now an independent company with no shareholding link to Acer.<sup class="cite" title="資料來源編號 / Source numbers">F11, F12</sup></p></div><div class="pcard-foot"><span class="srcs"><span class="zh">來源 </span><span class="en">Sources </span>F11, F12</span></div></article></div></div><details class="refs-wrap"><summary><span class="zh">資料來源（宏碁、泛宏碁集團）</span><span class="en">Sources (Acer, the Acer family)</span></summary><h4><span class="zh">宏碁 1–18</span><span class="en">Acer 1–18</span></h4><ol class="refs" start="1"><li><a href="https://www.acer.com/corporate/en/overview/milestones" target="_blank" rel="noopener">Acer Milestones（公司沿革）</a><small>Acer</small></li><li><a href="https://www.acer.com/50-years/us-en" target="_blank" rel="noopener">Acer – 50 Years of Breaking Barriers</a><small>Acer</small></li><li><a href="https://www.cna.com.tw/news/afe/202604270074.aspx" target="_blank" rel="noopener">宏碁50週年 施振榮：最大貢獻在為台灣培育人才</a><small>中央社 CNA · 2026-04-27</small></li><li><a href="https://www.taiwannews.com.tw/news/6348606" target="_blank" rel="noopener">Acer founder on 50 years</a><small>Taiwan News · 2026-04</small></li><li><a href="https://ww2.money-link.com.tw/TWStock/StockBasic.aspx?SymId=2353" target="_blank" rel="noopener">宏碁（2353）基本資料（現行上市主體掛牌日）</a><small>Money-Link</small></li><li><a href="https://www.acer.com/tw-zh/legal" target="_blank" rel="noopener">宏碁法律資訊頁（公司地址）</a><small>Acer</small></li><li><a href="https://www.benq.com/en-ca/news/products/1007539200-38-169.html" target="_blank" rel="noopener">Acer CM renamed BenQ</a><small>BenQ · 2001-12</small></li><li><a href="https://www.eweek.com/de/pc-hardware/acer-acquiring-gateway-for-710-million/" target="_blank" rel="noopener">Acer acquiring Gateway for $710 million</a><small>eWeek · 2007</small></li><li><a href="https://www.computerweekly.com/microscope/news/2240153056/Acer-acquires-Gateway" target="_blank" rel="noopener">Acer acquires Gateway</a><small>Computer Weekly · 2007</small></li><li><a href="https://www.industryweek.com/global-economy/taiwans-acer-names-new-ceo-after-3q-losses" target="_blank" rel="noopener">Acer names new CEO (Jason Chen)</a><small>IndustryWeek · 2013-12</small></li><li><a href="https://news.acer.com/acer-board-appoints-jason-chen-as-chairman" target="_blank" rel="noopener">Acer board appoints Jason Chen as chairman</a><small>Acer News · 2017</small></li><li><a href="https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/" target="_blank" rel="noopener">Luca Rossi appointed president for Acer EMEA; Pan-Asia Pacific formed</a><small>PCR · 2014-07-11</small></li><li><a href="https://it-online.co.za/?p=86194" target="_blank" rel="noopener">Acer announces management changes</a><small>IT-Online · 2014-07</small></li><li><a href="https://news.acer.com/acer-separates-new-and-core-businesses-to-accelerate-corporate-transformation" target="_blank" rel="noopener">Acer Separates New and Core Businesses</a><small>Acer News · 2016-03</small></li><li><a href="https://www.acer.com/corporate/en/overview/management/andrew-hou" target="_blank" rel="noopener">Andrew Hou · Management</a><small>Acer</small></li><li><a href="https://digitimes.com/news/a20240115PD226.html" target="_blank" rel="noopener">Acer 泛亞太區在地製造（印度、印尼）</a><small>DIGITIMES · 2024-01-15</small></li><li><a href="https://images.acer.com/is/content/acer/Acer%204Q23%20Investor%20presentation-Engpdf" target="_blank" rel="noopener">Acer 4Q23 investor presentation（區域劃分）</a><small>Acer · 2024</small></li><li><a href="https://finance.ettoday.net/news/139065" target="_blank" rel="noopener">宏碁五位創辦人</a><small>ETtoday</small></li></ol><h4><span class="zh">泛宏碁集團 F1–F12</span><span class="en">The Acer family F1–F12</span></h4><ol class="refs" start="1"><li><a href="https://www.gvm.com.tw/article/9731" target="_blank" rel="noopener">宏碁第二次再造：分為宏碁、明基、緯創</a><small>遠見雜誌</small></li><li><a href="https://www.businesstoday.com.tw/article/category/183015/post/202308090013/" target="_blank" rel="noopener">施振榮談 ABW family</a><small>今周刊 · 2023-08-09</small></li><li><a href="https://ec.ltn.com.tw/article/breakingnews/4400116" target="_blank" rel="noopener">緯創分割與上市歷程</a><small>自由時報</small></li><li><a href="https://www.gvm.com.tw/article/8569" target="_blank" rel="noopener">林憲銘與緯創分割</a><small>遠見雜誌</small></li><li><a href="https://www.cnyes.com/twstock/3231/company/profile" target="_blank" rel="noopener">緯創資通 公司資料（分割基準日）</a><small>鉅亨網</small></li><li><a href="https://www.taipeitimes.com/News/biz/archives/2007/04/30/2003358934" target="_blank" rel="noopener">BenQ history (name changes)</a><small>Taipei Times · 2007-04-30</small></li><li><a href="https://www.weblio.jp/content/Qisda" target="_blank" rel="noopener">Qisda（明基電通沿革）</a><small>Weblio</small></li><li><a href="https://www.techpartner.news/news/benq-no-longer-part-of-acer-finalises-billion-dollar-deal-36811" target="_blank" rel="noopener">BenQ no longer part of Acer</a><small>techpartner.news · 2006</small></li><li><a href="https://www.taipeitimes.com/News/biz/archives/2007/04/26/2003358338" target="_blank" rel="noopener">BenQ to split brand and manufacturing</a><small>Taipei Times · 2007-04-26</small></li><li><a href="https://ec.ltn.com.tw/article/paper/1308390" target="_blank" rel="noopener">明基分割為佳世達與 BenQ</a><small>自由時報</small></li><li><a href="https://www.ithome.com.tw/news/11958" target="_blank" rel="noopener">達碁與聯友合併為友達</a><small>iThome</small></li><li><a href="https://www.nstock.tw/%E5%8F%8B%E9%81%94%E5%81%9A%E4%BB%80%E9%BA%BC.html" target="_blank" rel="noopener">友達做什麼（公司沿革）</a><small>nstock</small></li></ol><p class="note"><span class="zh">公開網路資料，查詢日期 2026 年 10 月；每項陳述之查證狀態見「資料查證」頁。與內部文件不一致時，以內部文件為準。</span><span class="en">Public web sources, retrieved October 2026; the verification status of each statement is on the Verification page. Where they differ from internal documents, the internal documents prevail.</span> <button class="btn sm" type="button" data-go="corp-verify"><span class="zh">資料查證 →</span><span class="en">Verification →</span></button></p></details></section>
 
@@ -1134,8 +1203,6 @@
             <svg id="map-offices" viewBox="0 15 1000 410" role="img" aria-label="Acer offices worldwide"></svg>
             <figcaption class="legend-chips" id="office-legend"></figcaption>
           </figure>
-          <p class="note zh">歐洲與亞太據點分布較密集，請切換至「歐洲」或「亞太」檢視完整名稱；點選圓點或名稱，可於下方檢視該據點資料。</p>
-          <p class="note en">Offices in Europe and Asia Pacific are densely located; switch to the Europe or Asia Pacific view for full labels. Select a dot or label to view the office details below.</p>
         </div>
         <div class="block">
           <div class="ab-tools">
@@ -1213,8 +1280,8 @@
 
       <section class="sub" id="sub-sites-map">
         <h2><span class="zh">據點分布</span><span class="en">Service footprint</span></h2>
-        <p class="lead zh">CSD Q2 2025 之 PAP 服務據點統計。點選地圖上的旗幟，可於下表標示該國資料。</p>
-        <p class="lead en">PAP service sites according to CSD Q2 2025. Select a flag on the map to highlight that country in the table below.</p>
+        <p class="lead zh">CSD Q2 2025 之 PAP 服務據點統計。</p>
+        <p class="lead en">PAP service sites according to CSD Q2 2025.</p>
         <div class="kpis" id="infra-kpis"></div>
         <div class="block">
           <figure class="map ap">
@@ -1397,7 +1464,7 @@
               <li><span class="zh"><b>彙整</b>：PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en"><b>Consolidation</b>: PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
               <li><span class="zh"><b>下單</b>：PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en"><b>Ordering</b>: PAP creates the PO in CSS and confirms it to the ODM in PLS.</span> <span class="stag doc"><span class="zh">教材 7、16</span><span class="en">Deck p. 7, 16</span></span></li>
               <li><span class="zh"><b>追蹤</b>：持續更新並追蹤預計出貨日（ETD）。</span><span class="en"><b>Follow-up</b>: the estimated time of departure (ETD) is updated and followed up.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
-              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc"><span class="zh">教材 · 補充說明</span><span class="en">Deck p. · 補充說明</span></span></li>
+              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc"><span class="zh">教材 · 補充說明</span><span class="en">Deck + notes</span></span></li>
               <li><span class="zh"><b>檢視</b>：PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en"><b>Review</b>: PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span> <span class="stag doc"><span class="zh">教材 8</span><span class="en">Deck p. 8</span></span></li>
             </ol>
             <p class="note"><span class="na"><span class="zh">待內部確認</span><span class="en">Pending internal confirmation</span></span> <span class="zh">付款責任、跨國運輸與關務安排，以及 HSN Group 介入後的訂單流向細節，教材未載明。</span><span class="en">Payment responsibility, cross-border transport and customs arrangements, and the detailed order flow once HSN Group is involved are not specified in the material.</span></p>
@@ -1764,8 +1831,8 @@
 
       <section class="sub" id="sub-ref-ns">
         <h2><span class="zh">子公司代碼</span><span class="en">Subsidiary codes</span></h2>
-        <p class="lead zh">PAP 轄下國家子公司（NS）之上下級結構。點選各列可查看料號國別代碼、倉庫、Uni-load 與據點數量。</p>
-        <p class="lead en">The PAP nation subsidiaries (NS) arranged by level. Open a row to see its part-number country code, warehouse, Uni-load and site counts.</p>
+        <p class="lead zh">PAP 轄下國家子公司（NS）之上下級結構、料號國別代碼、倉庫、Uni-load 與據點數量。</p>
+        <p class="lead en">The PAP nation subsidiaries (NS) by level, with part-number country codes, warehouses, Uni-load and site counts.</p>
         <ul class="tree" id="ns-tree"></ul>
       </section>
 
@@ -1803,8 +1870,8 @@
 
       <section class="sub" id="sub-ref-abbr">
         <h2><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></h2>
-        <p class="lead zh">依類別查看各縮寫之全稱與說明；組織與區域以上下級結構呈現。其他頁面中以虛線標示之縮寫亦可點選查看。</p>
-        <p class="lead en">Full names and descriptions by category; organisation and regions are shown by level. Abbreviations underlined on other pages can also be selected.</p>
+        <p class="lead zh">依類別查看各縮寫之全稱與說明；組織與區域以上下級結構呈現。</p>
+        <p class="lead en">Full names and descriptions by category; organisation and regions are shown by level.</p>
         <div class="ab-tools">
           <input type="search" id="ab-search" data-ph-zh="搜尋縮寫、全稱或中文" data-ph-en="Search abbreviations or names" placeholder="搜尋縮寫、全稱或中文" style="width:min(100%, 320px)">
           <button class="btn sm" type="button" id="ab-open"><span class="zh">全部展開</span><span class="en">Expand all</span></button>
@@ -2500,7 +2567,7 @@
   };
   var nSubs = 0;
   NAV.forEach(function (p) { nSubs += p.subs.length; });
-  $("toc-sum").innerHTML = B("主頁 → 子頁，共 " + navN + " 個主要章節、" + nSubs + " 個子頁；點選即可前往。", navN + " sections and " + nSubs + " pages; select one to open it.");
+  $("toc-sum").innerHTML = "";
   var FC = ["var(--navy)", "var(--accent)", "var(--primary)", "var(--sel)", "var(--r-pa)"];
   $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p, i) {
     var d = CH[p.id], n = (p.num < 10 ? "0" : "") + p.num;
@@ -2545,9 +2612,9 @@
       '<circle class="idot hq" cx="' + ox.toFixed(1) + '" cy="' + oy.toFixed(1) + '" r="' + (5 * k).toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
     var first = svg.querySelector(".pin");
     if (first) first.insertAdjacentHTML("beforebegin", arcs + hq + movers); else svg.insertAdjacentHTML("beforeend", arcs + hq + movers);
-    codeNav($("ns-key"), [{ cc: "tw", code: "PAP", ab: "pap", zh: "泛亞太區（台灣）", en: "Pan Asia Pacific (Taiwan)", cls: "hq" }].concat(ns.map(function (n) {
+    codeNav($("ns-key"), ns.map(function (n) {
       return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[2], en: n[3] };
-    })), "map-intro");
+    }), "map-intro");
   }
 
   /* ---------- 總覽 ---------- */
@@ -3316,6 +3383,32 @@
     window.addEventListener("resize", function () { if (orgReady && $("sub-corp-map").classList.contains("active")) orgHome(); });
     $("org-jump").addEventListener("change", function () { if (this.value) { orgSelect(this.value); this.value = ""; } });
   })();
+
+  /* ---------- 每一章一隻：布偶貓或柯基從標題底線探出頭（畫法與 UPS Reprice 平台相同） ---------- */
+  (function () {
+    var INK = "#4a3226";
+    function catPeek(prop) {
+      return '<svg class="mz mz-cat" viewBox="0 0 64 40" aria-hidden="true"><g class="mz-body"><path class="fur" d="M14 36 q0 -5 5 -5 q5 0 5 5 z"/><path class="fur" d="M28 36 q0 -5 5 -5 q5 0 5 5 z"/><path class="ln" d="M17 34 v2 M19.5 33.5 v2.5 M31 34 v2 M33.5 33.5 v2.5" stroke-width="1.1"/><g class="mz-head"><path class="fur" d="M9 26 q-1 -12 10 -15 q7 -2 14 0 q11 3 10 15 q-1 8 -17 8 q-16 0 -17 -8 z"/><path class="pt" d="M12 18 l-2.5 -10 l8.5 5 z"/><path class="pt" d="M40 18 l2.5 -10 l-8.5 5 z"/><path class="innr" d="M12.6 16.4 l-1.4 -5.6 l4.6 2.8 z M39.4 16.4 l1.4 -5.6 l-4.6 2.8 z"/><path class="pt" d="M17 20 q9 -6 18 0 q-2 5 -6 6 l-3 -4 l-3 4 q-4 -1 -6 -6 z" opacity=".55"/><g class="mz-eyes"><ellipse cx="20" cy="23" rx="2.4" ry="2.9" fill="#4f86c6" stroke="' + INK + '" stroke-width="1.2"/><ellipse cx="32" cy="23" rx="2.4" ry="2.9" fill="#4f86c6" stroke="' + INK + '" stroke-width="1.2"/><circle cx="20.8" cy="22" r=".8" fill="#fff"/><circle cx="32.8" cy="22" r=".8" fill="#fff"/></g><path class="mz-lid" d="M17.4 23 q2.6 -2.6 5.2 0 M29.4 23 q2.6 -2.6 5.2 0"/><path class="innr" d="M24.6 27 h2.8 l-1.4 1.6 z"/><path class="ln" d="M26 28.6 q-1.5 1.8 -3 .4 M26 28.6 q1.5 1.8 3 .4" stroke-width="1.1"/><path class="ln" d="M13 26 h-5 M13.5 28.5 h-4.5 M39 26 h5 M38.5 28.5 h4.5" stroke-width="1" opacity=".7"/></g></g>' + (prop || "") + "</svg>";
+    }
+    function dogPeek(prop) {
+      return '<svg class="mz mz-dog" viewBox="0 0 64 40" aria-hidden="true"><g class="mz-body"><path class="fur" d="M14 36 q0 -5 5 -5 q5 0 5 5 z"/><path class="fur" d="M28 36 q0 -5 5 -5 q5 0 5 5 z"/><path class="ln" d="M17 34 v2 M19.5 33.5 v2.5 M31 34 v2 M33.5 33.5 v2.5" stroke-width="1.1"/><g class="mz-head"><path class="fur" d="M9 27 q-1 -12 10 -15 q7 -2 14 0 q11 3 10 15 q-1 7 -17 7 q-16 0 -17 -7 z"/><path class="fur" d="M12 17 q-5 -8 -2 -13 q6 2 8 9 z"/><path class="flop mz-flop" d="M37 15 q8 -6 10 0 q1 6 -8 8 q-3 0 -2 -8 z"/><path class="snout" d="M19 24 q7 -5 14 0 q4 6 -1 9 q-6 2 -12 0 q-5 -3 -1 -9 z"/><g class="mz-eyes"><circle cx="20" cy="22.5" r="1.8" fill="' + INK + '"/><circle cx="32" cy="22.5" r="1.8" fill="' + INK + '"/><circle cx="20.6" cy="21.8" r=".6" fill="#fff"/><circle cx="32.6" cy="21.8" r=".6" fill="#fff"/></g><path class="mz-lid" d="M17.8 22.5 q2.2 -2 4.4 0 M29.8 22.5 q2.2 -2 4.4 0"/><circle cx="26" cy="27.5" r="2.1" fill="' + INK + '"/><path class="ln" d="M26 29.4 v1.6 M26 31 q-1.8 1.6 -3.4 0 M26 31 q1.8 1.6 3.4 0" stroke-width="1.1"/><path class="collar" d="M15 34.5 q11 4 22 0" stroke-width="2.4"/></g></g>' + (prop || "") + "</svg>";
+    }
+    var PROP = {
+      ledger: '<g class="mz-prop"><rect x="45" y="22" width="15" height="12" rx="1.6" fill="#fffdf7" stroke="' + INK + '" stroke-width="1.6"/><rect x="45" y="19" width="15" height="12" rx="1.6" fill="#ffdd8f" stroke="' + INK + '" stroke-width="1.6"/><path d="M48 23 h9 M48 26 h6" stroke="' + INK + '" stroke-width="1" opacity=".7"/></g>',
+      tag: '<g class="mz-prop"><path d="M47 22 l9 -4 l6 6 l-9 9 l-6 -6 z" fill="#ffdd8f" stroke="' + INK + '" stroke-width="1.6" stroke-linejoin="round"/><circle cx="56" cy="22.5" r="1.4" fill="#fffdf7" stroke="' + INK + '" stroke-width="1"/><path d="M49.5 25.5 l4 4" stroke="' + INK + '" stroke-width="1.2"/></g>',
+      box: '<g class="mz-prop"><rect x="45" y="22" width="16" height="13" rx="1.5" fill="#ffb500" stroke="' + INK + '" stroke-width="1.6"/><path d="M53 22 v13" stroke="#fffdf7" stroke-width="2.4"/><path d="M53 22 v13" stroke="' + INK + '" stroke-width=".9" opacity=".6"/><path d="M45 26.5 H61" stroke="' + INK + '" stroke-width="1.1"/></g>',
+      lens: '<g class="mz-prop"><circle cx="52" cy="25" r="6.5" fill="#e8f2fd" stroke="' + INK + '" stroke-width="1.8"/><path d="M56.8 29.8 l5 5" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/><path d="M49 22.5 q1.5 -1.5 3 -1" stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none"/></g>',
+      invoice: '<g class="mz-prop"><path d="M46 19 h10 l5 5 v12 l-2 1.5 l-2 -1.5 l-2 1.5 l-2 -1.5 l-2 1.5 l-2 -1.5 l-2 1.5 l-1 -1 z" fill="#fffdf7" stroke="' + INK + '" stroke-width="1.5" stroke-linejoin="round"/><path d="M56 19 v5 h5" fill="#f7f1e4" stroke="' + INK + '" stroke-width="1.2"/><path d="M49 27 h8 M49 30 h5" stroke="' + INK + '" stroke-width="1" opacity=".7"/></g>',
+      chart: '<g class="mz-prop"><path d="M45 35 h17" stroke="' + INK + '" stroke-width="1.4"/><rect x="46.5" y="29" width="3.5" height="6" fill="#ffdd8f" stroke="' + INK + '" stroke-width="1.2"/><rect x="51.5" y="24" width="3.5" height="11" fill="#ffb500" stroke="' + INK + '" stroke-width="1.2"/><rect x="56.5" y="19" width="3.5" height="16" fill="#8a6104" stroke="' + INK + '" stroke-width="1.2"/></g>',
+      sheet: '<g class="mz-prop"><rect x="45" y="20" width="16" height="15" rx="1.5" fill="#fffdf7" stroke="' + INK + '" stroke-width="1.6"/><path d="M45 24.5 h16 M45 29 h16 M45 33.5 h16 M50.5 20 v15 M55.5 20 v15" stroke="' + INK + '" stroke-width=".9" opacity=".55"/><rect x="45" y="20" width="16" height="4.5" fill="#ffdd8f" stroke="' + INK + '" stroke-width="1.2"/></g>',
+      plus: '<g class="mz-prop"><circle cx="53" cy="27" r="8" fill="#ffdd8f" stroke="' + INK + '" stroke-width="1.6"/><path d="M53 22.5 v9 M48.5 27 h9" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/></g>'
+    };
+    var PAGE_MASCOT = { intro: ["dog", "box"], overview: ["cat", "chart"], corp: ["cat", "ledger"], org: ["dog", "box"], ops: ["cat", "invoice"], hsn: ["dog", "lens"], ref: ["cat", "tag"], review: ["dog", "plus"] };
+    var draw = function (k) { var m = PAGE_MASCOT[k]; return m ? (m[0] === "cat" ? catPeek : dogPeek)(PROP[m[1]]) : ""; };
+    $$(".subnav").forEach(function (a) { var k = a.getAttribute("data-page"), pt = a.querySelector(".pt"); if (pt && draw(k)) pt.insertAdjacentHTML("beforeend", '<span class="mzwrap">' + draw(k) + "</span>"); });
+    var singles = [["page-intro", ".intro-title", "intro"], ["page-overview", ".hero-title", "overview"], ["page-review", "h2.ptitle", "review"]];
+    singles.forEach(function (x) { var el = document.querySelector("#" + x[0] + " " + x[1]); if (el) { el.classList.add("single-title"); el.insertAdjacentHTML("beforeend", '<span class="mzwrap">' + draw(x[2]) + "</span>"); } });
+  })();
   /* ---------- 重點複習 ---------- */
   var QZ = [
     ["PAP 由哪兩個區域整併而成？", "Which two regions merged to form PAP?", "TWN（台灣）與 AAP（亞太），於 2016/2017 年整併。", "TWN (Taiwan) and AAP (Asia Pacific), in 2016/2017."],
@@ -3347,7 +3440,7 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .intro-nums, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .intro-nums, .wb-meta, .ns-key, .wb-foot-t, .mzwrap, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
@@ -3481,6 +3574,7 @@
   var LOGOS = { acer: ["logos/acer.svg", "Acer"], benq: ["logos/benq.png", "BenQ"] };
   var LOGO_NAMES = { "宏碁": "acer", "Acer": "acer", "宏碁 Acer": "acer", "Acer Inc.": "acer", "宏碁股份有限公司": "acer", "Acer Incorporated": "acer",
     "明基 BenQ": "benq", "BenQ": "benq", "明基 BenQ／佳世達 Qisda": "benq", "BenQ / Qisda": "benq" };
+  var HAND_LOGOS = { hsn: 1, compal: 1, quanta: 1, wistron: 1, inventec: 1, pegatron: 1, foxconn: 1, auo: 1, qisda: 1, weblink: 1, acsi: 1, aeb: 1, ast: 1, aopen: 1, acergaming: 1, acergadget: 1, acerpure: 1, acermedical: 1, enfinitec: 1 };
   var LOGO_ALT = { hsn: "HSN", compal: "Compal", quanta: "Quanta", wistron: "Wistron", inventec: "Inventec", pegatron: "Pegatron", foxconn: "Foxconn", auo: "AUO", weblink: "Weblink", acsi: "ACSI", aeb: "AEB", ast: "AST", aopen: "AOpen", acergaming: "Acer Gaming", acergadget: "Acer Gadget", acerpure: "Acerpure", acermedical: "Acer Medical", qisda: "Qisda", enfinitec: "Enfinitec" };
   var clogo = function (id, src) { var l = LOGOS[id]; src = src || (l && l[0]); return src ? '<img class="clogo" src="' + src + '" alt="' + (l ? l[1] : LOGO_ALT[id] || id) + '" onerror="PAP_logoFail(this)">' : ""; };
   window.PAP_logoFail = function (img) { var box = img.parentElement; img.remove(); if (box && box.classList.contains("logo-box")) box.classList.remove("has"); };
@@ -3494,6 +3588,7 @@
   });
   function setLogo(box, id, src) {
     box.classList.add("has");
+    if (HAND_LOGOS[id]) { box.classList.add("hand"); box.setAttribute("data-hz", "手繪示意"); box.setAttribute("data-he", "Hand-drawn"); box.title = "手繪示意，非官方 logo / Hand-drawn placeholder, not the official logo"; }
     box.insertAdjacentHTML("afterbegin", clogo(id, src));
   }
   // 自動尋找 logos/<代號>.svg 或 .png

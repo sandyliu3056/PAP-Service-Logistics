@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" width="400" height="180">
+  <!-- 手繪示意 logo（內部自用，非官方商標）：ACSI / 安碁資訊 -->
+  <path d="M34.0 8.2 Q200.0 6.3 366.0 8.2 Q392.0 8.0 392.0 34.0 Q392.8 90.0 392.0 146.0 Q392.0 172.0 366.0 172.0 Q200.0 174.3 34.0 172.0 Q8.0 172.0 8.0 146.0 Q7.3 90.0 8.0 34.0 Q8.0 8.0 34.0 8.0 Z" fill="#FFFDF7" stroke="#4A3226" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="74" cy="90" r="44" fill="#4A6FA5" stroke="#4A3226" stroke-width="3.5"/>
+  <circle cx="74" cy="90" r="36" fill="none" stroke="#FFFDF7" stroke-width="2" stroke-dasharray="6 5" opacity=".7"/>
+  <text x="74" y="107" text-anchor="middle" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="48" fill="#FFFDF7">A</text>
+  <text x="138" y="84" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="56" fill="#4A6FA5" textLength="138" lengthAdjust="spacingAndGlyphs">ACSI</text>
+  <path d="M138 96 C 180 92, 240 100, 276 95" fill="none" stroke="#4A6FA5" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  <text x="140" y="136" font-family="'DFKai-SB','標楷體','HanziPen TC','Hannotate TC','芫荽','Iansui','LXGW WenKai TC',sans-serif" font-size="30" fill="#4A3226">安碁資訊</text>
+  <text x="386" y="164" text-anchor="end" font-family="'Comic Sans MS','Segoe Print',sans-serif" font-size="13" fill="#9A8C7A">hand-drawn · 手繪示意</text>
+</svg>
