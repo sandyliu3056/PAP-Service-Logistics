@@ -1140,11 +1140,10 @@
   .cards.mini > div > p { font-size:.9rem; color:var(--mute); }
   .cards + p, .cards + .note, .steps + p, .steps + .note, .compare + p { margin-top:14px; }
   /* 流程節點卡片（箭頭相連；窄螢幕改直排） */
-  .steps { display:flex; flex-wrap:wrap; gap:12px 0; align-items:stretch; margin:0; }
-  .steps > div { flex:1 1 170px; min-width:0; position:relative; background:var(--panel); border:1.5px solid var(--ch-line); border-radius:12px; padding:12px 14px 12px 16px; margin-right:34px; overflow-wrap:anywhere; }
-  .steps > div:last-child { margin-right:0; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px 34px; align-items:stretch; margin:0; }
+  .steps > div { min-width:0; position:relative; background:var(--panel); border:1.5px solid var(--ch-line); border-radius:12px; padding:12px 14px 12px 16px; overflow-wrap:anywhere; }
   .steps > div::after { content:"→"; position:absolute; right:-29px; top:50%; transform:translateY(-50%); color:var(--ch); font-weight:700; font-size:1.4rem; }
-  .steps > div:last-child::after { content:none; }
+  .steps > div:last-child::after, .steps > div.row-end::after { content:none; }
   .steps .sn { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--ch); color:#fff; font-weight:700; font-size:.85rem; margin-bottom:6px; font-family:var(--font-mono); }
   .steps > div > b { display:block; color:var(--ch-ink); font-family:var(--font-head); font-size:1.08rem; }
   .steps p { margin:4px 0 0; font-size:.95rem; line-height:1.6; }
@@ -1174,10 +1173,8 @@
   .abc .tin .kvl > div { grid-template-columns:8.5em minmax(0, 1fr); }
   .ab-group > h3 { color:var(--ch-ink); }
   @media (max-width:760px) {
-    .steps { flex-direction:column; }
-    .steps > div { margin-right:0; margin-bottom:30px; }
+    .steps { grid-template-columns:minmax(0, 1fr); gap:30px; }
     .steps > div::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-30px; transform:translateX(-50%); }
-    .steps > div:last-child { margin-bottom:0; }
   }
   @media (max-width:600px) { #ab-groups .acc { grid-template-columns:minmax(0, 1fr); } .cards.mini { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 </style>
@@ -1517,7 +1514,7 @@
     <div class="subbody">
       <section class="sub" id="sub-hsn-about">
         <h2><span class="zh">HSN 集團概述</span><span class="en">HSN Group overview</span></h2>
-        <p class="lead zh">HSN Group（海柏特集團，Highpoint Service Network）自 2026 年 12 月 1 日起成為 PAP 備品供應流程的一環。本節說明 HSN 與 PAP 的關係，以及集團在各國的公司與服務範圍；公司沿革與業務見第 2 章。</p><p class="lead en">From 1 December 2026 HSN Group (Highpoint Service Network) is part of PAP's spare-parts supply flow. This section covers HSN's relationship with PAP and the group's companies and service coverage by country; its history and business are in chapter 2.</p><div class="block" id="blk-hsn-pap"><h3><span class="zh">與 PAP 的關係</span><span class="en">Relationship with PAP</span></h3><div class="story"><p class="zh">HSN Group 總經理由 PAP 服務部門協理（AVP）林俊男（Jacky Lin）兼任。自 2026 年 12 月 1 日起，PAP 向 ODM 採購的料件改經由 HSN Group 供應予各國子公司；PAP 的 Angelin、Hannah、Sherry 轉任 HSN Group，其餘成員續代表 PAP。<sup class="cite" title="資料來源編號 / Source numbers">教材</sup></p><p class="en">HSN Group's general manager is Jacky Lin, assistant vice president (AVP) of PAP's service division. From 1 December 2026 the parts PAP purchases from the ODM are supplied to the nation subsidiaries through HSN Group; Angelin, Hannah and Sherry of PAP transfer to HSN Group, and the remaining members continue to represent PAP.<sup class="cite" title="資料來源編號 / Source numbers">教材</sup></p><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></div><div class="block" id="blk-hsn-companies"><h3><span class="zh">各國公司</span><span class="en">Companies by country</span></h3>
+        <p class="lead zh">HSN Group（海柏特集團，Highpoint Service Network）自 2026 年 12 月 1 日起成為 PAP 備品供應流程的一環。本節說明 HSN 與 PAP 的關係，以及集團在各國的公司與服務範圍；公司沿革與業務見第 2 章。</p><p class="lead en">From 1 December 2026 HSN Group (Highpoint Service Network) is part of PAP's spare-parts supply flow. This section covers HSN's relationship with PAP and the group's companies and service coverage by country; its history and business are in chapter 2.</p><div class="block" id="blk-hsn-pap"><h3><span class="zh">與 PAP 的關係</span><span class="en">Relationship with PAP</span></h3><div class="cards"><div><b><span class="zh">總經理</span><span class="en">General manager</span></b><p><span class="zh">HSN Group 總經理由 PAP 服務部門協理（AVP）林俊男（Jacky Lin）兼任。</span><span class="en">HSN Group's general manager is Jacky Lin, assistant vice president (AVP) of PAP's service division.</span><sup class="cite" title="資料來源編號 / Source numbers">教材</sup></p></div><div><b><span class="zh">料件供應</span><span class="en">Parts supply</span></b><p><span class="zh">自 2026 年 12 月 1 日起，PAP 向 ODM 採購的料件改經由 HSN Group 供應予各國子公司。</span><span class="en">From 1 December 2026 the parts PAP purchases from the ODM are supplied to the nation subsidiaries through HSN Group.</span><sup class="cite" title="資料來源編號 / Source numbers">教材</sup></p></div><div><b><span class="zh">人員</span><span class="en">Staff</span></b><p><span class="zh">PAP 的 Angelin、Hannah、Sherry 轉任 HSN Group，其餘成員續代表 PAP。</span><span class="en">Angelin, Hannah and Sherry of PAP transfer to HSN Group, and the remaining members continue to represent PAP.</span><sup class="cite" title="資料來源編號 / Source numbers">教材</sup></p></div></div><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div><div class="block" id="blk-hsn-companies"><h3><span class="zh">各國公司</span><span class="en">Companies by country</span></h3>
         <p class="lead zh">HSN Group（Highpoint Service Network，海柏特集團）已設立之公司及擴展規劃；公司代碼由 HSN 加國別字母組成。</p>
         <p class="lead en">Established companies and expansion plans of HSN Group (Highpoint Service Network). Company codes are HSN plus a country letter.</p>
         <div class="block">
@@ -1553,19 +1550,11 @@
         </div>
         <div class="block">
           <h3><span class="zh">圖中各方</span><span class="en">Who is who in the diagram</span></h3>
-          <ul class="dots">
-            <li><span class="zh"><b>ODM</b>：代工廠（如仁寶 Compal），依 Acer 規格生產整機與料件。</span><span class="en"><b>ODM</b>: the contract manufacturer (e.g. Compal) that builds units and parts to Acer's specification.</span></li>
-            <li><span class="zh"><b>PAP</b>：泛亞太區的區域辦公室（RO），負責向 ODM 下單採購。</span><span class="en"><b>PAP</b>: the Pan Asia Pacific regional office (RO), which places the purchase orders with the ODM.</span></li>
-            <li><span class="zh"><b>HSN Group</b>：海柏特集團（Highpoint Service Network）。2026 年 12 月 1 日起，PAP 採購的料件改由 HSN Group 供應給各國。</span><span class="en"><b>HSN Group</b>: Highpoint Service Network. From 1 December 2026 the parts PAP purchases are supplied to the countries through HSN Group.</span></li>
-            <li><span class="zh"><b>NS</b>：各國子公司，收到料件後供應當地服務據點進行維修。</span><span class="en"><b>NS</b>: the nation subsidiaries, which receive the parts and supply their local service sites for repair.</span></li>
-          </ul>
+          <div class="cards"><div><b>ODM</b><p><span class="zh">代工廠（如仁寶 Compal），依 Acer 規格生產整機與料件。</span><span class="en">The contract manufacturer (e.g. Compal) that builds units and parts to Acer's specification.</span></p></div><div><b>PAP</b><p><span class="zh">泛亞太區的區域辦公室（RO），負責向 ODM 下單採購。</span><span class="en">The Pan Asia Pacific regional office (RO), which places the purchase orders with the ODM.</span></p></div><div><b>HSN Group</b><p><span class="zh">海柏特集團（Highpoint Service Network）。2026 年 12 月 1 日起，PAP 採購的料件改由 HSN Group 供應給各國。</span><span class="en">Highpoint Service Network. From 1 December 2026 the parts PAP purchases are supplied to the countries through HSN Group.</span></p></div><div><b>NS</b><p><span class="zh">各國子公司，收到料件後供應當地服務據點進行維修。</span><span class="en">The nation subsidiaries, which receive the parts and supply their local service sites for repair.</span></p></div></div>
         </div>
         <div class="block">
-          <ul class="dots">
-            <li><span class="zh">PAP 向 ODM 採購整機或料件，並供應予各 NS。</span><span class="en">PAP purchases units and parts from the ODM and supplies them to the NS.</span></li>
-            <li><span class="zh">自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group（Highpoint Service Network，海柏特）供應。</span><span class="en">From 1 December 2026, parts purchased by PAP are supplied through HSN Group (Highpoint Service Network).</span></li>
-            <li><span class="zh">Angelin、Hannah、Sherry 轉任 HSN Group；其餘成員續代表 PAP。</span><span class="en">Angelin, Hannah and Sherry transfer to HSN Group; the remaining members continue to represent PAP.</span></li>
-          </ul>
+          <h3><span class="zh">重點整理</span><span class="en">Summary</span></h3>
+          <div class="cards"><div><b><span class="zh">採購與供應</span><span class="en">Purchasing and supply</span></b><p><span class="zh">PAP 向 ODM 採購整機或料件，並供應予各 NS。</span><span class="en">PAP purchases units and parts from the ODM and supplies them to the NS.</span></p></div><div><b><span class="zh">經由 HSN Group</span><span class="en">Through HSN Group</span></b><p><span class="zh">自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group（Highpoint Service Network，海柏特）供應。</span><span class="en">From 1 December 2026, parts purchased by PAP are supplied through HSN Group (Highpoint Service Network).</span></p></div><div><b><span class="zh">人員</span><span class="en">Staff</span></b><p><span class="zh">Angelin、Hannah、Sherry 轉任 HSN Group；其餘成員續代表 PAP。</span><span class="en">Angelin, Hannah and Sherry transfer to HSN Group; the remaining members continue to represent PAP.</span></p></div></div>
         </div>
       </section>
 
@@ -1581,38 +1570,20 @@
       <section class="sub" id="sub-ops-role"><h2><span class="zh">團隊職責與主要功能</span><span class="en">Team responsibilities and main functions</span></h2>
         <p class="lead zh">本章說明 PAP 服務物流團隊之日常工作。首先說明 PAP 團隊於服務物流中之角色。</p>
         <p class="lead en">This section covers the day-to-day work of the PAP service logistics team, starting with the team's role in service logistics.</p>
-        <div class="box">
-          <ul class="dots">
-            <li><span class="zh">PAP 團隊為區域辦公室（RO），負責採購作業。</span><span class="en">The PAP team is the regional office (RO) and is responsible for purchasing.</span></li>
-            <li><span class="zh">依 planning 及各 NS 原訂採購數量，向 ODM（如仁寶 Compal）下達採購單（PO）。</span><span class="en">Based on planning and the quantities ordered by each NS, POs are placed with the ODM (e.g. Compal).</span></li>
-            <li><span class="zh">向 ODM 採購整機或料件並供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group。</span><span class="en">Units and parts purchased from the ODM are supplied to the NS; from 1 December 2026 they are supplied through HSN Group.</span> <button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></li>
-          </ul>
-        </div>
+        <div class="cards"><div><b><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></b><p><span class="zh">PAP 團隊為區域辦公室（RO），負責採購作業。</span><span class="en">The PAP team is the regional office (RO) and is responsible for purchasing.</span></p></div><div><b><span class="zh">下達採購單</span><span class="en">Placing POs</span></b><p><span class="zh">依 planning 及各 NS 原訂採購數量，向 ODM（如仁寶 Compal）下達採購單（PO）。</span><span class="en">Based on planning and the quantities ordered by each NS, POs are placed with the ODM (e.g. Compal).</span></p></div><div><b><span class="zh">供應各 NS</span><span class="en">Supplying the NS</span></b><p><span class="zh">向 ODM 採購整機或料件並供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group。</span><span class="en">Units and parts purchased from the ODM are supplied to the NS; from 1 December 2026 they are supplied through HSN Group.</span></p><p class="note"><button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></p></div></div>
         <div class="block">
           <h3><span class="zh">PAP 採購：全名、角色與流程</span><span class="en">PAP purchasing: the name, the role and the flow</span></h3>
-          <div class="box">
-            <dl class="kvl wide">
-              <div><dt><span class="zh">全名</span><span class="en">Full name</span></dt><dd><span class="zh"><b>PAP</b> = Pan Asia Pacific（泛亞太區）。PAP 是 Acer 總部之下的區域辦公室（RO，Regional Office），「PAP 採購」指 PAP 團隊為整個泛亞太區進行的備品（S/P，Spare Parts）規劃與採購（教材：SP planning &amp; Ordering）。</span><span class="en"><b>PAP</b> = Pan Asia Pacific. PAP is the regional office (RO) under Acer headquarters; "PAP purchasing" means the spare-parts (S/P) planning and ordering the PAP team does for the whole region (SP planning &amp; Ordering in the training material).</span></dd></div>
-              <div><dt><span class="zh">角色</span><span class="en">Role</span></dt><dd><span class="zh">PAP 位於總部（HQ）與各國子公司（NS）之間：彙整各 NS 的需求、向 ODM（代工廠，例如仁寶）下採購單、管理中央倉庫與不良品退回（RMA），並監控各 NS 的採購、庫存與達交績效。</span><span class="en">PAP sits between headquarters (HQ) and the nation subsidiaries (NS): it consolidates NS demand, places purchase orders with the ODM (the contract manufacturer, e.g. Compal), manages the central warehouse and returns (RMA), and monitors each NS's purchasing, inventory and fulfilment.</span></dd></div>
-            </dl>
-            <ol class="steps-plain" style="margin-top:14px">
-              <li><span class="zh"><b>需求</b>：各 NS 依規劃模式提出需求報表（Demand Report）。</span><span class="en"><b>Demand</b>: each NS submits a demand report under the planning mode.</span> <span class="stag doc"><span class="zh">教材 7、25</span><span class="en">Deck p. 7, 25</span></span></li>
-              <li><span class="zh"><b>彙整</b>：PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en"><b>Consolidation</b>: PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
-              <li><span class="zh"><b>下單</b>：PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en"><b>Ordering</b>: PAP creates the PO in CSS and confirms it to the ODM in PLS.</span> <span class="stag doc"><span class="zh">教材 7、16</span><span class="en">Deck p. 7, 16</span></span></li>
-              <li><span class="zh"><b>追蹤</b>：持續更新並追蹤預計出貨日（ETD）。</span><span class="en"><b>Follow-up</b>: the estimated time of departure (ETD) is updated and followed up.</span> <span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></li>
-              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc"><span class="zh">教材 · 補充說明</span><span class="en">Deck + notes</span></span></li>
-              <li><span class="zh"><b>檢視</b>：PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en"><b>Review</b>: PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span> <span class="stag doc"><span class="zh">教材 8</span><span class="en">Deck p. 8</span></span></li>
-            </ol>
-            <p class="note"><span class="zh">付款責任、跨國運輸與關務安排，以及 HSN Group 介入後的訂單流向細節，教材未載明。</span><span class="en">Payment responsibility, cross-border transport and customs arrangements, and the detailed order flow once HSN Group is involved are not specified in the material.</span></p>
-          </div>
+          <div class="cards wide"><div><b><span class="zh">全名</span><span class="en">Full name</span></b><p><span class="zh"><b>PAP</b> = Pan Asia Pacific（泛亞太區）。PAP 是 Acer 總部之下的區域辦公室（RO，Regional Office），「PAP 採購」指 PAP 團隊為整個泛亞太區進行的備品（S/P，Spare Parts）規劃與採購（教材：SP planning &amp; Ordering）。</span><span class="en"><b>PAP</b> = Pan Asia Pacific. PAP is the regional office (RO) under Acer headquarters; "PAP purchasing" means the spare-parts (S/P) planning and ordering the PAP team does for the whole region (SP planning &amp; Ordering in the training material).</span></p></div><div><b><span class="zh">角色</span><span class="en">Role</span></b><p><span class="zh">PAP 位於總部（HQ）與各國子公司（NS）之間：彙整各 NS 的需求、向 ODM（代工廠，例如仁寶）下採購單、管理中央倉庫與不良品退回（RMA），並監控各 NS 的採購、庫存與達交績效。</span><span class="en">PAP sits between headquarters (HQ) and the nation subsidiaries (NS): it consolidates NS demand, places purchase orders with the ODM (the contract manufacturer, e.g. Compal), manages the central warehouse and returns (RMA), and monitors each NS's purchasing, inventory and fulfilment.</span></p></div></div>
+          <div class="steps" style="margin-top:14px"><div><span class="sn">1</span><b><span class="zh">需求</span><span class="en">Demand</span></b><p><span class="zh">各 NS 依規劃模式提出需求報表（Demand Report）。</span><span class="en">Each NS submits a demand report under the planning mode.</span></p><small><span class="stag doc"><span class="zh">教材 7、25</span><span class="en">Deck p. 7, 25</span></span></small></div><div><span class="sn">2</span><b><span class="zh">彙整</span><span class="en">Consolidation</span></b><p><span class="zh">PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en">PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span></p><small><span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></small></div><div><span class="sn">3</span><b><span class="zh">下單</span><span class="en">Ordering</span></b><p><span class="zh">PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en">PAP creates the PO in CSS and confirms it to the ODM in PLS.</span></p><small><span class="stag doc"><span class="zh">教材 7、16</span><span class="en">Deck p. 7, 16</span></span></small></div><div><span class="sn">4</span><b><span class="zh">追蹤</span><span class="en">Follow-up</span></b><p><span class="zh">持續更新並追蹤預計出貨日（ETD）。</span><span class="en">The estimated time of departure (ETD) is updated and followed up.</span></p><small><span class="stag doc"><span class="zh">教材 7</span><span class="en">Deck p. 7</span></span></small></div><div><span class="sn">5</span><b><span class="zh">供應</span><span class="en">Supply</span></b><p><span class="zh">ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en">The units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span></p><small><span class="stag doc"><span class="zh">教材 · 補充說明</span><span class="en">Deck + notes</span></span></small></div><div><span class="sn">6</span><b><span class="zh">檢視</span><span class="en">Review</span></b><p><span class="zh">PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en">PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span></p><small><span class="stag doc"><span class="zh">教材 8</span><span class="en">Deck p. 8</span></span></small></div></div>
+          <p class="note"><span class="zh">付款責任、跨國運輸與關務安排，以及 HSN Group 介入後的訂單流向細節，教材未載明。</span><span class="en">Payment responsibility, cross-border transport and customs arrangements, and the detailed order flow once HSN Group is involved are not specified in the material.</span></p>
           <p class="note"><button class="btn sm" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button> <button class="btn sm" type="button" data-go="ops-plan"><span class="zh">規劃模式 →</span><span class="en">Planning modes →</span></button> <button class="btn sm" type="button" data-go="ops-systems"><span class="zh">系統 →</span><span class="en">Systems →</span></button></p>
         </div>
       <div class="block" id="blk-ops-functions"><h3><span class="zh">主要職能</span><span class="en">Main functions</span></h3>
         <p class="lead zh">PAP 服務物流（Service Logistics Org.）之主要職能。</p>
         <p class="lead en">Main functions of PAP service logistics (Service Logistics Org.).</p>
-        <div class="two">
-          <article class="box fn">
-            <h3><small>MAIN FUNCTIONS (I)</small>SP Planning &amp; Ordering<span class="zh"> · 備品規劃與下單</span></h3>
+        <div class="cards">
+          <div class="fn">
+            <small>MAIN FUNCTIONS (I)</small><b>SP Planning &amp; Ordering<span class="zh"> · 備品規劃與下單</span></b>
             <ul>
               <li><b>Demand Reports</b><span class="g zh">需求報表</span><span class="g en">Demand reports</span>
                 <ul><li>DT Demand Report</li><li>NB NPI BML, AML, PPB1/2</li></ul></li>
@@ -1621,9 +1592,9 @@
               <li><b>PO management</b><span class="g zh">採購單管理</span><span class="g en">Purchase order management</span>
                 <ul><li>Create PO <span class="g">(CSS)</span></li><li>Confirm PO to ODM <span class="g">(PLS)</span></li><li>ETD updating, follow up</li></ul></li>
             </ul>
-          </article>
-          <article class="box fn">
-            <h3><small>MAIN FUNCTIONS (II)</small><span class="zh">中央營運</span><span class="en">Central operations</span></h3>
+          </div>
+          <div class="fn">
+            <small>MAIN FUNCTIONS (II)</small><b><span class="zh">中央營運</span><span class="en">Central operations</span></b>
             <ul>
               <li><b>Central W/H management</b><span class="g zh">中央倉庫管理</span><span class="g en">Central warehouse management</span></li>
               <li><b>RMA</b><span class="g zh">不良品退回作業</span><span class="g en">Return processing for defective parts</span></li>
@@ -1631,9 +1602,9 @@
               <li><b>Service Center &amp; Call Center support</b><span class="g zh">支援服務中心與客服中心</span><span class="g en">Support for service and call centres</span></li>
               <li><b>Customer satisfaction (CSAT)</b><span class="g zh">客戶滿意度</span><span class="g en">Customer satisfaction</span></li>
             </ul>
-          </article>
-          <article class="box fn">
-            <h3><small>REVIEW</small>PO / Cost / Inventory Review<span class="zh"> · 採購、成本與庫存檢視</span></h3>
+          </div>
+          <div class="fn">
+            <small>REVIEW</small><b>PO / Cost / Inventory Review<span class="zh"> · 採購、成本與庫存檢視</span></b>
             <ul>
               <li><b>NS performance monitoring</b><span class="g zh">各 NS 績效監控項目：</span><span class="g en">Performance indicators for each NS:</span>
                 <ul>
@@ -1644,9 +1615,9 @@
                   <li>HFP <span class="g zh">— Hold For Part：因待料而延宕之維修案件</span><span class="g en">— Hold For Part: repair cases pending parts on backorder</span></li>
                 </ul></li>
             </ul>
-          </article>
-          <article class="box fn">
-            <h3><small>REPORT</small>Monthly Service / Operation Report<span class="zh"> · 每月服務與營運報告</span></h3>
+          </div>
+          <div class="fn">
+            <small>REPORT</small><b>Monthly Service / Operation Report<span class="zh"> · 每月服務與營運報告</span></b>
             <ul>
               <li><b>Monthly reports</b><span class="g zh">月報內容</span><span class="g en">Monthly report contents</span>
                 <ul>
@@ -1654,7 +1625,7 @@
                   <li>Aging Stock <span class="g zh">— 庫齡過長之庫存</span><span class="g en">— inventory beyond its holding period</span></li>
                 </ul></li>
             </ul>
-          </article>
+          </div>
         </div>
       </div></section>
       <section class="sub" id="sub-ops-systems"><h2><span class="zh">系統</span><span class="en">Systems</span></h2>
@@ -1668,12 +1639,7 @@
         </div>
         <div class="block">
           <h3><span class="zh">各系統用途</span><span class="en">System usage</span></h3>
-          <div class="box uses">
-            <div class="use"><b>PLM</b><span><span class="zh">為新料件申請料號（Apply P/N on PLM for new items）；將 Service BOM 及新增料件匯入 Service PLM。</span><span class="en">Apply for P/Ns for new items; import the Service BOM and newly added parts into Service PLM.</span></span></div>
-            <div class="use"><b>PLS</b><span><span class="zh">向 ODM 確認採購單（Confirm PO to ODM）。</span><span class="en">Confirm POs to the ODM.</span></span></div>
-            <div class="use"><b>GLS</b><span><span class="zh">中央備品規劃（Central SP Planning）。</span><span class="en">Central spare-parts planning.</span></span></div>
-            <div class="use"><b>CSS</b><span><span class="zh">建立採購單（Create PO）；502/503 aging 所列不良品滯留於 CSS。</span><span class="en">Create POs; defective parts counted in 502/503 aging are held in CSS.</span></span></div>
-          </div>
+          <div class="cards"><div><b>PLM</b><p><span class="zh">為新料件申請料號（Apply P/N on PLM for new items）；將 Service BOM 及新增料件匯入 Service PLM。</span><span class="en">Apply for P/Ns for new items; import the Service BOM and newly added parts into Service PLM.</span></p></div><div><b>PLS</b><p><span class="zh">向 ODM 確認採購單（Confirm PO to ODM）。</span><span class="en">Confirm POs to the ODM.</span></p></div><div><b>GLS</b><p><span class="zh">中央備品規劃（Central SP Planning）。</span><span class="en">Central spare-parts planning.</span></p></div><div><b>CSS</b><p><span class="zh">建立採購單（Create PO）；502/503 aging 所列不良品滯留於 CSS。</span><span class="en">Create POs; defective parts counted in 502/503 aging are held in CSS.</span></p></div></div>
           <p class="note"><span class="zh">PLS、GLS、CSS：</span><span class="en">PLS, GLS, CSS: </span><span class="na"><span class="zh">全稱未載明</span><span class="en">full names not specified</span></span></p>
         </div>
       </section>
@@ -1755,55 +1721,47 @@
         <p class="note en"><b>FCS-1wk</b>: one week before First Customer Shipment. If the markup review fails, the flow returns to the ODM for a new SPL draft.</p>
         <div class="block">
           <h3><span class="zh">時程重點</span><span class="en">Key dates</span><small>FRU/SPL Process Flow Chart</small></h3>
-          <ul class="dots">
-            <li><span class="zh"><b>FCS − 14 CD</b>：HQ/PM 提供主機板料號（MB P/N）與 carcass price。</span><span class="en"><b>FCS − 14 CD</b>: HQ/PM provides the mainboard P/N and carcass price.</span></li>
-            <li><span class="zh"><b>FCS − 5 CD</b>：SPL 凍結（SPL Frozen），上傳 SPL 系統並準備接受各 RO 的採購單。</span><span class="en"><b>FCS − 5 CD</b>: the SPL is frozen, uploaded to the SPL system and ready to receive POs from the ROs.</span></li>
-            <li><span class="zh"><b>FCS − 1wk</b>：SPL 發布予各 RO；量產期間持續更新（新配置、新料件），直至 EOL 通知。</span><span class="en"><b>FCS − 1wk</b>: the SPL is released to the ROs and kept up to date through mass production (new configurations and parts) until the EOL notice.</span></li>
-          </ul>
+          <div class="steps">
+            <div><span class="sn">1</span><b>FCS − 14 CD</b><p><span class="zh">HQ/PM 提供主機板料號（MB P/N）與 carcass price。</span><span class="en">HQ/PM provides the mainboard P/N and carcass price.</span></p></div>
+            <div><span class="sn">2</span><b>FCS − 5 CD</b><p><span class="zh">SPL 凍結（SPL Frozen），上傳 SPL 系統並準備接受各 RO 的採購單。</span><span class="en">The SPL is frozen, uploaded to the SPL system and ready to receive POs from the ROs.</span></p></div>
+            <div><span class="sn">3</span><b>FCS − 1wk</b><p><span class="zh">SPL 發布予各 RO；量產期間持續更新（新配置、新料件），直至 EOL 通知。</span><span class="en">The SPL is released to the ROs and kept up to date through mass production (new configurations and parts) until the EOL notice.</span></p></div>
+          </div>
           <p class="note"><span class="zh">CD＝日曆天（calendar days）。此流程圖之負責單位標示為 QSBU/CSD，與 SPL 定義流程之 QSBU/GCSD 並存。</span><span class="en">CD = calendar days. This chart names the responsible unit as QSBU/CSD, alongside QSBU/GCSD in the SPL definition flow.</span></p>
         </div>
       </section>
       <section class="sub" id="sub-ops-bom"><h2><span class="zh">服務 BOM</span><span class="en">Service BOM</span></h2>
         <p class="lead zh">Service BOM 分為 NPI（新品導入）與 MP（量產）兩類，各有其 SOP。</p>
         <p class="lead en">The Service BOM has two types, NPI (new product introduction) and MP (mass production), each with its own SOP.</p>
-        <div class="two">
-          <div class="box">
-            <h3>NPI Service BOM</h3>
-            <p class="zh" style="margin:0">FRU 會議後，ODM 提供 FRU 清單草稿；經審查後於 Service BOM 建立 Acer P/N。</p>
-            <p class="en" style="margin:0">After the FRU meeting, the ODM provides a draft FRU list; after review, Acer P/Ns are created on the Service BOM.</p>
-          </div>
-          <div class="box">
-            <h3>MP Service BOM</h3>
-            <p class="zh" style="margin:0">由 ODM 每月定期更新。</p>
-            <p class="en" style="margin:0">Updated monthly by the ODM.</p>
-          </div>
+        <div class="compare">
+          <div><b>NPI Service BOM</b><ul>
+            <li><b><span class="zh">階段</span><span class="en">Stage</span></b><span class="zh">：NPI（新品導入）</span><span class="en">: NPI (new product introduction)</span></li>
+            <li><b><span class="zh">做法</span><span class="en">How it works</span></b><span class="zh">：FRU 會議後，ODM 提供 FRU 清單草稿；經審查後於 Service BOM 建立 Acer P/N。</span><span class="en">: after the FRU meeting, the ODM provides a draft FRU list; after review, Acer P/Ns are created on the Service BOM.</span></li>
+          </ul></div>
+          <div><b>MP Service BOM</b><ul>
+            <li><b><span class="zh">階段</span><span class="en">Stage</span></b><span class="zh">：MP（量產）</span><span class="en">: MP (mass production)</span></li>
+            <li><b><span class="zh">做法</span><span class="en">How it works</span></b><span class="zh">：由 ODM 每月定期更新。</span><span class="en">: updated monthly by the ODM.</span></li>
+          </ul></div>
         </div>
         <div class="block">
           <h3>Service BOM SOP</h3>
-          <div class="two">
-            <div class="box sop">
-              <h3>1. NPI Service BOM</h3>
-              <ol>
-                <li><span>1.1</span><span>Acer P/N Review &amp; Application</span></li>
-                <li><span>1.2</span><span>AVLC &amp; SKU BOM Checking</span></li>
-                <li><span>1.3</span><span>MOQ/RMA suggestion Review</span></li>
-                <li><span>1.4</span><span>Price Review – B/S &amp; general parts markup %</span></li>
-                <li><span>1.5</span><span>Import BOM to Service PLM</span></li>
-                <li><span>1.6</span><span>NPI SPL to ROs <span class="caption">(DT SPL, NB SPL)</span></span></li>
-              </ol>
-            </div>
-            <div class="box sop">
-              <h3>2. MP Service BOM – regular update</h3>
-              <ol>
-                <li><span>2.1</span><span>Acer P/N Review &amp; Application</span></li>
-                <li><span>2.2</span><span>AVLC &amp; SKU BOM Checking</span></li>
-                <li><span>2.3</span><span>MOQ/RMA suggestion Review &amp; Price</span></li>
-                <li><span>2.4</span><span>Substitution part check &amp; maintain</span></li>
-                <li><span>2.5</span><span>Import New Added Parts to Service PLM</span></li>
-                <li><span>2.6</span><span>Maintain pricing</span></li>
-                <li><span>2.7</span><span>Other function introduction</span></li>
-              </ol>
-            </div>
+          <p><b>1. NPI Service BOM</b></p>
+          <div class="steps">
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.1</span><b>Acer P/N Review &amp; Application</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.2</span><b>AVLC &amp; SKU BOM Checking</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.3</span><b>MOQ/RMA suggestion Review</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.4</span><b>Price Review – B/S &amp; general parts markup %</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.5</span><b>Import BOM to Service PLM</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">1.6</span><b>NPI SPL to ROs</b><small>(DT SPL, NB SPL)</small></div>
+          </div>
+          <p><b>2. MP Service BOM – regular update</b></p>
+          <div class="steps">
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.1</span><b>Acer P/N Review &amp; Application</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.2</span><b>AVLC &amp; SKU BOM Checking</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.3</span><b>MOQ/RMA suggestion Review &amp; Price</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.4</span><b>Substitution part check &amp; maintain</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.5</span><b>Import New Added Parts to Service PLM</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.6</span><b>Maintain pricing</b></div>
+            <div><span class="sn" style="width:auto;padding:0 8px;border-radius:13px">2.7</span><b>Other function introduction</b></div>
           </div>
         </div>
         <div class="block">
@@ -1815,38 +1773,47 @@
         <p class="lead zh">備品規劃依產品類型分為兩種模式：筆記型電腦採「New Proactive」，以 NPI、BML、AML、PPB1、PPB2 五個階段提出需求；桌上型電腦採「Proactive」，以每月需求報表（Demand Report）為主。各階段的名稱、時點與 ODM 供貨條件如下。</p>
         <p class="lead en">Spare-parts planning follows two modes: notebooks use the New Proactive mode with five stages (NPI, BML, AML, PPB1, PPB2), while desktops use the Proactive mode built around a monthly demand report. The stages, their timing and the ODM fulfilment terms are set out below.</p>
         <div class="block">
-          <h3><span class="zh">New Proactive（筆記型電腦）</span><span class="en">New Proactive (notebooks)</span></h3>
-          <div class="tbl"><table>
-            <thead><tr><th><span class="zh">階段</span><span class="en">Stage</span></th><th><span class="zh">全稱</span><span class="en">Full name</span></th><th><span class="zh">時點</span><span class="en">When</span></th><th><span class="zh">需求報表</span><span class="en">Demand report</span></th><th><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></th></tr></thead>
-            <tbody>
-              <tr><td><b>NPI</b></td><td>New Product Introduction <span class="zh">新產品導入</span></td><td>FCS</td><td class="wrap"><span class="zh">NPI 檔案於 FCS 前 7 個工作天提出</span><span class="en">NPI file at FCS − 7 working days</span></td><td class="wrap"><span class="zh">初始備品：下單後 5 個工作天</span><span class="en">Initial spare parts: PO + 5 working days</span></td></tr>
-              <tr><td><b>BML</b></td><td>Before Mass Lock <span class="zh">量產鎖定前</span></td><td><span class="zh">量產期間</span><span class="en">During MP</span></td><td class="wrap"><span class="zh">每月 15 日，A、B、C 類料件</span><span class="en">Monthly on the 15th, A, B and C parts</span></td><td class="wrap"><span class="zh">下單後 10 個工作天；量產期間依 Acer MOQ</span><span class="en">PO + 10 working days; Acer MOQ during MP</span></td></tr>
-              <tr><td><b>AML</b></td><td>After Mass Lock <span class="zh">量產鎖定後</span></td><td>ML + 2m</td><td class="wrap"><span class="zh">所有料件仍可向 ODM 採購；C 類料件最後採購（LTB）；MOQ 與價格沿用 BML</span><span class="en">All parts can still be bought from the ODM; last-time buy (LTB) of C parts; MOQ and price follow BML</span></td><td class="wrap"><span class="zh">分批，9 個月排程</span><span class="en">Partial, 9-month schedule</span></td></tr>
-              <tr><td><b>PPB1</b></td><td>Post Production Buy 1 <span class="zh">停產後採購 1</span></td><td>EOL + 3m（AML + 6m）</td><td class="wrap"><span class="zh">B 類料件最後採購；MOQ 與價格重新議定</span><span class="en">Last-time buy of B parts; new MOQ and price</span></td><td class="wrap"><span class="zh">分批，6 個月排程</span><span class="en">Partial, 6-month schedule</span></td></tr>
-              <tr><td><b>PPB2</b></td><td>Post Production Buy 2 <span class="zh">停產後採購 2</span></td><td>EOL + 9m（PPB1 + 6m）</td><td class="wrap"><span class="zh">A 類料件最後採購；MOQ 與價格重新議定</span><span class="en">Last-time buy of A parts; new MOQ and price</span></td><td class="wrap"><span class="zh">分批，6 個月排程</span><span class="en">Partial, 6-month schedule</span></td></tr>
-              <tr><td><b><span class="zh">PPB2 之後</span><span class="en">After PPB2</span></b></td><td><span class="zh">特殊支援</span><span class="en">Special support</span></td><td>EOL + 12m ~ 18m</td><td class="wrap"><span class="zh">A 類料件特殊支援，由 RO 依需求提出</span><span class="en">Special support for A parts, initiated by the RO on request</span></td><td class="wrap"><span class="zh">一次性供貨；量產結束後依 ODM MOQ</span><span class="en">One-time supply; ODM MOQ after MP</span></td></tr>
-            </tbody></table></div>
+          <h3><span class="zh">NPI 階段比較</span><span class="en">The NPI stage compared</span><small>New Product Introduction <span class="zh">新產品導入</span></small></h3>
+          <div class="compare">
+            <div><b><span class="zh">New Proactive（筆記型電腦）</span><span class="en">New Proactive (notebooks)</span></b><ul>
+              <li><b><span class="zh">時點</span><span class="en">When</span></b><span class="zh">：FCS</span><span class="en">: FCS</span></li>
+              <li><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：NPI 檔案於 FCS 前 7 個工作天提出</span><span class="en">: NPI file at FCS − 7 working days</span></li>
+              <li><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：初始備品：下單後 5 個工作天</span><span class="en">: initial spare parts: PO + 5 working days</span></li>
+            </ul></div>
+            <div><b><span class="zh">Proactive（桌上型電腦）</span><span class="en">Proactive (desktops)</span></b><ul>
+              <li><b><span class="zh">時點</span><span class="en">When</span></b><span class="zh">：FCS − 1wk</span><span class="en">: FCS − 1wk</span></li>
+              <li><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：NPI 檔案於 FCS 前一週提出</span><span class="en">: NPI file one week before FCS</span></li>
+              <li><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：初始備品於下單後 5 個工作天出貨</span><span class="en">: initial spare parts ship PO + 5 working days</span></li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="block">
+          <h3><span class="zh">New Proactive（筆記型電腦）</span><span class="en">New Proactive (notebooks)</span><small><span class="zh">NPI 之後的階段</span><span class="en">Stages after NPI</span></small></h3>
+          <div class="steps">
+            <div><span class="sn">1</span><b>BML</b><p>Before Mass Lock <span class="zh">量產鎖定前</span></p><p><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：每月 15 日，A、B、C 類料件</span><span class="en">: Monthly on the 15th, A, B and C parts</span></p><p><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：下單後 10 個工作天；量產期間依 Acer MOQ</span><span class="en">: PO + 10 working days; Acer MOQ during MP</span></p><small><span class="zh">時點：量產期間</span><span class="en">When: During MP</span></small></div>
+            <div><span class="sn">2</span><b>AML</b><p>After Mass Lock <span class="zh">量產鎖定後</span></p><p><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：所有料件仍可向 ODM 採購；C 類料件最後採購（LTB）；MOQ 與價格沿用 BML</span><span class="en">: All parts can still be bought from the ODM; last-time buy (LTB) of C parts; MOQ and price follow BML</span></p><p><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：分批，9 個月排程</span><span class="en">: Partial, 9-month schedule</span></p><small><span class="zh">時點：ML + 2m</span><span class="en">When: ML + 2m</span></small></div>
+            <div><span class="sn">3</span><b>PPB1</b><p>Post Production Buy 1 <span class="zh">停產後採購 1</span></p><p><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：B 類料件最後採購；MOQ 與價格重新議定</span><span class="en">: Last-time buy of B parts; new MOQ and price</span></p><p><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：分批，6 個月排程</span><span class="en">: Partial, 6-month schedule</span></p><small><span class="zh">時點：EOL + 3m（AML + 6m）</span><span class="en">When: EOL + 3m (AML + 6m)</span></small></div>
+            <div><span class="sn">4</span><b>PPB2</b><p>Post Production Buy 2 <span class="zh">停產後採購 2</span></p><p><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：A 類料件最後採購；MOQ 與價格重新議定</span><span class="en">: Last-time buy of A parts; new MOQ and price</span></p><p><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：分批，6 個月排程</span><span class="en">: Partial, 6-month schedule</span></p><small><span class="zh">時點：EOL + 9m（PPB1 + 6m）</span><span class="en">When: EOL + 9m (PPB1 + 6m)</span></small></div>
+            <div><span class="sn">5</span><b><span class="zh">PPB2 之後</span><span class="en">After PPB2</span></b><p><span class="zh">特殊支援</span><span class="en">Special support</span></p><p><b><span class="zh">需求報表</span><span class="en">Demand report</span></b><span class="zh">：A 類料件特殊支援，由 RO 依需求提出</span><span class="en">: Special support for A parts, initiated by the RO on request</span></p><p><b><span class="zh">ODM 供貨</span><span class="en">ODM fulfilment</span></b><span class="zh">：一次性供貨；量產結束後依 ODM MOQ</span><span class="en">: One-time supply; ODM MOQ after MP</span></p><small><span class="zh">時點：EOL + 12m ~ 18m</span><span class="en">When: EOL + 12m ~ 18m</span></small></div>
+          </div>
           <p class="note zh">產品週期：NPI（FCS）→ 量產（MP）→ 量產鎖定（Mass Lock，EOL 前 3 個月）→ EOL。料件 A、B、C 分級之標準 <span class="na">教材未載明</span>。</p>
           <p class="note en">Product cycle: NPI (FCS) → mass production (MP) → Mass Lock (3 months before EOL) → EOL. The criteria for the A, B and C part classes are <span class="na">not specified in the material</span>.</p>
         </div>
         <div class="block">
-          <h3><span class="zh">Proactive（桌上型電腦）</span><span class="en">Proactive (desktops)</span></h3>
-          <div class="tbl"><table>
-            <thead><tr><th><span class="zh">項目</span><span class="en">Item</span></th><th><span class="zh">時點</span><span class="en">When</span></th><th><span class="zh">內容</span><span class="en">Detail</span></th></tr></thead>
-            <tbody>
-              <tr><td><b>NPI</b></td><td>FCS − 1wk</td><td class="wrap"><span class="zh">NPI 檔案於 FCS 前一週提出；初始備品於下單後 5 個工作天出貨。</span><span class="en">NPI file one week before FCS; initial spare parts ship PO + 5 working days.</span></td></tr>
-              <tr><td><b>Demand Report（DR）</b></td><td>FCS ~ EOM</td><td class="wrap"><span class="zh">每月 5 日提出需求報表，備品於次月 20 日出貨；量產期間依 Acer MOQ，量產結束後依 ODM MOQ 與交期（L/T）。</span><span class="en">Demand report on the 5th of each month, parts shipped on the 20th of the following month; Acer MOQ during MP, ODM MOQ and lead time (L/T) after MP.</span></td></tr>
-              <tr><td><b><span class="zh">最後一次 DR</span><span class="en">Last DR</span></b></td><td>EOM</td><td class="wrap"><span class="zh">EOM 當月為最後一次需求報表；EOM+1 起依各 RO 分批排程供貨。</span><span class="en">The last demand report is at EOM; from EOM+1 parts follow each RO's partial schedule.</span></td></tr>
-              <tr><td><b>LTB</b></td><td>EOM ~ EOS</td><td class="wrap"><span class="zh">最後採購（Last Time Buy）依需求與可行性提出；備品依 9 個月（仁寶）或 12 個月排程供貨。</span><span class="en">Last-time buy on request and feasibility; parts supplied on a 9-month (Compal) or 12-month schedule.</span></td></tr>
-            </tbody></table></div>
+          <h3><span class="zh">Proactive（桌上型電腦）</span><span class="en">Proactive (desktops)</span><small><span class="zh">NPI 之後的階段</span><span class="en">Stages after NPI</span></small></h3>
+          <div class="steps">
+            <div><span class="sn">1</span><b>Demand Report<span class="zh">（DR）</span><span class="en"> (DR)</span></b><p><span class="zh">每月 5 日提出需求報表，備品於次月 20 日出貨；量產期間依 Acer MOQ，量產結束後依 ODM MOQ 與交期（L/T）。</span><span class="en">Demand report on the 5th of each month, parts shipped on the 20th of the following month; Acer MOQ during MP, ODM MOQ and lead time (L/T) after MP.</span></p><small><span class="zh">時點：FCS ~ EOM</span><span class="en">When: FCS ~ EOM</span></small></div>
+            <div><span class="sn">2</span><b><span class="zh">最後一次 DR</span><span class="en">Last DR</span></b><p><span class="zh">EOM 當月為最後一次需求報表；EOM+1 起依各 RO 分批排程供貨。</span><span class="en">The last demand report is at EOM; from EOM+1 parts follow each RO's partial schedule.</span></p><small><span class="zh">時點：EOM</span><span class="en">When: EOM</span></small></div>
+            <div><span class="sn">3</span><b>LTB</b><p><span class="zh">最後採購（Last Time Buy）依需求與可行性提出；備品依 9 個月（仁寶）或 12 個月排程供貨。</span><span class="en">Last-time buy on request and feasibility; parts supplied on a 9-month (Compal) or 12-month schedule.</span></p><small><span class="zh">時點：EOM ~ EOS</span><span class="en">When: EOM ~ EOS</span></small></div>
+          </div>
         </div>
         <div class="block">
           <h3><span class="zh">名詞與規則</span><span class="en">Terms and rules</span></h3>
-          <ul class="dots">
-            <li><span class="zh"><b>Mass Lock（ML）</b>：Acer Fulfillment 向 ODM 提出全球成品（FG）最後需求的時點；IMR 料件於此時提出最後採購。</span><span class="en"><b>Mass Lock (ML)</b>: when Acer Fulfillment calls the worldwide finished-goods (FG) last demand to the ODMs; IMR material is placed on last-time buy at this point.</span></li>
-            <li><span class="zh"><b>EOL</b>（End of Life）：產品生命週期結束，日期由 PM 決定。<b>EOM</b>（End of Manufacture）：ODM 最後一台出貨的日期。<b>EOS</b>：<span class="na">全稱未載明</span>。</span><span class="en"><b>EOL</b> (End of Life): the end of the product's life, with the date decided by the PM. <b>EOM</b> (End of Manufacture): the date the ODM ships its last unit. <b>EOS</b>: <span class="na">full name not specified</span>.</span></li>
-            <li><span class="zh"><b>LTB</b>（Last Time Buy，最後採購）依合約條款（T&amp;C）於下列情況提出：原物料停產（EOM）、模具損壞或修改、與 ODM 或供應商結束合作（含供應商破產）、RO 主動提出。</span><span class="en"><b>LTB</b> (Last Time Buy) is raised under the terms and conditions (T&amp;C) when raw material reaches EOM, tooling is damaged or modified, business with the ODM or vendor ends (including bankruptcy), or the RO initiates it.</span></li>
-          </ul>
+          <div class="cards">
+            <div><b><span class="zh">Mass Lock（ML）</span><span class="en">Mass Lock (ML)</span></b><p><span class="zh">Acer Fulfillment 向 ODM 提出全球成品（FG）最後需求的時點；IMR 料件於此時提出最後採購。</span><span class="en">When Acer Fulfillment calls the worldwide finished-goods (FG) last demand to the ODMs; IMR material is placed on last-time buy at this point.</span></p></div>
+            <div><b>EOL · EOM · EOS</b><p><span class="zh"><b>EOL</b>（End of Life）：產品生命週期結束，日期由 PM 決定。</span><span class="en"><b>EOL</b> (End of Life): the end of the product's life, with the date decided by the PM.</span></p><p><span class="zh"><b>EOM</b>（End of Manufacture）：ODM 最後一台出貨的日期。</span><span class="en"><b>EOM</b> (End of Manufacture): the date the ODM ships its last unit.</span></p><p><span class="zh"><b>EOS</b>：<span class="na">全稱未載明</span>。</span><span class="en"><b>EOS</b>: <span class="na">full name not specified</span>.</span></p></div>
+            <div><b><span class="zh">LTB（Last Time Buy，最後採購）</span><span class="en">LTB (Last Time Buy)</span></b><p><span class="zh">依合約條款（T&amp;C）於下列情況提出：原物料停產（EOM）、模具損壞或修改、與 ODM 或供應商結束合作（含供應商破產）、RO 主動提出。</span><span class="en">Raised under the terms and conditions (T&amp;C) when raw material reaches EOM, tooling is damaged or modified, business with the ODM or vendor ends (including bankruptcy), or the RO initiates it.</span></p></div>
+          </div>
         </div>
       </section>
 
@@ -1874,6 +1841,8 @@
             <li><span class="zh">因此 <b class="mono">DG.B88SA.001</b> 為 AAP 區供澳洲使用之料號；同一料件供馬來西亞使用時，料號為 <b class="mono">DG.B88SM.001</b>，僅第 7 碼不同。</span><span class="en">So <b class="mono">DG.B88SA.001</b> is the AAP-region part number for Australia; the same part for Malaysia is <b class="mono">DG.B88SM.001</b>, differing only in character 7.</span></li>
           </ol>
         </div>
+        <div class="block">
+          <h3><span class="zh">各段說明</span><span class="en">What each part means</span></h3>
         <div class="two">
           <div class="label" aria-label="DG.B88SA.001">
             <div class="label-top"><span>SERVICE PART</span><span>P/N</span></div>
@@ -1890,14 +1859,14 @@
               <button class="btn sm" type="button" data-go="pn-decode"><span class="zh">料號解析 →</span><span class="en">Decode a P/N →</span></button>
             </div>
           </div>
-          <div class="box">
-            <h3><span class="zh">各段說明</span><span class="en">What each part means</span></h3>
-            <div class="segrow"><b>DG</b><span><span class="k">AA · <span class="zh">第 1–2 碼</span><span class="en">characters 1–2</span></span><span class="zh">子類別代碼，請參閱「子類別對照」。</span><span class="en">Sub-category code; see the sub-category table.</span> <span class="na"><span class="zh">DG 未列於對照表</span><span class="en">DG is not listed</span></span></span></div>
-            <div class="segrow"><b>B88</b><span><span class="k">BBB · <span class="zh">第 3–5 碼</span><span class="en">characters 3–5</span></span><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></span></div>
-            <div class="segrow hot"><b>S</b><span><span class="k">C · <span class="zh">第 6 碼</span><span class="en">character 6</span></span><span class="zh">RO 代碼：S = AAP。</span><span class="en">RO code: S = AAP.</span></span></div>
-            <div class="segrow hot"><b>A</b><span><span class="k">D · <span class="zh">第 7 碼</span><span class="en">character 7</span></span><span class="zh">國別代碼：A = ACA（澳洲）。</span><span class="en">Country code: A = ACA (Australia).</span></span></div>
-            <div class="segrow"><b>001</b><span><span class="k">EEE · <span class="zh">第 8–10 碼</span><span class="en">characters 8–10</span></span><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></span></div>
+          <div class="cards mini">
+            <div><b>DG</b><p>AA · <span class="zh">第 1–2 碼</span><span class="en">characters 1–2</span></p><p><span class="zh">子類別代碼，請參閱「子類別對照」。</span><span class="en">Sub-category code; see the sub-category table.</span> <span class="na"><span class="zh">DG 未列於對照表</span><span class="en">DG is not listed</span></span></p></div>
+            <div><b>B88</b><p>BBB · <span class="zh">第 3–5 碼</span><span class="en">characters 3–5</span></p><p><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></p></div>
+            <div><b>S</b><p>C · <span class="zh">第 6 碼</span><span class="en">character 6</span></p><p><span class="zh">RO 代碼：S = AAP。</span><span class="en">RO code: S = AAP.</span></p></div>
+            <div><b>A</b><p>D · <span class="zh">第 7 碼</span><span class="en">character 7</span></p><p><span class="zh">國別代碼：A = ACA（澳洲）。</span><span class="en">Country code: A = ACA (Australia).</span></p></div>
+            <div><b>001</b><p>EEE · <span class="zh">第 8–10 碼</span><span class="en">characters 8–10</span></p><p><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></p></div>
           </div>
+        </div>
         </div>
         <div class="block">
           <div class="two">
@@ -1985,7 +1954,7 @@
     <div class="subbody">
       <section class="sub" id="sub-ref-terms">
         <h2><span class="zh">名詞與縮寫</span><span class="en">Terms and abbreviations</span></h2>
-        <p class="lead zh">售後服務與證券市場的常用名詞，以及全站縮寫的全稱與說明。</p><p class="lead en">Common after-sales and stock-market terms, and the full names and explanations of every abbreviation used on this site.</p><div class="block" id="blk-terms-service"><h3><span class="zh">售後服務名詞</span><span class="en">After-sales service terms</span></h3><p class="lead zh">服務物流日常作業中常見的專業名詞，依「保固 → 備品 → 流程 → 據點」的順序說明；每個名詞均可於縮寫說明中查閱全稱。</p><p class="lead en">Common terms in day-to-day service logistics, in the order warranty → spare parts → processes → sites; full names are in the glossary.</p><div class="block"><h3><span class="zh">保固與維修</span><span class="en">Warranty and repair</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">名詞</span><span class="en">Term</span></th><th><span class="zh">說明</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><b><span class="zh">保固內／保固外（OOW）</span><span class="en">In warranty / out of warranty (OOW)</span></b></td><td class="wrap"><span class="zh">保固期內之維修由品牌商負擔；保固外（OOW）維修由客戶付費，海柏特即以保固外維修為主要業務。</span><span class="en">Repairs in the warranty period are borne by the brand; out-of-warranty (OOW) repairs are paid by the customer and are HSN's main business.</span></td></tr><tr><td><b><span class="zh">RMA</span><span class="en">RMA</span></b></td><td class="wrap"><span class="zh">退貨授權（Return Merchandise Authorization）：不良品退回之作業，PAP 負責不良品退回處理。</span><span class="en">Return Merchandise Authorization: the process for returning defective parts, handled by PAP.</span></td></tr><tr><td><b><span class="zh">HFP</span><span class="en">HFP</span></b></td><td class="wrap"><span class="zh">Hold For Part：因待料而延宕之維修案件，為各 NS 績效監控項目之一。</span><span class="en">Hold For Part: repair cases delayed while waiting for a part; one of the NS performance indicators.</span></td></tr><tr><td><b><span class="zh">502／503 aging</span><span class="en">502/503 aging</span></b></td><td class="wrap"><span class="zh">不良品滯留於 CSS 系統且尚未處理之時間，亦為績效監控項目。</span><span class="en">How long defective parts have sat unprocessed in CSS; also a performance indicator.</span><br><button class="btn sm" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button></td></tr></tbody></table></div></div><div class="block"><h3><span class="zh">備品與料號</span><span class="en">Spare parts and part numbers</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">名詞</span><span class="en">Term</span></th><th><span class="zh">說明</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><b><span class="zh">備品（S/P、Spare Parts）</span><span class="en">Spare parts (S/P)</span></b></td><td class="wrap"><span class="zh">供維修更換之料件；PAP 負責備品之規劃、採購與倉儲。</span><span class="en">Parts kept for repair replacement; PAP plans, purchases and stores them.</span></td></tr><tr><td><b><span class="zh">FRU</span><span class="en">FRU</span></b></td><td class="wrap"><span class="zh">現場可更換單元（Field Replaceable Unit）：可於維修現場直接更換之料件，如鍵盤、螢幕模組。</span><span class="en">Field Replaceable Unit: a part that can be replaced on site, such as a keyboard or LCD module.</span></td></tr><tr><td><b><span class="zh">SPL</span><span class="en">SPL</span></b></td><td class="wrap"><span class="zh">備品清單（Spare Parts List）：各機種可供維修使用之備品清單，含料號與價格，於首次客戶出貨前一週發布予各 RO。</span><span class="en">Spare Parts List: the list of repair parts for each model, with part numbers and prices, released to the ROs one week before first customer shipment.</span><br><button class="btn sm" type="button" data-go="ops-spl"><span class="zh">SPL 定義流程 →</span><span class="en">SPL definition flow →</span></button></td></tr><tr><td><b><span class="zh">Service BOM</span><span class="en">Service BOM</span></b></td><td class="wrap"><span class="zh">維修用物料清單，分為新品導入（NPI）與量產（MP）兩類；由 ODM 提供並定期更新。</span><span class="en">The bill of materials used for service, in NPI (new product introduction) and MP (mass production) versions; provided and updated by the ODM.</span><br><button class="btn sm" type="button" data-go="ops-bom"><span class="zh">Service BOM →</span><span class="en">Service BOM →</span></button></td></tr><tr><td><b><span class="zh">料號（P/N）</span><span class="en">Part number (P/N)</span></b></td><td class="wrap"><span class="zh">備品的編號，格式 AA.BBBCD.EEE；第 6 碼為區域，第 7 碼為國家。</span><span class="en">The code of a spare part, in the form AA.BBBCD.EEE; character 6 is the region and character 7 the country.</span><br><button class="btn sm" type="button" data-go="pn-rule"><span class="zh">命名規則 →</span><span class="en">Naming rule →</span></button></td></tr><tr><td><b><span class="zh">Aging stock</span><span class="en">Aging stock</span></b></td><td class="wrap"><span class="zh">庫齡過長之庫存，列於每月營運報告。</span><span class="en">Inventory held beyond its expected period, reported monthly.</span></td></tr></tbody></table></div></div><div class="block"><h3><span class="zh">據點與產線</span><span class="en">Sites and production</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">名詞</span><span class="en">Term</span></th><th><span class="zh">說明</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><b><span class="zh">服務中心（自有／外包）</span><span class="en">Service centre (own / outsourced)</span></b></td><td class="wrap"><span class="zh">具維修能力之據點，由 Acer 自營或委外經營。</span><span class="en">A site that repairs products, run by Acer or outsourced.</span></td></tr><tr><td><b><span class="zh">授權服務商（ASP）</span><span class="en">Authorised service provider (ASP)</span></b></td><td class="wrap"><span class="zh">經 Acer 授權之外部服務商，提供收件服務，不具維修能力；為數量最多之據點類型。</span><span class="en">An authorised external provider that takes in units but does not repair them; the most numerous site type.</span></td></tr><tr><td><b><span class="zh">客服中心（Call Centre）</span><span class="en">Call centre</span></b></td><td class="wrap"><span class="zh">客戶服務電話中心。</span><span class="en">The customer service phone centre.</span></td></tr><tr><td><b><span class="zh">備品中心（Parts Hub）</span><span class="en">Parts hub</span></b></td><td class="wrap"><span class="zh">當地備品中心為各國之零件總倉；區域備品中心服務整個區域。</span><span class="en">A local parts hub is a country's main parts warehouse; a regional hub serves the whole region.</span><br><button class="btn sm" type="button" data-go="sites-types"><span class="zh">據點類型 →</span><span class="en">Site types →</span></button></td></tr><tr><td><b><span class="zh">Uni-load</span><span class="en">Uni-load</span></b></td><td class="wrap"><span class="zh">於當地設置之產線或組裝廠，用以滿足當地客戶（如標案）之規格與成本要求。</span><span class="en">A local production or assembly line that meets local customers' (e.g. tender) specification and cost requirements.</span><br><button class="btn sm" type="button" data-go="sites-tender"><span class="zh">標案與 Uni-load →</span><span class="en">Tenders and Uni-load →</span></button></td></tr><tr><td><b><span class="zh">標案</span><span class="en">Tender</span></b></td><td class="wrap"><span class="zh">政府或機構之公開採購；得標後依規格委託 ODM 生產或於當地組裝。</span><span class="en">Public procurement by government or institutions; after winning, products are built by the ODM or assembled locally to the specification.</span></td></tr></tbody></table></div></div></div><div class="block" id="blk-terms-market"><h3><span class="zh">證券市場名詞</span><span class="en">Stock-market terms</span></h3><p class="lead zh">公司介紹中提到的上市、上櫃、興櫃等用語，是台灣股票市場的不同層級；了解這些名詞有助於閱讀各公司的沿革。</p><p class="lead en">The company pages mention TWSE listing, TPEx listing and emerging-board status, the tiers of Taiwan's stock market. Knowing them helps when reading each company's history.</p><div class="block"><h3><span class="zh">市場層級</span><span class="en">Market tiers</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">名詞</span><span class="en">Term</span></th><th><span class="zh">說明</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><b><span class="zh">上市（TWSE）</span><span class="en">Listed (TWSE)</span></b></td><td class="wrap"><span class="zh">於臺灣證券交易所掛牌交易；例：宏碁（2353）、仁寶（2324）、展碁（6776）。</span><span class="en">Traded on the Taiwan Stock Exchange; e.g. Acer (2353), Compal (2324), Weblink (6776).</span></td></tr><tr><td><b><span class="zh">上櫃（TPEx）</span><span class="en">Listed on TPEx</span></b></td><td class="wrap"><span class="zh">於證券櫃檯買賣中心掛牌交易；例：海柏特（6884）、安碁資訊（6690）、宏碁資訊（6811）。</span><span class="en">Traded on the Taipei Exchange; e.g. HSN (6884), ACSI (6690), AEB (6811).</span></td></tr><tr><td><b><span class="zh">興櫃</span><span class="en">Emerging Stock Board</span></b></td><td class="wrap"><span class="zh">上市櫃前之登錄交易階段，公司須先在興櫃交易一段時間；例：宏碁智醫（6857）。</span><span class="en">The pre-listing stage on which a company must trade for a period before listing; e.g. Acer Medical (6857).</span></td></tr><tr><td><b><span class="zh">創新板</span><span class="en">Innovation Board</span></b></td><td class="wrap"><span class="zh">臺灣證券交易所為創新企業設置之板塊；例：宏碁遊戲（6908）、倚天酷碁（2432）。</span><span class="en">The Taiwan Stock Exchange board for innovative companies; e.g. Acer Gaming (6908), Acer Gadget (2432).</span></td></tr></tbody></table></div></div><div class="block"><h3><span class="zh">常見用語</span><span class="en">Common terms</span></h3><div class="tbl"><table><thead><tr><th><span class="zh">名詞</span><span class="en">Term</span></th><th><span class="zh">說明</span><span class="en">Meaning</span></th></tr></thead><tbody><tr><td><b><span class="zh">股票公開發行</span><span class="en">Public offering (public company status)</span></b></td><td class="wrap"><span class="zh">公司向主管機關申報公開發行股票，為登錄興櫃與上市櫃之前提。</span><span class="en">Filing to become a public company, a prerequisite for the emerging board and listing.</span></td></tr><tr><td><b><span class="zh">IPO</span><span class="en">IPO</span></b></td><td class="wrap"><span class="zh">首次公開發行（Initial Public Offering）：公司首次對外公開發行股票並掛牌。</span><span class="en">Initial public offering: a company's first public share offering and listing.</span></td></tr><tr><td><b><span class="zh">股票代號</span><span class="en">Stock code</span></b></td><td class="wrap"><span class="zh">每家上市櫃公司之四位數代碼，例如宏碁為 2353。</span><span class="en">The four-digit code of each listed company, e.g. 2353 for Acer.</span></td></tr><tr><td><b><span class="zh">子公司與持股</span><span class="en">Subsidiaries and shareholding</span></b></td><td class="wrap"><span class="zh">母公司持有多數股權之公司；宏碁對安碁資訊持股 51.87%（安碁資訊 2024 年年報）、對宏碁遊戲持股 69.85%。</span><span class="en">A company in which the parent holds a majority; Acer holds 51.87% of ACSI (ACSI's 2024 annual report) and 69.85% of Acer Gaming.</span><br><button class="btn sm" type="button" data-go="corp-subs"><span class="zh">集團子公司 →</span><span class="en">Group subsidiaries →</span></button></td></tr></tbody></table></div></div></div><div class="block" id="blk-ref-abbr"><h3><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></h3>
+        <p class="lead zh">售後服務與證券市場的常用名詞，以及全站縮寫的全稱與說明。</p><p class="lead en">Common after-sales and stock-market terms, and the full names and explanations of every abbreviation used on this site.</p><div class="block" id="blk-terms-service"><h3><span class="zh">售後服務名詞</span><span class="en">After-sales service terms</span></h3><p class="lead zh">服務物流日常作業中常見的專業名詞，依「保固 → 備品 → 流程 → 據點」的順序說明；每個名詞均可於縮寫說明中查閱全稱。</p><p class="lead en">Common terms in day-to-day service logistics, in the order warranty → spare parts → processes → sites; full names are in the glossary.</p><div class="block"><h3><span class="zh">保固與維修</span><span class="en">Warranty and repair</span></h3><div class="cards"><div><b><span class="zh">保固內／保固外（OOW）</span><span class="en">In warranty / out of warranty (OOW)</span></b><p><span class="zh">保固期內之維修由品牌商負擔；保固外（OOW）維修由客戶付費，海柏特即以保固外維修為主要業務。</span><span class="en">Repairs in the warranty period are borne by the brand; out-of-warranty (OOW) repairs are paid by the customer and are HSN's main business.</span></p></div><div><b><span class="zh">RMA</span><span class="en">RMA</span></b><p><span class="zh">退貨授權（Return Merchandise Authorization）：不良品退回之作業，PAP 負責不良品退回處理。</span><span class="en">Return Merchandise Authorization: the process for returning defective parts, handled by PAP.</span></p></div><div><b><span class="zh">HFP</span><span class="en">HFP</span></b><p><span class="zh">Hold For Part：因待料而延宕之維修案件，為各 NS 績效監控項目之一。</span><span class="en">Hold For Part: repair cases delayed while waiting for a part; one of the NS performance indicators.</span></p></div><div><b><span class="zh">502／503 aging</span><span class="en">502/503 aging</span></b><p><span class="zh">不良品滯留於 CSS 系統且尚未處理之時間，亦為績效監控項目。</span><span class="en">How long defective parts have sat unprocessed in CSS; also a performance indicator.</span></p><p class="note"><button class="btn sm" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button></p></div></div></div><div class="block"><h3><span class="zh">備品與料號</span><span class="en">Spare parts and part numbers</span></h3><div class="cards wide"><div><b><span class="zh">備品（S/P、Spare Parts）</span><span class="en">Spare parts (S/P)</span></b><p><span class="zh">供維修更換之料件；PAP 負責備品之規劃、採購與倉儲。</span><span class="en">Parts kept for repair replacement; PAP plans, purchases and stores them.</span></p></div><div><b><span class="zh">FRU</span><span class="en">FRU</span></b><p><span class="zh">現場可更換單元（Field Replaceable Unit）：可於維修現場直接更換之料件，如鍵盤、螢幕模組。</span><span class="en">Field Replaceable Unit: a part that can be replaced on site, such as a keyboard or LCD module.</span></p></div><div><b><span class="zh">SPL</span><span class="en">SPL</span></b><p><span class="zh">備品清單（Spare Parts List）：各機種可供維修使用之備品清單，含料號與價格，於首次客戶出貨前一週發布予各 RO。</span><span class="en">Spare Parts List: the list of repair parts for each model, with part numbers and prices, released to the ROs one week before first customer shipment.</span></p><p class="note"><button class="btn sm" type="button" data-go="ops-spl"><span class="zh">SPL 定義流程 →</span><span class="en">SPL definition flow →</span></button></p></div><div><b><span class="zh">Service BOM</span><span class="en">Service BOM</span></b><p><span class="zh">維修用物料清單，分為新品導入（NPI）與量產（MP）兩類；由 ODM 提供並定期更新。</span><span class="en">The bill of materials used for service, in NPI (new product introduction) and MP (mass production) versions; provided and updated by the ODM.</span></p><p class="note"><button class="btn sm" type="button" data-go="ops-bom"><span class="zh">Service BOM →</span><span class="en">Service BOM →</span></button></p></div><div><b><span class="zh">料號（P/N）</span><span class="en">Part number (P/N)</span></b><p><span class="zh">備品的編號，格式 AA.BBBCD.EEE；第 6 碼為區域，第 7 碼為國家。</span><span class="en">The code of a spare part, in the form AA.BBBCD.EEE; character 6 is the region and character 7 the country.</span></p><p class="note"><button class="btn sm" type="button" data-go="pn-rule"><span class="zh">命名規則 →</span><span class="en">Naming rule →</span></button></p></div><div><b><span class="zh">Aging stock</span><span class="en">Aging stock</span></b><p><span class="zh">庫齡過長之庫存，列於每月營運報告。</span><span class="en">Inventory held beyond its expected period, reported monthly.</span></p></div></div></div><div class="block"><h3><span class="zh">據點與產線</span><span class="en">Sites and production</span></h3><div class="cards wide"><div><b><span class="zh">服務中心（自有／外包）</span><span class="en">Service centre (own / outsourced)</span></b><p><span class="zh">具維修能力之據點，由 Acer 自營或委外經營。</span><span class="en">A site that repairs products, run by Acer or outsourced.</span></p></div><div><b><span class="zh">授權服務商（ASP）</span><span class="en">Authorised service provider (ASP)</span></b><p><span class="zh">經 Acer 授權之外部服務商，提供收件服務，不具維修能力；為數量最多之據點類型。</span><span class="en">An authorised external provider that takes in units but does not repair them; the most numerous site type.</span></p></div><div><b><span class="zh">客服中心（Call Centre）</span><span class="en">Call centre</span></b><p><span class="zh">客戶服務電話中心。</span><span class="en">The customer service phone centre.</span></p></div><div><b><span class="zh">備品中心（Parts Hub）</span><span class="en">Parts hub</span></b><p><span class="zh">當地備品中心為各國之零件總倉；區域備品中心服務整個區域。</span><span class="en">A local parts hub is a country's main parts warehouse; a regional hub serves the whole region.</span></p><p class="note"><button class="btn sm" type="button" data-go="sites-types"><span class="zh">據點類型 →</span><span class="en">Site types →</span></button></p></div><div><b><span class="zh">Uni-load</span><span class="en">Uni-load</span></b><p><span class="zh">於當地設置之產線或組裝廠，用以滿足當地客戶（如標案）之規格與成本要求。</span><span class="en">A local production or assembly line that meets local customers' (e.g. tender) specification and cost requirements.</span></p><p class="note"><button class="btn sm" type="button" data-go="sites-tender"><span class="zh">標案與 Uni-load →</span><span class="en">Tenders and Uni-load →</span></button></p></div><div><b><span class="zh">標案</span><span class="en">Tender</span></b><p><span class="zh">政府或機構之公開採購；得標後依規格委託 ODM 生產或於當地組裝。</span><span class="en">Public procurement by government or institutions; after winning, products are built by the ODM or assembled locally to the specification.</span></p></div></div></div></div><div class="block" id="blk-terms-market"><h3><span class="zh">證券市場名詞</span><span class="en">Stock-market terms</span></h3><p class="lead zh">公司介紹中提到的上市、上櫃、興櫃等用語，是台灣股票市場的不同層級；了解這些名詞有助於閱讀各公司的沿革。</p><p class="lead en">The company pages mention TWSE listing, TPEx listing and emerging-board status, the tiers of Taiwan's stock market. Knowing them helps when reading each company's history.</p><div class="block"><h3><span class="zh">市場層級</span><span class="en">Market tiers</span></h3><div class="cards"><div><b><span class="zh">上市（TWSE）</span><span class="en">Listed (TWSE)</span></b><p><span class="zh">於臺灣證券交易所掛牌交易。</span><span class="en">Traded on the Taiwan Stock Exchange.</span></p><small><span class="zh">例：宏碁（2353）、仁寶（2324）、展碁（6776）。</span><span class="en">E.g. Acer (2353), Compal (2324), Weblink (6776).</span></small></div><div><b><span class="zh">上櫃（TPEx）</span><span class="en">Listed on TPEx</span></b><p><span class="zh">於證券櫃檯買賣中心掛牌交易。</span><span class="en">Traded on the Taipei Exchange.</span></p><small><span class="zh">例：海柏特（6884）、安碁資訊（6690）、宏碁資訊（6811）。</span><span class="en">E.g. HSN (6884), ACSI (6690), AEB (6811).</span></small></div><div><b><span class="zh">興櫃</span><span class="en">Emerging Stock Board</span></b><p><span class="zh">上市櫃前之登錄交易階段，公司須先在興櫃交易一段時間。</span><span class="en">The pre-listing stage on which a company must trade for a period before listing.</span></p><small><span class="zh">例：宏碁智醫（6857）。</span><span class="en">E.g. Acer Medical (6857).</span></small></div><div><b><span class="zh">創新板</span><span class="en">Innovation Board</span></b><p><span class="zh">臺灣證券交易所為創新企業設置之板塊。</span><span class="en">The Taiwan Stock Exchange board for innovative companies.</span></p><small><span class="zh">例：宏碁遊戲（6908）、倚天酷碁（2432）。</span><span class="en">E.g. Acer Gaming (6908), Acer Gadget (2432).</span></small></div></div></div><div class="block"><h3><span class="zh">常見用語</span><span class="en">Common terms</span></h3><div class="cards"><div><b><span class="zh">股票公開發行</span><span class="en">Public offering (public company status)</span></b><p><span class="zh">公司向主管機關申報公開發行股票，為登錄興櫃與上市櫃之前提。</span><span class="en">Filing to become a public company, a prerequisite for the emerging board and listing.</span></p></div><div><b><span class="zh">IPO</span><span class="en">IPO</span></b><p><span class="zh">首次公開發行（Initial Public Offering）：公司首次對外公開發行股票並掛牌。</span><span class="en">Initial public offering: a company's first public share offering and listing.</span></p></div><div><b><span class="zh">股票代號</span><span class="en">Stock code</span></b><p><span class="zh">每家上市櫃公司之四位數代碼，例如宏碁為 2353。</span><span class="en">The four-digit code of each listed company, e.g. 2353 for Acer.</span></p></div><div><b><span class="zh">子公司與持股</span><span class="en">Subsidiaries and shareholding</span></b><p><span class="zh">母公司持有多數股權之公司。</span><span class="en">A company in which the parent holds a majority.</span></p><small><span class="zh">宏碁對安碁資訊持股 51.87%（安碁資訊 2024 年年報）、對宏碁遊戲持股 69.85%。</span><span class="en">Acer holds 51.87% of ACSI (ACSI's 2024 annual report) and 69.85% of Acer Gaming.</span></small><p class="note"><button class="btn sm" type="button" data-go="corp-subs"><span class="zh">集團子公司 →</span><span class="en">Group subsidiaries →</span></button></p></div></div></div></div><div class="block" id="blk-ref-abbr"><h3><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></h3>
         <p class="lead zh">依主題查看每個縮寫的英文全稱、中文名稱與一句說明；點卡片展開完整內容與來源，也可直接搜尋。</p>
         <p class="lead en">Browse every abbreviation by topic with its full name, Chinese name and a one-line meaning; open a card for the full entry and sources, or search directly.</p>
         <div class="ab-tools">
@@ -2022,7 +1991,7 @@
       </section>
       <section class="sub" id="sub-review-quick">
         <h2><span class="zh">快速參考</span><span class="en">Quick reference</span></h2>
-        <p class="lead zh">常用的數字與表格集中在這裡，點選即可跳到該表。</p><p class="lead en">The key numbers and tables in one place; click to jump to a table.</p><aside class="extra-box"><h4><span class="zh">補充：數字一覽</span><span class="en">Supplementary: key numbers</span></h4><div class="extra-stats" id="hero-stats"></div></aside><div class="block"><h3><span class="zh">重要表格</span><span class="en">Key tables</span></h3><div class="quick-links"><button class="btn" type="button" data-go="ref-ns"><span class="zh">子公司代碼表</span><span class="en">Subsidiary codes</span></button><button class="btn" type="button" data-go="ref-region"><span class="zh">區域代碼</span><span class="en">Region codes</span></button><button class="btn" type="button" data-go="pn-subcat"><span class="zh">料號子類別對照</span><span class="en">Part-number sub-categories</span></button><button class="btn" type="button" data-go="ops-systems"><span class="zh">系統使用對照</span><span class="en">Who uses which system</span></button><button class="btn" type="button" data-go="ops-plan"><span class="zh">規劃模式</span><span class="en">Planning modes</span></button><button class="btn" type="button" data-go="sites-wh"><span class="zh">倉庫與 Uni-load</span><span class="en">Warehouses and Uni-load</span></button><button class="btn" type="button" data-go="hsn-companies"><span class="zh">HSN 各國公司</span><span class="en">HSN companies by country</span></button><button class="btn" type="button" data-go="corp-map"><span class="zh">產業生態系圖</span><span class="en">Ecosystem chart</span></button><button class="btn" type="button" data-go="ref-terms"><span class="zh">名詞與縮寫</span><span class="en">Terms and abbreviations</span></button></div></div><p class="notice"><span class="zh">本網站內容屬公司內部資料，僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information for internal use only. Original documents prevail.</span></p>
+        <p class="lead zh">常用的數字與表格集中在這裡，點選即可跳到該表。</p><p class="lead en">The key numbers and tables in one place; click to jump to a table.</p><div class="block"><h3><span class="zh">重要表格</span><span class="en">Key tables</span></h3><div class="quick-links"><button class="btn" type="button" data-go="ref-ns"><span class="zh">子公司代碼表</span><span class="en">Subsidiary codes</span></button><button class="btn" type="button" data-go="ref-region"><span class="zh">區域代碼</span><span class="en">Region codes</span></button><button class="btn" type="button" data-go="pn-subcat"><span class="zh">料號子類別對照</span><span class="en">Part-number sub-categories</span></button><button class="btn" type="button" data-go="ops-systems"><span class="zh">系統使用對照</span><span class="en">Who uses which system</span></button><button class="btn" type="button" data-go="ops-plan"><span class="zh">規劃模式</span><span class="en">Planning modes</span></button><button class="btn" type="button" data-go="sites-wh"><span class="zh">倉庫與 Uni-load</span><span class="en">Warehouses and Uni-load</span></button><button class="btn" type="button" data-go="hsn-companies"><span class="zh">HSN 各國公司</span><span class="en">HSN companies by country</span></button><button class="btn" type="button" data-go="corp-map"><span class="zh">產業生態系圖</span><span class="en">Ecosystem chart</span></button><button class="btn" type="button" data-go="ref-terms"><span class="zh">名詞與縮寫</span><span class="en">Terms and abbreviations</span></button></div></div><aside class="extra-box"><h4><span class="zh">補充：數字一覽</span><span class="en">Supplementary: key numbers</span></h4><div class="extra-stats" id="hero-stats"></div></aside><p class="notice"><span class="zh">本網站內容屬公司內部資料，僅供內部使用；資料以原始文件為準。</span><span class="en">This site contains internal company information for internal use only. Original documents prevail.</span></p>
       </section>
       <section class="sub" id="sub-corp-verify" data-noabbr><h2><span class="zh">資料查證</span><span class="en">Verification register</span></h2>
         <p class="lead zh">公司介紹裡每一句來自公開資料的話，都已逐句核對來源；每張卡片列出網站的寫法、證據來源與要留意的地方。</p>
@@ -2203,6 +2172,7 @@
       try { history.replaceState(null, "", "#" + (al ? id : (subId || p.id))); } catch (e) { /* 部分環境不允許改網址 */ }
     }
     var target = al && $(al[1]) ? $(al[1]) : (subId ? $("sub-" + subId) : null);
+    if (switched && typeof stepRows === "function") stepRows();
     if (target) {
       setTimeout(function () {
         var y = target.getBoundingClientRect().top + window.pageYOffset - navH(page) - 14;
@@ -2225,6 +2195,16 @@
     subs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
     return cur || subs[0];
   }
+  // 流程步驟：每列最後一張卡不畫往右的箭頭（換列時箭頭不會指向空白）
+  function stepRows() {
+    $$(".page.active .steps").forEach(function (g) {
+      var k = g.children, n = k.length;
+      for (var i = 0; i < n; i++) k[i].classList.toggle("row-end", i < n - 1 && k[i + 1].offsetTop > k[i].offsetTop + 4);
+    });
+  }
+  var stepRz = 0;
+  window.addEventListener("resize", function () { clearTimeout(stepRz); stepRz = setTimeout(stepRows, 120); });
+  window.addEventListener("hashchange", function () { setTimeout(stepRows, 80); });
   // 回到頂端（捲過一個螢幕高才出現，顏色跟著目前章節）
   var toTop = $("totop");
   toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
