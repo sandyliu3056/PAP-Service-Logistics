@@ -1150,7 +1150,7 @@
   .abc { background:var(--panel); border:1.5px solid var(--ch-line); border-left:5px solid var(--ch); border-radius:12px; min-width:0; }
   .abc > summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:minmax(0, 1fr) auto; grid-template-areas:"k s" "f f" "z z" "d d" "u u"; gap:2px 8px; padding:10px 14px 11px; }
   .abc > summary::-webkit-details-marker { display:none; }
-  .abc > summary > .k { grid-area:k; font-family:var(--font-head); font-weight:700; font-size:1.25rem; color:var(--ch-ink); letter-spacing:.02em; }
+  .abc > summary > .k:not(.src) { grid-area:k; font-family:var(--font-head); font-weight:700; font-size:1.25rem; color:var(--ch-ink); letter-spacing:.02em; }
   .abc > summary > .src { grid-area:s; align-self:center; }
   .abc > summary > .f { grid-area:f; font-weight:700; line-height:1.35; overflow-wrap:anywhere; }
   .abc > summary > .z { grid-area:z; color:var(--mute); font-size:.9rem; }
