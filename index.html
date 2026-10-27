@@ -1017,6 +1017,17 @@
   .home-map figcaption { margin-top:10px; }
   .home-map .legend-chips { margin-top:12px; }
   .quick-links { display:flex; flex-wrap:wrap; gap:8px; }
+  .phead { display:flex; align-items:center; gap:18px; padding:14px 18px 16px; margin-bottom:14px; background:var(--ch-bg); border:1.5px solid var(--ch-line); border-left:8px solid var(--ch); border-radius:16px; }
+  .phead .ph-badge { flex:none; width:58px; height:58px; border-radius:16px; display:grid; place-items:center; font-size:1.8rem; background:var(--panel); border:1.5px solid var(--ch-line); }
+  html[data-font] .phead .home-title { margin:0 0 4px; }
+  .phead .home-lead { color:var(--ink); font-size:1rem; }
+  @media (max-width:600px) {
+    .phead { padding:12px 12px 14px; gap:12px; } .phead .ph-badge { width:44px; height:44px; font-size:1.35rem; }
+    html[data-font] .phead .home-title { font-size:1.75rem; }
+    .tabs { flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    .tabs::-webkit-scrollbar { display:none; }
+    .tabs button { flex:none; }
+  }
   .totop { position:fixed; right:max(16px, env(safe-area-inset-right, 0px)); bottom:calc(18px + env(safe-area-inset-bottom, 0px)); z-index:30; width:46px; height:46px; border-radius:50%; border:2px solid var(--ch); background:var(--panel); color:var(--ch-ink); font-size:1.35rem; font-weight:700; cursor:pointer; box-shadow:0 6px 18px rgba(40,40,30,.18); display:grid; place-items:center; }
   .totop:hover { background:var(--ch-bg); }
   .totop[hidden] { display:none; }
@@ -2127,9 +2138,20 @@
     var pg = p.col && $("page-" + p.id);
     if (pg) { pg.style.setProperty("--ch", p.col); pg.style.setProperty("--ch-bg", p.tint); pg.style.setProperty("--ch-ink", p.ink); }
   });
+  var CH = {
+    basics: ["先建立基本觀念，了解服務物流的目的、範圍與業務模式。", "Start with the basics: what service logistics is for, what it covers, and the business models."],
+    corp: ["了解整個產業生態系中的主要角色與彼此關係。", "The main players in the industry ecosystem and how they relate."],
+    org: ["了解 PAP 的角色、組織架構、全球區域及各類服務據點。", "PAP's role, organisation, global regions and the types of service sites."],
+    hsn: ["了解 HSN 集團網絡與供應流程的變更，以及對作業的影響。", "The HSN Group network, the supply-flow change and what it means for operations."],
+    ops: ["學習團隊職責、系統、SPL 流程、服務 BOM 與規劃模式。", "Team responsibilities, systems, the SPL flow, Service BOM and planning modes."],
+    pn: ["學習料號命名規則、解碼練習與代碼參考，便於日常作業。", "Part-number naming rules, decoding practice and code references for daily work."],
+    ref: ["快速查詢專業術語與縮寫。", "Look up terms and abbreviations quickly."],
+    review: ["透過題目複習重點，並提供快速參考與資料查證。", "Review the key points with questions, plus a quick reference and the verification register."]
+  };
   $$(".phead").forEach(function (h) {
     var p = NAV.filter(function (x) { return x.id === h.getAttribute("data-page"); })[0];
-    h.innerHTML = '<p class="eyebrow">' + B("第 " + p.num + " 章", "Chapter " + p.num) + '</p><h2 class="hero-title home-title">' + B(p.zh, p.en) + "</h2>";
+    var d = CH[p.id];
+    h.innerHTML = '<span class="ph-badge" aria-hidden="true">' + p.emoji + "</span><div>" + '<p class="eyebrow">' + B("第 " + p.num + " 章", "Chapter " + p.num) + '</p><h2 class="hero-title home-title">' + B(p.zh, p.en) + "</h2>" + (d ? '<p class="home-lead">' + B(d[0], d[1]) + "</p>" : "") + "</div>";
   });
 
   function findRoute(id) {
@@ -2157,10 +2179,13 @@
     current = findRoute(rid);
     var o = ORDER[current], p = o.page, isPage = NAV.some(function (x) { return x.id === rid; });
     var page = $("page-" + p.id), switched = !page.classList.contains("active");
+    var tabs = $("tabs");
     $$("#tabs button").forEach(function (b) {
       var on = b.getAttribute("data-go") === p.id;
       b.classList.toggle("active", on);
       b.setAttribute("aria-selected", on ? "true" : "false");
+      // 手機上分頁列可橫向捲動：把目前的分頁捲進畫面
+      if (on && tabs.scrollWidth > tabs.clientWidth + 1) tabs.scrollLeft = Math.max(0, b.offsetLeft - 24);
     });
     $$("main .page").forEach(function (s) { s.classList.toggle("active", s.id === "page-" + p.id); });
     if (p.id === "corp" && switched) setTimeout(orgShow, 0);
@@ -2742,16 +2767,6 @@
   renderOffices();
 
   /* ---------- 網站介紹 ---------- */
-  var CH = {
-    basics: ["先建立基本觀念，了解服務物流的目的、範圍與業務模式。", "Start with the basics: what service logistics is for, what it covers, and the business models."],
-    corp: ["了解整個產業生態系中的主要角色與彼此關係。", "The main players in the industry ecosystem and how they relate."],
-    org: ["了解 PAP 的角色、組織架構、全球區域及各類服務據點。", "PAP's role, organisation, global regions and the types of service sites."],
-    hsn: ["了解 HSN 集團網絡與供應流程的變更，以及對作業的影響。", "The HSN Group network, the supply-flow change and what it means for operations."],
-    ops: ["學習團隊職責、系統、SPL 流程、服務 BOM 與規劃模式。", "Team responsibilities, systems, the SPL flow, Service BOM and planning modes."],
-    pn: ["學習料號命名規則、解碼練習與代碼參考，便於日常作業。", "Part-number naming rules, decoding practice and code references for daily work."],
-    ref: ["快速查詢專業術語與縮寫。", "Look up terms and abbreviations quickly."],
-    review: ["透過題目複習重點，並提供快速參考與資料查證。", "Review the key points with questions, plus a quick reference and the verification register."]
-  };
   var nSubs = 0;
   NAV.forEach(function (p) { nSubs += p.subs.length; });
   $("toc-sum").innerHTML = "";
