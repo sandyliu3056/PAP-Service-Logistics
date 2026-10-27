@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="zh-Hant" data-lang="zh" data-theme="brown" data-font="hand">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PAP Service Logistics</title>
+<meta name="description" content="PAP 服務物流內部訓練教材整理：組織、服務據點、職能、系統、SPL 流程、Service BOM 與料號規則（中英對照）。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 網頁字型不阻擋顯示：載入完成前先用系統字型 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Iansui&family=Comic+Neue:wght@400;700&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
+<style>
+  /* 介面沿用 RMA 售後零件規劃平台：深色標題列、金色分頁列、與分頁相連的卡片。主題：棕金／深藍／墨綠 */
+  :root, html[data-theme="brown"] { --navy:#3B2A1A; --gold:#F2B134; --tabbar:#F5A623; --tab:#F8BE4A; --bg:#F3ECE0; --card:#FBF6EC; --panel:#FFFDF7; --line:#D9CBB6; --ink:#3B2A1A; --mute:#7A6652; --primary:#F2A93B; --hover:#FFD27A; --stripe:#F6EFE3; --sel:#4A3524; --selline:#A98B5A; --warn:#B5544C; --ok:#3E8E4F; --orange:#E8862B; --sea:#DCE9F2; --hdr-sub:#D9C7A8; --field:#E0B86A; }
+  html[data-theme="navy"] { --navy:#1F3F6E; --gold:#F5C95C; --tabbar:#2E6FBA; --tab:#6A9BD8; --bg:#EDF1F7; --card:#F8FAFD; --panel:#FFFFFF; --line:#C9D4E4; --ink:#1E2430; --mute:#5B6472; --primary:#F2B134; --hover:#FFD27A; --stripe:#F0F4F9; --sel:#2A4F82; --selline:#8FB0DB; --warn:#B5544C; --ok:#2F7D4A; --orange:#D9822B; --sea:#D6E4F3; --hdr-sub:#C9D6EA; --field:#8FB0DB; }
+  html[data-theme="green"] { --navy:#1F3D2B; --gold:#E9C46A; --tabbar:#2E9E6B; --tab:#63B98E; --bg:#EEF4EF; --card:#F7FBF8; --panel:#FFFFFF; --line:#C6D8CC; --ink:#1E2A22; --mute:#5B6B60; --primary:#E9C46A; --hover:#F6DE9A; --stripe:#EFF6F1; --sel:#2B5239; --selline:#8FC2A4; --warn:#B5544C; --ok:#2F7D4A; --orange:#D9822B; --sea:#D8E8EE; --hdr-sub:#CFE2D5; --field:#8FC2A4; }
+  html { color-scheme:light; }
+  /* 字型：手寫風、正黑體、等寬 */
+  html[data-font="hand"] body { font-family:"Iansui","LXGW WenKai TC","霞鶩文楷 TC","Segoe Print","Ink Free","Comic Neue","Comic Sans MS","Microsoft JhengHei",sans-serif; }
+  html[data-font="sans"] body { font-family:"Microsoft JhengHei","Segoe UI","Noto Sans TC","PingFang TC",sans-serif; }
+  html[data-font="mono"] body { font-family:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
+  /* 語言：同一處放中英兩份，依 data-lang 顯示其中一份 */
+  html[data-lang="en"] .zh, html[data-lang="zh"] .en { display:none !important; }
+  [hidden] { display:none !important; }
+
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink); font-size:15px; line-height:1.6; }
+  body { padding-bottom:env(safe-area-inset-bottom, 0px); }
+  .mono, .code { font-family:Consolas,"Cascadia Mono","SFMono-Regular",Menlo,ui-monospace,monospace; }
+  a { color:inherit; }
+  :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+  img { max-width:100%; }
+
+  /* 標題列（全寬、深色） */
+  .hdr { background:var(--navy); color:var(--gold); padding:calc(10px + env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) 10px max(22px, env(safe-area-inset-left, 0px)); display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; }
+  .hdr .brand { min-width:0; max-width:100%; }
+  .hdr h1 { margin:0; font-size:1.6rem; letter-spacing:.12em; font-weight:700; text-transform:uppercase; line-height:1.25; }
+  .hdr .sub { color:var(--hdr-sub); font-size:.85rem; overflow-wrap:anywhere; }
+  .hdr .ctl { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .hdr select { background:var(--sel); color:var(--gold); border:1px solid var(--selline); border-radius:6px; padding:3px 6px; font-family:inherit; font-size:.85rem; cursor:pointer; }
+  .pill { display:flex; align-items:center; gap:7px; border:1px solid var(--selline); border-radius:999px; padding:3px 10px; font-size:.78rem; letter-spacing:.06em; color:var(--hdr-sub); white-space:nowrap; }
+  .pill .dot { width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .hbtn { background:transparent; color:var(--gold); border:1px solid var(--selline); border-radius:6px; padding:4px 10px; font-family:inherit; font-size:.88rem; font-weight:700; cursor:pointer; }
+  .hbtn:hover { background:var(--sel); }
+
+  /* 分頁列（金色長條＋圓角分頁，選中的分頁與下方卡片相連） */
+  .tabs { display:flex; flex-wrap:wrap; gap:4px; background:var(--tabbar); padding:7px max(8px, env(safe-area-inset-right, 0px)) 0 max(8px, env(safe-area-inset-left, 0px)); }
+  .tabs button { position:relative; display:flex; align-items:center; gap:6px; background:var(--tab); color:var(--ink); border:2px solid var(--navy); border-radius:9px 9px 0 0; padding:6px 14px 7px; font-weight:700; font-family:inherit; font-size:.95rem; cursor:pointer; }
+  .tabs button:hover { background:var(--hover); }
+  .tabs button.active { background:var(--card); border-bottom-color:var(--card); z-index:2; margin-bottom:-2px; }
+  .tabs .ico { font-size:.95rem; }
+  @media (max-width:1250px) { .tabs button { padding:5px 10px 6px; font-size:.9rem; gap:4px; } }
+  @media (max-width:1000px) { .tabs .ico { display:none; } }
+  .card { margin:0 max(8px, env(safe-area-inset-right, 0px)) 28px max(8px, env(safe-area-inset-left, 0px)); background:var(--card); border:2px solid var(--navy); border-radius:0 12px 12px 12px; padding:16px 20px 24px; box-shadow:0 8px 18px rgba(0,0,0,.14); min-height:420px; }
+  .tab { display:none; }
+  .tab.active { display:block; }
+
+  /* 共用元件 */
+  .section { font-weight:700; font-size:1.12rem; margin:24px 0 8px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  .tab > .section:first-child { margin-top:4px; }
+  .section small { font-weight:400; color:var(--mute); font-size:.82rem; }
+  .caption { color:var(--mute); font-size:.9rem; }
+  .lede { font-size:1.02rem; max-width:50em; margin:0 0 6px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px; margin:10px 0; }
+  .kpis.k3 { grid-template-columns:repeat(3, minmax(0, 1fr)); }
+  @media (max-width:600px) { .kpis.k3 { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+  .kpi { background:var(--panel); border:2px solid var(--navy); border-radius:9px; padding:8px 14px; }
+  .kpi .k { color:var(--mute); font-size:.82rem; font-weight:700; }
+  .kpi .v { color:var(--ink); font-size:1.6rem; font-weight:700; line-height:1.3; font-variant-numeric:tabular-nums; }
+  .kpi .e { color:var(--mute); font-size:.74rem; }
+  .box { background:var(--panel); border:2px solid var(--navy); border-radius:9px; padding:12px 16px 14px; min-width:0; }
+  .box h3 { margin:0 0 6px; font-size:1.05rem; }
+  .two { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:16px; }
+  @media (max-width:900px) { .two { grid-template-columns:minmax(0, 1fr); } }
+  .notice { background:var(--panel); border:2px solid var(--navy); border-left-width:6px; border-radius:8px; padding:9px 14px; font-size:.92rem; margin:14px 0 0; }
+  .note { color:var(--mute); font-size:.86rem; margin-top:8px; border-top:1px dashed var(--line); padding-top:6px; }
+  .note b { color:var(--ink); }
+  .btn { font-family:inherit; font-size:.92rem; font-weight:700; padding:6px 14px; border-radius:8px; border:2px solid var(--navy); background:var(--panel); color:var(--ink); cursor:pointer; }
+  .btn:hover { background:var(--hover); }
+  .btn.sm { font-size:.82rem; padding:3px 10px; }
+  .chip { display:inline-flex; align-items:center; font-size:.84rem; border:1.5px solid var(--line); border-radius:6px; padding:0 8px; background:var(--card); white-space:nowrap; }
+  .chip.mark { border-color:var(--warn); color:var(--warn); font-weight:700; }
+  input[type=text], input[type=search] { font-family:inherit; font-size:.95rem; padding:6px 10px; border:1.5px solid var(--field); border-radius:6px; background:#fff; color:var(--ink); max-width:100%; }
+  .flag { width:1.3em; height:.98em; vertical-align:-.12em; margin-right:.4em; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.18); object-fit:cover; }
+
+  /* 表格 */
+  .tbl { overflow:auto; border:2px solid var(--navy); border-radius:8px; background:var(--panel); }
+  .tbl.cap { max-height:560px; }
+  table { border-collapse:collapse; width:100%; font-size:.9rem; font-variant-numeric:tabular-nums; }
+  th { position:sticky; top:0; z-index:1; background:var(--navy); color:var(--gold); text-align:left; padding:7px 10px; font-weight:700; white-space:nowrap; }
+  td { padding:6px 10px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  tr:nth-child(even) td { background:var(--stripe); }
+  tbody tr:hover td { background:var(--hover); }
+  td.num, th.num { text-align:right; }
+  td.c, th.c { text-align:center; }
+  td.wrap { white-space:normal; min-width:16em; }
+  tfoot td { font-weight:700; border-top:2px solid var(--navy); background:var(--card) !important; }
+  tfoot tr + tr td { border-top:0; color:var(--mute); font-weight:400; }
+  .yes { color:var(--ok); font-weight:700; }
+  .no { color:var(--mute); }
+  tr.hl td { background:var(--hover); background:color-mix(in srgb, var(--hover) 50%, var(--panel)); }
+  .bar-cell { display:flex; align-items:center; gap:8px; min-width:150px; }
+  .bar-cell b { width:2.4em; text-align:right; }
+  .bar-track { flex:1; height:12px; }
+  .bar { height:12px; background:var(--orange); border-radius:0 4px 4px 0; min-width:2px; }
+
+  /* 總覽 */
+  .ov { display:grid; grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr); gap:20px; align-items:start; }
+  @media (max-width:980px) { .ov { grid-template-columns:minmax(0, 1fr); } }
+  .alist { border:2px solid var(--navy); border-radius:8px; background:var(--panel); padding:4px; display:grid; gap:2px; }
+  .alist button { display:grid; grid-template-columns:1.8em minmax(0, 1fr); gap:6px; width:100%; text-align:left; background:none; border:0; border-radius:6px; padding:6px 8px; font-family:inherit; font-size:.95rem; color:var(--ink); cursor:pointer; }
+  .alist button:hover { background:var(--hover); }
+  .alist button b { display:block; }
+  .alist button small { display:block; color:var(--mute); font-size:.84rem; }
+  .label { background:var(--panel); border:2px solid var(--navy); border-radius:9px; box-shadow:5px 5px 0 var(--primary); padding:14px 18px 14px; }
+  .label-top { display:flex; justify-content:space-between; font-size:.74rem; letter-spacing:.14em; color:var(--mute); border-bottom:1.5px dashed var(--line); padding-bottom:6px; }
+  .pn-segs { display:flex; flex-wrap:wrap; align-items:flex-start; margin-top:12px; }
+  .pn-seg { display:inline-flex; flex-direction:column; align-items:center; }
+  .pn-seg b { font-size:clamp(28px, 4.5vw, 38px); line-height:1.1; padding:0 2px; }
+  .pn-seg small { font-size:.7rem; color:var(--mute); margin-top:5px; border-top:3px solid var(--line); padding-top:2px; width:100%; text-align:center; white-space:nowrap; }
+  .pn-seg.hot b { color:var(--orange); }
+  .pn-seg.hot small { border-top-color:var(--orange); color:var(--ink); font-weight:700; }
+  .pn-dot { font-size:clamp(28px, 4.5vw, 38px); line-height:1.1; color:var(--mute); }
+  .barcode { display:block; width:100%; height:40px; margin-top:12px; }
+  .barcode rect { fill:var(--ink); }
+  .label-foot { margin-top:8px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; font-size:.86rem; color:var(--mute); }
+
+  /* 組織 */
+  .globe { display:grid; justify-items:center; padding:6px 0 20px; }
+  .node { font-weight:700; font-size:1.15rem; letter-spacing:.06em; border:2px solid var(--navy); border-radius:7px; padding:3px 16px; background:var(--panel); }
+  .node.hq { background:var(--navy); color:var(--gold); }
+  .stem { width:2px; height:20px; background:var(--navy); }
+  .regions { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px; border-top:2px solid var(--navy); padding-top:16px; max-width:720px; width:100%; }
+  .pap-group { display:flex; gap:10px; border:2.5px solid var(--orange); border-radius:10px; padding:8px 10px 14px; position:relative; background:var(--stripe); }
+  .pap-tag { position:absolute; left:50%; bottom:-13px; transform:translateX(-50%); background:var(--navy); color:var(--gold); font-size:.78rem; font-weight:700; padding:1px 10px; border-radius:999px; white-space:nowrap; }
+  .ns-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:10px; margin-top:12px; }
+  .ns { background:var(--panel); border:2px solid var(--navy); border-radius:9px; padding:8px 12px 10px; display:grid; gap:2px; align-content:start; }
+  .ns-code { font-weight:700; font-size:1.2rem; letter-spacing:.03em; }
+  .ns-country { font-size:.9rem; color:var(--mute); }
+  .ns-sub { display:flex; flex-wrap:wrap; gap:5px; margin-top:5px; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 22px; margin-top:12px; font-size:.92rem; }
+  .legend b { letter-spacing:.04em; }
+
+  /* 地圖 */
+  .sites { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.15fr); gap:16px; align-items:start; }
+  @media (max-width:1150px) { .sites { grid-template-columns:minmax(0, 1fr); } }
+  .map { border:2px solid var(--navy); border-radius:8px; background:var(--panel); padding:10px 12px 8px; min-width:0; }
+  .map-title { font-weight:700; margin-bottom:6px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .map-title small { font-weight:400; color:var(--mute); }
+  .map-scroll { overflow-x:auto; }
+  .map svg { width:100%; min-width:480px; height:auto; display:block; border-radius:6px; border:1px solid var(--line); }
+  .map .sea { fill:var(--sea); }
+  .map path { fill:var(--card); stroke:rgba(59,42,26,.35); stroke-width:.35; }
+  .map path.has { fill:var(--hover); stroke:var(--navy); stroke-width:.5; }
+  .map line.lead { stroke:var(--navy); stroke-width:.5; stroke-dasharray:1.5 1; opacity:.75; }
+  .map circle.pt { fill:var(--navy); }
+  .map .pin rect { fill:#fff; stroke:var(--navy); stroke-width:.6; }
+  .map .pin text { font-family:inherit; font-weight:700; font-size:6.2px; fill:var(--ink); }
+  .map .pin { cursor:pointer; }
+  .map .pin:hover rect, .map .pin.on rect { fill:var(--hover); }
+  tr.on td { background:var(--hover) !important; }
+
+  /* 職能卡 */
+  .fn h3 small { display:block; color:var(--mute); font-size:.8rem; font-weight:400; letter-spacing:.04em; }
+  .fn ul { list-style:none; padding:0; margin:8px 0 0; display:grid; gap:8px; }
+  .fn li > b::before { content:"▸ "; color:var(--orange); }
+  .fn li .g { display:block; color:var(--mute); font-size:.9rem; padding-left:1.1em; }
+  .fn li ul { margin:3px 0 0 1.1em; gap:1px; }
+  .fn li li { font-size:.92rem; }
+  .fn li li::before { content:"– "; color:var(--mute); }
+  .fn li li .g { display:inline; padding:0; font-size:.86rem; }
+
+  /* 系統 */
+  .uses { display:grid; gap:0; }
+  .use { display:grid; grid-template-columns:3.4em minmax(0, 1fr); gap:10px; align-items:baseline; padding:8px 0; border-bottom:1px dashed var(--line); }
+  .use:last-child { border-bottom:0; }
+  .use b { color:var(--orange); }
+
+  /* SPL 泳道圖 */
+  .topics { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 14px; }
+  .flow-scroll { overflow-x:auto; }
+  .lanes { display:grid; grid-template-columns:8rem repeat(3, minmax(170px, 1fr)); gap:10px 14px; min-width:740px; }
+  .lane-bg { grid-row:1 / span 9; background:var(--stripe); border:1.5px solid var(--line); border-radius:9px; }
+  .lane-head { grid-row:1; text-align:center; padding:8px 4px 2px; font-weight:700; letter-spacing:.06em; z-index:1; }
+  .lane-head.stage-h { color:var(--mute); font-weight:400; }
+  .step, .input, .stage { z-index:1; margin-inline:8px; }
+  .stage { grid-column:1; margin-inline:0; align-self:center; }
+  .stage span { display:inline-block; font-weight:700; font-size:.86rem; background:var(--gold); color:var(--navy); border:2px solid var(--navy); border-radius:6px; padding:1px 8px; }
+  .step { background:var(--panel); border:2px solid var(--navy); border-radius:8px; padding:7px 11px 9px; display:grid; gap:1px; }
+  .step-n { font-size:.78rem; color:var(--orange); font-weight:700; letter-spacing:.04em; }
+  .step-t { font-weight:700; line-height:1.35; }
+  .step-d { font-size:.86rem; color:var(--mute); line-height:1.5; }
+  .step.decision { border-style:double; border-width:4px; }
+  .step.end { background:var(--hover); }
+  .outs { display:flex; flex-wrap:wrap; gap:5px; margin-top:4px; }
+  .out { font-size:.78rem; font-weight:700; border-radius:5px; padding:0 7px; border:1.5px solid; }
+  .out.ok { color:var(--ok); border-color:var(--ok); }
+  .out.ng { color:var(--warn); border-color:var(--warn); }
+  .input { border:2px dashed var(--mute); border-radius:8px; padding:6px 11px; font-size:.9rem; background:var(--panel); position:relative; }
+  .input::after { content:"→"; position:absolute; right:-21px; top:50%; transform:translateY(-50%); color:var(--navy); font-weight:700; }
+  .input small { display:block; font-size:.72rem; color:var(--mute); letter-spacing:.06em; }
+  .doc { justify-self:start; font-size:.76rem; font-weight:700; color:var(--navy); background:var(--gold); border-radius:4px; padding:0 6px; margin-top:3px; }
+  .lane-tag { display:none; }
+  @media (max-width:760px) {
+    .lanes { grid-template-columns:minmax(0, 1fr); min-width:0; gap:8px; }
+    .lane-bg, .lane-head { display:none; }
+    .step, .input, .stage { grid-column:1 !important; grid-row:auto !important; margin-inline:0; }
+    .input { margin-left:18px; margin-bottom:8px; }
+    .input::after { content:"↓"; right:auto; left:12px; top:auto; bottom:-21px; transform:none; }
+    .stage { margin-top:6px; }
+    .lane-tag { display:inline; color:var(--mute); font-weight:400; margin-left:6px; }
+  }
+
+  /* Service BOM */
+  .sop ol { list-style:none; margin:6px 0 0; padding:0; }
+  .sop li { display:grid; grid-template-columns:2.6em minmax(0, 1fr); gap:6px; padding:5px 0; border-top:1px dashed var(--line); }
+  .sop li > span:first-child { color:var(--orange); font-weight:700; }
+  .cats { display:grid; grid-template-columns:repeat(auto-fill, minmax(210px, 1fr)); gap:6px; }
+  .cats div { background:var(--panel); border:1.5px solid var(--line); border-radius:6px; padding:5px 10px; font-size:.88rem; }
+
+  /* 料號 */
+  .map-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(175px, 1fr)); gap:4px 14px; font-size:.92rem; }
+  .map-grid div { display:flex; gap:8px; align-items:baseline; }
+  .map-grid b { color:var(--orange); min-width:2.4em; }
+  .decoder { margin-top:16px; }
+  .dec-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:6px; }
+  #pn-input { font-family:Consolas,"Cascadia Mono",Menlo,ui-monospace,monospace; font-size:1.35rem; letter-spacing:.06em; text-transform:uppercase; width:min(100%, 270px); padding:4px 10px; }
+  .dec-out { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:8px; margin-top:12px; }
+  @media (max-width:900px) { .dec-out { grid-template-columns:repeat(2, minmax(0, 1fr)); } .dec-out .dc:first-child { grid-column:1 / -1; } }
+  .dc { border:2px solid var(--line); border-radius:8px; padding:7px 11px; display:grid; gap:1px; align-content:start; min-width:0; background:var(--card); }
+  .dc .v { font-size:1.4rem; font-weight:700; }
+  .dc .k { font-size:.76rem; color:var(--mute); }
+  .dc .m { font-size:.9rem; overflow-wrap:anywhere; }
+  .dc.hot { border-color:var(--navy); background:var(--hover); }
+  .dec-err { margin-top:10px; color:var(--warn); font-weight:700; }
+  .filters { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; margin:6px 0 10px; }
+  .filters label { display:inline-flex; gap:6px; align-items:center; cursor:pointer; }
+  .count { color:var(--mute); font-size:.86rem; }
+  .pg { border:1.5px solid var(--line); border-radius:4px; padding:0 6px; background:var(--card); }
+  .emob { font-size:.76rem; font-weight:700; color:var(--orange); margin-left:6px; }
+  .swatch { display:inline-block; width:12px; height:12px; border-radius:2px; background:var(--hover); border:1px solid var(--navy); vertical-align:-1px; margin-right:4px; }
+
+  /* 自我測驗 */
+  .quiz { display:grid; gap:8px; }
+  .quiz details { background:var(--panel); border:2px solid var(--navy); border-radius:9px; padding:0 14px; }
+  .quiz summary { cursor:pointer; padding:9px 0; font-weight:700; list-style:none; display:grid; grid-template-columns:2.6em minmax(0, 1fr) auto; gap:8px; align-items:baseline; }
+  .quiz summary::-webkit-details-marker { display:none; }
+  .quiz summary .qn { color:var(--orange); }
+  .quiz summary .more { font-size:.8rem; font-weight:400; color:var(--mute); border:1.5px solid var(--line); border-radius:999px; padding:0 10px; white-space:nowrap; }
+  .quiz details[open] summary .more { background:var(--hover); color:var(--ink); }
+  .quiz .ans { margin:0; padding:8px 0 12px 3.1em; border-top:1px dashed var(--line); }
+  .quiz-tools { display:flex; gap:8px; margin:4px 0 10px; flex-wrap:wrap; }
+
+  /* 名詞說明 */
+  .modal { position:fixed; inset:0; background:rgba(40,28,16,.45); display:none; align-items:center; justify-content:center; z-index:20; padding:max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .modal.open { display:flex; }
+  .modal-box { background:var(--card); border:2px solid var(--navy); border-radius:12px; max-width:780px; width:100%; max-height:100%; display:flex; flex-direction:column; box-shadow:0 10px 40px rgba(0,0,0,.25); }
+  .modal-box header { display:flex; justify-content:space-between; align-items:center; padding:10px 18px; background:var(--navy); color:var(--gold); border-radius:9px 9px 0 0; font-weight:700; font-size:1.05rem; }
+  .modal-box header button { background:none; border:0; font-size:1.2rem; cursor:pointer; color:var(--gold); font-family:inherit; }
+  .modal-tools { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:10px 18px 0; }
+  .modal-body { overflow:auto; padding:4px 18px 18px; margin:0; }
+  .modal-body dt { font-weight:700; margin-top:10px; }
+  .modal-body dt small { font-weight:400; color:var(--mute); margin-left:8px; }
+  .modal-body dd { margin:0; }
+
+  .foot { color:var(--mute); font-size:.84rem; text-align:center; padding:0 16px 28px; }
+
+  @media (max-width:600px) {
+    .hdr { padding-left:max(12px, env(safe-area-inset-left, 0px)); padding-right:max(12px, env(safe-area-inset-right, 0px)); }
+    .hdr h1 { font-size:1.2rem; letter-spacing:.06em; }
+    .tabs button { padding:5px 9px; font-size:.86rem; }
+    .card { margin-left:max(4px, env(safe-area-inset-left, 0px)); margin-right:max(4px, env(safe-area-inset-right, 0px)); padding:12px 12px 18px; }
+    table { font-size:.84rem; }
+    .kpi .v { font-size:1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+  <header class="hdr">
+    <div class="brand">
+      <h1>PAP Service Logistics</h1>
+      <div class="sub"><span class="zh">服務物流內部訓練教材整理</span><span class="en">Internal service logistics training notes</span></div>
+    </div>
+    <div class="ctl">
+      <span class="pill"><span class="dot"></span>CONFIDENTIAL</span>
+      <select id="lang-sel" title="Language / 語言"><option value="zh">中文</option><option value="en">English</option></select>
+      <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
+      <select id="theme-sel" title="Theme / 主題"><option value="brown" data-zh="棕金" data-en="Brown">棕金</option><option value="navy" data-zh="深藍" data-en="Navy">深藍</option><option value="green" data-zh="墨綠" data-en="Green">墨綠</option></select>
+      <button class="hbtn" id="gloss-btn" type="button"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist">
+    <button type="button" role="tab" data-tab="overview" class="active"><span class="ico">📘</span><span class="zh">總覽</span><span class="en">Overview</span></button>
+    <button type="button" role="tab" data-tab="org"><span class="ico">🏢</span><span class="zh">組織</span><span class="en">Organisation</span></button>
+    <button type="button" role="tab" data-tab="sites"><span class="ico">🌏</span><span class="zh">服務據點</span><span class="en">Service Sites</span></button>
+    <button type="button" role="tab" data-tab="functions"><span class="ico">🧭</span><span class="zh">主要職能</span><span class="en">Functions</span></button>
+    <button type="button" role="tab" data-tab="systems"><span class="ico">💻</span><span class="zh">系統</span><span class="en">Systems</span></button>
+    <button type="button" role="tab" data-tab="spl"><span class="ico">🔄</span><span class="zh">SPL 流程</span><span class="en">SPL Flow</span></button>
+    <button type="button" role="tab" data-tab="bom"><span class="ico">📋</span>Service BOM</button>
+    <button type="button" role="tab" data-tab="pn"><span class="ico">🔢</span><span class="zh">料號規則</span><span class="en">P/N Rule</span></button>
+    <button type="button" role="tab" data-tab="quiz"><span class="ico">✅</span><span class="zh">自我測驗</span><span class="en">Quiz</span></button>
+  </nav>
+
+  <main class="card">
+
+  <!-- 總覽 -->
+  <section class="tab active" id="tab-overview" role="tabpanel">
+    <div class="ov">
+      <div>
+        <div class="section"><span class="zh">這份手冊在講什麼</span><span class="en">What this guide covers</span></div>
+        <p class="lede zh">泛亞太區（PAP）的服務物流團隊，夾在各國子公司（NS）與總部（HQ）之間：規劃備品、下單、監控庫存，並維護 Service BOM 與料號。這裡把內部訓練教材整理成可以切換中英文、可以搜尋的網頁。</p>
+        <p class="lede en">The Pan Asia Pacific (PAP) service logistics team sits between the nation subsidiaries (NS) and headquarters (HQ). It plans spare parts, places orders, monitors inventory, and maintains the Service BOM and part numbers. This site turns the internal training deck into searchable pages in Chinese and English.</p>
+        <div class="kpis k3" id="ov-kpis"></div>
+        <div class="section"><span class="zh">章節</span><span class="en">Chapters</span></div>
+        <div class="alist" id="ov-list"></div>
+      </div>
+      <div>
+        <div class="section"><span class="zh">料號範例</span><span class="en">Part number example</span></div>
+        <div class="label" aria-label="DG.B88SA.001">
+          <div class="label-top"><span>SERVICE PART</span><span>P/N</span></div>
+          <div class="pn-segs mono" aria-hidden="true">
+            <span class="pn-seg"><b>DG</b><small>AA</small></span><span class="pn-dot">.</span>
+            <span class="pn-seg"><b>B88</b><small>BBB</small></span>
+            <span class="pn-seg hot"><b>S</b><small>RO</small></span>
+            <span class="pn-seg hot"><b>A</b><small><span class="zh">國別</span><span class="en">Country</span></small></span><span class="pn-dot">.</span>
+            <span class="pn-seg"><b>001</b><small>EEE</small></span>
+          </div>
+          <svg class="barcode" id="barcode" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="label-foot">
+            <span><span class="zh">S = AAP · A = ACA（澳洲）</span><span class="en">S = AAP · A = ACA (Australia)</span></span>
+            <button class="btn sm" type="button" data-go="pn"><span class="zh">拆解料號 →</span><span class="en">Decode a P/N →</span></button>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="zh">原教材每頁標示 <b>CONFIDENTIAL</b>，僅供內部訓練使用。數字與代碼由投影片照片轉錄，如有出入以原始檔為準。</span>
+          <span class="en">Every page of the original deck is marked <b>CONFIDENTIAL</b>; use this for internal training only. Figures and codes were transcribed from photos of the slides; the original file is authoritative.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 組織 -->
+  <section class="tab" id="tab-org" role="tabpanel">
+    <div class="section"><span class="zh">Acer 全球區域</span><span class="en">Acer global regions</span><small>ACER Organisation</small></div>
+    <p class="caption zh">HQ 之下有五個區域。TWN 與 AAP 在 2016/2017 年合併為 PAP。</p>
+    <p class="caption en">HQ oversees five regions. TWN and AAP merged into PAP in 2016/2017.</p>
+    <div class="globe" role="img" aria-label="HQ → PA, EMEA, TWN, AAP, ACCN; TWN + AAP = PAP">
+      <span class="node hq">HQ</span>
+      <span class="stem"></span>
+      <div class="regions">
+        <span class="node">PA</span>
+        <span class="node">EMEA</span>
+        <div class="pap-group">
+          <span class="node">TWN</span>
+          <span class="node">AAP</span>
+          <span class="pap-tag"><span class="zh">PAP · 2016/2017 合併</span><span class="en">PAP · merged 2016/2017</span></span>
+        </div>
+        <span class="node">ACCN</span>
+      </div>
+    </div>
+
+    <div class="section"><span class="zh">PAP 組織</span><span class="en">PAP organisation</span><small>RO &amp; NS</small></div>
+    <div class="globe" style="padding-bottom:0"><span class="node hq">PAP</span></div>
+    <div class="ns-grid" id="ns-grid"></div>
+    <div class="legend">
+      <span><b>RO</b> Regional Office <span class="zh">區域辦公室</span></span>
+      <span><b>NS</b> Nation Subsidiary <span class="zh">國家子公司</span></span>
+    </div>
+    <p class="note zh">國家對應取自教材的「PAP Service Org.」表。AFE、HSNM 在教材中未標示國家；HSNM 在原圖以紅框標示，教材未說明。AKC 在組織圖上以箭頭連向 AJC，料號國碼兩者同為 <b>J</b>。</p>
+    <p class="note en">Country mapping comes from the "PAP Service Org." table. AFE and HSNM have no country in the material; HSNM is boxed in red on the original chart without explanation. On the org chart AKC points to AJC, and both use country code <b>J</b> in part numbers.</p>
+  </section>
+
+  <!-- 服務據點 -->
+  <section class="tab" id="tab-sites" role="tabpanel">
+    <div class="section"><span class="zh">CSD Q2 2025 服務據點</span><span class="en">CSD Q2 2025 infrastructure</span><small><span class="zh">PAP 全區合計</span><span class="en">PAP totals</span></small></div>
+    <div class="kpis" id="infra-kpis"></div>
+    <div class="sites">
+      <div class="map">
+        <div class="map-title"><span><span class="zh">各國據點數</span><span class="en">Sites by country</span></span><small><span class="zh">點選旗幟可對照右表</span><span class="en">Select a flag to find its row</span></small></div>
+        <div class="map-scroll"><svg id="map" viewBox="688 100 304 278" role="img" aria-label="PAP service sites map"></svg></div>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr>
+            <th><span class="zh">國家／地區</span><span class="en">Country / region</span></th>
+            <th class="num"><span class="zh">自有服務中心</span><span class="en">Own SC</span></th>
+            <th class="num"><span class="zh">外包服務中心</span><span class="en">Outsourced SC</span></th>
+            <th class="num">ASP</th>
+            <th class="num">Call Centre</th>
+            <th class="num"><span class="zh">當地備品中心</span><span class="en">Local Parts Hub</span></th>
+            <th><span class="zh">合計</span><span class="en">Total</span></th>
+          </tr></thead>
+          <tbody id="infra-body"></tbody>
+          <tfoot id="infra-foot"></tfoot>
+        </table>
+      </div>
+    </div>
+    <p class="note zh">各國數字由投影片照片轉錄，依合計排序；「—」表示該國沒有標示此項。逐國加總後，自有服務中心為 37，與圖例的 38 差 1；Regional Spare Parts Hub（1 處）在地圖上未標出國家。以原始投影片為準。</p>
+    <p class="note en">Per-country figures were transcribed from a photo of the slide and are sorted by total. "—" means the item is not shown for that country. Summed by country, own service centres come to 37, one fewer than the legend's 38. The one Regional Spare Parts Hub is not placed on the map. The original slide is authoritative.</p>
+
+    <div class="section"><span class="zh">倉庫與 Uni-load</span><span class="en">Warehouse &amp; Uni-load</span><small>PAP Service Org.</small></div>
+    <div class="tbl" style="max-width:640px">
+      <table>
+        <thead><tr><th><span class="zh">國家</span><span class="en">Country</span></th><th><span class="zh">代碼</span><span class="en">Code</span></th><th class="c">Warehouse</th><th class="c">Uni-load</th></tr></thead>
+        <tbody id="wh-body"></tbody>
+      </table>
+    </div>
+    <p class="note zh"><b>Uni-load</b>：在當地有產線、組裝廠（教材手寫註記）。11 國都有倉庫，其中 6 國同時有 Uni-load。Malaysia 在原表帶有「*」註記，教材未說明。</p>
+    <p class="note en"><b>Uni-load</b>: a local production line or assembly plant (handwritten note in the material). All 11 countries have a warehouse; 6 also have Uni-load. Malaysia carries an asterisk in the original table, without explanation.</p>
+  </section>
+
+  <!-- 主要職能 -->
+  <section class="tab" id="tab-functions" role="tabpanel">
+    <div class="section"><span class="zh">PAP 服務物流的主要職能</span><span class="en">Main functions of PAP service logistics</span><small>Service Logistics Org. Main Functions</small></div>
+    <div class="two">
+      <article class="box fn">
+        <h3><small>MAIN FUNCTIONS (I)</small>SP Planning &amp; Ordering<span class="zh"> · 備品規劃與下單</span></h3>
+        <ul>
+          <li><b>Demand Reports</b><span class="g zh">需求報表</span><span class="g en">Demand reports</span>
+            <ul><li>DT Demand Report</li><li>NB NPI BML, AML, PPB1/2</li></ul></li>
+          <li><b>Forecast</b><span class="g zh">彙整各 NS 的需求預測，提交 HQ。</span><span class="g en">Consolidate demand from the NS and submit it to HQ.</span></li>
+          <li><b>Monthly Special Support</b><span class="g zh">彙整各 NS 的特殊支援需求，提交 HQ。</span><span class="g en">Consolidate special support requests from the NS and submit them to HQ.</span></li>
+          <li><b>PO management</b><span class="g zh">採購單管理</span><span class="g en">Purchase order management</span>
+            <ul><li>Create PO <span class="g">(CSS)</span></li><li>Confirm PO to ODM <span class="g">(PLS)</span></li><li>ETD updating, follow up…</li></ul></li>
+        </ul>
+      </article>
+      <article class="box fn">
+        <h3><small>MAIN FUNCTIONS (II)</small><span class="zh">中央營運</span><span class="en">Central operations</span></h3>
+        <ul>
+          <li><b>Central W/H management</b><span class="g zh">中央倉庫管理</span><span class="g en">Run the central warehouse</span></li>
+          <li><b>RMA</b><span class="g zh">不良品退回流程</span><span class="g en">Returns of defective parts</span></li>
+          <li><b>Central SP Planning / GLS</b><span class="g zh">中央備品規劃，使用 GLS</span><span class="g en">Central spare-parts planning in GLS</span></li>
+          <li><b>Service Center &amp; Call Center support</b><span class="g zh">支援服務中心與客服中心</span><span class="g en">Support for service and call centres</span></li>
+          <li><b>Customer satisfaction (CSAT)</b><span class="g zh">客戶滿意度</span><span class="g en">Customer satisfaction</span></li>
+        </ul>
+      </article>
+      <article class="box fn">
+        <h3><small>REVIEW</small>PO / Cost / Inventory Review<span class="zh"> · 採購、成本與庫存檢視</span></h3>
+        <ul>
+          <li><b>NS performance monitoring</b><span class="g zh">監控各 NS 的表現：</span><span class="g en">Monitor each NS on:</span>
+            <ul>
+              <li>502/503 aging <span class="g zh">— 不良品停留在 CSS、尚未處理</span><span class="g en">— defective parts sitting in CSS with no action yet</span></li>
+              <li>Inventory <span class="g zh">庫存</span></li>
+              <li>Purchase <span class="g zh">採購</span></li>
+              <li>Fulfillment <span class="g zh">達交</span></li>
+              <li>HFP <span class="g zh">— Hold For Part，等料中的 backorder 案件</span><span class="g en">— Hold For Part: backorder cases waiting for a part</span></li>
+            </ul></li>
+        </ul>
+      </article>
+      <article class="box fn">
+        <h3><small>REPORT</small>Monthly Service / Operation Report<span class="zh"> · 每月服務與營運報告</span></h3>
+        <ul>
+          <li><b>Monthly reports</b><span class="g zh">月報內容</span><span class="g en">What goes into the monthly report</span>
+            <ul>
+              <li>PO related file <span class="g">— open PO, close PO, PO raise…</span></li>
+              <li>Aging Stock <span class="g zh">— 庫齡過久的庫存</span><span class="g en">— inventory held too long</span></li>
+            </ul></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- 系統 -->
+  <section class="tab" id="tab-systems" role="tabpanel">
+    <div class="section"><span class="zh">各角色使用的系統</span><span class="en">Systems by role</span><small>PAP system</small></div>
+    <p class="caption zh">RO、NS、ASP 三種角色各自使用的系統。只有 RO 會用到 PLS。</p>
+    <p class="caption en">The systems each role uses. Only ROs use PLS.</p>
+    <div class="two" style="margin-top:10px">
+      <div class="tbl">
+        <table>
+          <thead><tr><th><span class="zh">角色</span><span class="en">Role</span></th><th class="c">PLM</th><th class="c">PLS</th><th class="c">GLS</th><th class="c">CSS</th></tr></thead>
+          <tbody id="sys-body"></tbody>
+        </table>
+      </div>
+      <div class="box">
+        <h3><span class="zh">教材中各系統出現的情境</span><span class="en">Where each system appears in the material</span></h3>
+        <div class="uses">
+          <div class="use"><b>PLM</b><span><span class="zh">新料件申請料號（Apply P/N on PLM for new items）；匯入 Service BOM 與新增料件到 Service PLM。</span><span class="en">Apply P/N on PLM for new items; import the Service BOM and newly added parts into Service PLM.</span></span></div>
+          <div class="use"><b>PLS</b><span><span class="zh">向 ODM 確認採購單（Confirm PO to ODM）。</span><span class="en">Confirm PO to ODM.</span></span></div>
+          <div class="use"><b>GLS</b><span><span class="zh">中央備品規劃（Central SP Planning）。</span><span class="en">Central SP planning.</span></span></div>
+          <div class="use"><b>CSS</b><span><span class="zh">建立採購單（Create PO）；502/503 aging 的不良品停留於 CSS。</span><span class="en">Create PO; defective parts counted in 502/503 aging sit in CSS.</span></span></div>
+        </div>
+        <p class="note zh">教材未展開 PLS、GLS、CSS 的全名。</p>
+        <p class="note en">The material does not spell out PLS, GLS or CSS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPL 流程 -->
+  <section class="tab" id="tab-spl" role="tabpanel">
+    <div class="section"><span class="zh">備品清單（SPL）定義流程</span><span class="en">Spare parts list (SPL) definition flow</span><small>S/P Introduction</small></div>
+    <p class="caption zh">從 ODM 的 B 樣品完成，到 FCS 前一週把 SPL 發布給各 RO。S/P Introduction 章節涵蓋：</p>
+    <p class="caption en">From the ODM's B sample to releasing the SPL to every RO one week before FCS. The S/P Introduction chapter covers:</p>
+    <div class="topics">
+      <span class="chip">FRU/SPL Process Flow</span>
+      <span class="chip">Spare parts list definition Flow</span>
+      <span class="chip">Service BOM SOP</span>
+      <span class="chip">Planning Modes: Demand Report</span>
+    </div>
+
+    <div class="flow-scroll">
+      <div class="lanes" role="list">
+        <div class="lane-bg" style="grid-column:2"></div>
+        <div class="lane-bg" style="grid-column:3"></div>
+        <div class="lane-bg" style="grid-column:4"></div>
+        <div class="lane-head stage-h" style="grid-column:1">Stage</div>
+        <div class="lane-head" style="grid-column:2">HQ/PM</div>
+        <div class="lane-head" style="grid-column:3">QSBU/GCSD</div>
+        <div class="lane-head" style="grid-column:4">ODM</div>
+
+        <div class="step" role="listitem" style="grid-column:4;grid-row:2">
+          <span class="step-n">01 · START<span class="lane-tag">ODM</span></span>
+          <span class="step-t">B sample ready</span>
+          <span class="step-d"><span class="zh">B 樣品完成，流程開始。</span><span class="en">The B sample is ready; the flow starts.</span></span>
+        </div>
+
+        <div class="input" style="grid-column:2;grid-row:3"><small>INPUT<span class="lane-tag">HQ/PM</span></small>Matrix table, AVLC &amp; MB/KB P/N</div>
+        <div class="step" role="listitem" style="grid-column:3;grid-row:3">
+          <span class="step-n">02<span class="lane-tag">QSBU/GCSD</span></span>
+          <span class="step-t">Hold FRU review meeting</span>
+          <span class="step-d"><span class="zh">召開 FRU 審查會議。</span><span class="en">Run the FRU review meeting.</span></span>
+        </div>
+
+        <div class="step" role="listitem" style="grid-column:4;grid-row:4">
+          <span class="step-n">03<span class="lane-tag">ODM</span></span>
+          <span class="step-t">SPL draft w/o price</span>
+          <span class="step-d"><span class="zh">提供不含價格的 SPL 草稿。</span><span class="en">Send an SPL draft without prices.</span></span>
+          <span class="doc">SPL draft</span>
+        </div>
+
+        <div class="step" role="listitem" style="grid-column:3;grid-row:5">
+          <span class="step-n">04<span class="lane-tag">QSBU/GCSD</span></span>
+          <span class="step-t">Apply P/N on PLM for new items</span>
+          <span class="step-d"><span class="zh">新料件在 PLM 申請料號。</span><span class="en">Apply for part numbers for new items in PLM.</span></span>
+        </div>
+
+        <div class="step" role="listitem" style="grid-column:4;grid-row:6">
+          <span class="step-n">05<span class="lane-tag">ODM</span></span>
+          <span class="step-t">Quotation</span>
+          <span class="step-d"><span class="zh">ODM 報價。</span><span class="en">The ODM quotes prices.</span></span>
+        </div>
+
+        <div class="stage" style="grid-row:7"><span>C sample ready</span></div>
+        <div class="input" style="grid-column:2;grid-row:7"><small>INPUT<span class="lane-tag">HQ/PM</span></small>Carcass price</div>
+        <div class="step decision" role="listitem" style="grid-column:3;grid-row:7">
+          <span class="step-n">06 · REVIEW<span class="lane-tag">QSBU/GCSD</span></span>
+          <span class="step-t">Markup Review</span>
+          <span class="step-d"><span class="zh">審核報價與加價。</span><span class="en">Review the quotation and markup.</span></span>
+          <span class="outs"><span class="out ok">OK → 07</span><span class="out ng"><span class="zh">NG → 退回 03</span><span class="en">NG → back to 03</span></span></span>
+        </div>
+
+        <div class="step" role="listitem" style="grid-column:3;grid-row:8">
+          <span class="step-n">07<span class="lane-tag">QSBU/GCSD</span></span>
+          <span class="step-t">Upload to SPL system</span>
+          <span class="step-d"><span class="zh">依 SP template 上傳。</span><span class="en">Upload using the SP template.</span></span>
+          <span class="doc">SP template</span>
+        </div>
+
+        <div class="stage" style="grid-row:9"><span>FCS-1wk</span></div>
+        <div class="step end" role="listitem" style="grid-column:3;grid-row:9">
+          <span class="step-n">08 · END<span class="lane-tag">QSBU/GCSD</span></span>
+          <span class="step-t">Release SPL to RO</span>
+          <span class="step-d"><span class="zh">SPL 發布給各 RO，流程結束。</span><span class="en">Release the SPL to every RO; the flow ends.</span></span>
+          <span class="doc">SPL</span>
+        </div>
+      </div>
+    </div>
+    <p class="note zh"><b>FCS-1wk</b>：首次客戶出貨（First Customer Shipment）前一週。Markup Review 不通過時，回到 ODM 重新提供 SPL 草稿。</p>
+    <p class="note en"><b>FCS-1wk</b>: one week before First Customer Shipment. If the markup review fails, the flow goes back to the ODM for a new SPL draft.</p>
+  </section>
+
+  <!-- Service BOM -->
+  <section class="tab" id="tab-bom" role="tabpanel">
+    <div class="section"><span class="zh">兩種 Service BOM</span><span class="en">Two kinds of Service BOM</span><small>Service BOM category</small></div>
+    <div class="two">
+      <div class="box">
+        <h3>NPI Service BOM <small class="caption"><span class="zh">新品導入</span><span class="en">new product</span></small></h3>
+        <p class="zh" style="margin:0">FRU 會議後，ODM 提供 FRU 清單草稿。審查 FRU 清單，並在 Service BOM 上建立 Acer P/N。</p>
+        <p class="en" style="margin:0">After the FRU meeting, the ODM provides a draft FRU list. Review the list and create Acer P/Ns on the Service BOM.</p>
+      </div>
+      <div class="box">
+        <h3>MP Service BOM <small class="caption"><span class="zh">量產</span><span class="en">mass production</span></small></h3>
+        <p class="zh" style="margin:0">由 ODM 每月定期更新。</p>
+        <p class="en" style="margin:0">The ODM updates it every month.</p>
+      </div>
+    </div>
+
+    <div class="section">Service BOM SOP</div>
+    <div class="two">
+      <div class="box sop">
+        <h3>1. NPI Service BOM</h3>
+        <ol>
+          <li><span>1.1</span><span>Acer P/N Review &amp; Application</span></li>
+          <li><span>1.2</span><span>AVLC &amp; SKU BOM Checking</span></li>
+          <li><span>1.3</span><span>MOQ/RMA suggestion Review</span></li>
+          <li><span>1.4</span><span>Price Review – B/S &amp; general parts markup %</span></li>
+          <li><span>1.5</span><span>Import BOM to Service PLM</span></li>
+          <li><span>1.6</span><span>NPI SPL to ROs <span class="caption">(DT SPL, NB SPL)</span></span></li>
+        </ol>
+      </div>
+      <div class="box sop">
+        <h3>2. MP Service BOM – regular update</h3>
+        <ol>
+          <li><span>2.1</span><span>Acer P/N Review &amp; Application</span></li>
+          <li><span>2.2</span><span>AVLC &amp; SKU BOM Checking</span></li>
+          <li><span>2.3</span><span>MOQ/RMA suggestion Review &amp; Price</span></li>
+          <li><span>2.4</span><span>Substitution part check &amp; maintain</span></li>
+          <li><span>2.5</span><span>Import New Added Parts to Service PLM</span></li>
+          <li><span>2.6</span><span>Maintain pricing</span></li>
+          <li><span>2.7</span><span>Other function introduction</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="section"><span class="zh">備品類別</span><span class="en">Spare parts categories</span><small>Spare Parts Category · 24</small></div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <!-- 料號規則 -->
+  <section class="tab" id="tab-pn" role="tabpanel">
+    <div class="section"><span class="zh">料號命名規則</span><span class="en">Part number naming rule</span><small>ACER P/N Naming Rule</small></div>
+    <p class="caption zh">料號格式為 <b class="mono">AA.BBBCD.EEE</b>。不算小數點，第 6 碼是 RO 代碼，第 7 碼是國別代碼；開頭兩碼 AA 對應子類別。</p>
+    <p class="caption en">Part numbers follow <b class="mono">AA.BBBCD.EEE</b>. Not counting the dots, the 6th character is the RO code and the 7th is the country code; the first two characters (AA) give the sub-category.</p>
+    <div class="two" style="margin-top:10px">
+      <div class="box">
+        <h3><span class="zh">第 6 碼 · RO 代碼</span><span class="en">6th character · RO code</span></h3>
+        <div class="map-grid mono" id="map-ro"></div>
+      </div>
+      <div class="box">
+        <h3><span class="zh">第 7 碼 · 國別代碼（AAP）</span><span class="en">7th character · country code (AAP)</span></h3>
+        <div class="map-grid mono" id="map-cc"></div>
+      </div>
+    </div>
+
+    <div class="box decoder">
+      <h3><label for="pn-input"><span class="zh">拆解料號</span><span class="en">Decode a part number</span></label></h3>
+      <div class="dec-row">
+        <input id="pn-input" type="text" value="DG.B88SA.001" autocomplete="off" spellcheck="false" maxlength="14">
+        <span class="caption"><span class="zh">範例：</span><span class="en">Examples:</span></span>
+        <button class="btn sm mono" type="button" data-pn="DG.B88SA.001">DG.B88SA.001</button>
+        <button class="btn sm mono" type="button" data-pn="86.B88SM.001">86.B88SM.001</button>
+        <button class="btn sm mono" type="button" data-pn="6M.B88SJ.001">6M.B88SJ.001</button>
+        <button class="btn sm mono" type="button" data-pn="23.B88TA.001">23.B88TA.001</button>
+      </div>
+      <div class="dec-out" id="dec-out" aria-live="polite"></div>
+      <p class="dec-err" id="dec-err" hidden></p>
+    </div>
+
+    <div class="section"><span class="zh">AA 子類別對照表</span><span class="en">AA sub-category table</span><small class="mono">AA.BBBCD.EEE</small></div>
+    <div class="filters">
+      <input type="search" id="cat-search" data-ph-zh="搜尋代碼或名稱，例如 86、FAN、LCD" data-ph-en="Search code or name, e.g. 86, FAN, LCD" placeholder="搜尋代碼或名稱，例如 86、FAN、LCD" style="width:min(100%, 320px)">
+      <label><input type="checkbox" id="cat-emob" checked><span class="zh">包含 e-Mobility</span><span class="en">Include e-Mobility</span></label>
+      <span class="count" id="cat-count"></span>
+    </div>
+    <div class="tbl cap">
+      <table>
+        <thead><tr><th>AA</th><th>Sub-Category</th><th>Category (Product Model)</th><th>Product group</th></tr></thead>
+        <tbody id="cat-body"></tbody>
+      </table>
+    </div>
+    <p class="note zh"><span class="swatch"></span>原表以橘底標示的列，教材未說明原因。此表由投影片照片轉錄，使用前請與原始檔核對。</p>
+    <p class="note en"><span class="swatch"></span>Rows highlighted in orange in the original table; the material does not say why. Transcribed from a photo of the slide, so check against the original before relying on it.</p>
+  </section>
+
+  <!-- 自我測驗 -->
+  <section class="tab" id="tab-quiz" role="tabpanel">
+    <div class="section"><span class="zh">自我測驗</span><span class="en">Self check</span><small id="quiz-count"></small></div>
+    <p class="caption zh">先自己回答，再展開看答案。</p>
+    <p class="caption en">Answer first, then open each question to check.</p>
+    <div class="quiz-tools">
+      <button class="btn sm" type="button" id="quiz-open"><span class="zh">全部展開</span><span class="en">Show all answers</span></button>
+      <button class="btn sm" type="button" id="quiz-close"><span class="zh">全部收起</span><span class="en">Hide all answers</span></button>
+    </div>
+    <div class="quiz" id="quiz-list"></div>
+  </section>
+
+  </main>
+
+  <p class="foot"><span class="zh">內容整理自「PAP Service Logistics」內部訓練教材。原教材標示 CONFIDENTIAL，請勿對外散布。</span><span class="en">Based on the internal "PAP Service Logistics" training deck. The original is marked CONFIDENTIAL; do not distribute outside the company.</span></p>
+
+<div class="modal" id="gloss">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="gloss-title">
+    <header><span id="gloss-title"><span class="zh">名詞說明</span><span class="en">Glossary</span></span><button type="button" id="gloss-close" aria-label="close">✕</button></header>
+    <div class="modal-tools">
+      <input type="search" id="gl-search" data-ph-zh="搜尋縮寫或中文，例如 HFP、採購" data-ph-en="Search, e.g. HFP, purchase" placeholder="搜尋縮寫或中文，例如 HFP、採購" style="width:min(100%, 300px)">
+      <span class="count" id="gl-count"></span>
+    </div>
+    <dl class="modal-body" id="gl-body" tabindex="0"></dl>
+  </div>
+</div>
+
+<script src="map.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var B = function (zh, en) { return '<span class="zh">' + zh + '</span><span class="en">' + en + "</span>"; };
+  var flag = function (cc) { return cc ? '<img class="flag" src="flags/' + cc + '.svg" alt="" loading="lazy">' : ""; };
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* 無痕模式等：不記住設定 */ } }
+  };
+  var root = document.documentElement;
+  var LANG = "zh";
+
+  /* ---------- 設定：語言、字型、主題 ---------- */
+  function setLang(l) {
+    LANG = l === "en" ? "en" : "zh";
+    root.setAttribute("data-lang", LANG);
+    root.setAttribute("lang", LANG === "en" ? "en" : "zh-Hant");
+    $("lang-sel").value = LANG;
+    Array.prototype.forEach.call(document.querySelectorAll("option[data-zh]"), function (o) { o.textContent = o.getAttribute("data-" + LANG); });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-ph-zh]"), function (el) { el.placeholder = el.getAttribute("data-ph-" + LANG); });
+    store.set("pap.lang", LANG);
+    renderMap();
+  }
+  function setFont(f) { f = /^(hand|sans|mono)$/.test(f) ? f : "hand"; root.setAttribute("data-font", f); $("font-sel").value = f; store.set("pap.font", f); }
+  function setTheme(t) { t = /^(brown|navy|green)$/.test(t) ? t : "brown"; root.setAttribute("data-theme", t); $("theme-sel").value = t; store.set("pap.theme", t); }
+  $("lang-sel").addEventListener("change", function (e) { setLang(e.target.value); });
+  $("font-sel").addEventListener("change", function (e) { setFont(e.target.value); });
+  $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value); });
+
+  /* ---------- 分頁（網址 #org 等可直接開到該分頁） ---------- */
+  var TABS = ["overview", "org", "sites", "functions", "systems", "spl", "bom", "pn", "quiz"];
+  function showTab(name, fromUser) {
+    if (TABS.indexOf(name) === -1) name = "overview";
+    Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {
+      var on = b.getAttribute("data-tab") === name;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("main .tab"), function (s) { s.classList.toggle("active", s.id === "tab-" + name); });
+    if (fromUser) {
+      try { history.replaceState(null, "", "#" + name); } catch (e) { /* 部分環境不允許改網址 */ }
+      var top = $("tabs").getBoundingClientRect().top + window.pageYOffset;
+      if (window.pageYOffset > top) window.scrollTo(0, top);
+    }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {
+    b.addEventListener("click", function () { showTab(b.getAttribute("data-tab"), true); });
+  });
+  document.addEventListener("click", function (e) {
+    var g = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (g) showTab(g.getAttribute("data-go"), true);
+  });
+  window.addEventListener("hashchange", function () { showTab(location.hash.slice(1), false); });
+
+  /* ---------- 條碼（裝飾） ---------- */
+  (function () {
+    var seed = "DGB88SA001PAP", x = 0, i = 0, out = "";
+    while (x < 400) {
+      var c = seed.charCodeAt(i % seed.length) + i * 7, w = 1 + (c % 4), gap = 1 + ((c >> 2) % 3);
+      if (x + w > 400) break;
+      out += '<rect x="' + x + '" y="0" width="' + w + '" height="40"></rect>';
+      x += w + gap; i++;
+    }
+    $("barcode").innerHTML = out;
+  })();
+
+  /* ---------- 總覽 ---------- */
+  var OVK = [
+    [11, "國家子公司（NS）", "Nation subsidiaries (NS)"],
+    [11, "有倉庫的國家", "Countries with a warehouse"],
+    [6, "有 Uni-load 的國家", "Countries with Uni-load"],
+    [507, "授權服務商（ASP）", "Authorized service providers"],
+    [8, "SPL 定義流程步驟", "Steps in the SPL flow"],
+    [51, "料號子類別", "P/N sub-categories"]
+  ];
+  $("ov-kpis").innerHTML = OVK.map(function (k) { return '<div class="kpi"><div class="k">' + B(k[1], k[2]) + '</div><div class="v">' + k[0] + "</div></div>"; }).join("");
+  var CH = [
+    ["org", "🏢", "組織", "Organisation", "Acer 全球區域與 PAP 的 11 個國家子公司", "Acer's global regions and PAP's 11 nation subsidiaries"],
+    ["sites", "🌏", "服務據點", "Service sites", "Q2 2025 服務據點地圖、倉庫與 Uni-load", "Q2 2025 footprint map, warehouses and Uni-load"],
+    ["functions", "🧭", "主要職能", "Functions", "備品規劃、下單、績效監控與月報", "Planning, ordering, performance monitoring and monthly reports"],
+    ["systems", "💻", "系統", "Systems", "RO、NS、ASP 各用哪些系統", "Which systems ROs, NS and ASPs use"],
+    ["spl", "🔄", "SPL 流程", "SPL flow", "從 B 樣品到發布 SPL 的 8 個步驟", "Eight steps from B sample to SPL release"],
+    ["bom", "📋", "Service BOM", "Service BOM", "NPI 與 MP 的 SOP、24 類備品", "NPI and MP SOPs, 24 spare-part categories"],
+    ["pn", "🔢", "料號規則", "P/N rule", "拆解 AA.BBBCD.EEE 與子類別對照", "Decode AA.BBBCD.EEE and look up sub-categories"],
+    ["quiz", "✅", "自我測驗", "Quiz", "12 題複習", "12 review questions"]
+  ];
+  $("ov-list").innerHTML = CH.map(function (c) {
+    return '<button type="button" data-go="' + c[0] + '"><span>' + c[1] + "</span><span><b>" + B(c[2], c[3]) + "</b><small>" + B(c[4], c[5]) + "</small></span></button>";
+  }).join("");
+
+  /* ---------- 組織 ---------- */
+  var NS = [
+    ["ASSB", "my", "馬來西亞", "Malaysia", [["HSNM", "", 1]]],
+    ["ACA", "au", "澳洲", "Australia", [["ACNZ · New Zealand", "nz"]]],
+    ["AIL", "in", "印度", "India", [["Bangladesh", "bd"]]],
+    ["ATH", "th", "泰國", "Thailand", [["Indo-china", ""]]],
+    ["AIN", "id", "印尼", "Indonesia", []],
+    ["AVN", "vn", "越南", "Vietnam", []],
+    ["AJC", "jp", "日本", "Japan", [["← AKC", ""]]],
+    ["AKC", "kr", "韓國", "Korea", [["→ AJC", ""]]],
+    ["AFE", "", "教材未標示國家", "No country given", []],
+    ["APHI", "ph", "菲律賓", "Philippines", []],
+    ["ACS", "sg", "新加坡", "Singapore", [["Sri Lanka", "lk"], ["Mongolia", "mn"], ["Nepal", "np"]]]
+  ];
+  $("ns-grid").innerHTML = NS.map(function (n) {
+    var sub = n[4].length ? '<div class="ns-sub">' + n[4].map(function (s) { return '<span class="chip' + (s[2] ? " mark" : "") + '">' + flag(s[1]) + esc(s[0]) + "</span>"; }).join("") + "</div>" : "";
+    return '<div class="ns"><span class="ns-code">' + flag(n[1]) + n[0] + '</span><span class="ns-country">' + B(n[2], n[3]) + "</span>" + sub + "</div>";
+  }).join("");
+
+  /* ---------- 服務據點 ---------- */
+  var mark = function (v) { return v ? '<span class="yes" aria-label="yes">✓</span>' : '<span class="no" aria-label="no">—</span>'; };
+  var WH = [
+    ["au", "澳洲", "Australia", "ACA", 1, 1], ["nz", "紐西蘭", "New Zealand", "ACNZ", 1, 0], ["in", "印度", "India", "AIL", 1, 1],
+    ["my", "馬來西亞", "Malaysia", "ASSB*", 1, 1], ["ph", "菲律賓", "Philippines", "APHI", 1, 0], ["th", "泰國", "Thailand", "ATH", 1, 1],
+    ["vn", "越南", "Vietnam", "AVN", 1, 0], ["id", "印尼", "Indonesia", "AIN (AMI)", 1, 1], ["sg", "新加坡", "Singapore", "ACS", 1, 1],
+    ["jp", "日本", "Japan", "AJC", 1, 0], ["kr", "韓國", "Korea", "AKC", 1, 0]
+  ];
+  $("wh-body").innerHTML = WH.map(function (r) {
+    return "<tr><td>" + flag(r[0]) + B(r[1], r[2]) + '</td><td class="code">' + r[3] + '</td><td class="c">' + mark(r[4]) + '</td><td class="c">' + mark(r[5]) + "</td></tr>";
+  }).join("");
+
+  var KPI = [
+    [38, "自有服務中心", "Service centres (own)"],
+    [216, "外包服務中心", "Service centres (outsourced)"],
+    [507, "授權服務商 ASP", "Authorized service providers"],
+    [8, "客服中心", "Call centres"],
+    [18, "當地備品中心", "Local parts hubs"],
+    [1, "區域備品中心", "Regional spare parts hub"]
+  ];
+  $("infra-kpis").innerHTML = KPI.map(function (k) { return '<div class="kpi"><div class="k">' + B(k[1], k[2]) + '</div><div class="v">' + k[0] + "</div></div>"; }).join("");
+
+  // [旗幟, 中文, English, 自有, 外包, ASP, Call Centre, Local Parts Hub, 經度, 緯度, 標籤 x, 標籤 y]；null = 地圖上沒有標示
+  var INFRA = [
+    ["in", "印度", "India", 0, 172, 126, 1, 2, 79, 22, 712, 200],
+    ["th", "泰國", "Thailand", 12, null, 109, 1, null, 101, 15, 757, 212],
+    ["id", "印尼", "Indonesia", null, 18, 91, 1, 1, 114, 0, 818, 262],
+    ["tw", "台灣", "Taiwan", 6, 17, 58, 1, 7, 121, 23.7, 852, 182],
+    ["au", "澳洲", "Australia", 1, null, 61, 0, 1, 134, -25, 872, 319],
+    ["my", "馬來西亞", "Malaysia", 14, 2, 23, null, 1, 102.5, 4, 763, 236],
+    ["bd", "孟加拉", "Bangladesh", null, 6, 4, null, null, 90.3, 23.7, 747, 166],
+    ["mm", "緬甸", "Myanmar", null, null, 10, null, null, 96, 21, 770, 178],
+    ["vn", "越南", "Vietnam", 2, null, 5, 1, 1, 108, 14.5, 818, 204],
+    ["la", "寮國", "Laos", null, null, 6, null, null, 102.5, 19.5, 795, 184],
+    ["nz", "紐西蘭", "New Zealand", 1, null, 4, null, null, 172, -41, 972, 350],
+    ["jp", "日本", "Japan", null, 0, 2, 1, 1, 138, 36, 896, 146],
+    ["kr", "韓國", "Korea", null, null, 1, 1, 1, 127.8, 36.3, 852, 136],
+    ["lk", "斯里蘭卡", "Sri Lanka", null, null, 3, null, null, 80.7, 7.8, 710, 240],
+    ["sg", "新加坡", "Singapore", 1, 0, null, null, 1, 103.8, 1.35, 780, 258],
+    ["ph", "菲律賓", "Philippines", 0, null, 0, 1, 1, 122, 12, 846, 214],
+    ["hk", "香港", "Hong Kong", null, 1, null, null, 1, 114.2, 22.3, 814, 172],
+    ["kh", "柬埔寨", "Cambodia", null, null, 2, null, null, 105, 12.5, 797, 226],
+    ["np", "尼泊爾", "Nepal", null, null, 1, null, null, 84, 28.3, 722, 156],
+    ["mn", "蒙古", "Mongolia", null, null, 1, null, null, 103, 46.8, 786, 120]
+  ];
+  var HAS = ["IND", "THA", "IDN", "TWN", "AUS", "MYS", "BGD", "MMR", "VNM", "LAO", "NZL", "JPN", "KOR", "LKA", "PHL", "KHM", "NPL", "MNG"];
+  INFRA.forEach(function (r) { var t = 0; for (var i = 3; i <= 7; i++) t += r[i] || 0; r.total = t; });
+  INFRA.sort(function (a, b) { return b.total - a.total; });
+  var maxT = INFRA[0].total;
+  var cell = function (v) { return '<td class="num">' + (v === null ? '<span class="no">—</span>' : v) + "</td>"; };
+  $("infra-body").innerHTML = INFRA.map(function (r) {
+    var pct = Math.max(0.8, r.total / maxT * 100);
+    return '<tr id="row-' + r[0] + '"><td>' + flag(r[0]) + B(r[1], r[2]) + "</td>" + cell(r[3]) + cell(r[4]) + cell(r[5]) + cell(r[6]) + cell(r[7]) +
+      '<td><div class="bar-cell"><b>' + r.total + '</b><div class="bar-track"><div class="bar" style="width:' + pct.toFixed(1) + '%"></div></div></div></td></tr>';
+  }).join("");
+  var sums = [0, 0, 0, 0, 0], all = 0;
+  INFRA.forEach(function (r) { for (var i = 0; i < 5; i++) sums[i] += r[i + 3] || 0; });
+  sums.forEach(function (s) { all += s; });
+  $("infra-foot").innerHTML =
+    "<tr><td>" + B("逐國加總", "Sum of countries") + "</td>" + sums.map(function (s) { return '<td class="num">' + s + "</td>"; }).join("") + "<td><b>" + all + "</b></td></tr>" +
+    "<tr><td>" + B("投影片圖例", "Slide legend") + "</td>" + KPI.slice(0, 5).map(function (k) { return '<td class="num">' + k[0] + "</td>"; }).join("") + "<td></td></tr>";
+
+  var px = function (lon) { return (lon + 180) * 1000 / 360; };
+  var py = function (lat) { return (90 - lat) * 500 / 180; };
+  function renderMap() {
+    var W = window.PAP_WORLD, svg = $("map");
+    if (!W || !svg) return;
+    var out = '<rect class="sea" x="688" y="100" width="304" height="278"></rect>';
+    Object.keys(W.paths).forEach(function (iso) {
+      out += '<path d="' + W.paths[iso] + '"' + (HAS.indexOf(iso) !== -1 ? ' class="has"' : "") + "></path>";
+    });
+    var leads = "", pins = "";
+    INFRA.forEach(function (r) {
+      var x = px(r[8]), y = py(r[9]), lx = r[10], ly = r[11];
+      var w = 11 + String(r.total).length * 3.7 + 2, h = 9;
+      if (Math.abs(lx - x) > 3 || Math.abs(ly - y) > 3) {
+        leads += '<line class="lead" x1="' + x.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + lx + '" y2="' + ly + '"></line><circle class="pt" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="1"></circle>';
+      }
+      var name = LANG === "en" ? r[2] : r[1];
+      var parts = [["自有", "Own", r[3]], ["外包", "Outsourced", r[4]], ["ASP", "ASP", r[5]], ["Call Centre", "Call centre", r[6]], ["Parts Hub", "Parts hub", r[7]]]
+        .filter(function (p) { return p[2] !== null; }).map(function (p) { return (LANG === "en" ? p[1] : p[0]) + " " + p[2]; }).join(" · ");
+      var bx = lx - w / 2, by = ly - h / 2;
+      pins += '<g class="pin" data-cc="' + r[0] + '" tabindex="0" role="button" aria-label="' + esc(name + " " + r.total) + '"><title>' + esc(name + "：" + r.total + "（" + parts + "）") + "</title>" +
+        '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '" rx="1.6"></rect>' +
+        '<image href="flags/' + r[0] + '.svg" x="' + (bx + 1.4).toFixed(1) + '" y="' + (by + 1.5).toFixed(1) + '" width="8" height="6" preserveAspectRatio="xMidYMid slice"></image>' +
+        '<text x="' + (bx + 11).toFixed(1) + '" y="' + (by + 6.9).toFixed(1) + '">' + r.total + "</text></g>";
+    });
+    svg.innerHTML = out + leads + pins;
+  }
+  function pickPin(cc) {
+    Array.prototype.forEach.call(document.querySelectorAll(".map .pin"), function (p) { p.classList.toggle("on", p.getAttribute("data-cc") === cc); });
+    Array.prototype.forEach.call(document.querySelectorAll("#infra-body tr"), function (tr) { tr.classList.toggle("on", tr.id === "row-" + cc); });
+    var row = $("row-" + cc);
+    if (row && row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
+  }
+  $("map").addEventListener("click", function (e) { var p = e.target.closest ? e.target.closest(".pin") : null; if (p) pickPin(p.getAttribute("data-cc")); });
+  $("map").addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var p = e.target.closest ? e.target.closest(".pin") : null; if (p) { e.preventDefault(); pickPin(p.getAttribute("data-cc")); }
+  });
+
+  /* ---------- 系統 ---------- */
+  var SYS = [["RO", "Regional Office", "區域辦公室", 1, 1, 1, 1], ["NS", "Nation Subsidiary", "國家子公司", 1, 0, 1, 1], ["ASP", "Authorized Service Provider", "授權服務商", 1, 0, 0, 1]];
+  $("sys-body").innerHTML = SYS.map(function (s) {
+    return '<tr><td><b>' + s[0] + '</b> <span class="caption">' + B(s[2], s[1]) + "</span></td>" + [3, 4, 5, 6].map(function (i) { return '<td class="c">' + mark(s[i]) + "</td>"; }).join("") + "</tr>";
+  }).join("");
+
+  /* ---------- Service BOM ---------- */
+  var CATS = ["ACCESSORY", "BOARD", "CABLE", "CASE/COVER/BRACKET ASSEMBLY", "CPU/PROCESSOR", "COMMUNICATION MODULE", "DVD-RW DRIVE", "HDD/HARD DISK DRIVE",
+    "HEATSINK", "KEYBOARD", "MAINBOARD", "MEMORY", "POINTING DEVICE", "POWER SUPPLY", "SCREW", "SPEAKER", "ADAPTER", "BATTERY",
+    "TOUCHPAD", "MISCELLANEOUS", "LCD MODULE", "LCD", "FAN", "CAMERA"];
+  $("cats").innerHTML = CATS.map(function (c) { return "<div>" + esc(c) + "</div>"; }).join("");
+
+  /* ---------- 料號規則 ---------- */
+  var RO = { S: "AAP", C: "ACCN", E: "EMEA", A: "PA", T: "TWN" };
+  var CC = {
+    M: ["ASSB", "馬來西亞", "Malaysia"], A: ["ACA", "澳洲", "Australia"], S: ["ACS", "新加坡", "Singapore"], I: ["AIL", "印度", "India"],
+    T: ["ATH", "泰國", "Thailand"], N: ["AIN", "印尼", "Indonesia"], D: ["AIN", "印尼", "Indonesia"], J: ["AJC / AKC", "日本／韓國", "Japan / Korea"],
+    P: ["APHI", "菲律賓", "Philippines"], V: ["AVN", "越南", "Vietnam"]
+  };
+  $("map-ro").innerHTML = Object.keys(RO).map(function (k) { return "<div><b>" + k + "</b><span>" + RO[k] + "</span></div>"; }).join("");
+  $("map-cc").innerHTML = [["M"], ["A"], ["S"], ["I"], ["T"], ["N", "D"], ["J"], ["P"], ["V"]].map(function (ks) {
+    var v = CC[ks[0]];
+    return "<div><b>" + ks.join("/") + "</b><span>" + v[0] + ' <span class="caption">' + B(v[1], v[2]) + "</span></span></div>";
+  }).join("");
+
+  var CCB = "CASE/COVER/BRACKET ASSEMBLY", FS = "FAN SINK/SPEAKER/EARPHONE/RTC";
+  // [AA, Sub-Category, Category, Product group, 原表橘底, e-Mobility]
+  var SUB = [
+    ["19", "INVERTER BOARD", "Board", "Y1"], ["54", "COMMUNICATION BOARD", "Board", "Y1"], ["55", "BOARD", "Board", "Y1"],
+    ["6M", "AV MODULE", "Board", "Y1"], ["6M", "DVI MODULE", "Board", "Y1"], ["6M", "TUNER MODULE", "Board", "Y1"],
+    ["20", "CONNECTOR", CCB, "Y2"], ["22", "PCMCIA SLOT", CCB, "Y2"], ["33", "METAL", CCB, "Y2"],
+    ["40", "NAME PLATE", CCB, "Y2"], ["42", "PLASTICS", CCB, "Y2"], ["47", "MISCELLANEOUS", CCB, "Y2"],
+    ["58", "Light module", CCB, "Y2", 1], ["60", "ASSEMBLY", CCB, "Y2"], ["61", "LCD COVER", CCB, "Y2", 1],
+    ["62", "LCD BEZEL", CCB, "Y2", 1], ["63", "UPPER CASE", CCB, "Y2", 1], ["64", "LOWER CASE", CCB, "Y2", 1],
+    ["65", "Cover others", CCB, "Y2", 1], ["66", "Chassis", CCB, "Y2", 1], ["67", "Stand", CCB, "Y2", 1],
+    ["68", "Stylus", CCB, "Y2", 1], ["6B", "KB ASSEMBLY", "KB ASSEMBLY", "YB"],
+    ["6P", "UPPER CASE WITH TOUCHPAD", "TOUCHPAD ASSEMBLY", "YP"], ["6M", "HOUSING", CCB, "Y2"],
+    ["23", "FAN", FS, "Y3"], ["23", "SPEAKER/MICROPHONE", FS, "Y3"], ["23", "RTC BATTERY", FS, "Y3"], ["24", "THERMAL", FS, "Y3"],
+    ["25", "AC ADAPTER", "AC ADAPTER", "Y4"], ["25", "REMOTE CONTROLLER", "REMOTE CONTROLLER", "Y5"],
+    ["27", "POWER CORD", "CABLE", "Y6"], ["50", "CABLE", "CABLE", "Y6"], ["56", "TOUCHPAD", "POINT DEVICE", "Y7"],
+    ["57", "OPTICAL DEVICE", "OPTICAL DEVICE", "Y8"], ["57", "Camera", "OPTICAL DEVICE", "Y8"], ["86", "SCREW", "SCREW", "Y9"],
+    ["6K", "KIT SET", "ACCESSORY", "YA"], ["6M", "LCD MODULE", "LCD MODULE", "YD"], ["6M", "ODD MODULE", "ODD MODULE", "YE"],
+    ["70", "OT_AC ADAPTER", "AC ADAPTER", "Y4", 1, 1], ["70", "OT_Battery", "Battery", "YT", 1, 1],
+    ["71", "OT_MOTOR", "MOTOR", "YM", 1, 1], ["71", "OT_CONTROLLER", "CONTROLLER", "YC", 1, 1],
+    ["72", "OT_TIRE", CCB, "Y2", 1, 1], ["72", "OT_ME ASSEMBLY", CCB, "Y2", 1, 1], ["72", "OT_LED", CCB, "Y2", 1, 1],
+    ["73", "OT_BRAKE SYSTEM", CCB, "Y2", 1, 1], ["74", "OT_CABLE", "CABLE", "Y6", 1, 1],
+    ["75", "OT_MISCELLANEOUS", CCB, "Y2", 1, 1], ["75", "OT_SCREW", "SCREW", "Y9", 1, 1]
+  ];
+  function renderCats() {
+    var q = $("cat-search").value.trim().toLowerCase(), emob = $("cat-emob").checked;
+    var list = SUB.filter(function (s) {
+      if (!emob && s[5]) return false;
+      return !q || (s[0] + " " + s[1] + " " + s[2] + " " + s[3]).toLowerCase().indexOf(q) !== -1;
+    });
+    $("cat-body").innerHTML = list.length ? list.map(function (s) {
+      return "<tr" + (s[4] ? ' class="hl"' : "") + '><td class="code"><b>' + s[0] + "</b></td><td>" + esc(s[1]) + (s[5] ? '<span class="emob">e-Mobility</span>' : "") +
+        "</td><td>" + esc(s[2]) + '</td><td><span class="pg code">' + s[3] + "</span></td></tr>";
+    }).join("") : '<tr><td colspan="4" class="caption">' + B("找不到符合「" + esc(q) + "」的子類別。", 'No sub-category matches "' + esc(q) + '".') + "</td></tr>";
+    $("cat-count").innerHTML = B(list.length + " / " + SUB.length + " 筆", list.length + " of " + SUB.length);
+  }
+  $("cat-search").addEventListener("input", renderCats);
+  $("cat-emob").addEventListener("change", renderCats);
+  renderCats();
+
+  function decode() {
+    var raw = $("pn-input").value.toUpperCase().replace(/\s+/g, "");
+    var m = raw.match(/^([A-Z0-9]{2})\.?([A-Z0-9]{3})([A-Z0-9])([A-Z0-9])\.?([A-Z0-9]{3})$/);
+    var out = $("dec-out"), err = $("dec-err");
+    if (!m) {
+      out.innerHTML = "";
+      err.hidden = false;
+      err.innerHTML = raw
+        ? B("格式應為 AA.BBBCD.EEE，共 10 碼（小數點可省略），例如 DG.B88SA.001。", "Use the AA.BBBCD.EEE format: 10 characters, dots optional, e.g. DG.B88SA.001.")
+        : B("輸入料號即可拆解，例如 DG.B88SA.001。", "Type a part number to decode it, e.g. DG.B88SA.001.");
+      return;
+    }
+    err.hidden = true;
+    var aa = m[1], c = m[3], d = m[4];
+    var hits = SUB.filter(function (s) { return s[0] === aa; });
+    var aaM = hits.length ? hits.map(function (s) { return esc(s[1]); }).join(", ") : B("對照表中沒有 " + esc(aa), esc(aa) + " is not in the table");
+    var roM = RO[c] ? RO[c] : B("教材未列出 " + esc(c), esc(c) + " is not listed");
+    var ccM;
+    if (c !== "S") ccM = RO[c] ? B("教材只列出 AAP 的國碼", "Only AAP country codes are listed") : "—";
+    else ccM = CC[d] ? CC[d][0] + " " + B("（" + CC[d][1] + "）", "(" + CC[d][2] + ")") : B("AAP 國碼表中沒有 " + esc(d), esc(d) + " is not an AAP country code");
+    var na = B("教材未說明", "Not explained in the material");
+    var cells = [
+      [aa, B("AA · 子類別", "AA · sub-category"), aaM, 0],
+      [m[2], "BBB", na, 0],
+      [c, B("C · 第 6 碼 · RO", "C · 6th · RO"), roM, 1],
+      [d, B("D · 第 7 碼 · 國別", "D · 7th · country"), ccM, 1],
+      [m[5], "EEE", na, 0]
+    ];
+    out.innerHTML = cells.map(function (x) {
+      return '<div class="dc' + (x[3] ? " hot" : "") + '"><span class="v mono">' + esc(x[0]) + '</span><span class="k">' + x[1] + '</span><span class="m">' + x[2] + "</span></div>";
+    }).join("");
+  }
+  $("pn-input").addEventListener("input", decode);
+  Array.prototype.forEach.call(document.querySelectorAll("[data-pn]"), function (b) {
+    b.addEventListener("click", function () { $("pn-input").value = b.getAttribute("data-pn"); decode(); });
+  });
+  decode();
+
+  /* ---------- 名詞說明 ---------- */
+  var GL = [
+    ["PAP", "Pan Asia Pacific", "泛亞太區；由 TWN 與 AAP 於 2016/2017 合併而成", "Formed when TWN and AAP merged in 2016/2017"],
+    ["HQ", "Headquarters", "總部", "Headquarters"],
+    ["PA", "Pan America", "泛美區", "The Pan America region"],
+    ["EMEA", "Europe, Middle East & Africa", "歐洲、中東與非洲區", "The Europe, Middle East and Africa region"],
+    ["TWN", "Taiwan", "台灣區，併入 PAP", "Taiwan region; merged into PAP"],
+    ["AAP", "Asia Pacific", "亞太區，併入 PAP", "Asia Pacific region; merged into PAP"],
+    ["ACCN", "China", "中國區", "The China region"],
+    ["RO", "Regional Office", "區域辦公室", "Regional office"],
+    ["NS", "Nation Subsidiary", "國家子公司，例如 ACA、AIL、ATH", "Nation subsidiary, e.g. ACA, AIL, ATH"],
+    ["ASP", "Authorized Service Provider", "授權服務商", "Authorized service provider"],
+    ["CSD", "", "Q2 2025 服務據點投影片的標題單位", "The unit named on the Q2 2025 infrastructure slide"],
+    ["W/H", "Warehouse", "倉庫", "Warehouse"],
+    ["Uni-load", "", "當地有產線、組裝廠（教材手寫註記）", "A local production line or assembly plant (handwritten note in the material)"],
+    ["S/P", "Spare Parts", "備品", "Spare parts"],
+    ["FRU", "Field Replaceable Unit", "可在現場更換的料件單位", "A part that can be replaced in the field"],
+    ["SPL", "Spare Parts List", "備品清單；ODM 起草，審核後發布給 RO", "Drafted by the ODM and released to ROs after review"],
+    ["BOM", "Bill of Materials", "物料清單", "Bill of materials"],
+    ["Service BOM", "", "服務用 BOM，分 NPI 與 MP 兩種", "The BOM used for service; there is an NPI and an MP version"],
+    ["NPI", "New Product Introduction", "新產品導入", "New product introduction"],
+    ["MP", "Mass Production", "量產", "Mass production"],
+    ["ODM", "Original Design Manufacturer", "委託設計製造商", "Original design manufacturer"],
+    ["P/N", "Part Number", "料號", "Part number"],
+    ["MB / KB", "Mainboard / Keyboard", "主機板／鍵盤", "Mainboard / keyboard"],
+    ["SKU", "Stock Keeping Unit", "單一機種配置", "A single model configuration"],
+    ["AVLC", "", "SOP 1.2／2.2 與 SKU BOM 一起檢查的項目；由 HQ/PM 帶到 FRU 審查會議", "Checked with the SKU BOM in SOP 1.2 / 2.2; HQ/PM brings it to the FRU review meeting"],
+    ["MOQ", "Minimum Order Quantity", "最小訂購量", "Minimum order quantity"],
+    ["RMA", "Return Merchandise Authorization", "不良品退回流程", "The return process for defective parts"],
+    ["PO", "Purchase Order", "採購單", "Purchase order"],
+    ["ETD", "Estimated Time of Departure", "預計出貨日", "Estimated ship date"],
+    ["HFP", "Hold For Part", "等料中的 backorder 案件", "Backorder cases waiting for a part"],
+    ["502/503 aging", "", "不良品停留在 CSS、尚未處理的帳齡", "How long defective parts have sat in CSS with no action"],
+    ["Aging Stock", "", "庫齡過久的庫存", "Inventory held too long"],
+    ["FCS", "First Customer Shipment", "首次客戶出貨；FCS-1wk 即首出前一週", "FCS-1wk is one week before it"],
+    ["CSAT", "Customer Satisfaction", "客戶滿意度", "Customer satisfaction"],
+    ["DT / NB", "Desktop / Notebook", "桌上型電腦／筆記型電腦", "Desktop / notebook"],
+    ["BML / AML / PPB1/2", "", "NB NPI 階段的需求報表（教材未展開縮寫）", "Demand reports for notebook NPI (not spelled out in the material)"],
+    ["PLM", "Product Lifecycle Management", "申請新料號、匯入 Service BOM（Service PLM）", "Used to apply for new P/Ns and import the Service BOM (Service PLM)"],
+    ["PLS", "", "教材中用於 Confirm PO to ODM；只有 RO 使用", "Used to confirm POs to the ODM; only ROs use it"],
+    ["GLS", "", "教材中用於 Central SP Planning", "Used for central spare-parts planning"],
+    ["CSS", "", "教材中用於 Create PO；502/503 不良品也停留於此", "Used to create POs; 502/503 defective parts also sit here"],
+    ["HQ/PM", "", "SPL 流程中提供 Matrix table、AVLC、MB/KB P/N 與 Carcass price", "In the SPL flow, provides the matrix table, AVLC, MB/KB P/N and carcass price"],
+    ["QSBU/GCSD", "", "SPL 流程中主持 FRU 審查、申請料號、審核 markup 並發布 SPL", "In the SPL flow, runs the FRU review, applies for P/Ns, reviews markup and releases the SPL"],
+    ["Carcass price", "", "Markup Review 的輸入之一，由 HQ/PM 提供", "One input to the markup review, provided by HQ/PM"],
+    ["Markup", "", "加價；NPI 時審核 B/S 與一般料件的 markup %", "Price uplift; NPI reviews the markup % for B/S and general parts"],
+    ["e-Mobility", "", "電動載具產品群；子類別以 OT_ 開頭，例如 OT_MOTOR、OT_TIRE", "Electric mobility product group; sub-categories start with OT_, e.g. OT_MOTOR, OT_TIRE"]
+  ];
+  function renderGl() {
+    var q = $("gl-search").value.trim().toLowerCase();
+    var list = GL.filter(function (g) { return !q || g.join(" ").toLowerCase().indexOf(q) !== -1; });
+    $("gl-body").innerHTML = list.length ? list.map(function (g) {
+      return "<dt>" + esc(g[0]) + (g[1] ? "<small>" + esc(g[1]) + "</small>" : "") + "</dt><dd>" + B(esc(g[2]), esc(g[3])) + "</dd>";
+    }).join("") : '<dd class="caption" style="margin-top:12px">' + B("找不到「" + esc(q) + "」。", 'Nothing matches "' + esc(q) + '".') + "</dd>";
+    $("gl-count").innerHTML = B(list.length + " / " + GL.length + " 個", list.length + " of " + GL.length);
+  }
+  $("gl-search").addEventListener("input", renderGl);
+  renderGl();
+  function openGloss() { $("gloss").classList.add("open"); $("gl-search").focus(); }
+  function closeGloss() { if (!$("gloss").classList.contains("open")) return; $("gloss").classList.remove("open"); $("gloss-btn").focus(); }
+  $("gloss-btn").addEventListener("click", openGloss);
+  $("gloss-close").addEventListener("click", closeGloss);
+  $("gloss").addEventListener("click", function (e) { if (e.target === $("gloss")) closeGloss(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeGloss(); });
+
+  /* ---------- 自我測驗 ---------- */
+  var QZ = [
+    ["PAP 是由哪兩個區域合併而成？", "Which two regions merged to form PAP?", "TWN（台灣）與 AAP（亞太），於 2016/2017 合併。", "TWN (Taiwan) and AAP (Asia Pacific), in 2016/2017."],
+    ["RO 和 NS 分別是什麼？", "What are RO and NS?", "RO = Regional Office 區域辦公室；NS = Nation Subsidiary 國家子公司。", "RO is a Regional Office; NS is a Nation Subsidiary."],
+    ["哪些國家同時有倉庫與 Uni-load？", "Which countries have both a warehouse and Uni-load?", "Australia、India、Malaysia、Thailand、Indonesia、Singapore，共 6 國。", "Australia, India, Malaysia, Thailand, Indonesia and Singapore (6 countries)."],
+    ["料號 DG.B88SA.001 的第 6、7 碼代表什麼？", "What do the 6th and 7th characters of DG.B88SA.001 mean?", "不算小數點，第 6 碼 S = AAP（RO），第 7 碼 A = ACA（澳洲）。", "Not counting dots, the 6th is S = AAP (RO) and the 7th is A = ACA (Australia)."],
+    ["HFP 是什麼？", "What is HFP?", "Hold For Part：等料中的 backorder 案件。", "Hold For Part: backorder cases waiting for a part."],
+    ["502/503 aging 在看什麼？", "What does 502/503 aging measure?", "不良品停留在 CSS、還沒有處理的帳齡。", "How long defective parts have sat in CSS with no action."],
+    ["Markup Review 不通過時，流程回到哪一步？", "Where does the flow go when the markup review fails?", "回到 ODM 重新提供 SPL draft w/o price（步驟 03）。", "Back to the ODM for a new SPL draft without prices (step 03)."],
+    ["SPL 最晚什麼時候要發布給 RO？", "When must the SPL be released to ROs?", "FCS-1wk，首次客戶出貨前一週。", "At FCS-1wk, one week before first customer shipment."],
+    ["NS 使用哪些系統？", "Which systems do NS use?", "PLM、GLS、CSS。PLS 只有 RO 使用。", "PLM, GLS and CSS. Only ROs use PLS."],
+    ["NPI Service BOM 和 MP Service BOM 有什麼不同？", "How do the NPI and MP Service BOMs differ?", "NPI：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後在 Service BOM 建立 Acer P/N。MP：由 ODM 每月定期更新。", "NPI: after the FRU meeting the ODM drafts the FRU list, which is reviewed before Acer P/Ns are created. MP: the ODM updates it monthly."],
+    ["Create PO 和 Confirm PO to ODM 分別在哪個系統做？", "Which systems handle Create PO and Confirm PO to ODM?", "Create PO 在 CSS；Confirm PO to ODM 在 PLS。", "Create PO in CSS; Confirm PO to ODM in PLS."],
+    ["料號開頭 86 是什麼子類別？", "Which sub-category starts with 86?", "SCREW（螺絲），Product group Y9。", "SCREW, product group Y9."]
+  ];
+  $("quiz-count").textContent = QZ.length + " Q";
+  $("quiz-list").innerHTML = QZ.map(function (q, i) {
+    var n = (i < 9 ? "0" : "") + (i + 1);
+    return '<details><summary><span class="qn">Q' + n + "</span><span>" + B(esc(q[0]), esc(q[1])) + '</span><span class="more">' + B("看答案", "Answer") + '</span></summary><p class="ans">' + B(esc(q[2]), esc(q[3])) + "</p></details>";
+  }).join("");
+  var toggleAll = function (open) { Array.prototype.forEach.call(document.querySelectorAll("#quiz-list details"), function (d) { d.open = open; }); };
+  $("quiz-open").addEventListener("click", function () { toggleAll(true); });
+  $("quiz-close").addEventListener("click", function () { toggleAll(false); });
+
+  /* ---------- 啟動 ---------- */
+  setTheme(store.get("pap.theme"));
+  setFont(store.get("pap.font"));
+  setLang(store.get("pap.lang") || "zh");
+  showTab(location.hash.slice(1), false);
+})();
+</script>
+</body>
+</html>
