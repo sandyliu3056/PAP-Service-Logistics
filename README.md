@@ -1,43 +1,42 @@
-# PAP Service Logistics
+# PAP Service Logistics Guide · 泛亞太區服務物流說明簡冊（網頁版）
 
-PAP 服務物流組織與作業介紹網站（中文／English），版型沿用 [RMA 售後零件規劃平台](https://github.com/sandyliu3056/RMA)。
+Acer 泛亞太區（PAP）服務物流說明簡冊的網頁版：八篇、二十七章，加上資料查證紀錄附錄。內容、章節順序與版面依據《PAP Service Logistics Guide》簡冊（PDF）製作；網站為單一靜態頁面，可直接以 GitHub Pages 發布。
 
-> 本網站內容屬公司內部資料（**CONFIDENTIAL**），請勿對外散布；資料以原始文件為準。
+## 結構
 
-## 網站架構
+```
+index.html          由 build.py 產生的完整網頁（請勿手動編輯）
+src/template.html   網頁外殼（標題列、篇章導覽、語言切換）
+src/style.css       版面與配色（Caveat／Kalam／Patrick Hand／LXGW WenKai TC）
+src/legacy.css      地圖與架構圖的樣式
+src/app.js          導覽、語言模式、代碼資料庫與說明視窗、地圖、架構圖、料號工具、名詞說明、複習題
+src/toc.json        篇與章的標題（中英）
+src/ch/chNN.html    各章內容片段（寫法見 src/COMPONENTS.md）
+src/widgets/*.html  由資料產生的表格與互動圖（架構圖、地圖、料號解析器、名詞說明、複習題、查證紀錄）
+src/data/           glossary.json（名詞說明）、review.json（複習題）、ver_data.json 與 ver_sources.json（查證資料）
+art/                簡冊中的插圖（工廠、倉庫、辦公大樓、服務中心、卡車、飛機、地球、工具等）
+flags/              國旗（SVG）
+fonts/              Caveat 與 Patrick Hand（SIL OFL）；Kalam 與 LXGW WenKai TC 由 Google Fonts 載入
+world.js            世界地圖路徑
+org.js              企業架構圖的節點與關係
+verify.js           資料查證清單（由 tools/build_verify.py 產生）
+VERIFICATION.md     資料查證清單（Markdown 版）
+```
 
-| 主頁 | 子頁 |
-|---|---|
-| 網站介紹（首頁） | 導言、PAP 至各國子公司路線圖與子公司代碼導覽、一件備品的旅程、網站架構 |
-| 1 總覽 | 區域地圖、組織定位與供應流程、補充數字 |
-| 2 公司介紹 | 2.1 企業架構圖（互動式）· 2.2 宏碁 Acer（含泛宏碁集團）· 2.3 集團子公司 · 2.4 ODM 代工廠（含仁寶）· 2.5 服務夥伴 · 2.6 資料查證 |
-| 3 組織與據點 | 3.1 全球區域 · 3.2 全球據點 · 3.3 PAP 組織 · 3.4 組織要點 · 3.5 據點類型 · 3.6 據點分布 · 3.7 倉庫與 Uni-load · 3.8 標案與 Uni-load |
-| 4 作業與料號 | 4.1 團隊職責（含 PAP 採購的角色與流程）· 4.2 主要職能 · 4.3 系統 · 4.4 SPL 定義流程 · 4.5 Service BOM · 4.6 規劃模式 · 4.7 料號命名規則 · 4.8 料號解析 · 4.9 子類別對照 |
-| 5 HSN 集團 | 5.1 概要 · 5.2 各國公司 · 5.3 流程調整 |
-| 6 名詞與代碼 | 6.1 營運模式 · 6.2 供應鏈角色 · 6.3 售後服務名詞 · 6.4 證券市場名詞 · 6.5 區域代碼 · 6.6 子公司代碼 · 6.7 其他國家與單位 · 6.8 HSN 代碼 · 6.9 縮寫說明 |
-| 7 重點複習 | 18 題 |
+## 建置與檢查
 
-- 右上角可切換中文／English、字型與主題（預設土色，另有綠色、藍色），設定會記在瀏覽器裡。
-- 3.2 全球據點依「Acer Around the World」據點名錄整理，地圖可切換全球、歐洲、亞太檢視。
-- 2 公司介紹之沿革與業務資料取自公開網路資料（查詢日期 2026 年 10 月）；每條敘述的查證狀態列於 2.6 資料查證與 `VERIFICATION.md`，僅單一來源或未能證實者分別標示；與內部文件不一致時，以內部文件為準。
-- 內文中所有代碼與縮寫皆可點選：說明視窗顯示一句話說明、全稱、類別、國家／地區、所屬單位、說明、來源與查證狀態（資料在 `index.html` 的 `AB` 陣列）。
-- 地圖下方的國家代碼導覽（國旗＋代碼＋英文＋中文）與地圖標記互相連動。
-- 2.1 企業架構圖可縮放、拖曳、重設，點選節點開啟詳細資訊；資料在 `org.js`，未經證實的關係標示為待確認。
-- 公司 logo：放入 `logos/<代號>.svg|png` 即自動顯示（見 `logos/README.md`）；尚無檔案者標示「Logo 待補」。
-- 網址加上子頁代碼可直接開啟該頁，例如 `#org-pap`、`#ref-abbr`。
+```
+python3 build.py                      # 組合 index.html；有缺漏時列出警告並以非零碼結束
+python3 -I tools/checkfrag.py src/ch/ch05.html   # 檢查單一章節片段（標籤是否配對、雙語是否齊全、禁用字串）
+python3 -I tools/build_verify.py      # 由 src/data 重新產生 verify.js 與 VERIFICATION.md
+```
 
-## 檔案
+本機預覽：`python3 -m http.server 8765`，開啟 http://localhost:8765/ 。
 
-- `index.html`：網站本體（HTML、CSS、JavaScript；代碼資料庫 `AB`）
-- `org.js`：企業架構圖的節點、連線與版面資料
-- `verify.js`、`VERIFICATION.md`：資料查證清單（同一份資料，分別供網頁與閱讀用）
-- `world.js`：世界地圖輪廓
-- `flags/`：國旗圖示；`logos/`：公司 logo
-- `favicon.svg`
+## 語言
 
-純靜態網頁，不需要建置。在 GitHub 的 Settings → Pages 選 `main` 分支、根目錄即可發布。
+預設為雙語（英文在前、中文在後，與簡冊相同），可在右上角切換為僅中文或僅英文。內文中的代碼與縮寫（PAP、NS、ODM、SPL…）可點選，開啟定義、全稱、類別、來源與查證狀態。
 
-## 來源與授權
+## 資料來源與查證
 
-- 地圖輪廓：[johan/world.geo.json](https://github.com/johan/world.geo.json)（Natural Earth 110m，公有領域）
-- 國旗：[flag-icons](https://github.com/lipis/flag-icons)（MIT）
+公司與產業資料來自公開來源；組織與作業內容依據內部教材。每一條公開事實的來源與查證結果列於附錄「資料查證紀錄」與 `VERIFICATION.md`；僅有單一來源或來源互異者，依其狀態標示。本網站內容與原始文件不一致時，以原始文件為準。

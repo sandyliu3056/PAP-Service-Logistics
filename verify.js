@@ -1,4 +1,4 @@
-// 資料查證清單（由 scratchpad/build_companies2.py 產生）
+// 資料查證清單（由 tools/build_verify.py 產生）
 window.PAP_VER = [
  {
   "id": "acer-founded",

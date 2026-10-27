@@ -1,10 +1,10 @@
 # 資料查證清單 Verification register
 
-公司介紹（index.html 第 2 章與第 5 章）中每一條公開事實的查證紀錄。最後更新：2026-10-27。
+網站（index.html，附錄「資料查證紀錄」）中每一條公開事實的查證紀錄。最後更新：2026-10-27。
 
 狀態：Verified＝兩個以上獨立來源一致；Single Source＝僅一個來源；Conflicting Sources＝來源互異；Not Found＝未找到可靠來源；Internal Document＝僅見於內部教材；Pending Internal Confirmation＝需內部資料確認。
 
-第二輪網路查證（2026-10-27）因搜尋額度用盡而未能執行；本表為第一輪查證結果。
+統計：Verified 已核實 38；Single Source 單一來源 24；Conflicting Sources 來源衝突 3；Not Found 查無可靠來源 2；Internal Document 內部文件 2。
 
 | # | 公司 | 原始敘述 | 查證後敘述 | 來源 1 | 來源 2 | 查證結果 | 衝突或限制 | 最後更新 |
 |---|---|---|---|---|---|---|---|---|
