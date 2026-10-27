@@ -187,28 +187,63 @@
   .tabs button.home .num { display:inline-flex; color:var(--primary); }
   .tabs button.home .ico { width:16px; height:16px; stroke-width:2; }
 
-  /* 網站介紹：淺色、置中、留白 */
-  .intro-hero { position:relative; overflow:hidden; text-align:center; padding:76px 24px 80px; border-radius:16px; background:linear-gradient(180deg, var(--stripe), var(--card)); border:1px solid var(--line); }
-  .intro-bg { position:absolute; inset:0; width:100%; height:100%; opacity:.55; pointer-events:none; }
-  .intro-bg .sea { fill:none; }
-  .intro-bg path { fill:var(--line); stroke:none; }
-  .intro-hero::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 50% 62% at 50% 50%, var(--card) 40%, transparent 100%); pointer-events:none; }
-  .intro-copy { position:relative; z-index:1; max-width:40em; margin:0 auto; }
-  .intro-title { font-family:var(--font-head); font-size:2.6rem; line-height:1.2; margin:0 0 14px; color:var(--navy); }
-  .intro-lead { margin:0 auto; font-size:1.05rem; line-height:1.8; color:var(--mute); max-width:32em; }
+  /* 網站介紹：託運單式的首頁 */
+  .waybill { display:grid; grid-template-columns:minmax(0, 1fr) 26px minmax(0, 1.08fr); background:var(--panel); border:1.5px solid var(--line); border-radius:18px; box-shadow:0 18px 40px rgba(40,40,30,.10); position:relative; overflow:hidden; }
+  .wb-copy { padding:44px 40px 32px 46px; display:flex; flex-direction:column; min-width:0; }
+  .wb-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .wb-meta .eyebrow { margin:0; }
+  .wb-code { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 9px; }
+  .intro-title { font-family:var(--font-head); font-size:2.45rem; line-height:1.22; margin:0 0 14px; color:var(--navy); }
+  .intro-title em { font-style:normal; position:relative; display:inline-block; }
+  .intro-title em::after { content:""; position:absolute; left:-.04em; right:-.04em; bottom:-.1em; height:.4em; background:var(--accent); opacity:.8; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; transform-origin:left center; animation:uline .9s .35s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes uline { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+  .intro-lead { margin:0; font-size:1.02rem; line-height:1.85; color:var(--mute); max-width:30em; }
   .tlink { color:var(--ink); font-weight:700; text-decoration:none; border-bottom:2px solid var(--selline); white-space:nowrap; }
   .tlink:hover { color:var(--primary); border-bottom-color:var(--primary); }
-  .intro-cta { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:30px; }
+  .intro-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
   .intro-cta .btn { font-size:1rem; padding:8px 24px; border-radius:999px; }
   .btn.primary { background:var(--navy); color:var(--gold); border-color:var(--navy); }
   .btn.primary:hover { background:var(--sel); }
+  .wb-fields { margin:auto 0 0; padding-top:30px; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px 22px; }
+  .wb-fields > div { border-top:1.5px solid var(--line); padding-top:8px; }
+  .wb-fields dt { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; color:var(--mute); text-transform:uppercase; }
+  .wb-fields dd { margin:3px 0 0; font-weight:700; line-height:1.4; }
+  .wb-fields dd small { display:block; font-weight:400; color:var(--mute); font-size:.8rem; }
+  .wb-foot { margin-top:0; padding-top:26px; display:flex; align-items:center; gap:14px; }
+  .wb-bar { width:150px; height:26px; fill:var(--navy); opacity:.75; flex:none; }
+  .wb-id { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; color:var(--mute); }
+  .wb-cut { position:relative; border-left:2px dashed var(--line); margin:22px 0; }
+  .wb-cut::before, .wb-cut::after { content:""; position:absolute; left:-13px; width:24px; height:24px; border-radius:50%; background:var(--card); border:1.5px solid var(--line); }
+  .wb-cut::before { top:-34px; }
+  .wb-cut::after { bottom:-34px; }
+  .map.wb-map { background:transparent; border:0; padding:22px 22px 18px 10px; display:flex; flex-direction:column; min-width:0; }
+  .wb-map svg { border-radius:12px; }
+  .wb-map figcaption { margin-top:10px; font-size:.82rem; color:var(--mute); display:flex; align-items:center; gap:8px; }
+  .wb-map figcaption i { width:22px; border-top:2px dashed var(--navy); flex:none; }
+  .wb-map path.arc { fill:none; stroke:var(--navy); stroke-linecap:round; opacity:.55; animation:pap-dash 5s linear infinite; }
+  @keyframes pap-dash { to { stroke-dashoffset:-40; } }
+  .wb-map .idot { fill:var(--r-pap); stroke:#fff; }
+  .wb-map .idot.hq { fill:var(--navy); stroke:var(--gold); }
+  .wb-map .mover { fill:var(--accent); stroke:#fff; stroke-width:.8; }
+  .wb-map .pulse { fill:var(--navy); transform-box:fill-box; transform-origin:center; animation:pulse 2.8s ease-out infinite; }
+  @keyframes pulse { 0% { transform:scale(.35); opacity:.4; } 100% { transform:scale(1.25); opacity:0; } }
+  .wb-map .olabel { cursor:default; }
   .intro-sec { margin:68px auto 0; max-width:980px; }
   .intro-sec > h3 { font-family:var(--font-head); font-size:1.35rem; margin:0 0 26px; text-align:center; }
-  .pillars { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:44px; text-align:center; }
-  .pillar .pi { display:inline-flex; color:var(--primary); }
-  .pillar .pi .ico { width:30px; height:30px; stroke-width:1.5; }
-  .pillar h4 { margin:10px 0 6px; font-size:1.05rem; }
-  .pillar p { margin:0 auto; max-width:22em; color:var(--mute); font-size:.92rem; line-height:1.7; }
+  /* 一件備品的旅程 */
+  .journey { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:18px; position:relative; }
+  .journey::before { content:""; position:absolute; left:10%; right:10%; top:22px; border-top:2px dashed var(--selline); }
+  .journey li { position:relative; display:grid; justify-items:center; align-content:start; gap:6px; text-align:center; padding:0 6px; }
+  .jn { width:46px; height:46px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:1.05rem; border:4px solid var(--card); box-shadow:0 0 0 1.5px var(--line); position:relative; z-index:1; }
+  .journey .pi { width:44px; height:44px; margin-top:6px; }
+  .journey b { font-size:1.02rem; margin-top:2px; }
+  .journey p { margin:0; color:var(--mute); font-size:.88rem; line-height:1.65; max-width:17em; }
+  .journey button { background:none; border:0; padding:0; color:var(--accent); font-family:inherit; font-size:.86rem; font-weight:700; cursor:pointer; }
+  .journey button:hover { text-decoration:underline; }
+  .jparcel { position:absolute; top:12px; left:10%; width:22px; height:22px; color:var(--primary); z-index:0; pointer-events:none; animation:jmove 16s linear infinite; }
+  .jparcel .ico { width:22px; height:22px; stroke-width:2; background:var(--card); border-radius:50%; }
+  @keyframes jmove { 0% { left:10%; opacity:0; } 3% { opacity:1; } 97% { opacity:1; } 100% { left:calc(90% - 22px); opacity:0; } }
+  /* 網站架構：主頁 → 子頁 */
   .toc-sum { text-align:center; color:var(--mute); font-size:.86rem; margin:-16px 0 20px; }
   .toc { border-top:2px solid var(--navy); }
   .toc-ch { display:grid; grid-template-columns:3em minmax(0, 1fr); gap:2px 16px; padding:18px 6px 16px; border-bottom:1px solid var(--line); }
@@ -223,6 +258,7 @@
   .toc-subs button:hover span:last-child { color:var(--primary); text-decoration:underline; }
   .toc-single { color:var(--mute); font-size:.84rem; }
   .intro-tip { text-align:center; color:var(--mute); font-size:.86rem; margin:60px 0 0; }
+  @media (prefers-reduced-motion: reduce) { .wb-map path.arc, .wb-map .pulse, .jparcel, .intro-title em::after { animation:none; } }
 
   /* 全球據點 */
   .office-group { margin-top:32px; }
@@ -272,10 +308,21 @@
   .site-chip b { margin-left:2px; }
 
   @media (max-width:860px) {
-    .intro-hero { padding:52px 18px 56px; }
-    .intro-title { font-size:2rem; }
+    .waybill { grid-template-columns:minmax(0, 1fr); }
+    .wb-copy { padding:30px 22px 22px; }
+    .wb-cut { border-left:0; border-top:2px dashed var(--line); margin:0 22px; }
+    .wb-cut::before, .wb-cut::after { top:-13px; }
+    .wb-cut::before { left:-35px; }
+    .wb-cut::after { left:auto; right:-35px; }
+    .map.wb-map { padding:18px 18px 16px; }
+    .intro-title { font-size:1.9rem; }
     .intro-sec { margin-top:52px; }
-    .pillars { grid-template-columns:minmax(0, 1fr); gap:30px; }
+    .journey { grid-template-columns:minmax(0, 1fr); gap:22px; }
+    .journey::before { left:22px; right:auto; top:0; bottom:0; border-top:0; border-left:2px dashed var(--selline); }
+    .journey li { grid-template-columns:46px minmax(0, 1fr); column-gap:14px; justify-items:start; text-align:left; }
+    .journey li .jn { grid-row:1 / span 4; }
+    .journey .pi { margin-top:0; }
+    .jparcel { display:none; }
   }
 
   .pg-abbr { margin-top:44px; padding:16px 20px 18px; background:var(--stripe); border:1.5px solid var(--line); border-radius:12px; }
@@ -640,42 +687,37 @@
 
   <!-- 網站介紹 -->
   <section class="page single" id="page-intro">
-    <div class="intro-hero">
-      <svg class="intro-bg" id="map-intro" viewBox="0 15 1000 410" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
-      <div class="intro-copy">
-        <p class="eyebrow">About this site</p>
-        <h2 class="intro-title"><span class="zh">PAP 服務物流簡介</span><span class="en">Introduction to PAP Service Logistics</span></h2>
+    <div class="waybill">
+      <div class="wb-copy">
+        <div class="wb-meta"><span class="wb-code">PAP · SL</span><span class="eyebrow">Pan Asia Pacific · Service Logistics</span></div>
+        <h2 class="intro-title"><span class="zh">PAP <em>服務物流</em>簡介</span><span class="en">Introduction to <em>PAP Service Logistics</em></span></h2>
         <p class="intro-lead zh">本網站說明 Acer 泛亞太區（PAP）服務物流之<a class="tlink" href="#corp" data-go="corp">相關企業</a>、<a class="tlink" href="#org" data-go="org">組織</a>、<a class="tlink" href="#sites" data-go="sites">服務據點</a>、<a class="tlink" href="#hsn" data-go="hsn">HSN 集團</a>、<a class="tlink" href="#ops" data-go="ops">作業流程</a>、<a class="tlink" href="#pn" data-go="pn">料號規則</a>與<a class="tlink" href="#ref" data-go="ref">常用代碼</a>。</p>
         <p class="intro-lead en">This site describes the <a class="tlink" href="#corp" data-go="corp">companies</a>, <a class="tlink" href="#org" data-go="org">organisation</a>, <a class="tlink" href="#sites" data-go="sites">service sites</a>, <a class="tlink" href="#hsn" data-go="hsn">HSN Group</a>, <a class="tlink" href="#ops" data-go="ops">operations</a>, <a class="tlink" href="#pn" data-go="pn">part-number rules</a> and <a class="tlink" href="#ref" data-go="ref">common codes</a> of Acer's Pan Asia Pacific (PAP) service logistics.</p>
         <div class="intro-cta">
           <button class="btn primary" type="button" data-go="overview"><span class="zh">進入總覽 →</span><span class="en">Go to overview →</span></button>
           <button class="btn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
         </div>
+        <dl class="wb-fields" id="wb-fields"></dl>
+        <div class="wb-foot"><svg class="wb-bar" id="barcode-intro" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true"></svg><span class="wb-id">ACER · PAP · SERVICE LOGISTICS</span></div>
       </div>
+      <div class="wb-cut" aria-hidden="true"></div>
+      <figure class="map wb-map">
+        <svg id="map-intro" viewBox="688 100 304 278" role="img" aria-label="PAP and its nation subsidiaries"></svg>
+        <figcaption><i></i><span class="zh">PAP（台灣）至各國子公司（NS）之備品供應路線</span><span class="en">Spare-parts routes from PAP (Taiwan) to the nation subsidiaries (NS)</span></figcaption>
+      </figure>
     </div>
 
     <section class="intro-sec">
-      <h3><span class="zh">PAP 服務物流主要職掌</span><span class="en">Core responsibilities</span></h3>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="pi" data-ico="ro"></span>
-          <h4><span class="zh">區域辦公室（RO）</span><span class="en">Regional office (RO)</span></h4>
-          <p class="zh">介於總部（HQ）與各國子公司（NS）之間，統籌泛亞太區服務物流。</p>
-          <p class="en">Sits between headquarters (HQ) and the nation subsidiaries (NS), coordinating service logistics across the region.</p>
-        </div>
-        <div class="pillar">
-          <span class="pi" data-ico="plan"></span>
-          <h4><span class="zh">備品規劃與採購</span><span class="en">Spare-parts planning and purchasing</span></h4>
-          <p class="zh">彙整各 NS 需求預測，向 ODM 下達採購單（PO）。</p>
-          <p class="en">Consolidates NS demand forecasts and places purchase orders (POs) with the ODM.</p>
-        </div>
-        <div class="pillar">
-          <span class="pi" data-ico="box"></span>
-          <h4><span class="zh">庫存與料號管理</span><span class="en">Inventory and part numbers</span></h4>
-          <p class="zh">管理中央倉庫與庫存，維護 Service BOM 與服務料號。</p>
-          <p class="en">Manages the central warehouse and inventory, and maintains the Service BOM and part numbers.</p>
-        </div>
-      </div>
+      <h3><span class="zh">一件備品的旅程</span><span class="en">The journey of a spare part</span></h3>
+      <p class="toc-sum"><span class="zh">從需求到維修，PAP 服務物流負責其中的規劃、採購、倉儲與供應。</span><span class="en">From demand to repair: PAP service logistics handles the planning, purchasing, warehousing and supply along the way.</span></p>
+      <ol class="journey">
+        <span class="jparcel" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/></svg></span>
+        <li><span class="jn">1</span><span class="pi" data-ico="plan"></span><b><span class="zh">需求規劃</span><span class="en">Demand planning</span></b><p><span class="zh">各國子公司（NS）提出需求，PAP 彙整預測並提交總部。</span><span class="en">The nation subsidiaries (NS) raise demand; PAP consolidates the forecast and submits it to headquarters.</span></p><button type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button></li>
+        <li><span class="jn">2</span><span class="pi" data-ico="ops"></span><b><span class="zh">採購下單</span><span class="en">Purchasing</span></b><p><span class="zh">PAP 依規劃向 ODM（如仁寶）下達採購單（PO）。</span><span class="en">PAP places purchase orders (POs) with the ODM, such as Compal, according to the plan.</span></p><button type="button" data-go="ops-role"><span class="zh">團隊職責 →</span><span class="en">Responsibilities →</span></button></li>
+        <li><span class="jn">3</span><span class="pi" data-ico="box"></span><b><span class="zh">倉儲與料號</span><span class="en">Warehousing and part numbers</span></b><p><span class="zh">管理中央倉庫與庫存，維護 Service BOM 與服務料號。</span><span class="en">Manages the central warehouse and inventory, and maintains the Service BOM and part numbers.</span></p><button type="button" data-go="ops-bom"><span class="zh">Service BOM →</span><span class="en">Service BOM →</span></button></li>
+        <li><span class="jn">4</span><span class="pi" data-ico="route"></span><b><span class="zh">供應各國</span><span class="en">Supply to the countries</span></b><p><span class="zh">料件供應至各國子公司；2026 年 12 月 1 日起經由 HSN Group。</span><span class="en">Parts are supplied to the nation subsidiaries; from 1 December 2026 through HSN Group.</span></p><button type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></li>
+        <li><span class="jn">5</span><span class="pi" data-ico="tool"></span><b><span class="zh">維修服務</span><span class="en">Repair</span></b><p><span class="zh">各國服務中心與授權服務商（ASP）為客戶完成維修。</span><span class="en">Service centres and authorised service providers (ASPs) in each country complete the repair.</span></p><button type="button" data-go="sites-types"><span class="zh">據點類型 →</span><span class="en">Site types →</span></button></li>
+      </ol>
     </section>
 
     <section class="intro-sec">
@@ -1487,7 +1529,9 @@
     review: '<path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.6 1.6L8 4.8M3.5 12l1.6 1.6L8 10.8M3.5 18l1.6 1.6L8 16.8"/>',
     ro: '<path d="M4 21V8l8-4.5L20 8v13"/><path d="M9.5 21v-5h5v5M8.5 11h2M13.5 11h2"/>',
     plan: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M8.5 10h7M8.5 14h7M8.5 18h4"/>',
-    box: '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/>'
+    box: '<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/>',
+    route: '<path d="M3 7h10.5v9.5H3z"/><path d="M13.5 10.5h3.8L20.5 14v2.5h-7"/><circle cx="7" cy="17.8" r="1.9"/><circle cx="17" cy="17.8" r="1.9"/>',
+    tool: '<path d="M14.6 4.4a4.6 4.6 0 0 0-5.4 6.2L3.6 16.2a1.9 1.9 0 0 0 2.7 2.7l5.6-5.6a4.6 4.6 0 0 0 6.2-5.4l-2.7 2.7-2.5-.6-.6-2.5z"/>'
   };
   var ico = function (id) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICON[id] + "</svg>"; };
   var mark = function (v) { return v ? '<span class="yes" aria-label="yes">✓</span>' : '<span class="no" aria-label="no">—</span>'; };
@@ -1606,16 +1650,19 @@
   $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value, true); });
 
   /* ---------- 條碼（裝飾） ---------- */
-  (function () {
-    var seed = "DGB88SA001PAP", x = 0, i = 0, out = "";
+  function barcode(el, seed) {
+    if (!el) return;
+    var x = 0, i = 0, out = "";
     while (x < 400) {
       var c = seed.charCodeAt(i % seed.length) + i * 7, w = 1 + (c % 4), gap = 1 + ((c >> 2) % 3);
       if (x + w > 400) break;
       out += '<rect x="' + x + '" y="0" width="' + w + '" height="40"></rect>';
       x += w + gap; i++;
     }
-    $("barcode").innerHTML = out;
-  })();
+    el.innerHTML = out;
+  }
+  barcode($("barcode"), "DGB88SA001PAP");
+  barcode($("barcode-intro"), "ACERPAPSL2026");
 
   /* ---------- 服務據點資料 ---------- */
   // [旗幟, 中文, English, 自有, 外包, ASP, Call Centre, Local Parts Hub, 經度, 緯度, 標籤 x, 標籤 y]；null = 未列示
@@ -2045,7 +2092,46 @@
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
-  function drawIntro() { drawMap($("map-intro"), [0, 15, 1000, 410], function () { return ""; }, [], []); }
+  // 首頁託運單欄位：寄件、收件、涵蓋範圍、服務據點（由資料計算）
+  (function () {
+    var sites = 0;
+    INFRA.forEach(function (r) { sites += r.total; });
+    var F = [
+      ["FROM · 寄件", "From", "PAP", "區域辦公室（RO）· 台灣", "Regional office (RO) · Taiwan"],
+      ["TO · 收件", "To", NSC.length + " NS", "個國家子公司", "nation subsidiaries"],
+      ["COVERAGE · 涵蓋", "Coverage", INFRA.length, "個設有據點之國家／地區", "countries and regions with sites"],
+      ["SERVICE SITES · 據點", "Service sites", sites, "處服務據點（CSD Q2 2025）", "service sites (CSD Q2 2025)"]
+    ];
+    $("wb-fields").innerHTML = F.map(function (f) {
+      return "<div><dt>" + B(f[0], f[1]) + "</dt><dd>" + f[2] + "<small>" + B(f[3], f[4]) + "</small></dd></div>";
+    }).join("");
+  })();
+  // 首頁地圖：PAP（台灣）至各國子公司的供應路線，沿線有移動的小點
+  function drawIntro() {
+    var svg = $("map-intro"), vb = [688, 100, 304, 278], k = vb[2] / 520;
+    if (!svg || !window.PAP_WORLD) return;
+    drawMap(svg, vb, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); }, [], []);
+    var at = function (cc) { for (var i = 0; i < OFFICES.length; i++) if (OFFICES[i][1] === cc && OFFICES[i][0] !== "am") return OFFICES[i]; return null; };
+    var tw = at("tw"), ox = px(tw[10]), oy = py(tw[11]);
+    var motion = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    var dots = [{ x: ox, y: oy, r: 7.5 * k, hq: true }], items = [{ x: ox, y: oy, r: 7.5 * k, name: "PAP", cls: "olabel hq" }], arcs = "", movers = "";
+    NSC.filter(function (n) { return n[1]; }).forEach(function (n, j) {
+      var o = at(n[1]);
+      if (!o) return;
+      var x = px(o[10]), y = py(o[11]), dx = x - ox, dy = y - oy;
+      var cx = (ox + x) / 2 - dy * .22, cy = (oy + y) / 2 + dx * .22;
+      var d = "M" + ox.toFixed(1) + " " + oy.toFixed(1) + " Q" + cx.toFixed(1) + " " + cy.toFixed(1) + " " + x.toFixed(1) + " " + y.toFixed(1);
+      arcs += '<path class="arc" d="' + d + '" style="stroke-width:' + (1.4 * k).toFixed(2) + ";stroke-dasharray:" + (4 * k).toFixed(2) + " " + (3 * k).toFixed(2) + '"></path>';
+      if (motion) movers += '<circle class="mover" r="' + (2.6 * k).toFixed(2) + '"><animateMotion dur="' + (6 + (j % 4)) + 's" begin="-' + (j * 1.3).toFixed(1) + 's" repeatCount="indefinite" path="' + d + '"></animateMotion></circle>';
+      dots.push({ x: x, y: y, r: 4.6 * k });
+      items.push({ x: x, y: y, r: 4.6 * k, name: n[0], cls: "olabel" });
+    });
+    var lay = placeLabels(vb, k, dots, items);
+    svg.insertAdjacentHTML("beforeend", arcs + lay.leads + dots.map(function (d) {
+      return (d.hq ? '<circle class="pulse" cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + (d.r * 2.2).toFixed(2) + '"></circle>' : "") +
+        '<circle class="idot' + (d.hq ? " hq" : "") + '" cx="' + d.x.toFixed(1) + '" cy="' + d.y.toFixed(1) + '" r="' + d.r.toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
+    }).join("") + movers + lay.texts);
+  }
 
   /* ---------- 總覽 ---------- */
   var STATS = [[11, "國家子公司（NS）", "Nation subsidiaries (NS)"], [20, "設有據點之國家／地區", "Countries and regions with sites"], [507, "授權服務商（ASP）", "Authorized service providers"], [5, "HSN Group 公司", "HSN Group companies"]];
@@ -2488,7 +2574,7 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每頁第一次出現時加上可點的虛線 ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .wb-fields, .wb-meta, .wb-foot, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
