@@ -190,6 +190,29 @@
   .region-key .rk-sub { width:100%; color:var(--mute); font-size:.8rem; padding-left:22px; line-height:1.6; }
   .region-key .ab { font-weight:700; }
   .legend-chips i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+  /* 國家代碼導覽（地圖下方） */
+  .code-nav { display:grid; grid-template-columns:repeat(auto-fill, minmax(215px, 1fr)); gap:8px; margin-top:12px; }
+  .code-nav .cn { display:grid; grid-template-columns:28px auto minmax(0, 1fr); grid-template-rows:auto auto; column-gap:9px; row-gap:0; align-items:center; text-align:left; background:var(--panel); border:1.5px solid var(--line); border-radius:11px; padding:7px 11px 8px; font-family:inherit; color:var(--ink); cursor:pointer; min-width:0; transition:border-color .15s, background .15s; }
+  .code-nav .cn:hover { border-color:var(--selline); background:var(--hover); }
+  .code-nav .cn.on { border-color:var(--accent); background:var(--hl); box-shadow:0 0 0 2px var(--hl); }
+  .code-nav .cn .flag { grid-row:1 / span 2; width:26px; height:18px; margin:0; border-radius:3px; object-fit:cover; box-shadow:0 0 0 1px rgba(0,0,0,.12); }
+  .code-nav .cn .flag.none { background:var(--stripe); border:1px dashed var(--field); display:block; box-shadow:none; }
+  .code-nav .cn b { font-family:var(--font-mono); font-size:.95rem; letter-spacing:.03em; grid-row:1 / span 2; align-self:center; }
+  .code-nav .cn .cn-en { font-size:.86rem; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .code-nav .cn .cn-zh { font-size:.78rem; color:var(--mute); line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .code-nav .cn small { grid-column:1 / -1; font-size:.74rem; color:var(--mute); margin-top:4px; line-height:1.4; white-space:normal; }
+  .code-nav .cn small .st { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:0; }
+  .code-nav .cn.dim { border-style:dashed; }
+  .code-nav .cn.hq { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+  .code-nav .cn.hq .cn-zh { color:var(--hdr-sub); }
+  .ns-key .cn { padding:5px 8px 6px; grid-template-columns:22px auto minmax(0, 1fr); column-gap:7px; }
+  .ns-key .cn .flag { width:20px; height:14px; }
+  .ns-key .cn b { font-size:.8rem; }
+  .ns-key .cn .cn-en { font-size:.76rem; }
+  .ns-key .cn .cn-zh { font-size:.7rem; }
+  .map .pin.focus rect { stroke:var(--accent); stroke-width:1.4; animation:pinpulse 1.2s ease-out 2; }
+  @keyframes pinpulse { 0% { stroke-width:.6; } 50% { stroke-width:2.6; } 100% { stroke-width:1.4; } }
+  @media (max-width:600px) { .code-nav { grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); } .ns-key.code-nav { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
   .legend-chips i.hqdot { width:14px; height:14px; border-radius:50%; background:var(--navy); vertical-align:-2px; }
 
   /* 線條圖示 */
@@ -214,25 +237,31 @@
   .intro-cta .btn { font-size:1rem; padding:8px 24px; border-radius:999px; }
   .btn.primary { background:var(--navy); color:var(--gold); border-color:var(--navy); }
   .btn.primary:hover { background:var(--sel); }
-  .wb-fields { margin:26px 0 0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px 22px; }
-  .wb-fields > div { border-top:1.5px solid var(--line); padding-top:8px; }
-  .wb-fields dt { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; color:var(--mute); text-transform:uppercase; }
-  .wb-fields dd { margin:3px 0 0; font-weight:700; line-height:1.4; }
-  .wb-fields dd small { display:block; font-weight:400; color:var(--mute); font-size:.8rem; }
+  .kfacts { margin:24px 0 0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
+  .kf { position:relative; background:var(--panel); border:1.5px solid var(--line); border-radius:12px; padding:10px 12px 11px 50px; display:grid; gap:1px; }
+  .kf-i { position:absolute; left:12px; top:12px; width:28px; height:28px; border-radius:8px; background:var(--hover); color:var(--primary); display:grid; place-items:center; }
+  .kf-i .ico { width:18px; height:18px; }
+  .kf-l { font-size:.76rem; color:var(--mute); letter-spacing:.02em; }
+  .kf-v { font-family:var(--font-head); font-size:1.5rem; line-height:1.15; color:var(--navy); }
+  .kf-d { font-size:.78rem; color:var(--mute); line-height:1.45; }
+  .roles3 { margin:14px 0 0; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; }
+  .r3-t { grid-column:1 / -1; font-size:.76rem; color:var(--mute); letter-spacing:.04em; }
+  .roles3 .r3 { display:grid; gap:2px; text-align:left; background:var(--stripe); border:1.5px dashed var(--line); border-radius:10px; padding:7px 10px 8px; font-family:inherit; color:var(--ink); cursor:pointer; border-bottom-style:dashed; }
+  .roles3 .r3:hover { background:var(--hover); border-color:var(--selline); }
+  .roles3 .r3 b { font-family:var(--font-mono); font-size:.95rem; color:var(--primary); }
+  .roles3 .r3 span { font-size:.76rem; color:var(--mute); line-height:1.4; }
+  .wb-foot { grid-column:1 / -1; border-top:2px dashed var(--line); padding:14px 26px 20px; }
+  .wb-foot-t { font-size:.8rem; color:var(--mute); margin-bottom:8px; }
+  .ns-key.code-nav { grid-template-columns:repeat(6, minmax(0, 1fr)); gap:6px; margin-top:0; }
   .wb-cut { position:relative; border-left:2px dashed var(--line); margin:22px 0; }
   .wb-cut::before, .wb-cut::after { content:""; position:absolute; left:-13px; width:24px; height:24px; border-radius:50%; background:var(--card); border:1.5px solid var(--line); }
   .wb-cut::before { top:-34px; }
-  .wb-cut::after { bottom:-34px; }
+  .wb-cut::after { bottom:-12px; }
   .map.wb-map { background:transparent; border:0; padding:18px 18px 14px 8px; display:flex; flex-direction:column; min-width:0; justify-content:center; }
   .wb-map svg { border-radius:12px; }
   .wb-map figcaption { margin-top:10px; font-size:.82rem; color:var(--mute); display:flex; align-items:center; gap:8px; }
   .wb-map figcaption i { width:22px; border-top:2px dashed var(--navy); flex:none; }
-  .ns-key { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px; margin-top:12px; }
-  .ns-key button { display:flex; align-items:center; gap:7px; background:var(--panel); border:1.5px solid var(--line); border-radius:9px; padding:5px 9px; font-family:inherit; color:var(--ink); cursor:pointer; text-align:left; min-width:0; }
-  .ns-key button:hover { border-color:var(--selline); background:var(--hover); }
-  .ns-key .flag { width:20px; height:14px; border-radius:2px; object-fit:cover; flex:none; margin:0; box-shadow:0 0 0 1px rgba(0,0,0,.08); }
-  .ns-key b { font-family:var(--font-mono); font-size:.8rem; flex:none; }
-  .ns-key span { font-size:.78rem; color:var(--mute); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ns-key { margin-top:12px; }
   .wb-map .pin[data-cc="pap"] rect { fill:var(--navy); stroke:var(--navy); }
   .wb-map .pin[data-cc="pap"] text { fill:var(--gold); }
   .wb-map path.arc { fill:none; stroke:var(--navy); stroke-linecap:round; opacity:.55; animation:pap-dash 5s linear infinite; }
@@ -333,7 +362,7 @@
   .site-chip { font-size:.8rem; border-radius:999px; padding:1px 10px; background:var(--hover); border:1px solid var(--line); white-space:nowrap; }
   .site-chip b { margin-left:2px; }
 
-  @media (max-width:1100px) { .toc { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+  @media (max-width:1100px) { .toc { grid-template-columns:repeat(2, minmax(0, 1fr)); } .ns-key.code-nav { grid-template-columns:repeat(4, minmax(0, 1fr)); } }
   @media (max-width:600px) { .toc { grid-template-columns:minmax(0, 1fr); } .folder ol.two { grid-template-columns:minmax(0, 1fr); } }
   @media (max-width:860px) {
     .waybill { grid-template-columns:minmax(0, 1fr); }
@@ -343,7 +372,10 @@
     .wb-cut::before { left:-35px; }
     .wb-cut::after { left:auto; right:-35px; }
     .map.wb-map { padding:18px 18px 16px; }
-    .ns-key { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .ns-key.code-nav { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .kfacts { grid-template-columns:minmax(0, 1fr); }
+    .roles3 { grid-template-columns:minmax(0, 1fr); }
+    .wb-foot { padding:14px 18px 18px; }
     .intro-title { font-size:1.9rem; }
     .intro-sec { margin-top:52px; }
     .journey { grid-template-columns:minmax(0, 1fr); gap:22px; }
@@ -673,6 +705,8 @@
   .tnode[open] { border-color:var(--navy); box-shadow:0 3px 10px rgba(40,40,30,.08); }
   .tnode[open] > summary { border-bottom:1px dashed var(--line); }
   .tnode .tin { padding:12px 16px 14px; display:grid; gap:8px; font-size:.93rem; }
+  .tnode .tin .kvl > div { grid-template-columns:8.5em minmax(0, 1fr); }
+  @media (max-width:600px) { .kvl > div, .tnode .tin .kvl > div { grid-template-columns:minmax(0, 1fr); gap:2px; } }
   .tnode.root { border-color:var(--navy); }
   .tnode.root > summary { background:var(--navy); color:var(--gold); border-radius:8px; }
   .tnode.root > summary .f, .tnode.root > summary::after { color:var(--hdr-sub); }
@@ -688,6 +722,22 @@
   /* 縮寫 */
   .ab { font:inherit; color:inherit; background:none; border:0; border-bottom:1.5px dotted var(--accent); padding:0 1px; margin:0; cursor:help; line-height:inherit; letter-spacing:inherit; }
   .ab:hover, .ab.on { background:var(--hover); }
+  .ab.again { border-bottom-color:var(--selline); }
+  .kvl { margin:0; display:grid; gap:9px; }
+  .kvl > div { display:grid; grid-template-columns:7.2em minmax(0, 1fr); gap:8px; align-items:baseline; }
+  .kvl dt { font-size:.74rem; color:var(--mute); font-weight:700; letter-spacing:.04em; }
+  .kvl dd { margin:0; min-width:0; }
+  .kvl.wide > div { grid-template-columns:5em minmax(0, 1fr); }
+  .kvl.wide dd { line-height:1.75; }
+  .kvl .chip.rg { font-size:.76rem; padding:0 9px; }
+  .ab-what { font-weight:700; line-height:1.55; }
+  .src-list { margin:0; padding-left:1.2em; display:grid; gap:4px; font-size:.86rem; }
+  .src-list a { color:var(--accent); text-decoration:none; font-weight:700; }
+  .src-list a:hover { text-decoration:underline; }
+  .src-list small { display:block; color:var(--mute); font-size:.76rem; }
+  .pop-acts { display:flex; flex-wrap:wrap; gap:6px; }
+  .vs.standard { color:var(--mute); border-color:var(--selline); background:var(--stripe); }
+  .ab-pop header .vs { font-size:.7rem; }
   .ab-wrap { white-space:nowrap; }
   .ab-tools { display:flex; flex-wrap:wrap; gap:12px 16px; align-items:center; margin:0 0 14px; }
   .seg { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 18px; }
@@ -791,6 +841,13 @@
   .refs-wrap .refs { font-size:.9rem; margin-bottom:12px; }
   .refs-wrap .note { padding-bottom:14px; }
   .logo-box .initial { width:46px; height:46px; font-size:1.3rem; border-radius:12px; }
+  .logo-box { position:relative; }
+  .logo-box.has .initial { display:none; }
+  .logo-box:not(.has) { border-style:dashed; background:var(--stripe); }
+  .logo-box:not(.has)::after { position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); font-size:.6rem; line-height:1.5; padding:0 6px; border-radius:999px; background:#FFF4DC; color:#7A4E12; border:1px solid #D9A95A; white-space:nowrap; }
+  html[data-lang="zh"] .logo-box:not(.has)::after { content:attr(data-pz); }
+  html[data-lang="en"] .logo-box:not(.has)::after { content:attr(data-pe); }
+  .logo-box:not(.has) .initial { background:var(--mute); opacity:.75; }
   .logo-box.sm .initial { width:34px; height:34px; font-size:1rem; border-radius:9px; }
   /* 資料查證 */
   .ver-tbl td { white-space:normal; vertical-align:top; font-size:.86rem; line-height:1.55; min-width:9em; }
@@ -842,14 +899,18 @@
           <button class="btn primary" type="button" data-go="overview"><span class="zh">進入總覽 →</span><span class="en">Go to overview →</span></button>
           <button class="btn" type="button" data-go="ref-abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
         </div>
-        <dl class="wb-fields" id="wb-fields"></dl>
+        <div class="kfacts" id="kfacts"></div>
+        <div class="roles3" id="roles3"></div>
       </div>
       <div class="wb-cut" aria-hidden="true"></div>
       <figure class="map wb-map">
         <svg id="map-intro" viewBox="688 100 304 278" role="img" aria-label="PAP and its nation subsidiaries"></svg>
         <figcaption><i></i><span class="zh">PAP（台灣）至各國子公司（NS）之備品供應路線</span><span class="en">Spare-parts routes from PAP (Taiwan) to the nation subsidiaries (NS)</span></figcaption>
-        <div class="ns-key" id="ns-key"></div>
       </figure>
+      <div class="wb-foot">
+        <div class="wb-foot-t"><span class="zh">點選代碼可查看各國子公司的說明，地圖上的標記會同步標示</span><span class="en">Select a code to read about that subsidiary; the map marker is highlighted at the same time</span></div>
+        <div class="ns-key code-nav" id="ns-key"></div>
+      </div>
     </div>
 
     <section class="intro-sec">
@@ -1038,6 +1099,7 @@
               <span><i style="background:var(--r-pap2)"></i><span class="zh">其他 PAP 國家／地區</span><span class="en">Other PAP countries and regions</span></span>
             </figcaption>
           </figure>
+          <div class="code-nav" id="nav-ns" aria-label="Nation subsidiary codes"></div>
         </div>
         <div class="block">
           <h3><span class="zh">國家子公司與下轄單位</span><span class="en">Subsidiaries and the units under them</span></h3>
@@ -1082,6 +1144,7 @@
             <div class="map-scroll"><svg id="map-sites" viewBox="688 100 304 278" role="img" aria-label="PAP service sites"></svg></div>
             <figcaption class="legend-chips"><span><i style="background:var(--r-pap)"></i><span class="zh">設有服務據點之國家／地區（數字為據點合計）</span><span class="en">Countries and regions with service sites (number = total sites)</span></span></figcaption>
           </figure>
+          <div class="code-nav" id="nav-sites" aria-label="Countries with service sites"></div>
         </div>
         <div class="block">
           <div class="tbl">
@@ -1183,9 +1246,7 @@
               <span><i style="background:var(--r-emea)"></i><span class="zh">評估中</span><span class="en">Under evaluation</span></span>
             </figcaption>
           </figure>
-        </div>
-        <div class="block">
-          <div class="hsn-grid" id="hsn-grid"></div>
+          <div class="code-nav" id="nav-hsn" aria-label="HSN Group companies"></div>
         </div>
       </section>
 
@@ -1246,6 +1307,25 @@
             <li><span class="zh">依 planning 及各 NS 原訂採購數量，向 ODM（如仁寶 Compal）下達採購單（PO）。</span><span class="en">Based on planning and the quantities ordered by each NS, POs are placed with the ODM (e.g. Compal).</span></li>
             <li><span class="zh">向 ODM 採購整機或料件並供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group。</span><span class="en">Units and parts purchased from the ODM are supplied to the NS; from 1 December 2026 they are supplied through HSN Group.</span> <button class="btn sm" type="button" data-go="hsn-change"><span class="zh">流程調整 →</span><span class="en">Process change →</span></button></li>
           </ul>
+        </div>
+        <div class="block">
+          <h3><span class="zh">PAP 採購：全名、角色與流程</span><span class="en">PAP purchasing: the name, the role and the flow</span></h3>
+          <div class="box">
+            <dl class="kvl wide">
+              <div><dt><span class="zh">全名</span><span class="en">Full name</span></dt><dd><span class="zh"><b>PAP</b> = Pan Asia Pacific（泛亞太區）。PAP 是 Acer 總部之下的區域辦公室（RO，Regional Office），「PAP 採購」指 PAP 團隊為整個泛亞太區進行的備品（S/P，Spare Parts）規劃與採購（教材：SP planning &amp; Ordering）。</span><span class="en"><b>PAP</b> = Pan Asia Pacific. PAP is the regional office (RO) under Acer headquarters; "PAP purchasing" means the spare-parts (S/P) planning and ordering the PAP team does for the whole region (SP planning &amp; Ordering in the training material).</span></dd></div>
+              <div><dt><span class="zh">角色</span><span class="en">Role</span></dt><dd><span class="zh">PAP 位於總部（HQ）與各國子公司（NS）之間：彙整各 NS 的需求、向 ODM（代工廠，例如仁寶）下採購單、管理中央倉庫與不良品退回（RMA），並監控各 NS 的採購、庫存與達交績效。</span><span class="en">PAP sits between headquarters (HQ) and the nation subsidiaries (NS): it consolidates NS demand, places purchase orders with the ODM (the contract manufacturer, e.g. Compal), manages the central warehouse and returns (RMA), and monitors each NS's purchasing, inventory and fulfilment.</span></dd></div>
+            </dl>
+            <ol class="steps-plain" style="margin-top:14px">
+              <li><span class="zh"><b>需求</b>：各 NS 依規劃模式提出需求報表（Demand Report）。</span><span class="en"><b>Demand</b>: each NS submits a demand report under the planning mode.</span> <span class="stag doc">教材 7、25</span></li>
+              <li><span class="zh"><b>彙整</b>：PAP 彙整各 NS 的需求預測與特殊支援需求，提交 HQ。</span><span class="en"><b>Consolidation</b>: PAP consolidates the NS forecasts and special-support requests and submits them to HQ.</span> <span class="stag doc">教材 7</span></li>
+              <li><span class="zh"><b>下單</b>：PAP 於 CSS 建立採購單（Create PO），再於 PLS 向 ODM 確認（Confirm PO to ODM）。</span><span class="en"><b>Ordering</b>: PAP creates the PO in CSS and confirms it to the ODM in PLS.</span> <span class="stag doc">教材 7、16</span></li>
+              <li><span class="zh"><b>追蹤</b>：持續更新並追蹤預計出貨日（ETD）。</span><span class="en"><b>Follow-up</b>: the estimated time of departure (ETD) is updated and followed up.</span> <span class="stag doc">教材 7</span></li>
+              <li><span class="zh"><b>供應</b>：ODM 出貨的整機或料件供應予各 NS；自 2026 年 12 月 1 日起改經由 HSN Group 供應。</span><span class="en"><b>Supply</b>: the units and parts shipped by the ODM are supplied to the NS; from 1 December 2026 they go through HSN Group.</span> <span class="stag doc">教材 · 補充說明</span></li>
+              <li><span class="zh"><b>檢視</b>：PO、成本與庫存檢視，502/503 aging、HFP 等績效監控，以及每月營運報告。</span><span class="en"><b>Review</b>: PO, cost and inventory review, performance monitoring (502/503 aging, HFP) and the monthly operation report.</span> <span class="stag doc">教材 8</span></li>
+            </ol>
+            <p class="note"><span class="na"><span class="zh">待內部確認</span><span class="en">Pending internal confirmation</span></span> <span class="zh">付款責任、跨國運輸與關務安排，以及 HSN Group 介入後的訂單流向細節，教材未載明。</span><span class="en">Payment responsibility, cross-border transport and customs arrangements, and the detailed order flow once HSN Group is involved are not specified in the material.</span></p>
+          </div>
+          <p class="note"><button class="btn sm" type="button" data-go="ops-functions"><span class="zh">主要職能 →</span><span class="en">Main functions →</span></button> <button class="btn sm" type="button" data-go="ops-plan"><span class="zh">規劃模式 →</span><span class="en">Planning modes →</span></button> <button class="btn sm" type="button" data-go="ops-systems"><span class="zh">系統 →</span><span class="en">Systems →</span></button></p>
         </div>
       </section>
 
@@ -1972,7 +2052,7 @@
         leads += '<line class="lead" x1="' + x.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + p.lx + '" y2="' + p.ly + '"></line><circle class="pt" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="1"></circle>';
       }
       var bx = p.lx - w / 2, by = p.ly - h / 2;
-      pinOut += '<g class="pin"' + (p.cc ? ' data-cc="' + p.cc + '"' : "") + ' tabindex="0" role="button" aria-label="' + esc(p.title) + '"><title>' + esc(p.title) + "</title>" +
+      pinOut += '<g class="pin' + (p.ab ? " ab" : "") + '"' + (p.cc ? ' data-cc="' + p.cc + '"' : "") + (p.code ? ' data-code="' + esc(p.code) + '"' : "") + (p.ab ? ' data-ab="' + p.ab + '"' : "") + ' tabindex="0" role="button" aria-label="' + esc(p.title) + '"><title>' + esc(p.title) + "</title>" +
         '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h + '" rx="1.6"></rect>' +
         '<image href="flags/' + p.flag + '.svg" x="' + (bx + 1.4).toFixed(1) + '" y="' + (by + 1.5).toFixed(1) + '" width="8" height="6" preserveAspectRatio="xMidYMid slice"></image>' +
         '<text x="' + (bx + 11).toFixed(1) + '" y="' + (by + 6.9).toFixed(1) + '">' + esc(p.text) + "</text></g>";
@@ -1981,6 +2061,44 @@
     svg.innerHTML = out + leads + pinOut + lab;
   }
   var nm = function (zh, en) { return LANG === "en" ? en : zh; };
+  var NS_OF = {};
+  NSC.forEach(function (n) { if (n[1]) NS_OF[n[1]] = n; });
+  var COVER_OF = { nz: "ACA", bd: "AIL", lk: "ACS", mn: "ACS", np: "ACS", tw: "PAP" };
+  // 國家代碼導覽：國旗＋代碼＋英文國名＋中文國名；與地圖標記互相連動（data-map 指向對應的 svg）
+  var NAV_OF = { "map-ns": "nav-ns", "map-sites": "nav-sites", "map-hsn": "nav-hsn", "map-intro": "ns-key" };
+  function codeNav(el, items, svgId) {
+    if (!el) return;
+    el.setAttribute("data-map", svgId);
+    el.innerHTML = items.map(function (it) {
+      return '<button type="button" class="cn' + (it.cls ? " " + it.cls : "") + '" data-cc="' + (it.cc || "") + '" data-code="' + esc(it.code) + '"' + (it.ab ? ' data-ab="' + it.ab + '"' : "") + '>' +
+        (it.cc ? flag(it.cc) : '<span class="flag none" aria-hidden="true"></span>') + "<b>" + esc(it.code) + '</b><span class="cn-en">' + esc(it.en) + '</span><span class="cn-zh">' + esc(it.zh) + "</span>" + (it.sub ? "<small>" + it.sub + "</small>" : "") + "</button>";
+    }).join("");
+  }
+  function markCode(svgId, code, cc) {
+    var svg = $(svgId), nav = $(NAV_OF[svgId]);
+    var same = function (el) { return (code && el.getAttribute("data-code") === code) || (!code && cc && el.getAttribute("data-cc") === cc); };
+    if (svg) $$(".pin", svg).forEach(function (g) { var on = same(g); g.classList.toggle("on", on); g.classList.toggle("focus", on); });
+    if (nav) $$(".cn", nav).forEach(function (b) { b.classList.toggle("on", same(b)); });
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var cn = t.closest ? t.closest(".code-nav .cn, .ns-key .cn") : null;
+    if (cn) {
+      var svgId = cn.parentElement.getAttribute("data-map");
+      markCode(svgId, cn.getAttribute("data-code"), cn.getAttribute("data-cc"));
+      var g = $(svgId) ? $$(".pin.on", $(svgId))[0] : null;
+      if (g && g.scrollIntoView) g.scrollIntoView({ block: "nearest", inline: "center" });
+      if (svgId === "map-sites") pickPin(cn.getAttribute("data-cc"));
+      return;
+    }
+    var pin = t.closest ? t.closest(".map .pin[data-code], .wb-map .pin[data-code]") : null;
+    if (pin) {
+      var svg = pin.closest("svg");
+      markCode(svg.id, pin.getAttribute("data-code"), pin.getAttribute("data-cc"));
+      var nav = $(NAV_OF[svg.id]), card = nav ? $$(".cn.on", nav)[0] : null;
+      if (card && card.scrollIntoView) card.scrollIntoView({ block: "nearest" });
+    }
+  });
   var WORLD_LABELS = [[225, 150, "PA"], [540, 215, "EMEA"], [790, 160, "ACCN"], [840, 300, "PAP"]];
   var HSNC = [
     ["HSNM", "my", "馬來西亞", "Malaysia", "est", "MYS"],
@@ -2009,18 +2127,33 @@
       INFRA.map(function (r) {
         var parts = [["自有", "Own", r[3]], ["外包", "Outsourced", r[4]], ["ASP", "ASP", r[5]], ["Call Centre", "Call centre", r[6]], ["Parts Hub", "Parts hub", r[7]]]
           .filter(function (q) { return q[2] !== null; }).map(function (q) { return nm(q[0], q[1]) + " " + q[2]; }).join(" · ");
-        return { cc: r[0], flag: r[0], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: r.total, title: nm(r[1], r[2]) + "：" + r.total + "（" + parts + "）" };
+        var ns = NS_OF[r[0]];
+        return { cc: r[0], flag: r[0], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: r.total, code: ns ? ns[0] : "", ab: ns ? ns[0].toLowerCase() : null, title: nm(r[1], r[2]) + "：" + r.total + "（" + parts + "）" };
       }));
+    codeNav($("nav-sites"), INFRA.map(function (r) {
+      var ns = NS_OF[r[0]], cov = COVER_OF[r[0]];
+      return { cc: r[0], code: ns ? ns[0] : (cov ? cov : "—"), ab: ns ? ns[0].toLowerCase() : (cov ? cov.toLowerCase() : null), zh: r[1], en: r[2],
+        sub: (ns ? "" : (cov ? nm("由 " + cov + " 代管", "Covered by " + cov) + " · " : nm("管轄單位未載明", "Responsible NS not specified") + " · ")) + r.total + " " + nm("處據點", r.total === 1 ? "site" : "sites"), cls: ns ? "" : "dim" };
+    }), "map-sites");
     drawMap($("map-ns"), AP, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); },
       NSC.filter(function (n) { return n[1]; }).map(function (n) {
         var r = INFRA_BY[n[1]];
-        return { flag: n[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: n[0], title: n[0] + " · " + nm(n[2], n[3]) };
+        return { cc: n[1], flag: n[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: n[0], code: n[0], ab: n[0].toLowerCase(), title: n[0] + " · " + nm(n[2], n[3]) };
       }));
+    codeNav($("nav-ns"), NSC.map(function (n) {
+      var subs = n[5].filter(function (x) { return x[0] === x[3]; }).map(function (x) { return nm(x[2], x[3]); });
+      return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[1] ? n[2] : "未載明", en: n[1] ? n[3] : "Not specified", cls: n[1] ? "" : "dim",
+        sub: n[0] === "AKC" ? nm("由 AJC 管理", "Managed by AJC") : (subs.length ? nm("代管：", "Covers: ") + subs.join(nm("、", ", ")) : "") };
+    }), "map-ns");
     drawMap($("map-hsn"), AP, function (iso) { return HSN_ISO[iso] || ""; },
       HSNC.map(function (h) {
-        var r = INFRA_BY[h[1]], st = HSN_ST[h[4]];
-        return { flag: h[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: nm(h[2], h[3]), title: h[0] + " · " + nm(h[2], h[3]) + " · " + nm(st[0], st[1]) };
+        var r = INFRA_BY[h[1]], st = HSN_ST[h[4]], ab = AB_BY[h[0].toLowerCase()] ? h[0].toLowerCase() : null;
+        return { cc: h[1], flag: h[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: nm(h[2], h[3]), code: h[0], ab: ab, title: h[0] + " · " + nm(h[2], h[3]) + " · " + nm(st[0], st[1]) };
       }));
+    codeNav($("nav-hsn"), HSNC.map(function (h) {
+      var st = HSN_ST[h[4]];
+      return { cc: h[1], code: h[0], ab: AB_BY[h[0].toLowerCase()] ? h[0].toLowerCase() : null, zh: h[2], en: h[3], sub: '<i class="st" style="background:var(--' + st[2] + ')"></i>' + nm(st[0], st[1]), cls: h[4] === "est" ? "" : "dim" };
+    }), "map-hsn");
   }
   // 區域一覽：HQ → 四區，PAP 列出所轄國家／地區（代碼可點選）；語言切換時重畫
   function drawRegionKey() {
@@ -2044,6 +2177,7 @@
   });
   function pickPin(cc) {
     $$("#map-sites .pin").forEach(function (p) { p.classList.toggle("on", p.getAttribute("data-cc") === cc); });
+    $$("#nav-sites .cn").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-cc") === cc); });
     $$("#infra-body tr").forEach(function (tr) { tr.classList.toggle("on", tr.id === "row-" + cc); });
     var row = $("row-" + cc);
     if (row && row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
@@ -2302,18 +2436,22 @@
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
-  // 首頁託運單欄位：寄件、收件、涵蓋範圍、服務據點（由資料計算）
+  // 首頁重點數字與三個關鍵角色（由資料計算；給第一次接觸的同仁看）
   (function () {
     var sites = 0;
     INFRA.forEach(function (r) { sites += r.total; });
     var F = [
-      ["FROM · 寄件", "From", "PAP", "區域辦公室（RO）· 台灣", "Regional office (RO) · Taiwan"],
-      ["TO · 收件", "To", NSC.length + " NS", "個國家子公司", "nation subsidiaries"],
-      ["COVERAGE · 涵蓋", "Coverage", INFRA.length, "個設有據點之國家／地區", "countries and regions with sites"],
-      ["SERVICE SITES · 據點", "Service sites", sites, "處服務據點（CSD Q2 2025）", "service sites (CSD Q2 2025)"]
+      ["ro", "PAP 是什麼", "What PAP is", "RO", "Acer 泛亞太區的區域辦公室，設於台灣", "Acer's regional office for Asia Pacific, based in Taiwan"],
+      ["org", "服務哪些公司", "Who it serves", NSC.length, "個國家子公司（NS），即各國的 Acer 公司", "nation subsidiaries (NS): Acer's companies in each country"],
+      ["sites", "涵蓋範圍", "Coverage", INFRA.length, "個設有服務據點的國家／地區", "countries and regions with service sites"],
+      ["box", "服務據點", "Service sites", sites, "處維修與服務據點（CSD 2025 年第二季統計）", "repair and service sites (CSD, second quarter 2025)"]
     ];
-    $("wb-fields").innerHTML = F.map(function (f) {
-      return "<div><dt>" + B(f[0], f[1]) + "</dt><dd>" + f[2] + "<small>" + B(f[3], f[4]) + "</small></dd></div>";
+    $("kfacts").innerHTML = F.map(function (f) {
+      return '<div class="kf"><span class="kf-i">' + ico(f[0]) + '</span><span class="kf-l">' + B(f[1], f[2]) + '</span><b class="kf-v">' + f[3] + '</b><span class="kf-d">' + B(f[4], f[5]) + "</span></div>";
+    }).join("");
+    var R = [["ro", "RO", "區域辦公室：就是 PAP 本身", "Regional office: PAP itself"], ["ns", "NS", "國家子公司：各國的 Acer 公司", "Nation subsidiary: Acer's company in each country"], ["hsn", "HSN", "海柏特：2026/12/1 起供應料件的集團公司", "HSN: the group company supplying parts from 1 Dec 2026"]];
+    $("roles3").innerHTML = '<span class="r3-t">' + B("先認識三個代碼", "Three codes to know first") + "</span>" + R.map(function (r) {
+      return '<button type="button" class="r3 ab" data-ab="' + r[0] + '"><b>' + r[1] + "</b><span>" + B(r[2], r[3]) + "</span></button>";
     }).join("");
   })();
   // 首頁地圖：PAP（台灣）至各國子公司的供應路線；標籤含國旗，沿線有移動的小點
@@ -2324,9 +2462,9 @@
     var ns = NSC.filter(function (n) { return n[1] && INFRA_BY[n[1]]; });
     var pins = ns.map(function (n) {
       var r = INFRA_BY[n[1]];
-      return { cc: n[1], flag: n[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: n[0], title: n[0] + " · " + nm(n[2], n[3]) };
+      return { cc: n[1], flag: n[1], lon: r[8], lat: r[9], lx: r[10], ly: r[11], text: n[0], code: n[0], ab: n[0].toLowerCase(), title: n[0] + " · " + nm(n[2], n[3]) };
     });
-    pins.unshift({ cc: "pap", flag: "tw", lon: tw[8], lat: tw[9], lx: tw[10], ly: tw[11], text: "PAP", title: "PAP · " + nm("泛亞太區 · 台灣", "Pan Asia Pacific · Taiwan") });
+    pins.unshift({ cc: "pap", flag: "tw", lon: tw[8], lat: tw[9], lx: tw[10], ly: tw[11], text: "PAP", code: "PAP", ab: "pap", title: "PAP · " + nm("泛亞太區 · 台灣", "Pan Asia Pacific · Taiwan") });
     drawMap(svg, vb, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); }, pins, []);
     var motion = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     var arcs = "", movers = "";
@@ -2341,9 +2479,9 @@
       '<circle class="idot hq" cx="' + ox.toFixed(1) + '" cy="' + oy.toFixed(1) + '" r="' + (5 * k).toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
     var first = svg.querySelector(".pin");
     if (first) first.insertAdjacentHTML("beforebegin", arcs + hq + movers); else svg.insertAdjacentHTML("beforeend", arcs + hq + movers);
-    $("ns-key").innerHTML = ns.map(function (n) {
-      return '<button type="button" data-go="ref-ns">' + flag(n[1]) + "<b>" + n[0] + "</b><span>" + B(n[2], n[3]) + "</span></button>";
-    }).join("");
+    codeNav($("ns-key"), [{ cc: "tw", code: "PAP", ab: "pap", zh: "泛亞太區（台灣）", en: "Pan Asia Pacific (Taiwan)", cls: "hq" }].concat(ns.map(function (n) {
+      return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[2], en: n[3] };
+    })), "map-intro");
   }
 
   /* ---------- 總覽 ---------- */
@@ -2359,11 +2497,6 @@
     "TOUCHPAD", "MISCELLANEOUS", "LCD MODULE", "LCD", "FAN", "CAMERA"];
   $("cats").innerHTML = CATS.map(function (c) { return "<div>" + esc(c) + "</div>"; }).join("");
 
-  /* ---------- HSN ---------- */
-  $("hsn-grid").innerHTML = HSNC.map(function (h) {
-    var st = HSN_ST[h[4]];
-    return '<div class="hsn' + (h[4] === "est" ? "" : " " + h[4]) + '"><b>' + flag(h[1]) + esc(h[0]) + "</b><span>" + B(h[2], h[3]) + "</span><small>" + B(st[0], st[1]) + "</small></div>";
-  }).join("");
 
   /* ---------- 料號 ---------- */
   var RO = { S: "AAP", C: "ACCN", E: "EMEA", A: "PA", T: "TWN" };
@@ -2465,162 +2598,153 @@
     p: ["公開資料", "Public", "取自公開資料", "From public sources"]
   };
   var CATS_AB = [
-    ["org", "組織架構", "Organisation"],
-    ["role", "角色與職稱", "Roles and titles"],
-    ["site", "據點", "Sites"],
-    ["sys", "系統", "Systems"],
-    ["part", "料件與 BOM", "Parts and BOM"],
-    ["flow", "流程與單位", "Flow and teams"],
-    ["ops", "採購與營運", "Purchasing and operations"],
-    ["term", "其他名詞", "Other terms"]
+    ["org", "Acer 組織與區域代碼", "Acer organisation and region codes"],
+    ["role", "職務與角色", "Roles and titles"],
+    ["site", "服務據點類型", "Service site types"],
+    ["sys", "PAP 使用的系統", "Systems PAP uses"],
+    ["part", "料件、BOM 與料號", "Parts, BOM and part numbers"],
+    ["flow", "流程與參與單位", "Processes and the units involved"],
+    ["ops", "採購與營運指標", "Purchasing and operations"],
+    ["term", "一般名詞", "General terms"]
   ];
   // [id, 內文中要標示的字, 顯示名稱, 全稱, 中文名稱, 來源, 分類, 中文說明, English, English 名稱（無全稱時）]
   var AB = [
-    ["hq", ["HQ"], "HQ", "Headquarters", "總部", "s", "org", "Acer 總部，轄下設有 PA、EMEA、TWN、AAP、ACCN 等區域。PAP 彙整各 NS 之需求預測與特殊支援需求後提交 HQ。", "Acer headquarters, overseeing PA, EMEA, TWN, AAP and ACCN. PAP consolidates demand forecasts and special support requests from the NS and submits them to HQ."],
-    ["pa", ["PA"], "PA", "Pan America", "泛美區", "s", "org", "Acer 美洲區域，與 EMEA、TWN、AAP、ACCN 同屬 HQ 轄下。料號第 6 碼 A 代表 PA。", "Acer's Americas region, alongside EMEA, TWN, AAP and ACCN under HQ. A as the 6th character of a part number denotes PA."],
-    ["emea", ["EMEA"], "EMEA", "Europe, Middle East & Africa", "歐洲、中東與非洲區", "s", "org", "Acer 歐洲、中東與非洲區域。料號第 6 碼 E 代表 EMEA。", "Acer's Europe, Middle East and Africa region. E as the 6th character of a part number denotes EMEA."],
-    ["accn", ["ACCN"], "ACCN", null, "中國區", "m", "org", "中國區，與 PAP 同屬 HQ 轄下，獨立運作。料號第 6 碼 C 代表 ACCN。", "China region, a peer of PAP under HQ that operates independently. C as the 6th character of a part number denotes ACCN.", "China region"],
-    ["pap", ["PAP"], "PAP", "Pan Asia Pacific", "泛亞太區", "s", "org", "泛亞太區，由 TWN 與 AAP 於 2016/2017 年整併而成，為區域辦公室（RO），轄下設有 11 個國家子公司（NS）。PAP 服務物流負責備品規劃與採購、中央倉庫管理、RMA 與各 NS 績效監控；向 ODM 採購的料件自 2026 年 12 月 1 日起改經由 HSN Group 供應。與 AAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後涵蓋台灣與亞太的現行區域；PAP 本身沒有料號代碼，料號第 6 碼沿用 AAP 的 S 與 TWN 的 T。", "Pan Asia Pacific, formed in 2016/2017 by merging TWN and AAP; it is the regional office (RO) with 11 nation subsidiaries (NS) under it. PAP service logistics covers spare-parts planning and purchasing, central warehouse management, RMA and NS performance monitoring; from 1 December 2026 the parts it buys from the ODM are supplied through HSN Group. Difference from AAP: AAP was the pre-merger Asia Pacific region without Taiwan, while PAP is the current merged region covering Taiwan and Asia Pacific. PAP has no part-number code of its own; the 6th character keeps AAP's S and TWN's T."],
-    ["twn", ["TWN"], "TWN", "Taiwan", "台灣區", "s", "org", "台灣區，2016/2017 年與 AAP 整併為 PAP。料號第 6 碼 T 代表 TWN；第 7 碼 T 則代表泰國（ATH）。", "Taiwan region, merged with AAP into PAP in 2016/2017. T as the 6th character denotes TWN; as the 7th character, T denotes Thailand (ATH)."],
-    ["aap", ["AAP"], "AAP", null, "亞太區", "m", "org", "亞太區（Asia Pacific）。整併前五個區域之一，涵蓋台灣以外的亞太各國，與台灣區（TWN）並列；2016/2017 年與 TWN 整併為 PAP。整併後 AAP 的代碼仍用於料號第 6 碼（S），第 7 碼國別代碼適用於 AAP 各國。與 PAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後的現行區域。縮寫原文教材未載明；據點表中韓國辦公室的公司名稱為 Acer Asia Pacific。", "The Asia Pacific region: one of the five regions before the merger, covering the Asia Pacific countries other than Taiwan, alongside the Taiwan region (TWN); merged with TWN into PAP in 2016/2017. Its code lives on as the 6th character of part numbers (S), and the 7th-character country codes apply to the AAP countries. Difference from PAP: AAP is the pre-merger region without Taiwan, PAP the current merged region. The expansion of the abbreviation is not given in the material; the Korea office is listed under the company name Acer Asia Pacific.", "Asia Pacific"],
-    ["ns", ["NS"], "NS", "Nation Subsidiary", "國家子公司", "m", "org", "PAP 轄下之各國子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控各 NS 之績效（502/503 aging、庫存、採購、達交、HFP），並彙整其需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。", "A subsidiary in one country under PAP, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS."],
-    ["assb", ["ASSB", "ASSSB"], "ASSB", null, "馬來西亞國家子公司", "m", "org", "馬來西亞國家子公司，HSNM 隸屬其下。2016/2017 年以前為主導子公司；當時馬來西亞由海柏特與 Acer 共同營運。料號國別代碼 M；設有倉庫及 Uni-load。", "The Malaysia subsidiary, with HSNM under it. It was the lead subsidiary before 2016/2017, when Malaysia was operated jointly by HSN (Highpoint Service Network) and Acer. Country code M; has a warehouse and Uni-load.", "Malaysia subsidiary"],
-    ["aca", ["ACA"], "ACA", null, "澳洲國家子公司", "m", "org", "澳洲國家子公司，ACNZ（紐西蘭）隸屬其下。料號國別代碼 A（例：DG.B88SA.001）；設有倉庫及 Uni-load。", "The Australia subsidiary, with ACNZ (New Zealand) under it. Country code A (e.g. DG.B88SA.001); has a warehouse and Uni-load.", "Australia subsidiary"],
-    ["acnz", ["ACNZ"], "ACNZ", null, "紐西蘭子公司", "m", "org", "紐西蘭子公司，隸屬 ACA，未設獨立料號國別代碼。設有倉庫，未設 Uni-load。", "The New Zealand subsidiary, under ACA, without a separate country code. Has a warehouse but no Uni-load.", "New Zealand subsidiary"],
-    ["ail", ["AIL"], "AIL", null, "印度國家子公司", "m", "org", "印度國家子公司，Bangladesh（孟加拉）隸屬其下。料號國別代碼 I。印度為 PAP 據點最多之國家，包括 172 個外包服務中心及 126 個 ASP；設有倉庫及 Uni-load。", "The India subsidiary, with Bangladesh under it. Country code I. India has the most PAP sites, including 172 outsourced service centres and 126 ASPs; it has a warehouse and Uni-load.", "India subsidiary"],
-    ["ath", ["ATH"], "ATH", null, "泰國國家子公司", "m", "org", "泰國國家子公司，Indo-china（中南半島）隸屬其下。料號國別代碼 T（第 6 碼 T 則為 TWN）。設有 12 個自有服務中心及 109 個 ASP，並設有倉庫及 Uni-load。", "The Thailand subsidiary, with Indo-china under it. Country code T (as the 6th character, T denotes TWN). It has 12 own service centres, 109 ASPs, a warehouse and Uni-load.", "Thailand subsidiary"],
-    ["ain", ["AIN"], "AIN", null, "印尼國家子公司", "m", "org", "印尼國家子公司，倉庫表列為 AIN (AMI)。料號國別代碼 N 或 D，為唯一具兩個國別代碼之國家；設有倉庫及 Uni-load。", "The Indonesia subsidiary, listed as AIN (AMI) in the warehouse table. Country code N or D, the only country with two codes; it has a warehouse and Uni-load.", "Indonesia subsidiary"],
-    ["ami", ["AMI"], "AMI", null, "印尼 Uni-load 組裝廠", "k", "org", "印尼 Uni-load 組裝廠之公司代碼，倉庫表列為 Indonesia (AIN) (AMI)。", "Code for the Indonesian Uni-load assembly company, listed as Indonesia (AIN) (AMI) in the warehouse table.", "Indonesian Uni-load assembly company"],
-    ["avn", ["AVN"], "AVN", null, "越南國家子公司", "m", "org", "越南國家子公司，料號國別代碼 V；設有倉庫，未設 Uni-load。", "The Vietnam subsidiary. Country code V; it has a warehouse but no Uni-load.", "Vietnam subsidiary"],
-    ["ajc", ["AJC"], "AJC", null, "日本國家子公司", "m", "org", "日本國家子公司，料號國別代碼 J，並負責管理 AKC（韓國）；設有倉庫，未設 Uni-load。", "The Japan subsidiary. Country code J; it also manages AKC (Korea). It has a warehouse but no Uni-load.", "Japan subsidiary"],
-    ["akc", ["AKC"], "AKC", null, "韓國國家子公司", "m", "org", "韓國國家子公司，由 AJC（日本）管理，料號國別代碼同為 J；設有倉庫，未設 Uni-load。", "The Korea subsidiary, managed by AJC (Japan) and sharing country code J. It has a warehouse but no Uni-load.", "Korea subsidiary"],
-    ["afe", ["AFE"], "AFE", null, "國家子公司", "m", "org", "PAP 國家子公司之一，所屬國家未載明，亦未列於倉庫表與料號國別代碼表。", "One of the PAP subsidiaries. Its country is not specified, and it is not in the warehouse table or the country-code list.", "Nation subsidiary"],
-    ["aphi", ["APHI"], "APHI", null, "菲律賓國家子公司", "m", "org", "菲律賓國家子公司，料號國別代碼 P；設有倉庫，未設 Uni-load。", "The Philippines subsidiary. Country code P; it has a warehouse but no Uni-load.", "Philippines subsidiary"],
-    ["acs", ["ACS"], "ACS", null, "新加坡國家子公司", "m", "org", "新加坡國家子公司，Sri Lanka、Mongolia、Nepal 隸屬其下。料號國別代碼 S（第 6 碼 S 則為 AAP）；設有倉庫及 Uni-load。", "The Singapore subsidiary, with Sri Lanka, Mongolia and Nepal under it. Country code S (as the 6th character, S denotes AAP); it has a warehouse and Uni-load.", "Singapore subsidiary"],
-    ["hsn", ["HSN", "海柏特"], "HSN", "Highpoint Service Network", "海柏特集團", "p", "org", "HSN 為 Highpoint Service Network 之縮寫，中文名稱海柏特；HSN Group 指海柏特及其各國公司。源自宏碁於 1999 年在馬來西亞成立之售後服務子公司，2018 年於台灣成立，為多品牌授權維修服務商，提供保固外（OOW）售後維修服務，包括主機板維修；於各國設立公司，服務範圍涵蓋 Acer 及其他品牌。自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group 供應。", "HSN stands for Highpoint Service Network (Chinese name 海柏特); HSN Group means HSN and its country companies. It grew out of Acer's after-sales subsidiary set up in Malaysia in 1999 and was established in Taiwan in 2018 as a multi-brand authorised repair provider, offering out-of-warranty (OOW) after-sales repair, including mainboard repair. It has companies in each country and serves Acer and other brands. From 1 December 2026, parts purchased by PAP are supplied through HSN Group."],
-    ["hsnm", ["HSNM"], "HSNM", null, "HSN Group 馬來西亞公司", "k", "org", "HSN Group（Highpoint Service Network）馬來西亞公司，隸屬 ASSB。代碼由 HSN 加國別字母 M（Malaysia）組成。", "HSN Group (Highpoint Service Network) company in Malaysia, under ASSB. The code is HSN plus the country letter M.", "HSN Group, Malaysia"],
-    ["hsni", ["HSNI"], "HSNI", null, "HSN Group 印尼公司", "k", "org", "HSN Group（Highpoint Service Network）印尼公司。代碼由 HSN 加國別字母 I（Indonesia）組成。", "HSN Group (Highpoint Service Network) company in Indonesia. The code is HSN plus the country letter I.", "HSN Group, Indonesia"],
-    ["hsnv", ["HSNV"], "HSNV", null, "HSN Group 越南公司", "k", "org", "HSN Group（Highpoint Service Network）越南公司。代碼由 HSN 加國別字母 V（Vietnam）組成。", "HSN Group (Highpoint Service Network) company in Vietnam. The code is HSN plus the country letter V.", "HSN Group, Vietnam"],
-    ["hsnp", ["HSNP"], "HSNP", null, "HSN Group 菲律賓公司", "k", "org", "HSN Group（Highpoint Service Network）菲律賓公司。代碼由 HSN 加國別字母 P（Philippines）組成。", "HSN Group (Highpoint Service Network) company in Philippines. The code is HSN plus the country letter P.", "HSN Group, Philippines"],
-    ["hsnt", ["HSNT"], "HSNT", null, "HSN Group 泰國公司", "k", "org", "HSN Group（Highpoint Service Network）泰國公司。代碼由 HSN 加國別字母 T（Thailand）組成。", "HSN Group (Highpoint Service Network) company in Thailand. The code is HSN plus the country letter T.", "HSN Group, Thailand"],
-
-    ["ro", ["RO"], "RO", "Regional Office", "區域辦公室", "m", "role", "區域辦公室。PAP 團隊即為 RO，負責採購作業。RO 使用 PLM、PLS、GLS、CSS 四套系統，PLS 僅供 RO 使用。SPL 定義流程最終將 SPL 發布予各 RO；料號第 6 碼即為 RO 代碼。五個 RO 於 2010 年以前各自獨立運作。", "Regional office. The PAP team is the RO and handles purchasing. ROs use PLM, PLS, GLS and CSS, and only ROs use PLS. The SPL flow ends with SPL release to all ROs, and the 6th character of a part number is the RO code. The five ROs operated independently before 2010."],
-    ["gm", ["GM"], "GM", "General Manager", "總經理", "s", "role", "總經理。PAP 之 GM 為 Andrew Hou；Jacky Lin 兼任 HSN Group GM。", "General manager. PAP's GM is Andrew Hou; Jacky Lin also serves as GM of HSN Group."],
-    ["avp", ["AVP"], "AVP", "Assistant Vice President", "協理", "s", "role", "協理。Jacky Lin 為 Service 部門 AVP，並兼任 HSN Group GM。", "Assistant vice president. Jacky Lin is AVP of Service and also GM of HSN Group."],
-    ["csd", ["CSD"], "CSD", null, "", "n", "role", "「CSD Q2 2025 Infrastructure」之統計單位，負責彙整各國服務據點。", "The unit behind the CSD Q2 2025 Infrastructure figures for service sites by country."],
-
-    ["asp", ["ASP"], "ASP", "Authorized Service Provider", "授權服務商", "m", "site", "經 Acer 授權之外部服務商，不具維修能力，提供收件（收機）服務。Q2 2025 PAP 全區共 507 家，以印度 126 家、泰國 109 家、印尼 91 家最多。ASP 使用 PLM 與 CSS。", "An external provider authorised by Acer that takes in units but does not repair them. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS."],
-    ["wh", ["W/H"], "W/H", "Warehouse", "倉庫", "s", "site", "倉庫。PAP 11 國均設有倉庫；中央倉庫管理（Central W/H management）為 PAP 主要職能之一。", "Warehouse. All 11 PAP countries have one, and central warehouse management is one of PAP's main functions."],
-    ["uniload", ["Uni-load", "Uni-Load"], "Uni-load", null, "當地產線／組裝廠", "m", "site", "於當地設有產線或組裝廠，主要用於滿足當地客戶（如標案）之規格與成本要求，例如澳洲向 ODM 採購半成品，並於當地採購 SSD、HDD 進行組裝。設有 Uni-load 之國家：澳洲、印度、馬來西亞、泰國、印尼、新加坡；印尼組裝廠代碼為 AMI。", "A local production line or assembly plant, mainly used to meet local customers' specifications and costs (e.g. tenders). Australia, for example, buys semi-finished parts from the ODM and assembles them with locally sourced SSDs and HDDs. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load; the Indonesian assembly company is AMI.", "Local production line / assembly plant"],
-    ["callc", ["Call Centre"], "Call Centre", null, "客服中心", "m", "site", "客戶服務電話中心。Q2 2025 PAP 全區共 8 處：印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 處。", "Customer service phone centre. PAP had 8 in Q2 2025, one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines.", "Customer service phone centre"],
-    ["lph", ["Local Parts Hub"], "Local Parts Hub", null, "當地備品中心", "m", "site", "各國之零件總倉，負責存放備品；各據點另設有庫房。Q2 2025 PAP 全區共 18 處，以台灣 7 處最多。", "Each country's main parts warehouse, with storerooms at each site. PAP had 18 in Q2 2025, the most in Taiwan (7).", "Local parts hub"],
-    ["rsph", ["Regional Spare Parts Hub", "Regional Spared Part Hub"], "Regional Spare Parts Hub", null, "區域備品中心", "m", "site", "服務整個區域之備品中心，PAP 全區共 1 處。", "A spare-parts hub serving the whole region; PAP has one.", "Regional spare parts hub"],
-    ["tender", ["標案"], "標案 · Tender", null, "採購招標", "k", "site", "政府機關或企業之採購招標。客戶（如警政單位）發布標書（規格書），各品牌依規格投標；得標後委託 ODM 生產，必要時於當地組裝（Uni-load）以符合標案價格。例如 ACA 之標案規模達兩萬台筆電。", "Public or corporate procurement. The customer (e.g. the police) issues a tender with a specification and brands bid against it; the winner has an ODM build the product, assembling locally (Uni-load) where needed to meet the tender price. One ACA tender, for example, covered 20,000 notebooks.", "Procurement tender"],
-
-    ["plm", ["PLM"], "PLM", "Product Lifecycle Management", "產品生命週期管理系統", "s", "sys", "負責料件與 BOM 管理：為新料件申請料號、將 Service BOM 及新增料件匯入 Service PLM。RO、NS、ASP 皆使用。", "Manages parts and BOMs: applying for P/Ns for new items and importing the Service BOM and new parts into Service PLM. Used by ROs, NS and ASPs."],
-    ["pls", ["PLS"], "PLS", null, "", "n", "sys", "用於向 ODM 確認採購單（Confirm PO to ODM），僅供 RO 使用。", "Used to confirm POs to the ODM; used by ROs only."],
-    ["gls", ["GLS"], "GLS", null, "", "n", "sys", "用於中央備品規劃（Central SP Planning），RO 與 NS 使用。", "Used for central spare-parts planning; used by ROs and NS."],
-    ["css", ["CSS"], "CSS", null, "", "n", "sys", "用於建立採購單（Create PO）；502/503 aging 所列不良品滯留於 CSS。RO、NS、ASP 皆使用。", "Used to create POs; defective parts counted in 502/503 aging are held in CSS. Used by ROs, NS and ASPs."],
-
-    ["fru", ["FRU"], "FRU", "Field Replaceable Unit", "現場可更換單元", "s", "part", "可於維修現場直接更換之料件單位，例如鍵盤、螢幕模組。B 樣品完成後召開 FRU 審查會議；NPI 階段由 ODM 提供 FRU 清單草稿，審查後建立 Acer 料號。", "A part that can be replaced on site, such as a keyboard or LCD module. A FRU review meeting follows the B sample; for NPI the ODM drafts the FRU list, which is reviewed before Acer P/Ns are created."],
-    ["spl", ["SPL"], "SPL", "Spare Parts List", "備品清單", "m", "part", "各機種可供售後維修使用之備品料件清單，列出料號與價格，為各區備品規劃與採購之依據。流程：ODM 提供未含價格之 SPL 草稿 → 為新料件申請料號 → ODM 報價 → Markup Review → 上傳 SPL 系統 → 於 FCS 前一週發布予各 RO。", "The list of spare parts available for after-sales repair of each model, with P/Ns and prices; the basis for regional spare-parts planning and purchasing. Flow: the ODM drafts the SPL without prices → P/Ns are applied for new items → the ODM quotes → markup review → upload to the SPL system → release to all ROs one week before FCS."],
-    ["sp", ["S/P", "SP"], "S/P · SP", "Spare Parts", "備品", "m", "part", "維修用備品。相關項目包括 S/P Introduction、SP planning & Ordering（備品規劃與下單）、Central SP Planning（中央備品規劃）及 SP template。", "Spare parts for repairs. Related items include S/P Introduction, SP planning & ordering, central SP planning and the SP template."],
-    ["bom", ["BOM"], "BOM", "Bill of Materials", "物料清單", "s", "part", "產品組成料件之清單。Service BOM 為維修用版本，分為 NPI 與 MP 兩類，各有其 SOP。", "The list of parts that make up a product. The Service BOM is the service version, in NPI and MP types, each with its own SOP."],
-    ["pn", ["P/N"], "P/N", "Part Number", "料號", "s", "part", "料件編號。Acer 料號格式為 AA.BBBCD.EEE：AA 為子類別代碼；字元位置不計小數點，第 6 碼為 RO 代碼，第 7 碼為國別代碼。", "Part number. Acer P/Ns follow AA.BBBCD.EEE: AA is the sub-category code; not counting dots, the 6th character is the RO code and the 7th the country code."],
-    ["mb", ["MB"], "MB", "Mainboard", "主機板", "s", "part", "主機板。HQ/PM 於 FRU 審查會議提供 MB/KB P/N（主機板與鍵盤料號）。", "Mainboard. HQ/PM provides MB/KB P/Ns (mainboard and keyboard part numbers) for the FRU review meeting."],
-    ["kb", ["KB"], "KB", "Keyboard", "鍵盤", "s", "part", "鍵盤。HQ/PM 於 FRU 審查會議提供 MB/KB P/N；子類別 6B 為 KB ASSEMBLY。", "Keyboard. HQ/PM provides MB/KB P/Ns for the FRU review meeting; sub-category 6B is KB ASSEMBLY."],
-    ["sku", ["SKU"], "SKU", "Stock Keeping Unit", "庫存單位", "s", "part", "各銷售配置之編號。Service BOM SOP 1.2／2.2 須檢查 AVLC 與 SKU BOM。", "The code for each sales configuration. Service BOM SOP 1.2 and 2.2 check AVLC and the SKU BOM."],
-    ["avlc", ["AVLC"], "AVLC", null, "", "n", "part", "Service BOM SOP 1.2／2.2「AVLC & SKU BOM Checking」之檢查項目，並由 HQ/PM 提供予 FRU 審查會議。業界 AVL 一般指 Approved Vendor List（合格供應商清單）。", "Checked in Service BOM SOP 1.2 and 2.2 (AVLC & SKU BOM Checking) and provided by HQ/PM for the FRU review meeting. In the industry, AVL generally means Approved Vendor List."],
-    ["moq", ["MOQ"], "MOQ", "Minimum Order Quantity", "最小訂購量", "s", "part", "供應商可接受之最小訂購數量。Service BOM SOP 1.3／2.3 須審查 MOQ／RMA 建議。", "The smallest order quantity a supplier accepts. Service BOM SOP 1.3 and 2.3 review the MOQ/RMA suggestions."],
-    ["bs", ["B/S"], "B/S", null, "", "n", "part", "見於 SOP 1.4「Price Review – B/S & general parts markup %」，與一般料件分別審核 markup %。", "Appears in SOP 1.4 (Price Review – B/S & general parts markup %), where its markup % is reviewed separately from general parts."],
-    ["npi", ["NPI"], "NPI", "New Product Introduction", "新產品導入", "s", "part", "新機種導入階段。NPI Service BOM：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後於 Service BOM 建立 Acer P/N，並將 NPI SPL（DT SPL、NB SPL）發布予各 RO。", "The new-model introduction phase. For the NPI Service BOM, the ODM drafts the FRU list after the FRU meeting, Acer P/Ns are created after review, and the NPI SPL (DT and NB) is released to all ROs."],
-    ["mp", ["MP"], "MP", "Mass Production", "量產", "s", "part", "量產階段。MP Service BOM 由 ODM 每月定期更新，SOP 涵蓋料號審查、替代料檢查與維護、新增料件匯入 PLM 及價格維護。", "The mass-production phase. The ODM updates the MP Service BOM monthly; its SOP covers P/N review, substitute parts, importing new parts into PLM and price maintenance."],
-    ["dt", ["DT"], "DT", "Desktop", "桌上型電腦", "s", "part", "桌上型電腦。相關項目包括 DT Demand Report（桌機需求報表）及 DT SPL。", "Desktop computers. Related items include the DT Demand Report and the DT SPL."],
-    ["nb", ["NB"], "NB", "Notebook", "筆記型電腦", "s", "part", "筆記型電腦。相關項目包括 NB NPI 之 BML、AML、PPB1/2 需求報表及 NB SPL。", "Notebook computers. Related items include the NB NPI demand reports (BML, AML, PPB1/2) and the NB SPL."],
-    ["bml", ["BML"], "BML", "Before Mass Lock", "量產鎖定前", "m", "part", "New Proactive（筆記型電腦）規劃模式之階段：量產鎖定前，每月 15 日提出 A、B、C 類料件之需求報表，備品於下單後 10 個工作天出貨。", "A stage of the New Proactive (notebook) planning mode: before Mass Lock, the demand report for A, B and C parts is submitted on the 15th of each month and spare parts ship 10 working days after the PO."],
-    ["aml", ["AML"], "AML", "After Mass Lock", "量產鎖定後", "m", "part", "New Proactive 規劃模式之階段，於量產鎖定（ML）後 2 個月：所有料件仍可向 ODM 採購，C 類料件於此時最後採購（LTB），MOQ 與價格沿用 BML。", "A New Proactive stage two months after Mass Lock (ML): all parts can still be bought from the ODM, C parts are placed on last-time buy (LTB), and MOQ and price follow BML."],
-    ["ppb", ["PPB1/2", "PPB1", "PPB2", "PPB"], "PPB1/2", "Post Production Buy 1 / 2", "停產後採購 1／2", "m", "part", "New Proactive 規劃模式之停產後採購階段：PPB1 於 EOL 後 3 個月（AML + 6 個月）最後採購 B 類料件，PPB2 於 EOL 後 9 個月最後採購 A 類料件；MOQ 與價格重新議定，ODM 依 6 個月排程分批供貨。", "The post-production buy stages of the New Proactive mode: PPB1, three months after EOL (AML + 6 months), is the last-time buy of B parts; PPB2, nine months after EOL, is the last-time buy of A parts. MOQ and price are renegotiated and the ODM supplies in partial 6-month schedules."],
-
-    ["odm", ["ODM"], "ODM", "Original Design Manufacturer", "委託設計製造商", "s", "flow", "為 Acer 設計與生產產品之代工廠，例如仁寶（Compal）。SPL 流程中負責 B 樣品、SPL 草稿及報價，並每月更新 MP Service BOM。PAP 透過 PLS 向 ODM 確認採購單，採購整機或料件後供應予各 NS。", "The contract manufacturer that designs and builds products for Acer, such as Compal. In the SPL flow it provides the B sample, the SPL draft and the quotation, and it updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS and supplies the purchased units and parts to the NS."],
-    ["compal", ["仁寶", "Compal"], "仁寶 · Compal", "Compal Electronics, Inc.", "仁寶電腦", "p", "flow", "仁寶電腦工業股份有限公司，1984 年創立於台灣，為全球主要筆記型電腦 ODM 廠商之一；依 Acer 規格設計與生產產品，並接受 PAP 之採購單。", "Compal Electronics, founded in Taiwan in 1984, is one of the world's leading notebook ODMs. It designs and builds products to Acer's specification and receives POs from PAP."],
-    ["oem", ["OEM"], "OEM", "Original Equipment Manufacturer", "原廠委託製造", "s", "flow", "代工廠依品牌商提供之設計與規格生產，產品以品牌商之品牌銷售。歐美 PC 產業中，「PC OEM」亦常指品牌電腦廠商本身。", "The manufacturer builds to the brand's design and specification, and the product is sold under the brand. In the Western PC industry, a \"PC OEM\" often means the brand itself."],
-    ["obm", ["OBM"], "OBM", "Original Brand Manufacturer", "自有品牌", "s", "flow", "以自有品牌行銷與銷售產品，並主導產品定義；生產可自行或委託 ODM／OEM。Acer 屬此模式。", "Markets and sells under its own brand and defines the product; production may be in-house or outsourced to an ODM or OEM. Acer works this way."],
-    ["qsbu", ["QSBU"], "QSBU", null, "", "n", "flow", "SPL 定義流程之負責單位之一（QSBU/GCSD），負責 FRU 審查會議、申請料號、Markup Review、上傳 SPL 系統及發布 SPL。", "One of the units responsible for the SPL flow (QSBU/GCSD): it holds the FRU review, applies for P/Ns, reviews markup, uploads to the SPL system and releases the SPL."],
-    ["gcsd", ["GCSD"], "GCSD", null, "", "n", "flow", "與 QSBU 共同負責 SPL 定義流程（QSBU/GCSD）。", "Shares responsibility for the SPL flow with QSBU (QSBU/GCSD)."],
-    ["pm", ["PM"], "PM", null, "", "n", "flow", "與 HQ 同屬 SPL 流程之一方（HQ/PM），提供 Matrix table、AVLC、MB/KB P/N 及 Carcass price。", "Part of the HQ/PM party in the SPL flow; provides the matrix table, AVLC, MB/KB P/Ns and the carcass price."],
-    ["fcs", ["FCS"], "FCS", "First Customer Shipment", "首次客戶出貨", "s", "flow", "產品首次出貨予客戶之時點。SPL 須於 FCS-1wk（首次出貨前一週）發布予各 RO。", "The date a product first ships to customers. The SPL must be released to all ROs at FCS-1wk, one week before it."],
-    ["fg", ["FG"], "FG", "Finished Goods", "成品", "k", "flow", "已完成組裝、可出貨之整機。標案中若成品成本高於標案價格，可改採購半成品（螢幕、主機板）於當地組裝。", "Fully assembled units ready to ship. If the FG cost of a tender exceeds the tender price, semi-finished parts (screen, mainboard) can be bought and assembled locally."],
-    ["keycomp", ["Key component"], "Key component", null, "關鍵零件", "k", "flow", "關鍵零件，例如主機板、螢幕、SSD。主機板須以高精密設備製造，故向 ODM 採購。", "Key parts such as the mainboard, screen and SSD. Mainboards require high-precision manufacturing and are sourced from the ODM.", "Key parts"],
-
-    ["po", ["PO"], "PO", "Purchase Order", "採購單", "s", "ops", "採購單。PAP 於 CSS 建立 PO、於 PLS 向 ODM 確認，並更新 ETD 追蹤交期。月報包含 PO 相關資料（open PO、close PO、PO raise）。", "Purchase order. PAP creates POs in CSS, confirms them to the ODM in PLS and tracks delivery by updating the ETD. The monthly report includes PO files (open, closed and raised POs)."],
-    ["etd", ["ETD"], "ETD", "Estimated Time of Departure", "預計出貨日", "s", "ops", "貨物預計自供應商出貨之日期。PO 管理須持續更新並追蹤 ETD。", "The date goods are expected to leave the supplier. PO management keeps the ETD updated and tracked."],
-    ["hfp", ["HFP"], "HFP", "Hold For Part", "待料", "m", "ops", "因待料而延宕之維修案件（backorder），為 PAP 監控各 NS 績效之指標之一。", "Repair cases delayed while waiting for parts on backorder; one of the indicators PAP uses to monitor each NS."],
-    ["rma", ["RMA"], "RMA", "Return Merchandise Authorization", "退貨授權", "s", "ops", "不良品退回之授權與流程。RMA 為 PAP 主要職能之一；Service BOM SOP 亦須審查 MOQ/RMA 建議。", "Authorisation and process for returning defective parts. RMA is one of PAP's main functions, and the Service BOM SOP reviews the MOQ/RMA suggestions."],
-    ["csat", ["CSAT"], "CSAT", "Customer Satisfaction", "客戶滿意度", "m", "ops", "客戶滿意度，為 PAP 主要職能（II）之一。", "Customer satisfaction, one of PAP's main functions (II)."],
-    ["aging", ["502/503"], "502/503 aging", null, "不良品滯留時間", "m", "ops", "不良品滯留於 CSS 且尚未處理之時間，為 NS 績效監控指標。", "How long defective parts have been held in CSS without action; an NS performance indicator.", "Defective-part aging"],
-    ["agingstock", ["Aging Stock"], "Aging Stock", null, "庫齡過長之庫存", "m", "ops", "庫齡過長之庫存，列入每月服務與營運報告。", "Inventory beyond its holding period, included in the monthly service and operation report.", "Aged inventory"],
-    ["oow", ["OOW"], "OOW", "Out of Warranty", "保固外", "s", "ops", "超過保固期之維修服務。HSN Group 主要提供保固外售後維修，包括主機板維修。", "Repair service after the warranty period. HSN Group mainly provides out-of-warranty after-sales repair, including mainboard repair."],
-    ["cs", ["CS"], "CS", "Customer Service", "客戶服務", "s", "ops", "客戶服務及售後維修。", "Customer service and after-sales repair."],
-
-    ["carcass", ["Carcass price"], "Carcass price", null, "Markup Review 輸入資料", "m", "term", "Markup Review 之輸入資料之一，由 HQ/PM 於 C sample ready 階段提供。維修業中 carcass 一般指回收之不良品（core）。", "One input to the markup review, provided by HQ/PM at the C sample stage. In repair, carcass generally refers to the returned defective unit (core).", "Markup review input"],
-    ["markup", ["Markup", "markup"], "Markup", null, "加價率", "m", "term", "加價（率）。NPI 階段審核 B/S 與一般料件之 markup %；SPL 流程之 Markup Review 未通過時，退回 ODM 重新提供草稿。", "Price uplift. NPI reviews the markup % for B/S and general parts; if the SPL markup review fails, the ODM must provide a new draft.", "Price uplift"],
-    ["emob", [], "e-Mobility", null, "電動載具產品群", "m", "term", "電動載具產品群；料號子類別以 OT_ 開頭者屬之，例如 OT_MOTOR、OT_TIRE、OT_BRAKE SYSTEM。", "The electric mobility product group; sub-categories starting with OT_ belong to it, e.g. OT_MOTOR, OT_TIRE, OT_BRAKE SYSTEM.", "Electric mobility"],
-    ["sbom", [], "Service BOM", null, "維修用 BOM", "m", "term", "維修用 BOM，分為 NPI 與 MP 兩類，各有其 SOP。", "The BOM used for service, in NPI and MP types, each with its own SOP.", "Service BOM"],
-    ["pc", ["PC"], "PC", "Personal Computer", "個人電腦", "s", "part", "個人電腦，包括筆記型電腦與桌上型電腦。", "A personal computer, including notebooks and desktops."],
-    ["cpu", ["CPU"], "CPU", "Central Processing Unit", "中央處理器", "s", "part", "電腦之中央處理器；為備品類別之一（CPU/PROCESSOR）。", "The computer's central processor; one of the spare-parts categories (CPU/PROCESSOR)."],
-    ["lcd", ["LCD"], "LCD", "Liquid Crystal Display", "液晶顯示器", "s", "part", "液晶螢幕；備品中分為 LCD 面板與 LCD 模組（LCD MODULE），子類別另有 LCD COVER、LCD BEZEL 等外殼件。", "The liquid-crystal screen. Spare parts include LCD panels and LCD modules, and sub-categories include housings such as the LCD cover and LCD bezel."],
-    ["crt", ["CRT"], "CRT", "Cathode Ray Tube", "陰極射線管（映像管）", "s", "part", "早期映像管顯示器所用之技術；仁寶創立初期即生產 CRT 監視器。", "The technology used in early tube monitors; Compal made CRT monitors in its early years."],
-    ["ssd", ["SSD"], "SSD", "Solid State Drive", "固態硬碟", "s", "part", "以快閃記憶體儲存資料之硬碟；澳洲模式中於當地採購之料件之一。", "A drive that stores data in flash memory; one of the parts bought locally under the Australian model."],
-    ["hdd", ["HDD"], "HDD", "Hard Disk Drive", "傳統硬碟", "s", "part", "以磁碟儲存資料之硬碟；為備品類別之一，亦為澳洲模式中於當地採購之料件。", "A drive that stores data on magnetic disks; a spare-parts category and one of the parts bought locally under the Australian model."],
-    ["odd", ["ODD"], "ODD", "Optical Disc Drive", "光碟機", "s", "part", "光碟機；子類別對照中之 ODD MODULE 為光碟機模組。", "An optical disc drive; ODD MODULE in the sub-category table is the drive module."],
-    ["rtc", ["RTC"], "RTC", "Real-Time Clock", "即時時鐘", "s", "part", "主機板上維持系統時間之時鐘；RTC BATTERY 為其供電之電池。", "The clock on the mainboard that keeps system time; the RTC battery powers it."],
-    ["ac", ["AC"], "AC", "Alternating Current", "交流電", "s", "part", "交流電；AC ADAPTER 為將交流電轉換為設備所需電源之變壓器。", "Alternating current; an AC adapter converts mains power for the device."],
-    ["av", ["AV"], "AV", "Audio/Video", "影音", "s", "part", "影音訊號；AV MODULE 為影音模組。", "Audio and video signals; an AV module handles them."],
-    ["dvi", ["DVI"], "DVI", "Digital Visual Interface", "數位視訊介面", "s", "part", "數位視訊傳輸介面；DVI MODULE 為相關模組。", "A digital video interface; DVI MODULE is the related module."],
-    ["pcmcia", ["PCMCIA"], "PCMCIA", "Personal Computer Memory Card International Association", "PC 卡標準", "s", "part", "筆記型電腦擴充卡之介面標準；PCMCIA SLOT 為其插槽。", "An expansion-card standard for notebooks; PCMCIA SLOT is its slot."],
-    ["sc", ["SC"], "SC", "Service Centre", "服務中心", "s", "site", "服務中心；分為自有（Own）與外包（Outsourced）。", "A service centre, either own (Acer-run) or outsourced."],
-    ["ng", ["NG"], "NG", "No Good", "未通過", "s", "flow", "審核未通過；SPL 流程中 Markup Review 為 NG 時退回 ODM 重新提供 SPL 草稿。", "Not approved; if the markup review is NG, the SPL flow returns to the ODM for a new SPL draft."],
-    ["q2", ["Q2"], "Q2", "Second Quarter", "第二季", "s", "term", "一年之第二季（4–6 月）；CSD Q2 2025 為 2025 年第二季之據點統計。", "The second quarter of the year (April–June); CSD Q2 2025 is the site count for that quarter."],
-    ["ipo", ["IPO"], "IPO", "Initial Public Offering", "首次公開發行", "s", "term", "公司首次公開發行股票。", "A company's first public offering of shares."],
-    ["tpex", ["TPEx"], "TPEx", "Taipei Exchange", "證券櫃檯買賣中心（櫃買中心）", "s", "term", "台灣上櫃與興櫃股票之交易市場；海柏特於 2025 年 12 月 17 日上櫃。", "Taiwan's over-the-counter market; HSN listed there on 17 December 2025."],
-    ["ai", ["AI"], "AI", "Artificial Intelligence", "人工智慧", "s", "term", "人工智慧；AI 伺服器為仁寶近年拓展之產品。", "Artificial intelligence; AI servers are among Compal's newer products."],
-    ["ceo", ["CEO"], "CEO", "Chief Executive Officer", "執行長", "s", "role", "企業之最高經營主管。", "A company's chief executive."],
-    ["auo", ["AUO", "AU Optronics"], "AUO", "AU Optronics", "友達光電", "p", "org", "顯示器面板製造商，前身為宏碁集團之達碁科技，2001 年與聯友光電合併後更名；現為獨立公司。", "A display-panel maker, formerly the Acer group's Acer Display Technology; renamed after merging with Unipac in 2001, now independent."],
-    ["abw", ["ABW"], "ABW", "Acer · BenQ · Wistron", "宏碁、明基、緯創三家", "p", "org", "宏碁 2000 年再造後分出的三家公司之合稱（ABW family），創辦人施振榮建議以此取代「泛宏碁集團」之稱。", "The three companies that emerged from Acer's 2000 re-engineering (the ABW family); founder Stan Shih suggested the name in place of the pan-Acer group."],
-    ["aeb", ["AEB"], "AEB", "Acer e-Enabling Service Business", "宏碁資訊", "p", "org", "宏碁子公司，提供雲端服務與軟體授權；2022 年上櫃（6811）。", "An Acer subsidiary providing cloud services and software licensing; listed on the TPEx in 2022 (6811)."],
-    ["acsi", ["ACSI"], "ACSI", "Acer Cyber Security Inc.", "安碁資訊", "p", "org", "宏碁子公司，提供資安監控（SOC）、檢測與顧問服務；2019 年上櫃（6690）。", "An Acer subsidiary providing security monitoring (SOC), testing and consulting; listed on the TPEx in 2019 (6690)."],
-    ["ast", ["AST"], "AST", "Acer Synergy Tech", "智聯服務", "p", "org", "宏碁子公司，提供資訊系統整合與維運；2020 年上櫃（6751）。", "An Acer subsidiary providing IT system integration and maintenance; listed on the TPEx in 2020 (6751)."],
-    ["anz", ["ANZ"], "ANZ", "Australia and New Zealand", "澳洲與紐西蘭", "s", "org", "澳洲與紐西蘭市場之合稱。", "Australia and New Zealand as one market."],
-    ["hp", ["HP"], "HP", "Hewlett-Packard（HP Inc.）", "惠普", "s", "term", "美國個人電腦與印表機品牌，為台灣筆電代工廠之主要客戶之一。", "A US PC and printer brand, one of the main customers of Taiwan's notebook ODMs."],
-    ["it", ["IT"], "IT", "Information Technology", "資訊科技", "s", "term", "資訊科技；IT 系統整合、IT 人力服務等。", "Information technology, as in IT system integration or IT staffing."],
-    ["ps5", ["PS5"], "PS5", "PlayStation 5", "PlayStation 5 遊戲主機", "s", "term", "Sony 之家用遊戲主機；宏碁遊戲自 2020 年起為其台灣獨家代理。", "Sony's home game console; Acer Gaming has been its exclusive agent in Taiwan since 2020."],
-    ["ntd", ["NT$", "NT"], "NT$", "New Taiwan dollar", "新台幣", "s", "term", "台灣之貨幣單位。", "Taiwan's currency."],
-    ["twse", ["TWSE"], "TWSE", "Taiwan Stock Exchange", "臺灣證券交易所", "s", "term", "台灣上市股票之交易所；上櫃與興櫃股票則於櫃買中心（TPEx）交易。", "The exchange for Taiwan's listed shares; over-the-counter and emerging-board shares trade on the TPEx."],
-    ["ems", ["EMS"], "EMS", "Electronics Manufacturing Services", "電子製造服務", "s", "flow", "受託進行電子產品之製造與組裝，通常不負責產品設計；鴻海為此類廠商之代表。", "Contract manufacturing and assembly of electronics, usually without product design; Foxconn is the leading example."],
-    ["culv", ["CULV"], "CULV", "Consumer Ultra-Low Voltage", "消費型超低電壓處理器平台", "s", "part", "Intel 於 2009 年推出之低耗電筆電處理器平台；Acer 當年之超薄筆電即採此平台。", "Intel's 2009 low-power notebook processor platform, used in Acer's ultra-thin notebooks that year."],
-    ["ipc", ["IPC"], "IPC", "Industrial PC", "工業電腦", "s", "term", "用於工業、零售、交通等環境之電腦；建碁自 2019 年起以此為主要業務。", "Computers for industrial, retail and transport environments; AOpen's main business since 2019."],
-    ["aiot", ["AIoT"], "AIoT", "Artificial Intelligence of Things", "智慧物聯網", "s", "term", "結合人工智慧與物聯網之應用。", "Applications that combine artificial intelligence with the Internet of Things."],
-    ["soc", ["SOC"], "SOC", "Security Operations Center", "資安監控中心", "s", "term", "全天候監控資訊安全事件之中心；安碁資訊之核心業務。", "A centre that monitors information-security events around the clock; the core business of Acer Cyber Security."],
-    ["eol", ["EOL"], "EOL", "End of Life", "產品生命週期結束", "m", "flow", "產品生命週期結束之時點，日期由 PM 決定；量產鎖定（Mass Lock）為 EOL 前 3 個月，PPB1、PPB2 分別於 EOL 後 3 與 9 個月。SPL 持續更新至 EOL 通知為止。", "The end of a product's life, on a date decided by the PM. Mass Lock is three months before EOL, and PPB1 and PPB2 fall three and nine months after it. The SPL is kept up to date until the EOL notice."],
-    ["eom", ["EOM"], "EOM", "End of Manufacture", "停止生產", "m", "flow", "ODM 最後一台出貨之日期。桌上型電腦（Proactive 模式）於 EOM 當月提出最後一次需求報表，EOM 之後依各 RO 分批排程供貨。", "The date the ODM ships its last unit. In the desktop (Proactive) mode the last demand report is submitted at EOM, after which parts follow each RO's partial schedule."],
-    ["eos", ["EOS"], "EOS", null, "", "n", "flow", "桌上型電腦規劃模式中，最後採購（LTB）可於 EOM 至 EOS 期間提出；全稱未載明。", "In the desktop planning mode the last-time buy (LTB) may be raised between EOM and EOS; the full name is not specified."],
-    ["ltb", ["LTB"], "LTB", "Last Time Buy", "最後採購", "s", "flow", "停產前之最後一次採購。依合約條款（T&C）於原物料停產、模具損壞或修改、與 ODM 或供應商結束合作，或 RO 主動提出時進行；筆記型電腦依 AML（C 類）、PPB1（B 類）、PPB2（A 類）分階段執行。", "The final purchase before supply ends. Under the terms and conditions it is raised when raw material reaches EOM, tooling is damaged or modified, business with the ODM or vendor ends, or the RO initiates it; for notebooks it runs in stages, AML (C parts), PPB1 (B parts) and PPB2 (A parts)."],
-    ["ml", ["Mass Lock", "ML"], "Mass Lock · ML", null, "量產鎖定", "m", "flow", "Acer Fulfillment 向 ODM 提出全球成品最後需求之時點，為 EOL 前 3 個月；IMR 料件於此時提出最後採購。AML 於 ML 後 2 個月。", "When Acer Fulfillment calls the worldwide finished-goods last demand to the ODMs, three months before EOL; IMR material is placed on last-time buy at this point. AML follows two months after ML.", "Mass Lock"],
-    ["dr", ["Demand Report", "DR"], "DR", "Demand Report", "需求報表", "m", "flow", "各區提出備品需求之報表。桌上型電腦每月 5 日提出、備品於次月 20 日出貨；筆記型電腦依 NPI、BML、AML、PPB1/2 各階段提出。", "The report in which each region states its spare-parts demand. For desktops it is submitted on the 5th of each month with parts shipped on the 20th of the following month; for notebooks it follows the NPI, BML, AML and PPB1/2 stages."],
-    ["imr", ["IMR"], "IMR", null, "", "n", "part", "於量產鎖定（Mass Lock）時提出最後採購之料件類別；全稱未載明。", "A class of material placed on last-time buy at Mass Lock; the full name is not specified."],
-    ["wd", ["WD"], "WD", "Working Days", "工作天", "s", "term", "工作天。例：初始備品於下單後 5 個工作天（PO+5WD）出貨，BML 備品於下單後 10 個工作天出貨。", "Working days. For example, initial spare parts ship five working days after the PO (PO+5WD) and BML parts after ten."],
-    ["cd", ["CD"], "CD", "Calendar Days", "日曆天", "s", "term", "日曆天。FRU/SPL 流程中，FCS 前 14 天（FCS-14CD）提供主機板料號與 carcass price，FCS 前 5 天（FCS-5CD）SPL 凍結。", "Calendar days. In the FRU/SPL flow the mainboard P/N and carcass price are provided 14 days before FCS (FCS-14CD) and the SPL is frozen 5 days before (FCS-5CD)."],
-    ["lt", ["L/T"], "L/T", "Lead Time", "交期", "s", "term", "自下單至交貨所需時間。量產結束後，桌上型電腦備品依 ODM 之 MOQ 與交期供貨。", "The time from order to delivery. After mass production, desktop spare parts follow the ODM's MOQ and lead time."],
-    ["tc", ["T&C"], "T&C", "Terms and Conditions", "合約條款", "s", "term", "與 ODM 或供應商之合約條款；最後採購（LTB）依其規定提出。", "The contract terms with the ODM or vendor, under which a last-time buy (LTB) is raised."],
-    ["ww", ["WW"], "WW", "Worldwide", "全球", "s", "term", "全球。量產鎖定時，Acer Fulfillment 向 ODM 提出全球成品（WW FG）最後需求。", "Worldwide. At Mass Lock, Acer Fulfillment calls the worldwide finished-goods (WW FG) last demand to the ODMs."],
-    ["sop", ["SOP"], "SOP", "Standard Operating Procedure", "標準作業程序", "s", "term", "標準作業程序。Service BOM SOP 分為 NPI（1.1–1.6）與 MP（2.1–2.7）兩部分。", "Standard operating procedure. The Service BOM SOP has NPI (1.1–1.6) and MP (2.1–2.7) parts."]
+    {"id":"hq","keys":["HQ"],"code":"HQ","full":"Headquarters","zh":"總部","en":null,"src":"s","cat":"org","dzh":"Acer 總部，轄下設有 PA、EMEA、TWN、AAP、ACCN 等區域。PAP 彙整各 NS 之需求預測與特殊支援需求後提交 HQ。","den":"Acer headquarters, overseeing PA, EMEA, TWN, AAP and ACCN. PAP consolidates demand forecasts and special support requests from the NS and submits them to HQ.","cc":null,"region":null,"org":"Acer Inc.","urls":[{"t":"Headquarters","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Headquarters"},{"t":"內部教材 第 2 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"pa","keys":["PA"],"code":"PA","full":"Pan America","zh":"泛美區","en":null,"src":"s","cat":"org","dzh":"Acer 美洲區域，與 EMEA、TWN、AAP、ACCN 同屬 HQ 轄下。料號第 6 碼 A 代表 PA。","den":"Acer's Americas region, alongside EMEA, TWN, AAP and ACCN under HQ. A as the 6th character of a part number denotes PA.","cc":null,"region":"PA","org":"Acer Inc.","urls":[{"t":"Acer 4Q23 investor presentation（區域劃分）","p":"Acer · 2024","u":"https://images.acer.com/is/content/acer/Acer%204Q23%20Investor%20presentation-Engpdf"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"emea","keys":["EMEA"],"code":"EMEA","full":"Europe, Middle East & Africa","zh":"歐洲、中東與非洲區","en":null,"src":"s","cat":"org","dzh":"Acer 歐洲、中東與非洲區域。料號第 6 碼 E 代表 EMEA。","den":"Acer's Europe, Middle East and Africa region. E as the 6th character of a part number denotes EMEA.","cc":null,"region":"EMEA","org":"Acer Inc.","urls":[{"t":"Acer announces EMEA management changes","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"accn","keys":["ACCN"],"code":"ACCN","full":null,"zh":"中國區","en":"China region","src":"m","cat":"org","dzh":"中國區，與 PAP 同屬 HQ 轄下，獨立運作。料號第 6 碼 C 代表 ACCN。","den":"China region, a peer of PAP under HQ that operates independently. C as the 6th character of a part number denotes ACCN.","cc":"cn","region":"ACCN","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"pap","keys":["PAP"],"code":"PAP","full":"Pan Asia Pacific","zh":"泛亞太區","en":null,"src":"s","cat":"org","dzh":"泛亞太區，由 TWN 與 AAP 於 2016/2017 年整併而成，為區域辦公室（RO），轄下設有 11 個國家子公司（NS）。PAP 服務物流負責備品規劃與採購、中央倉庫管理、RMA 與各 NS 績效監控；向 ODM 採購的料件自 2026 年 12 月 1 日起改經由 HSN Group 供應。與 AAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後涵蓋台灣與亞太的現行區域；PAP 本身沒有料號代碼，料號第 6 碼沿用 AAP 的 S 與 TWN 的 T。","den":"Pan Asia Pacific, formed in 2016/2017 by merging TWN and AAP; it is the regional office (RO) with 11 nation subsidiaries (NS) under it. PAP service logistics covers spare-parts planning and purchasing, central warehouse management, RMA and NS performance monitoring; from 1 December 2026 the parts it buys from the ODM are supplied through HSN Group. Difference from AAP: AAP was the pre-merger Asia Pacific region without Taiwan, while PAP is the current merged region covering Taiwan and Asia Pacific. PAP has no part-number code of its own; the 6th character keeps AAP's S and TWN's T.","cc":null,"region":"PAP","org":"Acer Inc. · PAP 區域辦公室","urls":[{"t":"Acer announces EMEA management changes（Pan-Asia Pacific formed）","p":"PCR · 2014-07-11","u":"https://pcr-online.biz/2014/07/11/acer-announces-emea-management-changes/"},{"t":"Andrew Hou · Management","p":"Acer","u":"https://www.acer.com/corporate/en/overview/management/andrew-hou"},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""},{"t":"內部教材 第 2–3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"verified"},
+    {"id":"twn","keys":["TWN"],"code":"TWN","full":"Taiwan","zh":"台灣區","en":null,"src":"s","cat":"org","dzh":"台灣區，2016/2017 年與 AAP 整併為 PAP。料號第 6 碼 T 代表 TWN；第 7 碼 T 則代表泰國（ATH）。","den":"Taiwan region, merged with AAP into PAP in 2016/2017. T as the 6th character denotes TWN; as the 7th character, T denotes Thailand (ATH).","cc":"tw","region":"TWN","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"aap","keys":["AAP"],"code":"AAP","full":null,"zh":"亞太區","en":"Asia Pacific","src":"m","cat":"org","dzh":"亞太區（Asia Pacific）。整併前五個區域之一，涵蓋台灣以外的亞太各國，與台灣區（TWN）並列；2016/2017 年與 TWN 整併為 PAP。整併後 AAP 的代碼仍用於料號第 6 碼（S），第 7 碼國別代碼適用於 AAP 各國。與 PAP 的差別：AAP 是整併前的亞太區（不含台灣），PAP 是整併後的現行區域。縮寫原文教材未載明；據點表中韓國辦公室的公司名稱為 Acer Asia Pacific。","den":"The Asia Pacific region: one of the five regions before the merger, covering the Asia Pacific countries other than Taiwan, alongside the Taiwan region (TWN); merged with TWN into PAP in 2016/2017. Its code lives on as the 6th character of part numbers (S), and the 7th-character country codes apply to the AAP countries. Difference from PAP: AAP is the pre-merger region without Taiwan, PAP the current merged region. The expansion of the abbreviation is not given in the material; the Korea office is listed under the company name Acer Asia Pacific.","cc":null,"region":"AAP","org":"Acer Inc.","urls":[{"t":"內部教材 第 2、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"ns","keys":["NS"],"code":"NS","full":"Nation Subsidiary","zh":"國家子公司","en":null,"src":"m","cat":"org","dzh":"PAP 轄下之各國子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控各 NS 之績效（502/503 aging、庫存、採購、達交、HFP），並彙整其需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。","den":"A subsidiary in one country under PAP, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS.","cc":null,"region":null,"org":"Acer 各國子公司","urls":[{"t":"內部教材 第 3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"assb","keys":["ASSB","ASSSB"],"code":"ASSB","full":null,"zh":"馬來西亞國家子公司","en":"Malaysia subsidiary","src":"m","cat":"org","dzh":"馬來西亞國家子公司，HSNM 隸屬其下。2016/2017 年以前為主導子公司；當時馬來西亞由海柏特與 Acer 共同營運。料號國別代碼 M；設有倉庫及 Uni-load。","den":"The Malaysia subsidiary, with HSNM under it. It was the lead subsidiary before 2016/2017, when Malaysia was operated jointly by HSN (Highpoint Service Network) and Acer. Country code M; has a warehouse and Uni-load.","cc":"my","region":"PAP","org":"Acer Sales & Services Sdn Bhd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"aca","keys":["ACA"],"code":"ACA","full":null,"zh":"澳洲國家子公司","en":"Australia subsidiary","src":"m","cat":"org","dzh":"澳洲國家子公司，ACNZ（紐西蘭）隸屬其下。料號國別代碼 A（例：DG.B88SA.001）；設有倉庫及 Uni-load。","den":"The Australia subsidiary, with ACNZ (New Zealand) under it. Country code A (e.g. DG.B88SA.001); has a warehouse and Uni-load.","cc":"au","region":"PAP","org":"Acer Computer Australia Pty. Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"acnz","keys":["ACNZ"],"code":"ACNZ","full":null,"zh":"紐西蘭子公司","en":"New Zealand subsidiary","src":"m","cat":"org","dzh":"紐西蘭子公司，隸屬 ACA，未設獨立料號國別代碼。設有倉庫，未設 Uni-load。","den":"The New Zealand subsidiary, under ACA, without a separate country code. Has a warehouse but no Uni-load.","cc":"nz","region":"PAP","org":"Acer Computer New Zealand Ltd.","urls":[{"t":"內部教材 第 3–4 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ail","keys":["AIL"],"code":"AIL","full":null,"zh":"印度國家子公司","en":"India subsidiary","src":"m","cat":"org","dzh":"印度國家子公司，Bangladesh（孟加拉）隸屬其下。料號國別代碼 I。印度為 PAP 據點最多之國家，包括 172 個外包服務中心及 126 個 ASP；設有倉庫及 Uni-load。","den":"The India subsidiary, with Bangladesh under it. Country code I. India has the most PAP sites, including 172 outsourced service centres and 126 ASPs; it has a warehouse and Uni-load.","cc":"in","region":"PAP","org":"Acer India (Pvt) Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ath","keys":["ATH"],"code":"ATH","full":null,"zh":"泰國國家子公司","en":"Thailand subsidiary","src":"m","cat":"org","dzh":"泰國國家子公司，Indo-china（中南半島）隸屬其下。料號國別代碼 T（第 6 碼 T 則為 TWN）。設有 12 個自有服務中心及 109 個 ASP，並設有倉庫及 Uni-load。","den":"The Thailand subsidiary, with Indo-china under it. Country code T (as the 6th character, T denotes TWN). It has 12 own service centres, 109 ASPs, a warehouse and Uni-load.","cc":"th","region":"PAP","org":"Acer Computer Co., Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ain","keys":["AIN"],"code":"AIN","full":null,"zh":"印尼國家子公司","en":"Indonesia subsidiary","src":"m","cat":"org","dzh":"印尼國家子公司，倉庫表列為 AIN (AMI)。料號國別代碼 N 或 D，為唯一具兩個國別代碼之國家；設有倉庫及 Uni-load。","den":"The Indonesia subsidiary, listed as AIN (AMI) in the warehouse table. Country code N or D, the only country with two codes; it has a warehouse and Uni-load.","cc":"id","region":"PAP","org":"PT Acer Indonesia","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ami","keys":["AMI"],"code":"AMI","full":null,"zh":"印尼 Uni-load 組裝廠","en":"Indonesian Uni-load assembly company","src":"k","cat":"org","dzh":"印尼 Uni-load 組裝廠之公司代碼，倉庫表列為 Indonesia (AIN) (AMI)。","den":"Code for the Indonesian Uni-load assembly company, listed as Indonesia (AIN) (AMI) in the warehouse table.","cc":"id","region":"PAP","org":"AIN（印尼）","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"avn","keys":["AVN"],"code":"AVN","full":null,"zh":"越南國家子公司","en":"Vietnam subsidiary","src":"m","cat":"org","dzh":"越南國家子公司，料號國別代碼 V；設有倉庫，未設 Uni-load。","den":"The Vietnam subsidiary. Country code V; it has a warehouse but no Uni-load.","cc":"vn","region":"PAP","org":"Acer Vietnam Co., Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ajc","keys":["AJC"],"code":"AJC","full":null,"zh":"日本國家子公司","en":"Japan subsidiary","src":"m","cat":"org","dzh":"日本國家子公司，料號國別代碼 J，並負責管理 AKC（韓國）；設有倉庫，未設 Uni-load。","den":"The Japan subsidiary. Country code J; it also manages AKC (Korea). It has a warehouse but no Uni-load.","cc":"jp","region":"PAP","org":"Acer Japan Corp.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"akc","keys":["AKC"],"code":"AKC","full":null,"zh":"韓國國家子公司","en":"Korea subsidiary","src":"m","cat":"org","dzh":"韓國國家子公司，由 AJC（日本）管理，料號國別代碼同為 J；設有倉庫，未設 Uni-load。","den":"The Korea subsidiary, managed by AJC (Japan) and sharing country code J. It has a warehouse but no Uni-load.","cc":"kr","region":"PAP","org":"Acer Asia Pacific（韓國辦公室）","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"afe","keys":["AFE"],"code":"AFE","full":null,"zh":"國家子公司","en":"Nation subsidiary","src":"m","cat":"org","dzh":"PAP 國家子公司之一，所屬國家未載明，亦未列於倉庫表與料號國別代碼表。","den":"One of the PAP subsidiaries. Its country is not specified, and it is not in the warehouse table or the country-code list.","cc":null,"region":"PAP","org":"Acer PAP","urls":[{"t":"內部教材 第 3 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"aphi","keys":["APHI"],"code":"APHI","full":null,"zh":"菲律賓國家子公司","en":"Philippines subsidiary","src":"m","cat":"org","dzh":"菲律賓國家子公司，料號國別代碼 P；設有倉庫，未設 Uni-load。","den":"The Philippines subsidiary. Country code P; it has a warehouse but no Uni-load.","cc":"ph","region":"PAP","org":"Acer Philippines, Inc.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"acs","keys":["ACS"],"code":"ACS","full":null,"zh":"新加坡國家子公司","en":"Singapore subsidiary","src":"m","cat":"org","dzh":"新加坡國家子公司，Sri Lanka、Mongolia、Nepal 隸屬其下。料號國別代碼 S（第 6 碼 S 則為 AAP）；設有倉庫及 Uni-load。","den":"The Singapore subsidiary, with Sri Lanka, Mongolia and Nepal under it. Country code S (as the 6th character, S denotes AAP); it has a warehouse and Uni-load.","cc":"sg","region":"PAP","org":"Acer Computer (Singapore) Pte. Ltd.","urls":[{"t":"內部教材 第 3–4、14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"hsn","keys":["HSN","海柏特"],"code":"HSN","full":"Highpoint Service Network","zh":"海柏特集團","en":null,"src":"p","cat":"org","dzh":"HSN 為 Highpoint Service Network 之縮寫，中文名稱海柏特；HSN Group 指海柏特及其各國公司。源自宏碁於 1999 年在馬來西亞成立之售後服務子公司，2018 年於台灣成立，為多品牌授權維修服務商，提供保固外（OOW）售後維修服務，包括主機板維修；於各國設立公司，服務範圍涵蓋 Acer 及其他品牌。自 2026 年 12 月 1 日起，PAP 採購之料件改經由 HSN Group 供應。","den":"HSN stands for Highpoint Service Network (Chinese name 海柏特); HSN Group means HSN and its country companies. It grew out of Acer's after-sales subsidiary set up in Malaysia in 1999 and was established in Taiwan in 2018 as a multi-brand authorised repair provider, offering out-of-warranty (OOW) after-sales repair, including mainboard repair. It has companies in each country and serves Acer and other brands. From 1 December 2026, parts purchased by PAP are supplied through HSN Group.","cc":"tw","region":null,"org":"Highpoint Service Network（海柏特）","urls":[{"t":"Acer unit HSN to list (founded 14 Sep 2018)","p":"Taipei Times · 2025-11-27","u":"https://www.taipeitimes.com/News/biz/archives/2025/11/27/2003847885"},{"t":"海柏特上櫃掛牌","p":"工商時報 · 2025-12-17","u":"https://www.ctee.com.tw/news/20251217700532-430201"},{"t":"Highpoint Service Network","p":"Acer Malaysia","u":"https://www.acer.com/my-en/support/service-network/highpoint-service-network"}],"vs":"verified"},
+    {"id":"hsnm","keys":["HSNM"],"code":"HSNM","full":null,"zh":"HSN Group 馬來西亞公司","en":"HSN Group, Malaysia","src":"k","cat":"org","dzh":"HSN Group（Highpoint Service Network）馬來西亞公司，隸屬 ASSB。代碼由 HSN 加國別字母 M（Malaysia）組成。","den":"HSN Group (Highpoint Service Network) company in Malaysia, under ASSB. The code is HSN plus the country letter M.","cc":"my","region":"PAP","org":"HSN Group · Malaysia","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"hsni","keys":["HSNI"],"code":"HSNI","full":null,"zh":"HSN Group 印尼公司","en":"HSN Group, Indonesia","src":"k","cat":"org","dzh":"HSN Group（Highpoint Service Network）印尼公司。代碼由 HSN 加國別字母 I（Indonesia）組成。","den":"HSN Group (Highpoint Service Network) company in Indonesia. The code is HSN plus the country letter I.","cc":"id","region":"PAP","org":"HSN Group · Indonesia","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"hsnv","keys":["HSNV"],"code":"HSNV","full":null,"zh":"HSN Group 越南公司","en":"HSN Group, Vietnam","src":"k","cat":"org","dzh":"HSN Group（Highpoint Service Network）越南公司。代碼由 HSN 加國別字母 V（Vietnam）組成。","den":"HSN Group (Highpoint Service Network) company in Vietnam. The code is HSN plus the country letter V.","cc":"vn","region":"PAP","org":"HSN Group · Vietnam","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"hsnp","keys":["HSNP"],"code":"HSNP","full":null,"zh":"HSN Group 菲律賓公司","en":"HSN Group, Philippines","src":"k","cat":"org","dzh":"HSN Group（Highpoint Service Network）菲律賓公司。代碼由 HSN 加國別字母 P（Philippines）組成。","den":"HSN Group (Highpoint Service Network) company in Philippines. The code is HSN plus the country letter P.","cc":"ph","region":"PAP","org":"HSN Group · Philippines","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"hsnt","keys":["HSNT"],"code":"HSNT","full":null,"zh":"HSN Group 泰國公司","en":"HSN Group, Thailand","src":"k","cat":"org","dzh":"HSN Group（Highpoint Service Network）泰國公司。代碼由 HSN 加國別字母 T（Thailand）組成。","den":"HSN Group (Highpoint Service Network) company in Thailand. The code is HSN plus the country letter T.","cc":"th","region":"PAP","org":"HSN Group · Thailand","urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"ro","keys":["RO"],"code":"RO","full":"Regional Office","zh":"區域辦公室","en":null,"src":"m","cat":"role","dzh":"區域辦公室。PAP 團隊即為 RO，負責採購作業。RO 使用 PLM、PLS、GLS、CSS 四套系統，PLS 僅供 RO 使用。SPL 定義流程最終將 SPL 發布予各 RO；料號第 6 碼即為 RO 代碼。五個 RO 於 2010 年以前各自獨立運作。","den":"Regional office. The PAP team is the RO and handles purchasing. ROs use PLM, PLS, GLS and CSS, and only ROs use PLS. The SPL flow ends with SPL release to all ROs, and the 6th character of a part number is the RO code. The five ROs operated independently before 2010.","cc":null,"region":null,"org":"PAP","urls":[{"t":"內部教材 第 3、16 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"gm","keys":["GM"],"code":"GM","full":"General Manager","zh":"總經理","en":null,"src":"s","cat":"role","dzh":"總經理。PAP 之 GM 為 Andrew Hou；Jacky Lin 兼任 HSN Group GM。","den":"General manager. PAP's GM is Andrew Hou; Jacky Lin also serves as GM of HSN Group.","cc":null,"region":null,"org":null,"urls":[{"t":"General manager","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/General_manager"}],"vs":"standard"},
+    {"id":"avp","keys":["AVP"],"code":"AVP","full":"Assistant Vice President","zh":"協理","en":null,"src":"s","cat":"role","dzh":"協理。Jacky Lin 為 Service 部門 AVP，並兼任 HSN Group GM。","den":"Assistant vice president. Jacky Lin is AVP of Service and also GM of HSN Group.","cc":null,"region":null,"org":null,"urls":[{"t":"Vice president","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Vice_president"}],"vs":"standard"},
+    {"id":"csd","keys":["CSD"],"code":"CSD","full":null,"zh":"","en":null,"src":"n","cat":"role","dzh":"「CSD Q2 2025 Infrastructure」之統計單位，負責彙整各國服務據點。","den":"The unit behind the CSD Q2 2025 Infrastructure figures for service sites by country.","cc":null,"region":null,"org":"Acer","urls":[{"t":"內部教材 第 5、11 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"asp","keys":["ASP"],"code":"ASP","full":"Authorized Service Provider","zh":"授權服務商","en":null,"src":"m","cat":"site","dzh":"經 Acer 授權之外部服務商，不具維修能力，提供收件（收機）服務。Q2 2025 PAP 全區共 507 家，以印度 126 家、泰國 109 家、印尼 91 家最多。ASP 使用 PLM 與 CSS。","den":"An external provider authorised by Acer that takes in units but does not repair them. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"wh","keys":["W/H"],"code":"W/H","full":"Warehouse","zh":"倉庫","en":null,"src":"s","cat":"site","dzh":"倉庫。PAP 11 國均設有倉庫；中央倉庫管理（Central W/H management）為 PAP 主要職能之一。","den":"Warehouse. All 11 PAP countries have one, and central warehouse management is one of PAP's main functions.","cc":null,"region":null,"org":null,"urls":[{"t":"Warehouse","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Warehouse"},{"t":"內部教材 第 4、9 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"uniload","keys":["Uni-load","Uni-Load"],"code":"Uni-load","full":null,"zh":"當地產線／組裝廠","en":"Local production line / assembly plant","src":"m","cat":"site","dzh":"於當地設有產線或組裝廠，主要用於滿足當地客戶（如標案）之規格與成本要求，例如澳洲向 ODM 採購半成品，並於當地採購 SSD、HDD 進行組裝。設有 Uni-load 之國家：澳洲、印度、馬來西亞、泰國、印尼、新加坡；印尼組裝廠代碼為 AMI。","den":"A local production line or assembly plant, mainly used to meet local customers' specifications and costs (e.g. tenders). Australia, for example, buys semi-finished parts from the ODM and assembles them with locally sourced SSDs and HDDs. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load; the Indonesian assembly company is AMI.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 4 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"callc","keys":["Call Centre"],"code":"Call Centre","full":null,"zh":"客服中心","en":"Customer service phone centre","src":"m","cat":"site","dzh":"客戶服務電話中心。Q2 2025 PAP 全區共 8 處：印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 處。","den":"Customer service phone centre. PAP had 8 in Q2 2025, one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"lph","keys":["Local Parts Hub"],"code":"Local Parts Hub","full":null,"zh":"當地備品中心","en":"Local parts hub","src":"m","cat":"site","dzh":"各國之零件總倉，負責存放備品；各據點另設有庫房。Q2 2025 PAP 全區共 18 處，以台灣 7 處最多。","den":"Each country's main parts warehouse, with storerooms at each site. PAP had 18 in Q2 2025, the most in Taiwan (7).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"rsph","keys":["Regional Spare Parts Hub","Regional Spared Part Hub"],"code":"Regional Spare Parts Hub","full":null,"zh":"區域備品中心","en":"Regional spare parts hub","src":"m","cat":"site","dzh":"服務整個區域之備品中心，PAP 全區共 1 處。","den":"A spare-parts hub serving the whole region; PAP has one.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"tender","keys":["標案"],"code":"標案 · Tender","full":null,"zh":"採購招標","en":"Procurement tender","src":"k","cat":"site","dzh":"政府機關或企業之採購招標。客戶（如警政單位）發布標書（規格書），各品牌依規格投標；得標後委託 ODM 生產，必要時於當地組裝（Uni-load）以符合標案價格。例如 ACA 之標案規模達兩萬台筆電。","den":"Public or corporate procurement. The customer (e.g. the police) issues a tender with a specification and brands bid against it; the winner has an ODM build the product, assembling locally (Uni-load) where needed to meet the tender price. One ACA tender, for example, covered 20,000 notebooks.","cc":null,"region":null,"org":null,"urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"plm","keys":["PLM"],"code":"PLM","full":"Product Lifecycle Management","zh":"產品生命週期管理系統","en":null,"src":"s","cat":"sys","dzh":"負責料件與 BOM 管理：為新料件申請料號、將 Service BOM 及新增料件匯入 Service PLM。RO、NS、ASP 皆使用。","den":"Manages parts and BOMs: applying for P/Ns for new items and importing the Service BOM and new parts into Service PLM. Used by ROs, NS and ASPs.","cc":null,"region":null,"org":null,"urls":[{"t":"Product lifecycle","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Product_lifecycle"},{"t":"內部教材 第 16–17 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"pls","keys":["PLS"],"code":"PLS","full":null,"zh":"","en":null,"src":"n","cat":"sys","dzh":"用於向 ODM 確認採購單（Confirm PO to ODM），僅供 RO 使用。","den":"Used to confirm POs to the ODM; used by ROs only.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 16、18 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"gls","keys":["GLS"],"code":"GLS","full":null,"zh":"","en":null,"src":"n","cat":"sys","dzh":"用於中央備品規劃（Central SP Planning），RO 與 NS 使用。","den":"Used for central spare-parts planning; used by ROs and NS.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 16、19 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"css","keys":["CSS"],"code":"CSS","full":null,"zh":"","en":null,"src":"n","cat":"sys","dzh":"用於建立採購單（Create PO）；502/503 aging 所列不良品滯留於 CSS。RO、NS、ASP 皆使用。","den":"Used to create POs; defective parts counted in 502/503 aging are held in CSS. Used by ROs, NS and ASPs.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 16、20 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"fru","keys":["FRU"],"code":"FRU","full":"Field Replaceable Unit","zh":"現場可更換單元","en":null,"src":"s","cat":"part","dzh":"可於維修現場直接更換之料件單位，例如鍵盤、螢幕模組。B 樣品完成後召開 FRU 審查會議；NPI 階段由 ODM 提供 FRU 清單草稿，審查後建立 Acer 料號。","den":"A part that can be replaced on site, such as a keyboard or LCD module. A FRU review meeting follows the B sample; for NPI the ODM drafts the FRU list, which is reviewed before Acer P/Ns are created.","cc":null,"region":null,"org":null,"urls":[{"t":"Field-replaceable unit","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Field-replaceable_unit"},{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"spl","keys":["SPL"],"code":"SPL","full":"Spare Parts List","zh":"備品清單","en":null,"src":"m","cat":"part","dzh":"各機種可供售後維修使用之備品料件清單，列出料號與價格，為各區備品規劃與採購之依據。流程：ODM 提供未含價格之 SPL 草稿 → 為新料件申請料號 → ODM 報價 → Markup Review → 上傳 SPL 系統 → 於 FCS 前一週發布予各 RO。","den":"The list of spare parts available for after-sales repair of each model, with P/Ns and prices; the basis for regional spare-parts planning and purchasing. Flow: the ODM drafts the SPL without prices → P/Ns are applied for new items → the ODM quotes → markup review → upload to the SPL system → release to all ROs one week before FCS.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 10–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"sp","keys":["S/P","SP"],"code":"S/P · SP","full":"Spare Parts","zh":"備品","en":null,"src":"m","cat":"part","dzh":"維修用備品。相關項目包括 S/P Introduction、SP planning & Ordering（備品規劃與下單）、Central SP Planning（中央備品規劃）及 SP template。","den":"Spare parts for repairs. Related items include S/P Introduction, SP planning & ordering, central SP planning and the SP template.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、10 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"bom","keys":["BOM"],"code":"BOM","full":"Bill of Materials","zh":"物料清單","en":null,"src":"s","cat":"part","dzh":"產品組成料件之清單。Service BOM 為維修用版本，分為 NPI 與 MP 兩類，各有其 SOP。","den":"The list of parts that make up a product. The Service BOM is the service version, in NPI and MP types, each with its own SOP.","cc":null,"region":null,"org":null,"urls":[{"t":"Bill of materials","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Bill_of_materials"},{"t":"內部教材 第 13、15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"pn","keys":["P/N"],"code":"P/N","full":"Part Number","zh":"料號","en":null,"src":"s","cat":"part","dzh":"料件編號。Acer 料號格式為 AA.BBBCD.EEE：AA 為子類別代碼；字元位置不計小數點，第 6 碼為 RO 代碼，第 7 碼為國別代碼。","den":"Part number. Acer P/Ns follow AA.BBBCD.EEE: AA is the sub-category code; not counting dots, the 6th character is the RO code and the 7th the country code.","cc":null,"region":null,"org":null,"urls":[{"t":"Part number","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Part_number"},{"t":"內部教材 第 14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"mb","keys":["MB"],"code":"MB","full":"Mainboard","zh":"主機板","en":null,"src":"s","cat":"part","dzh":"主機板。HQ/PM 於 FRU 審查會議提供 MB/KB P/N（主機板與鍵盤料號）。","den":"Mainboard. HQ/PM provides MB/KB P/Ns (mainboard and keyboard part numbers) for the FRU review meeting.","cc":null,"region":null,"org":null,"urls":[{"t":"Motherboard","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Motherboard"},{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"kb","keys":["KB"],"code":"KB","full":"Keyboard","zh":"鍵盤","en":null,"src":"s","cat":"part","dzh":"鍵盤。HQ/PM 於 FRU 審查會議提供 MB/KB P/N；子類別 6B 為 KB ASSEMBLY。","den":"Keyboard. HQ/PM provides MB/KB P/Ns for the FRU review meeting; sub-category 6B is KB ASSEMBLY.","cc":null,"region":null,"org":null,"urls":[{"t":"Computer keyboard","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Computer_keyboard"},{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"sku","keys":["SKU"],"code":"SKU","full":"Stock Keeping Unit","zh":"庫存單位","en":null,"src":"s","cat":"part","dzh":"各銷售配置之編號。Service BOM SOP 1.2／2.2 須檢查 AVLC 與 SKU BOM。","den":"The code for each sales configuration. Service BOM SOP 1.2 and 2.2 check AVLC and the SKU BOM.","cc":null,"region":null,"org":null,"urls":[{"t":"Stock keeping unit","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Stock_keeping_unit"},{"t":"內部教材 第 15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"avlc","keys":["AVLC"],"code":"AVLC","full":null,"zh":"","en":null,"src":"n","cat":"part","dzh":"Service BOM SOP 1.2／2.2「AVLC & SKU BOM Checking」之檢查項目，並由 HQ/PM 提供予 FRU 審查會議。業界 AVL 一般指 Approved Vendor List（合格供應商清單）。","den":"Checked in Service BOM SOP 1.2 and 2.2 (AVLC & SKU BOM Checking) and provided by HQ/PM for the FRU review meeting. In the industry, AVL generally means Approved Vendor List.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 11–12、15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"moq","keys":["MOQ"],"code":"MOQ","full":"Minimum Order Quantity","zh":"最小訂購量","en":null,"src":"s","cat":"part","dzh":"供應商可接受之最小訂購數量。Service BOM SOP 1.3／2.3 須審查 MOQ／RMA 建議。","den":"The smallest order quantity a supplier accepts. Service BOM SOP 1.3 and 2.3 review the MOQ/RMA suggestions.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 15、23–25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"bs","keys":["B/S"],"code":"B/S","full":null,"zh":"","en":null,"src":"n","cat":"part","dzh":"見於 SOP 1.4「Price Review – B/S & general parts markup %」，與一般料件分別審核 markup %。","den":"Appears in SOP 1.4 (Price Review – B/S & general parts markup %), where its markup % is reviewed separately from general parts.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"npi","keys":["NPI"],"code":"NPI","full":"New Product Introduction","zh":"新產品導入","en":null,"src":"s","cat":"part","dzh":"新機種導入階段。NPI Service BOM：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後於 Service BOM 建立 Acer P/N，並將 NPI SPL（DT SPL、NB SPL）發布予各 RO。","den":"The new-model introduction phase. For the NPI Service BOM, the ODM drafts the FRU list after the FRU meeting, Acer P/Ns are created after review, and the NPI SPL (DT and NB) is released to all ROs.","cc":null,"region":null,"org":null,"urls":[{"t":"New product development","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/New_product_development"},{"t":"內部教材 第 13、22 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"mp","keys":["MP"],"code":"MP","full":"Mass Production","zh":"量產","en":null,"src":"s","cat":"part","dzh":"量產階段。MP Service BOM 由 ODM 每月定期更新，SOP 涵蓋料號審查、替代料檢查與維護、新增料件匯入 PLM 及價格維護。","den":"The mass-production phase. The ODM updates the MP Service BOM monthly; its SOP covers P/N review, substitute parts, importing new parts into PLM and price maintenance.","cc":null,"region":null,"org":null,"urls":[{"t":"Mass production","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Mass_production"},{"t":"內部教材 第 13、23 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"dt","keys":["DT"],"code":"DT","full":"Desktop","zh":"桌上型電腦","en":null,"src":"s","cat":"part","dzh":"桌上型電腦。相關項目包括 DT Demand Report（桌機需求報表）及 DT SPL。","den":"Desktop computers. Related items include the DT Demand Report and the DT SPL.","cc":null,"region":null,"org":null,"urls":[{"t":"Desktop computer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Desktop_computer"},{"t":"內部教材 第 7 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"nb","keys":["NB"],"code":"NB","full":"Notebook","zh":"筆記型電腦","en":null,"src":"s","cat":"part","dzh":"筆記型電腦。相關項目包括 NB NPI 之 BML、AML、PPB1/2 需求報表及 NB SPL。","den":"Notebook computers. Related items include the NB NPI demand reports (BML, AML, PPB1/2) and the NB SPL.","cc":null,"region":null,"org":null,"urls":[{"t":"Laptop","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Laptop"},{"t":"內部教材 第 7 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"bml","keys":["BML"],"code":"BML","full":"Before Mass Lock","zh":"量產鎖定前","en":null,"src":"m","cat":"part","dzh":"New Proactive（筆記型電腦）規劃模式之階段：量產鎖定前，每月 15 日提出 A、B、C 類料件之需求報表，備品於下單後 10 個工作天出貨。","den":"A stage of the New Proactive (notebook) planning mode: before Mass Lock, the demand report for A, B and C parts is submitted on the 15th of each month and spare parts ship 10 working days after the PO.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"aml","keys":["AML"],"code":"AML","full":"After Mass Lock","zh":"量產鎖定後","en":null,"src":"m","cat":"part","dzh":"New Proactive 規劃模式之階段，於量產鎖定（ML）後 2 個月：所有料件仍可向 ODM 採購，C 類料件於此時最後採購（LTB），MOQ 與價格沿用 BML。","den":"A New Proactive stage two months after Mass Lock (ML): all parts can still be bought from the ODM, C parts are placed on last-time buy (LTB), and MOQ and price follow BML.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"ppb","keys":["PPB1/2","PPB1","PPB2","PPB"],"code":"PPB1/2","full":"Post Production Buy 1 / 2","zh":"停產後採購 1／2","en":null,"src":"m","cat":"part","dzh":"New Proactive 規劃模式之停產後採購階段：PPB1 於 EOL 後 3 個月（AML + 6 個月）最後採購 B 類料件，PPB2 於 EOL 後 9 個月最後採購 A 類料件；MOQ 與價格重新議定，ODM 依 6 個月排程分批供貨。","den":"The post-production buy stages of the New Proactive mode: PPB1, three months after EOL (AML + 6 months), is the last-time buy of B parts; PPB2, nine months after EOL, is the last-time buy of A parts. MOQ and price are renegotiated and the ODM supplies in partial 6-month schedules.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、22–24 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"odm","keys":["ODM"],"code":"ODM","full":"Original Design Manufacturer","zh":"委託設計製造商","en":null,"src":"s","cat":"flow","dzh":"為 Acer 設計與生產產品之代工廠，例如仁寶（Compal）。SPL 流程中負責 B 樣品、SPL 草稿及報價，並每月更新 MP Service BOM。PAP 透過 PLS 向 ODM 確認採購單，採購整機或料件後供應予各 NS。","den":"The contract manufacturer that designs and builds products for Acer, such as Compal. In the SPL flow it provides the B sample, the SPL draft and the quotation, and it updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS and supplies the purchased units and parts to the NS.","cc":null,"region":null,"org":"例：仁寶 Compal","urls":[{"t":"Original design manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_design_manufacturer"},{"t":"內部教材 第 7、11–13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"compal","keys":["仁寶","Compal"],"code":"仁寶 · Compal","full":"Compal Electronics, Inc.","zh":"仁寶電腦","en":null,"src":"p","cat":"flow","dzh":"仁寶電腦工業股份有限公司，1984 年創立於台灣，為全球主要筆記型電腦 ODM 廠商之一；依 Acer 規格設計與生產產品，並接受 PAP 之採購單。","den":"Compal Electronics, founded in Taiwan in 1984, is one of the world's leading notebook ODMs. It designs and builds products to Acer's specification and receives POs from PAP.","cc":"tw","region":null,"org":"Compal Electronics, Inc.","urls":[{"t":"仁寶（2324）公司資料","p":"Yahoo 股市","u":"https://tw.stock.yahoo.com/quote/2324.TW/profile"},{"t":"仁寶電腦 公司資料","p":"鉅亨網","u":"https://www.cnyes.com/archive/twstock/profile/2324.htm"}],"vs":"verified"},
+    {"id":"oem","keys":["OEM"],"code":"OEM","full":"Original Equipment Manufacturer","zh":"原廠委託製造","en":null,"src":"s","cat":"flow","dzh":"代工廠依品牌商提供之設計與規格生產，產品以品牌商之品牌銷售。歐美 PC 產業中，「PC OEM」亦常指品牌電腦廠商本身。","den":"The manufacturer builds to the brand's design and specification, and the product is sold under the brand. In the Western PC industry, a \"PC OEM\" often means the brand itself.","cc":null,"region":null,"org":null,"urls":[{"t":"Original equipment manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_equipment_manufacturer"}],"vs":"standard"},
+    {"id":"obm","keys":["OBM"],"code":"OBM","full":"Original Brand Manufacturer","zh":"自有品牌","en":null,"src":"s","cat":"flow","dzh":"以自有品牌行銷與銷售產品，並主導產品定義；生產可自行或委託 ODM／OEM。Acer 屬此模式。","den":"Markets and sells under its own brand and defines the product; production may be in-house or outsourced to an ODM or OEM. Acer works this way.","cc":null,"region":null,"org":null,"urls":[{"t":"Original brand manufacturer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Original_design_manufacturer"}],"vs":"standard"},
+    {"id":"qsbu","keys":["QSBU"],"code":"QSBU","full":null,"zh":"","en":null,"src":"n","cat":"flow","dzh":"SPL 定義流程之負責單位之一（QSBU/GCSD），負責 FRU 審查會議、申請料號、Markup Review、上傳 SPL 系統及發布 SPL。","den":"One of the units responsible for the SPL flow (QSBU/GCSD): it holds the FRU review, applies for P/Ns, reviews markup, uploads to the SPL system and releases the SPL.","cc":null,"region":null,"org":"Acer","urls":[{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"gcsd","keys":["GCSD"],"code":"GCSD","full":null,"zh":"","en":null,"src":"n","cat":"flow","dzh":"與 QSBU 共同負責 SPL 定義流程（QSBU/GCSD）。","den":"Shares responsibility for the SPL flow with QSBU (QSBU/GCSD).","cc":null,"region":null,"org":"Acer","urls":[{"t":"內部教材 第 12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"pm","keys":["PM"],"code":"PM","full":null,"zh":"","en":null,"src":"n","cat":"flow","dzh":"與 HQ 同屬 SPL 流程之一方（HQ/PM），提供 Matrix table、AVLC、MB/KB P/N 及 Carcass price。","den":"Part of the HQ/PM party in the SPL flow; provides the matrix table, AVLC, MB/KB P/Ns and the carcass price.","cc":null,"region":null,"org":"Acer HQ","urls":[{"t":"內部教材 第 11–12、25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"fcs","keys":["FCS"],"code":"FCS","full":"First Customer Shipment","zh":"首次客戶出貨","en":null,"src":"s","cat":"flow","dzh":"產品首次出貨予客戶之時點。SPL 須於 FCS-1wk（首次出貨前一週）發布予各 RO。","den":"The date a product first ships to customers. The SPL must be released to all ROs at FCS-1wk, one week before it.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 11–12、23、25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"fg","keys":["FG"],"code":"FG","full":"Finished Goods","zh":"成品","en":null,"src":"k","cat":"flow","dzh":"已完成組裝、可出貨之整機。標案中若成品成本高於標案價格，可改採購半成品（螢幕、主機板）於當地組裝。","den":"Fully assembled units ready to ship. If the FG cost of a tender exceeds the tender price, semi-finished parts (screen, mainboard) can be bought and assembled locally.","cc":null,"region":null,"org":null,"urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"keycomp","keys":["Key component"],"code":"Key component","full":null,"zh":"關鍵零件","en":"Key parts","src":"k","cat":"flow","dzh":"關鍵零件，例如主機板、螢幕、SSD。主機板須以高精密設備製造，故向 ODM 採購。","den":"Key parts such as the mainboard, screen and SSD. Mainboards require high-precision manufacturing and are sourced from the ODM.","cc":null,"region":null,"org":null,"urls":[{"t":"內部補充說明（教材之外之口頭與筆記資料）","p":"內部補充說明","u":""}],"vs":"internal"},
+    {"id":"po","keys":["PO"],"code":"PO","full":"Purchase Order","zh":"採購單","en":null,"src":"s","cat":"ops","dzh":"採購單。PAP 於 CSS 建立 PO、於 PLS 向 ODM 確認，並更新 ETD 追蹤交期。月報包含 PO 相關資料（open PO、close PO、PO raise）。","den":"Purchase order. PAP creates POs in CSS, confirms them to the ODM in PLS and tracks delivery by updating the ETD. The monthly report includes PO files (open, closed and raised POs).","cc":null,"region":null,"org":null,"urls":[{"t":"Purchase order","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Purchase_order"},{"t":"內部教材 第 7–8 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"etd","keys":["ETD"],"code":"ETD","full":"Estimated Time of Departure","zh":"預計出貨日","en":null,"src":"s","cat":"ops","dzh":"貨物預計自供應商出貨之日期。PO 管理須持續更新並追蹤 ETD。","den":"The date goods are expected to leave the supplier. PO management keeps the ETD updated and tracked.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"hfp","keys":["HFP"],"code":"HFP","full":"Hold For Part","zh":"待料","en":null,"src":"m","cat":"ops","dzh":"因待料而延宕之維修案件（backorder），為 PAP 監控各 NS 績效之指標之一。","den":"Repair cases delayed while waiting for parts on backorder; one of the indicators PAP uses to monitor each NS.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 8 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"rma","keys":["RMA"],"code":"RMA","full":"Return Merchandise Authorization","zh":"退貨授權","en":null,"src":"s","cat":"ops","dzh":"不良品退回之授權與流程。RMA 為 PAP 主要職能之一；Service BOM SOP 亦須審查 MOQ/RMA 建議。","den":"Authorisation and process for returning defective parts. RMA is one of PAP's main functions, and the Service BOM SOP reviews the MOQ/RMA suggestions.","cc":null,"region":null,"org":null,"urls":[{"t":"Return merchandise authorization","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Return_merchandise_authorization"},{"t":"內部教材 第 9、15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"csat","keys":["CSAT"],"code":"CSAT","full":"Customer Satisfaction","zh":"客戶滿意度","en":null,"src":"m","cat":"ops","dzh":"客戶滿意度，為 PAP 主要職能（II）之一。","den":"Customer satisfaction, one of PAP's main functions (II).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 9 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"aging","keys":["502/503"],"code":"502/503 aging","full":null,"zh":"不良品滯留時間","en":"Defective-part aging","src":"m","cat":"ops","dzh":"不良品滯留於 CSS 且尚未處理之時間，為 NS 績效監控指標。","den":"How long defective parts have been held in CSS without action; an NS performance indicator.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 8 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"agingstock","keys":["Aging Stock"],"code":"Aging Stock","full":null,"zh":"庫齡過長之庫存","en":"Aged inventory","src":"m","cat":"ops","dzh":"庫齡過長之庫存，列入每月服務與營運報告。","den":"Inventory beyond its holding period, included in the monthly service and operation report.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 8 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"oow","keys":["OOW"],"code":"OOW","full":"Out of Warranty","zh":"保固外","en":null,"src":"s","cat":"ops","dzh":"超過保固期之維修服務。HSN Group 主要提供保固外售後維修，包括主機板維修。","den":"Repair service after the warranty period. HSN Group mainly provides out-of-warranty after-sales repair, including mainboard repair.","cc":null,"region":null,"org":null,"urls":[{"t":"Warranty","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Warranty"}],"vs":"standard"},
+    {"id":"cs","keys":["CS"],"code":"CS","full":"Customer Service","zh":"客戶服務","en":null,"src":"s","cat":"ops","dzh":"客戶服務及售後維修。","den":"Customer service and after-sales repair.","cc":null,"region":null,"org":null,"urls":[{"t":"Customer service","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Customer_service"}],"vs":"standard"},
+    {"id":"carcass","keys":["Carcass price"],"code":"Carcass price","full":null,"zh":"Markup Review 輸入資料","en":"Markup review input","src":"m","cat":"term","dzh":"Markup Review 之輸入資料之一，由 HQ/PM 於 C sample ready 階段提供。維修業中 carcass 一般指回收之不良品（core）。","den":"One input to the markup review, provided by HQ/PM at the C sample stage. In repair, carcass generally refers to the returned defective unit (core).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 11–12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"markup","keys":["Markup","markup"],"code":"Markup","full":null,"zh":"加價率","en":"Price uplift","src":"m","cat":"term","dzh":"加價（率）。NPI 階段審核 B/S 與一般料件之 markup %；SPL 流程之 Markup Review 未通過時，退回 ODM 重新提供草稿。","den":"Price uplift. NPI reviews the markup % for B/S and general parts; if the SPL markup review fails, the ODM must provide a new draft.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 12、15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"emob","keys":[],"code":"e-Mobility","full":null,"zh":"電動載具產品群","en":"Electric mobility","src":"m","cat":"term","dzh":"電動載具產品群；料號子類別以 OT_ 開頭者屬之，例如 OT_MOTOR、OT_TIRE、OT_BRAKE SYSTEM。","den":"The electric mobility product group; sub-categories starting with OT_ belong to it, e.g. OT_MOTOR, OT_TIRE, OT_BRAKE SYSTEM.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 子類別對照表","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"sbom","keys":[],"code":"Service BOM","full":null,"zh":"維修用 BOM","en":"Service BOM","src":"m","cat":"term","dzh":"維修用 BOM，分為 NPI 與 MP 兩類，各有其 SOP。","den":"The BOM used for service, in NPI and MP types, each with its own SOP.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 13、15 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"pc","keys":["PC"],"code":"PC","full":"Personal Computer","zh":"個人電腦","en":null,"src":"s","cat":"part","dzh":"個人電腦，包括筆記型電腦與桌上型電腦。","den":"A personal computer, including notebooks and desktops.","cc":null,"region":null,"org":null,"urls":[{"t":"Personal computer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Personal_computer"}],"vs":"standard"},
+    {"id":"cpu","keys":["CPU"],"code":"CPU","full":"Central Processing Unit","zh":"中央處理器","en":null,"src":"s","cat":"part","dzh":"電腦之中央處理器；為備品類別之一（CPU/PROCESSOR）。","den":"The computer's central processor; one of the spare-parts categories (CPU/PROCESSOR).","cc":null,"region":null,"org":null,"urls":[{"t":"Central processing unit","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Central_processing_unit"},{"t":"內部教材 第 13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"lcd","keys":["LCD"],"code":"LCD","full":"Liquid Crystal Display","zh":"液晶顯示器","en":null,"src":"s","cat":"part","dzh":"液晶螢幕；備品中分為 LCD 面板與 LCD 模組（LCD MODULE），子類別另有 LCD COVER、LCD BEZEL 等外殼件。","den":"The liquid-crystal screen. Spare parts include LCD panels and LCD modules, and sub-categories include housings such as the LCD cover and LCD bezel.","cc":null,"region":null,"org":null,"urls":[{"t":"Liquid-crystal display","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Liquid-crystal_display"},{"t":"內部教材 第 13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"crt","keys":["CRT"],"code":"CRT","full":"Cathode Ray Tube","zh":"陰極射線管（映像管）","en":null,"src":"s","cat":"part","dzh":"早期映像管顯示器所用之技術；仁寶創立初期即生產 CRT 監視器。","den":"The technology used in early tube monitors; Compal made CRT monitors in its early years.","cc":null,"region":null,"org":null,"urls":[{"t":"Cathode-ray tube","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Cathode-ray_tube"}],"vs":"standard"},
+    {"id":"ssd","keys":["SSD"],"code":"SSD","full":"Solid State Drive","zh":"固態硬碟","en":null,"src":"s","cat":"part","dzh":"以快閃記憶體儲存資料之硬碟；澳洲模式中於當地採購之料件之一。","den":"A drive that stores data in flash memory; one of the parts bought locally under the Australian model.","cc":null,"region":null,"org":null,"urls":[{"t":"Solid-state drive","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Solid-state_drive"}],"vs":"standard"},
+    {"id":"hdd","keys":["HDD"],"code":"HDD","full":"Hard Disk Drive","zh":"傳統硬碟","en":null,"src":"s","cat":"part","dzh":"以磁碟儲存資料之硬碟；為備品類別之一，亦為澳洲模式中於當地採購之料件。","den":"A drive that stores data on magnetic disks; a spare-parts category and one of the parts bought locally under the Australian model.","cc":null,"region":null,"org":null,"urls":[{"t":"Hard disk drive","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Hard_disk_drive"},{"t":"內部教材 第 13 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"odd","keys":["ODD"],"code":"ODD","full":"Optical Disc Drive","zh":"光碟機","en":null,"src":"s","cat":"part","dzh":"光碟機；子類別對照中之 ODD MODULE 為光碟機模組。","den":"An optical disc drive; ODD MODULE in the sub-category table is the drive module.","cc":null,"region":null,"org":null,"urls":[{"t":"Optical disc drive","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Optical_disc_drive"}],"vs":"standard"},
+    {"id":"rtc","keys":["RTC"],"code":"RTC","full":"Real-Time Clock","zh":"即時時鐘","en":null,"src":"s","cat":"part","dzh":"主機板上維持系統時間之時鐘；RTC BATTERY 為其供電之電池。","den":"The clock on the mainboard that keeps system time; the RTC battery powers it.","cc":null,"region":null,"org":null,"urls":[{"t":"Real-time clock","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Real-time_clock"}],"vs":"standard"},
+    {"id":"ac","keys":["AC"],"code":"AC","full":"Alternating Current","zh":"交流電","en":null,"src":"s","cat":"part","dzh":"交流電；AC ADAPTER 為將交流電轉換為設備所需電源之變壓器。","den":"Alternating current; an AC adapter converts mains power for the device.","cc":null,"region":null,"org":null,"urls":[{"t":"Alternating current","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Alternating_current"},{"t":"內部教材 第 14 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"av","keys":["AV"],"code":"AV","full":"Audio/Video","zh":"影音","en":null,"src":"s","cat":"part","dzh":"影音訊號；AV MODULE 為影音模組。","den":"Audio and video signals; an AV module handles them.","cc":null,"region":null,"org":null,"urls":[{"t":"Audiovisual","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Audiovisual"}],"vs":"standard"},
+    {"id":"dvi","keys":["DVI"],"code":"DVI","full":"Digital Visual Interface","zh":"數位視訊介面","en":null,"src":"s","cat":"part","dzh":"數位視訊傳輸介面；DVI MODULE 為相關模組。","den":"A digital video interface; DVI MODULE is the related module.","cc":null,"region":null,"org":null,"urls":[{"t":"Digital Visual Interface","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Digital_Visual_Interface"}],"vs":"standard"},
+    {"id":"pcmcia","keys":["PCMCIA"],"code":"PCMCIA","full":"Personal Computer Memory Card International Association","zh":"PC 卡標準","en":null,"src":"s","cat":"part","dzh":"筆記型電腦擴充卡之介面標準；PCMCIA SLOT 為其插槽。","den":"An expansion-card standard for notebooks; PCMCIA SLOT is its slot.","cc":null,"region":null,"org":null,"urls":[{"t":"PC Card","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/PC_Card"}],"vs":"standard"},
+    {"id":"sc","keys":["SC"],"code":"SC","full":"Service Centre","zh":"服務中心","en":null,"src":"s","cat":"site","dzh":"服務中心；分為自有（Own）與外包（Outsourced）。","den":"A service centre, either own (Acer-run) or outsourced.","cc":null,"region":null,"org":null,"urls":[{"t":"Service center","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Service_center"},{"t":"內部教材 第 5 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"ng","keys":["NG"],"code":"NG","full":"No Good","zh":"未通過","en":null,"src":"s","cat":"flow","dzh":"審核未通過；SPL 流程中 Markup Review 為 NG 時退回 ODM 重新提供 SPL 草稿。","den":"Not approved; if the markup review is NG, the SPL flow returns to the ODM for a new SPL draft.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 12 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"q2","keys":["Q2"],"code":"Q2","full":"Second Quarter","zh":"第二季","en":null,"src":"s","cat":"term","dzh":"一年之第二季（4–6 月）；CSD Q2 2025 為 2025 年第二季之據點統計。","den":"The second quarter of the year (April–June); CSD Q2 2025 is the site count for that quarter.","cc":null,"region":null,"org":null,"urls":[{"t":"Fiscal year","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Fiscal_year"}],"vs":"standard"},
+    {"id":"ipo","keys":["IPO"],"code":"IPO","full":"Initial Public Offering","zh":"首次公開發行","en":null,"src":"s","cat":"term","dzh":"公司首次公開發行股票。","den":"A company's first public offering of shares.","cc":null,"region":null,"org":null,"urls":[{"t":"Initial public offering","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Initial_public_offering"}],"vs":"standard"},
+    {"id":"tpex","keys":["TPEx"],"code":"TPEx","full":"Taipei Exchange","zh":"證券櫃檯買賣中心（櫃買中心）","en":null,"src":"s","cat":"term","dzh":"台灣上櫃與興櫃股票之交易市場；海柏特於 2025 年 12 月 17 日上櫃。","den":"Taiwan's over-the-counter market; HSN listed there on 17 December 2025.","cc":"tw","region":null,"org":"Taipei Exchange","urls":[{"t":"Taipei Exchange","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Taipei_Exchange"},{"t":"海柏特上櫃掛牌","p":"工商時報 · 2025-12-17","u":"https://www.ctee.com.tw/news/20251217700532-430201"}],"vs":"verified"},
+    {"id":"ai","keys":["AI"],"code":"AI","full":"Artificial Intelligence","zh":"人工智慧","en":null,"src":"s","cat":"term","dzh":"人工智慧；AI 伺服器為仁寶近年拓展之產品。","den":"Artificial intelligence; AI servers are among Compal's newer products.","cc":null,"region":null,"org":null,"urls":[{"t":"Artificial intelligence","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Artificial_intelligence"}],"vs":"standard"},
+    {"id":"ceo","keys":["CEO"],"code":"CEO","full":"Chief Executive Officer","zh":"執行長","en":null,"src":"s","cat":"role","dzh":"企業之最高經營主管。","den":"A company's chief executive.","cc":null,"region":null,"org":null,"urls":[{"t":"Chief executive officer","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Chief_executive_officer"}],"vs":"standard"},
+    {"id":"auo","keys":["AUO","AU Optronics"],"code":"AUO","full":"AU Optronics","zh":"友達光電","en":null,"src":"p","cat":"org","dzh":"顯示器面板製造商，前身為宏碁集團之達碁科技，2001 年與聯友光電合併後更名；現為獨立公司。","den":"A display-panel maker, formerly the Acer group's Acer Display Technology; renamed after merging with Unipac in 2001, now independent.","cc":"tw","region":null,"org":"AU Optronics Corp.","urls":[{"t":"達碁與聯友合併為友達","p":"iThome","u":"https://www.ithome.com.tw/news/11958"},{"t":"友達做什麼（公司沿革）","p":"nstock","u":"https://www.nstock.tw/%E5%8F%8B%E9%81%94%E5%81%9A%E4%BB%80%E9%BA%BC.html"}],"vs":"verified"},
+    {"id":"abw","keys":["ABW"],"code":"ABW","full":"Acer · BenQ · Wistron","zh":"宏碁、明基、緯創三家","en":null,"src":"p","cat":"org","dzh":"宏碁 2000 年再造後分出的三家公司之合稱（ABW family），創辦人施振榮建議以此取代「泛宏碁集團」之稱。","den":"The three companies that emerged from Acer's 2000 re-engineering (the ABW family); founder Stan Shih suggested the name in place of the pan-Acer group.","cc":"tw","region":null,"org":"Acer · BenQ · Wistron","urls":[{"t":"施振榮談 ABW family","p":"今周刊 · 2023-08-09","u":"https://www.businesstoday.com.tw/article/category/183015/post/202308090013/"}],"vs":"single"},
+    {"id":"aeb","keys":["AEB"],"code":"AEB","full":"Acer e-Enabling Service Business","zh":"宏碁資訊","en":null,"src":"p","cat":"org","dzh":"宏碁子公司，提供雲端服務與軟體授權；2022 年上櫃（6811）。","den":"An Acer subsidiary providing cloud services and software licensing; listed on the TPEx in 2022 (6811).","cc":"tw","region":null,"org":"Acer e-Enabling Service Business","urls":[{"t":"宏碁資訊 基本資料","p":"Money-Link","u":"https://ww2.money-link.com.tw/TWStock/StockBasic.aspx?SymId=6811"},{"t":"宏碁資訊 AEB 介紹","p":"科技新報 · 2022-07-04","u":"https://finance.technews.tw/2022/07/04/aeb/"}],"vs":"verified"},
+    {"id":"acsi","keys":["ACSI"],"code":"ACSI","full":"Acer Cyber Security Inc.","zh":"安碁資訊","en":null,"src":"p","cat":"org","dzh":"宏碁子公司，提供資安監控（SOC）、檢測與顧問服務；2019 年上櫃（6690）。","den":"An Acer subsidiary providing security monitoring (SOC), testing and consulting; listed on the TPEx in 2019 (6690).","cc":"tw","region":null,"org":"Acer Cyber Security Inc.","urls":[{"t":"安碁資訊上櫃：台灣首家上櫃資安公司","p":"科技新報 · 2019-10-30","u":"https://finance.technews.tw/2019/10/30/6690-acer-cyber-security-inc/"},{"t":"安碁資訊與宏碁雲架構","p":"數位時代","u":"https://www.bnext.com.tw/article/65988/acercsi-aceredc"}],"vs":"verified"},
+    {"id":"ast","keys":["AST"],"code":"AST","full":"Acer Synergy Tech","zh":"智聯服務","en":null,"src":"p","cat":"org","dzh":"宏碁子公司，提供資訊系統整合與維運；2020 年上櫃（6751）。","den":"An Acer subsidiary providing IT system integration and maintenance; listed on the TPEx in 2020 (6751).","cc":"tw","region":null,"org":"Acer Synergy Tech","urls":[{"t":"智聯服務 AST 公司簡介","p":"Acer · 2023-10","u":"https://images.acer.com/is/content/acer/AST%206751%20202310pdf"},{"t":"智聯服務上櫃","p":"工商時報","u":"https://ctee.com.tw/news/stock/371890.html"}],"vs":"verified"},
+    {"id":"anz","keys":["ANZ"],"code":"ANZ","full":"Australia and New Zealand","zh":"澳洲與紐西蘭","en":null,"src":"s","cat":"org","dzh":"澳洲與紐西蘭市場之合稱。","den":"Australia and New Zealand as one market.","cc":null,"region":null,"org":null,"urls":[{"t":"Australia–New Zealand relations","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Australia%E2%80%93New_Zealand_relations"}],"vs":"standard"},
+    {"id":"hp","keys":["HP"],"code":"HP","full":"Hewlett-Packard（HP Inc.）","zh":"惠普","en":null,"src":"s","cat":"term","dzh":"美國個人電腦與印表機品牌，為台灣筆電代工廠之主要客戶之一。","den":"A US PC and printer brand, one of the main customers of Taiwan's notebook ODMs.","cc":"us","region":null,"org":"HP Inc.","urls":[{"t":"HP Inc.","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/HP_Inc."}],"vs":"standard"},
+    {"id":"it","keys":["IT"],"code":"IT","full":"Information Technology","zh":"資訊科技","en":null,"src":"s","cat":"term","dzh":"資訊科技；IT 系統整合、IT 人力服務等。","den":"Information technology, as in IT system integration or IT staffing.","cc":null,"region":null,"org":null,"urls":[{"t":"Information technology","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Information_technology"}],"vs":"standard"},
+    {"id":"ps5","keys":["PS5"],"code":"PS5","full":"PlayStation 5","zh":"PlayStation 5 遊戲主機","en":null,"src":"s","cat":"term","dzh":"Sony 之家用遊戲主機；宏碁遊戲自 2020 年起為其台灣獨家代理。","den":"Sony's home game console; Acer Gaming has been its exclusive agent in Taiwan since 2020.","cc":null,"region":null,"org":"Sony","urls":[{"t":"PlayStation 5","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/PlayStation_5"}],"vs":"standard"},
+    {"id":"ntd","keys":["NT$","NT"],"code":"NT$","full":"New Taiwan dollar","zh":"新台幣","en":null,"src":"s","cat":"term","dzh":"台灣之貨幣單位。","den":"Taiwan's currency.","cc":"tw","region":null,"org":null,"urls":[{"t":"New Taiwan dollar","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/New_Taiwan_dollar"}],"vs":"standard"},
+    {"id":"twse","keys":["TWSE"],"code":"TWSE","full":"Taiwan Stock Exchange","zh":"臺灣證券交易所","en":null,"src":"s","cat":"term","dzh":"台灣上市股票之交易所；上櫃與興櫃股票則於櫃買中心（TPEx）交易。","den":"The exchange for Taiwan's listed shares; over-the-counter and emerging-board shares trade on the TPEx.","cc":"tw","region":null,"org":"Taiwan Stock Exchange","urls":[{"t":"Taiwan Stock Exchange","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Taiwan_Stock_Exchange"}],"vs":"standard"},
+    {"id":"ems","keys":["EMS"],"code":"EMS","full":"Electronics Manufacturing Services","zh":"電子製造服務","en":null,"src":"s","cat":"flow","dzh":"受託進行電子產品之製造與組裝，通常不負責產品設計；鴻海為此類廠商之代表。","den":"Contract manufacturing and assembly of electronics, usually without product design; Foxconn is the leading example.","cc":null,"region":null,"org":null,"urls":[{"t":"Electronics manufacturing services","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Electronics_manufacturing_services"}],"vs":"standard"},
+    {"id":"culv","keys":["CULV"],"code":"CULV","full":"Consumer Ultra-Low Voltage","zh":"消費型超低電壓處理器平台","en":null,"src":"s","cat":"part","dzh":"Intel 於 2009 年推出之低耗電筆電處理器平台；Acer 當年之超薄筆電即採此平台。","den":"Intel's 2009 low-power notebook processor platform, used in Acer's ultra-thin notebooks that year.","cc":null,"region":null,"org":null,"urls":[],"vs":"standard"},
+    {"id":"ipc","keys":["IPC"],"code":"IPC","full":"Industrial PC","zh":"工業電腦","en":null,"src":"s","cat":"term","dzh":"用於工業、零售、交通等環境之電腦；建碁自 2019 年起以此為主要業務。","den":"Computers for industrial, retail and transport environments; AOpen's main business since 2019.","cc":null,"region":null,"org":null,"urls":[{"t":"Industrial PC","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Industrial_PC"}],"vs":"standard"},
+    {"id":"aiot","keys":["AIoT"],"code":"AIoT","full":"Artificial Intelligence of Things","zh":"智慧物聯網","en":null,"src":"s","cat":"term","dzh":"結合人工智慧與物聯網之應用。","den":"Applications that combine artificial intelligence with the Internet of Things.","cc":null,"region":null,"org":null,"urls":[{"t":"Internet of things","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Internet_of_things"}],"vs":"standard"},
+    {"id":"soc","keys":["SOC"],"code":"SOC","full":"Security Operations Center","zh":"資安監控中心","en":null,"src":"s","cat":"term","dzh":"全天候監控資訊安全事件之中心；安碁資訊之核心業務。","den":"A centre that monitors information-security events around the clock; the core business of Acer Cyber Security.","cc":null,"region":null,"org":null,"urls":[{"t":"Information security operations center","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Information_security_operations_center"}],"vs":"standard"},
+    {"id":"eol","keys":["EOL"],"code":"EOL","full":"End of Life","zh":"產品生命週期結束","en":null,"src":"m","cat":"flow","dzh":"產品生命週期結束之時點，日期由 PM 決定；量產鎖定（Mass Lock）為 EOL 前 3 個月，PPB1、PPB2 分別於 EOL 後 3 與 9 個月。SPL 持續更新至 EOL 通知為止。","den":"The end of a product's life, on a date decided by the PM. Mass Lock is three months before EOL, and PPB1 and PPB2 fall three and nine months after it. The SPL is kept up to date until the EOL notice.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 11、23、25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"eom","keys":["EOM"],"code":"EOM","full":"End of Manufacture","zh":"停止生產","en":null,"src":"m","cat":"flow","dzh":"ODM 最後一台出貨之日期。桌上型電腦（Proactive 模式）於 EOM 當月提出最後一次需求報表，EOM 之後依各 RO 分批排程供貨。","den":"The date the ODM ships its last unit. In the desktop (Proactive) mode the last demand report is submitted at EOM, after which parts follow each RO's partial schedule.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"eos","keys":["EOS"],"code":"EOS","full":null,"zh":"","en":null,"src":"n","cat":"flow","dzh":"桌上型電腦規劃模式中，最後採購（LTB）可於 EOM 至 EOS 期間提出；全稱未載明。","den":"In the desktop planning mode the last-time buy (LTB) may be raised between EOM and EOS; the full name is not specified.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"ltb","keys":["LTB"],"code":"LTB","full":"Last Time Buy","zh":"最後採購","en":null,"src":"s","cat":"flow","dzh":"停產前之最後一次採購。依合約條款（T&C）於原物料停產、模具損壞或修改、與 ODM 或供應商結束合作，或 RO 主動提出時進行；筆記型電腦依 AML（C 類）、PPB1（B 類）、PPB2（A 類）分階段執行。","den":"The final purchase before supply ends. Under the terms and conditions it is raised when raw material reaches EOM, tooling is damaged or modified, business with the ODM or vendor ends, or the RO initiates it; for notebooks it runs in stages, AML (C parts), PPB1 (B parts) and PPB2 (A parts).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 23–25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"ml","keys":["Mass Lock","ML"],"code":"Mass Lock · ML","full":null,"zh":"量產鎖定","en":"Mass Lock","src":"m","cat":"flow","dzh":"Acer Fulfillment 向 ODM 提出全球成品最後需求之時點，為 EOL 前 3 個月；IMR 料件於此時提出最後採購。AML 於 ML 後 2 個月。","den":"When Acer Fulfillment calls the worldwide finished-goods last demand to the ODMs, three months before EOL; IMR material is placed on last-time buy at this point. AML follows two months after ML.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 23–25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"dr","keys":["Demand Report","DR"],"code":"DR","full":"Demand Report","zh":"需求報表","en":null,"src":"m","cat":"flow","dzh":"各區提出備品需求之報表。桌上型電腦每月 5 日提出、備品於次月 20 日出貨；筆記型電腦依 NPI、BML、AML、PPB1/2 各階段提出。","den":"The report in which each region states its spare-parts demand. For desktops it is submitted on the 5th of each month with parts shipped on the 20th of the following month; for notebooks it follows the NPI, BML, AML and PPB1/2 stages.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 7、25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"internal"},
+    {"id":"imr","keys":["IMR"],"code":"IMR","full":null,"zh":"","en":null,"src":"n","cat":"part","dzh":"於量產鎖定（Mass Lock）時提出最後採購之料件類別；全稱未載明。","den":"A class of material placed on last-time buy at Mass Lock; the full name is not specified.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"pending"},
+    {"id":"wd","keys":["WD"],"code":"WD","full":"Working Days","zh":"工作天","en":null,"src":"s","cat":"term","dzh":"工作天。例：初始備品於下單後 5 個工作天（PO+5WD）出貨，BML 備品於下單後 10 個工作天出貨。","den":"Working days. For example, initial spare parts ship five working days after the PO (PO+5WD) and BML parts after ten.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 23、25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"cd","keys":["CD"],"code":"CD","full":"Calendar Days","zh":"日曆天","en":null,"src":"s","cat":"term","dzh":"日曆天。FRU/SPL 流程中，FCS 前 14 天（FCS-14CD）提供主機板料號與 carcass price，FCS 前 5 天（FCS-5CD）SPL 凍結。","den":"Calendar days. In the FRU/SPL flow the mainboard P/N and carcass price are provided 14 days before FCS (FCS-14CD) and the SPL is frozen 5 days before (FCS-5CD).","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 11 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"lt","keys":["L/T"],"code":"L/T","full":"Lead Time","zh":"交期","en":null,"src":"s","cat":"term","dzh":"自下單至交貨所需時間。量產結束後，桌上型電腦備品依 ODM 之 MOQ 與交期供貨。","den":"The time from order to delivery. After mass production, desktop spare parts follow the ODM's MOQ and lead time.","cc":null,"region":null,"org":null,"urls":[{"t":"Lead time","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Lead_time"},{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"tc","keys":["T&C"],"code":"T&C","full":"Terms and Conditions","zh":"合約條款","en":null,"src":"s","cat":"term","dzh":"與 ODM 或供應商之合約條款；最後採購（LTB）依其規定提出。","den":"The contract terms with the ODM or vendor, under which a last-time buy (LTB) is raised.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"ww","keys":["WW"],"code":"WW","full":"Worldwide","zh":"全球","en":null,"src":"s","cat":"term","dzh":"全球。量產鎖定時，Acer Fulfillment 向 ODM 提出全球成品（WW FG）最後需求。","den":"Worldwide. At Mass Lock, Acer Fulfillment calls the worldwide finished-goods (WW FG) last demand to the ODMs.","cc":null,"region":null,"org":null,"urls":[{"t":"內部教材 第 25 頁","p":"PAP Service Logistics – Internal Training Material 2025","u":""}],"vs":"standard"},
+    {"id":"sop","keys":["SOP"],"code":"SOP","full":"Standard Operating Procedure","zh":"標準作業程序","en":null,"src":"s","cat":"term","dzh":"標準作業程序。Service BOM SOP 分為 NPI（1.1–1.6）與 MP（2.1–2.7）兩部分。","den":"Standard operating procedure. The Service BOM SOP has NPI (1.1–1.6) and MP (2.1–2.7) parts.","cc":null,"region":null,"org":null,"urls":[{"t":"Standard operating procedure","p":"Wikipedia","u":"https://en.wikipedia.org/wiki/Standard_operating_procedure"}],"vs":"standard"}
   ];
   var AB_BY = {};
-  AB.forEach(function (a) { AB_BY[a[0]] = a; });
-  if (!AB_BY.aap[9]) AB_BY.aap[9] = "Asia Pacific";
-  if (!AB_BY.accn[9]) AB_BY.accn[9] = "China";
+  AB.forEach(function (a) { AB_BY[a.id] = a; });
   var KEYMAP = {};
-  AB.forEach(function (a) { a[1].forEach(function (k) { KEYMAP[k] = a[0]; }); });
+  AB.forEach(function (a) { a.keys.forEach(function (k) { KEYMAP[k] = a.id; }); });
   var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&"); };
   var KEYS = Object.keys(KEYMAP).sort(function (x, y) { return y.length - x.length; }).map(reEsc);
   var AB_RE = new RegExp("(^|[^A-Za-z0-9_])(" + KEYS.join("|") + ")(?=s?(?:[^A-Za-z0-9_]|$))", "g");
@@ -2635,7 +2759,7 @@
       return pre + '<button type="button" class="ab" data-ab="' + id + '">' + key + "</button>";
     });
   }
-  var descHTML = function (a) { return B(linkText(esc(a[7]), a[0]), linkText(esc(a[8]), a[0])); };
+  var descHTML = function (a) { return B(linkText(esc(a.dzh), a.id), linkText(esc(a.den), a.id)); };
   // 組織架構：上級 → 下級
   var TREE = [
     ["hq", [["pa"], ["emea"], ["accn"], ["pap", [["twn"], ["aap"], ["ns", [["assb"], ["aca", [["acnz"]]], ["ail"], ["ath"], ["ain", [["ami"]]], ["avn"], ["ajc"], ["akc"], ["afe"], ["aphi"], ["acs"]]]]]]],
@@ -2645,22 +2769,75 @@
   function srcTag(s) { var x = SRC[s]; return '<span class="src ' + s + '">' + B(x[0], x[1]) + "</span>"; }
   // 名稱顯示：有全稱者顯示全稱＋中文；無全稱但有英文名者亦同；否則中文／英文各自顯示
   function fullHTML(a) {
-    var en = a[3] || a[9];
-    if (en) return esc(en) + (a[4] ? '<small class="zh">' + esc(a[4]) + "</small>" : "");
-    if (a[4]) return B(esc(a[4]), esc(a[2]));
+    var en = a.full || a.en;
+    if (en) return esc(en) + (a.zh ? '<small class="zh">' + esc(a.zh) + "</small>" : "");
+    if (a.zh) return B(esc(a.zh), esc(a.code));
     return NA("全稱未載明", "Full name not specified");
   }
   function nameOf(a) {
-    if (a[3] || a[9]) return esc(a[3] || a[9]) + (a[4] ? '<small class="zh"> · ' + esc(a[4]) + "</small>" : "");
-    if (a[4]) return B(esc(a[4]), esc(a[2]));
+    if (a.full || a.en) return esc(a.full || a.en) + (a.zh ? '<small class="zh"> · ' + esc(a.zh) + "</small>" : "");
+    if (a.zh) return B(esc(a.zh), esc(a.code));
     return NA("全稱未載明", "Full name not specified");
   }
+  var CNAME = {};
+  INFRA.forEach(function (r) { CNAME[r[0]] = [r[1], r[2]]; });
+  OFFICES.forEach(function (o) { if (!CNAME[o[1]]) CNAME[o[1]] = [o[2], o[3]]; });
+  CNAME.cn = ["中國", "China"]; CNAME.tw = ["台灣", "Taiwan"]; CNAME.us = ["美國", "United States"];
+  var catName = function (id) { var c = CATS_AB.filter(function (x) { return x[0] === id; })[0]; return c ? B(c[1], c[2]) : esc(id); };
+  var VS_AB = { verified: ["已核實", "Verified"], single: ["單一來源", "Single source"], conflict: ["來源衝突", "Conflicting sources"], notfound: ["查無可靠來源", "Not found"], internal: ["內部文件", "Internal document"], pending: ["待內部確認", "Pending internal confirmation"], standard: ["通用名詞", "Standard term"] };
+  function vsChip(st) { var v = VS_AB[st] || VS_AB.pending; return '<span class="vs ' + st + '">' + B(v[0], v[1]) + "</span>"; }
+  function srcList(a) {
+    if (!a.urls || !a.urls.length) return '<span class="no">—</span>';
+    return '<ul class="src-list">' + a.urls.map(function (u) {
+      return "<li>" + (u.u ? '<a href="' + esc(u.u) + '" target="_blank" rel="noopener">' + esc(u.t) + "</a>" : esc(u.t)) + (u.p ? "<small>" + esc(u.p) + "</small>" : "") + "</li>";
+    }).join("") + "</ul>";
+  }
+  function placeHTML(a) {
+    var out = "";
+    if (a.cc && CNAME[a.cc]) out += flag(a.cc) + B(CNAME[a.cc][0], CNAME[a.cc][1]);
+    if (a.region) out += (out ? " " : "") + '<span class="chip rg">' + B("區域 ", "Region ") + esc(a.region) + "</span>";
+    return out;
+  }
+  function officeIdx(code) { for (var i = 0; i < OFFICES.length; i++) if (OFFICES[i][12] === code) return i; return -1; }
+  var NS_IDS = {};
+  NSC.forEach(function (n) { NS_IDS[n[0].toLowerCase()] = n; });
+  var REGION_IDS = { pa: 1, emea: 1, pap: 1, twn: 1, aap: 1, accn: 1 };
+  var WHAT_CAT = {
+    role: ["職務或角色名稱的縮寫。", "An abbreviation of a job title or role."],
+    site: ["服務據點類型的名稱。", "The name of a type of service site."],
+    sys: ["PAP 作業使用的系統名稱。", "The name of a system used in PAP operations."],
+    part: ["料件、BOM 或料號相關的名詞。", "A term about parts, the BOM or part numbers."],
+    flow: ["作業流程或參與單位的名詞。", "A term about a process or one of the units involved."],
+    ops: ["採購與營運相關的名詞或指標。", "A purchasing or operations term or indicator."],
+    term: ["一般名詞。", "A general term."]
+  };
+  // 一句話說明：給第一次接觸的同仁看的
+  function whatIs(a) {
+    var c = a.cc && CNAME[a.cc] ? CNAME[a.cc] : ["", ""];
+    if (NS_IDS[a.id]) return a.cc ? B("Acer 在" + c[0] + "的國家子公司（NS）的代碼。", "The code for Acer's nation subsidiary (NS) in " + c[1] + ".") : B("PAP 轄下國家子公司（NS）之一的代碼；所屬國家教材未載明。", "The code for one of the nation subsidiaries (NS) under PAP; its country is not specified in the material.");
+    if (/^hsn[mivpt]$/.test(a.id)) return B("海柏特集團（HSN Group）在" + c[0] + "的公司代碼。", "The code for HSN Group's company in " + c[1] + ".");
+    if (REGION_IDS[a.id]) return B("Acer 的區域代碼之一：總部之下的一個大區。", "One of Acer's region codes: a region under headquarters.");
+    var ONE = { hq: ["Acer 總部的簡稱。", "Short for Acer headquarters."], ns: ["「國家子公司」的縮寫，指 Acer 在各國的公司。", "Short for nation subsidiary: Acer's company in each country."], ro: ["「區域辦公室」的縮寫；PAP 就是一個 RO。", "Short for regional office; PAP is an RO."],
+      hsn: ["海柏特公司名稱的縮寫。", "The abbreviation of the company name Highpoint Service Network."], ami: ["印尼 Uni-load 組裝廠的公司代碼。", "The company code of the Uni-load assembly plant in Indonesia."], compal: ["Acer 的代工廠（ODM）之一，教材所載的採購對象。", "One of Acer's ODMs and the supplier named in the training material."],
+      auo: ["公司名稱的縮寫。", "A company name abbreviation."], aeb: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], acsi: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], ast: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], abw: ["三家公司的合稱。", "A collective name for three companies."], anz: ["兩個國家市場的合稱。", "A collective name for two country markets."] };
+    if (ONE[a.id]) return B(ONE[a.id][0], ONE[a.id][1]);
+    var w = WHAT_CAT[a.cat] || WHAT_CAT.term;
+    return B(w[0], w[1]);
+  }
   function detailHTML(a) {
-    var full = '<div class="ab-full">' + fullHTML(a) + "</div>";
-    return '<div><div class="ab-lab">' + B("全稱", "Full name") + "</div>" + full + '</div><div><div class="ab-lab">' + B("說明", "Description") + "</div>" + descHTML(a) + "</div>";
+    var rows = [[B("這是什麼", "What it is"), '<div class="ab-what">' + whatIs(a) + "</div>"]];
+    rows.push([B("全稱", "Full name"), '<div class="ab-full">' + fullHTML(a) + "</div>"]);
+    rows.push([B("屬於哪一類", "Kind"), catName(a.cat)]);
+    var place = placeHTML(a);
+    if (place) rows.push([B("國家／地區", "Country / region"), place]);
+    if (a.org) rows.push([B("所屬公司／單位", "Company or unit"), esc(a.org)]);
+    rows.push([B("說明", "Description"), descHTML(a)]);
+    rows.push([B("資料來源", "Sources"), srcList(a)]);
+    rows.push([B("資料查證", "Verification"), vsChip(a.vs)]);
+    return '<dl class="kvl">' + rows.map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + r[1] + "</dd></div>"; }).join("") + "</dl>";
   }
   function abNode(a, rootNode) {
-    return '<details class="tnode' + (rootNode ? " root" : "") + '" id="abc-' + a[0] + '"><summary><span class="k">' + esc(a[2]) + '</span><span class="f">' + nameOf(a) + "</span>" + srcTag(a[5]) + '</summary><div class="tin">' + detailHTML(a) + "</div></details>";
+    return '<details class="tnode' + (rootNode ? " root" : "") + '" id="abc-' + a.id + '"><summary><span class="k">' + esc(a.code) + '</span><span class="f">' + nameOf(a) + "</span>" + srcTag(a.src) + '</summary><div class="tin">' + detailHTML(a) + "</div></details>";
   }
   function treeHTML(nodes, depth) {
     return nodes.map(function (n) {
@@ -2685,17 +2862,17 @@
     $$("#ab-cats .btn").forEach(function (x) { x.classList.toggle("active", !q && x.getAttribute("data-cat") === abCat); });
     if (q) {
       CATS_AB.forEach(function (c) {
-        var items = AB.filter(function (a) { return a[6] === c[0] && [a[2], a[3] || "", a[4], a[7], a[8], a[9] || ""].join(" ").toLowerCase().indexOf(q) !== -1; });
+        var items = AB.filter(function (a) { return a.cat === c[0] && [a.code, a.full || "", a.zh, a.dzh, a.den, a.en || "", a.org || ""].join(" ").toLowerCase().indexOf(q) !== -1; });
         if (!items.length) return;
         n += items.length;
         html += '<div class="ab-group"><h3>' + B(c[1], c[2]) + '</h3><div class="acc">' + items.map(function (a) { return abNode(a, false); }).join("") + "</div></div>";
       });
       if (!html) html = '<p class="ab-empty">' + B("查無「" + esc(q) + "」相關結果。", 'No results for "' + esc(q) + '".') + "</p>";
     } else if (abCat === "org") {
-      n = AB.filter(function (a) { return a[6] === "org"; }).length;
+      n = AB.filter(function (a) { return a.cat === "org"; }).length;
       html = '<ul class="tree">' + treeHTML(TREE, 0) + "</ul>";
     } else {
-      var items = AB.filter(function (a) { return a[6] === abCat; });
+      var items = AB.filter(function (a) { return a.cat === abCat; });
       n = items.length;
       html = '<div class="acc">' + items.map(function (a) { return abNode(a, false); }).join("") + "</div>";
     }
@@ -2710,7 +2887,7 @@
     var a = AB_BY[id];
     if (!a) return;
     $("ab-search").value = "";
-    abCat = a[6];
+    abCat = a.cat;
     renderAbbr();
     go("ref-abbr", true);
     var d = $("abc-" + id);
@@ -2757,7 +2934,7 @@
   ];
   $("code-region").innerHTML = REG.map(function (r) {
     var a = AB_BY[r[0]];
-    return "<tr><td><b>" + a[2] + "</b></td><td>" + nameOf(a) + '</td><td class="c"><b class="mono">' + r[1] + '</b></td><td class="wrap">' + B(r[2], r[3]) + "</td></tr>";
+    return "<tr><td><b>" + a.code + "</b></td><td>" + nameOf(a) + '</td><td class="c"><b class="mono">' + r[1] + '</b></td><td class="wrap">' + B(r[2], r[3]) + "</td></tr>";
   }).join("");
 
   var SITE_KIND = [["自有服務中心", "Own service centre", 3], ["外包服務中心", "Outsourced service centre", 4], ["授權服務商 ASP", "ASP", 5], ["客服中心", "Call centre", 6], ["備品中心", "Parts hub", 7]];
@@ -2788,12 +2965,12 @@
   $("code-hsn").innerHTML = HSNC.map(function (h) {
     var a = AB_BY[h[0].toLowerCase()], st = HSN_ST[h[4]];
     return "<tr><td><b>" + esc(h[0]) + "</b></td><td>" + flag(h[1]) + B(h[2], h[3]) + "</td><td>" + B(st[0], st[1]) +
-      '</td><td class="wrap">' + (a ? B(esc(a[7]), esc(a[8])) : B("HSN Group 擴展規劃。", "HSN Group expansion plan.")) + "</td></tr>";
+      '</td><td class="wrap">' + (a ? B(esc(a.dzh), esc(a.den)) : B("HSN Group 擴展規劃。", "HSN Group expansion plan.")) + "</td></tr>";
   }).join("");
 
 
   /* ---------- 資料查證：每條公開事實的查證紀錄（資料：verify.js） ---------- */
-  var VS = { verified: ["已核實", "Verified"], single: ["單一來源", "Single source"], conflict: ["來源衝突", "Conflicting sources"], notfound: ["查無可靠來源", "Not found"], internal: ["內部文件", "Internal document"], pending: ["待內部確認", "Pending internal confirmation"] };
+  var VS = { verified: ["已核實", "Verified"], single: ["單一來源", "Single source"], conflict: ["來源衝突", "Conflicting sources"], notfound: ["查無可靠來源", "Not found"], internal: ["內部文件", "Internal document"], pending: ["待內部確認", "Pending internal confirmation"], standard: ["通用名詞", "Standard term"] };
   var verFilter = "all";
   function vsTag(st) { var v = VS[st] || VS.pending; return '<span class="vs ' + st + '">' + B(v[0], v[1]) + "</span>"; }
   function verSrc(x) {
@@ -2852,8 +3029,8 @@
   $("quiz-open").addEventListener("click", function () { toggleAll(true); });
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
-  /* ---------- 內文縮寫：每頁第一次出現時加上可點的虛線 ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .wb-fields, .wb-meta, .ns-key, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .kfacts, .roles3, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
@@ -2872,7 +3049,7 @@
       AB_RE.lastIndex = 0;
       while ((m = AB_RE.exec(s))) {
         var id = KEYMAP[m[2]];
-        if (langs.every(function (l) { return seen[l + id]; })) continue;
+        var again = langs.every(function (l) { return seen[l + id]; });
         langs.forEach(function (l) { seen[l + id] = 1; });
         frag = frag || document.createDocumentFragment();
         var start = m.index + m[1].length, end = start + m[2].length;
@@ -2881,7 +3058,7 @@
         var post = (/^[）)」』、，。；：,.;:]+/.exec(s.slice(end)) || [""])[0].length;
         if (start - pre > last) frag.appendChild(document.createTextNode(s.slice(last, start - pre)));
         var b = document.createElement("button");
-        b.type = "button"; b.className = "ab"; b.setAttribute("data-ab", id); b.textContent = m[2];
+        b.type = "button"; b.className = again ? "ab again" : "ab"; b.setAttribute("data-ab", id); b.textContent = m[2];
         if (pre || post) {
           var w = document.createElement("span");
           w.className = "ab-wrap";
@@ -2901,7 +3078,7 @@
 
   /* ---------- 每頁底部：本頁縮寫與名詞（含標題、表格、圖中出現者） ---------- */
   var AB_IDX = {};
-  AB.forEach(function (a, i) { AB_IDX[a[0]] = i; });
+  AB.forEach(function (a, i) { AB_IDX[a.id] = i; });
   function abbrPanel(scope) {
     var text = scope.textContent, ids = [], seen = {}, m;
     AB_RE.lastIndex = 0;
@@ -2916,7 +3093,7 @@
     box.innerHTML = "<h4>" + B("本頁縮寫與名詞", "Abbreviations and terms on this page") + "</h4><dl>" + ids.map(function (id) {
       var a = AB_BY[id];
       var name = fullHTML(a);
-      return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a[2]) + "</button></dt><dd>" + name + "</dd></div>";
+      return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a.code) + "</button></dt><dd>" + name + "</dd></div>";
     }).join("") + "</dl>";
     scope.appendChild(box);
   }
@@ -2932,9 +3109,12 @@
       if (popFor) popFor.classList.remove("on");
       popFor = btn; btn.classList.add("on");
     }
-    $("ab-pop-key").textContent = a[2];
-    $("ab-pop-src").innerHTML = srcTag(a[5]);
-    $("ab-pop-body").innerHTML = detailHTML(a) + '<div><button class="btn sm" type="button" data-ab-go="' + a[0] + '">' + B("於縮寫說明中檢視 →", "View in Abbreviations →") + "</button></div>";
+    $("ab-pop-key").textContent = a.code;
+    $("ab-pop-src").innerHTML = srcTag(a.src) + " " + vsChip(a.vs);
+    var oi = officeIdx(a.code);
+    $("ab-pop-body").innerHTML = detailHTML(a) + '<div class="pop-acts"><button class="btn sm" type="button" data-ab-go="' + a.id + '">' + B("於縮寫說明中檢視 →", "View in Abbreviations →") + "</button>" +
+      (oi >= 0 ? '<button class="btn sm" type="button" data-office-go="' + oi + '">' + B("據點資料 →", "Office details →") + "</button>" : "") +
+      (window.PAP_ORG && window.PAP_ORG.byCode && window.PAP_ORG.byCode[a.code] ? '<button class="btn sm" type="button" data-org-go="' + window.PAP_ORG.byCode[a.code] + '">' + B("架構圖 →", "Architecture chart →") + "</button>" : "") + "</div>";
     pop.hidden = false;
     $("ab-pop-body").scrollTop = 0;
     if (inPop) return;
@@ -2957,7 +3137,11 @@
     var t = e.target;
     var goAb = t.closest ? t.closest("[data-ab-go]") : null;
     if (goAb) { closePop(false); showAbCard(goAb.getAttribute("data-ab-go")); return; }
-    var ab = t.closest ? t.closest(".ab") : null;
+    var goOff = t.closest ? t.closest("[data-office-go]") : null;
+    if (goOff) { closePop(false); go("org-offices", true); pickOffice(+goOff.getAttribute("data-office-go")); return; }
+    var goOrg = t.closest ? t.closest("[data-org-go]") : null;
+    if (goOrg) { closePop(false); go("corp-map", true); if (typeof orgSelect === "function") orgSelect(goOrg.getAttribute("data-org-go")); return; }
+    var ab = t.closest ? t.closest(".ab, .cn[data-ab]") : null;
     if (ab) {
       e.preventDefault();
       if (popFor === ab && !pop.hidden) closePop(true); else openPop(ab);
@@ -2975,11 +3159,14 @@
   setLang(store.get("pap.lang") || "zh");
   $$("#page-overview, main .sub, #page-review").forEach(function (s) { if (s.id !== "sub-ref-abbr" && !s.hasAttribute("data-noabbr")) abbrPanel(s); });
   $$("#page-intro, #page-overview, main .sub, #page-review").forEach(linkAbbr);
-  // 公司 logo：有檔案的公司，名稱旁一律顯示 logo（logos/ 資料夾）
+  // 公司 logo：logos/ 資料夾有檔案者顯示官方 logo；沒有的顯示公司首字並標示「Logo 待補」，不以其他圖片或表情符號代替。
+  // 檔名即公司代號（見 logos/README.md）：先查 LOGOS 表，沒有時再嘗試 logos/<代號>.svg 與 .png（放入檔案即自動顯示）。
   var LOGOS = { acer: ["logos/acer.svg", "Acer"], benq: ["logos/benq.png", "BenQ"] };
   var LOGO_NAMES = { "宏碁": "acer", "Acer": "acer", "宏碁 Acer": "acer", "Acer Inc.": "acer", "宏碁股份有限公司": "acer", "Acer Incorporated": "acer",
     "明基 BenQ": "benq", "BenQ": "benq", "明基 BenQ／佳世達 Qisda": "benq", "BenQ / Qisda": "benq" };
-  var clogo = function (id) { var l = LOGOS[id]; return l ? '<img class="clogo" src="' + l[0] + '" alt="' + l[1] + '">' : ""; };
+  var LOGO_ALT = { hsn: "HSN", compal: "Compal", quanta: "Quanta", wistron: "Wistron", inventec: "Inventec", pegatron: "Pegatron", foxconn: "Foxconn", auo: "AUO", weblink: "Weblink", acsi: "ACSI", aeb: "AEB", ast: "AST", aopen: "AOpen", acergaming: "Acer Gaming", acergadget: "Acer Gadget", acerpure: "Acerpure", acermedical: "Acer Medical", qisda: "Qisda", enfinitec: "Enfinitec" };
+  var clogo = function (id, src) { var l = LOGOS[id]; src = src || (l && l[0]); return src ? '<img class="clogo" src="' + src + '" alt="' + (l ? l[1] : LOGO_ALT[id] || id) + '" onerror="PAP_logoFail(this)">' : ""; };
+  window.PAP_logoFail = function (img) { var box = img.parentElement; img.remove(); if (box && box.classList.contains("logo-box")) box.classList.remove("has"); };
   var logoFor = function (el) {
     var zh = el.querySelector(".zh"), en = el.querySelector(".en");
     return LOGO_NAMES[(zh || el).textContent.trim()] || (en ? LOGO_NAMES[en.textContent.trim()] : null) || null;
@@ -2988,13 +3175,31 @@
     var id = logoFor(el);
     if (id && LOGOS[id] && !el.querySelector(".clogo")) el.insertAdjacentHTML("afterbegin", clogo(id));
   });
-  $$(".pcard-head").forEach(function (head) {
-    var b = head.querySelector("b"), ini = head.querySelector(".initial"), id = b ? logoFor(b) : null;
-    if (id && LOGOS[id] && ini) ini.outerHTML = '<span class="logo-box sm">' + clogo(id) + "</span>";
-  });
-  $$(".corp-head").forEach(function (head) {
-    var m = /c-([a-z]+)/.exec(head.className), ini = head.querySelector(".initial");
-    if (m && LOGOS[m[1]] && ini) ini.outerHTML = '<span class="logo-box">' + clogo(m[1]) + "</span>";
+  function setLogo(box, id, src) {
+    box.classList.add("has");
+    box.insertAdjacentHTML("afterbegin", clogo(id, src));
+  }
+  // 自動尋找 logos/<代號>.svg 或 .png
+  var probed = {};
+  function probeLogo(id, cb) {
+    if (probed[id]) { probed[id].push(cb); return; }
+    probed[id] = [cb];
+    var tryExt = function (i) {
+      var exts = ["svg", "png"];
+      if (i >= exts.length) { probed[id].forEach(function (f) { f(null); }); return; }
+      var im = new Image(), src = "logos/" + id + "." + exts[i];
+      im.onload = function () { probed[id].forEach(function (f) { f(src); }); };
+      im.onerror = function () { tryExt(i + 1); };
+      im.src = src;
+    };
+    tryExt(0);
+  }
+  $$(".logo-box[data-logo]").forEach(function (box) {
+    var id = box.getAttribute("data-logo");
+    box.setAttribute("data-pz", "Logo 待補"); box.setAttribute("data-pe", "Logo pending");
+    box.title = "Logo 待補 / Logo pending";
+    if (LOGOS[id]) { setLogo(box, id); box.title = ""; return; }
+    probeLogo(id, function (src) { if (src) { setLogo(box, id, src); box.title = ""; } });
   });
   // 組織圖與流程圖中的代碼（HQ、PA、PAP、NS、ODM…）也可點開說明；中英文各自處理
   function linkCodes(el) {
