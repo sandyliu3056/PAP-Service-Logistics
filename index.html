@@ -103,7 +103,9 @@
   :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   img { max-width:100%; }
   h1, h2, h3 { text-wrap:balance; font-weight:700; }
-  html[data-font="hand"] h1, html[data-font="hand"] h2, html[data-font="hand"] h3, html[data-font="hand"] .intro-sec > h3, html[data-font="hand"] .subnav .pt, html[data-font="hand"] .ftitle, html[data-font="hand"] .tabs button, html[data-font="hand"] .block > h3 { font-weight:800; -webkit-text-stroke:.45px currentColor; paint-order:stroke fill; }
+  html[data-font="hand"] h1, html[data-font="hand"] h2, html[data-font="hand"] h3, html[data-font="hand"] .intro-sec > h3, html[data-font="hand"] .subnav .pt, html[data-font="hand"] .ftitle, html[data-font="hand"] .block > h3 { font-weight:800; -webkit-text-stroke:.4px currentColor; paint-order:stroke fill; letter-spacing:.04em; }
+  html[data-font="hand"] .tabs button { font-weight:700; letter-spacing:.08em; -webkit-text-stroke:0; }
+  html[data-font="hand"] .tabs button .zh, html[data-font="hand"] .tabs button .en { letter-spacing:.08em; }
   html[data-font="hand"] .intro-sec > h3 { font-size:1.7rem; }
 
   /* 標題列 */
@@ -124,7 +126,7 @@
 
   /* 主分頁 */
   .tabs { display:flex; flex-wrap:wrap; gap:5px; background:var(--tabbar); padding:9px max(10px, env(safe-area-inset-right, 0px)) 0 max(10px, env(safe-area-inset-left, 0px)); }
-  .tabs button { position:relative; display:flex; align-items:center; gap:8px; background:var(--tab); color:var(--ink); border:2px solid var(--navy); border-radius:10px 10px 0 0; padding:7px 16px 8px; font-weight:700; font-family:inherit; font-size:.95rem; cursor:pointer; }
+  .tabs button { position:relative; display:flex; align-items:center; gap:9px; background:var(--tab); color:var(--ink); border:2px solid var(--navy); border-radius:10px 10px 0 0; padding:7px 16px 8px; font-weight:700; font-family:inherit; font-size:.95rem; cursor:pointer; }
   .tabs button .emo { font-size:1rem; line-height:1; }
   .tabs button:hover { background:var(--hover); }
   .tabs button.active { background:var(--card); border-bottom-color:var(--card); z-index:2; margin-bottom:-2px; }
@@ -342,15 +344,20 @@
   .intro-sec > h3 { font-family:var(--font-head); font-size:1.3rem; margin:0 0 20px; text-align:center; }
   /* 一件備品的旅程 */
   .journey { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:14px; position:relative; }
-  .journey::before { content:""; position:absolute; left:10%; right:10%; top:22px; border-top:2px dashed var(--selline); }
+  .journey::before { content:""; position:absolute; left:10%; right:10%; top:58px; height:10px; border-radius:6px; background:var(--tab); opacity:.7; }
+  .journey::after { content:""; position:absolute; left:10%; right:10%; top:62px; border-top:2px dashed #fff; opacity:.9; }
   .journey li { position:relative; display:grid; justify-items:center; align-content:start; gap:6px; text-align:center; padding:0 6px; }
-  .jn { width:46px; height:46px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:1.05rem; border:4px solid var(--card); box-shadow:0 0 0 1.5px var(--line); position:relative; z-index:1; }
-  .journey .pi { width:44px; height:44px; margin-top:6px; }
+  .jart { width:122px; height:122px; position:relative; z-index:1; filter:drop-shadow(2px 3px 0 rgba(74,58,43,.14)); }
+  .jart svg { width:100%; height:100%; display:block; overflow:visible; }
+  .jart .ln { fill:none; stroke:#4a3226; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+  .jart .th { stroke-width:1.5; }
+  .jn { position:absolute; left:50%; top:0; transform:translate(28px, -4px); width:30px; height:30px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:.82rem; border:3px solid var(--card); box-shadow:0 0 0 1.5px var(--line); z-index:2; position:relative; z-index:1; }
+  .journey .pi { display:none; }
   .journey b { font-size:1.02rem; margin-top:2px; }
   .journey p { margin:0; color:var(--mute); font-size:.88rem; line-height:1.65; max-width:17em; }
   .journey button { background:none; border:0; padding:0; color:var(--accent); font-family:inherit; font-size:.86rem; font-weight:700; cursor:pointer; }
   .journey button:hover { text-decoration:underline; }
-  .jparcel { position:absolute; top:12px; left:10%; width:22px; height:22px; color:var(--primary); z-index:0; pointer-events:none; animation:jmove 16s linear infinite; }
+  .jparcel { position:absolute; top:50px; left:10%; width:26px; height:26px; color:var(--primary); z-index:2; pointer-events:none; animation:jmove 16s linear infinite; }
   .jparcel .ico { width:22px; height:22px; stroke-width:2; background:var(--card); border-radius:50%; }
   @keyframes jmove { 0% { left:10%; opacity:0; } 3% { opacity:1; } 97% { opacity:1; } 100% { left:calc(90% - 22px); opacity:0; } }
   /* 網站架構：主頁 → 子頁 */
@@ -444,9 +451,10 @@
     .intro-sec { margin-top:52px; }
     .journey { grid-template-columns:minmax(0, 1fr); gap:22px; }
     .journey::before { left:22px; right:auto; top:0; bottom:0; border-top:0; border-left:2px dashed var(--selline); }
-    .journey li { grid-template-columns:46px minmax(0, 1fr); column-gap:14px; justify-items:start; text-align:left; }
-    .journey li .jn { grid-row:1 / span 4; }
-    .journey .pi { margin-top:0; }
+    .journey li { grid-template-columns:30px minmax(0, 1fr); column-gap:14px; justify-items:start; text-align:left; }
+    .journey::before, .journey::after { display:none; }
+    .journey li .jn { position:static; transform:none; grid-row:1 / span 4; }
+    .journey .jart { width:96px; height:96px; }
     .jparcel { display:none; }
   }
 
@@ -911,6 +919,9 @@
   .logo-box:not(.has)::after { position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); font-size:.6rem; line-height:1.5; padding:0 6px; border-radius:999px; background:#FFF4DC; color:#7A4E12; border:1px solid #D9A95A; white-space:nowrap; }
   html[data-lang="zh"] .logo-box:not(.has)::after { content:attr(data-pz); }
   html[data-lang="en"] .logo-box:not(.has)::after { content:attr(data-pe); }
+  .logo-box.hand { border:0 !important; background:transparent; padding:0; box-shadow:none; }
+  .logo-box.hand .clogo { max-width:100%; max-height:100%; }
+  .logo-box.sm { width:104px; height:52px; }
   .logo-box.hand::after { position:absolute; right:-6px; top:-8px; font-size:.58rem; line-height:1.5; padding:0 5px; border-radius:999px; background:var(--stripe); color:var(--mute); border:1px solid var(--line); white-space:nowrap; }
   html[data-lang="zh"] .logo-box.hand::after { content:attr(data-hz); }
   html[data-lang="en"] .logo-box.hand::after { content:attr(data-he); }
@@ -1735,10 +1746,10 @@
             <span>D<i>1</i></span><span>G<i>2</i></span><span class="dot">.</span><span>B<i>3</i></span><span>8<i>4</i></span><span>8<i>5</i></span><span class="hot">S<i>6</i></span><span class="hot">A<i>7</i></span><span class="dot">.</span><span>0<i>8</i></span><span>0<i>9</i></span><span>1<i>10</i></span>
           </div>
           <ol class="steps-plain">
-            <li><span class="zh">把小數點拿掉，從左邊數起：D、G、B、8、8、<b>S</b>、<b>A</b>、0、0、1。第 6 碼是 <b>S</b>，第 7 碼是 <b>A</b>。</span><span class="en">Ignore the dots and count from the left: D, G, B, 8, 8, <b>S</b>, <b>A</b>, 0, 0, 1. The 6th character is <b>S</b> and the 7th is <b>A</b>.</span></li>
-            <li><span class="zh"><b>第 6 碼＝哪個區域</b>。S 是 AAP（亞太），T 是 TWN（台灣），C 是 ACCN（中國），E 是 EMEA，A 是 PA（美洲）。這個料號的 S 表示它是 AAP 區用的料號。</span><span class="en"><b>Character 6 = which region.</b> S is AAP (Asia Pacific), T is TWN (Taiwan), C is ACCN (China), E is EMEA and A is PA (Americas). The S here means this part number belongs to the AAP region.</span></li>
-            <li><span class="zh"><b>第 7 碼＝該區域內的哪個國家</b>。只有第 6 碼是 S（AAP）時才需要看：A 是 ACA（澳洲），M 是 ASSB（馬來西亞），I 是 AIL（印度）……完整對照見下表。這個料號的 A 表示澳洲。</span><span class="en"><b>Character 7 = which country in that region.</b> It applies only when character 6 is S (AAP): A is ACA (Australia), M is ASSB (Malaysia), I is AIL (India), and so on; see the table below. The A here means Australia.</span></li>
-            <li><span class="zh">所以 <b class="mono">DG.B88SA.001</b> 是 AAP 區、澳洲用的料號；同一個料件給馬來西亞用，料號就是 <b class="mono">DG.B88SM.001</b>，只差第 7 碼。</span><span class="en">So <b class="mono">DG.B88SA.001</b> is the AAP-region part number for Australia; the same part for Malaysia is <b class="mono">DG.B88SM.001</b>, differing only in character 7.</span></li>
+            <li><span class="zh">不計小數點，自左起依序為 D、G、B、8、8、<b>S</b>、<b>A</b>、0、0、1；第 6 碼為 <b>S</b>，第 7 碼為 <b>A</b>。</span><span class="en">Ignore the dots and count from the left: D, G, B, 8, 8, <b>S</b>, <b>A</b>, 0, 0, 1. The 6th character is <b>S</b> and the 7th is <b>A</b>.</span></li>
+            <li><span class="zh"><b>第 6 碼＝區域代碼</b>：S 為 AAP（亞太），T 為 TWN（台灣），C 為 ACCN（中國），E 為 EMEA，A 為 PA（美洲）。本例第 6 碼為 S，即 AAP 區之料號。</span><span class="en"><b>Character 6 = which region.</b> S is AAP (Asia Pacific), T is TWN (Taiwan), C is ACCN (China), E is EMEA and A is PA (Americas). The S here means this part number belongs to the AAP region.</span></li>
+            <li><span class="zh"><b>第 7 碼＝該區域內之國別代碼</b>，僅於第 6 碼為 S（AAP）時適用：A 為 ACA（澳洲），M 為 ASSB（馬來西亞），I 為 AIL（印度），完整對照見下表。本例第 7 碼為 A，即澳洲。</span><span class="en"><b>Character 7 = which country in that region.</b> It applies only when character 6 is S (AAP): A is ACA (Australia), M is ASSB (Malaysia), I is AIL (India), and so on; see the table below. The A here means Australia.</span></li>
+            <li><span class="zh">因此 <b class="mono">DG.B88SA.001</b> 為 AAP 區供澳洲使用之料號；同一料件供馬來西亞使用時，料號為 <b class="mono">DG.B88SM.001</b>，僅第 7 碼不同。</span><span class="en">So <b class="mono">DG.B88SA.001</b> is the AAP-region part number for Australia; the same part for Malaysia is <b class="mono">DG.B88SM.001</b>, differing only in character 7.</span></li>
           </ol>
         </div>
         <div class="two">
@@ -2950,7 +2961,7 @@
     if (NS_IDS[a.id]) return a.cc ? B("Acer 在" + c[0] + "的國家子公司（NS）的代碼。", "The code for Acer's nation subsidiary (NS) in " + c[1] + ".") : B("PAP 轄下國家子公司（NS）之一的代碼；所屬國家教材未載明。", "The code for one of the nation subsidiaries (NS) under PAP; its country is not specified in the material.");
     if (/^hsn[mivpt]$/.test(a.id)) return B("海柏特集團（HSN Group）在" + c[0] + "的公司代碼。", "The code for HSN Group's company in " + c[1] + ".");
     if (REGION_IDS[a.id]) return B("Acer 的區域代碼之一：總部之下的一個大區。", "One of Acer's region codes: a region under headquarters.");
-    var ONE = { hq: ["Acer 總部的簡稱。", "Short for Acer headquarters."], ns: ["「國家子公司」的縮寫，指 Acer 在各國的公司。", "Short for nation subsidiary: Acer's company in each country."], ro: ["「區域辦公室」的縮寫；PAP 就是一個 RO。", "Short for regional office; PAP is an RO."],
+    var ONE = { hq: ["Acer 總部之簡稱。", "Short for Acer headquarters."], ns: ["國家子公司之縮寫，指 Acer 於各國設立之公司。", "Short for nation subsidiary: Acer's company in each country."], ro: ["區域辦公室之縮寫；PAP 即為區域辦公室。", "Short for regional office; PAP is the regional office."],
       hsn: ["海柏特公司名稱的縮寫。", "The abbreviation of the company name Highpoint Service Network."], ami: ["印尼 Uni-load 組裝廠的公司代碼。", "The company code of the Uni-load assembly plant in Indonesia."], compal: ["Acer 的代工廠（ODM）之一，教材所載的採購對象。", "One of Acer's ODMs and the supplier named in the training material."],
       auo: ["公司名稱的縮寫。", "A company name abbreviation."], aeb: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], acsi: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], ast: ["宏碁子公司名稱的縮寫。", "The abbreviation of an Acer subsidiary's name."], abw: ["三家公司的合稱。", "A collective name for three companies."], anz: ["兩個國家市場的合稱。", "A collective name for two country markets."] };
     if (ONE[a.id]) return B(ONE[a.id][0], ONE[a.id][1]);
@@ -2958,9 +2969,9 @@
     return B(w[0], w[1]);
   }
   function detailHTML(a) {
-    var rows = [[B("這是什麼", "What it is"), '<div class="ab-what">' + whatIs(a) + "</div>"]];
+    var rows = [[B("定義", "Definition"), '<div class="ab-what">' + whatIs(a) + "</div>"]];
     rows.push([B("全稱", "Full name"), '<div class="ab-full">' + fullHTML(a) + "</div>"]);
-    rows.push([B("屬於哪一類", "Kind"), catName(a.cat)]);
+    rows.push([B("類別", "Category"), catName(a.cat)]);
     var place = placeHTML(a);
     if (place) rows.push([B("國家／地區", "Country / region"), place]);
     if (a.org) rows.push([B("所屬公司／單位", "Company or unit"), esc(a.org)]);
@@ -3384,6 +3395,27 @@
     $("org-jump").addEventListener("change", function () { if (this.value) { orgSelect(this.value); this.value = ""; } });
   })();
 
+
+  /* ---------- 一件備品的旅程：手繪插畫站點（2.2px 墨線，同一組色） ---------- */
+  (function () {
+    var INK = "#4a3226", Y = "#F4C84A", B2 = "#CFE4F4", G = "#CFEBD9", C = "#F6E7C8", R = "#F2A7A0";
+    var ART = [
+      // 1 需求規劃：寫字板與勾選清單
+      '<svg viewBox="0 0 120 120"><path class="ln" d="M30 22 h60 a6 6 0 0 1 6 6 v70 a6 6 0 0 1 -6 6 h-60 a6 6 0 0 1 -6 -6 v-70 a6 6 0 0 1 6 -6z" fill="' + C + '"/><rect x="46" y="14" width="28" height="14" rx="5" fill="' + Y + '" stroke="' + INK + '" stroke-width="2.2"/><path class="ln th" d="M40 46 h40 M40 60 h40 M40 74 h26"/><path class="ln" d="M33 44 l4 4 l7 -8" stroke="#2E8B57"/><path class="ln" d="M33 58 l4 4 l7 -8" stroke="#2E8B57"/><path class="ln" d="M33 72 l4 4 l7 -8" stroke="#2E8B57"/><path class="ln" d="M86 88 l10 -10 m-10 10 l-3 3" stroke="' + INK + '"/></svg>',
+      // 2 採購下單：採購單與印章
+      '<svg viewBox="0 0 120 120"><path class="ln" d="M28 18 h48 l16 16 v66 h-64z" fill="#fffdf7"/><path class="ln" d="M76 18 v16 h16" fill="' + C + '"/><path class="ln th" d="M38 48 h36 M38 60 h36 M38 72 h22"/><text x="40" y="38" font-family="Consolas,monospace" font-weight="700" font-size="11" fill="' + INK + '">PO</text><circle cx="80" cy="86" r="16" fill="' + R + '" stroke="' + INK + '" stroke-width="2.2"/><circle cx="80" cy="86" r="10" fill="none" stroke="#fffdf7" stroke-width="1.6" stroke-dasharray="3 2"/><path class="ln" d="M74 86 l4 4 l8 -9" stroke="#fffdf7"/></svg>',
+      // 3 倉儲與料號：倉庫與紙箱
+      '<svg viewBox="0 0 120 120"><path class="ln" d="M14 52 L60 24 L106 52 V96 H14z" fill="' + C + '"/><path class="ln" d="M14 52 h92" /><rect x="26" y="62" width="22" height="34" fill="' + B2 + '" stroke="' + INK + '" stroke-width="2.2"/><rect x="60" y="68" width="18" height="16" fill="' + Y + '" stroke="' + INK + '" stroke-width="2.2"/><rect x="80" y="68" width="18" height="16" fill="' + Y + '" stroke="' + INK + '" stroke-width="2.2"/><rect x="70" y="52" width="18" height="16" fill="' + Y + '" stroke="' + INK + '" stroke-width="2.2"/><path class="ln th" d="M69 76 h-9 M89 76 h-9 M79 60 h-9"/><path class="ln th" d="M30 70 h14 M30 78 h14 M30 86 h14"/></svg>',
+      // 4 供應各國：飛機與路線
+      '<svg viewBox="0 0 120 120"><path class="ln th" d="M14 96 C 40 70, 70 70, 106 40" stroke-dasharray="4 4"/><circle cx="14" cy="96" r="5" fill="' + G + '" stroke="' + INK + '" stroke-width="2.2"/><circle cx="106" cy="40" r="5" fill="' + G + '" stroke="' + INK + '" stroke-width="2.2"/><g transform="translate(60 62) rotate(-30)"><path class="ln" d="M-26 0 h40 l12 -6 l-4 6 l4 6 l-12 -6 h-40 a6 6 0 0 1 0 -12 z" fill="' + B2 + '"/><path class="ln" d="M-8 -6 l-10 -14 h8 l12 14 M-8 6 l-10 14 h8 l12 -14" fill="' + B2 + '"/><circle cx="-2" cy="-1" r="2" fill="' + INK + '"/><circle cx="6" cy="-1" r="2" fill="' + INK + '"/></g><rect x="78" y="86" width="20" height="14" rx="2" fill="' + Y + '" stroke="' + INK + '" stroke-width="2.2"/><path class="ln th" d="M88 86 v14 M78 92 h20"/></svg>',
+      // 5 維修服務：筆電與扳手
+      '<svg viewBox="0 0 120 120"><path class="ln" d="M28 36 h56 a4 4 0 0 1 4 4 v36 h-64 v-36 a4 4 0 0 1 4 -4z" fill="' + B2 + '"/><path class="ln" d="M16 76 h88 l-6 10 h-76z" fill="' + C + '"/><rect x="34" y="44" width="44" height="26" rx="2" fill="#fffdf7" stroke="' + INK + '" stroke-width="1.5"/><path class="ln" d="M46 62 l8 -8 l6 6 l10 -12" stroke="#2E8B57"/><g transform="translate(88 30) rotate(35)"><path class="ln" d="M-4 -22 a8 8 0 1 1 8 0 l-1 30 h-6z" fill="' + Y + '"/></g><path class="ln" d="M100 92 l6 -6 l5 5 l-6 6z" fill="' + R + '"/></svg>'
+    ];
+    $$("ol.journey > li").forEach(function (li, i) {
+      var pi = li.querySelector(".pi");
+      if (pi && ART[i]) pi.insertAdjacentHTML("afterend", '<span class="jart" aria-hidden="true">' + ART[i] + "</span>");
+    });
+  })();
   /* ---------- 每一章一隻：布偶貓或柯基從標題底線探出頭（畫法與 UPS Reprice 平台相同） ---------- */
   (function () {
     var INK = "#4a3226";

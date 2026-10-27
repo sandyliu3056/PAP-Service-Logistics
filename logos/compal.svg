@@ -1,11 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" width="400" height="180">
-  <!-- 手繪示意 logo（內部自用，非官方商標）：Compal / 仁寶 -->
-  <path d="M34.0 7.1 Q200.0 7.3 366.0 8.6 Q392.0 8.0 392.0 34.0 Q392.9 90.0 392.0 146.0 Q392.0 172.0 366.0 172.0 Q200.0 173.5 34.0 172.0 Q8.0 172.0 8.0 146.0 Q6.4 90.0 8.0 34.0 Q8.0 8.0 34.0 8.0 Z" fill="#FFFDF7" stroke="#4A3226" stroke-width="4" stroke-linejoin="round"/>
-  <circle cx="74" cy="90" r="44" fill="#1F5FA8" stroke="#4A3226" stroke-width="3.5"/>
-  <circle cx="74" cy="90" r="36" fill="none" stroke="#FFFDF7" stroke-width="2" stroke-dasharray="6 5" opacity=".7"/>
-  <text x="74" y="107" text-anchor="middle" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="48" fill="#FFFDF7">C</text>
-  <text x="138" y="84" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="56" fill="#1F5FA8" textLength="208" lengthAdjust="spacingAndGlyphs">Compal</text>
-  <path d="M138 96 C 180 92, 240 100, 346 95" fill="none" stroke="#1F5FA8" stroke-width="5" stroke-linecap="round" opacity=".75"/>
-  <text x="140" y="136" font-family="'DFKai-SB','標楷體','HanziPen TC','Hannotate TC','芫荽','Iansui','LXGW WenKai TC',sans-serif" font-size="30" fill="#4A3226">仁寶</text>
-  <text x="386" y="164" text-anchor="end" font-family="'Comic Sans MS','Segoe Print',sans-serif" font-size="13" fill="#9A8C7A">hand-drawn · 手繪示意</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 160" width="420" height="160">
+  <!-- hand-drawn placeholder mark for Compal (internal use; not the official logo) -->
+  <path d="M127.2 80.0 Q129.4 103.4 116.0 120.0 Q98.4 133.8 76.0 136.0 Q54.5 134.2 39.1 116.9 Q22.0 101.9 22.0 80.0 Q22.1 57.8 38.1 42.1 Q54.0 26.0 76.0 24.9 Q98.5 26.2 115.7 40.3 Q129.4 56.7 127.2 80.0 Z" fill="#D6E6F7" stroke="#4A3226" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M118.4 80.0 Q119.8 98.5 107.1 111.1 Q94.6 123.7 76.0 121.9 Q57.0 123.5 43.5 112.5 Q32.4 98.9 33.7 80.0 Q32.3 61.4 44.7 48.7 Q58.3 35.9 76.0 33.4 Q93.5 35.8 106.7 49.3 Q119.8 61.6 118.4 80.0 Z" fill="#1F5FA8" stroke="none" opacity=".95"/>
+  <circle cx="60" cy="66" r="7" fill="#FFFDF7" opacity=".55"/>
+  <circle cx="63" cy="92" r="3.5" fill="#4A3226"/><circle cx="89" cy="92" r="3.5" fill="#4A3226"/>
+  <path d="M68 102 q8 7 16 0" fill="none" stroke="#4A3226" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="54" cy="100" r="5" fill="#F2A7A0" opacity=".8"/><circle cx="98" cy="100" r="5" fill="#F2A7A0" opacity=".8"/>
+  <text x="76" y="72" text-anchor="middle" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="34" fill="#FFFDF7">C</text>
+  <text x="150" y="100" font-family="'Comic Sans MS','Segoe Print','Chalkboard SE','Caveat',sans-serif" font-weight="700" font-size="64" fill="#1F5FA8" stroke="#4A3226" stroke-width="1.2" paint-order="stroke" textLength="215" lengthAdjust="spacingAndGlyphs">Compal</text>
+  <path d="M152 114 C 190 108, 240 120, 367 112" fill="none" stroke="#1F5FA8" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+  <path d="M371 34 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/><path d="M118 112 l2.2 5.2 5.6 .5 -4.3 3.7 1.3 5.5 -4.8 -2.9 -4.8 2.9 1.3 -5.5 -4.3 -3.7 5.6 -.5z" fill="#F4C84A" stroke="#4A3226" stroke-width="1.4" stroke-linejoin="round"/>
 </svg>
