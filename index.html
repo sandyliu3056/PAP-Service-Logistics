@@ -54,7 +54,7 @@
   html[data-font="hand"] .pill { font-size:13px; }
   html[data-font="hand"] .tabs button { font-size:18px; }
   html[data-font="hand"] .subnav button { font-size:17.5px; }
-  html[data-font="hand"] .sub > h2, html[data-font="hand"] .page.single h2.ptitle { font-size:36px; }
+  html[data-font="hand"] .sub > h2 { font-size:36px; }
   html[data-font="hand"] .lead { font-size:18.5px; }
   html[data-font="hand"] .block > h3, html[data-font="hand"] .box h3 { font-size:23px; }
   html[data-font="hand"] .block > h3 small { font-size:15.5px; }
@@ -82,7 +82,7 @@
   html[data-font="hand"] .journey p { font-size:17px; }
   html[data-font="hand"] .quiz summary { font-size:18.5px; }
   html[data-font="hand"] .pager button { font-size:17.5px; }
-  h1, h2, h3, h4, .tabs button, .subnav .pt, .subnav button.active, .ftitle, .intro-title, .hero-title, .block > h3, .btn, .pnode b, .node, .onode b, .corp-head h3, .pcard-head b, .org-panel header b, .ab-pop header b, .kf-v, .defbox b, .step-t, .tnode > summary .k { font-weight:700; }
+  h1, h2, h3, h4, .tabs button, .subnav button.active, .ftitle, .intro-title, .hero-title, .block > h3, .btn, .pnode b, .node, .onode b, .corp-head h3, .pcard-head b, .org-panel header b, .ab-pop header b, .kf-v, .defbox b, .step-t, .tnode > summary .k { font-weight:700; }
   html[data-font="sans"] { --font-head:"Microsoft JhengHei","Segoe UI","Noto Sans TC",sans-serif; }
   html[data-font="mono"] body { font-family:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
   html[data-font="mono"] { --font-head:Consolas,"Cascadia Mono","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace; }
@@ -116,8 +116,8 @@
   .btn { box-shadow:2px 3px 0 -1px color-mix(in srgb, var(--primary) 25%, transparent); }
   .btn:active { transform:translate(1px, 1px); box-shadow:1px 1px 0 -1px color-mix(in srgb, var(--primary) 25%, transparent); }
   /* 頁面標題底下畫一條筆刷 */
-  .sub > h2, .page.single h2.ptitle { position:relative; padding-bottom:10px; }
-  .sub > h2::after, .page.single h2.ptitle::after { content:""; position:absolute; left:0; bottom:0; width:min(100%, 18em); height:7px; background:var(--selline); -webkit-mask:var(--brush) left bottom/100% 100% no-repeat; mask:var(--brush) left bottom/100% 100% no-repeat; opacity:.8; }
+  .sub > h2 { position:relative; padding-bottom:10px; }
+  .sub > h2::after { content:""; position:absolute; left:0; bottom:0; width:min(100%, 18em); height:7px; background:var(--selline); -webkit-mask:var(--brush) left bottom/100% 100% no-repeat; mask:var(--brush) left bottom/100% 100% no-repeat; opacity:.8; }
   /* 畫面四周壓一層極淡的暈 */
   .card { background-image:var(--paper-tex), radial-gradient(130% 92% at 50% 0%, transparent 56%, color-mix(in srgb, var(--primary) 8%, transparent) 100%); }
   @media (prefers-reduced-motion:reduce) { .box::before, .pcard::before, .map::before, .folder::before, .org-stage::before { filter:none; } }
@@ -126,7 +126,7 @@
   :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   img { max-width:100%; }
   h1, h2, h3 { text-wrap:balance; font-weight:700; }
-  html[data-font="hand"] h1, html[data-font="hand"] h2, html[data-font="hand"] h3, html[data-font="hand"] .intro-sec > h3, html[data-font="hand"] .subnav .pt, html[data-font="hand"] .ftitle, html[data-font="hand"] .block > h3 { font-weight:800; -webkit-text-stroke:.4px currentColor; paint-order:stroke fill; letter-spacing:.04em; }
+  html[data-font="hand"] h1, html[data-font="hand"] h2, html[data-font="hand"] h3, html[data-font="hand"] .intro-sec > h3, html[data-font="hand"] .ftitle, html[data-font="hand"] .block > h3 { font-weight:800; -webkit-text-stroke:.4px currentColor; paint-order:stroke fill; letter-spacing:.04em; }
   html[data-font="hand"] .tabs button { font-weight:700; letter-spacing:.08em; -webkit-text-stroke:0; }
   html[data-font="hand"] .tabs button .zh, html[data-font="hand"] .tabs button .en { letter-spacing:.08em; }
   html[data-font="hand"] .intro-sec > h3 { font-size:1.7rem; }
@@ -169,7 +169,7 @@
   .hdr .sub { display:none; }
   .subbody > .sub { background:var(--stripe); border:1.5px solid var(--line); border-radius:18px; padding:26px 26px 30px; margin-top:22px; }
   .subbody > .sub:first-child { margin-top:0; }
-  .sub > h2, .page.single h2.ptitle { font-family:var(--font-head); font-size:1.7rem; line-height:1.35; margin:0 0 8px; }
+  .sub > h2 { font-family:var(--font-head); font-size:1.7rem; line-height:1.35; margin:0 0 8px; }
   .lead { color:var(--mute); margin:0 0 26px; max-width:50em; font-size:1rem; }
   .block { margin-top:34px; }
   .block:first-of-type { margin-top:0; }
@@ -1012,6 +1012,8 @@
   .map.home-map { padding:0; margin:0; background:transparent; border:0; box-shadow:none; }
   .map.home-map::before { display:none; }
   #map-intro { width:100%; height:clamp(300px, 40vw, 500px); background:var(--sea); border-radius:12px; display:block; }
+  @media (max-width:900px) { #map-intro { height:auto; aspect-ratio:392 / 278; } }
+  @media (max-width:600px) { #map-intro { aspect-ratio:224 / 210; } }
   .home-map figcaption { margin-top:10px; }
   .home-map .legend-chips { margin-top:12px; }
   .quick-links { display:flex; flex-wrap:wrap; gap:8px; }
@@ -2109,7 +2111,6 @@
     var id = el.getAttribute("data-num"), t = ALIAS[id] ? ALIAS[id][0] : id;
     ORDER.forEach(function (o) { if (o.sub && o.sub[0] === t) el.textContent = o.sub.num; });
   });
-  var label = function (o) { return o.sub ? B(o.sub[1], o.sub[2]) : B(o.page.zh, o.page.en); };
 
   $("tabs").innerHTML = NAV.map(function (p) {
     return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + (p.col ? ' style="--ch:' + p.col + ';--ch-bg:' + p.tint + ';--ch-ink:' + p.ink + '"' : "") + '><span class="emo" aria-hidden="true">' + p.emoji + "</span>" + B(p.tzh || p.zh, p.ten || p.en) + "</button>";
@@ -2139,13 +2140,15 @@
   var navH = function (page) { var n = page.querySelector(".subnav"); return n ? n.getBoundingClientRect().height : 0; };
   function markSub(page, id) {
     var n = page.querySelector(".subnav");
+    if (page._sub === id) return;
+    page._sub = id;
     $$(".subnav button", page).forEach(function (b) {
       var on = b.getAttribute("data-go") === id;
       b.classList.toggle("active", on);
       if (on && n && n.scrollWidth > n.clientWidth + 1) n.scrollLeft = Math.max(0, b.offsetLeft - 16);
     });
   }
-  function go(id, fromUser) {
+  function go(id, fromUser, after) {
     var al = ALIAS[id] || null, rid = al ? al[0] : id;
     current = findRoute(rid);
     var o = ORDER[current], p = o.page, isPage = NAV.some(function (x) { return x.id === rid; });
@@ -2158,7 +2161,7 @@
     $$("main .page").forEach(function (s) { s.classList.toggle("active", s.id === "page-" + p.id); });
     if (p.id === "corp" && switched) setTimeout(orgShow, 0);
     var subId = o.sub && !isPage ? o.sub[0] : "";
-    markSub(page, subId);
+    markSub(page, subId || (p.subs.length ? p.subs[0][0] : ""));
     var pi = NAV.indexOf(p), prev = NAV[pi - 1], next = NAV[pi + 1];
     var pg = page.querySelector(".pager");
     if (pg) {
@@ -2173,11 +2176,23 @@
       setTimeout(function () {
         var y = target.getBoundingClientRect().top + window.pageYOffset - navH(page) - 14;
         window.scrollTo(0, Math.max(0, y));
+        if (after) after();
       }, switched ? 60 : 0);
-    } else if (fromUser || switched) {
-      var top = $("tabs").getBoundingClientRect().top + window.pageYOffset;
-      if (window.pageYOffset > top) window.scrollTo(0, top);
+    } else {
+      if (fromUser || switched) {
+        var top = $("tabs").getBoundingClientRect().top + window.pageYOffset;
+        if (window.pageYOffset > top) window.scrollTo(0, top);
+      }
+      if (after) setTimeout(after, switched ? 60 : 0);
     }
+  }
+  // 目前捲到的節（沒有任何節越過按鈕列時，算第一節）
+  function sectionInView(page) {
+    var subs = page ? $$(".subbody > .sub", page) : [];
+    if (!subs.length) return null;
+    var line = navH(page) + 24, cur = null;
+    subs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
+    return cur || subs[0];
   }
   // 捲動時標示目前所在的子頁
   var spyTick = false;
@@ -2186,11 +2201,8 @@
     spyTick = true;
     requestAnimationFrame(function () {
       spyTick = false;
-      var page = document.querySelector("main .page.active"), subs = page ? $$(".subbody > .sub", page) : [];
-      if (!subs.length) return;
-      var line = navH(page) + 24, cur = null;
-      subs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
-      markSub(page, cur ? cur.id.slice(4) : "");
+      var page = document.querySelector("main .page.active"), cur = sectionInView(page);
+      if (cur) markSub(page, cur.id.slice(4));
     });
   }, { passive: true });
   document.addEventListener("click", function (e) {
@@ -2211,8 +2223,10 @@
     $$("option[data-zh]").forEach(function (o) { o.textContent = o.getAttribute("data-" + LANG); });
     $$("[data-ph-zh]").forEach(function (el) { el.placeholder = el.getAttribute("data-ph-" + LANG); });
     store.set("pap.lang", LANG);
+    var page = document.querySelector("main .page.active"), keep = page ? sectionInView(page) : null, before = keep ? keep.getBoundingClientRect().top : 0;
     drawAllMaps();
     if (typeof orgReady !== "undefined" && orgReady) orgRender();
+    if (keep && window.pageYOffset > 0) window.scrollBy(0, keep.getBoundingClientRect().top - before);
   }
   function setFont(f) { f = /^(hand|sans|mono)$/.test(f) ? f : "hand"; root.setAttribute("data-font", f); $("font-sel").value = f; store.set("pap.font", f); }
   // 只記住使用者自己選的主題；沒選過就用預設的土色
@@ -2744,6 +2758,10 @@
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
   // 首頁地圖：PAP（台灣）至各國子公司的供應路線；標籤含國旗，沿線有移動的小點
+  // 手機上只顯示亞太一帶，標籤才看得清楚
+  var introMQ = window.matchMedia ? window.matchMedia("(max-width:600px)") : null;
+  function introVB() { var svg = $("map-intro"); if (svg) svg.setAttribute("viewBox", introMQ && introMQ.matches ? "692 122 224 210" : "600 100 392 278"); }
+  if (introMQ) { if (introMQ.addEventListener) introMQ.addEventListener("change", introVB); else if (introMQ.addListener) introMQ.addListener(introVB); }
   function drawIntro() {
     var svg = $("map-intro"), vb = [600, 100, 392, 278], k = 304 / 520, ls = "font-size:9px;stroke-width:1.8px";
     var labels = [[px(46), py(23), "EMEA", ls], [px(102), py(36), "ACCN", ls], [px(123), py(-23), "PAP", ls]].map(function (l) { return [l[0].toFixed(1), l[1].toFixed(1), l[2], l[3]]; });
@@ -2769,9 +2787,12 @@
       '<circle class="idot hq" cx="' + ox.toFixed(1) + '" cy="' + oy.toFixed(1) + '" r="' + (5 * k).toFixed(2) + '" style="stroke-width:' + (1.4 * k).toFixed(2) + '"></circle>';
     var first = svg.querySelector(".pin");
     if (first) first.insertAdjacentHTML("beforebegin", arcs + hq + movers); else svg.insertAdjacentHTML("beforeend", arcs + hq + movers);
+    introVB();
     codeNav($("ns-key"), ns.map(function (n) {
       return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[2], en: n[3] };
-    }), "map-intro");
+    }).concat(NSC.filter(function (n) { return !n[1]; }).map(function (n) {
+      return { cc: "", code: n[0], ab: n[0].toLowerCase(), zh: n[2], en: n[3], cls: "dim" };
+    })), "map-intro");
   }
 
   /* ---------- 總覽 ---------- */
@@ -3187,11 +3208,9 @@
     $("ab-search").value = "";
     abCat = a.cat;
     renderAbbr();
-    go("ref-abbr", true);
     var d = $("abc-" + id);
-    if (!d) return;
-    d.open = true;
-    d.scrollIntoView({ block: "center" });
+    if (d) d.open = true;
+    go("ref-abbr", true, function () { if (d) d.scrollIntoView({ block: "center" }); });
   }
 
   // 角色卡片：由代碼資料庫 AB 產生（<div class="cards" data-abs="hq,ro,ns">），內容與說明視窗相同
@@ -3589,7 +3608,8 @@
       var g = t.closest ? t.closest("#org-panel [data-org-go], .pop-acts [data-org-go]") : null;
       if (g && t.closest("#org-panel")) { orgSelect(g.getAttribute("data-org-go")); }
     });
-    window.addEventListener("resize", function () { if (orgReady && $("sub-corp-map").classList.contains("active")) orgFit(); });
+    var orgRz = 0;
+    window.addEventListener("resize", function () { clearTimeout(orgRz); orgRz = setTimeout(function () { if (orgReady && $("page-corp").classList.contains("active")) orgFit(); }, 120); });
     $("org-jump").addEventListener("change", function () { if (this.value) { orgSelect(this.value); this.value = ""; } });
   })();
 
@@ -3753,9 +3773,9 @@
     var goAb = t.closest ? t.closest("[data-ab-go]") : null;
     if (goAb) { closePop(false); showAbCard(goAb.getAttribute("data-ab-go")); return; }
     var goOff = t.closest ? t.closest("[data-office-go]") : null;
-    if (goOff) { closePop(false); go("org-offices", true); pickOffice(+goOff.getAttribute("data-office-go")); return; }
+    if (goOff) { closePop(false); var oi2 = +goOff.getAttribute("data-office-go"); go("org-offices", true, function () { pickOffice(oi2); }); return; }
     var goOrg = t.closest ? t.closest("[data-org-go]") : null;
-    if (goOrg) { closePop(false); go("corp-map", true); if (typeof orgSelect === "function") orgSelect(goOrg.getAttribute("data-org-go")); return; }
+    if (goOrg) { closePop(false); var og = goOrg.getAttribute("data-org-go"); go("corp-map", true, function () { if (typeof orgSelect === "function") orgSelect(og); }); return; }
     var ab = t.closest ? t.closest(".ab, .cn[data-ab]") : null;
     if (ab) {
       e.preventDefault();
