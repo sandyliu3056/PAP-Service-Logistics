@@ -185,7 +185,7 @@ Some tables and charts are rendered by the site from its own data. Where the PDF
 | 23 | 23.5 sub-category code paragraph: keep the text, then add | `<!-- WIDGET:subcat -->` |
 | 24 | at the end of 24.1 (after the four-step method), before the examples | `<!-- WIDGET:decoder -->` |
 | 26 | whole glossary body | handled separately (JSON), not an HTML fragment |
-| 27 | questions and answer key | handled separately (JSON); the fragment holds only the boxes and 27.3 Sources |
+| 27 | questions (27.1) and answer key (27.2) | data in src/data/review.json; the fragment holds the boxes, the 27.1 heading with `<!-- WIDGET:quiz -->`, the 27.2 heading with `<!-- WIDGET:answers -->`, 27.3 Sources and `<!-- WIDGET:verify-link -->` |
 
 ## 10. Content rules
 

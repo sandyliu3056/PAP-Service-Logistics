@@ -566,6 +566,13 @@ tr.hl td { background:var(--gold-bg) !important; }
 html[data-lang="both"] .part-desc .zh, html[data-lang="both"] .cover-lead .zh { font-size:.9em; color:var(--ink-2); margin-top:4px; }
 html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 
+/* ---------- answer key (27.2) ---------- */
+.akey { list-style:none; margin:0 0 10px; padding:0; columns:2 340px; column-gap:28px; }
+.akey li { display:grid; grid-template-columns:30px 1fr; gap:8px; break-inside:avoid; padding:5px 0; border-bottom:1px dashed var(--rule); font-size:15px; }
+.akey .qn { font:700 15px var(--f-head); color:var(--rust); }
+.akey .en, .akey .zh { display:block; }
+html[data-lang="both"] .akey .zh { font-size:.87em; color:var(--ink-2); margin-left:0; }
+
 /* ---- map and chart rules carried over ---- */
 @media (prefers-reduced-motion:reduce) { .box::before, .pcard::before, .map::before, .folder::before, .org-stage::before { filter:none; } }
 .map svg { width:100%; height:auto; display:block; border-radius:8px; }
@@ -1562,8 +1569,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 </figure>
 <ul class="bl">
   <li><span class="en">Taiwan's five major notebook ODMs are Quanta, Compal, Wistron, Inventec and Pegatron.</span><span class="zh">台灣五大筆電代工廠為廣達、仁寶、緯創、英業達與和碩。</span></li>
-  <li><span class="en">In the first half of 2009, all Acer notebooks came from four Taiwanese ODMs: Compal about 45 %, Wistron 26–28 %, followed by Quanta.</span><span class="zh">2009 上半年 Acer 筆電全數由四家台灣 ODM 生產：仁寶約 45 %、緯創 26–28 %，廣達次之。</span></li>
-  <li><span class="en">For 2014, Quanta and Compal each received about 40 % of orders, and Wistron fell from second to third supplier.</span><span class="zh">2014 年廣達與仁寶各取得約四成，緯創由第二降為第三。</span></li>
+  <li><span class="en">According to DIGITIMES, in the first half of 2009 all Acer notebooks came from four Taiwanese ODMs: Compal about 45 %, Wistron 26–28 %, followed by Quanta; a Commercial Times report on Acer's first-phase 2009 order release gave Compal about 35 %.</span><span class="zh">據 DIGITIMES 報導，2009 上半年 Acer 筆電全數由四家台灣 ODM 生產：仁寶約 45 %、緯創 26–28 %，廣達次之；工商時報對宏碁 2009 年第一階段釋單之報導則為仁寶約 35 %。</span></li>
+  <li><span class="en">According to a 2013 DIGITIMES report, for 2014 Quanta and Compal each received about 40 % of orders, and Wistron fell from second to third supplier.</span><span class="zh">據 DIGITIMES 2013 年報導，2014 年廣達與仁寶各取得約四成，緯創由第二降為第三。</span></li>
 </ul>
 <p class="en">Published allocations end with the 2014 orders; Acer and its ODMs do not publish later breakdowns, so current shares are not stated here.</p>
 <p class="zh">公開之分配資料止於 2014 年訂單；宏碁與各代工廠未再公布之後的分配，故本簡冊不列現行比例。</p>
@@ -1597,8 +1604,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">1988 年由林百里、梁次震創立，1999 年上市；筆電 ODM，客戶包括 Acer、HP、Dell、Apple。</p>
 
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">Has shared Acer notebook orders since 2002; received about 40 % of 2014 orders (14-inch and 17-inch models); reported in 2017 as the largest notebook ODM for Apple, Acer and Asus.</p>
-<p class="zh">2002 年起分享 Acer 訂單；2014 年取得約四成（14、17 吋）；2017 年報導為 Apple、Acer、華碩最大筆電 ODM。</p>
+<p class="en">Has shared Acer notebook orders since 2002; reportedly received about 40 % of 2014 orders (14-inch and 17-inch models); reported in 2017 as the largest notebook ODM for Apple, Acer and Asus.</p>
+<p class="zh">2002 年起分享 Acer 訂單；據報導 2014 年取得約四成（14、17 吋）；2017 年報導為 Apple、Acer、華碩最大筆電 ODM。</p>
 
 <h3 class="sec" id="s8-3"><span class="num">8.3</span><span class="en">Compal Electronics</span><span class="zh">仁寶電腦</span></h3>
 <div class="co-card" data-badge="compal">
@@ -1629,8 +1636,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">金仁寶集團成員，1984 年創立、1992 年上市。</p>
 
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">The ODM named in the training material. Acer's largest ODM in 1H 2009 (about 45 %); built the Aspire One netbooks with Wistron from 2008; about 40 % of 2014 orders (15-inch models); the world's largest notebook maker in Q2 2018 on large Dell and Acer orders. See <a class="xref" href="#c7" data-go="c7">Chapter 7</a>.</p>
-<p class="zh">教材所載之 ODM；2009 上半年為 Acer 最大代工廠；2008 年與緯創生產 Aspire One；2014 年約四成（15 吋）；2018 Q2 成為全球最大筆電代工廠。詳見<a class="xref" href="#c7" data-go="c7">第 7 章</a>。</p>
+<p class="en">The ODM named in the training material. Acer's largest ODM in 1H 2009 (about 45 % according to DIGITIMES); reported in October 2008 to take over Acer's 2009 Aspire One netbook orders with Wistron; reportedly about 40 % of 2014 orders (15-inch models); the world's largest notebook maker in Q2 2018 on large Dell and Acer orders. See <a class="xref" href="#c7" data-go="c7">Chapter 7</a>.</p>
+<p class="zh">教材所載之 ODM；2009 上半年為 Acer 最大代工廠（據 DIGITIMES 報導約 45 %）；據 2008 年 10 月報導，與緯創承接 Acer 2009 年 Aspire One 訂單；據報導 2014 年約四成（15 吋）；2018 Q2 成為全球最大筆電代工廠。詳見<a class="xref" href="#c7" data-go="c7">第 7 章</a>。</p>
 
 <h3 class="sec" id="s8-4"><span class="num">8.4</span><span class="en">Wistron Corporation</span><span class="zh">緯創資通</span></h3>
 <div class="co-card" data-badge="wistron">
@@ -1660,8 +1667,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">2001 年 5 月 30 日自宏碁研製服務部門分立，2003 年上市；筆電、桌機、伺服器與儲存設備之 ODM。</p>
 
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">Formerly Acer's own manufacturing arm. Supplied 26–28 % of Acer notebooks in 1H 2009; Acer's second-largest supplier in 2013 and third in 2014.</p>
-<p class="zh">原為宏碁自有製造部門；2009 上半年供應 26–28 %；2013 年第二、2014 年第三。</p>
+<p class="en">Formerly Acer's own manufacturing arm. According to DIGITIMES, it supplied 26–28 % of Acer notebooks in 1H 2009 and was Acer's second-largest supplier in 2013 and third in 2014.</p>
+<p class="zh">原為宏碁自有製造部門；據 DIGITIMES 報導，2009 上半年供應 26–28 %；2013 年第二、2014 年第三。</p>
 
 <h3 class="sec" id="s8-5"><span class="num">8.5</span><span class="en">Inventec Corporation</span><span class="zh">英業達</span></h3>
 <div class="co-card" data-badge="inventec">
@@ -1691,8 +1698,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">1975 年創立，1996 年上市；製造筆電與伺服器。</p>
 
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">Won Acer orders in 2006, all of Acer's Blu-ray notebook orders for 2008, and Acer's CULV ultra-thin notebook orders in 2009. Reported orders date from that period; 2023 sources still list Acer among its notebook customers.</p>
-<p class="zh">2006 年取得 Acer 訂單；2008 年取得藍光筆電全部訂單；2009 年取得 CULV 訂單；2023 年仍列 Acer 為客戶。</p>
+<p class="en">Won Acer orders in 2006, all of Acer's Blu-ray notebook orders for 2008, and Acer's CULV ultra-thin notebook orders in 2009. Most reported orders date from that period; early-2020 reports still listed Acer among its notebook customers.</p>
+<p class="zh">2006 年取得 Acer 訂單；2008 年取得藍光筆電全部訂單；2009 年取得 CULV 訂單；2020 年初報導仍列 Acer 為客戶。</p>
 
 <h3 class="sec" id="s8-6"><span class="num">8.6</span><span class="en">Pegatron Corporation</span><span class="zh">和碩聯合科技</span></h3>
 <div class="co-card" data-badge="pegatron">
@@ -1929,8 +1936,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="en">Since 2019, Acer has spun off internal businesses and taken them public; the press refers to this group as the <b>tiger team</b>. Under Chairman and CEO Jason Chen, the approach is to identify a trend within the core business, scale it, and use an IPO to test the unit. Employees found the businesses internally, and Acer retains majority control.</p>
 <p class="zh">宏碁自 2019 年起陸續分拆內部事業並推動上市櫃，媒體稱為「老虎隊」。陳俊聖之作法為：於核心事業中找出趨勢、擴大規模，再以 IPO 檢驗體質；由員工內部創業，宏碁保持多數持股。</p>
 <ul class="bl">
-  <li><span class="en">Seven subsidiaries were listed by July 2022: Weblink, AEB, ACSI, AST, AOpen, Acer Medical and HSN.</span><span class="zh">2022 年 7 月已有 7 家上市櫃。</span></li>
-  <li><span class="en">The 11th listing occurred in December 2024; Opticon (Japan) became the 16th in November 2025.</span><span class="zh">2024 年 12 月為第 11 家；2025 年 11 月 Opticon 為第 16 家。</span></li>
+  <li><span class="en">Seven subsidiaries were listed or traded on the emerging board by July 2022: Weblink, AEB, ACSI, AST, AOpen, Acer Medical and HSN.</span><span class="zh">2022 年 7 月已有 7 家子公司上市櫃或登錄興櫃。</span></li>
+  <li><span class="en">According to Wealth Magazine, the group's 11th listing in Taiwan, an emerging-board registration, came in November 2024; Acer announced in November 2025 that Opticon (Japan) would become the 16th once its investment closes.</span><span class="zh">據財訊報導，2024 年 11 月登錄興櫃者為集團在台第 11 家掛牌公司；宏碁 2025 年 11 月宣布，Opticon 於投資完成後將成為第 16 家。</span></li>
 </ul>
 <p class="en">The number quoted in the press changes with the counting date and with whether emerging-board companies are included. The authoritative list is maintained on Acer's investor-relations site.</p>
 <p class="zh">媒體所稱之家數隨統計日期及是否計入興櫃公司而不同；正式名單以宏碁投資人關係網站為準。</p>
@@ -1959,15 +1966,15 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="en">A 3C distributor carrying more than 150 brands and Taiwan's largest software distributor; added Lenovo's full line and Xiaomi e-commerce distribution in 2024.</p>
 <p class="zh">3C 通路商，代理逾 150 個品牌，為台灣最大軟體代理商。</p>
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">Acer's general agent in Taiwan since July 2014, handling marketing, service, logistics and payment; chaired by Jason Chen. A downstream channel partner.</p>
-<p class="zh">2014 年 7 月起為 Acer 台灣總代理，負責行銷、服務、物流與金流；屬下游通路。</p>
+<p class="en">Acer's general agent in Taiwan, jointly with Synnex, since July 2014, handling marketing, service, logistics and payment; chaired since May 2026 by its President, who succeeded Jason Chen. A downstream channel partner.</p>
+<p class="zh">2014 年 7 月起與聯強同為 Acer 台灣總代理，負責行銷、服務、物流與金流；2026 年 5 月起由總經理林佳璋接任董事長（接替陳俊聖）；屬下游通路。</p>
 
 <h3 class="sec" id="s10-3"><span class="num">10.3</span><span class="en">Highpoint Service Network</span><span class="zh">海柏特</span></h3>
 <div class="co-card" data-badge="highpoint">
   <span class="badge" aria-hidden="true"></span>
   <div class="co-text">
-    <b class="co-name">Highpoint Service Network</b>
-    <span class="co-zh">海柏特</span>
+    <b class="co-name">Highpoint Service Network Corporation</b>
+    <span class="co-zh">海柏特股份有限公司</span>
     <small class="co-role"><span class="en">Group subsidiary</span><span class="zh">集團子公司</span></small>
   </div>
 </div>
@@ -2011,8 +2018,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="en">Security operations centre (SOC) monitoring, security testing and consulting.</p>
 <p class="zh">資安監控中心（SOC）、資安檢測與顧問服務。</p>
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">About 57 % owned by Acer; listed on 30 October 2019 as Taiwan's first listed cybersecurity company.</p>
-<p class="zh">宏碁持股約 57%；台灣首家上櫃資安公司。</p>
+<p class="en">51.87 % owned by Acer according to ACSI's annual report; listed on 30 October 2019 as Taiwan's first listed cybersecurity company.</p>
+<p class="zh">依安碁資訊年報，宏碁持股 51.87%；台灣首家上櫃資安公司。</p>
 
 <h3 class="sec" id="s10-5"><span class="num">10.5</span><span class="en">Acer e-Enabling Service Business (AEB)</span><span class="zh">宏碁資訊</span></h3>
 <div class="co-card" data-badge="aeb">
@@ -2090,8 +2097,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="en">Began as Acer's open-products division in 1992; since 2019 has moved from digital signage to industrial PCs (IPC) and AIoT.</p>
 <p class="zh">1992 年起為宏碁開放產品部門；2019 年起轉向工業電腦與 AIoT。</p>
 <h4 class="subhd"><span class="en">Relationship with Acer</span><span class="zh">與 Acer 的關係</span></h4>
-<p class="en">The first internal-venture spin-off in the pan-Acer group; Acer regained control at the end of 2017.</p>
-<p class="zh">泛宏碁集團首家內部創業分拆；2017 年底宏碁重新取得控制權。</p>
+<p class="en">By AOpen's own account, the first internal-venture spin-off in the pan-Acer group; Acer regained control at the end of 2017.</p>
+<p class="zh">據建碁官方說明，為泛宏碁集團首家內部創業分拆；2017 年底宏碁重新取得控制權。</p>
 
 <h3 class="sec" id="s10-8"><span class="num">10.8</span><span class="en">Acer Gaming</span><span class="zh">宏碁遊戲</span></h3>
 <div class="co-card" data-badge="acergaming">
@@ -2233,8 +2240,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
     <div><dt>Customer service centre <span class="zh">客服中心</span></dt><dd><span class="en">A walk-in point where customers hand in units and receive service.</span><span class="zh">客戶親臨送修與取件之據點。</span></dd></div>
   </dl>
 </div>
-<p class="en">Acer's official service provider, with 16 Acer customer service centres in Malaysia.</p>
-<p class="zh">Acer 官方服務商，設有 16 處客服中心。</p>
+<p class="en">Acer's official service provider, with 16 Acer customer service centres in Malaysia according to Acer Malaysia's service-centre locator.</p>
+<p class="zh">Acer 官方服務商；據 Acer 馬來西亞官網服務據點頁，設有 16 處客服中心。</p>
 
 <h3 class="sec" id="s11-2"><span class="num">11.2</span><span class="en">Philippines</span><span class="zh">菲律賓</span></h3>
 <div class="facts">
@@ -2261,8 +2268,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
     <div><dt>Turnaround <span class="zh">週轉時間</span></dt><dd><span class="en">The time from receiving a unit to returning it repaired.</span><span class="zh">自收件至修復交還之時間。</span></dd></div>
   </dl>
 </div>
-<p class="en">Operates the renovated Rama 3 service centre. Thailand is also the logistics and spare-parts hub for Indochina; after-sales turnaround was reduced from 17–20 days to 3 days (c. 2016).</p>
-<p class="zh">Rama 3 服務中心；泰國亦為中南半島之備品中心，週轉由 17–20 天縮短至 3 天。</p>
+<p class="en">Operates the renovated Rama 3 service centre. Thailand is also the logistics and spare-parts hub for Indochina; in 2016 Acer Thailand said this would cut after-sales turnaround from 17–20 days to about 3 days.</p>
+<p class="zh">Rama 3 服務中心；泰國亦為中南半島之備品中心，Acer 泰國於 2016 年表示，週轉可由 17–20 天縮短至約 3 天。</p>
 
 <h3 class="sec" id="s11-4"><span class="num">11.4</span><span class="en">Vietnam</span><span class="zh">越南</span></h3>
 <div class="facts">
@@ -2301,8 +2308,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
     <div><dt>Flipkart</dt><dd><span class="en">A large Indian e-commerce company; it acquired the F1 Info Solutions repair chain in 2017.</span><span class="zh">印度大型電商，2017 年收購 F1 維修連鎖。</span></dd></div>
   </dl>
 </div>
-<p class="en">A repair chain founded in 2012 and acquired by Flipkart in 2017. Its own website states that it is an authorised Acer service partner in India.</p>
-<p class="zh">2012 年成立、2017 年由 Flipkart 收購之維修連鎖；其官網載明為 Acer 在印度之授權服務夥伴。</p>
+<p class="en">A repair chain founded in 2012 and acquired by Flipkart in 2017. Acer India's official support network and its own website both list it as an authorised Acer service partner in India.</p>
+<p class="zh">2012 年成立、2017 年由 Flipkart 收購之維修連鎖；Acer 印度官方支援網絡及其官網均載明為 Acer 在印度之授權服務夥伴。</p>
 
 <h3 class="sec" id="s11-7"><span class="num">11.7</span><span class="en">Europe (for comparison)</span><span class="zh">歐洲（對照）</span></h3>
 <div class="facts">
@@ -2321,7 +2328,7 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <ul class="bl">
   <li><span class="en">ASPs receive units from customers but do not perform repairs (<a class="xref" href="#c14" data-go="c14">Chapter 14</a>).</span><span class="zh">ASP 提供收件服務，不具維修能力（見<a class="xref" href="#c14" data-go="c14">第 14 章</a>）。</span></li>
   <li><span class="en">Thailand's role as the Indochina parts hub corresponds to the training material, in which Indochina falls under ATH.</span><span class="zh">泰國為中南半島備品中心，與教材「中南半島隸屬 ATH」相符。</span></li>
-  <li><span class="en">No credible source names a third-party logistics provider for Acer's Asia Pacific spare parts.</span><span class="zh">未找到可信來源指名 Acer 亞太備品之第三方物流商。</span></li>
+  <li><span class="en">No credible source was found that names a third-party logistics provider for Acer's Asia Pacific spare parts.</span><span class="zh">未找到可信來源指名 Acer 亞太備品之第三方物流商。</span></li>
 </ul>
 
 </div>
@@ -2641,8 +2648,8 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <div class="co-card" data-badge="hsn">
   <span class="badge" aria-hidden="true"></span>
   <div class="co-text">
-    <b class="co-name">Highpoint Service Network</b>
-    <span class="co-zh">海柏特</span>
+    <b class="co-name">Highpoint Service Network Corporation</b>
+    <span class="co-zh">海柏特股份有限公司</span>
   </div>
 </div>
 <p class="en">HSN Group means HSN and its country companies. Company codes consist of HSN plus a country letter; the M in HSNM stands for Malaysia.</p>
@@ -3019,44 +3026,31 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 </div>
 
 <div class="box terms">
+  <h4><span class="en">What this means</span><span class="zh">名詞說明</span></h4>
   <dl>
     <div><dt>Service BOM</dt><dd><b><span class="en">Service Bill of Materials</span><span class="zh">服務料表</span></b> <span class="en">The list of serviceable parts of a model, maintained for after-sales use. It has two types, NPI and MP, each with its own SOP.</span><span class="zh">機種之可維修料件清單，供售後使用；分為 NPI 與 MP 兩類，各有其 SOP。</span></dd></div>
   </dl>
 </div>
 
 <figure class="fig">
-  <div class="lanes">
-    <div class="lane">
-      <span class="lane-head">NPI Service BOM</span>
-      <div class="tree">
-        <div class="node blue root"><b>NPI Service BOM</b><small><span class="en">New product introduction · after the FRU meeting</span><span class="zh">新品導入 · FRU 會議後</span></small></div>
-        <div class="kids">
-          <div class="node"><b>1.1</b><small>P/N review &amp; application</small></div>
-          <div class="node"><b>1.2</b><small>AVLC &amp; SKU BOM check</small></div>
-          <div class="node"><b>1.3</b><small>MOQ / RMA suggestion</small></div>
-          <div class="node"><b>1.4</b><small>Price review (markup %)</small></div>
-          <div class="node"><b>1.5</b><small>Import BOM to Service PLM</small></div>
-          <div class="node"><b>1.6</b><small>NPI SPL to ROs</small></div>
-        </div>
-      </div>
-    </div>
-    <div class="lane">
-      <span class="lane-head">MP Service BOM</span>
-      <div class="tree">
-        <div class="node green root"><b>MP Service BOM</b><small><span class="en">Mass production · updated monthly by ODM</span><span class="zh">量產 · 由 ODM 每月更新</span></small></div>
-        <div class="kids">
-          <div class="node"><b>2.1</b><small>P/N review &amp; application</small></div>
-          <div class="node"><b>2.2</b><small>AVLC &amp; SKU BOM check</small></div>
-          <div class="node"><b>2.3</b><small>MOQ / RMA &amp; price</small></div>
-          <div class="node"><b>2.4</b><small>Substitution parts</small></div>
-          <div class="node"><b>2.5</b><small>Import new parts to PLM</small></div>
-          <div class="node"><b>2.6</b><small>Maintain pricing</small></div>
-          <div class="node"><b>2.7</b><small>Other functions</small></div>
-        </div>
-      </div>
-    </div>
+  <div class="tblw">
+  <table class="tbl">
+    <tbody>
+      <tr>
+        <td class="c"><div class="node blue root"><b>NPI Service BOM</b><small><span class="en">after the FRU meeting</span><span class="zh">新品導入</span></small></div></td>
+        <td class="c"><div class="node green root"><b>MP Service BOM</b><small><span class="en">updated monthly by ODM</span><span class="zh">量產</span></small></div></td>
+      </tr>
+      <tr><td class="c"><div class="node"><b>1.1</b><small>P/N review &amp; application</small></div></td><td class="c"><div class="node"><b>2.1</b><small>P/N review &amp; application</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.2</b><small>AVLC &amp; SKU BOM check</small></div></td><td class="c"><div class="node"><b>2.2</b><small>AVLC &amp; SKU BOM check</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.3</b><small>MOQ / RMA suggestion</small></div></td><td class="c"><div class="node"><b>2.3</b><small>MOQ / RMA &amp; price</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.4</b><small>Price review (markup %)</small></div></td><td class="c"><div class="node"><b>2.4</b><small>Substitution parts</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.5</b><small>Import BOM to Service PLM</small></div></td><td class="c"><div class="node"><b>2.5</b><small>Import new parts to PLM</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.6</b><small>NPI SPL to ROs</small></div></td><td class="c"><div class="node"><b>2.6</b><small>Maintain pricing</small></div></td></tr>
+      <tr><td class="c">—</td><td class="c"><div class="node"><b>2.7</b><small>Other functions</small></div></td></tr>
+    </tbody>
+  </table>
   </div>
-  <figcaption><b>Figure 21-1</b> <span class="en">Service BOM Two types</span><span class="zh">Service BOM 兩類</span></figcaption>
+  <figcaption><b>Figure 21-1</b> <span class="en">Service BOM Two types</span><span class="zh">兩類</span></figcaption>
 </figure>
 
 <h3 class="sec" id="s21-1"><span class="num">21.1</span><span class="en">NPI Service BOM</span><span class="zh">新品導入</span></h3>
@@ -3064,14 +3058,14 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">FRU 會議後 ODM 提供 FRU 清單草稿；經審查後於 Service BOM 建立 Acer 料號。</p>
 <div class="tblw">
 <table class="tbl">
-  <thead><tr><th><span class="en">Step</span> <span class="zh">步驟</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
+  <thead><tr><th><span class="en">Step</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
   <tbody>
-    <tr><td class="c">1.1</td><td><span class="en">Acer P/N review &amp; application</span></td><td><span class="en">Review and apply for Acer part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
-    <tr><td class="c">1.2</td><td><span class="en">AVLC &amp; SKU BOM checking</span></td><td><span class="en">Check approved components against each SKU's BOM.</span> <span class="zh">核對 AVLC 與 SKU BOM。</span></td></tr>
-    <tr><td class="c">1.3</td><td><span class="en">MOQ / RMA suggestion review</span></td><td><span class="en">Review minimum order quantities and RMA suggestions.</span> <span class="zh">審查 MOQ 與 RMA 建議。</span></td></tr>
-    <tr><td class="c">1.4</td><td><span class="en">Price review</span></td><td><span class="en">B/S and general parts markup %.</span> <span class="zh">審核加價比例。</span></td></tr>
-    <tr><td class="c">1.5</td><td><span class="en">Import BOM to Service PLM</span></td><td><span class="en">Load the BOM into Service PLM.</span> <span class="zh">匯入 Service PLM。</span></td></tr>
-    <tr><td class="c">1.6</td><td><span class="en">NPI SPL to ROs</span></td><td><span class="en">Issue the DT SPL and NB SPL to the ROs.</span> <span class="zh">發布 NPI SPL。</span></td></tr>
+    <tr><td class="c">1.1</td><td>Acer P/N review &amp; application</td><td><span class="en">Review and apply for Acer part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
+    <tr><td class="c">1.2</td><td>AVLC &amp; SKU BOM checking</td><td><span class="en">Check approved components against each SKU's BOM.</span> <span class="zh">核對 AVLC 與 SKU BOM。</span></td></tr>
+    <tr><td class="c">1.3</td><td>MOQ / RMA suggestion review</td><td><span class="en">Review minimum order quantities and RMA suggestions.</span> <span class="zh">審查 MOQ 與 RMA 建議。</span></td></tr>
+    <tr><td class="c">1.4</td><td>Price review</td><td><span class="en">B/S and general parts markup %.</span> <span class="zh">審核加價比例。</span></td></tr>
+    <tr><td class="c">1.5</td><td>Import BOM to Service PLM</td><td><span class="en">Load the BOM into Service PLM.</span> <span class="zh">匯入 Service PLM。</span></td></tr>
+    <tr><td class="c">1.6</td><td>NPI SPL to ROs</td><td><span class="en">Issue the DT SPL and NB SPL to the ROs.</span> <span class="zh">發布 NPI SPL。</span></td></tr>
   </tbody>
 </table>
 </div>
@@ -3081,15 +3075,15 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
 <p class="zh">MP Service BOM 由 ODM 每月定期更新。</p>
 <div class="tblw">
 <table class="tbl">
-  <thead><tr><th><span class="en">Step</span> <span class="zh">步驟</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
+  <thead><tr><th><span class="en">Step</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
   <tbody>
-    <tr><td class="c">2.1</td><td><span class="en">Acer P/N review &amp; application</span></td><td><span class="en">Review and apply for part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
-    <tr><td class="c">2.2</td><td><span class="en">AVLC &amp; SKU BOM checking</span></td><td><span class="en">Check components against the SKU BOM.</span> <span class="zh">核對元件。</span></td></tr>
-    <tr><td class="c">2.3</td><td><span class="en">MOQ / RMA suggestion review &amp; price</span></td><td><span class="en">Review MOQ, RMA and price together.</span> <span class="zh">審查 MOQ、RMA 與價格。</span></td></tr>
-    <tr><td class="c">2.4</td><td><span class="en">Substitution part check &amp; maintain</span></td><td><span class="en">Maintain substitute parts.</span> <span class="zh">檢查並維護替代料。</span></td></tr>
-    <tr><td class="c">2.5</td><td><span class="en">Import new added parts to Service PLM</span></td><td><span class="en">Load new parts into PLM.</span> <span class="zh">匯入新增料件。</span></td></tr>
-    <tr><td class="c">2.6</td><td><span class="en">Maintain pricing</span></td><td><span class="en">Keep prices current.</span> <span class="zh">維護價格。</span></td></tr>
-    <tr><td class="c">2.7</td><td><span class="en">Other function introduction</span></td><td><span class="en">Additional functions.</span> <span class="zh">其他功能。</span></td></tr>
+    <tr><td class="c">2.1</td><td>Acer P/N review &amp; application</td><td><span class="en">Review and apply for part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
+    <tr><td class="c">2.2</td><td>AVLC &amp; SKU BOM checking</td><td><span class="en">Check components against the SKU BOM.</span> <span class="zh">核對元件。</span></td></tr>
+    <tr><td class="c">2.3</td><td>MOQ / RMA suggestion review &amp; price</td><td><span class="en">Review MOQ, RMA and price together.</span> <span class="zh">審查 MOQ、RMA 與價格。</span></td></tr>
+    <tr><td class="c">2.4</td><td>Substitution part check &amp; maintain</td><td><span class="en">Maintain substitute parts.</span> <span class="zh">檢查並維護替代料。</span></td></tr>
+    <tr><td class="c">2.5</td><td>Import new added parts to Service PLM</td><td><span class="en">Load new parts into PLM.</span> <span class="zh">匯入新增料件。</span></td></tr>
+    <tr><td class="c">2.6</td><td>Maintain pricing</td><td><span class="en">Keep prices current.</span> <span class="zh">維護價格。</span></td></tr>
+    <tr><td class="c">2.7</td><td>Other function introduction</td><td><span class="en">Additional functions.</span> <span class="zh">其他功能。</span></td></tr>
   </tbody>
 </table>
 </div>
@@ -3621,13 +3615,17 @@ html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
   <p class="zh">以下題目涵蓋本簡冊各篇。請先作答再核對解答；題目依章節順序排列，答錯之題目即指向應重讀之章節。</p>
 </div>
 
-<h3 class="sec" id="s27-1"><span class="num">27.1</span><span class="en">Questions and Answer Key</span><span class="zh">題目與解答</span></h3>
+<h3 class="sec" id="s27-1"><span class="num">27.1</span><span class="en">Questions</span><span class="zh">題目</span></h3>
 <div class="qa-tools">
   <button class="btn sm" type="button" id="quiz-open"><span class="en">Show all answers</span><span class="zh">顯示全部解答</span></button>
   <button class="btn sm" type="button" id="quiz-close"><span class="en">Hide all answers</span><span class="zh">隱藏全部解答</span></button>
   <span class="caption" id="quiz-count"></span>
 </div>
 <ol class="qa" id="quiz-list"></ol>
+
+
+<h3 class="sec" id="s27-2"><span class="num">27.2</span><span class="en">Answer Key</span><span class="zh">解答</span></h3>
+<ol class="akey" id="answer-key"></ol>
 
 
 <h3 class="sec" id="s27-3"><span class="num">27.3</span><span class="en">Sources</span><span class="zh">資料來源</span></h3>
@@ -5018,6 +5016,8 @@ window.PAP_AB_EXTRA = [{"id": "emerging-board", "keys": ["Emerging board"], "cod
       return '<li><span class="qn">' + q.n + '</span><div><div class="q">' + B(esc(q.qzh), esc(q.qen)) + "</div><details><summary>" + B("解答", "Answer") + '</summary><div class="ans">' + B(esc(q.azh), esc(q.aen)) + "</div></details></div></li>";
     }).join("");
     $("quiz-count").innerHTML = B(RV.questions.length + " 題", RV.questions.length + " questions");
+    var ak = $id("answer-key");
+    if (ak) ak.innerHTML = RV.questions.map(function (q) { return '<li><span class="qn">' + q.n + '</span><div>' + B(esc(q.azh), esc(q.aen)) + "</div></li>"; }).join("");
     var all = function (open) { $$("#quiz-list details").forEach(function (d) { d.open = open; }); };
     $("quiz-open").addEventListener("click", function () { all(true); });
     $("quiz-close").addEventListener("click", function () { all(false); });

@@ -195,6 +195,8 @@
       return '<li><span class="qn">' + q.n + '</span><div><div class="q">' + B(esc(q.qzh), esc(q.qen)) + "</div><details><summary>" + B("解答", "Answer") + '</summary><div class="ans">' + B(esc(q.azh), esc(q.aen)) + "</div></details></div></li>";
     }).join("");
     $("quiz-count").innerHTML = B(RV.questions.length + " 題", RV.questions.length + " questions");
+    var ak = $id("answer-key");
+    if (ak) ak.innerHTML = RV.questions.map(function (q) { return '<li><span class="qn">' + q.n + '</span><div>' + B(esc(q.azh), esc(q.aen)) + "</div></li>"; }).join("");
     var all = function (open) { $$("#quiz-list details").forEach(function (d) { d.open = open; }); };
     $("quiz-open").addEventListener("click", function () { all(true); });
     $("quiz-close").addEventListener("click", function () { all(false); });

@@ -553,3 +553,10 @@ tr.hl td { background:var(--gold-bg) !important; }
 .cats-tbl td.code { width:48px; }
 html[data-lang="both"] .part-desc .zh, html[data-lang="both"] .cover-lead .zh { font-size:.9em; color:var(--ink-2); margin-top:4px; }
 html[data-lang="both"] .cover-lead .zh { display:block; margin-left:0; }
+
+/* ---------- answer key (27.2) ---------- */
+.akey { list-style:none; margin:0 0 10px; padding:0; columns:2 340px; column-gap:28px; }
+.akey li { display:grid; grid-template-columns:30px 1fr; gap:8px; break-inside:avoid; padding:5px 0; border-bottom:1px dashed var(--rule); font-size:15px; }
+.akey .qn { font:700 15px var(--f-head); color:var(--rust); }
+.akey .en, .akey .zh { display:block; }
+html[data-lang="both"] .akey .zh { font-size:.87em; color:var(--ink-2); margin-left:0; }

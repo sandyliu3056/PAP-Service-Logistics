@@ -13,44 +13,31 @@
 </div>
 
 <div class="box terms">
+  <h4><span class="en">What this means</span><span class="zh">名詞說明</span></h4>
   <dl>
     <div><dt>Service BOM</dt><dd><b><span class="en">Service Bill of Materials</span><span class="zh">服務料表</span></b> <span class="en">The list of serviceable parts of a model, maintained for after-sales use. It has two types, NPI and MP, each with its own SOP.</span><span class="zh">機種之可維修料件清單，供售後使用；分為 NPI 與 MP 兩類，各有其 SOP。</span></dd></div>
   </dl>
 </div>
 
 <figure class="fig">
-  <div class="lanes">
-    <div class="lane">
-      <span class="lane-head">NPI Service BOM</span>
-      <div class="tree">
-        <div class="node blue root"><b>NPI Service BOM</b><small><span class="en">New product introduction · after the FRU meeting</span><span class="zh">新品導入 · FRU 會議後</span></small></div>
-        <div class="kids">
-          <div class="node"><b>1.1</b><small>P/N review &amp; application</small></div>
-          <div class="node"><b>1.2</b><small>AVLC &amp; SKU BOM check</small></div>
-          <div class="node"><b>1.3</b><small>MOQ / RMA suggestion</small></div>
-          <div class="node"><b>1.4</b><small>Price review (markup %)</small></div>
-          <div class="node"><b>1.5</b><small>Import BOM to Service PLM</small></div>
-          <div class="node"><b>1.6</b><small>NPI SPL to ROs</small></div>
-        </div>
-      </div>
-    </div>
-    <div class="lane">
-      <span class="lane-head">MP Service BOM</span>
-      <div class="tree">
-        <div class="node green root"><b>MP Service BOM</b><small><span class="en">Mass production · updated monthly by ODM</span><span class="zh">量產 · 由 ODM 每月更新</span></small></div>
-        <div class="kids">
-          <div class="node"><b>2.1</b><small>P/N review &amp; application</small></div>
-          <div class="node"><b>2.2</b><small>AVLC &amp; SKU BOM check</small></div>
-          <div class="node"><b>2.3</b><small>MOQ / RMA &amp; price</small></div>
-          <div class="node"><b>2.4</b><small>Substitution parts</small></div>
-          <div class="node"><b>2.5</b><small>Import new parts to PLM</small></div>
-          <div class="node"><b>2.6</b><small>Maintain pricing</small></div>
-          <div class="node"><b>2.7</b><small>Other functions</small></div>
-        </div>
-      </div>
-    </div>
+  <div class="tblw">
+  <table class="tbl">
+    <tbody>
+      <tr>
+        <td class="c"><div class="node blue root"><b>NPI Service BOM</b><small><span class="en">after the FRU meeting</span><span class="zh">新品導入</span></small></div></td>
+        <td class="c"><div class="node green root"><b>MP Service BOM</b><small><span class="en">updated monthly by ODM</span><span class="zh">量產</span></small></div></td>
+      </tr>
+      <tr><td class="c"><div class="node"><b>1.1</b><small>P/N review &amp; application</small></div></td><td class="c"><div class="node"><b>2.1</b><small>P/N review &amp; application</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.2</b><small>AVLC &amp; SKU BOM check</small></div></td><td class="c"><div class="node"><b>2.2</b><small>AVLC &amp; SKU BOM check</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.3</b><small>MOQ / RMA suggestion</small></div></td><td class="c"><div class="node"><b>2.3</b><small>MOQ / RMA &amp; price</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.4</b><small>Price review (markup %)</small></div></td><td class="c"><div class="node"><b>2.4</b><small>Substitution parts</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.5</b><small>Import BOM to Service PLM</small></div></td><td class="c"><div class="node"><b>2.5</b><small>Import new parts to PLM</small></div></td></tr>
+      <tr><td class="c"><div class="node"><b>1.6</b><small>NPI SPL to ROs</small></div></td><td class="c"><div class="node"><b>2.6</b><small>Maintain pricing</small></div></td></tr>
+      <tr><td class="c">—</td><td class="c"><div class="node"><b>2.7</b><small>Other functions</small></div></td></tr>
+    </tbody>
+  </table>
   </div>
-  <figcaption><b>Figure 21-1</b> <span class="en">Service BOM Two types</span><span class="zh">Service BOM 兩類</span></figcaption>
+  <figcaption><b>Figure 21-1</b> <span class="en">Service BOM Two types</span><span class="zh">兩類</span></figcaption>
 </figure>
 
 <h3 class="sec" id="s21-1"><span class="num">21.1</span><span class="en">NPI Service BOM</span><span class="zh">新品導入</span></h3>
@@ -58,14 +45,14 @@
 <p class="zh">FRU 會議後 ODM 提供 FRU 清單草稿；經審查後於 Service BOM 建立 Acer 料號。</p>
 <div class="tblw">
 <table class="tbl">
-  <thead><tr><th><span class="en">Step</span> <span class="zh">步驟</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
+  <thead><tr><th><span class="en">Step</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
   <tbody>
-    <tr><td class="c">1.1</td><td><span class="en">Acer P/N review &amp; application</span></td><td><span class="en">Review and apply for Acer part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
-    <tr><td class="c">1.2</td><td><span class="en">AVLC &amp; SKU BOM checking</span></td><td><span class="en">Check approved components against each SKU's BOM.</span> <span class="zh">核對 AVLC 與 SKU BOM。</span></td></tr>
-    <tr><td class="c">1.3</td><td><span class="en">MOQ / RMA suggestion review</span></td><td><span class="en">Review minimum order quantities and RMA suggestions.</span> <span class="zh">審查 MOQ 與 RMA 建議。</span></td></tr>
-    <tr><td class="c">1.4</td><td><span class="en">Price review</span></td><td><span class="en">B/S and general parts markup %.</span> <span class="zh">審核加價比例。</span></td></tr>
-    <tr><td class="c">1.5</td><td><span class="en">Import BOM to Service PLM</span></td><td><span class="en">Load the BOM into Service PLM.</span> <span class="zh">匯入 Service PLM。</span></td></tr>
-    <tr><td class="c">1.6</td><td><span class="en">NPI SPL to ROs</span></td><td><span class="en">Issue the DT SPL and NB SPL to the ROs.</span> <span class="zh">發布 NPI SPL。</span></td></tr>
+    <tr><td class="c">1.1</td><td>Acer P/N review &amp; application</td><td><span class="en">Review and apply for Acer part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
+    <tr><td class="c">1.2</td><td>AVLC &amp; SKU BOM checking</td><td><span class="en">Check approved components against each SKU's BOM.</span> <span class="zh">核對 AVLC 與 SKU BOM。</span></td></tr>
+    <tr><td class="c">1.3</td><td>MOQ / RMA suggestion review</td><td><span class="en">Review minimum order quantities and RMA suggestions.</span> <span class="zh">審查 MOQ 與 RMA 建議。</span></td></tr>
+    <tr><td class="c">1.4</td><td>Price review</td><td><span class="en">B/S and general parts markup %.</span> <span class="zh">審核加價比例。</span></td></tr>
+    <tr><td class="c">1.5</td><td>Import BOM to Service PLM</td><td><span class="en">Load the BOM into Service PLM.</span> <span class="zh">匯入 Service PLM。</span></td></tr>
+    <tr><td class="c">1.6</td><td>NPI SPL to ROs</td><td><span class="en">Issue the DT SPL and NB SPL to the ROs.</span> <span class="zh">發布 NPI SPL。</span></td></tr>
   </tbody>
 </table>
 </div>
@@ -75,15 +62,15 @@
 <p class="zh">MP Service BOM 由 ODM 每月定期更新。</p>
 <div class="tblw">
 <table class="tbl">
-  <thead><tr><th><span class="en">Step</span> <span class="zh">步驟</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
+  <thead><tr><th><span class="en">Step</span></th><th><span class="en">Task</span> <span class="zh">工作</span></th><th><span class="en">Purpose</span> <span class="zh">目的</span></th></tr></thead>
   <tbody>
-    <tr><td class="c">2.1</td><td><span class="en">Acer P/N review &amp; application</span></td><td><span class="en">Review and apply for part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
-    <tr><td class="c">2.2</td><td><span class="en">AVLC &amp; SKU BOM checking</span></td><td><span class="en">Check components against the SKU BOM.</span> <span class="zh">核對元件。</span></td></tr>
-    <tr><td class="c">2.3</td><td><span class="en">MOQ / RMA suggestion review &amp; price</span></td><td><span class="en">Review MOQ, RMA and price together.</span> <span class="zh">審查 MOQ、RMA 與價格。</span></td></tr>
-    <tr><td class="c">2.4</td><td><span class="en">Substitution part check &amp; maintain</span></td><td><span class="en">Maintain substitute parts.</span> <span class="zh">檢查並維護替代料。</span></td></tr>
-    <tr><td class="c">2.5</td><td><span class="en">Import new added parts to Service PLM</span></td><td><span class="en">Load new parts into PLM.</span> <span class="zh">匯入新增料件。</span></td></tr>
-    <tr><td class="c">2.6</td><td><span class="en">Maintain pricing</span></td><td><span class="en">Keep prices current.</span> <span class="zh">維護價格。</span></td></tr>
-    <tr><td class="c">2.7</td><td><span class="en">Other function introduction</span></td><td><span class="en">Additional functions.</span> <span class="zh">其他功能。</span></td></tr>
+    <tr><td class="c">2.1</td><td>Acer P/N review &amp; application</td><td><span class="en">Review and apply for part numbers.</span> <span class="zh">審查並申請料號。</span></td></tr>
+    <tr><td class="c">2.2</td><td>AVLC &amp; SKU BOM checking</td><td><span class="en">Check components against the SKU BOM.</span> <span class="zh">核對元件。</span></td></tr>
+    <tr><td class="c">2.3</td><td>MOQ / RMA suggestion review &amp; price</td><td><span class="en">Review MOQ, RMA and price together.</span> <span class="zh">審查 MOQ、RMA 與價格。</span></td></tr>
+    <tr><td class="c">2.4</td><td>Substitution part check &amp; maintain</td><td><span class="en">Maintain substitute parts.</span> <span class="zh">檢查並維護替代料。</span></td></tr>
+    <tr><td class="c">2.5</td><td>Import new added parts to Service PLM</td><td><span class="en">Load new parts into PLM.</span> <span class="zh">匯入新增料件。</span></td></tr>
+    <tr><td class="c">2.6</td><td>Maintain pricing</td><td><span class="en">Keep prices current.</span> <span class="zh">維護價格。</span></td></tr>
+    <tr><td class="c">2.7</td><td>Other function introduction</td><td><span class="en">Additional functions.</span> <span class="zh">其他功能。</span></td></tr>
   </tbody>
 </table>
 </div>
