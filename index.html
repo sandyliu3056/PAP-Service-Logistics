@@ -1017,6 +1017,9 @@
   .home-map figcaption { margin-top:10px; }
   .home-map .legend-chips { margin-top:12px; }
   .quick-links { display:flex; flex-wrap:wrap; gap:8px; }
+  .totop { position:fixed; right:max(16px, env(safe-area-inset-right, 0px)); bottom:calc(18px + env(safe-area-inset-bottom, 0px)); z-index:30; width:46px; height:46px; border-radius:50%; border:2px solid var(--ch); background:var(--panel); color:var(--ch-ink); font-size:1.35rem; font-weight:700; cursor:pointer; box-shadow:0 6px 18px rgba(40,40,30,.18); display:grid; place-items:center; }
+  .totop:hover { background:var(--ch-bg); }
+  .totop[hidden] { display:none; }
   .home-ns .wb-foot-t { margin:16px 0 8px; padding-top:12px; }
   .home-ns .ns-key.code-nav { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px 12px; }
   .home-ns .ns-key .cn { padding:7px 12px 8px; grid-template-columns:28px auto minmax(0, 1fr); column-gap:10px; }
@@ -1147,15 +1150,15 @@
   .abc { background:var(--panel); border:1.5px solid var(--ch-line); border-left:5px solid var(--ch); border-radius:12px; min-width:0; }
   .abc > summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:minmax(0, 1fr) auto; grid-template-areas:"k s" "f f" "z z" "d d" "u u"; gap:2px 8px; padding:10px 14px 11px; }
   .abc > summary::-webkit-details-marker { display:none; }
-  .abc > summary .k { grid-area:k; font-family:var(--font-head); font-weight:700; font-size:1.25rem; color:var(--ch-ink); letter-spacing:.02em; }
-  .abc > summary .src { grid-area:s; align-self:center; }
-  .abc > summary .f { grid-area:f; font-weight:700; line-height:1.35; overflow-wrap:anywhere; }
-  .abc > summary .z { grid-area:z; color:var(--mute); font-size:.9rem; }
-  .abc > summary .d { grid-area:d; font-size:.88rem; line-height:1.5; color:var(--ink); margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-  .abc > summary .u { grid-area:u; font-size:.78rem; color:var(--mute); margin-top:4px; }
+  .abc > summary > .k { grid-area:k; font-family:var(--font-head); font-weight:700; font-size:1.25rem; color:var(--ch-ink); letter-spacing:.02em; }
+  .abc > summary > .src { grid-area:s; align-self:center; }
+  .abc > summary > .f { grid-area:f; font-weight:700; line-height:1.35; overflow-wrap:anywhere; }
+  .abc > summary > .z { grid-area:z; color:var(--mute); font-size:.9rem; }
+  .abc > summary > .d { grid-area:d; font-size:.88rem; line-height:1.5; color:var(--ink); margin-top:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .abc > summary > .u { grid-area:u; font-size:.78rem; color:var(--mute); margin-top:4px; }
   .abc[open] { grid-column:1 / -1; border-color:var(--ch); box-shadow:0 3px 10px rgba(40,40,30,.08); }
   .abc[open] > summary { border-bottom:1px dashed var(--line); }
-  .abc[open] > summary .d { display:none; }
+  .abc[open] > summary > .d { display:none; }
   .abc .tin { padding:12px 14px 14px; display:grid; gap:8px; font-size:.93rem; }
   .abc .tin .kvl > div { grid-template-columns:8.5em minmax(0, 1fr); }
   .ab-group > h3 { color:var(--ch-ink); }
@@ -2031,6 +2034,7 @@
 
   </main>
 
+  <button type="button" class="totop" id="totop" aria-label="回到頂端 / Back to top" title="回到頂端 / Back to top" hidden>↑</button>
   <p class="foot"><span class="zh">本網站內容屬公司內部資料，請勿對外散布；資料以原始文件為準。</span><span class="en">This site contains internal company information and must not be distributed externally. Original documents prevail.</span></p>
 
 <div class="ab-pop" id="ab-pop" role="dialog" aria-labelledby="ab-pop-key" tabindex="-1" hidden>
@@ -2160,6 +2164,8 @@
     });
     $$("main .page").forEach(function (s) { s.classList.toggle("active", s.id === "page-" + p.id); });
     if (p.id === "corp" && switched) setTimeout(orgShow, 0);
+    var tt = $("totop");
+    if (tt) { tt.style.setProperty("--ch", p.col || "var(--navy)"); tt.style.setProperty("--ch-ink", p.ink || "var(--navy)"); tt.style.setProperty("--ch-bg", p.tint || "var(--stripe)"); }
     var subId = o.sub && !isPage ? o.sub[0] : "";
     markSub(page, subId || (p.subs.length ? p.subs[0][0] : ""));
     var pi = NAV.indexOf(p), prev = NAV[pi - 1], next = NAV[pi + 1];
@@ -2194,6 +2200,10 @@
     subs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
     return cur || subs[0];
   }
+  // 回到頂端（捲過一個螢幕高才出現，顏色跟著目前章節）
+  var toTop = $("totop");
+  toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  window.addEventListener("scroll", function () { toTop.hidden = window.pageYOffset < window.innerHeight * .8; }, { passive: true });
   // 捲動時標示目前所在的子頁
   var spyTick = false;
   window.addEventListener("scroll", function () {
@@ -3165,7 +3175,7 @@
     }).join("");
   }
   var abCat = "org";
-  $("ab-cats").innerHTML = CATS_AB.map(function (c) {
+  $("ab-cats").innerHTML = [["all", "全部", "All"]].concat(CATS_AB).map(function (c) {
     return '<button class="btn sm' + (c[0] === abCat ? " active" : "") + '" type="button" data-cat="' + c[0] + '">' + B(c[1], c[2]) + "</button>";
   }).join("");
   $("ab-cats").addEventListener("click", function (e) {
@@ -3179,9 +3189,9 @@
   function renderAbbr() {
     var q = $("ab-search").value.trim().toLowerCase(), html = "", n = 0;
     $$("#ab-cats .btn").forEach(function (x) { x.classList.toggle("active", !q && x.getAttribute("data-cat") === abCat); });
-    if (q) {
+    if (q || abCat === "all") {
       CATS_AB.forEach(function (c) {
-        var items = AB.filter(function (a) { return a.cat === c[0] && [a.code, a.full || "", a.zh, a.dzh, a.den, a.en || "", a.org || ""].join(" ").toLowerCase().indexOf(q) !== -1; });
+        var items = AB.filter(function (a) { return a.cat === c[0] && (!q || [a.code, a.full || "", a.zh, a.dzh, a.den, a.en || "", a.org || ""].join(" ").toLowerCase().indexOf(q) !== -1); });
         if (!items.length) return;
         n += items.length;
         html += '<div class="ab-group"><h3>' + B(c[1], c[2]) + '</h3><div class="acc">' + items.map(function (a) { return abNode(a, false); }).join("") + "</div></div>";
