@@ -81,7 +81,7 @@
   .btn { font-family:inherit; font-size:.92rem; font-weight:700; padding:6px 14px; border-radius:8px; border:2px solid var(--navy); background:var(--panel); color:var(--ink); cursor:pointer; }
   .btn:hover { background:var(--hover); }
   .btn.sm { font-size:.82rem; padding:3px 10px; }
-  .chip { display:inline-flex; align-items:center; font-size:.84rem; border:1.5px solid var(--line); border-radius:6px; padding:0 8px; background:var(--card); white-space:nowrap; }
+  .chip { display:inline-block; font-size:.84rem; border:1.5px solid var(--line); border-radius:6px; padding:0 8px; background:var(--card); white-space:nowrap; }
   .chip.mark { border-color:var(--warn); color:var(--warn); font-weight:700; }
   input[type=text], input[type=search] { font-family:inherit; font-size:.95rem; padding:6px 10px; border:1.5px solid var(--field); border-radius:6px; background:#fff; color:var(--ink); max-width:100%; }
   .flag { width:1.3em; height:.98em; vertical-align:-.12em; margin-right:.4em; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.18); object-fit:cover; }
@@ -254,17 +254,64 @@
   .quiz .ans { margin:0; padding:8px 0 12px 3.1em; border-top:1px dashed var(--line); }
   .quiz-tools { display:flex; gap:8px; margin:4px 0 10px; flex-wrap:wrap; }
 
-  /* 名詞說明 */
-  .modal { position:fixed; inset:0; background:rgba(40,28,16,.45); display:none; align-items:center; justify-content:center; z-index:20; padding:max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-  .modal.open { display:flex; }
-  .modal-box { background:var(--card); border:2px solid var(--navy); border-radius:12px; max-width:780px; width:100%; max-height:100%; display:flex; flex-direction:column; box-shadow:0 10px 40px rgba(0,0,0,.25); }
-  .modal-box header { display:flex; justify-content:space-between; align-items:center; padding:10px 18px; background:var(--navy); color:var(--gold); border-radius:9px 9px 0 0; font-weight:700; font-size:1.05rem; }
-  .modal-box header button { background:none; border:0; font-size:1.2rem; cursor:pointer; color:var(--gold); font-family:inherit; }
-  .modal-tools { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:10px 18px 0; }
-  .modal-body { overflow:auto; padding:4px 18px 18px; margin:0; }
-  .modal-body dt { font-weight:700; margin-top:10px; }
-  .modal-body dt small { font-weight:400; color:var(--mute); margin-left:8px; }
-  .modal-body dd { margin:0; }
+  /* 內文縮寫：虛線底線，點開看完整字與說明 */
+  .ab { font:inherit; color:inherit; background:none; border:0; border-bottom:1.5px dashed var(--orange); padding:0 1px; margin:0; cursor:help; line-height:inherit; letter-spacing:inherit; border-radius:2px 2px 0 0; }
+  .ab:hover, .ab.on { background:var(--hover); }
+  .node .ab, .ns-code .ab { border-bottom-width:2px; }
+  .ab-pop { position:absolute; z-index:30; width:min(380px, calc(100vw - 24px)); background:var(--panel); border:2px solid var(--navy); border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,.22); overflow:hidden; }
+  .ab-pop header { display:flex; align-items:center; gap:8px; padding:7px 10px 7px 14px; background:var(--navy); color:var(--gold); }
+  .ab-pop header b { font-size:1.15rem; letter-spacing:.04em; }
+  .ab-pop header button { margin-left:auto; background:none; border:0; color:var(--gold); font-size:1.1rem; cursor:pointer; font-family:inherit; padding:0 4px; }
+  .ab-pop .ab-in { padding:10px 14px 12px; display:grid; gap:8px; max-height:min(60vh, 420px); overflow:auto; }
+  .ab-lab { font-size:.74rem; color:var(--mute); font-weight:700; letter-spacing:.04em; }
+  .ab-full { font-weight:700; font-size:1.02rem; line-height:1.4; }
+  .ab-full small { display:block; font-weight:400; color:var(--mute); font-size:.86rem; }
+  .ab-txt { font-size:.93rem; }
+  .src { display:inline-block; font-size:.72rem; font-weight:700; border-radius:999px; padding:0 8px; white-space:nowrap; border:1.5px solid; line-height:1.6; }
+  .src.m { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+  .src.s { background:var(--panel); color:var(--ok); border-color:var(--ok); }
+  .src.g { background:var(--panel); color:var(--orange); border-color:var(--orange); }
+  .src.n { background:var(--panel); color:var(--mute); border-color:var(--line); }
+  @media (max-width:600px) {
+    .ab-pop { position:fixed; left:8px !important; right:8px; top:auto !important; bottom:calc(8px + env(safe-area-inset-bottom, 0px)); width:auto; }
+  }
+
+  /* 縮寫分頁：每個縮寫一個可展開的小卡 */
+  .ab-filters { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; margin:8px 0 6px; }
+  .seg { display:inline-flex; flex-wrap:wrap; gap:4px; }
+  .seg .btn.active { background:var(--gold); }
+  .src-legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.86rem; color:var(--mute); margin:4px 0 2px; align-items:center; }
+  .ab-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(270px, 1fr)); gap:8px; align-items:start; }
+  .abc { background:var(--panel); border:2px solid var(--navy); border-radius:9px; }
+  .abc summary { list-style:none; cursor:pointer; padding:8px 12px; display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:2px 8px; align-items:center; }
+  .abc summary::-webkit-details-marker { display:none; }
+  .abc summary .k { font-weight:700; font-size:1.12rem; letter-spacing:.03em; }
+  .abc summary .f { grid-column:1 / -1; color:var(--mute); font-size:.86rem; line-height:1.4; display:flex; justify-content:space-between; gap:8px; }
+  .abc summary .f::after { content:"▾"; color:var(--navy); }
+  .abc[open] summary .f::after { content:"▴"; }
+  .abc[open] { box-shadow:4px 4px 0 var(--primary); }
+  .abc[open] summary { background:var(--stripe); border-bottom:1.5px dashed var(--line); border-radius:7px 7px 0 0; }
+  .abc .abc-in { padding:8px 12px 12px; display:grid; gap:6px; font-size:.93rem; }
+  .abc:target, .abc.flash { outline:3px solid var(--orange); outline-offset:2px; }
+  .ab-empty { color:var(--mute); padding:10px 0; }
+
+  /* 代碼分頁 */
+  .code-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:10px; align-items:start; }
+  .cc { background:var(--panel); border:2px solid var(--navy); border-radius:9px; overflow:hidden; }
+  .cc-head { display:flex; align-items:center; gap:8px; padding:8px 12px; background:var(--stripe); border-bottom:1.5px dashed var(--line); }
+  .cc-head .flag { width:1.6em; height:1.2em; margin-right:0; }
+  .cc-code { font-weight:700; font-size:1.3rem; letter-spacing:.03em; }
+  .cc-pn { margin-left:auto; text-align:center; line-height:1.1; }
+  .cc-pn b { display:block; font-size:1.25rem; color:var(--orange); }
+  .cc-pn small { font-size:.68rem; color:var(--mute); white-space:nowrap; }
+  .cc-in { padding:8px 12px 12px; display:grid; gap:4px; font-size:.92rem; }
+  .cc-name { font-weight:700; }
+  .cc-full { color:var(--mute); font-size:.86rem; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .kv { display:grid; grid-template-columns:7em minmax(0, 1fr); gap:6px; align-items:baseline; }
+  .kv > span:first-child { color:var(--mute); font-size:.82rem; font-weight:700; }
+  .cc-txt { margin-top:4px; padding-top:6px; border-top:1px dashed var(--line); font-size:.88rem; }
+  .sites-line { display:flex; flex-wrap:wrap; gap:3px 10px; }
+  .sites-line b { font-variant-numeric:tabular-nums; }
 
   .foot { color:var(--mute); font-size:.84rem; text-align:center; padding:0 16px 28px; }
 
@@ -290,7 +337,7 @@
       <select id="lang-sel" title="Language / 語言"><option value="zh">中文</option><option value="en">English</option></select>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
       <select id="theme-sel" title="Theme / 主題"><option value="brown" data-zh="棕金" data-en="Brown">棕金</option><option value="navy" data-zh="深藍" data-en="Navy">深藍</option><option value="green" data-zh="墨綠" data-en="Green">墨綠</option></select>
-      <button class="hbtn" id="gloss-btn" type="button"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
+      <button class="hbtn" type="button" data-go="abbr"><span class="zh">名詞說明</span><span class="en">Glossary</span></button>
     </div>
   </header>
 
@@ -298,11 +345,13 @@
     <button type="button" role="tab" data-tab="overview" class="active"><span class="ico">📘</span><span class="zh">總覽</span><span class="en">Overview</span></button>
     <button type="button" role="tab" data-tab="org"><span class="ico">🏢</span><span class="zh">組織</span><span class="en">Organisation</span></button>
     <button type="button" role="tab" data-tab="sites"><span class="ico">🌏</span><span class="zh">服務據點</span><span class="en">Service Sites</span></button>
+    <button type="button" role="tab" data-tab="codes"><span class="ico">🏷️</span><span class="zh">代碼</span><span class="en">Codes</span></button>
     <button type="button" role="tab" data-tab="functions"><span class="ico">🧭</span><span class="zh">主要職能</span><span class="en">Functions</span></button>
     <button type="button" role="tab" data-tab="systems"><span class="ico">💻</span><span class="zh">系統</span><span class="en">Systems</span></button>
     <button type="button" role="tab" data-tab="spl"><span class="ico">🔄</span><span class="zh">SPL 流程</span><span class="en">SPL Flow</span></button>
     <button type="button" role="tab" data-tab="bom"><span class="ico">📋</span>Service BOM</button>
     <button type="button" role="tab" data-tab="pn"><span class="ico">🔢</span><span class="zh">料號規則</span><span class="en">P/N Rule</span></button>
+    <button type="button" role="tab" data-tab="abbr"><span class="ico">🔤</span><span class="zh">縮寫</span><span class="en">Abbreviations</span></button>
     <button type="button" role="tab" data-tab="quiz"><span class="ico">✅</span><span class="zh">自我測驗</span><span class="en">Quiz</span></button>
   </nav>
 
@@ -412,6 +461,39 @@
     </div>
     <p class="note zh"><b>Uni-load</b>：在當地有產線、組裝廠（教材手寫註記）。11 國都有倉庫，其中 6 國同時有 Uni-load。Malaysia 在原表帶有「*」註記，教材未說明。</p>
     <p class="note en"><b>Uni-load</b>: a local production line or assembly plant (handwritten note in the material). All 11 countries have a warehouse; 6 also have Uni-load. Malaysia carries an asterisk in the original table, without explanation.</p>
+  </section>
+
+  <!-- 代碼 -->
+  <section class="tab" id="tab-codes" role="tabpanel">
+    <div class="section"><span class="zh">國家子公司代碼</span><span class="en">Nation subsidiary codes</span><small>NS</small></div>
+    <p class="caption zh">PAP 底下 11 個國家子公司（NS）與 ACNZ。右上角是料號第 7 碼的國別代碼；「據點」是 CSD Q2 2025 的數量。</p>
+    <p class="caption en">PAP's 11 nation subsidiaries (NS) plus ACNZ. The letter at the top right is the country code used as the 7th character of a part number; "Sites" are the CSD Q2 2025 counts.</p>
+    <div class="src-legend" id="src-legend-codes"></div>
+    <div class="code-grid" id="code-ns"></div>
+
+    <div class="section"><span class="zh">區域代碼</span><span class="en">Region codes</span><small><span class="zh">料號第 6 碼</span><span class="en">6th character of a P/N</span></small></div>
+    <div class="tbl" style="max-width:900px">
+      <table>
+        <thead><tr><th><span class="zh">代碼</span><span class="en">Code</span></th><th><span class="zh">完整名稱</span><span class="en">Full name</span></th><th class="c"><span class="zh">料號第 6 碼</span><span class="en">P/N 6th</span></th><th><span class="zh">說明</span><span class="en">Notes</span></th></tr></thead>
+        <tbody id="code-region"></tbody>
+      </table>
+    </div>
+
+    <div class="section"><span class="zh">其他國家與單位</span><span class="en">Other countries and units</span><small><span class="zh">沒有自己的 NS 代碼</span><span class="en">no NS code of their own</span></small></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th><span class="zh">名稱</span><span class="en">Name</span></th><th><span class="zh">所屬</span><span class="en">Under</span></th><th><span class="zh">Q2 2025 據點</span><span class="en">Q2 2025 sites</span></th><th><span class="zh">說明</span><span class="en">Notes</span></th></tr></thead>
+        <tbody id="code-other"></tbody>
+      </table>
+    </div>
+
+    <div class="section"><span class="zh">據點類型</span><span class="en">Site types</span><small>CSD Q2 2025 Infrastructure</small></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th><span class="zh">類型</span><span class="en">Type</span></th><th class="num"><span class="zh">PAP 合計</span><span class="en">PAP total</span></th><th><span class="zh">說明</span><span class="en">What it is</span></th></tr></thead>
+        <tbody id="code-sitetype"></tbody>
+      </table>
+    </div>
   </section>
 
   <!-- 主要職能 -->
@@ -590,7 +672,7 @@
       </div>
     </div>
 
-    <div class="section">Service BOM SOP</div>
+    <div class="section"><span>Service BOM SOP</span></div>
     <div class="two">
       <div class="box sop">
         <h3>1. NPI Service BOM</h3>
@@ -667,6 +749,24 @@
     <p class="note en"><span class="swatch"></span>Rows highlighted in orange in the original table; the material does not say why. Transcribed from a photo of the slide, so check against the original before relying on it.</p>
   </section>
 
+  <!-- 縮寫 -->
+  <section class="tab" id="tab-abbr" role="tabpanel">
+    <div class="section"><span class="zh">縮寫與名詞</span><span class="en">Abbreviations &amp; terms</span><small id="ab-total"></small></div>
+    <p class="caption zh">點一下卡片看完整字與詳細說明。其他分頁內文中有橘色虛線底線的縮寫，也可以直接點開。</p>
+    <p class="caption en">Open a card to see the full form and a detailed explanation. Abbreviations with an orange dashed underline on the other tabs open the same explanation.</p>
+    <div class="src-legend" id="src-legend"></div>
+    <div class="ab-filters">
+      <input type="search" id="ab-search" data-ph-zh="搜尋縮寫、完整字或中文，例如 HFP、採購" data-ph-en="Search, e.g. HFP, purchase order" placeholder="搜尋縮寫、完整字或中文，例如 HFP、採購" style="width:min(100%, 320px)">
+      <div class="seg" id="ab-cats"></div>
+    </div>
+    <div class="quiz-tools">
+      <button class="btn sm" type="button" id="ab-open"><span class="zh">全部展開</span><span class="en">Expand all</span></button>
+      <button class="btn sm" type="button" id="ab-close-all"><span class="zh">全部收起</span><span class="en">Collapse all</span></button>
+      <span class="count" id="ab-count"></span>
+    </div>
+    <div id="ab-groups"></div>
+  </section>
+
   <!-- 自我測驗 -->
   <section class="tab" id="tab-quiz" role="tabpanel">
     <div class="section"><span class="zh">自我測驗</span><span class="en">Self check</span><small id="quiz-count"></small></div>
@@ -683,15 +783,9 @@
 
   <p class="foot"><span class="zh">內容整理自「PAP Service Logistics」內部訓練教材。原教材標示 CONFIDENTIAL，請勿對外散布。</span><span class="en">Based on the internal "PAP Service Logistics" training deck. The original is marked CONFIDENTIAL; do not distribute outside the company.</span></p>
 
-<div class="modal" id="gloss">
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="gloss-title">
-    <header><span id="gloss-title"><span class="zh">名詞說明</span><span class="en">Glossary</span></span><button type="button" id="gloss-close" aria-label="close">✕</button></header>
-    <div class="modal-tools">
-      <input type="search" id="gl-search" data-ph-zh="搜尋縮寫或中文，例如 HFP、採購" data-ph-en="Search, e.g. HFP, purchase" placeholder="搜尋縮寫或中文，例如 HFP、採購" style="width:min(100%, 300px)">
-      <span class="count" id="gl-count"></span>
-    </div>
-    <dl class="modal-body" id="gl-body" tabindex="0"></dl>
-  </div>
+<div class="ab-pop" id="ab-pop" role="dialog" aria-labelledby="ab-pop-key" tabindex="-1" hidden>
+  <header><b id="ab-pop-key"></b><span id="ab-pop-src"></span><button type="button" id="ab-pop-close" aria-label="close">✕</button></header>
+  <div class="ab-in" id="ab-pop-body"></div>
 </div>
 
 <script src="map.js"></script>
@@ -727,7 +821,7 @@
   $("theme-sel").addEventListener("change", function (e) { setTheme(e.target.value); });
 
   /* ---------- 分頁（網址 #org 等可直接開到該分頁） ---------- */
-  var TABS = ["overview", "org", "sites", "functions", "systems", "spl", "bom", "pn", "quiz"];
+  var TABS = ["overview", "org", "sites", "codes", "functions", "systems", "spl", "bom", "pn", "abbr", "quiz"];
   function showTab(name, fromUser) {
     if (TABS.indexOf(name) === -1) name = "overview";
     Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {
@@ -776,11 +870,13 @@
   var CH = [
     ["org", "🏢", "組織", "Organisation", "Acer 全球區域與 PAP 的 11 個國家子公司", "Acer's global regions and PAP's 11 nation subsidiaries"],
     ["sites", "🌏", "服務據點", "Service sites", "Q2 2025 服務據點地圖、倉庫與 Uni-load", "Q2 2025 footprint map, warehouses and Uni-load"],
+    ["codes", "🏷️", "代碼", "Codes", "每個國家子公司、區域、其他國家與據點類型的代碼說明", "What each subsidiary, region, country and site-type code means"],
     ["functions", "🧭", "主要職能", "Functions", "備品規劃、下單、績效監控與月報", "Planning, ordering, performance monitoring and monthly reports"],
     ["systems", "💻", "系統", "Systems", "RO、NS、ASP 各用哪些系統", "Which systems ROs, NS and ASPs use"],
     ["spl", "🔄", "SPL 流程", "SPL flow", "從 B 樣品到發布 SPL 的 8 個步驟", "Eight steps from B sample to SPL release"],
     ["bom", "📋", "Service BOM", "Service BOM", "NPI 與 MP 的 SOP、24 類備品", "NPI and MP SOPs, 24 spare-part categories"],
     ["pn", "🔢", "料號規則", "P/N rule", "拆解 AA.BBBCD.EEE 與子類別對照", "Decode AA.BBBCD.EEE and look up sub-categories"],
+    ["abbr", "🔤", "縮寫", "Abbreviations", "每個縮寫的完整字與詳細說明", "Full form and explanation for every abbreviation"],
     ["quiz", "✅", "自我測驗", "Quiz", "12 題複習", "12 review questions"]
   ];
   $("ov-list").innerHTML = CH.map(function (c) {
@@ -1009,70 +1105,336 @@
   });
   decode();
 
-  /* ---------- 名詞說明 ---------- */
-  var GL = [
-    ["PAP", "Pan Asia Pacific", "泛亞太區；由 TWN 與 AAP 於 2016/2017 合併而成", "Formed when TWN and AAP merged in 2016/2017"],
-    ["HQ", "Headquarters", "總部", "Headquarters"],
-    ["PA", "Pan America", "泛美區", "The Pan America region"],
-    ["EMEA", "Europe, Middle East & Africa", "歐洲、中東與非洲區", "The Europe, Middle East and Africa region"],
-    ["TWN", "Taiwan", "台灣區，併入 PAP", "Taiwan region; merged into PAP"],
-    ["AAP", "Asia Pacific", "亞太區，併入 PAP", "Asia Pacific region; merged into PAP"],
-    ["ACCN", "China", "中國區", "The China region"],
-    ["RO", "Regional Office", "區域辦公室", "Regional office"],
-    ["NS", "Nation Subsidiary", "國家子公司，例如 ACA、AIL、ATH", "Nation subsidiary, e.g. ACA, AIL, ATH"],
-    ["ASP", "Authorized Service Provider", "授權服務商", "Authorized service provider"],
-    ["CSD", "", "Q2 2025 服務據點投影片的標題單位", "The unit named on the Q2 2025 infrastructure slide"],
-    ["W/H", "Warehouse", "倉庫", "Warehouse"],
-    ["Uni-load", "", "當地有產線、組裝廠（教材手寫註記）", "A local production line or assembly plant (handwritten note in the material)"],
-    ["S/P", "Spare Parts", "備品", "Spare parts"],
-    ["FRU", "Field Replaceable Unit", "可在現場更換的料件單位", "A part that can be replaced in the field"],
-    ["SPL", "Spare Parts List", "備品清單；ODM 起草，審核後發布給 RO", "Drafted by the ODM and released to ROs after review"],
-    ["BOM", "Bill of Materials", "物料清單", "Bill of materials"],
-    ["Service BOM", "", "服務用 BOM，分 NPI 與 MP 兩種", "The BOM used for service; there is an NPI and an MP version"],
-    ["NPI", "New Product Introduction", "新產品導入", "New product introduction"],
-    ["MP", "Mass Production", "量產", "Mass production"],
-    ["ODM", "Original Design Manufacturer", "委託設計製造商", "Original design manufacturer"],
-    ["P/N", "Part Number", "料號", "Part number"],
-    ["MB / KB", "Mainboard / Keyboard", "主機板／鍵盤", "Mainboard / keyboard"],
-    ["SKU", "Stock Keeping Unit", "單一機種配置", "A single model configuration"],
-    ["AVLC", "", "SOP 1.2／2.2 與 SKU BOM 一起檢查的項目；由 HQ/PM 帶到 FRU 審查會議", "Checked with the SKU BOM in SOP 1.2 / 2.2; HQ/PM brings it to the FRU review meeting"],
-    ["MOQ", "Minimum Order Quantity", "最小訂購量", "Minimum order quantity"],
-    ["RMA", "Return Merchandise Authorization", "不良品退回流程", "The return process for defective parts"],
-    ["PO", "Purchase Order", "採購單", "Purchase order"],
-    ["ETD", "Estimated Time of Departure", "預計出貨日", "Estimated ship date"],
-    ["HFP", "Hold For Part", "等料中的 backorder 案件", "Backorder cases waiting for a part"],
-    ["502/503 aging", "", "不良品停留在 CSS、尚未處理的帳齡", "How long defective parts have sat in CSS with no action"],
-    ["Aging Stock", "", "庫齡過久的庫存", "Inventory held too long"],
-    ["FCS", "First Customer Shipment", "首次客戶出貨；FCS-1wk 即首出前一週", "FCS-1wk is one week before it"],
-    ["CSAT", "Customer Satisfaction", "客戶滿意度", "Customer satisfaction"],
-    ["DT / NB", "Desktop / Notebook", "桌上型電腦／筆記型電腦", "Desktop / notebook"],
-    ["BML / AML / PPB1/2", "", "NB NPI 階段的需求報表（教材未展開縮寫）", "Demand reports for notebook NPI (not spelled out in the material)"],
-    ["PLM", "Product Lifecycle Management", "申請新料號、匯入 Service BOM（Service PLM）", "Used to apply for new P/Ns and import the Service BOM (Service PLM)"],
-    ["PLS", "", "教材中用於 Confirm PO to ODM；只有 RO 使用", "Used to confirm POs to the ODM; only ROs use it"],
-    ["GLS", "", "教材中用於 Central SP Planning", "Used for central spare-parts planning"],
-    ["CSS", "", "教材中用於 Create PO；502/503 不良品也停留於此", "Used to create POs; 502/503 defective parts also sit here"],
-    ["HQ/PM", "", "SPL 流程中提供 Matrix table、AVLC、MB/KB P/N 與 Carcass price", "In the SPL flow, provides the matrix table, AVLC, MB/KB P/N and carcass price"],
-    ["QSBU/GCSD", "", "SPL 流程中主持 FRU 審查、申請料號、審核 markup 並發布 SPL", "In the SPL flow, runs the FRU review, applies for P/Ns, reviews markup and releases the SPL"],
-    ["Carcass price", "", "Markup Review 的輸入之一，由 HQ/PM 提供", "One input to the markup review, provided by HQ/PM"],
-    ["Markup", "", "加價；NPI 時審核 B/S 與一般料件的 markup %", "Price uplift; NPI reviews the markup % for B/S and general parts"],
-    ["e-Mobility", "", "電動載具產品群；子類別以 OT_ 開頭，例如 OT_MOTOR、OT_TIRE", "Electric mobility product group; sub-categories start with OT_, e.g. OT_MOTOR, OT_TIRE"]
+  /* ---------- 縮寫與名詞 ---------- */
+  // 來源：m = 取自教材；s = 業界通用；g = 依命名慣例推測；n = 教材沒有寫出全名
+  var SRC = {
+    m: ["教材", "Material", "取自教材", "From the training material"],
+    s: ["通用", "Standard", "業界通用的縮寫", "Standard industry abbreviation"],
+    g: ["推測", "Inferred", "依命名慣例推測，請與內部確認", "Inferred from naming; confirm internally"],
+    n: ["未提供", "Not given", "教材沒有寫出全名", "Not spelled out in the material"]
+  };
+  var CATS_AB = [
+    ["org", "組織與區域", "Organisation & regions"],
+    ["ns", "國家子公司", "Nation subsidiaries"],
+    ["site", "據點", "Sites"],
+    ["sys", "系統", "Systems"],
+    ["part", "料件與 BOM", "Parts & BOM"],
+    ["flow", "流程與單位", "Flow & teams"],
+    ["ops", "採購與營運", "Purchasing & operations"],
+    ["term", "其他名詞", "Other terms"]
   ];
-  function renderGl() {
-    var q = $("gl-search").value.trim().toLowerCase();
-    var list = GL.filter(function (g) { return !q || g.join(" ").toLowerCase().indexOf(q) !== -1; });
-    $("gl-body").innerHTML = list.length ? list.map(function (g) {
-      return "<dt>" + esc(g[0]) + (g[1] ? "<small>" + esc(g[1]) + "</small>" : "") + "</dt><dd>" + B(esc(g[2]), esc(g[3])) + "</dd>";
-    }).join("") : '<dd class="caption" style="margin-top:12px">' + B("找不到「" + esc(q) + "」。", 'Nothing matches "' + esc(q) + '".') + "</dd>";
-    $("gl-count").innerHTML = B(list.length + " / " + GL.length + " 個", list.length + " of " + GL.length);
+  // [id, 內文中要標示的字, 顯示名稱, 完整字, 中文名稱, 來源, 分類, 中文說明, English explanation, English name（沒有完整字的名詞用）]
+  var AB = [
+    ["hq", ["HQ"], "HQ", "Headquarters", "總部", "s", "org", "Acer 總部。PAP、EMEA、PA、ACCN 等區域都在 HQ 之下。PAP 會把各國的需求預測（Forecast）與特殊支援需求彙整後提交給 HQ。", "Acer headquarters. PAP, EMEA, PA, ACCN and the other regions sit under HQ. PAP consolidates forecasts and special support requests from the nation subsidiaries and submits them to HQ."],
+    ["pa", ["PA"], "PA", "Pan America", "泛美區", "s", "org", "Acer 的美洲區域，在組織圖上與 EMEA、TWN、AAP、ACCN 並列在 HQ 之下。料號第 6 碼 A 代表 PA。", "Acer's Americas region. On the org chart it sits under HQ alongside EMEA, TWN, AAP and ACCN. A as the 6th character of a part number means PA."],
+    ["emea", ["EMEA"], "EMEA", "Europe, Middle East & Africa", "歐洲、中東與非洲區", "s", "org", "Acer 的歐洲、中東與非洲區域。料號第 6 碼 E 代表 EMEA。", "Acer's Europe, Middle East and Africa region. E as the 6th character of a part number means EMEA."],
+    ["twn", ["TWN"], "TWN", "Taiwan", "台灣區", "s", "org", "台灣區，2016/2017 年與 AAP 合併成 PAP。料號第 6 碼 T 代表 TWN（注意：第 7 碼的 T 是泰國 ATH）。", "The Taiwan region, merged with AAP into PAP in 2016/2017. T as the 6th character of a part number means TWN (as the 7th character, T means Thailand, ATH)."],
+    ["aap", ["AAP"], "AAP", "Acer Asia Pacific", "亞太區", "g", "org", "亞太區，2016/2017 年與 TWN 合併成 PAP。料號第 6 碼 S 代表 AAP；第 7 碼的國碼表（M、A、S、I…）只列出 AAP 底下的國家。", "The Asia Pacific region, merged with TWN into PAP in 2016/2017. S as the 6th character of a part number means AAP, and the country-code list for the 7th character (M, A, S, I…) only covers countries under AAP."],
+    ["accn", ["ACCN"], "ACCN", "Acer China", "中國區", "g", "org", "中國區，與 PAP 平行、直屬 HQ。料號第 6 碼 C 代表 ACCN。", "The China region, a peer of PAP directly under HQ. C as the 6th character of a part number means ACCN."],
+    ["pap", ["PAP"], "PAP", "Pan Asia Pacific", "泛亞太區", "s", "org", "泛亞太區，由 TWN（台灣）與 AAP（亞太）在 2016/2017 年合併而成，是這份教材的主角。PAP 下轄 11 個國家子公司（NS），服務物流團隊負責備品規劃與下單、中央倉庫、RMA、績效監控與月報。", "Pan Asia Pacific, formed when TWN (Taiwan) and AAP (Asia Pacific) merged in 2016/2017, and the subject of this training. PAP has 11 nation subsidiaries (NS); its service logistics team handles spare-parts planning and ordering, the central warehouse, RMA, performance monitoring and monthly reports."],
+    ["ro", ["RO"], "RO", "Regional Office", "區域辦公室", "m", "org", "區域辦公室，例如 PAP。RO 使用 PLM、PLS、GLS、CSS 四個系統，是唯一使用 PLS 的角色。SPL 定義流程的最後一步是把 SPL 發布給各 RO；料號第 6 碼就是 RO 代碼。", "A regional office, such as PAP. ROs use all four systems (PLM, PLS, GLS, CSS) and are the only role that uses PLS. The last step of the SPL flow releases the SPL to every RO, and the 6th character of a part number is the RO code."],
+    ["ns", ["NS"], "NS", "Nation Subsidiary", "國家子公司", "m", "org", "各國的子公司，例如 ACA（澳洲）、AIL（印度）。PAP 監控 NS 的績效（502/503 aging、庫存、採購、達交、HFP），並彙整 NS 的需求與特殊支援需求提交 HQ。NS 使用 PLM、GLS、CSS。", "A subsidiary in one country, such as ACA (Australia) or AIL (India). PAP monitors NS performance (502/503 aging, inventory, purchase, fulfillment, HFP) and consolidates their demand and special support requests for HQ. NS use PLM, GLS and CSS."],
+    ["csd", ["CSD"], "CSD", "Customer Service Division", "客服單位", "g", "org", "出現在「CSD Q2 2025 Infrastructure」投影片標題，是統計各國服務據點的單位。教材沒有寫出全名。", "Appears in the slide title \"CSD Q2 2025 Infrastructure\", the unit that counts service sites by country. The material does not spell it out."],
+
+    ["assb", ["ASSB", "ASSSB"], "ASSB", "Acer Sales & Services Sdn Bhd", "Acer 馬來西亞子公司", "g", "ns", "馬來西亞的國家子公司（原表寫作 ASSSB*）。組織圖上 HSNM 掛在 ASSB 之下。料號國碼 M。有倉庫，也有 Uni-load。", "The Malaysia subsidiary (written ASSSB* in the original table). HSNM sits under ASSB on the org chart. Country code M. Has a warehouse and Uni-load."],
+    ["aca", ["ACA"], "ACA", "Acer Computer Australia", "Acer 澳洲子公司", "g", "ns", "澳洲的國家子公司，下轄 ACNZ（紐西蘭）。料號國碼 A，例如 DG.B88SA.001。有倉庫與 Uni-load。", "The Australia subsidiary; ACNZ (New Zealand) sits under it. Country code A, as in DG.B88SA.001. Has a warehouse and Uni-load."],
+    ["acnz", ["ACNZ"], "ACNZ", "Acer Computer New Zealand", "Acer 紐西蘭子公司", "g", "ns", "紐西蘭，在組織圖上掛在 ACA 之下，料號國碼表中沒有單獨列出。有倉庫，沒有 Uni-load。", "New Zealand. It sits under ACA on the org chart and has no country code of its own in the list. Has a warehouse but no Uni-load."],
+    ["ail", ["AIL"], "AIL", "Acer India Ltd", "Acer 印度子公司", "g", "ns", "印度的國家子公司，下轄 Bangladesh（孟加拉）。料號國碼 I。印度是 PAP 據點最多的國家：172 個外包服務中心、126 個 ASP。有倉庫與 Uni-load。", "The India subsidiary; Bangladesh sits under it. Country code I. India has the most sites in PAP: 172 outsourced service centres and 126 ASPs. Has a warehouse and Uni-load."],
+    ["ath", ["ATH"], "ATH", "Acer Thailand", "Acer 泰國子公司", "g", "ns", "泰國的國家子公司，下轄 Indo-china（中南半島）。料號國碼 T（第 6 碼的 T 則是 TWN）。有 12 個自有服務中心與 109 個 ASP，有倉庫與 Uni-load。", "The Thailand subsidiary; Indo-china sits under it. Country code T (T as the 6th character means TWN instead). 12 own service centres and 109 ASPs; has a warehouse and Uni-load."],
+    ["ain", ["AIN"], "AIN", "Acer Indonesia", "Acer 印尼子公司", "g", "ns", "印尼的國家子公司，倉庫表寫作 AIN (AMI)。料號國碼 N 或 D，是唯一有兩個國碼的國家。有倉庫與 Uni-load。", "The Indonesia subsidiary, shown as AIN (AMI) in the warehouse table. Country code N or D, the only country with two codes. Has a warehouse and Uni-load."],
+    ["ami", ["AMI"], "AMI", null, "", "n", "ns", "出現在倉庫表的「Indonesia (AIN) (AMI)」。教材沒有說明 AMI 是什麼，也沒有說明它和 AIN 的關係。", "Appears in the warehouse table as \"Indonesia (AIN) (AMI)\". The material does not say what AMI is or how it relates to AIN."],
+    ["avn", ["AVN"], "AVN", "Acer Vietnam", "Acer 越南子公司", "g", "ns", "越南的國家子公司，料號國碼 V。有倉庫，沒有 Uni-load。", "The Vietnam subsidiary. Country code V. Has a warehouse but no Uni-load."],
+    ["ajc", ["AJC"], "AJC", "Acer Japan Corp.", "Acer 日本子公司", "g", "ns", "日本的國家子公司，料號國碼 J。組織圖上 AKC 以箭頭連向 AJC，兩者國碼都是 J。有倉庫，沒有 Uni-load。", "The Japan subsidiary. Country code J. On the org chart AKC points to AJC, and both use J. Has a warehouse but no Uni-load."],
+    ["akc", ["AKC"], "AKC", "Acer Korea", "Acer 韓國子公司", "g", "ns", "韓國的國家子公司，組織圖上以箭頭連向 AJC，料號國碼同為 J。有倉庫，沒有 Uni-load。", "The Korea subsidiary. It points to AJC on the org chart and shares country code J. Has a warehouse but no Uni-load."],
+    ["afe", ["AFE"], "AFE", null, "", "n", "ns", "PAP 組織圖上的國家子公司之一。教材沒有標示國家，也不在倉庫表與料號國碼表中。", "One of the subsidiaries on the PAP org chart. The material gives no country for it, and it is not in the warehouse table or the country-code list."],
+    ["aphi", ["APHI"], "APHI", "Acer Philippines", "Acer 菲律賓子公司", "g", "ns", "菲律賓的國家子公司，料號國碼 P。有倉庫，沒有 Uni-load。", "The Philippines subsidiary. Country code P. Has a warehouse but no Uni-load."],
+    ["acs", ["ACS"], "ACS", "Acer Computer Singapore", "Acer 新加坡子公司", "g", "ns", "新加坡的國家子公司，下轄 Sri Lanka、Mongolia、Nepal。料號國碼 S（第 6 碼的 S 則是 AAP）。有倉庫與 Uni-load。", "The Singapore subsidiary; Sri Lanka, Mongolia and Nepal sit under it. Country code S (S as the 6th character means AAP instead). Has a warehouse and Uni-load."],
+    ["hsnm", ["HSNM"], "HSNM", null, "", "n", "ns", "PAP 組織圖上位於 ASSB 之下，原圖以紅框標示。教材沒有說明 HSNM 的意思。", "Sits under ASSB on the PAP org chart and is boxed in red on the original. The material does not explain it."],
+
+    ["asp", ["ASP"], "ASP", "Authorized Service Provider", "授權服務商", "m", "site", "經 Acer 授權、代為提供維修服務的外部服務商。Q2 2025 PAP 全區有 507 家，最多的是印度 126、泰國 109、印尼 91。ASP 使用 PLM 與 CSS。", "An outside company authorised to repair Acer products. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS."],
+    ["wh", ["W/H"], "W/H", "Warehouse", "倉庫", "s", "site", "倉庫。PAP 的 11 個國家都有倉庫；Central W/H management（中央倉庫管理）是 PAP 的主要職能之一。", "Warehouse. All 11 PAP countries have one, and central warehouse management is one of PAP's main functions."],
+    ["uniload", ["Uni-load", "Uni-Load"], "Uni-load", null, "當地產線／組裝廠", "m", "site", "教材手寫註記：「Uni-Load 在當地有產線、組裝廠」。有 Uni-load 的是澳洲、印度、馬來西亞、泰國、印尼、新加坡。", "Handwritten note in the material: the country has a local production line or assembly plant. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load.", "Local production line / assembly plant"],
+
+    ["plm", ["PLM"], "PLM", "Product Lifecycle Management", "產品生命週期管理系統", "s", "sys", "管理料件與 BOM 的系統。教材中用來：為新料件申請料號（Apply P/N on PLM）、把 Service BOM 匯入 Service PLM、把新增料件匯入 Service PLM。RO、NS、ASP 都會用。", "The system that manages parts and BOMs. In the material it is used to apply for P/Ns for new items, import the Service BOM into Service PLM, and add new parts to Service PLM. ROs, NS and ASPs all use it."],
+    ["pls", ["PLS"], "PLS", null, "", "n", "sys", "教材中用來向 ODM 確認採購單（Confirm PO to ODM）。只有 RO 使用。", "Used to confirm POs to the ODM. Only ROs use it."],
+    ["gls", ["GLS"], "GLS", null, "", "n", "sys", "教材中與 Central SP Planning（中央備品規劃）寫在一起。RO 與 NS 使用。", "Listed together with central spare-parts planning. ROs and NS use it."],
+    ["css", ["CSS"], "CSS", null, "", "n", "sys", "教材中用來建立採購單（Create PO）；502/503 aging 指的是不良品停留在 CSS、尚未處理。RO、NS、ASP 都會用。", "Used to create POs; 502/503 aging counts defective parts sitting in CSS with no action. ROs, NS and ASPs all use it."],
+
+    ["fru", ["FRU"], "FRU", "Field Replaceable Unit", "現場可更換單元", "s", "part", "可以在維修現場直接更換的料件單位，例如鍵盤、螢幕模組。B 樣品完成後召開 FRU 審查會議；NPI 時由 ODM 提供 FRU 清單草稿，審查後建立 Acer 料號。", "A part that can be swapped in the field, such as a keyboard or LCD module. After the B sample a FRU review meeting is held; for NPI the ODM drafts the FRU list, which is reviewed before Acer P/Ns are created."],
+    ["spl", ["SPL"], "SPL", "Spare Parts List", "備品清單", "m", "part", "一個機種可供維修的備品清單。流程：ODM 提供不含價格的 SPL 草稿 → 新料件申請料號 → ODM 報價 → Markup Review → 上傳 SPL 系統 → 在 FCS 前一週發布給各 RO。", "The list of service spare parts for a model. Flow: the ODM drafts the SPL without prices → new items get P/Ns → the ODM quotes → markup review → upload to the SPL system → release to every RO one week before FCS."],
+    ["sp", ["S/P", "SP"], "S/P · SP", "Spare Parts", "備品", "m", "part", "維修用的備品。教材中有 S/P Introduction、SP planning & Ordering（備品規劃與下單）、Central SP Planning（中央備品規劃）、SP template 等用法。", "Spare parts for repairs. Used in S/P Introduction, SP planning & ordering, central SP planning and the SP template."],
+    ["bom", ["BOM"], "BOM", "Bill of Materials", "物料清單", "s", "part", "一個產品由哪些料件組成的清單。Service BOM 是維修用的版本，分 NPI（新品導入）與 MP（量產）兩種，各有一套 SOP。", "The list of parts that make up a product. The Service BOM is the service version, with an NPI and an MP variant, each with its own SOP."],
+    ["pn", ["P/N"], "P/N", "Part Number", "料號", "s", "part", "料件編號。Acer 料號格式 AA.BBBCD.EEE：前兩碼 AA 是子類別，不算小數點的第 6 碼是 RO、第 7 碼是國別。", "The part number. Acer P/Ns follow AA.BBBCD.EEE: AA is the sub-category, and not counting dots the 6th character is the RO and the 7th is the country."],
+    ["mb", ["MB"], "MB", "Mainboard", "主機板", "s", "part", "主機板。HQ/PM 會把 MB/KB P/N（主機板與鍵盤料號）帶到 FRU 審查會議。", "Mainboard (motherboard). HQ/PM brings the MB/KB P/Ns to the FRU review meeting."],
+    ["kb", ["KB"], "KB", "Keyboard", "鍵盤", "s", "part", "鍵盤。HQ/PM 會把 MB/KB P/N 帶到 FRU 審查會議；料號子類別 6B 是 KB ASSEMBLY。", "Keyboard. HQ/PM brings the MB/KB P/Ns to the FRU review meeting; sub-category 6B is KB ASSEMBLY."],
+    ["sku", ["SKU"], "SKU", "Stock Keeping Unit", "庫存單位（機種配置）", "s", "part", "每一種可販售配置的編號。Service BOM SOP 1.2／2.2 要檢查 AVLC 與 SKU BOM。", "The code for each sellable configuration. Service BOM SOP steps 1.2 and 2.2 check AVLC and the SKU BOM."],
+    ["avlc", ["AVLC"], "AVLC", null, "", "n", "part", "Service BOM SOP 1.2／2.2「AVLC & SKU BOM Checking」的檢查項目，也是 HQ/PM 帶進 FRU 審查會議的資料。業界的 AVL 通常指 Approved Vendor List（合格供應商清單），但教材沒有說明 AVLC 的全名。", "Checked in Service BOM SOP 1.2 and 2.2 (\"AVLC & SKU BOM Checking\") and brought by HQ/PM to the FRU review meeting. In the industry AVL usually means Approved Vendor List, but the material does not spell out AVLC."],
+    ["moq", ["MOQ"], "MOQ", "Minimum Order Quantity", "最小訂購量", "s", "part", "供應商接受的最小下單數量。Service BOM SOP 1.3／2.3 要審查 MOQ／RMA 的建議。", "The smallest order a supplier accepts. Service BOM SOP 1.3 and 2.3 review the MOQ/RMA suggestions."],
+    ["bs", ["B/S"], "B/S", null, "", "n", "part", "出現在 SOP 1.4「Price Review – B/S & general parts markup %」，和一般料件分開審核加價率。教材沒有說明 B/S 的意思。", "Appears in SOP 1.4, \"Price Review – B/S & general parts markup %\", where its markup is reviewed separately from general parts. The material does not explain B/S."],
+    ["npi", ["NPI"], "NPI", "New Product Introduction", "新產品導入", "s", "part", "新機種導入階段。NPI Service BOM：FRU 會議後由 ODM 提供 FRU 清單草稿，審查後在 Service BOM 建立 Acer P/N，最後把 NPI SPL（DT SPL、NB SPL）發給各 RO。", "The new-model launch phase. For the NPI Service BOM, the ODM drafts the FRU list after the FRU meeting, Acer P/Ns are created after review, and the NPI SPL (DT and NB) goes to every RO."],
+    ["mp", ["MP"], "MP", "Mass Production", "量產", "s", "part", "量產階段。MP Service BOM 由 ODM 每月定期更新，SOP 包含料號審查、替代料檢查與維護、新增料件匯入 PLM、價格維護。", "The mass-production phase. The ODM updates the MP Service BOM monthly; its SOP covers P/N review, substitute parts, importing new parts into PLM and maintaining prices."],
+    ["dt", ["DT"], "DT", "Desktop", "桌上型電腦", "s", "part", "桌機。教材有 DT Demand Report（桌機需求報表）與 DT SPL。", "Desktop PCs. The material mentions the DT Demand Report and the DT SPL."],
+    ["nb", ["NB"], "NB", "Notebook", "筆記型電腦", "s", "part", "筆電。教材有 NB NPI 的 BML、AML、PPB1/2 需求報表與 NB SPL。", "Notebook PCs. The material mentions the NB NPI demand reports (BML, AML, PPB1/2) and the NB SPL."],
+    ["bml", ["BML"], "BML", null, "", "n", "part", "NB NPI 階段的需求報表之一，和 AML、PPB1/2 並列。教材沒有寫出全名。", "One of the notebook NPI demand reports, listed with AML and PPB1/2. The material does not spell it out."],
+    ["aml", ["AML"], "AML", null, "", "n", "part", "NB NPI 階段的需求報表之一，和 BML、PPB1/2 並列。教材沒有寫出全名。", "One of the notebook NPI demand reports, listed with BML and PPB1/2. The material does not spell it out."],
+    ["ppb", ["PPB1/2", "PPB"], "PPB1/2", null, "", "n", "part", "NB NPI 階段的需求報表，和 BML、AML 並列；「1/2」應是兩個版本或階段。教材沒有寫出全名。", "A notebook NPI demand report listed with BML and AML; \"1/2\" likely means two versions or stages. The material does not spell it out."],
+
+    ["odm", ["ODM"], "ODM", "Original Design Manufacturer", "委託設計製造商", "s", "flow", "替 Acer 設計與生產產品的代工廠。SPL 流程中負責 B 樣品、SPL 草稿與報價；MP Service BOM 也由 ODM 每月更新。PAP 透過 PLS 向 ODM 確認採購單。", "The contract manufacturer that designs and builds products for Acer. In the SPL flow it provides the B sample, the SPL draft and the quotation; it also updates the MP Service BOM monthly. PAP confirms POs to the ODM in PLS."],
+    ["qsbu", ["QSBU"], "QSBU", null, "", "n", "flow", "SPL 定義流程的泳道之一（QSBU/GCSD），負責 FRU 審查會議、申請料號、Markup Review、上傳 SPL 系統並發布 SPL。教材沒有寫出全名。", "One lane of the SPL flow (QSBU/GCSD): runs the FRU review, applies for P/Ns, reviews markup, uploads to the SPL system and releases the SPL. The material does not spell it out."],
+    ["gcsd", ["GCSD"], "GCSD", null, "", "n", "flow", "和 QSBU 同一個泳道（QSBU/GCSD），工作內容相同。教材沒有寫出全名。", "Shares the QSBU/GCSD lane of the SPL flow and the same tasks. The material does not spell it out."],
+    ["pm", ["PM"], "PM", "Product Management", "產品管理", "g", "flow", "和 HQ 同一個泳道（HQ/PM），在 SPL 流程中提供 Matrix table、AVLC、MB/KB P/N 與 Carcass price。", "Shares the HQ/PM lane of the SPL flow and provides the matrix table, AVLC, MB/KB P/Ns and the carcass price."],
+    ["fcs", ["FCS"], "FCS", "First Customer Shipment", "首次客戶出貨", "s", "flow", "產品第一次出貨給客戶的時間點。SPL 要在 FCS-1wk（首次出貨前一週）發布給各 RO。", "The date a product first ships to customers. The SPL must be released to every RO at FCS-1wk, one week before it."],
+
+    ["po", ["PO"], "PO", "Purchase Order", "採購單", "s", "ops", "採購單。PAP 在 CSS 建立 PO、在 PLS 向 ODM 確認，並更新 ETD 追蹤交期。月報要附 PO 相關檔案（open PO、close PO、PO raise）。", "A purchase order. PAP creates POs in CSS, confirms them to the ODM in PLS and tracks delivery by updating the ETD. The monthly report includes PO files (open, closed and raised POs)."],
+    ["etd", ["ETD"], "ETD", "Estimated Time of Departure", "預計出貨日", "s", "ops", "貨物預計從供應商出發的日期。PO 管理要持續更新 ETD 並追蹤。", "The date goods are expected to leave the supplier. PO management keeps the ETD updated and follows up."],
+    ["hfp", ["HFP"], "HFP", "Hold For Part", "等料", "m", "ops", "因為缺料而暫停、等待料件的維修案件（backorder）。是 PAP 監控各 NS 績效的指標之一。", "Repair cases on hold because a part is on backorder. One of the measures PAP uses to monitor each NS."],
+    ["rma", ["RMA"], "RMA", "Return Merchandise Authorization", "退貨授權", "s", "ops", "不良品退回的授權與流程。RMA 是 PAP 的主要職能之一；Service BOM SOP 也要審查 MOQ/RMA 的建議。", "Authorisation and process for returning defective parts. RMA is one of PAP's main functions, and the Service BOM SOP reviews the MOQ/RMA suggestions."],
+    ["csat", ["CSAT"], "CSAT", "Customer Satisfaction", "客戶滿意度", "m", "ops", "客戶滿意度，是 PAP 主要職能（II）之一。", "Customer satisfaction, one of PAP's main functions (II)."],
+    ["aging", ["502/503"], "502/503 aging", null, "不良品帳齡", "m", "ops", "教材說明：不良品停留在 CSS、尚未處理的帳齡（defective parts, sitting in CSS and no action yet），是 NS 績效監控指標。教材沒有說明 502 和 503 兩個代碼的差別。", "Per the material: how long defective parts have sat in CSS with no action. It is an NS performance measure. The material does not explain the difference between 502 and 503.", "Defective-part aging"],
+    ["agingstock", ["Aging Stock"], "Aging Stock", null, "庫齡過久的庫存", "m", "ops", "庫齡過久的庫存，是每月服務與營運報告的內容之一。", "Inventory held too long; part of the monthly service and operation report.", "Old inventory"],
+
+    ["carcass", ["Carcass price"], "Carcass price", null, "Markup Review 的輸入", "m", "term", "Markup Review 的輸入之一，由 HQ/PM 在 C sample ready 階段提供。維修業的 carcass 通常指回收的不良品（core），教材沒有進一步說明。", "One input to the markup review, provided by HQ/PM at the C sample stage. In repair, carcass usually means the returned defective unit (core); the material says no more.", "An input to the markup review"],
+    ["markup", [], "Markup", null, "加價率", "m", "term", "加價（率）。NPI 時審核 B/S 與一般料件的 markup %；SPL 流程的 Markup Review 不通過時會退回 ODM 重新提供草稿。", "Price uplift. NPI reviews the markup % for B/S and general parts; if the SPL markup review fails, the ODM must redo the draft.", "Price uplift"],
+    ["emob", [], "e-Mobility", null, "電動載具產品群", "m", "term", "電動載具產品群。料號子類別中 OT_ 開頭的（例如 OT_MOTOR、OT_TIRE、OT_BRAKE SYSTEM）屬於 e-Mobility。", "The electric mobility product group. Sub-categories starting with OT_ (e.g. OT_MOTOR, OT_TIRE, OT_BRAKE SYSTEM) belong to it.", "Electric mobility"],
+    ["sbom", [], "Service BOM", null, "服務用 BOM", "m", "term", "維修用的 BOM，分 NPI 與 MP 兩種，各有一套 SOP。", "The BOM used for service, in NPI and MP versions, each with its own SOP.", "The BOM used for service"],
+    ["sop", ["SOP"], "SOP", "Standard Operating Procedure", "標準作業程序", "s", "term", "標準作業程序。教材有 Service BOM SOP，分 NPI（1.1–1.6）與 MP（2.1–2.7）兩套步驟。", "Standard operating procedure. The material has a Service BOM SOP with NPI (1.1–1.6) and MP (2.1–2.7) steps."]
+  ];
+  var AB_BY = {};
+  AB.forEach(function (a) { AB_BY[a[0]] = a; });
+
+  function srcTag(s) { var x = SRC[s]; return '<span class="src ' + s + '">' + B(x[0], x[1]) + "</span>"; }
+  function fullHTML(a) {
+    if (a[3]) return '<div class="ab-full">' + esc(a[3]) + (a[4] ? '<small class="zh">' + esc(a[4]) + "</small>" : "") + "</div>";
+    if (a[5] === "n") return '<div class="ab-full"><small>' + B("教材沒有寫出全名", "Not spelled out in the material") + "</small></div>";
+    return '<div class="ab-full">' + B(esc(a[4]), esc(a[9] || a[2])) + "</div>";
   }
-  $("gl-search").addEventListener("input", renderGl);
-  renderGl();
-  function openGloss() { $("gloss").classList.add("open"); $("gl-search").focus(); }
-  function closeGloss() { if (!$("gloss").classList.contains("open")) return; $("gloss").classList.remove("open"); $("gloss-btn").focus(); }
-  $("gloss-btn").addEventListener("click", openGloss);
-  $("gloss-close").addEventListener("click", closeGloss);
-  $("gloss").addEventListener("click", function (e) { if (e.target === $("gloss")) closeGloss(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeGloss(); });
+  function shortFull(a) {
+    if (a[3]) return esc(a[3]);
+    if (a[5] === "n") return B("完整字：教材未提供", "Full form not given");
+    return B(esc(a[4]), esc(a[9] || a[2]));
+  }
+  ["src-legend", "src-legend-codes"].forEach(function (id) {
+    $(id).innerHTML = Object.keys(SRC).map(function (k) { return "<span>" + srcTag(k) + " " + B(SRC[k][2], SRC[k][3]) + "</span>"; }).join("");
+  });
+
+  /* 縮寫分頁 */
+  var abCat = "all";
+  $("ab-cats").innerHTML = [["all", "全部", "All"]].concat(CATS_AB).map(function (c) {
+    return '<button class="btn sm' + (c[0] === "all" ? " active" : "") + '" type="button" data-cat="' + c[0] + '">' + B(c[1], c[2]) + "</button>";
+  }).join("");
+  $("ab-cats").addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-cat]") : null;
+    if (!b) return;
+    abCat = b.getAttribute("data-cat");
+    Array.prototype.forEach.call($("ab-cats").children, function (x) { x.classList.toggle("active", x === b); });
+    renderAbbr();
+  });
+  function abCard(a) {
+    return '<details class="abc" id="abc-' + a[0] + '"><summary><span class="k">' + esc(a[2]) + "</span>" + srcTag(a[5]) +
+      '<span class="f"><span>' + shortFull(a) + "</span></span></summary>" +
+      '<div class="abc-in"><div><div class="ab-lab">' + B("完整字", "Full form") + "</div>" + fullHTML(a) + "</div>" +
+      '<div><div class="ab-lab">' + B("說明", "Explanation") + "</div>" + B(esc(a[7]), esc(a[8])) + "</div></div></details>";
+  }
+  function renderAbbr() {
+    var q = $("ab-search").value.trim().toLowerCase(), n = 0, html = "";
+    CATS_AB.forEach(function (c) {
+      if (abCat !== "all" && abCat !== c[0]) return;
+      var items = AB.filter(function (a) {
+        return a[6] === c[0] && (!q || [a[2], a[3] || "", a[4], a[7], a[8], a[9] || ""].join(" ").toLowerCase().indexOf(q) !== -1);
+      });
+      if (!items.length) return;
+      n += items.length;
+      html += '<div class="section">' + B(c[1], c[2]) + "<small>" + items.length + '</small></div><div class="ab-grid">' + items.map(abCard).join("") + "</div>";
+    });
+    $("ab-groups").innerHTML = html || '<p class="ab-empty">' + B("找不到「" + esc(q) + "」。", 'Nothing matches "' + esc(q) + '".') + "</p>";
+    $("ab-count").innerHTML = B(n + " / " + AB.length + " 個", n + " of " + AB.length);
+  }
+  $("ab-search").addEventListener("input", renderAbbr);
+  $("ab-open").addEventListener("click", function () { Array.prototype.forEach.call(document.querySelectorAll(".abc"), function (d) { d.open = true; }); });
+  $("ab-close-all").addEventListener("click", function () { Array.prototype.forEach.call(document.querySelectorAll(".abc"), function (d) { d.open = false; }); });
+  $("ab-total").innerHTML = B(AB.length + " 個", AB.length + " entries");
+  renderAbbr();
+
+  function showAbCard(id) {
+    if (!$("abc-" + id)) { abCat = "all"; $("ab-search").value = ""; renderAbbr(); Array.prototype.forEach.call($("ab-cats").children, function (x) { x.classList.toggle("active", x.getAttribute("data-cat") === "all"); }); }
+    showTab("abbr", true);
+    var d = $("abc-" + id);
+    if (!d) return;
+    d.open = true;
+    d.scrollIntoView({ block: "center" });
+    d.classList.add("flash");
+    setTimeout(function () { d.classList.remove("flash"); }, 1600);
+  }
+
+  /* 代碼分頁 */
+  var INFRA_BY = {};
+  INFRA.forEach(function (r) { INFRA_BY[r[0]] = r; });
+  function sitesLine(cc) {
+    var r = INFRA_BY[cc];
+    if (!r) return '<span class="no">—</span>';
+    var parts = [["自有", "Own", r[3]], ["外包", "Outsourced", r[4]], ["ASP", "ASP", r[5]], ["Call Centre", "Call centre", r[6]], ["Parts Hub", "Parts hub", r[7]]]
+      .filter(function (p) { return p[2] !== null; })
+      .map(function (p) { return "<span>" + B(p[0], p[1]) + " <b>" + p[2] + "</b></span>"; });
+    return '<span class="sites-line">' + parts.join("") + "<span>" + B("合計", "Total") + " <b>" + r.total + "</b></span></span>";
+  }
+  // [縮寫 id, 旗幟, 中文國名, English, 料號國碼, 上層, 下轄, 倉庫, Uni-load]
+  var NSC = [
+    ["assb", "my", "馬來西亞", "Malaysia", "M", "PAP", ["HSNM"], 1, 1],
+    ["aca", "au", "澳洲", "Australia", "A", "PAP", ["ACNZ"], 1, 1],
+    ["acnz", "nz", "紐西蘭", "New Zealand", "—", "ACA", [], 1, 0],
+    ["ail", "in", "印度", "India", "I", "PAP", ["Bangladesh"], 1, 1],
+    ["ath", "th", "泰國", "Thailand", "T", "PAP", ["Indo-china"], 1, 1],
+    ["ain", "id", "印尼", "Indonesia", "N/D", "PAP", [], 1, 1],
+    ["avn", "vn", "越南", "Vietnam", "V", "PAP", [], 1, 0],
+    ["ajc", "jp", "日本", "Japan", "J", "PAP", ["← AKC"], 1, 0],
+    ["akc", "kr", "韓國", "Korea", "J", "PAP · → AJC", [], 1, 0],
+    ["aphi", "ph", "菲律賓", "Philippines", "P", "PAP", [], 1, 0],
+    ["acs", "sg", "新加坡", "Singapore", "S", "PAP", ["Sri Lanka", "Mongolia", "Nepal"], 1, 1],
+    ["afe", "", "教材未標示", "Not given", "—", "PAP", [], null, null]
+  ];
+  var yn = function (v) { return v === null ? '<span class="no">' + B("教材未列出", "Not listed") + "</span>" : mark(v); };
+  $("code-ns").innerHTML = NSC.map(function (c) {
+    var a = AB_BY[c[0]];
+    return '<div class="cc" id="cc-' + c[0] + '"><div class="cc-head">' + flag(c[1]) + '<span class="cc-code">' + a[2] + "</span>" +
+      '<span class="cc-pn"><b class="mono">' + c[4] + "</b><small>" + B("料號國碼", "P/N country") + "</small></span></div>" +
+      '<div class="cc-in"><span class="cc-name">' + B(c[2], c[3]) + "</span>" +
+      '<span class="cc-full">' + (a[3] ? esc(a[3]) : B("完整名稱：教材未提供", "Full name not given")) + " " + srcTag(a[5]) + "</span>" +
+      '<div class="kv"><span>' + B("上層", "Under") + "</span><span>" + esc(c[5]) + "</span></div>" +
+      '<div class="kv"><span>' + B("下轄", "Includes") + "</span><span>" + (c[6].length ? esc(c[6].join("、")) : '<span class="no">—</span>') + "</span></div>" +
+      '<div class="kv"><span>' + B("倉庫", "Warehouse") + "</span><span>" + yn(c[7]) + "</span></div>" +
+      '<div class="kv"><span>Uni-load</span><span>' + yn(c[8]) + "</span></div>" +
+      '<div class="kv"><span>' + B("Q2 2025 據點", "Q2 2025 sites") + "</span><span>" + sitesLine(c[1]) + "</span></div>" +
+      '<div class="cc-txt">' + B(esc(a[7]), esc(a[8])) + "</div></div></div>";
+  }).join("");
+
+  // [代碼, 料號第 6 碼, 中文說明, English]
+  var REG = [
+    ["hq", "—", "總部，五大區域都在 HQ 之下。", "Headquarters; all five regions sit under it."],
+    ["pa", "A", "美洲區域。", "The Americas region."],
+    ["emea", "E", "歐洲、中東與非洲區域。", "Europe, Middle East and Africa."],
+    ["twn", "T", "台灣區，2016/2017 年與 AAP 合併為 PAP。", "Taiwan; merged with AAP into PAP in 2016/2017."],
+    ["aap", "S", "亞太區，2016/2017 年與 TWN 合併為 PAP；第 7 碼國碼表只列 AAP 的國家。", "Asia Pacific; merged with TWN into PAP. The 7th-character country list only covers AAP countries."],
+    ["accn", "C", "中國區。", "The China region."],
+    ["pap", "—", "TWN＋AAP。教材的 RO 代碼表沒有列 PAP，仍沿用 AAP 的 S 與 TWN 的 T。", "TWN + AAP. The RO code list has no entry for PAP; it keeps S for AAP and T for TWN."]
+  ];
+  $("code-region").innerHTML = REG.map(function (r) {
+    var a = AB_BY[r[0]];
+    return "<tr><td><b>" + a[2] + "</b></td><td>" + esc(a[3]) + " " + srcTag(a[5]) + '</td><td class="c"><b class="mono">' + r[1] + '</b></td><td class="wrap">' + B(r[2], r[3]) + "</td></tr>";
+  }).join("");
+
+  // [旗幟, 中文, English, 所屬, 中文說明, English]
+  var OTHER = [
+    ["tw", "台灣", "Taiwan", "TWN → PAP", "原 TWN 區域，2016/2017 年併入 PAP。PAP 組織圖的 NS 中沒有台灣。", "The former TWN region, merged into PAP in 2016/2017. Taiwan is not among the NS on the PAP chart."],
+    ["bd", "孟加拉", "Bangladesh", "AIL", "組織圖上掛在 AIL（印度）之下。", "Sits under AIL (India) on the org chart."],
+    ["", "中南半島", "Indo-china", "ATH", "組織圖上掛在 ATH（泰國）之下，教材沒有列出包含哪些國家。", "Sits under ATH (Thailand); the material does not list which countries it covers."],
+    ["lk", "斯里蘭卡", "Sri Lanka", "ACS", "組織圖上掛在 ACS（新加坡）之下。", "Sits under ACS (Singapore) on the org chart."],
+    ["mn", "蒙古", "Mongolia", "ACS", "組織圖上掛在 ACS（新加坡）之下。", "Sits under ACS (Singapore) on the org chart."],
+    ["np", "尼泊爾", "Nepal", "ACS", "組織圖上掛在 ACS（新加坡）之下。", "Sits under ACS (Singapore) on the org chart."],
+    ["hk", "香港", "Hong Kong", "—", "出現在據點地圖上，組織圖沒有標示所屬。", "On the site map, but the org chart does not show who it reports to."],
+    ["mm", "緬甸", "Myanmar", "—", "出現在據點地圖上，組織圖沒有標示所屬（可能屬於 ATH 的 Indo-china）。", "On the site map; the org chart does not say who it reports to (possibly ATH's Indo-china)."],
+    ["la", "寮國", "Laos", "—", "出現在據點地圖上，組織圖沒有標示所屬（可能屬於 ATH 的 Indo-china）。", "On the site map; the org chart does not say who it reports to (possibly ATH's Indo-china)."],
+    ["kh", "柬埔寨", "Cambodia", "—", "出現在據點地圖上，組織圖沒有標示所屬（可能屬於 ATH 的 Indo-china）。", "On the site map; the org chart does not say who it reports to (possibly ATH's Indo-china)."],
+    ["", "HSNM", "HSNM", "ASSB", "組織圖上掛在 ASSB（馬來西亞）之下，原圖以紅框標示，教材沒有說明。", "Sits under ASSB (Malaysia), boxed in red on the original; the material does not explain it."],
+    ["", "AMI", "AMI", "AIN?", "倉庫表寫作「Indonesia (AIN) (AMI)」，教材沒有說明。", "Written \"Indonesia (AIN) (AMI)\" in the warehouse table; the material does not explain it."]
+  ];
+  $("code-other").innerHTML = OTHER.map(function (o) {
+    return "<tr><td>" + flag(o[0]) + B(o[1], o[2]) + "</td><td>" + esc(o[3]) + "</td><td>" + (o[0] ? sitesLine(o[0]) : '<span class="no">—</span>') + '</td><td class="wrap">' + B(o[4], o[5]) + "</td></tr>";
+  }).join("");
+
+  var STYPES = [
+    ["Service Centre (Own by Acer)", "自有服務中心", 38, "Acer 自己經營的維修中心。馬來西亞 14、泰國 12、台灣 6 最多。", "Repair centres run by Acer itself. Malaysia (14), Thailand (12) and Taiwan (6) have the most."],
+    ["Service Centre (Outsource)", "外包服務中心", 216, "委託外部經營的服務中心，其中印度就有 172 個。", "Service centres run by an outside company; India alone has 172."],
+    ["Authorized Service Provider (ASP)", "授權服務商", 507, "經授權代為維修的外部服務商，數量最多的據點類型。", "Outside companies authorised to repair; the most common site type."],
+    ["Call Centre", "客服中心", 8, "接聽客戶電話的客服中心，印度、泰國、印尼、台灣、越南、日本、韓國、菲律賓各 1 個。", "Customer phone support; one each in India, Thailand, Indonesia, Taiwan, Vietnam, Japan, Korea and the Philippines."],
+    ["Local Parts Hub", "當地備品中心", 18, "各國當地的備品倉，台灣 7 個最多。", "In-country spare-parts stock points; Taiwan has the most (7)."],
+    ["Regional Spared Part Hub", "區域備品中心", 1, "服務整個區域的備品中心，地圖上沒有標出位置。", "One spare-parts hub serving the whole region; the map does not show where it is."],
+    ["Warehouse (W/H)", "倉庫", "11", "PAP Service Org. 表中 11 個國家都有倉庫。", "All 11 countries in the PAP Service Org. table have one."],
+    ["Uni-load", "當地產線／組裝廠", "6", "當地有產線或組裝廠：澳洲、印度、馬來西亞、泰國、印尼、新加坡。", "Local production or assembly: Australia, India, Malaysia, Thailand, Indonesia, Singapore."]
+  ];
+  $("code-sitetype").innerHTML = STYPES.map(function (s) {
+    return "<tr><td><b>" + esc(s[0]) + '</b> <span class="caption zh">' + s[1] + '</span></td><td class="num"><b>' + s[2] + '</b></td><td class="wrap">' + B(s[3], s[4]) + "</td></tr>";
+  }).join("");
+
+  /* 內文縮寫：自動加上可點的虛線底線 */
+  var KEYMAP = {};
+  AB.forEach(function (a) { a[1].forEach(function (k) { KEYMAP[k] = a[0]; }); });
+  var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&"); };
+  var KEYS = Object.keys(KEYMAP).sort(function (x, y) { return y.length - x.length; }).map(reEsc);
+  var AB_RE = new RegExp("(^|[^A-Za-z0-9_])(" + KEYS.join("|") + ")(?=s?(?:[^A-Za-z0-9_]|$))", "g");
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, .pn-segs, #cat-body, #dec-out, #tab-abbr, .ab-pop, .cc-head";
+  function linkAbbr(rootEl) {
+    var walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!/[A-Z0-9]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        return p && !p.closest(SKIP) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (n) {
+      var s = n.nodeValue, m, last = 0, frag = null;
+      AB_RE.lastIndex = 0;
+      while ((m = AB_RE.exec(s))) {
+        frag = frag || document.createDocumentFragment();
+        var start = m.index + m[1].length;
+        if (start > last) frag.appendChild(document.createTextNode(s.slice(last, start)));
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "ab"; b.setAttribute("data-ab", KEYMAP[m[2]]); b.textContent = m[2];
+        frag.appendChild(b);
+        last = start + m[2].length;
+        AB_RE.lastIndex = last;
+      }
+      if (!frag) return;
+      if (last < s.length) frag.appendChild(document.createTextNode(s.slice(last)));
+      n.parentNode.replaceChild(frag, n);
+    });
+  }
+
+  /* 縮寫小視窗 */
+  var pop = $("ab-pop"), popFor = null;
+  function openPop(btn) {
+    var a = AB_BY[btn.getAttribute("data-ab")];
+    if (!a) return;
+    if (popFor) popFor.classList.remove("on");
+    popFor = btn; btn.classList.add("on");
+    $("ab-pop-key").textContent = a[2];
+    $("ab-pop-src").innerHTML = srcTag(a[5]);
+    $("ab-pop-body").innerHTML =
+      '<div><div class="ab-lab">' + B("完整字", "Full form") + "</div>" + fullHTML(a) + "</div>" +
+      '<div><div class="ab-lab">' + B("說明", "Explanation") + '</div><div class="ab-txt">' + B(esc(a[7]), esc(a[8])) + "</div></div>" +
+      '<div><button class="btn sm" type="button" data-ab-go="' + a[0] + '">' + B("在縮寫表查看 →", "Open in the abbreviation list →") + "</button></div>";
+    pop.hidden = false;
+    var r = btn.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight;
+    var left = Math.min(Math.max(8, r.left), document.documentElement.clientWidth - pw - 8);
+    var top = r.bottom + 6;
+    if (top + ph > window.innerHeight - 8 && r.top - ph - 6 > 8) top = r.top - ph - 6;
+    pop.style.left = (left + window.pageXOffset) + "px";
+    pop.style.top = (top + window.pageYOffset) + "px";
+    try { pop.focus({ preventScroll: true }); } catch (e) { pop.focus(); }
+  }
+  function closePop(refocus) {
+    if (pop.hidden) return;
+    pop.hidden = true;
+    var f = popFor;
+    popFor = null;
+    if (f) { f.classList.remove("on"); if (refocus) f.focus(); }
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var go = t.closest ? t.closest("[data-ab-go]") : null;
+    if (go) { var id = go.getAttribute("data-ab-go"); closePop(false); showAbCard(id); return; }
+    var ab = t.closest ? t.closest(".ab") : null;
+    if (ab) {
+      e.preventDefault();
+      if (popFor === ab && !pop.hidden) closePop(true); else openPop(ab);
+      return;
+    }
+    if (!pop.hidden && !pop.contains(t)) closePop(false);
+  });
+  $("ab-pop-close").addEventListener("click", function () { closePop(true); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePop(true); });
+  window.addEventListener("resize", function () { closePop(false); });
 
   /* ---------- 自我測驗 ---------- */
   var QZ = [
@@ -1102,6 +1464,7 @@
   setTheme(store.get("pap.theme"));
   setFont(store.get("pap.font"));
   setLang(store.get("pap.lang") || "zh");
+  linkAbbr(document.querySelector("main"));
   showTab(location.hash.slice(1), false);
 })();
 </script>
