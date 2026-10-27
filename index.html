@@ -148,6 +148,9 @@
   tfoot tr + tr td { border-top:0; color:var(--mute); font-weight:400; }
   .yes { color:var(--ok); font-weight:700; }
   .no { color:var(--mute); }
+  /* 未載明／未列示：小字、琥珀色框，與正式資料區隔 */
+  .na { display:inline-block; font-size:.74rem; font-weight:600; line-height:1.65; color:#7A4E12; background:#FFF4DC; border:1px solid #D9A95A; border-radius:5px; padding:0 7px; white-space:nowrap; vertical-align:1px; }
+  b .na, .f .na { font-weight:600; }
   tr.hl td { background:var(--hl); }
   tr.on td { background:var(--hover) !important; }
   .bar-cell { display:flex; align-items:center; gap:10px; min-width:160px; }
@@ -540,7 +543,7 @@
   .src { display:inline-block; font-size:.72rem; font-weight:700; border-radius:999px; padding:0 9px; white-space:nowrap; border:1.5px solid; line-height:1.65; }
   .src.m { background:var(--r-pap); color:#fff; border-color:var(--r-pap); }
   .src.s { background:var(--panel); color:var(--accent); border-color:var(--accent); }
-  .src.n { background:var(--panel); color:var(--mute); border-color:var(--line); }
+  .src.n { background:#FFF4DC; color:#7A4E12; border-color:#D9A95A; }
   .src.k { background:var(--panel); color:#8A6A45; border-color:#C9A97A; }
   .src.p { background:var(--panel); color:var(--ink); border-color:var(--selline); }
   .acc { display:grid; gap:10px; }
@@ -849,8 +852,8 @@
             <span><b>RO</b> Regional Office <span class="zh">區域辦公室</span></span>
             <span><b>NS</b> Nation Subsidiary <span class="zh">國家子公司</span></span>
           </div>
-          <p class="note zh">國家對應依據「PAP Service Org.」。AKC 由 AJC 管理，兩者料號國別代碼皆為 J；AFE 未載明所屬國家。</p>
-          <p class="note en">Country mapping follows the "PAP Service Org." table. AKC is managed by AJC, and both use country code J in part numbers. No country is specified for AFE.</p>
+          <p class="note zh">國家對應依據「PAP Service Org.」。AKC 由 AJC 管理，兩者料號國別代碼皆為 J；AFE 所屬國家 <span class="na">未載明</span>。</p>
+          <p class="note en">Country mapping follows the "PAP Service Org." table. AKC is managed by AJC, and both use country code J in part numbers. The country of AFE is <span class="na">not specified</span>.</p>
         </div>
       </section>
 
@@ -1146,8 +1149,7 @@
             <div class="use"><b>GLS</b><span><span class="zh">中央備品規劃（Central SP Planning）。</span><span class="en">Central spare-parts planning.</span></span></div>
             <div class="use"><b>CSS</b><span><span class="zh">建立採購單（Create PO）；502/503 aging 所列不良品滯留於 CSS。</span><span class="en">Create POs; defective parts counted in 502/503 aging are held in CSS.</span></span></div>
           </div>
-          <p class="note zh">PLS、GLS、CSS 之全稱未載明。</p>
-          <p class="note en">The full names of PLS, GLS and CSS are not specified.</p>
+          <p class="note"><span class="zh">PLS、GLS、CSS：</span><span class="en">PLS, GLS, CSS: </span><span class="na"><span class="zh">全稱未載明</span><span class="en">full names not specified</span></span></p>
         </div>
       </section>
 
@@ -1312,11 +1314,11 @@
           </div>
           <div class="box">
             <h3><span class="zh">各段說明</span><span class="en">What each part means</span></h3>
-            <div class="segrow"><b>DG</b><span><span class="k">AA · <span class="zh">第 1–2 碼</span><span class="en">characters 1–2</span></span><span class="zh">子類別代碼，請參閱「子類別對照」；DG 未列於對照表。</span><span class="en">Sub-category code; see the sub-category table. DG is not listed.</span></span></div>
-            <div class="segrow"><b>B88</b><span><span class="k">BBB · <span class="zh">第 3–5 碼</span><span class="en">characters 3–5</span></span><span class="zh">未載明。</span><span class="en">Not specified.</span></span></div>
+            <div class="segrow"><b>DG</b><span><span class="k">AA · <span class="zh">第 1–2 碼</span><span class="en">characters 1–2</span></span><span class="zh">子類別代碼，請參閱「子類別對照」。</span><span class="en">Sub-category code; see the sub-category table.</span> <span class="na"><span class="zh">DG 未列於對照表</span><span class="en">DG is not listed</span></span></span></div>
+            <div class="segrow"><b>B88</b><span><span class="k">BBB · <span class="zh">第 3–5 碼</span><span class="en">characters 3–5</span></span><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></span></div>
             <div class="segrow hot"><b>S</b><span><span class="k">C · <span class="zh">第 6 碼</span><span class="en">character 6</span></span><span class="zh">RO 代碼：S = AAP。</span><span class="en">RO code: S = AAP.</span></span></div>
             <div class="segrow hot"><b>A</b><span><span class="k">D · <span class="zh">第 7 碼</span><span class="en">character 7</span></span><span class="zh">國別代碼：A = ACA（澳洲）。</span><span class="en">Country code: A = ACA (Australia).</span></span></div>
-            <div class="segrow"><b>001</b><span><span class="k">EEE · <span class="zh">第 8–10 碼</span><span class="en">characters 8–10</span></span><span class="zh">未載明。</span><span class="en">Not specified.</span></span></div>
+            <div class="segrow"><b>001</b><span><span class="k">EEE · <span class="zh">第 8–10 碼</span><span class="en">characters 8–10</span></span><span class="na"><span class="zh">未載明</span><span class="en">Not specified</span></span></span></div>
           </div>
         </div>
         <div class="block">
@@ -1470,6 +1472,7 @@
   var $$ = function (sel, el) { return Array.prototype.slice.call((el || document).querySelectorAll(sel)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var B = function (zh, en) { return '<span class="zh">' + zh + '</span><span class="en">' + en + "</span>"; };
+  var NA = function (zh, en) { return '<span class="na">' + B(zh, en) + "</span>"; };
   var flag = function (cc) { return cc ? '<img class="flag" src="flags/' + cc + '.svg" alt="" loading="lazy">' : ""; };
   // 線條圖示（24×24，顏色跟隨文字）
   var ICON = {
@@ -1709,7 +1712,7 @@
   $("ns-table").innerHTML = NSC.map(function (n) {
     var subs = n[5].length ? n[5].map(function (s) { return flag(s[1]) + B(s[2], s[3]); }).join("、") : '<span class="no">—</span>';
     if (n[0] === "AKC") subs = B("由 AJC 管理", "Managed by AJC");
-    return '<tr><td><b class="code">' + n[0] + "</b></td><td>" + flag(n[1]) + B(n[2], n[3]) + '</td><td class="wrap">' + subs + "</td></tr>";
+    return '<tr><td><b class="code">' + n[0] + "</b></td><td>" + (n[1] ? flag(n[1]) + B(n[2], n[3]) : NA(n[2], n[3])) + '</td><td class="wrap">' + subs + "</td></tr>";
   }).join("");
 
   /* ---------- 地圖 ---------- */
@@ -2130,12 +2133,12 @@
     err.hidden = true;
     var aa = m[1], c = m[3], d = m[4];
     var hits = SUB.filter(function (s) { return s[0] === aa; });
-    var aaM = hits.length ? hits.map(function (s) { return esc(s[1]); }).join(", ") : B(esc(aa) + " 未列於對照表", esc(aa) + " is not listed");
-    var roM = RO[c] ? RO[c] : B(esc(c) + " 未列於代碼表", esc(c) + " is not listed");
+    var aaM = hits.length ? hits.map(function (s) { return esc(s[1]); }).join(", ") : NA(esc(aa) + " 未列於對照表", esc(aa) + " is not listed");
+    var roM = RO[c] ? RO[c] : NA(esc(c) + " 未列於代碼表", esc(c) + " is not listed");
     var ccM;
     if (c !== "S") ccM = RO[c] ? B("國別代碼僅適用於 AAP", "Country codes apply to AAP only") : "—";
-    else ccM = CC[d] ? CC[d][0] + " " + B("（" + CC[d][1] + "）", "(" + CC[d][2] + ")") : B(esc(d) + " 未列於 AAP 國別代碼", esc(d) + " is not an AAP country code");
-    var na = B("未載明", "Not specified");
+    else ccM = CC[d] ? CC[d][0] + " " + B("（" + CC[d][1] + "）", "(" + CC[d][2] + ")") : NA(esc(d) + " 未列於 AAP 國別代碼", esc(d) + " is not an AAP country code");
+    var na = NA("未載明", "Not specified");
     var cells = [
       [aa, B("AA · 子類別", "AA · sub-category"), aaM, 0],
       [m[2], "BBB", na, 0],
@@ -2314,12 +2317,12 @@
   function nameOf(a) {
     if (a[3]) return esc(a[3]);
     if (a[4]) return B(esc(a[4]), esc(a[9] || a[2]));
-    return B("全稱未載明", "Full name not specified");
+    return NA("全稱未載明", "Full name not specified");
   }
   function detailHTML(a) {
     var full = a[3] ? '<div class="ab-full">' + esc(a[3]) + (a[4] ? '<small class="zh">' + esc(a[4]) + "</small>" : "") + "</div>"
       : a[4] ? '<div class="ab-full">' + B(esc(a[4]), esc(a[9] || a[2])) + "</div>"
-      : '<div class="ab-full"><small>' + B("全稱未載明", "Full name not specified") + "</small></div>";
+      : '<div class="ab-full">' + NA("全稱未載明", "Full name not specified") + "</div>";
     return '<div><div class="ab-lab">' + B("全稱", "Full name") + "</div>" + full + '</div><div><div class="ab-lab">' + B("說明", "Description") + "</div>" + descHTML(a) + "</div>";
   }
   function abNode(a, rootNode) {
@@ -2400,7 +2403,7 @@
         var isCode = s[0] !== s[3];
         return '<li><div class="tleaf">' + (isCode ? "<b>" + flag(s[1]) + esc(s[0]) + "</b><span>" + B(s[2], s[3]) + "</span>" : "<b>" + flag(s[1]) + B(s[2], s[3]) + "</b>") + "</div></li>";
       }).join("");
-      return '<li><details class="tnode"><summary><span class="k">' + flag(c[1]) + c[0] + '</span><span class="f">' + B(c[2], c[3]) + '</span><span class="pnc" title="P/N">' + c[4] + "</span></summary>" +
+      return '<li><details class="tnode"><summary><span class="k">' + flag(c[1]) + c[0] + '</span><span class="f">' + (c[1] ? B(c[2], c[3]) : NA(c[2], c[3])) + '</span><span class="pnc" title="P/N">' + c[4] + "</span></summary>" +
         '<div class="tin">' +
         '<div class="kv"><span>' + B("料號國別代碼", "P/N country code") + '</span><span class="mono"><b>' + c[4] + "</b></span></div>" +
         '<div class="kv"><span>' + B("倉庫", "Warehouse") + "</span><span>" + yn(c[6]) + "</span></div>" +
@@ -2426,7 +2429,7 @@
   var SITE_KIND = [["自有服務中心", "Own service centre", 3], ["外包服務中心", "Outsourced service centre", 4], ["授權服務商 ASP", "ASP", 5], ["客服中心", "Call centre", 6], ["備品中心", "Parts hub", 7]];
   function siteChips(cc) {
     var r = INFRA_BY[cc];
-    if (!r) return '<span class="no">' + B("未列示據點", "No sites listed") + "</span>";
+    if (!r) return NA("未列示據點", "No sites listed");
     return SITE_KIND.filter(function (s) { return r[s[2]]; }).map(function (s) { return '<span class="site-chip">' + B(s[0], s[1]) + " <b>" + r[s[2]] + "</b></span>"; }).join("");
   }
   // [管轄單位, 國旗, 中文, English, 說明（中）, 說明（英）, 國家／地區]
@@ -2440,7 +2443,7 @@
   $("code-other").innerHTML = COVER.map(function (g) {
     var n = g[6].length, sub = g[0] && g[1] !== "tw" ? B("管轄 " + n + " 個國家／地區", "Covers " + n + (n === 1 ? " country or region" : " countries or regions")) : "";
     return '<article class="cover"><div class="cover-head">' + (g[0] ? '<span class="cover-code">' + esc(g[0]) + "</span>" : "") +
-      "<div><b>" + flag(g[1]) + B(g[2], g[3]) + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</div></div>" +
+      "<div><b>" + (g[0] ? flag(g[1]) + B(g[2], g[3]) : NA(g[2], g[3])) + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + "</div></div>" +
       (g[4] ? '<p class="cover-note">' + B(g[4], g[5]) + "</p>" : "") +
       '<ul class="cover-list">' + g[6].map(function (c) {
         var r = INFRA_BY[c[0]];
@@ -2548,7 +2551,7 @@
     box.innerHTML = "<h4>" + B("本頁縮寫與名詞", "Abbreviations and terms on this page") + "<small>" + B("點選可查看說明", "Select one for details") + "</small></h4><dl>" + ids.map(function (id) {
       var a = AB_BY[id];
       var name = a[3] ? esc(a[3]) + (a[4] ? '<small class="zh">' + esc(a[4]) + "</small>" : "")
-        : a[4] ? B(esc(a[4]), esc(a[9] || a[2])) : B("全稱未載明", "Full name not specified");
+        : a[4] ? B(esc(a[4]), esc(a[9] || a[2])) : NA("全稱未載明", "Full name not specified");
       return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a[2]) + "</button></dt><dd>" + name + "</dd></div>";
     }).join("") + "</dl>";
     scope.appendChild(box);
