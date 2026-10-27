@@ -1083,8 +1083,8 @@
 
       <section class="sub" id="sub-ops-role">
         <h2><span class="zh">團隊職責</span><span class="en">Team responsibilities</span></h2>
-        <p class="lead zh">PAP 團隊於服務物流中之角色。</p>
-        <p class="lead en">The role of the PAP team in service logistics.</p>
+        <p class="lead zh">本章說明 PAP 服務物流團隊之日常工作。首先說明 PAP 團隊於服務物流中之角色。</p>
+        <p class="lead en">This section covers the day-to-day work of the PAP service logistics team, starting with the team's role in service logistics.</p>
         <div class="box">
           <ul class="dots">
             <li><span class="zh">PAP 團隊為區域辦公室（RO），負責採購作業。</span><span class="en">The PAP team is the regional office (RO) and is responsible for purchasing.</span></li>
@@ -1525,7 +1525,7 @@
       subs: [["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"], ["sites-types", "據點類型", "Site types"]] },
     { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
       subs: [["hsn-about", "概要", "Overview"], ["hsn-companies", "各國公司", "Companies by country"], ["hsn-change", "流程調整", "Process change"]] },
-    { id: "ops", zh: "作業", en: "Operations", dzh: "團隊職責、主要職能、系統、SPL 流程與 Service BOM", den: "Responsibilities, functions, systems, SPL flow and Service BOM",
+    { id: "ops", zh: "作業流程", en: "Operations", dzh: "PAP 團隊之日常工作：職責、職能、使用系統、SPL 定義流程與 Service BOM 維護", den: "The PAP team's day-to-day work: responsibilities, functions, systems, the SPL definition flow and Service BOM maintenance",
       subs: [["ops-role", "團隊職責", "Team responsibilities"], ["ops-functions", "主要職能", "Main functions"], ["ops-systems", "系統", "Systems"], ["ops-spl", "SPL 定義流程", "SPL definition flow"], ["ops-bom", "Service BOM", "Service BOM"]] },
     { id: "pn", zh: "料號", en: "Part numbers", dzh: "命名規則、料號解析與子類別對照", den: "Naming rule, decoder and sub-categories",
       subs: [["pn-rule", "命名規則", "Naming rule"], ["pn-decode", "料號解析", "Decoder"], ["pn-subcat", "子類別對照", "Sub-categories"]] },
@@ -2042,7 +2042,7 @@
     org: ["全球區域、全球據點、PAP 組織與團隊", "Regions, offices, PAP organisation and team"],
     sites: ["服務據點分布、倉庫、Uni-load 與標案", "Service sites, warehouses, Uni-load and tenders"],
     hsn: ["Highpoint Service Network（海柏特）概要與 2026/12/1 起之流程調整", "Highpoint Service Network overview and the process change effective 1 Dec 2026"],
-    ops: ["職責、職能、系統、SPL 流程與 Service BOM", "Responsibilities, functions, systems, SPL and Service BOM"],
+    ops: ["PAP 團隊之日常工作：職責、職能、系統、SPL 定義流程與 Service BOM", "The PAP team's day-to-day work: responsibilities, functions, systems, SPL flow and Service BOM"],
     pn: ["料號命名規則與逐碼解析", "Part-number rules and decoder"],
     ref: ["子公司、區域、HSN 代碼與縮寫", "Subsidiary, region and HSN codes, abbreviations"],
     review: ["19 題重點複習", "19 review questions"]
@@ -2298,6 +2298,23 @@
   ];
   var AB_BY = {};
   AB.forEach(function (a) { AB_BY[a[0]] = a; });
+  var KEYMAP = {};
+  AB.forEach(function (a) { a[1].forEach(function (k) { KEYMAP[k] = a[0]; }); });
+  var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&"); };
+  var KEYS = Object.keys(KEYMAP).sort(function (x, y) { return y.length - x.length; }).map(reEsc);
+  var AB_RE = new RegExp("(^|[^A-Za-z0-9_])(" + KEYS.join("|") + ")(?=s?(?:[^A-Za-z0-9_]|$))", "g");
+  // 說明文字中的其他縮寫也可點選（每個縮寫標示第一次；不標示本身）
+  function linkText(html, selfId) {
+    var seen = {};
+    seen[selfId] = 1;
+    return html.replace(AB_RE, function (all, pre, key) {
+      var id = KEYMAP[key];
+      if (!id || seen[id]) return all;
+      seen[id] = 1;
+      return pre + '<button type="button" class="ab" data-ab="' + id + '">' + key + "</button>";
+    });
+  }
+  var descHTML = function (a) { return B(linkText(esc(a[7]), a[0]), linkText(esc(a[8]), a[0])); };
   // 組織架構：上級 → 下級
   var TREE = [
     ["hq", [["pa"], ["emea"], ["accn"], ["pap", [["twn"], ["aap"], ["ns", [["assb"], ["aca", [["acnz"]]], ["ail"], ["ath"], ["ain", [["ami"]]], ["avn"], ["ajc"], ["akc"], ["afe"], ["aphi"], ["acs"]]]]]]],
@@ -2314,7 +2331,7 @@
     var full = a[3] ? '<div class="ab-full">' + esc(a[3]) + (a[4] ? '<small class="zh">' + esc(a[4]) + "</small>" : "") + "</div>"
       : a[4] ? '<div class="ab-full">' + B(esc(a[4]), esc(a[9] || a[2])) + "</div>"
       : '<div class="ab-full"><small>' + B("全稱未載明", "Full name not specified") + "</small></div>";
-    return '<div><div class="ab-lab">' + B("全稱", "Full name") + "</div>" + full + '</div><div><div class="ab-lab">' + B("說明", "Description") + "</div>" + B(esc(a[7]), esc(a[8])) + "</div>";
+    return '<div><div class="ab-lab">' + B("全稱", "Full name") + "</div>" + full + '</div><div><div class="ab-lab">' + B("說明", "Description") + "</div>" + descHTML(a) + "</div>";
   }
   function abNode(a, rootNode) {
     return '<details class="tnode' + (rootNode ? " root" : "") + '" id="abc-' + a[0] + '"><summary><span class="k">' + esc(a[2]) + '</span><span class="f">' + nameOf(a) + "</span>" + srcTag(a[5]) + '</summary><div class="tin">' + detailHTML(a) + "</div></details>";
@@ -2387,7 +2404,7 @@
   }
   var yn = function (v) { return v === null ? '<span class="no">—</span>' : mark(v); };
   var papA = AB_BY.pap;
-  $("ns-tree").innerHTML = '<li><details class="tnode root" open><summary><span class="k">PAP</span><span class="f">' + B("泛亞太區 · 區域辦公室（RO）", "Pan Asia Pacific · Regional office (RO)") + '</span></summary><div class="tin">' + B(esc(papA[7]), esc(papA[8])) + "</div></details><ul>" +
+  $("ns-tree").innerHTML = '<li><details class="tnode root" open><summary><span class="k">PAP</span><span class="f">' + B("泛亞太區 · 區域辦公室（RO）", "Pan Asia Pacific · Regional office (RO)") + '</span></summary><div class="tin">' + descHTML(papA) + "</div></details><ul>" +
     NSC.map(function (c) {
       var a = AB_BY[c[0].toLowerCase()];
       var children = c[5].map(function (s) {
@@ -2400,7 +2417,7 @@
         '<div class="kv"><span>' + B("倉庫", "Warehouse") + "</span><span>" + yn(c[6]) + "</span></div>" +
         '<div class="kv"><span>Uni-load</span><span>' + yn(c[7]) + "</span></div>" +
         '<div class="kv"><span>' + B("Q2 2025 據點", "Q2 2025 sites") + "</span><span>" + sitesLine(c[1]) + "</span></div>" +
-        "<div>" + B(esc(a[7]), esc(a[8])) + "</div></div></details>" + (children ? "<ul>" + children + "</ul>" : "") + "</li>";
+        "<div>" + descHTML(a) + "</div></div></details>" + (children ? "<ul>" + children + "</ul>" : "") + "</li>";
     }).join("") + "</ul></li>";
 
   var REG = [
@@ -2480,11 +2497,6 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每頁第一次出現時加上可點的虛線 ---------- */
-  var KEYMAP = {};
-  AB.forEach(function (a) { a[1].forEach(function (k) { KEYMAP[k] = a[0]; }); });
-  var reEsc = function (s) { return s.replace(/[.*+?^${}()|[\]\\\/]/g, "\\$&"); };
-  var KEYS = Object.keys(KEYMAP).sort(function (x, y) { return y.length - x.length; }).map(reEsc);
-  var AB_RE = new RegExp("(^|[^A-Za-z0-9_])(" + KEYS.join("|") + ")(?=s?(?:[^A-Za-z0-9_]|$))", "g");
   var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #sub-ref-abbr, #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .chap, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
@@ -2559,13 +2571,19 @@
   function openPop(btn) {
     var a = AB_BY[btn.getAttribute("data-ab")];
     if (!a) return;
-    if (popFor) popFor.classList.remove("on");
-    popFor = btn; btn.classList.add("on");
+    var inPop = !pop.hidden && pop.contains(btn);
+    var r = btn.getBoundingClientRect();
+    if (!inPop) {
+      if (popFor) popFor.classList.remove("on");
+      popFor = btn; btn.classList.add("on");
+    }
     $("ab-pop-key").textContent = a[2];
     $("ab-pop-src").innerHTML = srcTag(a[5]);
     $("ab-pop-body").innerHTML = detailHTML(a) + '<div><button class="btn sm" type="button" data-ab-go="' + a[0] + '">' + B("於縮寫說明中檢視 →", "View in Abbreviations →") + "</button></div>";
     pop.hidden = false;
-    var r = btn.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight;
+    $("ab-pop-body").scrollTop = 0;
+    if (inPop) return;
+    var pw = pop.offsetWidth, ph = pop.offsetHeight;
     var left = Math.min(Math.max(8, r.left), document.documentElement.clientWidth - pw - 8);
     var top = r.bottom + 6;
     if (top + ph > window.innerHeight - 8 && r.top - ph - 6 > 8) top = r.top - ph - 6;
@@ -2600,8 +2618,8 @@
   setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
   setLang(store.get("pap.lang") || "zh");
-  $$("#page-overview, main .sub").forEach(function (s) { if (s.id !== "sub-ref-abbr") abbrPanel(s); });
-  $$("#page-intro, #page-overview, main .sub").forEach(linkAbbr);
+  $$("#page-overview, main .sub, #page-review").forEach(function (s) { if (s.id !== "sub-ref-abbr") abbrPanel(s); });
+  $$("#page-intro, #page-overview, main .sub, #page-review").forEach(linkAbbr);
   go(location.hash.slice(1), false);
 })();
 </script>
