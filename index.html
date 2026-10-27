@@ -342,6 +342,16 @@
   .pg-abbr dt .ab:hover { text-decoration:underline; background:none; }
   .pg-abbr dd { margin:0; font-size:.88rem; line-height:1.5; }
   .pg-abbr dd small { display:block; color:var(--mute); font-size:.8rem; }
+  .howread { background:var(--panel); border:1.5px solid var(--line); border-left:5px solid var(--primary); border-radius:10px; padding:16px 22px 18px; margin:0 0 26px; }
+  .howread > h3 { margin:0 0 14px; font-size:1.05rem; }
+  .pos { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; margin:0 0 16px; }
+  .pos > span { width:36px; text-align:center; font-family:var(--font-mono); font-weight:700; font-size:1.35rem; line-height:1.3; border:1.5px solid var(--line); border-radius:8px; background:var(--stripe); padding:6px 0 4px; }
+  .pos > span i { display:block; font-style:normal; font-size:.7rem; font-weight:400; color:var(--mute); margin-top:2px; }
+  .pos > span.dot { width:18px; border:0; background:none; color:var(--mute); padding-top:6px; }
+  .pos > span.hot { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+  .pos > span.hot i { color:var(--hdr-sub); }
+  .steps-plain { margin:0; padding-left:1.4em; display:grid; gap:8px; line-height:1.75; font-size:.95rem; }
+  .steps-plain b.mono { font-family:var(--font-mono); }
   .defbox { background:var(--panel); border:1.5px solid var(--line); border-left:5px solid var(--primary); border-radius:10px; padding:14px 20px; margin:0 0 28px; max-width:56em; }
   .defbox b { font-size:1.05rem; }
   .defbox b small { font-weight:400; color:var(--mute); font-size:.84rem; margin-left:8px; }
@@ -1396,8 +1406,20 @@
 
       <section class="sub" id="sub-pn-rule">
         <h2><span class="zh">料號命名規則</span><span class="en">Part number naming rule</span></h2>
-        <p class="lead zh">料號格式為 <b class="mono">AA.BBBCD.EEE</b>。字元位置不計小數點：第 6 碼為 RO 代碼，第 7 碼為國別代碼，前兩碼 AA 為子類別代碼。</p>
+        <p class="lead zh">料號格式為 <b class="mono">AA.BBBCD.EEE</b>，共 10 個字元（小數點不算）。前兩碼 AA 是子類別代碼；第 6 碼表示區域（RO），第 7 碼表示該區域內的國家。</p>
         <p class="lead en">Part numbers follow <b class="mono">AA.BBBCD.EEE</b>. Dots are not counted: the 6th character is the RO code, the 7th is the country code, and the first two characters (AA) are the sub-category code.</p>
+        <div class="howread">
+          <h3><span class="zh">第 6 碼與第 7 碼怎麼看</span><span class="en">How to read characters 6 and 7</span></h3>
+          <div class="pos" aria-label="DG.B88SA.001">
+            <span>D<i>1</i></span><span>G<i>2</i></span><span class="dot">.</span><span>B<i>3</i></span><span>8<i>4</i></span><span>8<i>5</i></span><span class="hot">S<i>6</i></span><span class="hot">A<i>7</i></span><span class="dot">.</span><span>0<i>8</i></span><span>0<i>9</i></span><span>1<i>10</i></span>
+          </div>
+          <ol class="steps-plain">
+            <li><span class="zh">把小數點拿掉，從左邊數起：D、G、B、8、8、<b>S</b>、<b>A</b>、0、0、1。第 6 碼是 <b>S</b>，第 7 碼是 <b>A</b>。</span><span class="en">Ignore the dots and count from the left: D, G, B, 8, 8, <b>S</b>, <b>A</b>, 0, 0, 1. The 6th character is <b>S</b> and the 7th is <b>A</b>.</span></li>
+            <li><span class="zh"><b>第 6 碼＝哪個區域</b>。S 是 AAP（亞太），T 是 TWN（台灣），C 是 ACCN（中國），E 是 EMEA，A 是 PA（美洲）。這個料號的 S 表示它是 AAP 區用的料號。</span><span class="en"><b>Character 6 = which region.</b> S is AAP (Asia Pacific), T is TWN (Taiwan), C is ACCN (China), E is EMEA and A is PA (Americas). The S here means this part number belongs to the AAP region.</span></li>
+            <li><span class="zh"><b>第 7 碼＝該區域內的哪個國家</b>。只有第 6 碼是 S（AAP）時才需要看：A 是 ACA（澳洲），M 是 ASSB（馬來西亞），I 是 AIL（印度）……完整對照見下表。這個料號的 A 表示澳洲。</span><span class="en"><b>Character 7 = which country in that region.</b> It applies only when character 6 is S (AAP): A is ACA (Australia), M is ASSB (Malaysia), I is AIL (India), and so on; see the table below. The A here means Australia.</span></li>
+            <li><span class="zh">所以 <b class="mono">DG.B88SA.001</b> 是 AAP 區、澳洲用的料號；同一個料件給馬來西亞用，料號就是 <b class="mono">DG.B88SM.001</b>，只差第 7 碼。</span><span class="en">So <b class="mono">DG.B88SA.001</b> is the AAP-region part number for Australia; the same part for Malaysia is <b class="mono">DG.B88SM.001</b>, differing only in character 7.</span></li>
+          </ol>
+        </div>
         <div class="two">
           <div class="label" aria-label="DG.B88SA.001">
             <div class="label-top"><span>SERVICE PART</span><span>P/N</span></div>
