@@ -188,35 +188,35 @@
   .tabs button.home .ico { width:16px; height:16px; stroke-width:2; }
 
   /* 網站介紹：託運單式的首頁 */
-  .waybill { display:grid; grid-template-columns:minmax(0, 1fr) 26px minmax(0, 1.08fr); background:var(--panel); border:1.5px solid var(--line); border-radius:18px; box-shadow:0 18px 40px rgba(40,40,30,.10); position:relative; overflow:hidden; }
-  .wb-copy { padding:44px 40px 32px 46px; display:flex; flex-direction:column; min-width:0; }
-  .wb-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .waybill { display:grid; grid-template-columns:minmax(0, 1.08fr) 26px minmax(0, .92fr); background:var(--panel); border:1.5px solid var(--line); border-radius:18px; box-shadow:0 18px 40px rgba(40,40,30,.10); position:relative; overflow:hidden; }
+  .wb-copy { padding:34px 36px 26px 40px; display:flex; flex-direction:column; min-width:0; }
+  .wb-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
   .wb-meta .eyebrow { margin:0; }
   .wb-code { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 9px; }
-  .intro-title { font-family:var(--font-head); font-size:2.45rem; line-height:1.22; margin:0 0 14px; color:var(--navy); }
+  .intro-title { font-family:var(--font-head); font-size:2.3rem; line-height:1.22; margin:0 0 12px; color:var(--navy); }
   .intro-title em { font-style:normal; position:relative; display:inline-block; }
   .intro-title em::after { content:""; position:absolute; left:-.04em; right:-.04em; bottom:-.1em; height:.4em; background:var(--accent); opacity:.8; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 30 3, 60 13, 100 7 S 170 2, 197 8' fill='none' stroke='%23000' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left bottom / 100% 100%; transform-origin:left center; animation:uline .9s .35s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes uline { from { transform:scaleX(0); } to { transform:scaleX(1); } }
   .intro-lead { margin:0; font-size:1.02rem; line-height:1.85; color:var(--mute); max-width:30em; }
   .tlink { color:var(--ink); font-weight:700; text-decoration:none; border-bottom:2px solid var(--selline); white-space:nowrap; }
   .tlink:hover { color:var(--primary); border-bottom-color:var(--primary); }
-  .intro-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+  .intro-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
   .intro-cta .btn { font-size:1rem; padding:8px 24px; border-radius:999px; }
   .btn.primary { background:var(--navy); color:var(--gold); border-color:var(--navy); }
   .btn.primary:hover { background:var(--sel); }
-  .wb-fields { margin:auto 0 0; padding-top:30px; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px 22px; }
+  .wb-fields { margin:26px 0 0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px 22px; }
   .wb-fields > div { border-top:1.5px solid var(--line); padding-top:8px; }
   .wb-fields dt { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; color:var(--mute); text-transform:uppercase; }
   .wb-fields dd { margin:3px 0 0; font-weight:700; line-height:1.4; }
   .wb-fields dd small { display:block; font-weight:400; color:var(--mute); font-size:.8rem; }
-  .wb-foot { margin-top:0; padding-top:26px; display:flex; align-items:center; gap:14px; }
+  .wb-foot { margin-top:auto; padding-top:22px; display:flex; align-items:center; gap:14px; }
   .wb-bar { width:150px; height:26px; fill:var(--navy); opacity:.75; flex:none; }
   .wb-id { font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; color:var(--mute); }
   .wb-cut { position:relative; border-left:2px dashed var(--line); margin:22px 0; }
   .wb-cut::before, .wb-cut::after { content:""; position:absolute; left:-13px; width:24px; height:24px; border-radius:50%; background:var(--card); border:1.5px solid var(--line); }
   .wb-cut::before { top:-34px; }
   .wb-cut::after { bottom:-34px; }
-  .map.wb-map { background:transparent; border:0; padding:22px 22px 18px 10px; display:flex; flex-direction:column; min-width:0; }
+  .map.wb-map { background:transparent; border:0; padding:18px 18px 14px 8px; display:flex; flex-direction:column; min-width:0; justify-content:center; }
   .wb-map svg { border-radius:12px; }
   .wb-map figcaption { margin-top:10px; font-size:.82rem; color:var(--mute); display:flex; align-items:center; gap:8px; }
   .wb-map figcaption i { width:22px; border-top:2px dashed var(--navy); flex:none; }
@@ -228,10 +228,10 @@
   .wb-map .pulse { fill:var(--navy); transform-box:fill-box; transform-origin:center; animation:pulse 2.8s ease-out infinite; }
   @keyframes pulse { 0% { transform:scale(.35); opacity:.4; } 100% { transform:scale(1.25); opacity:0; } }
   .wb-map .olabel { cursor:default; }
-  .intro-sec { margin:68px auto 0; max-width:980px; }
-  .intro-sec > h3 { font-family:var(--font-head); font-size:1.35rem; margin:0 0 26px; text-align:center; }
+  .intro-sec { margin:44px auto 0; max-width:980px; }
+  .intro-sec > h3 { font-family:var(--font-head); font-size:1.3rem; margin:0 0 20px; text-align:center; }
   /* 一件備品的旅程 */
-  .journey { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:18px; position:relative; }
+  .journey { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:14px; position:relative; }
   .journey::before { content:""; position:absolute; left:10%; right:10%; top:22px; border-top:2px dashed var(--selline); }
   .journey li { position:relative; display:grid; justify-items:center; align-content:start; gap:6px; text-align:center; padding:0 6px; }
   .jn { width:46px; height:46px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:1.05rem; border:4px solid var(--card); box-shadow:0 0 0 1.5px var(--line); position:relative; z-index:1; }
@@ -244,20 +244,20 @@
   .jparcel .ico { width:22px; height:22px; stroke-width:2; background:var(--card); border-radius:50%; }
   @keyframes jmove { 0% { left:10%; opacity:0; } 3% { opacity:1; } 97% { opacity:1; } 100% { left:calc(90% - 22px); opacity:0; } }
   /* 網站架構：主頁 → 子頁 */
-  .toc-sum { text-align:center; color:var(--mute); font-size:.86rem; margin:-16px 0 20px; }
+  .toc-sum { text-align:center; color:var(--mute); font-size:.86rem; margin:-12px 0 16px; }
   .toc { border-top:2px solid var(--navy); }
-  .toc-ch { display:grid; grid-template-columns:3em minmax(0, 1fr); gap:2px 16px; padding:18px 6px 16px; border-bottom:1px solid var(--line); }
+  .toc-ch { display:grid; grid-template-columns:3em minmax(0, 1fr); gap:2px 16px; padding:13px 6px 12px; border-bottom:1px solid var(--line); }
   .toc-n { font-family:var(--font-mono); color:var(--primary); font-weight:700; font-size:1.05rem; padding-top:3px; }
   .toc-t { background:none; border:0; padding:0; font-family:inherit; color:var(--ink); text-align:left; cursor:pointer; justify-self:start; }
   .toc-t b { display:block; font-family:var(--font-head); font-size:1.18rem; line-height:1.3; }
   .toc-t small { display:block; color:var(--mute); font-size:.86rem; margin-top:2px; }
   .toc-t:hover b { color:var(--primary); }
-  .toc-subs { grid-column:2; margin-top:10px; padding-left:14px; border-left:2px solid var(--line); display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:4px 18px; }
+  .toc-subs { grid-column:2; margin-top:6px; padding-left:14px; border-left:2px solid var(--line); display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:4px 18px; }
   .toc-subs button { display:grid; grid-template-columns:2.8em minmax(0, 1fr); align-items:baseline; background:none; border:0; padding:3px 0; font-family:inherit; font-size:.95rem; color:var(--ink); text-align:left; cursor:pointer; }
   .toc-subs button .n { font-family:var(--font-mono); color:var(--mute); font-size:.8rem; }
   .toc-subs button:hover span:last-child { color:var(--primary); text-decoration:underline; }
   .toc-single { color:var(--mute); font-size:.84rem; }
-  .intro-tip { text-align:center; color:var(--mute); font-size:.86rem; margin:60px 0 0; }
+  .intro-tip { text-align:center; color:var(--mute); font-size:.86rem; margin:36px 0 0; }
   @media (prefers-reduced-motion: reduce) { .wb-map path.arc, .wb-map .pulse, .jparcel, .intro-title em::after { animation:none; } }
 
   /* 全球據點 */
@@ -1599,20 +1599,20 @@
   var NAV = [
     { id: "intro", home: true, zh: "網站介紹", en: "About", subs: [] },
     { id: "overview", zh: "總覽", en: "Overview", subs: [] },
-    { id: "corp", zh: "企業介紹", en: "Companies", dzh: "企業關係、宏碁、海柏特、仁寶、ODM 與 OEM、代工夥伴、泛宏碁集團、集團子公司、服務夥伴與相關報導", den: "Relationships, Acer, HSN, Compal, ODM vs OEM, manufacturers, the Acer family, subsidiaries, service partners and articles",
-      subs: [["corp-map", "企業關係", "How they relate"], ["corp-acer", "宏碁 Acer", "Acer"], ["corp-hsn", "海柏特 HSN", "HSN"], ["corp-compal", "仁寶 Compal", "Compal"], ["corp-odm", "ODM 與 OEM", "ODM and OEM"], ["corp-suppliers", "代工夥伴", "Manufacturing partners"], ["corp-family", "泛宏碁集團", "The Acer family"], ["corp-subs", "集團子公司", "Group subsidiaries"], ["corp-service", "服務夥伴", "Service partners"], ["corp-news", "相關報導", "Related articles"]] },
+    { id: "corp", zh: "企業介紹", en: "Companies", dzh: "企業關係、宏碁、泛宏碁集團、集團子公司、海柏特、ODM 與 OEM、代工夥伴、仁寶、服務夥伴與相關報導", den: "Relationships, Acer, the Acer family, subsidiaries, HSN, ODM vs OEM, manufacturers, Compal, service partners and articles",
+      subs: [["corp-map", "企業關係", "How they relate"], ["corp-acer", "宏碁 Acer", "Acer"], ["corp-family", "泛宏碁集團", "The Acer family"], ["corp-subs", "集團子公司", "Group subsidiaries"], ["corp-hsn", "海柏特 HSN", "HSN"], ["corp-odm", "ODM 與 OEM", "ODM and OEM"], ["corp-suppliers", "代工夥伴", "Manufacturing partners"], ["corp-compal", "仁寶 Compal", "Compal"], ["corp-service", "服務夥伴", "Service partners"], ["corp-news", "相關報導", "Related articles"]] },
     { id: "org", zh: "組織", en: "Organisation", dzh: "全球區域、全球據點、PAP 組織與組織要點", den: "Regions, offices worldwide, PAP organisation and key points",
       subs: [["org-global", "全球區域", "Global regions"], ["org-offices", "全球據點", "Acer around the world"], ["org-pap", "PAP 組織", "PAP organisation"], ["org-points", "組織要點", "Key points"]] },
-    { id: "sites", zh: "服務據點", en: "Service sites", dzh: "據點分布、倉庫、標案與據點類型", den: "Footprint, warehouses, tenders and site types",
-      subs: [["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"], ["sites-types", "據點類型", "Site types"]] },
-    { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
-      subs: [["hsn-about", "概要", "Overview"], ["hsn-companies", "各國公司", "Companies by country"], ["hsn-change", "流程調整", "Process change"]] },
+    { id: "sites", zh: "服務據點", en: "Service sites", dzh: "據點類型、據點分布、倉庫與標案", den: "Site types, footprint, warehouses and tenders",
+      subs: [["sites-types", "據點類型", "Site types"], ["sites-map", "據點分布", "Service footprint"], ["sites-wh", "倉庫與 Uni-load", "Warehouses and Uni-load"], ["sites-tender", "標案與 Uni-load", "Tenders and Uni-load"]] },
     { id: "ops", zh: "作業流程", en: "Operations", dzh: "PAP 團隊之日常工作：職責、職能、使用系統、SPL 定義流程與 Service BOM 維護", den: "The PAP team's day-to-day work: responsibilities, functions, systems, the SPL definition flow and Service BOM maintenance",
       subs: [["ops-role", "團隊職責", "Team responsibilities"], ["ops-functions", "主要職能", "Main functions"], ["ops-systems", "系統", "Systems"], ["ops-spl", "SPL 定義流程", "SPL definition flow"], ["ops-bom", "Service BOM", "Service BOM"]] },
     { id: "pn", zh: "料號", en: "Part numbers", dzh: "命名規則、料號解析與子類別對照", den: "Naming rule, decoder and sub-categories",
       subs: [["pn-rule", "命名規則", "Naming rule"], ["pn-decode", "料號解析", "Decoder"], ["pn-subcat", "子類別對照", "Sub-categories"]] },
-    { id: "ref", zh: "代碼與縮寫", en: "Codes & terms", dzh: "子公司、區域、HSN 代碼與縮寫說明", den: "Subsidiary, region and HSN codes, abbreviations",
-      subs: [["ref-ns", "子公司代碼", "Subsidiary codes"], ["ref-region", "區域代碼", "Region codes"], ["ref-other", "其他國家與單位", "Other countries and units"], ["ref-hsn", "HSN 代碼", "HSN codes"], ["ref-abbr", "縮寫說明", "Abbreviations"]] },
+    { id: "hsn", zh: "HSN 集團", en: "HSN Group", dzh: "海柏特集團（Highpoint Service Network）概要、各國公司與流程調整", den: "Highpoint Service Network: overview, companies and process change",
+      subs: [["hsn-about", "概要", "Overview"], ["hsn-companies", "各國公司", "Companies by country"], ["hsn-change", "流程調整", "Process change"]] },
+    { id: "ref", zh: "代碼與縮寫", en: "Codes & terms", dzh: "區域、子公司、HSN 代碼與縮寫說明", den: "Region, subsidiary and HSN codes, abbreviations",
+      subs: [["ref-region", "區域代碼", "Region codes"], ["ref-ns", "子公司代碼", "Subsidiary codes"], ["ref-other", "其他國家與單位", "Other countries and units"], ["ref-hsn", "HSN 代碼", "HSN codes"], ["ref-abbr", "縮寫說明", "Abbreviations"]] },
     { id: "review", zh: "重點複習", en: "Review", dzh: "18 題重點複習", den: "18 review questions", subs: [] }
   ];
   var ORDER = [], navN = 0;
@@ -2125,11 +2125,11 @@
     overview: ["定位、涵蓋區域與重點數據", "Role, coverage and key figures"],
     corp: ["宏碁、海柏特、仁寶及上下游夥伴（代工廠、泛宏碁集團、子公司、服務夥伴）之沿革與業務", "Acer, HSN, Compal and the upstream and downstream partners: history and business"],
     org: ["全球區域、全球據點、PAP 組織與組織要點", "Regions, offices, PAP organisation and key points"],
-    sites: ["服務據點分布、倉庫、Uni-load 與標案", "Service sites, warehouses, Uni-load and tenders"],
+    sites: ["據點類型與分布、倉庫、Uni-load 與標案", "Site types and footprint, warehouses, Uni-load and tenders"],
     hsn: ["Highpoint Service Network（海柏特）概要與 2026/12/1 起之流程調整", "Highpoint Service Network overview and the process change effective 1 Dec 2026"],
     ops: ["PAP 團隊之日常工作：職責、職能、系統、SPL 定義流程與 Service BOM", "The PAP team's day-to-day work: responsibilities, functions, systems, SPL flow and Service BOM"],
     pn: ["料號命名規則與逐碼解析", "Part-number rules and decoder"],
-    ref: ["子公司、區域、HSN 代碼與縮寫", "Subsidiary, region and HSN codes, abbreviations"],
+    ref: ["區域、子公司、HSN 代碼與縮寫", "Region, subsidiary and HSN codes, abbreviations"],
     review: ["18 題重點複習", "18 review questions"]
   };
   var nSubs = 0;
