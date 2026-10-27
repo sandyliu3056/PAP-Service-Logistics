@@ -233,7 +233,7 @@
   .map { background:var(--panel); border:1.5px solid var(--line); border-radius:12px; padding:14px 16px 12px; min-width:0; margin:0; }
   .map-scroll { overflow-x:auto; }
   .map svg { width:100%; height:auto; display:block; border-radius:8px; }
-  .map.ap svg { min-width:520px; }
+  .map.ap svg { min-width:520px; max-width:760px; margin:0 auto; }
   .map .sea { fill:var(--sea); }
   .map path { fill:var(--land); stroke:var(--land-line); stroke-width:.35; }
   .map svg > path, .map svg > .sea { filter:url(#sketch2); }
@@ -450,16 +450,16 @@
     .jparcel { display:none; }
   }
 
-  .pg-abbr { margin-top:44px; padding:16px 20px 18px; background:var(--stripe); border:1.5px solid var(--line); border-radius:12px; }
-  .pg-abbr h4 { margin:0 0 12px; font-size:.95rem; display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
+  .pg-abbr { margin-top:30px; padding:10px 14px 12px; background:transparent; border:1.5px dashed var(--ch-line); border-radius:12px; }
+  .pg-abbr h4 { margin:0 0 8px; font-size:.84rem; color:var(--mute); display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
   .pg-abbr h4 small { color:var(--mute); font-weight:400; font-size:.8rem; }
-  .pg-abbr dl { margin:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(270px, 1fr)); gap:10px 26px; }
-  .pg-abbr dl > div { display:grid; grid-template-columns:7.5em minmax(0, 1fr); gap:10px; align-items:baseline; }
+  .pg-abbr dl { margin:0; display:flex; flex-wrap:wrap; gap:6px 8px; }
+  .pg-abbr dl > div { display:inline-flex; align-items:baseline; gap:7px; background:var(--panel); border:1px solid var(--ch-line); border-radius:999px; padding:3px 11px 3px 9px; }
   .pg-abbr dt { margin:0; }
-  .pg-abbr dt .ab { border-bottom:0; font-family:var(--font-mono); font-weight:700; font-size:.88rem; color:var(--primary); text-align:left; cursor:pointer; padding:0; }
+  .pg-abbr dt .ab { border-bottom:0; font-family:var(--font-mono); font-weight:700; font-size:.84rem; color:var(--ch-ink); text-align:left; cursor:pointer; padding:0; }
   .pg-abbr dt .ab:hover { text-decoration:underline; background:none; }
-  .pg-abbr dd { margin:0; font-size:.88rem; line-height:1.5; }
-  .pg-abbr dd small { display:block; color:var(--mute); font-size:.8rem; }
+  .pg-abbr dd { margin:0; font-size:.8rem; line-height:1.4; color:var(--ink); }
+  .pg-abbr dd small { display:inline; color:var(--mute); font-size:.78rem; margin-left:4px; }
   .howread { background:var(--panel); border:1.5px solid var(--line); border-left:5px solid var(--primary); border-radius:10px; padding:16px 22px 18px; margin:0 0 26px; }
   .howread > h3 { margin:0 0 14px; font-size:1.05rem; }
   .pos { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; margin:0 0 16px; }
@@ -2202,7 +2202,7 @@
     spyTick = true;
     requestAnimationFrame(function () {
       spyTick = false;
-      var page = document.querySelector("main .page.active"), subs = page ? $$(".sub", page) : [];
+      var page = document.querySelector("main .page.active"), subs = page ? $$(".subbody > .sub", page) : [];
       if (!subs.length) return;
       var line = navH(page) + 24, cur = null;
       subs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
@@ -2762,7 +2762,7 @@
   // 首頁地圖：PAP（台灣）至各國子公司的供應路線；標籤含國旗，沿線有移動的小點
   function drawIntro() {
     var svg = $("map-intro"), vb = [600, 100, 392, 278], k = 304 / 520, ls = "font-size:9px;stroke-width:1.8px";
-    var labels = [[px(46), py(23), "EMEA", ls], [px(102), py(36), "ACCN", ls], [px(130), py(-24), "PAP", ls]].map(function (l) { return [l[0].toFixed(1), l[1].toFixed(1), l[2], l[3]]; });
+    var labels = [[px(46), py(23), "EMEA", ls], [px(102), py(36), "ACCN", ls], [px(123), py(-23), "PAP", ls]].map(function (l) { return [l[0].toFixed(1), l[1].toFixed(1), l[2], l[3]]; });
     if (!svg || !window.PAP_WORLD) return;
     var tw = INFRA_BY.tw, ox = px(tw[8]), oy = py(tw[9]);
     var ns = NSC.filter(function (n) { return n[1] && INFRA_BY[n[1]]; });
