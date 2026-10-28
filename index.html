@@ -1517,14 +1517,6 @@
   .mx-c > b { font-size:.86rem; color:#fff; background:var(--ch); border-radius:8px; padding:4px 8px; text-align:center; }
   .mx-c > span { font-size:.86rem; text-align:center; border:1.5px dashed var(--ch-line); border-radius:8px; padding:4px 6px; background:var(--ch-bg); }
   @media (max-width:760px) { .steps.n3 { grid-template-columns:minmax(0, 1fr); } .mx { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
-  .steps.n3 { grid-template-columns:repeat(3, minmax(0, 1fr)); }
-  .steps ul.dots { margin:6px 0 0; padding-left:1.1em; display:grid; gap:3px; font-size:.93rem; line-height:1.55; }
-  .loop-mark { font-style:normal; color:var(--ch); margin-left:4px; }
-  .mx { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:8px; background:var(--panel); border:1.5px solid var(--ch-line); border-radius:12px; padding:12px; }
-  .mx-c { display:grid; align-content:start; gap:6px; }
-  .mx-c > b { font-size:.86rem; color:#fff; background:var(--ch); border-radius:8px; padding:4px 8px; text-align:center; }
-  .mx-c > span { font-size:.86rem; text-align:center; border:1.5px dashed var(--ch-line); border-radius:8px; padding:4px 6px; background:var(--ch-bg); }
-  @media (max-width:760px) { .steps.n3 { grid-template-columns:minmax(0, 1fr); } .mx { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
   @media (min-width:761px) {
     .steps.n4 { grid-template-columns:repeat(4, minmax(0, 1fr)); }
     .steps.n5 { grid-template-columns:repeat(5, minmax(0, 1fr)); }
@@ -1709,6 +1701,47 @@
     .regions.five { row-gap:34px; }
     .pg-abbr dl > div { width:100%; }
   }
+  /* >>> 手機字級 */
+  @media (max-width:600px) {
+    html, body { font-size:16px; }
+    html[data-font="hand"] body { font-size:16px; }
+    html[data-font="hand"] .hdr h1 { font-size:20.5px; }
+    html[data-font="hand"] .hdr .sub { font-size:14px; }
+    html[data-font="hand"] .hdr select, html[data-font="hand"] .hbtn { font-size:13.5px; }
+    html[data-font="hand"] .pill { font-size:12px; }
+    html[data-font="hand"] .tabs button { font-size:15.5px; }
+    html[data-font="hand"] .subnav button { font-size:15px; }
+    html[data-font="hand"] .sub > h2 { font-size:25px; }
+    html[data-font="hand"] .lead { font-size:16px; }
+    html[data-font="hand"] .block > h3, html[data-font="hand"] .box h3 { font-size:18.5px; }
+    html[data-font="hand"] .block > h3 small { font-size:14px; }
+    html[data-font="hand"] h4 { font-size:17.5px; }
+    html[data-font="hand"] table { font-size:15px; }
+    html[data-font="hand"] .note, html[data-font="hand"] .caption, html[data-font="hand"] .kf-d, html[data-font="hand"] .story .note { font-size:14.5px; }
+    html[data-font="hand"] .btn { font-size:15.5px; }
+    html[data-font="hand"] .btn.sm { font-size:14.5px; }
+    html[data-font="hand"] .intro-title { font-size:28.5px; }
+    html[data-font="hand"] .hero-title { font-size:27px; }
+    html[data-font="hand"] .intro-lead { font-size:16px; }
+    html[data-font="hand"] .intro-sec > h3 { font-size:21px; }
+    html[data-font="hand"] .ftitle { font-size:19px; }
+    html[data-font="hand"] .folder li button { font-size:15px; }
+    html[data-font="hand"] .corp-head h3 { font-size:21px; }
+    html[data-font="hand"] .pcard-head b { font-size:17px; }
+    html[data-font="hand"] .pstory p, html[data-font="hand"] .pcard dd { font-size:15px; }
+    html[data-font="hand"] .story p { font-size:16px; }
+    html[data-font="hand"] .kvl dt, html[data-font="hand"] .facts-row { font-size:14.5px; }
+    html[data-font="hand"] .ab-pop .ab-in, html[data-font="hand"] .org-panel { font-size:15px; }
+    html[data-font="hand"] .pg-abbr dd, html[data-font="hand"] .pg-abbr dt .ab { font-size:14.5px; }
+    html[data-font="hand"] .code-nav .cn .cn-en { font-size:14.5px; }
+    html[data-font="hand"] .code-nav .cn .cn-zh { font-size:13.5px; }
+    html[data-font="hand"] .journey b { font-size:17.5px; }
+    html[data-font="hand"] .journey p { font-size:14.5px; }
+    html[data-font="hand"] .quiz summary { font-size:16px; }
+    html[data-font="hand"] .pager button { font-size:15px; }
+    .subbody > .sub > .lead, .subbody > .sub > div[data-noabbr] > .lead { font-size:1rem; line-height:1.7; }
+  }
+  /* <<< 手機字級 */
 </style>
 </head>
 <body>
