@@ -708,7 +708,7 @@
 
   /* SPL 泳道圖 */
   .topics { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; }
-  .flow-scroll { overflow-x:auto; }
+  .flow-scroll { overflow-x:auto; padding:6px 8px 8px; }
   .lanes { display:grid; grid-template-columns:8.5rem repeat(3, minmax(180px, 1fr)); gap:12px 16px; min-width:760px; }
   .lane-bg { grid-row:1 / span 9; background:var(--stripe); border:1.5px solid var(--line); border-radius:12px; }
   .lane-head { grid-row:1; text-align:center; padding:10px 4px 2px; font-weight:700; letter-spacing:.06em; z-index:1; }
@@ -879,6 +879,7 @@
   }
   @media (max-width:760px) {
     .lanes { grid-template-columns:minmax(0, 1fr); min-width:0; gap:10px; }
+    .flow-scroll { overflow-x:visible; }
     .lane-bg, .lane-head { display:none; }
     .step, .input, .stage { grid-column:1 !important; grid-row:auto !important; margin-inline:0; }
     .input { margin-left:18px; margin-bottom:10px; }
@@ -1061,7 +1062,7 @@
   @media (max-width:600px) {
     .phead { padding:12px 12px 14px; gap:12px; } .phead .ph-badge { width:44px; height:44px; font-size:1.35rem; }
     html[data-font] .phead .home-title { font-size:1.75rem; }
-    .tabs { flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    .tabs { flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding-bottom:2px; margin-bottom:-2px; }
     .tabs::-webkit-scrollbar { display:none; }
     .tabs button { flex:none; }
   }
@@ -1256,13 +1257,13 @@
   .nst-remark { margin:10px 0 0; padding:7px 12px; border-left:4px solid var(--ch-line); background:var(--panel); border-radius:0 8px 8px 0; font-size:.9rem; color:var(--ink); }
   .nst-remark b, .note-remark b { display:inline-block; margin-right:8px; padding:0 8px; border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); font-size:.78rem; }
   /* 組織圖一律橫向；畫面不夠寬時左右滑動 */
-  .nst-scroll { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-bottom:6px; }
-  .nst-scroll .nstree { min-width:1080px; }
+  .nst-scroll { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding:12px 8px 8px; }
+  .nst-scroll .nstree { min-width:1150px; }
   .map-swipe { display:none; margin:0 0 6px; text-align:center; color:var(--ch-ink); font-size:.84rem; }
   @media (max-width:700px) { .world-scroll #map-world { min-width:760px; } .map-swipe { display:block; } }
-  .nstree .nss .code { font-size:.8rem; letter-spacing:0; }
+  .nstree .nss .code { font-size:.78rem; letter-spacing:0; white-space:nowrap; }
   .nst-swipe { display:none; margin:0 0 6px; text-align:center; color:var(--ch-ink); font-size:.84rem; }
-  @media (max-width:1180px) { .nst-swipe { display:block; } }
+  .nst-swipe.show { display:block; }
 
   /* 首頁：先 Acer、再全球架構、再 PAP */
   .home-acer { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.35fr); gap:16px; margin:0 0 26px; }
@@ -2479,6 +2480,7 @@
     }
     var target = al && $(al[1]) ? $(al[1]) : (subId ? $("sub-" + subId) : null);
     if (switched && typeof stepRows === "function") stepRows();
+    if (switched && typeof centerScrollers === "function") setTimeout(centerScrollers, 80);
     if (target) {
       setTimeout(function () {
         var y = target.getBoundingClientRect().top + window.pageYOffset - navH(page) - 14;
@@ -2684,7 +2686,7 @@
       '<span class="stem"></span><span class="nst-ns">' + B("NS · 國家子公司 × 11", "NS · nation subsidiaries × 11") + '</span><div class="regions nst-row">' + NSC.map(function (n) {
         var subs = n[5].filter(function (sb) { return sb[0] !== "AMI"; });
         return '<div class="nst-col"><span class="stem nst-stem"></span>' +
-          '<button type="button" class="node nsn" data-ab="' + n[0].toLowerCase() + '"><span class="code">' + n[0] + "</span><small>" + (n[1] ? flag(n[1]) + B(n[2], n[3]) : B("國家未載明", "Country not stated")) + (n[0] === "AFE" ? '<span class="nst-fe">Acer Far East</span>' : "") + "</small></button>" +
+          '<button type="button" class="node nsn" data-ab="' + n[0].toLowerCase() + '"><span class="code">' + n[0] + "</span><small>" + (n[1] ? flag(n[1]) + B(n[2], n[3]) : "—") + (n[0] === "AFE" ? '<span class="nst-fe">Acer Far East</span>' : "") + "</small></button>" +
           (subs.length ? '<span class="stem sm nst-stem2"></span><div class="nst-subs">' + subs.map(subNode).join("") + "</div>" : "") +
           "</div>";
       }).join("") + "</div>";
@@ -2693,7 +2695,17 @@
   // 可左右滑動的圖：開啟時捲到中間（組織圖對準 PAP、地圖對準亞太）
   function centerScrollers() {
     $$(".nst-scroll, .world-scroll").forEach(function (sc) {
-      if (sc.scrollWidth > sc.clientWidth + 1) sc.scrollLeft = sc.classList.contains("world-scroll") ? sc.scrollWidth - sc.clientWidth : (sc.scrollWidth - sc.clientWidth) / 2;
+      // 組織圖：畫面稍窄時整張等比縮小到剛好放得下（不小於 72%），更窄才改成左右滑動
+      var tree = sc.classList.contains("nst-scroll") ? sc.querySelector(".nstree") : null;
+      if (tree) {
+        tree.style.zoom = "";
+        var cs = getComputedStyle(sc), avail = sc.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), need = tree.offsetWidth;
+        if (avail < need && avail / need >= 0.72) tree.style.zoom = (Math.floor(avail / need * 1000) / 1000).toString();
+      }
+      var d = sc.scrollWidth - sc.clientWidth, hint = sc.previousElementSibling;
+      sc.scrollLeft = d > 0 ? (sc.classList.contains("world-scroll") ? d : d / 2) : 0;
+      // 「左右滑動」提示只在圖真的放不下時出現
+      if (hint && hint.classList.contains("nst-swipe")) hint.classList.toggle("show", d > 16);
     });
   }
   window.addEventListener("resize", function () { setTimeout(centerScrollers, 150); });
@@ -2757,7 +2769,7 @@
     el.setAttribute("data-map", svgId);
     el.innerHTML = items.map(function (it) {
       return '<button type="button" class="cn' + (it.cls ? " " + it.cls : "") + '" data-cc="' + (it.cc || "") + '" data-code="' + esc(it.code) + '"' + (it.ab ? ' data-ab="' + it.ab + '"' : "") + '>' +
-        (it.cc ? flag(it.cc) : '<span class="flag none" aria-hidden="true"></span>') + "<b>" + esc(it.code) + '</b><span class="cn-en">' + esc(it.en) + '</span><span class="cn-zh">' + esc(it.zh) + "</span>" + (it.sub ? "<small>" + it.sub + "</small>" : "") + "</button>";
+        (it.cc ? flag(it.cc) : '<span class="flag none" aria-hidden="true"></span>') + "<b>" + esc(it.label || it.code) + '</b><span class="cn-en">' + esc(it.en) + '</span><span class="cn-zh">' + esc(it.zh) + "</span>" + (it.sub ? "<small>" + it.sub + "</small>" : "") + "</button>";
     }).join("");
   }
   function markCode(svgId, code, cc) {
@@ -2829,7 +2841,7 @@
       }));
     codeNav($("nav-ns"), NSC.map(function (n) {
       var subs = n[5].filter(function (x) { return x[0] === x[3]; }).map(function (x) { return nm(x[2], x[3]); });
-      return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[1] ? n[2] : "未載明", en: n[1] ? n[3] : "Not specified", cls: n[1] ? "" : "dim",
+      return { cc: n[1], code: n[0], ab: n[0].toLowerCase(), zh: n[1] ? n[2] : "—", en: n[1] ? n[3] : "—", cls: n[1] ? "" : "dim",
         sub: n[0] === "AKC" ? nm("備註：由 AJC 管轄", "Note: comes under AJC") : (subs.length ? nm("代管：", "Covers: ") + subs.join(nm("、", ", ")) : "") };
     }), "map-ns");
     drawMap($("map-hsn"), AP, function (iso) { return HSN_ISO[iso] || ""; },
@@ -2839,7 +2851,7 @@
       }));
     codeNav($("nav-hsn"), HSNC.map(function (h) {
       var st = HSN_ST[h[4]];
-      return { cc: h[1], code: h[0], ab: AB_BY[h[0].toLowerCase()] ? h[0].toLowerCase() : null, zh: h[2], en: h[3], sub: '<i class="st" style="background:var(--' + st[2] + ')"></i>' + nm(st[0], st[1]), cls: h[4] === "est" ? "" : "dim" };
+      return { cc: h[1], code: h[0], ab: AB_BY[h[0].toLowerCase()] ? h[0].toLowerCase() : null, zh: h[2], en: h[3], label: h[4] === "est" ? h[0] : "HSN", sub: '<i class="st" style="background:var(--' + st[2] + ')"></i>' + nm(st[0], st[1]), cls: h[4] === "est" ? "" : "dim" };
     }), "map-hsn");
   }
   // 區域一覽：HQ → 四區，PAP 列出所轄國家／地區（代碼可點選）；語言切換時重畫
