@@ -1046,6 +1046,11 @@
   .home-map figcaption { margin-top:10px; }
   .home-map .legend-chips { margin-top:12px; }
   .quick-links { display:flex; flex-wrap:wrap; gap:8px; }
+  /* 註解：補充說明框起來，與內文分開 */
+  .subbody .remark { margin:14px 0 0; padding:9px 14px 10px; background:var(--panel); border:1px solid var(--ch-line); border-left:5px solid var(--ch); border-radius:6px 10px 10px 6px; color:var(--ink); font-size:.95rem; line-height:1.75; }
+  .subbody .remark::before { content:"註解"; display:inline-block; margin-right:9px; padding:0 9px; border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); border:1px solid var(--ch-line); font-size:.76rem; font-weight:700; letter-spacing:.06em; vertical-align:.1em; }
+  html[data-lang="en"] .subbody .remark::before { content:"Note"; }
+  .subbody .remark .btn { margin-left:6px; }
   .phead { display:flex; align-items:center; gap:18px; padding:14px 18px 16px; margin-bottom:14px; background:var(--ch-bg); border:1.5px solid var(--ch-line); border-left:8px solid var(--ch); border-radius:16px; }
   .phead .ph-badge { flex:none; width:58px; height:58px; border-radius:16px; display:grid; place-items:center; font-size:1.8rem; background:var(--panel); border:1.5px solid var(--ch-line); }
   html[data-font] .phead .home-title { margin:0 0 4px; }
@@ -1317,7 +1322,7 @@
 <div><b><span class="zh">缺貨</span><span class="en">Shortages</span></b><p><span class="zh">存貨放太少，維修和出貨都要等；服務水準下降。</span><span class="en">Too little stock means waiting repairs and late shipments; the service level drops.</span></p></div>
 <div><b><span class="zh">庫存成本</span><span class="en">Inventory cost</span></b><p><span class="zh">存貨放太多，積壓資金與倉儲空間，零件還可能過時。</span><span class="en">Too much stock ties up money and warehouse space, and parts can become obsolete.</span></p></div>
 <div><b><span class="zh">交期</span><span class="en">Lead time</span></b><p><span class="zh">供應商出貨與運送要多久，決定了必須提前多久下單。</span><span class="en">How long the supplier and the transport take decides how far ahead an order must be placed.</span></p></div>
-</div><p><span class="zh">物流的日常工作，就是在服務水準、庫存成本與交期之間取得平衡。</span><span class="en">Day-to-day logistics is the balance between service level, inventory cost and lead time.</span></p></div>
+</div><p class="remark"><span class="zh">物流的日常工作，就是在服務水準、庫存成本與交期之間取得平衡。</span><span class="en">Day-to-day logistics is the balance between service level, inventory cost and lead time.</span></p></div>
       </section>
       <section class="sub" id="sub-basics-service">
         <h2><span class="zh">服務物流是什麼</span><span class="en">What service logistics is</span></h2>
@@ -2219,6 +2224,12 @@
     ref: ["快速查詢專業術語與縮寫。", "Look up terms and abbreviations quickly."],
     review: ["透過題目複習重點，並提供快速參考與資料查證。", "Review the key points with questions, plus a quick reference and the verification register."]
   };
+  // 有說明文字的 note 一律框成「註解」；只有導覽按鈕的不變
+  $$(".subbody p.note").forEach(function (n) {
+    var c = n.cloneNode(true);
+    $$("button, sup, .cite", c).forEach(function (x) { x.remove(); });
+    if (c.textContent.replace(/[\s→←]/g, "").length > 3) n.classList.add("remark");
+  });
   // 每一節標題前加節號（與按鈕列相同），主題一眼可辨
   NAV.forEach(function (p) {
     p.subs.forEach(function (sb) {
