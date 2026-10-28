@@ -1185,6 +1185,19 @@
     .steps > div::after { content:"↓"; right:auto; left:50%; top:auto; bottom:-30px; transform:translateX(-50%); }
   }
   @media (max-width:600px) { #ab-groups .acc { grid-template-columns:minmax(0, 1fr); } .cards.mini { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+
+  /* 主題、分類、說明要一眼看得出來 */
+  .sub > h2 { display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:1.95rem; }
+  html[data-font="hand"] .sub > h2 { font-size:38px; }
+  .secnum { flex:none; display:inline-grid; place-items:center; min-width:2.7em; height:1.75em; padding:0 .55em; border-radius:10px; background:var(--ch); color:#fff; font-family:var(--font-mono); font-size:.5em; font-weight:700; letter-spacing:.04em; -webkit-text-stroke:0; }
+  .subbody > .sub > .lead, .subbody > .sub > div[data-noabbr] > .lead { color:var(--ink); font-size:1.06rem; line-height:1.85; max-width:none; background:var(--panel); border:1px solid var(--ch-line); border-left:6px solid var(--ch); border-radius:6px 12px 12px 6px; padding:10px 16px 11px; margin:6px 0 24px; }
+  .subbody > .sub > .lead::before, .subbody > .sub > div[data-noabbr] > .lead::before { display:inline-block; margin-right:10px; padding:1px 10px; border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); border:1px solid var(--ch-line); font-size:.78rem; font-weight:700; letter-spacing:.06em; vertical-align:.12em; }
+  .subbody > .sub > .lead.zh::before, .subbody > .sub > div[data-noabbr] > .lead.zh::before { content:"說明"; }
+  .subbody > .sub > .lead.en::before, .subbody > .sub > div[data-noabbr] > .lead.en::before { content:"In brief"; }
+  .subbody .lead { color:var(--ink); }
+  .subbody .block > h3 { padding:7px 14px 8px; background:var(--ch-bg); border-left:6px solid var(--ch); border-radius:4px 10px 10px 4px; margin-bottom:14px; }
+  .subbody .block .block > h3 { background:none; border-left-width:4px; padding:2px 0 2px 11px; border-radius:0; }
+  .subbody .block > h3 small { color:var(--mute); }
 </style>
 </head>
 <body>
@@ -2134,6 +2147,13 @@
     ref: ["快速查詢專業術語與縮寫。", "Look up terms and abbreviations quickly."],
     review: ["透過題目複習重點，並提供快速參考與資料查證。", "Review the key points with questions, plus a quick reference and the verification register."]
   };
+  // 每一節標題前加節號（與按鈕列相同），主題一眼可辨
+  NAV.forEach(function (p) {
+    p.subs.forEach(function (sb) {
+      var h2 = document.querySelector("#sub-" + sb[0] + " > h2");
+      if (h2 && !h2.querySelector(".secnum")) h2.insertAdjacentHTML("afterbegin", '<span class="secnum">' + sb.num + "</span>");
+    });
+  });
   $$(".phead").forEach(function (h) {
     var p = NAV.filter(function (x) { return x.id === h.getAttribute("data-page"); })[0];
     var d = CH[p.id];
