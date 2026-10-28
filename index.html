@@ -365,7 +365,7 @@
   .jart svg { width:100%; height:100%; display:block; overflow:visible; }
   .jart .ln { fill:none; stroke:#4a3226; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
   .jart .th { stroke-width:1.5; }
-  .jn { position:absolute; left:50%; top:0; transform:translate(28px, -4px); width:30px; height:30px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:.82rem; border:3px solid var(--card); box-shadow:0 0 0 1.5px var(--line); z-index:2; position:relative; z-index:1; }
+  .jn { position:absolute; left:50%; top:0; transform:translate(28px, -4px); width:30px; height:30px; border-radius:50%; background:var(--navy); color:var(--gold); display:grid; place-items:center; font-family:var(--font-mono); font-weight:700; font-size:.82rem; border:3px solid var(--card); box-shadow:0 0 0 1.5px var(--line); z-index:2; }
   .journey .pi { display:none; }
   .journey b { font-size:1.02rem; margin-top:2px; }
   .journey p { margin:0; color:var(--mute); font-size:.88rem; line-height:1.65; max-width:17em; }
@@ -1370,6 +1370,14 @@
   .ga-pap .pap-label { top:-14px; font-size:1.15rem; background:var(--panel); padding:0 8px; }
   .ga-pair { display:flex; gap:6px; }
   .ga-row > .ga-ro { margin-top:10px; }
+  /* 五個 RO 保持同一排：放不下時方塊內的小字換行，不把 ACCN 擠到下一行（手機除外） */
+  @media (min-width:601px) {
+    .ga-row { flex-wrap:nowrap; gap:6px; }
+    .ga-row > .ga-ro, .ga-row > .ga-pap { flex:0 1 auto; min-width:0; }
+    .ga-ro { min-width:64px; padding:5px 7px 6px; }
+    .ga-ro small { text-align:center; }
+    .ga-ro small .nb-en, .ga-ro small span:last-child { overflow-wrap:anywhere; }
+  }
 
   /* PAP 組織圖：RO、NS 標示；首頁版 */
   .nstree .node.pap.big { position:relative; }
@@ -1379,6 +1387,47 @@
   .home-org { background:var(--panel); border:1.5px solid var(--line); border-radius:16px; padding:14px 16px 16px; margin:0 0 18px; }
   html[data-font] .home-org-h { margin:0 0 8px; color:var(--ch-ink); font-size:1.1rem; }
   .home-org .nst-legend { margin-top:10px; }
+
+  /* 版面修正：任何寬度都不讓內容被裁切 */
+  .facts-row > span { border-radius:14px; }
+  .facts-row i { white-space:nowrap; flex:none; }
+  .pg-abbr dl > div { border-radius:14px; }
+  .pg-abbr dt { white-space:nowrap; }
+  .tbl .tl { display:none; }
+  .tbl .tv { display:contents; }
+  .co-tree.stack { flex-direction:column; align-items:stretch; }
+  .co-tree.stack .ct-link { flex-direction:row; min-width:0; justify-content:center; padding:2px 0; gap:6px; }
+  .co-tree.stack .ct-link::after { content:"↓"; width:auto; border:0; margin:0; color:var(--ch); font-weight:700; order:-1; }
+  @media (max-width:600px) {
+    .tnode > summary { grid-template-columns:auto minmax(0, 1fr) auto auto; }
+    /* 流程列：手機改為由上而下 */
+    .prow { flex-direction:column; align-items:flex-start; gap:4px; }
+    .prow .plabel { min-width:0; }
+    .prow .parr { transform:rotate(90deg); margin-left:18px; }
+    .pg-abbr dl > div { display:flex; flex-wrap:wrap; column-gap:7px; row-gap:2px; }
+    .pg-abbr dd { flex:1 1 11em; min-width:0; }
+    /* 表格：手機上一列一張卡片，欄名寫在每一格前面 */
+    .tbl { overflow-x:hidden; padding:8px; }
+    .tbl table, .tbl tbody, .tbl tfoot, .tbl tr { display:block; width:auto; }
+    .tbl thead { display:none; }
+    .tbl tr { border:1.5px solid var(--line); border-radius:12px; background:var(--panel); padding:8px 12px; margin:0 0 8px; }
+    .tbl tfoot tr:last-child, .tbl tbody:last-child tr:last-child { margin-bottom:0; }
+    .tbl tr.on, .tbl tr.hl { background:var(--hover); }
+    .tbl td { display:flex; gap:10px; align-items:baseline; padding:3px 0; border:0; white-space:normal; background:none !important; text-align:left !important; min-width:0; }
+    .tbl td > .tl { display:block; flex:0 0 6.4em; color:var(--mute); font-size:.78rem; font-weight:400; }
+    .tbl td > .tv { display:block; flex:1; min-width:0; overflow-wrap:anywhere; }
+    .tbl td:first-child { font-weight:700; font-size:.98rem; padding-bottom:6px; margin-bottom:4px; border-bottom:1px dashed var(--line); }
+    .tbl td:first-child > .tl { display:none; }
+    .tbl td.td-empty { display:none; }
+    .tbl tfoot tr { background:var(--card); }
+    .tbl tfoot td { border-top:0; }
+    .tbl td.wrap, .tbl .bar-cell { min-width:0; }
+    /* 分工比較：每個模式一張，三欄對應表頭 */
+    .vc { overflow:visible; gap:12px; }
+    .vc-row { min-width:0; grid-template-columns:repeat(3, minmax(0, 1fr)); }
+    .vc-row > .vc-k, .vc-row > .vc-eg { grid-column:1 / -1; }
+    .vc-h > div:first-child, .vc-h > div:last-child { display:none; }
+  }
 </style>
 </head>
 <body>
@@ -1709,7 +1758,6 @@
           <div><b><span class="zh">整併前的主導子公司</span><span class="en">Lead subsidiary before the merger</span></b><p><span class="zh">2016/2017 年以前由 ASSB 擔任主導子公司；馬來西亞由海柏特與 Acer 共同營運，並由 ASSB 與海柏特共同負責。</span><span class="en">Before 2016/2017 ASSB was the lead subsidiary; Malaysia was operated jointly by HSN (Highpoint Service Network) and Acer, with ASSB and HSN jointly responsible.</span></p></div>
           
           <div><b><span class="zh">核心簡碼</span><span class="en">Core abbreviations</span></b><p><span class="zh">核心簡碼：RO、NS、HSN。</span><span class="en">Core abbreviations: RO, NS and HSN.</span></p></div>
-          <p class="nst-remark note-remark"><span class="zh"><b>備註</b>韓國（AKC）由日本（AJC）管轄。</span><span class="en"><b>Note</b>Korea (AKC) comes under Japan (AJC).</span></p>
         </div>
       </div></section>
       <section class="sub" id="sub-sites-types"><h2><span class="zh">服務版圖與據點類型</span><span class="en">Service footprint and site types</span></h2>
@@ -2447,6 +2495,17 @@
     $$(".co-tab").forEach(function (t) { var on = t.getAttribute("data-co") === cid; t.classList.toggle("on", on); t.setAttribute("aria-selected", on ? "true" : "false"); });
     var i = CO_PAGES.indexOf(cid), pos = $("co-pos");
     if (pos) pos.innerHTML = (i + 1) + " / " + CO_PAGES.length;
+    coStack();
+  }
+  // 公司架構圖：一排放不下（後面的方塊被擠到下一行）時改成由上而下
+  function coStack() {
+    $$(".co-page.on .co-tree").forEach(function (t) {
+      t.classList.remove("stack");
+      var items = Array.prototype.filter.call(t.children, function (c) { return !c.classList.contains("ct-note"); });
+      if (!items.length || !items[0].offsetWidth) return;
+      var b0 = items[0].getBoundingClientRect().bottom;
+      if (items.some(function (c) { return c.getBoundingClientRect().top >= b0 - 1; })) t.classList.add("stack");
+    });
   }
   function go(id, fromUser, after) {
     var coEl = /^co-/.test(id) ? $(id) : null;
@@ -2630,7 +2689,7 @@
   INFRA.forEach(function (r) { for (var i = 0; i < 5; i++) sums[i] += r[i + 3] || 0; });
   sums.forEach(function (s) { all += s; });
   $("infra-foot").innerHTML =
-    "<tr><td>" + B("各國合計", "Sum of countries") + "</td>" + sums.map(function (s) { return '<td class="num">' + s + "</td>"; }).join("") + "<td><b>" + all + "</b></td></tr>" +
+    "<tr><td>" + B("各國合計", "Sum of countries") + "</td>" + sums.map(function (s) { return '<td class="num">' + s + "</td>"; }).join("") + '<td><div class="bar-cell"><b>' + all + '</b><div class="bar-track"></div></div></td></tr>' +
     "<tr><td>" + B("總數", "Reported total") + "</td>" + KPI.slice(0, 5).map(function (k) { return '<td class="num">' + k[0] + "</td>"; }).join("") + "<td></td></tr>";
 
   var WH = [
@@ -2693,8 +2752,35 @@
     els.forEach(function (el) { el.innerHTML = html; });
   })();
   // 可左右滑動的圖：開啟時捲到中間（組織圖對準 PAP、地圖對準亞太）
+  // 表格：每一格前面加上欄名（手機上表格改成卡片時顯示），內容換新時自動補上
+  function labelTables() {
+    $$(".tbl table").forEach(function (tb) {
+      var hs = $$("thead th", tb).map(function (th) { return th.innerHTML; });
+      $$("tbody tr, tfoot tr", tb).forEach(function (tr) {
+        Array.prototype.forEach.call(tr.children, function (td, i) {
+          if (td.tagName !== "TD" || (td.lastElementChild && td.lastElementChild.classList.contains("tv"))) return;
+          var tv = document.createElement("span"); tv.className = "tv";
+          while (td.firstChild) tv.appendChild(td.firstChild);
+          td.appendChild(tv);
+          if (hs[i]) td.insertAdjacentHTML("afterbegin", '<span class="tl" aria-hidden="true">' + hs[i] + "</span>");
+          td.classList.toggle("td-empty", !tv.textContent.trim() && !tv.querySelector("img, svg"));
+        });
+      });
+    });
+  }
+  labelTables();
+  if (window.MutationObserver) {
+    var tblT = 0, tblMO = new MutationObserver(function () { clearTimeout(tblT); tblT = setTimeout(labelTables, 0); });
+    $$(".tbl table").forEach(function (tb) { tblMO.observe(tb, { childList: true, subtree: true }); });
+  }
+  // 亞太地圖在手機上可左右滑動：補上提示
+  $$(".map-scroll").forEach(function (sc) {
+    if (sc.classList.contains("nst-scroll") || sc.classList.contains("world-scroll")) return;
+    sc.insertAdjacentHTML("beforebegin", '<p class="nst-swipe"><span class="zh">← 左右滑動可看完整地圖 →</span><span class="en">← Swipe sideways to see the whole map →</span></p>');
+  });
   function centerScrollers() {
-    $$(".nst-scroll, .world-scroll").forEach(function (sc) {
+    coStack();
+    $$(".map-scroll").forEach(function (sc) {
       // 組織圖：畫面稍窄時整張等比縮小到剛好放得下（不小於 72%），更窄才改成左右滑動
       var tree = sc.classList.contains("nst-scroll") ? sc.querySelector(".nstree") : null;
       if (tree) {
@@ -2832,7 +2918,7 @@
     codeNav($("nav-sites"), INFRA.map(function (r) {
       var ns = NS_OF[r[0]], cov = COVER_OF[r[0]];
       return { cc: r[0], code: ns ? ns[0] : (cov ? cov : "—"), ab: ns ? ns[0].toLowerCase() : (cov ? cov.toLowerCase() : null), zh: r[1], en: r[2],
-        sub: (ns ? "" : (cov ? nm("由 " + cov + " 代管", "Covered by " + cov) + " · " : "" + "· ")) + r.total + " " + nm("處據點", r.total === 1 ? "site" : "sites"), cls: ns ? "" : "dim" };
+        sub: (ns ? "" : (cov ? nm("由 " + cov + " 代管", "Covered by " + cov) + " · " : "")) + r.total + " " + nm("處據點", r.total === 1 ? "site" : "sites"), cls: ns ? "" : "dim" };
     }), "map-sites");
     drawMap($("map-ns"), AP, function (iso) { return NS_ISO[iso] ? "r-pap" : (REGION[iso] === "r-pap" ? "r-pap2" : ""); },
       NSC.filter(function (n) { return n[1]; }).map(function (n) {
@@ -3528,7 +3614,7 @@
     rows.push([B("資料查證", "Verification"), vsChip(a.vs)]);
     return '<dl class="kvl">' + rows.map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + r[1] + "</dd></div>"; }).join("") + "</dl>";
   }
-  var firstSentence = function (t) { t = t || ""; var i = t.search(/[。；;]|\. /); return i > 0 ? t.slice(0, i + (t.charAt(i) === "." ? 1 : 1)) : t; };
+  var firstSentence = function (t) { t = t || ""; var i = t.search(/[。；;]|\. /); return i > 0 ? t.slice(0, i) + (/[；;]/.test(t.charAt(i)) ? "…" : t.charAt(i)) : t; };
   // 縮寫索引的小卡片：縮寫、英文全稱、中文名稱、一句說明；展開看完整內容
   function abNode(a, parent) {
     var full = a.full ? esc(a.full) : (a.en ? esc(a.en) : "");
@@ -3889,13 +3975,15 @@
   function orgFit() {
     var st = $("org-stage"); if (!st || !ORG_BOX.w) return;
     var W = st.clientWidth; if (!W) return;
+    // 上方保留工具列的高度，圖不會被按鈕蓋住
+    var TOP = 48;
     if (W >= 700) {
-      var kk = Math.min(1.05, (W - 20) / ORG_BOX.w), HH = Math.round(ORG_BOX.h * kk + 20);
+      var kk = Math.min(1.05, (W - 20) / ORG_BOX.w), HH = Math.round(ORG_BOX.h * kk + 20 + TOP);
       if (Math.abs(st.clientHeight - HH) > 2) st.style.height = HH + "px";
     } else st.style.height = "";
     var H = st.clientHeight;
-    var k = Math.min(1.05, (W - 20) / ORG_BOX.w, (H - 20) / ORG_BOX.h);
-    ORG_V = { k: k, x: (W - ORG_BOX.w * k) / 2, y: (H - ORG_BOX.h * k) / 2 };
+    var k = Math.min(1.05, (W - 20) / ORG_BOX.w, (H - 20 - TOP) / ORG_BOX.h);
+    ORG_V = { k: k, x: (W - ORG_BOX.w * k) / 2, y: TOP + (H - TOP - ORG_BOX.h * k) / 2 };
     orgApply();
   }
 
@@ -4046,7 +4134,7 @@
   $("quiz-close").addEventListener("click", function () { toggleAll(false); });
 
   /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
-  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, h2, h3, .pn-segs, #cat-body, #dec-out, #blk-ref-abbr, [data-noabbr], #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, .tl, h2, h3, .pn-segs, #cat-body, #dec-out, #blk-ref-abbr, [data-noabbr], #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   function linkAbbr(scope) {
     var seen = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
