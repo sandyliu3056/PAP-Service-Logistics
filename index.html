@@ -2622,7 +2622,8 @@
     store.set("pap.lang", LANG);
     var page = document.querySelector("main .page.active"), keep = page ? sectionInView(page) : null, before = keep ? keep.getBoundingClientRect().top : 0;
     drawAllMaps();
-    if (typeof orgReady !== "undefined" && orgReady) orgRender();
+    // 換語言後標籤長度不同：架構圖重畫並重新縮放到整張放得下
+    if (typeof orgReady !== "undefined" && orgReady) { if ($("page-corp").classList.contains("active")) orgShow(); else orgRender(); }
     if (keep && window.pageYOffset > 0) window.scrollBy(0, keep.getBoundingClientRect().top - before);
   }
   function setFont(f) { f = /^(hand|sans|mono)$/.test(f) ? f : "hand"; root.setAttribute("data-font", f); $("font-sel").value = f; store.set("pap.font", f); }
