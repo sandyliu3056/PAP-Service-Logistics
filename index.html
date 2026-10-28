@@ -1787,6 +1787,14 @@
     .regions.five { row-gap:34px; }
     .pg-abbr dl > div { width:100%; }
   }
+  /* >>> 全站手寫字型 */
+  /* 手寫風：代碼、編號、地圖與圖表文字也用手寫字型 */
+  html[data-font="hand"] { --font-mono:"Patrick Hand","LXGW WenKai TC","Iansui","Reprice Sketch","HanziPen TC","Hannotate TC","Kaiti TC","KaiTi","Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif; }
+  html[data-font="hand"] .map .rpill text, html[data-font="hand"] .map .pin text, html[data-font="hand"] .map .rlabel, html[data-font="hand"] .map .olabel, html[data-font="hand"] .map .opin text, html[data-font="hand"] #org-g .elab text, html[data-font="hand"] svg text { font-family:"Patrick Hand","LXGW WenKai TC","Iansui","Reprice Sketch","HanziPen TC","Hannotate TC","Kaiti TC","KaiTi","Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif; }
+  /* PAP 框上的標籤：紅底白字的標籤，不再用底色方塊蓋住框線 */
+  .pap-frame > .pap-label { background:var(--pap-red); color:#fff; border-radius:999px; padding:1px 18px 2px; font-size:1.3rem; line-height:1.25; top:-16px; box-shadow:0 2px 0 rgba(74,58,43,.18); }
+  .pap-frame > .pap-label .ab { color:#fff; border-bottom-color:rgba(255,255,255,.65); }
+  /* <<< 全站手寫字型 */
   /* >>> 手機字級 */
   @media (max-width:600px) {
     html, body { font-size:15px; }
