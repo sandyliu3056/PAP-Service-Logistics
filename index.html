@@ -75,7 +75,6 @@
   html[data-font="hand"] .story p { font-size:18.5px; }
   html[data-font="hand"] .kvl dt, html[data-font="hand"] .facts-row { font-size:16px; }
   html[data-font="hand"] .ab-pop .ab-in, html[data-font="hand"] .org-panel { font-size:17.5px; }
-  html[data-font="hand"] .pg-abbr dd, html[data-font="hand"] .pg-abbr dt .ab { font-size:17px; }
   html[data-font="hand"] .code-nav .cn .cn-en { font-size:17px; }
   html[data-font="hand"] .code-nav .cn .cn-zh { font-size:15px; }
   html[data-font="hand"] .journey b { font-size:20px; }
@@ -473,16 +472,6 @@
     .jparcel { display:none; }
   }
 
-  .pg-abbr { margin-top:30px; padding:10px 14px 12px; background:transparent; border:1.5px dashed var(--ch-line); border-radius:12px; }
-  .pg-abbr h4 { margin:0 0 8px; font-size:.84rem; color:var(--mute); display:flex; gap:12px; align-items:baseline; flex-wrap:wrap; }
-  .pg-abbr h4 small { color:var(--mute); font-weight:400; font-size:.8rem; }
-  .pg-abbr dl { margin:0; display:flex; flex-wrap:wrap; gap:6px 8px; }
-  .pg-abbr dl > div { display:inline-flex; align-items:baseline; gap:7px; background:var(--panel); border:1px solid var(--ch-line); border-radius:999px; padding:3px 11px 3px 9px; }
-  .pg-abbr dt { margin:0; }
-  .pg-abbr dt .ab { border-bottom:0; font-family:var(--font-mono); font-weight:700; font-size:.84rem; color:var(--ch-ink); text-align:left; cursor:pointer; padding:0; }
-  .pg-abbr dt .ab:hover { text-decoration:underline; background:none; }
-  .pg-abbr dd { margin:0; font-size:.8rem; line-height:1.4; color:var(--ink); }
-  .pg-abbr dd small { display:inline; color:var(--mute); font-size:.78rem; margin-left:4px; }
   .howread { background:var(--panel); border:1.5px solid var(--line); border-left:5px solid var(--primary); border-radius:10px; padding:16px 22px 18px; margin:0 0 26px; }
   .howread > h3 { margin:0 0 14px; font-size:1.05rem; }
   .pos { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-start; margin:0 0 16px; }
@@ -1748,8 +1737,6 @@
   /* 版面修正：任何寬度都不讓內容被裁切 */
   .facts-row > span { border-radius:14px; }
   .facts-row i { white-space:nowrap; flex:none; }
-  .pg-abbr dl > div { border-radius:14px; }
-  .pg-abbr dt { white-space:nowrap; }
   .tbl .tl { display:none; }
   .tbl .tv { display:contents; }
   .co-tree.stack { flex-direction:column; align-items:stretch; }
@@ -1761,8 +1748,6 @@
     .prow { flex-direction:column; align-items:flex-start; gap:4px; }
     .prow .plabel { min-width:0; }
     .prow .parr { transform:rotate(90deg); margin-left:18px; }
-    .pg-abbr dl > div { display:flex; flex-wrap:wrap; column-gap:7px; row-gap:2px; }
-    .pg-abbr dd { flex:1 1 11em; min-width:0; }
     /* 表格：手機上一列一張卡片，欄名寫在每一格前面 */
     .tbl { overflow-x:hidden; padding:8px; }
     .tbl table, .tbl tbody, .tbl tfoot, .tbl tr { display:block; width:auto; }
@@ -1785,8 +1770,37 @@
     .vc-row > .vc-k, .vc-row > .vc-eg { grid-column:1 / -1; }
     .vc-h > div:first-child, .vc-h > div:last-child { display:none; }
     .regions.five { row-gap:34px; }
-    .pg-abbr dl > div { width:100%; }
   }
+  /* >>> 本頁縮寫與名詞 */
+  .pg-abbr { margin-top:30px; padding:12px 16px 10px; background:var(--panel); border:1.5px solid var(--ch-line); border-radius:14px; }
+  .pg-abbr > summary { list-style:none; cursor:pointer; }
+  .pg-abbr > summary::-webkit-details-marker { display:none; }
+  .pg-abbr h4 { margin:0; padding:2px 0 6px; display:flex; align-items:baseline; gap:10px; font-size:.92rem; color:var(--ch-ink); }
+  .pg-abbr h4::after { content:"▾"; margin-left:auto; color:var(--mute); font-size:.9rem; }
+  .pg-abbr[open] h4::after { content:"▴"; }
+  .pg-abbr:not([open]) h4 { padding-bottom:2px; }
+  .pg-abbr h4 small { color:var(--mute); font-weight:400; font-size:.8rem; }
+  .pg-abbr dl { margin:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(min(260px, 100%), 1fr)); column-gap:22px; }
+  .pg-abbr dl > div { display:grid; grid-template-columns:6.2em minmax(0, 1fr); column-gap:10px; align-items:baseline; padding:6px 0; border-top:1px dashed var(--line); min-width:0; }
+  .pg-abbr dt { margin:0; min-width:0; }
+  .pg-abbr dt .ab { border-bottom:0; padding:0; font-family:var(--font-mono); font-weight:700; font-size:.92rem; color:var(--ch-ink); text-align:left; cursor:pointer; overflow-wrap:anywhere; }
+  .pg-abbr dt .ab:hover { text-decoration:underline; background:none; }
+  .pg-abbr dd { margin:0; min-width:0; display:grid; line-height:1.35; }
+  .pg-abbr dd b { font-weight:700; font-size:.88rem; color:var(--ink); }
+  .pg-abbr dd small { color:var(--mute); font-size:.76rem; }
+  .pg-abbr dd small:empty, .pg-abbr dd small span:empty { display:none; }
+  @media (max-width:600px) { .pg-abbr { padding:10px 12px 8px; } .pg-abbr dl > div { grid-template-columns:5.4em minmax(0, 1fr); } }
+  /* <<< 本頁縮寫與名詞 */
+  /* >>> 顏色與框 */
+  /* PAP 組織圖註記與 PAP 框：TWN、AAP 用區域顏色標示 */
+  .nst-note .ab[data-ab="twn"], .pap-cap .ab[data-ab="twn"] { --rc:var(--r-twn); }
+  .nst-note .ab[data-ab="aap"], .pap-cap .ab[data-ab="aap"] { --rc:var(--r-pap); }
+  .nst-note .ab[data-ab="twn"], .nst-note .ab[data-ab="aap"], .pap-cap .ab[data-ab="twn"], .pap-cap .ab[data-ab="aap"] { color:var(--rc); background:color-mix(in srgb, var(--rc) 14%, #fff); border:1.5px solid var(--rc); border-radius:6px; padding:0 6px; margin:0 1px; font-weight:700; }
+  /* 分工比較：表頭與說明也加上框 */
+  .vc-h > div:not(:first-child) { background:var(--ch-bg); border:1.5px solid var(--ch-line); border-radius:10px; padding:6px 8px; color:var(--ch-ink); align-self:stretch; display:grid; place-items:center; }
+  .vc-eg { background:var(--panel); border:1.5px solid var(--line); border-radius:10px; padding:8px 12px; color:var(--ink); align-self:stretch; display:flex; align-items:center; }
+  @media (max-width:760px) { .vc-h > div:last-child { display:none; } }
+  /* <<< 顏色與框 */
   /* >>> 全站手寫字型 */
   /* 手寫風：代碼、編號、地圖與圖表文字也用手寫字型 */
   html[data-font="hand"] { --font-mono:"Patrick Hand","LXGW WenKai TC","Iansui","Reprice Sketch","HanziPen TC","Hannotate TC","Kaiti TC","KaiTi","Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif; }
@@ -1826,7 +1840,6 @@
     html[data-font="hand"] .story p { font-size:15px; }
     html[data-font="hand"] .kvl dt, html[data-font="hand"] .facts-row { font-size:13.5px; }
     html[data-font="hand"] .ab-pop .ab-in, html[data-font="hand"] .org-panel { font-size:14px; }
-    html[data-font="hand"] .pg-abbr dd, html[data-font="hand"] .pg-abbr dt .ab { font-size:14px; }
     html[data-font="hand"] .code-nav .cn .cn-en { font-size:14px; }
     html[data-font="hand"] .code-nav .cn .cn-zh { font-size:13px; }
     html[data-font="hand"] .journey b { font-size:16px; }
@@ -4507,12 +4520,14 @@
     }
     if (!ids.length) return;
     ids.sort(function (x, y) { return AB_IDX[x] - AB_IDX[y]; });
-    var box = document.createElement("aside");
+    // 手機上預設收合，點標題展開；平板與電腦預設展開
+    var box = document.createElement("details");
     box.className = "pg-abbr";
-    box.innerHTML = "<h4>" + B("本頁縮寫與名詞", "Abbreviations and terms on this page") + "</h4><dl>" + ids.map(function (id) {
-      var a = AB_BY[id];
-      var name = fullHTML(a);
-      return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a.code) + "</button></dt><dd>" + name + "</dd></div>";
+    if (window.innerWidth > 600) box.open = true;
+    box.innerHTML = "<summary><h4>" + B("本頁縮寫與名詞", "Abbreviations and terms on this page") + '<small>' + B(ids.length + " 個", ids.length + " terms") + "</small></h4></summary><dl>" + ids.map(function (id) {
+      var a = AB_BY[id], en = a.full || a.en || "", zh = a.zh || "";
+      var main = B(esc(zh || en || a.code), esc(en || zh || a.code)), sub = B(esc(zh && en ? en : ""), esc(zh && en ? zh : ""));
+      return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a.code) + "</button></dt><dd><b>" + main + "</b><small>" + sub + "</small></dd></div>";
     }).join("") + "</dl>";
     scope.appendChild(box);
   }
