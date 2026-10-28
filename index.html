@@ -1351,6 +1351,24 @@
     .ct-link::after { content:"↓"; width:auto; border:0; margin:0; color:var(--ch); font-weight:700; order:-1; }
     .co-pages .pcard-head .logo-box.sm { width:104px; height:52px; }
   }
+
+  /* 區域架構：五個 RO 同一層，TWN 與 AAP 以紅框標示為 PAP */
+  :root { --pap-red:#D2412F; }
+  .node small.nb, .ga-ro small { display:grid; line-height:1.3; }
+  .nb-zh { color:var(--ink); }
+  .node.hq .nb-zh, .node.hq .nb-en { color:var(--hdr-sub); }
+  .nb-en { font-size:.92em; color:var(--mute); }
+  .regions.five > .node { margin-top:30px; }
+  .pap-group.pap-frame { position:relative; flex-direction:column; border:3px solid var(--pap-red); background:color-mix(in srgb, var(--pap-red) 6%, transparent); border-radius:18px; padding:30px 14px 12px; gap:6px; }
+  .pap-label { position:absolute; left:50%; top:-18px; transform:translateX(-50%); background:var(--card); color:var(--pap-red); font-family:var(--font-mono); font-weight:800; font-size:1.6rem; letter-spacing:.12em; padding:0 12px; line-height:1.2; }
+  .pap-pair { display:flex; gap:12px; align-items:flex-start; }
+  .pap-pair .node { min-width:110px; }
+  .pap-cap { color:var(--pap-red); font-size:.8rem; font-weight:700; }
+  .ga-row { padding-top:18px; align-items:flex-start; }
+  .ga-pap { position:relative; display:inline-grid; justify-items:center; padding:18px 8px 8px; border:2.5px solid var(--pap-red); border-radius:14px; background:color-mix(in srgb, var(--pap-red) 6%, #fff); margin-top:-4px; }
+  .ga-pap .pap-label { top:-14px; font-size:1.15rem; background:var(--panel); padding:0 8px; }
+  .ga-pair { display:flex; gap:6px; }
+  .ga-row > .ga-ro { margin-top:10px; }
 </style>
 </head>
 <body>
@@ -1399,10 +1417,10 @@
           <span class="ga-hq"><b>HQ</b><small><span class="zh">總部</span><span class="en">Headquarters</span></small></span>
           <span class="ga-line" aria-hidden="true"></span>
           <div class="ga-row">
-            <span class="ga-ro" style="--rc:var(--r-pa)"><b>PA</b><small><span class="zh">美洲 · US</span><span class="en">The Americas · US</span></small></span>
-            <span class="ga-ro" style="--rc:var(--r-emea)"><b>EMEA</b><small><span class="zh">歐洲、中東與非洲</span><span class="en">Europe, Middle East &amp; Africa</span></small></span>
-            <span class="ga-pap"><span class="ga-pair"><span class="ga-ro" style="--rc:var(--r-twn)"><b>TWN</b><small><span class="zh">TW · 台灣</span><span class="en">TW · Taiwan</span></small></span><i>+</i><span class="ga-ro" style="--rc:var(--r-pap)"><b>AAP</b><small><span class="zh">亞太地區</span><span class="en">Asia Pacific</span></small></span></span><span class="ga-eq"><span class="zh">合併為 <b>PAP</b> 泛亞太區</span><span class="en">merged into <b>PAP</b></span></span></span>
-            <span class="ga-ro" style="--rc:var(--r-accn)"><b>ACCN</b><small><span class="zh">China · 中國</span><span class="en">China</span></small></span>
+            <span class="ga-ro" style="--rc:var(--r-pa)"><b>PA</b><small><span class="nb-zh">美洲</span><span class="nb-en">Pan America</span></small></span>
+            <span class="ga-ro" style="--rc:var(--r-emea)"><b>EMEA</b><small><span class="nb-zh">歐洲、中東與非洲</span><span class="nb-en">Europe, Middle East &amp; Africa</span></small></span>
+            <span class="ga-pap"><span class="pap-label">PAP</span><span class="ga-pair"><span class="ga-ro" style="--rc:var(--r-twn)"><b>TWN</b><small><span class="nb-zh">台灣</span><span class="nb-en">Taiwan</span></small></span><span class="ga-ro" style="--rc:var(--r-pap)"><b>AAP</b><small><span class="nb-zh">亞太地區</span><span class="nb-en">Asia Pacific</span></small></span></span></span>
+            <span class="ga-ro" style="--rc:var(--r-accn)"><b>ACCN</b><small><span class="nb-zh">中國</span><span class="nb-en">China</span></small></span>
           </div>
         </div>
         <p class="note"><button class="btn sm" type="button" data-go="org-global"><span class="zh">Acer 全球區域 →</span><span class="en">Acer's global regions →</span></button> <button class="btn sm" type="button" data-go="org-pap"><span class="zh">PAP 組織架構 →</span><span class="en">PAP organisation →</span></button></p>
@@ -1542,23 +1560,21 @@
         <p class="lead en">Under Acer headquarters (HQ) are five regional offices (RO): PA (the Americas, US), EMEA (Europe, Middle East and Africa), TWN (TW, Taiwan), AAP (Asia Pacific) and ACCN (China), which operated independently before 2010. TWN and AAP merged into PAP in 2016/2017.</p>
         <div class="block">
           <div class="orgchart" role="img" aria-label="HQ → PA (Americas), EMEA (Europe, Middle East and Africa), TWN (TW), AAP (Asia Pacific), ACCN (China); TWN + AAP = PAP">
-            <span class="node hq"><span class="code">HQ</span><small><span class="zh">總部</span><span class="en">Headquarters</span></small></span>
+            <span class="node hq"><span class="code">HQ</span><small class="nb"><span class="nb-zh">總部</span><span class="nb-en">Headquarters</span></small></span>
             <span class="stem"></span>
             <span class="ro-tag"><span class="zh">五個區域辦公室（RO）· 2010 年以前各自獨立</span><span class="en">Five regional offices (RO) · independent before 2010</span></span>
             <div class="regions five">
-              <span class="node"><span class="code">PA</span><small><span class="zh">美洲 · US</span><span class="en">The Americas · US</span></small></span>
-              <span class="node"><span class="code">EMEA</span><small><span class="zh">歐洲、中東與非洲</span><span class="en">Europe, Middle East &amp; Africa</span></small></span>
-              <div class="pap-group merge">
-                <div class="pap-from">
-                  <span class="node"><span class="code">TWN</span><small><span class="zh">TW · 台灣</span><span class="en">TW · Taiwan</span></small></span>
-                  <span class="plus" aria-hidden="true">+</span>
-                  <span class="node"><span class="code">AAP</span><small><span class="zh">亞太地區</span><span class="en">Asia Pacific</span></small></span>
+              <span class="node"><span class="code">PA</span><small class="nb"><span class="nb-zh">美洲</span><span class="nb-en">Pan America</span></small></span>
+              <span class="node"><span class="code">EMEA</span><small class="nb"><span class="nb-zh">歐洲、中東與非洲</span><span class="nb-en">Europe, Middle East &amp; Africa</span></small></span>
+              <div class="pap-group pap-frame">
+                <span class="pap-label">PAP</span>
+                <div class="pap-pair">
+                  <span class="node"><span class="code">TWN</span><small class="nb"><span class="nb-zh">台灣</span><span class="nb-en">Taiwan</span></small></span>
+                  <span class="node"><span class="code">AAP</span><small class="nb"><span class="nb-zh">亞太地區</span><span class="nb-en">Asia Pacific</span></small></span>
                 </div>
-                <span class="merge-arrow" aria-hidden="true">↓</span>
-                <span class="merge-tag"><span class="zh">合併為</span><span class="en">merged into</span></span>
-                <span class="node pap big"><span class="code">PAP</span><small><span class="zh">泛亞太區 · 區域辦公室（RO）</span><span class="en">Pan Asia Pacific · regional office (RO)</span></small></span>
+                <span class="pap-cap"><span class="zh">泛亞太區 · 2016/2017 合併</span><span class="en">Pan Asia Pacific · merged 2016/2017</span></span>
               </div>
-              <span class="node"><span class="code">ACCN</span><small><span class="zh">China · 中國</span><span class="en">China</span></small></span>
+              <span class="node"><span class="code">ACCN</span><small class="nb"><span class="nb-zh">中國</span><span class="nb-en">China</span></small></span>
             </div>
           </div>
         </div>
