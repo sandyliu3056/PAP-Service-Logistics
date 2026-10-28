@@ -41,7 +41,7 @@ window.PAP_ORG = (function () {
     { id: "ain", type: "ns", code: "AIN", zh: "印尼", en: "Indonesia", official: "PT Acer Indonesia", logo: "acer", cc: "id", region: "PAP", ab: "ain", role: ["印尼國家子公司；倉庫表列為 AIN (AMI)；設有倉庫及 Uni-load。", "The Indonesia subsidiary, listed as AIN (AMI) in the warehouse table; has a warehouse and Uni-load."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
     { id: "avn", type: "ns", code: "AVN", zh: "越南", en: "Vietnam", official: "Acer Vietnam Co., Ltd.", logo: "acer", cc: "vn", region: "PAP", ab: "avn", role: ["越南國家子公司；設有倉庫。", "The Vietnam subsidiary; has a warehouse."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
     { id: "ajc", type: "ns", code: "AJC", zh: "日本", en: "Japan", official: "Acer Japan Corp.", logo: "acer", cc: "jp", region: "PAP", ab: "ajc", role: ["日本國家子公司，並管理韓國（AKC）；設有倉庫。", "The Japan subsidiary, which also manages Korea (AKC); has a warehouse."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
-    { id: "akc", type: "ns", code: "AKC", zh: "韓國", en: "Korea", official: "Acer Asia Pacific（韓國辦公室）", logo: "acer", cc: "kr", region: "PAP", ab: "akc", role: ["韓國國家子公司，由 AJC 管理；設有倉庫。", "The Korea subsidiary, managed by AJC; has a warehouse."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
+    { id: "akc", type: "ns", code: "AKC", zh: "韓國", en: "Korea", official: "Acer Asia Pacific（韓國辦公室）", logo: "acer", cc: "kr", region: "PAP", ab: "akc", role: ["韓國國家子公司，由 AJC 管轄；設有倉庫。", "The Korea subsidiary, managed by AJC; has a warehouse."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
     { id: "afe", type: "ns", code: "AFE", zh: "國家未載明", en: "Country not specified", region: "PAP", ab: "afe", role: ["PAP 國家子公司之一，所屬國家未載明，亦未列於倉庫表與料號國別代碼表。", "One of the PAP subsidiaries; its country is not specified and it is absent from the warehouse and country-code tables."], src: [DECK("第 3 頁")], vs: "pending", note: ["所屬國家教材未載明。", "The material does not state its country."] },
     { id: "aphi", type: "ns", code: "APHI", zh: "菲律賓", en: "Philippines", official: "Acer Philippines, Inc.", logo: "acer", cc: "ph", region: "PAP", ab: "aphi", role: ["菲律賓國家子公司；設有倉庫。", "The Philippines subsidiary; has a warehouse."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
     { id: "acs", type: "ns", code: "ACS", zh: "新加坡", en: "Singapore", official: "Acer Computer (Singapore) Pte. Ltd.", logo: "acer", cc: "sg", region: "PAP", ab: "acs", role: ["新加坡國家子公司，代管斯里蘭卡、蒙古與尼泊爾；設有倉庫及 Uni-load。", "The Singapore subsidiary, covering Sri Lanka, Mongolia and Nepal; has a warehouse and Uni-load."], src: [DECK("第 3–4 頁"), AROUND], vs: "internal" },
@@ -96,7 +96,7 @@ window.PAP_ORG = (function () {
   ];
   var E = [
     { from: "assb", to: "hsnm", kind: "collab", vs: "internal", label: ["2016/2017 前共同營運", "Jointly run before 2016/2017"] },
-    { from: "ajc", to: "akc", kind: "collab", vs: "internal", label: ["AJC 管理 AKC", "AJC manages AKC"] },
+    { from: "ajc", to: "akc", kind: "collab", vs: "internal", label: ["AJC 管轄 AKC", "AJC manages AKC"] },
     { from: "acer", to: "benq", kind: "spin", vs: "verified", label: ["2001 年分立", "Separated 2001"] },
     { from: "acer", to: "auo", kind: "spin", vs: "verified", label: ["2001 年合併更名", "Merged and renamed 2001"] },
     { from: "acer", to: "wistron", kind: "spin", vs: "verified", label: ["2001 年分立", "Spun off 2001"] },
