@@ -43,7 +43,7 @@
 
 純靜態網頁，不需要建置，由 Vercel 從 `main` 分支發布。
 
-- `middleware.js`：整個網站需要登入（帳號 `sandy`，密碼與 Acer Guide 相同，程式裡只存 SHA-256 雜湊值）。
+- `middleware.js`：整個網站需要登入（帳號 `sandy`，程式裡只存密碼的 SHA-256 雜湊值）。
 - `vercel.json`：不讓搜尋引擎收錄、不讓共用快取保存內容。
 - 不要再開 GitHub Pages：GitHub Pages 無法設密碼，內容會公開。repo 也請維持私人（Private）。
 

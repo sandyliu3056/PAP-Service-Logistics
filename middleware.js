@@ -1,9 +1,9 @@
 // 整個網站的登入保護（Vercel Routing Middleware，Basic Auth）。
-// 帳號 sandy，密碼與 Acer Guide 相同；這裡只存密碼的 SHA-256 雜湊值。
+// 帳號 sandy；這裡只存密碼的 SHA-256 雜湊值。
 export const config = { matcher: '/(.*)' };
 
 const USER = 'sandy';
-const PASS_SHA256 = 'bb56ddfb82c86a3ad9e44f42218ea3394831f2e0d5f0563f68c5f3614be9a882';
+const PASS_SHA256 = '20a5424c6de8608c678574c0f71bb98794a4fb0d26329a08f2d9ba446227a40b';
 
 async function sha256(text) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
