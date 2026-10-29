@@ -39,8 +39,13 @@
 - `vendor/rough.js`：手繪線條（[rough.js](https://github.com/rough-stuff/rough) 4.6.6，MIT，授權見 `vendor/rough-LICENSE.txt`），用於架構圖與各流程圖的方框、連線與箭頭
 - `flags/`：國旗圖示；`logos/`：公司 logo
 - `favicon.svg`
+- `middleware.js`、`vercel.json`：登入保護與標頭設定
 
-純靜態網頁，不需要建置。在 GitHub 的 Settings → Pages 選 `main` 分支、根目錄即可發布。
+純靜態網頁，不需要建置，由 Vercel 從 `main` 分支發布。
+
+- `middleware.js`：整個網站需要登入（帳號 `sandy`，密碼與 Acer Guide 相同，程式裡只存 SHA-256 雜湊值）。
+- `vercel.json`：不讓搜尋引擎收錄、不讓共用快取保存內容。
+- 不要再開 GitHub Pages：GitHub Pages 無法設密碼，內容會公開。repo 也請維持私人（Private）。
 
 ## 來源與授權
 
