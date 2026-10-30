@@ -997,7 +997,7 @@
   #org-g .on.t-ro text.code { font-size:22px; letter-spacing:.08em; }
   #org-g .on.t-acer text.code { font-size:18px; }
   #org-g .on text.sub { font-size:11px; fill:var(--mute); }
-  #org-g .on.t-ro text.sub { fill:#E6F2EA; }
+  #org-g .on.t-ro text.sub { fill:#fff; font-size:15px; font-weight:700; }
   #org-g .on.t-acer text.sub { fill:var(--hdr-sub); }
   #org-g .on:hover rect.box { filter:drop-shadow(0 2px 4px rgba(0,0,0,.18)); }
   #org-g .on.sel rect.box { stroke:var(--accent) !important; stroke-width:3 !important; }
@@ -4261,7 +4261,7 @@
   /* ---------- 企業架構圖（資料：org.js） ---------- */
   var ORG = window.PAP_ORG, LAY = ORG ? ORG.layout : null, POS = {}, orgSel = null, orgReady = false;
   var ORG_V = { k: 1, x: 0, y: 0 }, ORG_BOX = { w: 0, h: 0 };
-  var SZ = { company: [164, 58], region: [120, 56], ro: [176, 82], ns: [134, 54], unit: [128, 46], country: [128, 44], team: [144, 54], dept: [144, 54], odm: [164, 56], hsn: [138, 50], partner: [164, 54], group: [170, 34], acer: [196, 78] };
+  var SZ = { company: [164, 58], region: [120, 56], ro: [176, 92], ns: [134, 54], unit: [128, 46], country: [128, 44], team: [144, 54], dept: [144, 54], odm: [164, 56], hsn: [138, 50], partner: [164, 54], group: [170, 34], acer: [196, 78] };
   var TYPE_NAME = { company: ["法人公司", "Company"], region: ["區域", "Region"], ro: ["區域辦公室", "Regional office"], ns: ["國家子公司", "Nation subsidiary"], unit: ["下轄單位", "Unit"], country: ["代管國家", "Covered country"], dept: ["總部單位", "Headquarters unit"], odm: ["外部代工廠", "External manufacturer"], hsn: ["HSN 集團公司", "HSN Group company"], partner: ["服務夥伴", "Service partner"], group: ["分組", "Group"], acer: ["集團母公司", "Parent company"] };
   var GAP = { row: 18, list: 8, v: 34, indent: 22 };
   // 節點寬度依目前語言的文字計算（字不超出框框）
@@ -4270,7 +4270,7 @@
     var base = SZ[n.id === "acer" ? "acer" : n.type] || SZ.company, w = base[0], h = base[1];
     if (n.type === "group") return [Math.max(w, orgTextW(nm(n.zh, n.en), 16) + 8), h];
     var tx = (n.cc && n.type !== "ro" && n.id !== "acer") ? 33 : (n.id === "acer" ? 80 : 11), big = n.type === "ro" || n.id === "acer";
-    var name = nm(n.zh, n.en), need = Math.max(n.code ? orgTextW(n.code, big ? (n.type === "ro" ? 22 : 18) : 16, true) : 0, orgTextW(name, 14), n.sub && big ? orgTextW(nm(n.sub[0], n.sub[1]), 11) : 0);
+    var name = nm(n.zh, n.en), need = Math.max(n.code ? orgTextW(n.code, big ? (n.type === "ro" ? 22 : 18) : 16, true) : 0, orgTextW(name, 14), n.sub && big ? orgTextW(nm(n.sub[0], n.sub[1]), n.type === "ro" ? 15 : 11) : 0);
     return [Math.max(w, Math.ceil(tx + need + 20)), h];
   }
   function orgMeasure(id) {
@@ -4347,7 +4347,7 @@
     if (n.type === "country" || (!n.code)) out += name("", h / 2 + 5);
     else if (big) {
       out += '<text class="code" x="' + tx + '" y="' + (n.type === "ro" ? 28 : 26) + '">' + esc(n.code) + "</text>" + name("", n.type === "ro" ? 48 : 46);
-      if (n.sub) out += '<text class="sub" x="' + tx + '" y="' + (n.type === "ro" ? 66 : 63) + '">' + esc(nm(n.sub[0], n.sub[1])) + "</text>";
+      if (n.sub) out += '<text class="sub" x="' + tx + '" y="' + (n.type === "ro" ? 76 : 63) + '">' + esc(nm(n.sub[0], n.sub[1])) + "</text>";
     } else {
       out += '<text class="code" x="' + tx + '" y="' + (h / 2 - 4) + '">' + esc(n.code) + "</text>" + name("", h / 2 + 14);
     }
