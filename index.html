@@ -2286,6 +2286,11 @@
   .regions .node.pap-em { border-color:#C24A3A; }
   .regions .node.pap-em .code { color:#A1432F; }
   .pap-merge { display:block; margin-top:5px; padding-top:4px; border-top:1px dashed #D9A08F; color:#A1432F; font-size:.7rem; font-weight:700; line-height:1.4; white-space:normal; max-width:12em; }
+  .off-fold > summary { list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:7px 18px; border:1.5px solid var(--ch); border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); font-weight:700; }
+  .off-fold > summary::-webkit-details-marker { display:none; }
+  .off-fold > summary::after { content:"▾"; }
+  .off-fold[open] > summary::after { content:"▴"; }
+  .off-fold[open] > summary { margin-bottom:12px; }
   /* <<< 版面統整 */
   /* >>> 中英對照 */
   /* 預設「EN + 中文」：英文在上、字較大；中文在下、字較小。行內小元件（按鈕、標籤）中英並排，中間留空。 */
@@ -2540,7 +2545,8 @@
             <figcaption class="region-key" id="region-key"></figcaption>
           </figure>
         </div>
-      </div><div class="block" id="blk-org-offices"><h3><span class="zh">全球據點</span><span class="en">Acer around the world</span></h3>
+      </div><div class="block" id="blk-ops-qsbu"><h3><span class="zh">QSBU 做什麼</span><span class="en">What QSBU does</span></h3><p><span class="zh">QSBU 是宏碁總部的單位，職掌是產品品質與客戶服務管理。在服務零件上，它訂定規劃與商業框架，再交給各區域的 RO 執行；職能分成兩組。</span><span class="en">QSBU is an Acer headquarters unit responsible for product quality and customer-service management. For service parts it sets the planning and commercial framework and hands it to each region's RO to carry out. Its functions fall into two groups.</span></p><h4 class="sub-h"><span class="zh">職能（一）零件定義與維護</span><span class="en">Functions (I): defining and maintaining parts</span></h4><div class="cards c3"><div><b><span class="zh">零件定義（FRU／SPL）</span><span class="en">Spare parts definition (FRU/SPL)</span></b><p><span class="zh">B 樣品起和 ODM 召開 FRU meeting，決定哪些零件可供維修；審核 ODM 起草的 SPL 草稿、在 PLM 申請料號、審核 ODM 報價並訂定加成、確認主機板殘值價，於首次出貨前把 SPL 發布給 RO。</span><span class="en">From the B sample it holds the FRU review meeting to decide which parts can be serviced; it reviews the SPL draft the ODM writes up, applies for part numbers in PLM, reviews the ODM quotation and sets the markup, confirms the mainboard carcass price, and releases the SPL to the ROs before first shipment.</span></p></div><div><b><span class="zh">服務料表管理</span><span class="en">Service BOM management</span></b><p><span class="zh">新機種導入時建立 Service BOM；量產期間更新替代料、新料件與價格；產品停產（EOL）後清單凍結。</span><span class="en">Builds the Service BOM at new-product introduction, updates substitute parts, new parts and prices during production, and freezes the list after end of life (EOL).</span></p></div><div><b><span class="zh">供應商與交易條件</span><span class="en">Sourcing and terms</span></b><p><span class="zh">尋找供應商並簽約；訂定交易條款（T&amp;C），例如 FOB（貨物裝上船後，運費與風險轉由買方負擔）；議定價格與最小訂購量（MOQ），同一料號各 RO 一致。</span><span class="en">Finds suppliers and signs contracts; sets the terms and conditions (T&amp;C), such as FOB (once goods are loaded on board, freight and risk pass to the buyer); agrees price and minimum order quantity (MOQ), the same for every RO.</span></p></div></div><h4 class="sub-h"><span class="zh">職能（二）規劃框架</span><span class="en">Functions (II): the planning framework</span></h4><div class="cards c3"><div><b><span class="zh">提前備料</span><span class="en">Advance stocking</span></b><p><span class="zh">交期長，QSBU 先請 ODM 備料，不必等訂單下來才準備。</span><span class="en">Lead times are long, so QSBU asks the ODM to prepare material without waiting for the orders.</span></p></div><div><b><span class="zh">生命週期規劃</span><span class="en">Lifecycle planning</span></b><p><span class="zh">筆電依 NPI → BML → AML → PPB1 → PPB2 分階段，各級零件在對應階段做最後採購；PPB2 之後由 RO 提出特殊支援。桌機以每月需求報表為主，最後採購依需求與可行性提出。</span><span class="en">Notebooks move through NPI → BML → AML → PPB1 → PPB2, with each part class bought for the last time at its stage; after PPB2 the RO raises special support. Desktops run on the monthly demand report, with the last-time buy raised on request and feasibility.</span></p></div><div><b><span class="zh">服務模式規劃</span><span class="en">Service model design</span></b><p><span class="zh">決定產品走零件維修還是整機替換，例如協助各 RO 評估平板適合的服務模式。</span><span class="en">Decides whether a product is repaired with parts or swapped as a whole unit, e.g. helping the ROs assess the right service model for tablets.</span></p></div></div><p class="tbc-line"><span class="tbc" tabindex="0"><span class="zh">待確認</span><span class="en">To be confirmed</span></span><span class="tbc-note"><span class="zh">QSBU 屬於總部，或與 RO 同屬 PAP 服務團隊，待確認。</span><span class="en">Whether QSBU is a headquarters unit or part of the PAP service team alongside the RO is to be confirmed.</span></span></p></div>
+      <div class="block" id="blk-org-offices"><h3><span class="zh">全球據點</span><span class="en">Acer around the world</span></h3>
         <p class="lead zh">Acer 於全球設有總部、區域總部與各國公司。</p>
         <p class="lead en">Acer has headquarters, regional headquarters and country offices worldwide.</p>
         <div class="kpis" id="office-kpis"></div>
@@ -2552,25 +2558,16 @@
             <figcaption class="legend-chips" id="office-legend"></figcaption>
           </figure>
         </div>
-        <div class="block">
+        <div class="block"><details class="off-fold" id="off-fold"><summary><span class="zh">完整據點清單（可搜尋）</span><span class="en">Full office list (searchable)</span></summary>
           <div class="ab-tools">
             <input type="search" id="office-search" data-ph-zh="搜尋國家、城市或公司名稱" data-ph-en="Search country, city or company" placeholder="搜尋國家、城市或公司名稱" style="width:min(100%, 320px)">
             <span class="count" id="office-count"></span>
           </div>
           <div class="seg" id="office-regions"></div>
           <div id="office-list"></div>
-        </div>
-      </div>        <div class="block ha-card ha-global" id="blk-global-chart">
-        <h3><span class="zh">Acer 全球架構圖</span><span class="en">Acer's global structure</span></h3>
-        <div class="orgchart gx" aria-label="HQ → PA, EMEA, PAP (TWN + AAP), ACCN">
-          <span class="node hq"><span class="code">HQ</span><small class="nb"><span class="nb-zh">總部</span><span class="nb-en">Headquarters</span></small></span>
-          <span class="stem"></span>
-          <span class="ro-tag"><span class="zh">四大區域，各設區域辦公室（RO）</span><span class="en">Four regions, each with a regional office (RO)</span></span>
-          <div class="gx-row"><span class="regions gx-bar" aria-hidden="true"></span><div class="gx-col"><span class="stem"></span><span class="node" style="--rc:var(--r-pa)"><span class="code">PA</span><small class="nb"><span class="nb-zh">美洲</span><span class="nb-en">Pan America</span></small></span></div><div class="gx-col"><span class="stem"></span><span class="node" style="--rc:var(--r-emea)"><span class="code">EMEA</span><small class="nb"><span class="nb-zh">歐洲、中東與非洲</span><span class="nb-en">Europe, Middle East &amp; Africa</span></small></span></div><div class="gx-col gx-pap"><span class="stem"></span><div class="pap-group pap-frame"><span class="pap-label">PAP</span><div class="pap-pair"><span class="node" style="--rc:var(--r-twn)"><span class="code">TWN</span><small class="nb"><span class="nb-zh">台灣</span><span class="nb-en">Taiwan</span></small></span><span class="node" style="--rc:var(--r-pap)"><span class="code">AAP</span><small class="nb"><span class="nb-zh"><button type="button" class="ab" data-ab="aap">亞太地區</button></span><span class="nb-en">Asia Pacific</span></small></span></div><span class="pap-cap"><span class="zh">泛亞太區 = TWN + AAP</span><span class="en">Pan Asia Pacific = TWN + AAP</span></span></div></div><div class="gx-col"><span class="stem"></span><span class="node" style="--rc:var(--r-accn)"><span class="code">ACCN</span><small class="nb"><span class="nb-zh">中國</span><span class="nb-en">China</span></small></span></div></div>
-        </div>
-        <p class="note"><button class="btn sm" type="button" data-go="org-global"><span class="zh">Acer 全球區域 →</span><span class="en">Acer's global regions →</span></button> <button class="btn sm" type="button" data-go="org-pap"><span class="zh">PAP 組織架構 →</span><span class="en">PAP organisation →</span></button></p>
-      </div>
-        <div class="block" id="blk-ops-qsbu"><h3><span class="zh">QSBU 做什麼</span><span class="en">What QSBU does</span></h3><p><span class="zh">QSBU 是宏碁總部的單位，職掌是產品品質與客戶服務管理。在服務零件上，它訂定規劃與商業框架，再交給各區域的 RO 執行；職能分成兩組。</span><span class="en">QSBU is an Acer headquarters unit responsible for product quality and customer-service management. For service parts it sets the planning and commercial framework and hands it to each region's RO to carry out. Its functions fall into two groups.</span></p><h4 class="sub-h"><span class="zh">職能（一）零件定義與維護</span><span class="en">Functions (I): defining and maintaining parts</span></h4><div class="cards c3"><div><b><span class="zh">零件定義（FRU／SPL）</span><span class="en">Spare parts definition (FRU/SPL)</span></b><p><span class="zh">B 樣品起和 ODM 召開 FRU meeting，決定哪些零件可供維修；審核 ODM 起草的 SPL 草稿、在 PLM 申請料號、審核 ODM 報價並訂定加成、確認主機板殘值價，於首次出貨前把 SPL 發布給 RO。</span><span class="en">From the B sample it holds the FRU review meeting to decide which parts can be serviced; it reviews the SPL draft the ODM writes up, applies for part numbers in PLM, reviews the ODM quotation and sets the markup, confirms the mainboard carcass price, and releases the SPL to the ROs before first shipment.</span></p></div><div><b><span class="zh">服務料表管理</span><span class="en">Service BOM management</span></b><p><span class="zh">新機種導入時建立 Service BOM；量產期間更新替代料、新料件與價格；產品停產（EOL）後清單凍結。</span><span class="en">Builds the Service BOM at new-product introduction, updates substitute parts, new parts and prices during production, and freezes the list after end of life (EOL).</span></p></div><div><b><span class="zh">供應商與交易條件</span><span class="en">Sourcing and terms</span></b><p><span class="zh">尋找供應商並簽約；訂定交易條款（T&amp;C），例如 FOB（貨物裝上船後，運費與風險轉由買方負擔）；議定價格與最小訂購量（MOQ），同一料號各 RO 一致。</span><span class="en">Finds suppliers and signs contracts; sets the terms and conditions (T&amp;C), such as FOB (once goods are loaded on board, freight and risk pass to the buyer); agrees price and minimum order quantity (MOQ), the same for every RO.</span></p></div></div><h4 class="sub-h"><span class="zh">職能（二）規劃框架</span><span class="en">Functions (II): the planning framework</span></h4><div class="cards c3"><div><b><span class="zh">提前備料</span><span class="en">Advance stocking</span></b><p><span class="zh">交期長，QSBU 先請 ODM 備料，不必等訂單下來才準備。</span><span class="en">Lead times are long, so QSBU asks the ODM to prepare material without waiting for the orders.</span></p></div><div><b><span class="zh">生命週期規劃</span><span class="en">Lifecycle planning</span></b><p><span class="zh">筆電依 NPI → BML → AML → PPB1 → PPB2 分階段，各級零件在對應階段做最後採購；PPB2 之後由 RO 提出特殊支援。桌機以每月需求報表為主，最後採購依需求與可行性提出。</span><span class="en">Notebooks move through NPI → BML → AML → PPB1 → PPB2, with each part class bought for the last time at its stage; after PPB2 the RO raises special support. Desktops run on the monthly demand report, with the last-time buy raised on request and feasibility.</span></p></div><div><b><span class="zh">服務模式規劃</span><span class="en">Service model design</span></b><p><span class="zh">決定產品走零件維修還是整機替換，例如協助各 RO 評估平板適合的服務模式。</span><span class="en">Decides whether a product is repaired with parts or swapped as a whole unit, e.g. helping the ROs assess the right service model for tablets.</span></p></div></div><p class="tbc-line"><span class="tbc" tabindex="0"><span class="zh">待確認</span><span class="en">To be confirmed</span></span><span class="tbc-note"><span class="zh">QSBU 屬於總部，或與 RO 同屬 PAP 服務團隊，待確認。</span><span class="en">Whether QSBU is a headquarters unit or part of the PAP service team alongside the RO is to be confirmed.</span></span></p></div>
+        </details></div>
+      </div>        
+        
       </section>
       <section class="sub" id="sub-org-ro"><h2><span class="zh">區域辦公室（RO）</span><span class="en">RO: Regional Office</span></h2>
         <p class="zh">每一項 RO 職能在後面的章節有詳細說明：需求與下單（第 6 章）、中央倉分料與不良品回程（第 7 章）、GLS 與品質追蹤（第 6 章），以及每月檢視與報告（第 8 章）。</p><p class="en">Each RO function is explained in detail later: demand and ordering (Chapter 6), central-warehouse allocation and returns (Chapter 7), GLS and quality tracking (Chapter 6), and the monthly review and report (Chapter 8).</p>
@@ -4154,6 +4151,7 @@
   });
   $("office-search").addEventListener("input", renderOffices);
   function pickOffice(i) {
+    var fold = $("off-fold"); if (fold) fold.open = true;
     oSel = i;
     var o = OFFICES[i];
     if (oReg !== "all" && oReg !== o[0]) oReg = "all";
@@ -5547,7 +5545,6 @@
   // [類別, 選擇器, 第幾個, 中文標題, 英文標題]（標題空白時取所在區塊的標題）
   var DIAG = [
     ["A", "#sub-org-global .orgchart:not(.gx)", 0, "總部與四大區域", "HQ and the four regions"],
-    ["A", "#blk-global-chart .orgchart", 0],
     ["A", "#blk-org-offices figure.map", 0],
     ["A", "#blk-org-nsmap figure.map", 0],
     ["A", "#sub-org-pap .steps", 0, "PAP 的由來", "How PAP came about"],
