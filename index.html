@@ -262,7 +262,7 @@
   .map .rlabel { font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif; font-weight:700; font-size:15px; fill:#fff; paint-order:stroke; stroke:rgba(30,45,40,.55); stroke-width:3px; letter-spacing:.04em; }
   .legend-chips { display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:10px; font-size:.86rem; color:var(--mute); }
   .region-key { display:block; margin-top:14px; font-size:.9rem; color:var(--ink); }
-  .region-key .rk-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-top:8px; }
+  .region-key .rk-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap:12px; margin-top:8px; }
   .region-key .rk-card { background:var(--panel); border:1.5px solid color-mix(in srgb, var(--rc) 55%, var(--line)); border-top:6px solid var(--rc); border-radius:12px; padding:10px 14px 11px; min-width:0; transition:box-shadow .15s; }
   .region-key .rk-card:hover { box-shadow:0 0 0 3px color-mix(in srgb, var(--rc) 30%, transparent); }
   .region-key .rk-h { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; }
@@ -288,7 +288,7 @@
   .region-key .ab { font-weight:700; }
   .legend-chips i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
   /* 國家代碼導覽（地圖下方） */
-  .code-nav { display:grid; grid-template-columns:repeat(auto-fill, minmax(215px, 1fr)); gap:8px; margin-top:12px; }
+  .code-nav { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(215px, 100%), 1fr)); gap:8px; margin-top:12px; }
   .code-nav .cn { display:grid; grid-template-columns:28px auto minmax(0, 1fr); grid-template-rows:auto auto; column-gap:9px; row-gap:0; align-items:center; text-align:left; background:var(--panel); border:1.5px solid var(--line); border-radius:11px; padding:7px 11px 8px; font-family:inherit; color:var(--ink); cursor:pointer; min-width:0; transition:border-color .15s, background .15s; }
   .code-nav .cn:hover { border-color:var(--selline); background:var(--hover); }
   .code-nav .cn.on { border-color:var(--accent); background:var(--hl); box-shadow:0 0 0 2px var(--hl); }
@@ -401,7 +401,7 @@
   .office-group:first-child { margin-top:0; }
   .office-group > h3 { font-size:1.08rem; margin:0 0 14px; display:flex; gap:10px; align-items:center; }
   .office-group > h3 i { width:12px; height:12px; border-radius:3px; display:inline-block; }
-  .office-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px, 1fr)); gap:16px; align-items:start; }
+  .office-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap:16px; align-items:start; }
   .office { background:var(--panel); border:1.5px solid var(--line); border-top:4px solid var(--oc, var(--line)); border-radius:12px; padding:14px 18px 16px; display:grid; gap:8px; scroll-margin-top:80px; }
   .office.on { outline:3px solid var(--accent); outline-offset:2px; }
   .office-head { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
@@ -432,7 +432,7 @@
   .map .opin.on rect { fill:var(--hover); stroke:var(--accent); }
 
   /* 其他國家與單位 */
-  .cover-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:18px; align-items:start; }
+  .cover-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:18px; align-items:start; }
   .cover { background:var(--panel); border:1.5px solid var(--line); border-radius:14px; overflow:hidden; }
   .cover-head { display:flex; gap:14px; align-items:center; padding:14px 18px; background:var(--stripe); border-bottom:1.5px solid var(--line); }
   .cover-head b { display:block; font-size:1.02rem; }
@@ -506,7 +506,7 @@
   .chain-group { display:grid; grid-template-columns:9em minmax(0, 1fr); gap:6px 14px; align-items:center; background:var(--stripe); border:1px dashed var(--line); border-radius:10px; padding:10px 14px; }
   .chain-group b { font-size:.92rem; }
   .chain-group small { grid-column:2; color:var(--mute); font-size:.78rem; }
-  .pcards { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px; align-items:start; }
+  .pcards { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap:18px; align-items:start; }
   .pcard { background:var(--panel); border:1.5px solid var(--line); border-top:4px solid var(--pc, var(--line)); border-radius:12px; padding:16px 18px; display:grid; gap:10px; min-width:0; }
   .pc-up { --pc:var(--r-pa); }
   .pc-fam { --pc:var(--r-emea); }
@@ -540,7 +540,7 @@
   .onode.hq .clogo { background:#fff; border-radius:3px; padding:1px 4px; box-sizing:content-box; }
   .initial { width:60px; height:60px; border-radius:50%; display:grid; place-items:center; font-family:var(--font-head); font-size:1.8rem; font-weight:700; color:#fff; background:var(--cc, var(--navy)); flex:none; }
   .initial.sm { width:30px; height:30px; font-size:.95rem; margin-right:10px; }
-  .facts { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin:0; }
+  .facts { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap:12px; margin:0; }
   .facts > div { background:var(--panel); border:1.5px solid var(--line); border-radius:10px; padding:10px 14px; }
   .facts dt { color:var(--mute); font-size:.8rem; }
   .facts dd { margin:3px 0 0; font-weight:700; line-height:1.5; }
@@ -578,7 +578,7 @@
   .otree .members i { font-style:normal; font-size:.72rem; color:var(--mute); margin-left:5px; }
   .elabel { font-size:.74rem; color:var(--mute); background:var(--card); border:1px solid var(--line); border-radius:999px; padding:0 10px; margin-bottom:6px; white-space:nowrap; position:relative; z-index:1; }
   /* 主要業務 */
-  .biz { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:16px; }
+  .biz { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap:16px; }
   .bz { background:var(--panel); border:1.5px solid var(--line); border-radius:12px; padding:16px 18px; display:grid; gap:6px; align-content:start; }
   .bz .pi { width:40px; height:40px; border-radius:11px; display:grid; place-items:center; background:var(--hover); color:var(--primary); border:1.5px solid var(--line); margin-bottom:4px; }
   .bz p { margin:0; color:var(--mute); font-size:.88rem; line-height:1.6; }
@@ -717,7 +717,7 @@
   .sop ol { list-style:none; margin:8px 0 0; padding:0; }
   .sop li { display:grid; grid-template-columns:2.8em minmax(0, 1fr); gap:6px; padding:7px 0; border-top:1px dashed var(--line); }
   .sop li > span:first-child { color:var(--accent); font-weight:700; }
-  .cats { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:8px; }
+  .cats { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap:8px; }
   .cats div { background:var(--panel); border:1.5px solid var(--line); border-radius:8px; padding:6px 12px; font-size:.88rem; }
   .label { background:var(--panel); border:2px solid var(--navy); border-radius:12px; box-shadow:5px 5px 0 var(--r-pap2); padding:16px 20px; }
   .label-top { display:flex; justify-content:space-between; font-size:.74rem; letter-spacing:.14em; color:var(--mute); border-bottom:1.5px dashed var(--line); padding-bottom:6px; }
@@ -757,7 +757,7 @@
   .swatch { display:inline-block; width:12px; height:12px; border-radius:3px; background:var(--hl); border:1px solid var(--field); vertical-align:-1px; margin-right:6px; }
 
   /* HSN */
-  .hsn-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; }
+  .hsn-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(200px, 100%), 1fr)); gap:12px; }
   .hsn { background:var(--panel); border:1.5px solid var(--line); border-left:5px solid var(--r-pap); border-radius:10px; padding:10px 14px; display:grid; gap:2px; }
   .hsn.plan { border-left-color:var(--r-pa); }
   .hsn.evalu { border-left-color:var(--r-emea); }
@@ -1186,14 +1186,14 @@
   .steps p { margin:4px 0 0; font-size:.95rem; line-height:1.6; }
   .steps small { display:block; color:var(--mute); margin-top:4px; font-size:.84rem; }
   /* 並排比較卡片 */
-  .compare { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin:0; }
+  .compare { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap:14px; margin:0; }
   .compare > div { background:var(--panel); border:1.5px solid var(--ch-line); border-top:5px solid var(--ch); border-radius:12px; padding:14px 16px 16px; min-width:0; }
   .compare > div > b { display:block; font-family:var(--font-head); font-size:1.18rem; color:var(--ch-ink); margin-bottom:10px; }
   .compare ul { margin:0; padding-left:1.15em; display:grid; gap:7px; line-height:1.6; }
   .compare li > b { color:var(--ch-ink); }
   .compare li::marker { color:var(--ch); }
   /* 縮寫索引：小卡片格子 */
-  #ab-groups .acc { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:10px; }
+  #ab-groups .acc { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap:10px; }
   .abc { background:var(--panel); border:1.5px solid var(--ch-line); border-left:5px solid var(--ch); border-radius:12px; min-width:0; }
   .abc > summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:minmax(0, 1fr) auto; grid-template-areas:"k s" "f f" "z z" "d d" "u u"; gap:2px 8px; padding:10px 14px 11px; }
   .abc > summary::-webkit-details-marker { display:none; }
@@ -2128,6 +2128,9 @@
   html[data-lang="bi"] .ftitle > .bi-zh { font-size:.74em; margin-top:.15em; }
   .ia-pn { margin-right:.35em; }
   html[data-lang="bi"] .tabs button .bi-en > .emo { margin-right:.45em; }
+  /* 中英對照時，小標籤可以換行，中文排在英文下面 */
+  html[data-lang="bi"] .tagl { white-space:normal; display:inline-block; max-width:100%; border-radius:10px; }
+  html[data-lang="bi"] .tagl.bi-inl > .bi-zh, html[data-lang="bi"] .tagl > .bi-zh { display:block; margin-left:0; }
   /* <<< 導覽 */
   /* >>> 縮寫字典、待確認、縮寫全稱 */
   .ab-gloss { color:var(--mute); font-size:.92em; }
@@ -2176,6 +2179,8 @@
     .abt td.abt-k > .tl { display:none; }
   }
   @media (max-width:600px) { .abt td > .tl { flex-basis:6em; } .ab-az button { min-width:1.9em; height:1.9em; font-size:.76rem; } }
+  .tbc { max-width:100%; }
+  @media (max-width:600px) { .tbc { white-space:normal; flex-wrap:wrap; } }
   /* <<< 縮寫字典 */
   /* >>> 圖表分類、案例、生效日期、組織線 */
   .dg-tag { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 8px; }
@@ -4359,7 +4364,7 @@
     {"id":"ro","keys":["RO"],"code":"RO","full":"Regional Office","zh":"區域辦公室","en":null,"src":"m","cat":"org","dzh":"區域辦公室。Acer 現行四大區域（PA、EMEA、PAP、ACCN）各設 RO，例如 PA RO、EMEA RO；合併前原有五個 RO，2010 年以前各自獨立運作。文中的 RO 均指泛亞太區的 PAP RO：依總部 QSBU 的規劃執行採購與營運，職能包括備品規劃與下單、採購／成本／庫存檢視、每月報告、中央倉管理、RMA、中央備品規劃、服務中心與客服中心支援、客戶滿意度。RO 是唯一四套系統（PLM、PLS、GLS、CSS）都用的單位，PLS 只有 RO 使用。QSBU 把 SPL 發給各 RO；料號第 6 碼就是 RO 代碼。","den":"Regional office. Each of Acer's four current regions (PA, EMEA, PAP, ACCN) has an RO, such as PA RO or EMEA RO; before the merger there were five ROs, which ran independently before 2010. On this site, RO means PAP RO for Pan Asia Pacific: it carries out purchasing and operations on the plan set by QSBU at headquarters, covering spare-parts planning and ordering, PO/cost/inventory review, the monthly report, central warehouse management, RMA, central spare-parts planning, service and call centre support, and customer satisfaction. The RO is the only unit that uses all four systems (PLM, PLS, GLS, CSS), and only the RO uses PLS. QSBU releases the SPL to the ROs; the 6th character of a part number is the RO code.","cc":null,"region":null,"org":"PAP","urls":[],"vs":"internal"},
     {"id":"gm","keys":["GM"],"code":"GM","full":"General Manager","zh":"總經理","en":null,"src":"s","cat":"role","dzh":"總經理。PAP 之 GM 為 Andrew Hou；Jacky Lin 兼任 HSN Group GM。","den":"General manager. PAP's GM is Andrew Hou; Jacky Lin also serves as GM of HSN Group.","cc":null,"region":null,"org":null,"urls":[],"vs":"standard"},
     {"id":"avp","keys":["AVP"],"code":"AVP","full":"Assistant Vice President","zh":"協理","en":null,"src":"s","cat":"role","dzh":"協理。Jacky Lin 為 Service 部門 AVP，並兼任 HSN Group GM。","den":"Assistant vice president. Jacky Lin is AVP of Service and also GM of HSN Group.","cc":null,"region":null,"org":null,"urls":[],"vs":"standard"},
-    {"id":"csd","keys":["CSD"],"code":"CSD","full":null,"zh":"總部客服單位","en":"HQ customer-service unit","src":"p","cat":"role","dzh":"Acer 總部的客服單位，負責 PAP 服務據點統計；在 SPL 流程中與 QSBU 同一泳道（QSBU/CSD），也是 B/S 料件的總部採購來源（ACER/HQ/CSD）。一般讀作 Customer Service Division。","den":"Acer HQ's customer-service unit. It compiles the PAP service-site statistics, shares the SPL-flow lane with QSBU (QSBU/CSD) and is the HQ purchase source for B/S parts (ACER/HQ/CSD). It is usually read as Customer Service Division.","cc":null,"region":null,"org":"Acer","urls":[],"vs":"single"},
+    {"id":"csd","keys":["CSD"],"code":"CSD","full":null,"zh":"總部客服單位","en":"HQ customer-service unit","src":"p","cat":"role","dzh":"Acer 總部的客服單位，負責 PAP 服務據點統計；在 SPL 流程中與 QSBU 同一泳道（QSBU/CSD），也是 B/S 料件的總部採購來源（ACER/HQ/CSD）。英文全稱待確認。","den":"Acer HQ's customer-service unit. It compiles the PAP service-site statistics, shares the SPL-flow lane with QSBU (QSBU/CSD) and is the HQ purchase source for B/S parts (ACER/HQ/CSD). Its full name is to be confirmed.","cc":null,"region":null,"org":"Acer","urls":[],"vs":"single"},
     {"id":"asp","keys":["ASP"],"code":"ASP","full":"Authorised Service Provider","zh":"授權服務商","en":null,"src":"m","cat":"site","dzh":"經 Acer 授權之外部服務商，主要提供收件（收機）服務，不一定具備維修能力。Q2 2025 PAP 全區共 507 家，以印度 126 家、泰國 109 家、印尼 91 家最多。ASP 使用 PLM 與 CSS。","den":"An external provider authorised by Acer that mainly takes in units and may not be able to repair them. PAP had 507 in Q2 2025, led by India (126), Thailand (109) and Indonesia (91). ASPs use PLM and CSS.","cc":null,"region":null,"org":null,"urls":[],"vs":"internal"},
     {"id":"wh","keys":["W/H"],"code":"W/H","full":"Warehouse","zh":"倉庫","en":null,"src":"s","cat":"site","dzh":"倉庫。PAP 設有 11 個倉庫：10 家國家子公司各一，加上紐西蘭（ACNZ）；香港（AFE）未設倉庫。ODM 把貨交到最近的中央倉。中央倉管理（Central W/H management）為 RO 職能（二）之一。","den":"Warehouse. PAP has 11 warehouses: one for each of 10 nation subsidiaries plus New Zealand (ACNZ); Hong Kong (AFE) has none. and the ODM delivers to the nearest central warehouse. Central warehouse management is one of the RO's functions (II).","cc":null,"region":null,"org":null,"urls":[],"vs":"standard"},
     {"id":"uniload","keys":["Uni-load","Uni-Load","UL"],"code":"Uni-load","full":null,"zh":"當地產線／組裝廠","en":"Local production line / assembly plant","src":"m","cat":"term","dzh":"在地組裝：於當地設有產線或組裝廠，主要用於滿足當地規格要求（多為標案）。若 ODM 整機成本高於標價，便向 ODM 購買半成品（主機板、螢幕），並於當地採購 SSD、HDD 組裝以達成本要求，例如澳洲。設有 Uni-load 之國家：澳洲、印度、馬來西亞、泰國、印尼、新加坡；印尼組裝廠代碼為 AMI。","den":"Local assembly: a local production or assembly line, mainly to meet local specification requirements (mostly tenders). If the ODM's finished-goods cost exceeds the tender price, it buys semi-finished parts (mainboard, screen) from the ODM and sources SSDs and HDDs locally to hit the cost, as in Australia. Australia, India, Malaysia, Thailand, Indonesia and Singapore have Uni-load; the Indonesian assembly company is AMI.","cc":null,"region":null,"org":null,"urls":[],"vs":"internal"},
@@ -5127,7 +5132,7 @@
     nodes.forEach(function (n) {
       var langEl = n.parentElement.closest(".zh, .en");
       var langs = langEl ? [langEl.classList.contains("en") ? "en" : "zh"] : ["zh", "en"];
-      var canGloss = langEl && !n.parentElement.closest(GLOSS_SKIP), blk = canGloss ? n.parentElement.closest("p, li, dd, blockquote") || n.parentElement : null;
+      var canGloss = langEl && !n.parentElement.closest(GLOSS_SKIP) && !/nowrap|pre/.test(getComputedStyle(n.parentElement).whiteSpace), blk = canGloss ? n.parentElement.closest("p, li, dd, blockquote") || n.parentElement : null;
       var s = n.nodeValue, m, last = 0, frag = null;
       AB_RE.lastIndex = 0;
       while ((m = AB_RE.exec(s))) {
