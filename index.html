@@ -942,7 +942,9 @@
   .org-stage.drag svg { cursor:grabbing; }
   .org-tools { display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:8px 10px; margin-bottom:8px; background:var(--stripe); border:1.5px solid var(--line); border-radius:12px; }
   .org-views { display:inline-flex; border:1.5px solid var(--line); border-radius:999px; overflow:hidden; background:var(--panel); }
-  .org-tools .org-views button { width:auto; height:34px; border:0; border-radius:0; padding:0 14px; background:none; font-weight:700; color:var(--mute); }
+  .org-tools .org-views button { width:auto; height:auto; min-height:34px; border:0; border-radius:0; padding:4px 14px; background:none; font-weight:700; color:var(--mute); line-height:1.25; }
+  html[data-lang="bi"] .org-tools .org-views button > :is(.bi-en, .bi-zh) { display:inline; margin-top:0; }
+  html[data-lang="bi"] .org-tools .org-views button > .bi-zh { margin-left:.35em; font-size:.82em; }
   .org-tools .org-views button[aria-selected="true"] { background:var(--ch); color:#fff; }
   .org-tools select { height:34px; border-radius:999px; border:1.5px solid var(--line); background:var(--panel); font-family:inherit; font-size:.84rem; color:var(--ink); padding:0 10px; max-width:220px; }
   .org-tools button { width:34px; height:34px; border-radius:50%; border:1.5px solid var(--line); background:var(--panel); font-family:inherit; font-size:1.1rem; font-weight:700; color:var(--ink); cursor:pointer; box-shadow:0 2px 6px rgba(40,40,30,.08); }
@@ -3180,7 +3182,7 @@
         </div>
         <div class="seg" id="ab-cats"></div>
         <nav class="ab-az" id="ab-az" aria-label="A–Z"></nav>
-        <div class="tbl abt-wrap"><table class="abt" id="abt"><thead><tr><th><span class="zh">縮寫</span><span class="en">Abbreviation</span></th><th><span class="zh">英文全稱</span><span class="en">Full English Name</span></th><th><span class="zh">中文名稱</span><span class="en">Chinese Name</span></th><th><span class="zh">說明</span><span class="en">Explanation</span></th><th><span class="zh">相關章節</span><span class="en">Related Topics</span></th></tr></thead><tbody id="abt-body"></tbody></table></div>
+        <div class="tbl abt-wrap"><table class="abt" id="abt"><thead><tr><th><span class="zh">縮寫</span><span class="en">Abbreviation</span></th><th><span class="zh">英文全稱</span><span class="en">Full English Name</span></th><th><span class="zh">中文名稱</span><span class="en">Chinese Name</span></th><th><span class="zh">詳細說明</span><span class="en">Detailed Explanation</span></th><th><span class="zh">相關章節</span><span class="en">Related Topics</span></th></tr></thead><tbody id="abt-body"></tbody></table></div>
         <p class="ab-empty" id="ab-empty" hidden></p>
       </div>
       </section>
