@@ -2157,7 +2157,7 @@
   .side .sd-ch ol button:hover { background:rgba(255,255,255,.09); }
   .side .sd-ch ol button.active { background:rgba(255,255,255,.15); color:#fff; box-shadow:inset 3px 0 0 var(--ch); }
   .side .sd-ch ol button.active .n { color:var(--gold); }
-  .side .sd-ch ol { border-left:1.5px solid rgba(255,255,255,.16); margin-left:21px; padding:2px 0 8px 10px; }
+  .side .sd-ch ol { border-left:1.5px solid rgba(255,255,255,.16); margin-left:14px; padding:2px 0 8px 10px; }
   html[data-lang="bi"] .side .sd .tt > .bi-zh { opacity:.78; }
   /* <<< 導覽 */
   /* >>> 縮寫字典、待確認、縮寫全稱 */
@@ -2317,7 +2317,7 @@
     </div>
     <div class="ctl">
       <div class="gs gs-hdr" role="search"><input type="search" id="gs-in" data-ph-zh="搜尋全站" data-ph-en="Search the site" placeholder="Search the site" aria-label="Search the site / 搜尋全站" autocomplete="off"><div class="gs-out" data-nobi hidden></div></div>
-      <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="bi">EN + 中文</option><option value="en" lang="en">English</option><option value="zh" lang="zh-Hant">中文</option></select>
+      <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="en" lang="en">English</option><option value="zh" lang="zh-Hant">中文</option></select>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
       <select id="theme-sel" title="Theme / 主題"><option value="earth" data-zh="土色" data-en="Earth">土色</option><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option></select>
     </div>
@@ -3359,8 +3359,8 @@
   // 側邊欄（寬螢幕）：全部章節，目前這一章展開各節
   $("side").innerHTML = '<nav class="sd">' + NAV.map(function (p) {
     if (p.home) return '<button type="button" class="sd-home" data-go="' + p.id + '"><span class="n" aria-hidden="true">' + p.emoji + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button>";
-    return (p.app === "A" ? '<p class="sd-sep">' + B("附錄", "Appendices") + "</p>" : "") + '<div class="sd-ch" data-p="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><button type="button" class="sd-t" data-go="' + p.id + '"><span class="n">' + chNum(p) + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button><ol>" +
-      p.subs.map(function (s) { return '<li><button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + '</span><span class="tt">' + B(s[1], s[2]) + "</span></button></li>"; }).join("") + "</ol></div>";
+    return (p.app === "A" ? '<p class="sd-sep">' + B("附錄", "Appendices") + "</p>" : "") + '<div class="sd-ch" data-p="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><button type="button" class="sd-t" data-go="' + p.id + '"><span class="tt">' + B(p.zh, p.en) + "</span></button><ol>" +
+      p.subs.map(function (s) { return '<li><button type="button" data-go="' + s[0] + '"><span class="tt">' + B(s[1], s[2]) + "</span></button></li>"; }).join("") + "</ol></div>";
   }).join("") + "</nav>";
   function sideMark(pid, sid) {
     $$("#side .sd-ch").forEach(function (c) { c.classList.toggle("on", c.getAttribute("data-p") === pid); });
@@ -3572,12 +3572,12 @@
   function orgDefaultView() { if (window.innerWidth < 600 && orgView === "org") orgHome(); else orgFit(); }
   function orgShow() { if (!ORG) return; orgRender(); requestAnimationFrame(function () { orgDefaultView(); if (orgSel) orgSelect(orgSel); }); }
   function setLang(l) {
-    LANG = l === "en" || l === "zh" ? l : "bi";
+    LANG = l === "zh" ? "zh" : "en";
     root.setAttribute("data-lang", LANG);
     root.setAttribute("lang", LANG === "zh" ? "zh-Hant" : "en");
     $("lang-sel").value = LANG;
-    $$("option[data-zh]").forEach(function (o) { o.textContent = LANG === "bi" ? o.getAttribute("data-en") + " · " + o.getAttribute("data-zh") : o.getAttribute("data-" + LANG); });
-    $$("[data-ph-zh]").forEach(function (el) { el.placeholder = LANG === "bi" ? el.getAttribute("data-ph-en") + " · " + el.getAttribute("data-ph-zh") : el.getAttribute("data-ph-" + LANG); });
+    $$("option[data-zh]").forEach(function (o) { o.textContent = o.getAttribute("data-" + LANG); });
+    $$("[data-ph-zh]").forEach(function (el) { el.placeholder = el.getAttribute("data-ph-" + LANG); });
     store.set("pap.lang2", LANG);
     if (typeof crumbAll === "function") crumbAll();
     gsRefresh();
@@ -5730,7 +5730,7 @@
   /* ---------- 啟動 ---------- */
   setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
-  setLang(store.get("pap.lang2") || "bi");
+  setLang(store.get("pap.lang2") || "en");
   $$("main .page").forEach(function (pg) { if (!pg.querySelector(".subbody > .pager") || pg.id === "page-dict") return; abbrPanel(pg); relTopics(pg); });
   $$("main .page").forEach(linkAbbr);
   renderAbbr();
