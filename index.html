@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Acer · PAP Service Logistics</title>
+<title>ACER PAP SERVICE LOGISTICS</title>
 <meta name="description" content="PAP 服務物流組織與作業介紹：組織、服務據點、HSN 集團、作業流程、料號規則、代碼與縮寫（中英對照）。">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -1072,7 +1072,7 @@
   .home-site { margin-top:40px; }
   html[data-font] .intro-sec > h3.home-big { font-size:2.5rem; font-weight:800; letter-spacing:.12em; margin:0 auto 18px; display:block; width:fit-content; padding:4px 26px 6px; background:var(--hl); border-radius:12px; color:var(--navy); }
   .home-site .home-panel .toc-sum:empty { display:none; }
-  @media (max-width:600px) { .subbody > .sub { padding:20px 14px 22px; } .subnav { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; } .home-ns .ns-key.code-nav { grid-template-columns:minmax(0, 1fr); } html[data-font] .intro-sec > h3.home-big { font-size:1.9rem; } .home-panel { padding:20px 14px 22px; } }
+  @media (max-width:600px) { .subbody > .sub { padding:20px 14px 22px; } .subnav .sn-row { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; } .home-ns .ns-key.code-nav { grid-template-columns:minmax(0, 1fr); } html[data-font] .intro-sec > h3.home-big { font-size:1.9rem; } .home-panel { padding:20px 14px 22px; } }
 
   .home-head { padding:6px 4px 0; margin-bottom:16px; }
   .home-head .eyebrow { margin:0 0 6px; }
@@ -2010,6 +2010,125 @@
     .subbody > .sub > .lead, .subbody > .sub > div[data-noabbr] > .lead { font-size:1rem; line-height:1.7; }
   }
   /* <<< 手機字級 */
+  /* >>> 導覽：搜尋、側邊欄、麵包屑、首頁 */
+  /* 子頁導覽列：上面一行麵包屑，下面一排各節按鈕 */
+  .subnav { display:block; }
+  .subnav .sn-row { display:flex; flex-wrap:wrap; gap:8px; }
+  .subnav .crumb { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 7px; margin:0 0 9px; font-size:.8rem; color:var(--mute); line-height:1.4; }
+  .subnav .crumb button { background:none; border:0; padding:0; font:inherit; color:var(--ch-ink); cursor:pointer; text-decoration:underline dotted; text-underline-offset:3px; }
+  .subnav .crumb button:hover { color:var(--ch); }
+  .subnav .crumb i { font-style:normal; opacity:.7; }
+  .subnav .crumb span { color:var(--ink); font-weight:700; }
+  @media (max-width:600px) { .subnav .crumb { font-size:.7rem; margin-bottom:6px; } }
+  /* 標題列搜尋 */
+  .gs { position:relative; }
+  .gs input { font:inherit; color:var(--ink); background:var(--panel); border:1.5px solid var(--line); border-radius:999px; padding:6px 14px 6px 34px; width:100%; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23857a6a' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cpath d='M15.5 15.5 21 21'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:11px 50%; background-size:16px; }
+  .gs input:focus { outline:2px solid var(--accent); outline-offset:1px; }
+  .hdr .gs-hdr { width:clamp(180px, 24vw, 300px); }
+  .hdr .gs-hdr input { padding-top:4px; padding-bottom:4px; font-size:.85rem; border-color:var(--selline); }
+  .gs-out { position:absolute; top:calc(100% + 6px); right:0; z-index:80; width:min(580px, calc(100vw - 24px)); max-height:min(72vh, 600px); overflow:auto; background:var(--card); color:var(--ink); border:1.5px solid var(--line); border-radius:14px; box-shadow:0 18px 40px rgba(40,40,30,.22); padding:6px; text-align:left; letter-spacing:normal; text-transform:none; font-weight:400; }
+  .gs-big .gs-out { left:0; right:auto; width:100%; }
+  .gs-n { margin:4px 8px 6px; font-size:.78rem; color:var(--mute); }
+  .gs-r { display:grid; grid-template-columns:auto minmax(0, 1fr); column-gap:10px; row-gap:1px; width:100%; text-align:left; background:none; border:0; border-top:1px dashed var(--line); padding:8px 8px 9px; font:inherit; color:var(--ink); cursor:pointer; border-radius:8px; }
+  .gs-r:hover, .gs-r:focus { background:var(--hover); outline:none; }
+  .gs-r .gs-k { grid-row:1 / span 3; align-self:start; min-width:3.2em; text-align:center; padding:1px 6px; border-radius:999px; background:var(--ch-bg, var(--stripe)); color:var(--ch-ink, var(--navy)); border:1px solid var(--ch, var(--line)); font-family:var(--font-mono); font-size:.72rem; font-weight:700; }
+  .gs-r b { font-size:.95rem; line-height:1.35; }
+  .gs-r b small { font-weight:400; color:var(--mute); font-size:.82em; margin-left:4px; }
+  .gs-r .gs-path { font-size:.74rem; color:var(--mute); }
+  .gs-r .gs-snip { font-size:.8rem; color:var(--mute); line-height:1.5; }
+  .gs-r mark { background:color-mix(in srgb, var(--gold) 55%, transparent); color:inherit; border-radius:3px; padding:0 1px; }
+  .gs-ab .gs-k { background:var(--stripe); color:var(--navy); border-color:var(--line); }
+  @keyframes gsflash { 0%, 60% { box-shadow:0 0 0 4px color-mix(in srgb, var(--gold) 70%, transparent); } 100% { box-shadow:0 0 0 0 transparent; } }
+  .gs-flash { animation:gsflash 1.8s ease-out; border-radius:12px; }
+  @media (max-width:760px) {
+    .hdr .ctl { width:100%; }
+    .hdr .gs-hdr { order:-1; flex:1 1 100%; width:auto; }
+    .hdr .gs-hdr .gs-out { left:0; right:0; width:auto; }
+  }
+  /* 側邊欄（寬螢幕）；窄螢幕仍用上方分頁 */
+  .side { display:none; }
+  @media (min-width:1100px) {
+    .shell { display:grid; grid-template-columns:252px minmax(0, 1fr); align-items:start; }
+    .side { display:block; position:sticky; top:0; max-height:100vh; overflow-y:auto; padding:16px 4px 28px max(12px, env(safe-area-inset-left, 0px)); scrollbar-width:thin; }
+    .shell-main > .tabs { display:none; }
+    .shell-main > .card { margin-top:16px; margin-left:12px; border-radius:16px 14px 15px 13px / 14px 16px 13px 15px !important; }
+  }
+  .sd { display:grid; gap:4px; }
+  .sd button { display:flex; align-items:baseline; gap:8px; width:100%; text-align:left; background:none; border:0; font:inherit; color:var(--ink); cursor:pointer; border-radius:10px; }
+  .sd .n { font-family:var(--font-mono); font-weight:700; flex:none; }
+  .sd-home { padding:7px 10px; font-weight:700; }
+  .sd-home.active, .sd-home:hover { background:var(--hover); }
+  .sd-sep { margin:12px 10px 2px; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); font-weight:700; }
+  .sd-ch { border-radius:12px; }
+  .sd-t { padding:7px 10px; font-weight:700; font-size:.93rem; }
+  .sd-t .n { min-width:2.1em; text-align:center; padding:0 4px; border-radius:7px; background:var(--ch-bg); color:var(--ch-ink); border:1.5px solid var(--ch); font-size:.74rem; }
+  .sd-t:hover { background:var(--ch-bg); }
+  .sd-ch.on { background:var(--ch-bg); border:1.5px solid color-mix(in srgb, var(--ch) 45%, transparent); }
+  .sd-ch.on .sd-t { color:var(--ch-ink); }
+  .sd-ch.on .sd-t .n { background:var(--ch); color:#fff; }
+  .sd-ch ol { display:none; list-style:none; margin:0; padding:0 6px 8px 14px; }
+  .sd-ch.on ol { display:grid; gap:1px; }
+  .sd-ch ol button { padding:4px 8px; font-size:.84rem; line-height:1.35; }
+  .sd-ch ol .n { font-size:.7rem; color:var(--mute); min-width:2.4em; }
+  .sd-ch ol button:hover { background:var(--panel); }
+  .sd-ch ol button.active { background:var(--panel); color:var(--ch-ink); font-weight:700; box-shadow:inset 3px 0 0 var(--ch); }
+  .sd-ch ol button.active .n { color:var(--ch); }
+  html[data-lang="bi"] .sd .tt.bi-inl > .bi-zh, html[data-lang="bi"] .sd .tt > .bi-zh { display:block; margin-left:0; font-size:.8em; font-weight:400; opacity:.85; }
+  html[data-lang="bi"] .sd .tt > .bi-en { display:block; }
+  /* 首頁 */
+  .home-head .gs-big { margin-top:18px; max-width:720px; }
+  .home-head .gs-big input { padding:11px 16px 11px 40px; font-size:1rem; background-position:13px 50%; background-size:18px; border-width:2px; }
+  .home-quick { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .home-note { text-align:center; color:var(--mute); font-size:.88rem; margin:-10px auto 22px; max-width:760px; line-height:1.7; }
+  .home-sub { margin:34px 0 22px; text-align:center; font-family:var(--font-head); font-size:1.08rem; color:var(--ink); }
+  .toc.toc-app { grid-template-columns:repeat(2, minmax(0, 1fr)); padding-top:22px; }
+  .ia-row { display:flex; align-items:stretch; gap:0; }
+  .ia-col { flex:1 1 0; min-width:0; display:flex; flex-direction:column; gap:8px; padding:12px 10px 14px; border:1.5px solid var(--line); border-radius:14px; background:var(--panel); }
+  .ia-h { margin:0 0 4px; font-weight:700; font-size:.86rem; color:var(--ink); display:flex; align-items:baseline; gap:7px; }
+  .ia-pn { flex:none; width:1.6em; height:1.6em; border-radius:50%; display:inline-grid; place-items:center; background:var(--navy); color:var(--gold); font-family:var(--font-mono); font-size:.72rem; }
+  .ia-arr { flex:0 0 30px; align-self:center; height:0; border-top:2px dashed var(--mute); position:relative; margin:0 4px; }
+  .ia-arr::after { content:""; position:absolute; right:-2px; top:-6px; border:5px solid transparent; border-left:8px solid var(--mute); border-right:0; }
+  .ia-ch { display:flex; align-items:baseline; gap:8px; text-align:left; width:100%; padding:8px 10px; border:1.5px solid var(--ch); border-radius:10px; background:var(--ch-bg); color:var(--ch-ink); font:inherit; font-size:.88rem; font-weight:700; cursor:pointer; }
+  .ia-ch:hover { background:var(--card); }
+  .ia-ch .n { font-family:var(--font-mono); font-size:.74rem; color:var(--ch); flex:none; }
+  .ia-app { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:16px; padding:10px 12px; border:1.5px dashed var(--line); border-radius:14px; }
+  .ia-app .ia-h { margin:0 6px 0 0; }
+  .ia-app .ia-ch { width:auto; }
+  html[data-lang="bi"] .ia-ch .tt > .bi-zh, html[data-lang="bi"] .hg-topics .tt > .bi-zh { display:block; margin-left:0; font-size:.82em; font-weight:400; }
+  html[data-lang="bi"] .ia-ch .tt > .bi-en, html[data-lang="bi"] .hg-topics .tt > .bi-en { display:block; }
+  .hg-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px; }
+  .hg-card { background:var(--panel); border:1.5px solid var(--line); border-radius:16px; padding:16px 18px 18px; min-width:0; }
+  .hg-card h4 { margin:0 0 6px; font-size:1.05rem; }
+  .hg-card > p { margin:0 0 12px; color:var(--mute); font-size:.86rem; line-height:1.6; }
+  .hg-ab { display:flex; gap:8px; flex-wrap:wrap; }
+  .hg-ab input { flex:1 1 180px; min-width:0; font:inherit; padding:7px 12px; border:1.5px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink); }
+  .hg-topics ol, .hg-card ol { list-style:none; margin:0; padding:0; display:grid; gap:2px; }
+  .hg-card ol button { display:flex; align-items:baseline; gap:9px; width:100%; text-align:left; background:none; border:0; border-top:1px dashed var(--line); padding:6px 2px; font:inherit; font-size:.9rem; color:var(--ink); cursor:pointer; }
+  .hg-card ol button:hover { color:var(--ch-ink); }
+  .hg-card ol .n { font-family:var(--font-mono); font-size:.74rem; font-weight:700; color:var(--ch); min-width:2.6em; flex:none; }
+  @media (max-width:900px) {
+    .ia-row { flex-direction:column; }
+    .ia-arr { flex:0 0 26px; align-self:center; width:0; height:26px; border-top:0; border-left:2px dashed var(--mute); margin:2px 0; }
+    .ia-arr::after { right:auto; left:-7px; top:auto; bottom:-2px; border:5px solid transparent; border-top:8px solid var(--mute); border-bottom:0; }
+    .hg-grid { grid-template-columns:minmax(0, 1fr); }
+  }
+  @media (max-width:600px) {
+    .toc.toc-app { grid-template-columns:minmax(0, 1fr); }
+    .home-head .gs-big input { font-size:.9rem; padding:9px 12px 9px 36px; }
+    .home-note { font-size:.8rem; }
+    .hg-card { padding:12px 14px 14px; }
+  }
+  /* 子頁按鈕：中英同一行（中文較小），按鈕列不會太高；手機上橫向捲動 */
+  html[data-lang="bi"] .subnav .sn-row button > span.bi-blk > :is(.bi-en, .bi-zh) { display:inline; }
+  html[data-lang="bi"] .subnav .sn-row button > span.bi-blk > .bi-zh { margin-left:.4em; font-size:.82em; }
+  @media (max-width:1099px) { .subnav .sn-row { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; } }
+  @media (min-width:1100px) { .subnav { position:static; } }
+  /* 首頁章節卡標題：英文一行、中文在下 */
+  html[data-lang="bi"] .ftitle > :is(.bi-en, .bi-zh) { display:block; margin-left:0; }
+  html[data-lang="bi"] .ftitle > .bi-zh { font-size:.74em; margin-top:.15em; }
+  .ia-pn { margin-right:.35em; }
+  html[data-lang="bi"] .tabs button .bi-en > .emo { margin-right:.45em; }
+  /* <<< 導覽 */
   /* >>> 中英對照 */
   /* 預設「EN + 中文」：英文在上、字較大；中文在下、字較小。行內小元件（按鈕、標籤）中英並排，中間留空。 */
   html[data-lang="bi"] .bi-dup { display:none !important; }
@@ -2041,10 +2160,10 @@
 <body>
   <header class="hdr">
     <div class="brand">
-      <h1>Acer · PAP Service Logistics</h1>
-      <div class="sub"><span class="zh">認識 Acer 與泛亞太區服務物流</span><span class="en">Acer and its Pan Asia Pacific service logistics</span></div>
+      <h1>ACER PAP SERVICE LOGISTICS</h1>
     </div>
     <div class="ctl">
+      <div class="gs gs-hdr" role="search"><input type="search" id="gs-in" data-ph-zh="搜尋全站" data-ph-en="Search the site" placeholder="Search the site" aria-label="Search the site / 搜尋全站" autocomplete="off"><div class="gs-out" data-nobi hidden></div></div>
       <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="bi">EN + 中文</option><option value="en" lang="en">English</option><option value="zh" lang="zh-Hant">中文</option></select>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
       <select id="theme-sel" title="Theme / 主題"><option value="earth" data-zh="土色" data-en="Earth">土色</option><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option></select>
@@ -2052,6 +2171,9 @@
   </header>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="sketch" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter><filter id="wobble-wet" x="-14%" y="-14%" width="128%" height="128%"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="21" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"></feDisplacementMap><feGaussianBlur in="d" stdDeviation="0.4"></feGaussianBlur></filter><filter id="wobble-damp" x="-14%" y="-14%" width="128%" height="128%"><feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="31" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="d"></feDisplacementMap><feGaussianBlur in="d" stdDeviation="0.25"></feGaussianBlur></filter><filter id="sketch2" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="1.1" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
+  <div class="shell">
+  <aside class="side" id="side" aria-label="Chapters / 章節"></aside>
+  <div class="shell-main">
   <nav class="tabs" id="tabs" role="tablist"></nav>
 
   <main class="card" id="main">
@@ -2059,43 +2181,48 @@
   <!-- 網站介紹 -->
   <section class="page single" id="page-intro">
     <div class="home-head">
-      <p class="eyebrow">Acer · Pan Asia Pacific · Service Logistics</p>
-      <h2 class="hero-title home-title"><span class="zh">認識 Acer 與泛亞太區服務物流</span><span class="en">Acer and its Pan Asia Pacific service logistics</span></h2>
+      <p class="eyebrow"><span class="zh">首頁</span><span class="en">Home</span></p>
+      <h2 class="hero-title home-title"><span class="zh">網站總覽</span><span class="en">Overview</span></h2>
       <p class="zh home-lead">宏碁（<a class="xlink" href="#corp-acer" data-go="corp-acer" title="宏碁 Acer">Acer</a>）是台灣的電腦品牌公司，總部（HQ）之下分為 PA、EMEA、PAP、ACCN 四大區域，各設區域辦公室（RO）；其中泛亞太區（PAP）由 TWN 與 AAP 合併而成。本網站從 Acer 與它的全球架構談起，再介紹服務零件怎麼分工：總部的 QSBU 規劃，泛亞太區區域辦公室（PAP RO）執行備品規劃、採購下單與庫存管理，各國子公司（NS）在當地提供服務。</p>
       <p class="en home-lead"><a class="xlink" href="#corp-acer" data-go="corp-acer" title="Acer">Acer</a> is a Taiwanese computer brand. Under its headquarters (HQ) are four regions, PA, EMEA, PAP and ACCN, each with a regional office (RO); Pan Asia Pacific (PAP) was formed by merging TWN and AAP. This site starts with Acer and its global structure, then shows how service parts are split: QSBU at headquarters plans, the Pan Asia Pacific regional office (PAP RO) carries out spare-parts planning, purchasing and inventory management, and the nation subsidiaries (NS) provide service locally.</p>
+      <div class="gs gs-big" role="search"><input type="search" id="gs-home" data-ph-zh="搜尋全站：章節、內文、縮寫" data-ph-en="Search the whole site: sections, text and acronyms" placeholder="Search the whole site: sections, text and acronyms" aria-label="Search the site / 搜尋全站" autocomplete="off"><div class="gs-out" data-nobi hidden></div></div>
+      <div class="home-quick">
+        <button class="btn" type="button" data-go="basics-logistics"><span class="zh">從第 1 章開始 →</span><span class="en">Start with Chapter 1 →</span></button>
+        <button class="btn" type="button" data-go="ref-terms"><span class="zh">縮寫字典 →</span><span class="en">Acronym Dictionary →</span></button>
+        <button class="btn" type="button" data-go="review-quiz"><span class="zh">複習測驗 →</span><span class="en">Review quiz →</span></button>
+      </div>
     </div>
-    <section class="home-acer">
-      <div class="ha-card ha-profile">
-        <span class="ha-logo"><img src="logos/acer.svg" alt="Acer"></span>
-        <div class="ha-id"><h3><span class="zh">宏碁 Acer</span><span class="en">Acer</span></h3><p class="ha-sub"><span class="zh">台灣的電腦品牌公司</span><span class="en">A Taiwanese computer brand</span></p><p class="note"><button class="btn sm" type="button" data-go="corp-acer"><span class="zh">認識 Acer →</span><span class="en">About Acer →</span></button></p></div>
-        <div class="ha-facts"><div class="hf"><span class="hf-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span class="hf-t"><small><span class="zh">創立</span><span class="en">Founded</span></small><b><span class="zh">1976 年 8 月 1 日</span><span class="en">1 August 1976</span></b></span></div><div class="hf"><span class="hf-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><rect x="5" y="3" width="10" height="18" rx="1"/><path d="M15 9h4v12M8.5 7h3M8.5 11h3M8.5 15h3"/></svg></span><span class="hf-t"><small><span class="zh">總部</span><span class="en">HQ</span></small><b><span class="zh">新北市汐止區</span><span class="en">Xizhi, New Taipei</span></b></span></div><div class="hf"><span class="hf-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/><path d="M15 8h4v4"/></svg></span><span class="hf-t"><small><span class="zh">股票代號</span><span class="en">Stock code</span></small><b>2353 <em class="hf-x"><span class="zh">臺灣證交所</span><span class="en">TWSE</span></em></b></span></div><div class="hf"><span class="hf-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.4"/></svg></span><span class="hf-t"><small><span class="zh">營運模式</span><span class="en">Model</span></small><b><span class="zh">OBM 自有品牌</span><span class="en">OBM · own brand</span></b></span></div></div>
-      </div>
-      
-    </section>
-    <h3 class="home-sec"><span class="zh">泛亞太區（PAP）與 11 個國家子公司</span><span class="en">Pan Asia Pacific (PAP) and its 11 nation subsidiaries</span></h3>
-    <section class="home-org" style="--ch:#3F9B6B;--ch-bg:#E8F4EC;--ch-ink:#276B47">
-      <h4 class="home-org-h"><span class="zh">PAP 組織圖（RO 與 NS）</span><span class="en">PAP organisation chart (RO and NS)</span></h4>
-      <p class="nst-swipe"><span class="zh">← 左右滑動可看完整組織圖 →</span><span class="en">← Swipe sideways to see the whole chart →</span></p>
-      <div class="map-scroll nst-scroll"><div class="orgchart nstree ns-org-chart" id="ns-org-home" aria-label="PAP → ASSB, ACA, AIL, ATH, AIN, AVN, AJC, AKC, AFE, APHI, ACS"></div></div>
-      <div class="nst-legend">
-        <span><i class="lg lg-pap"></i><span class="zh">PAP 區域辦公室（RO）</span><span class="en">PAP regional office (RO)</span></span>
-        <span><i class="lg lg-ns"></i><span class="zh">國家子公司（NS）</span><span class="en">Nation subsidiary (NS)</span></span>
-        <span><i class="lg lg-sub"></i><span class="zh">下轄國家／單位</span><span class="en">Countries and units under an NS</span></span>
-        <span><i class="lg lg-hsn"></i><span class="zh">HSN 集團公司</span><span class="en">HSN Group company</span></span>
-      </div>
-      <p class="nst-remark"><span class="zh"><b>備註</b>AKC（韓國）由 AJC（日本）管轄；AFE 為香港的 Acer Far East。</span><span class="en"><b>Note</b>AKC (Korea) comes under AJC (Japan); AFE is Acer Far East in Hong Kong.</span></p>
-    </section>
-    
 
     <section class="intro-sec home-site">
-      <h3 class="home-big"><span class="zh">網站架構</span><span class="en">Site structure</span></h3>
+      <h3 class="home-big"><span class="zh">八個章節</span><span class="en">The Eight Chapters</span></h3>
+      <p class="home-note"><span class="zh">每一章都有：章節導覽、內文與圖表、本章名詞、相關主題，以及上一章／下一章。</span><span class="en">Every chapter has section navigation, articles and diagrams, key terms, related topics and previous/next links.</span></p>
       <div class="home-panel">
-        <p class="toc-sum" id="toc-sum"></p>
         <div class="toc" id="chapters"></div>
       </div>
+      <h4 class="home-sub"><span class="zh">附錄</span><span class="en">Appendices</span></h4>
+      <div class="toc toc-app" id="appendices"></div>
     </section>
 
+    <section class="intro-sec home-ia">
+      <h3 class="home-big"><span class="zh">章節架構</span><span class="en">How the Chapters Fit Together</span></h3>
+      <p class="home-note"><span class="zh">由概念到實務：先認識基本名詞、公司與產業，再看組織，最後是備品的流程與系統。虛線箭頭是建議的閱讀順序，不是貨物或組織的流向。</span><span class="en">From concepts to practice: basic terms, companies and the industry first, then the organisation, then the parts processes and systems. Dashed arrows show the suggested reading order, not a flow of goods or reporting lines.</span></p>
+      <div class="ia" id="home-ia"></div>
+    </section>
 
+    <section class="intro-sec home-guide">
+      <h3 class="home-big"><span class="zh">快速導覽</span><span class="en">Quick Guide</span></h3>
+      <div class="hg-grid" id="home-guide">
+        <div class="hg-card hg-dict">
+          <h4><span class="zh">縮寫字典</span><span class="en">Acronym Dictionary</span></h4>
+          <p><span class="zh">依 A–Z 排列，可用縮寫、英文全稱或中文名稱搜尋。</span><span class="en">Sorted A–Z; search by abbreviation, full English name or Chinese name.</span></p>
+          <div class="hg-ab"><input type="search" id="hg-ab-q" data-ph-zh="輸入縮寫，例如 FRU" data-ph-en="Type an acronym, e.g. FRU" placeholder="Type an acronym, e.g. FRU" aria-label="Acronym search / 縮寫搜尋" autocomplete="off"><button class="btn sm" type="button" id="hg-ab-go"><span class="zh">查詢</span><span class="en">Look up</span></button></div>
+        </div>
+        <div class="hg-card hg-topics">
+          <h4><span class="zh">常用主題</span><span class="en">Frequently Used Topics</span></h4>
+          <ol id="hg-topics"></ol>
+        </div>
+      </div>
+    </section>
   </section>
 
   <section class="page" id="page-fund">
@@ -2964,6 +3091,8 @@
   </section>
 
   </main>
+  </div>
+  </div>
 
   <button type="button" class="totop" id="totop" aria-label="回到頂端 / Back to top" title="回到頂端 / Back to top" hidden>↑</button>
   <p class="foot"><span class="zh">本網站內容屬公司內部資料，請勿對外散布；資料以原始文件為準。</span><span class="en">This site contains internal company information and must not be distributed externally. Original documents prevail.</span></p>
@@ -3060,8 +3189,33 @@
   }).join("");
   $$(".subnav").forEach(function (a) {
     var p = NAV.filter(function (x) { return x.id === a.getAttribute("data-page"); })[0];
-    a.innerHTML = p.subs.map(function (s) { return '<button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span><span>" + B(s[1], s[2]) + "</span></button>"; }).join("");
+    a.innerHTML = '<div class="crumb" data-nobi></div><div class="sn-row">' + p.subs.map(function (s) { return '<button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + "</span><span>" + B(s[1], s[2]) + "</span></button>"; }).join("") + "</div>";
   });
+  // 側邊欄（寬螢幕）：全部章節，目前這一章展開各節
+  $("side").innerHTML = '<nav class="sd">' + NAV.map(function (p) {
+    if (p.home) return '<button type="button" class="sd-home" data-go="' + p.id + '"><span class="n" aria-hidden="true">' + p.emoji + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button>";
+    return (p.app === "A" ? '<p class="sd-sep">' + B("附錄", "Appendices") + "</p>" : "") + '<div class="sd-ch" data-p="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><button type="button" class="sd-t" data-go="' + p.id + '"><span class="n">' + chNum(p) + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button><ol>" +
+      p.subs.map(function (s) { return '<li><button type="button" data-go="' + s[0] + '"><span class="n">' + s.num + '</span><span class="tt">' + B(s[1], s[2]) + "</span></button></li>"; }).join("") + "</ol></div>";
+  }).join("") + "</nav>";
+  function sideMark(pid, sid) {
+    $$("#side .sd-ch").forEach(function (c) { c.classList.toggle("on", c.getAttribute("data-p") === pid); });
+    $$("#side .sd-home").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-go") === pid); });
+    $$("#side ol button").forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-go") === sid); });
+    var a = $("side").querySelector("ol button.active") || $("side").querySelector(".sd-ch.on .sd-t"), sd = $("side");
+    if (a && sd.scrollHeight > sd.clientHeight + 1) { var r = a.getBoundingClientRect(), sr = sd.getBoundingClientRect(); if (r.top < sr.top + 40 || r.bottom > sr.bottom - 40) sd.scrollTop += r.top - sr.top - sd.clientHeight / 3; }
+  }
+  // 麵包屑：首頁 › 第 N 章 › 目前這一節（隨捲動更新）
+  function crumbFill(page) {
+    var c = page.querySelector(".subnav .crumb"), p = NAV_BY2[page.id.slice(5)];
+    if (!c || !p) return;
+    var s = p.subs.filter(function (x) { return x[0] === page._sub; })[0];
+    c.innerHTML = '<button type="button" data-go="intro">' + esc(nm("首頁", "Home")) + '</button><i aria-hidden="true">›</i><button type="button" data-go="' + p.id + '">' + esc(p.app ? nm("附錄 " + p.app, "Appendix " + p.app) : nm("第 " + p.num + " 章", "Chapter " + chNum(p))) + " · " + esc(nm(p.zh, p.en)) + "</button>" + (s ? '<i aria-hidden="true">›</i><span>' + s.num + " " + esc(nm(s[1], s[2])) + "</span>" : "");
+  }
+  function crumbAll() { $$("main .page").forEach(crumbFill); }
+  var NAV_BY2 = {};
+  NAV.forEach(function (p) { NAV_BY2[p.id] = p; });
+  // 每個有 id 的區塊都能直接連結（網址 #blk-…，搜尋結果也用）
+  NAV.forEach(function (p) { p.subs.forEach(function (s) { var sec = $("sub-" + s[0]); if (sec) $$(".block[id]", sec).forEach(function (b) { if (!ALIAS[b.id]) ALIAS[b.id] = [s[0], b.id]; }); }); });
   NAV.forEach(function (p) {
     var pg = p.col && $("page-" + p.id);
     if (pg) { pg.style.setProperty("--ch", p.col); pg.style.setProperty("--ch-bg", p.tint); pg.style.setProperty("--ch-ink", p.ink); }
@@ -3106,12 +3260,15 @@
     return 0;
   }
   var current = 0;
-  var navH = function (page) { var n = page.querySelector(".subnav"); return n ? n.getBoundingClientRect().height : 0; };
+  // 子頁導覽列固定在上方時（窄螢幕），捲動定位要扣掉它的高度；寬螢幕改由側邊欄導覽，導覽列不固定
+  var navH = function (page) { var n = page.querySelector(".subnav"); return n && getComputedStyle(n).position === "sticky" ? n.getBoundingClientRect().height : 0; };
   function markSub(page, id) {
-    var n = page.querySelector(".subnav");
+    var n = page.querySelector(".subnav .sn-row");
     if (page._sub === id) return;
     page._sub = id;
-    $$(".subnav button", page).forEach(function (b) {
+    crumbFill(page);
+    sideMark(page.id.slice(5), id);
+    $$(".subnav .sn-row button", page).forEach(function (b) {
       var on = b.getAttribute("data-go") === id;
       b.classList.toggle("active", on);
       if (on && n && n.scrollWidth > n.clientWidth + 1) n.scrollLeft = Math.max(0, b.offsetLeft - 16);
@@ -3159,6 +3316,7 @@
     if (tt) { tt.style.setProperty("--ch", p.col || "var(--navy)"); tt.style.setProperty("--ch-ink", p.ink || "var(--navy)"); tt.style.setProperty("--ch-bg", p.tint || "var(--stripe)"); }
     var subId = o.sub && !isPage ? o.sub[0] : "";
     markSub(page, subId || (p.subs.length ? p.subs[0][0] : ""));
+    sideMark(p.id, page._sub || "");
     var pi = NAV.indexOf(p), prev = NAV[pi - 1], next = NAV[pi + 1];
     var pg = page.querySelector(".pager");
     if (pg) {
@@ -3235,7 +3393,7 @@
     if (!g) return;
     if (g.tagName === "A") e.preventDefault();
     // 分頁、節按鈕與上下章只取代網址；內文裡的交叉連結另存一筆紀錄，按「上一頁」可回到原位
-    var xref = !g.closest("#tabs, .subnav, .pager");
+    var xref = !g.closest("#tabs, #side, .subnav, .pager, .gs-out");
     if (xref) { try { history.replaceState({ y: window.pageYOffset }, ""); } catch (er) { /* 部分環境不允許改網址 */ } }
     go(g.getAttribute("data-go"), xref ? "push" : true);
   });
@@ -3255,6 +3413,8 @@
     $$("option[data-zh]").forEach(function (o) { o.textContent = LANG === "bi" ? o.getAttribute("data-en") + " · " + o.getAttribute("data-zh") : o.getAttribute("data-" + LANG); });
     $$("[data-ph-zh]").forEach(function (el) { el.placeholder = LANG === "bi" ? el.getAttribute("data-ph-en") + " · " + el.getAttribute("data-ph-zh") : el.getAttribute("data-ph-" + LANG); });
     store.set("pap.lang2", LANG);
+    if (typeof crumbAll === "function") crumbAll();
+    gsRefresh();
     if (LANG === "bi" && typeof biScan === "function") biScan(document.body);
     var page = document.querySelector("main .page.active"), keep = page ? sectionInView(page) : null, before = keep ? keep.getBoundingClientRect().top : 0;
     drawAllMaps();
@@ -3854,9 +4014,8 @@
   /* ---------- 網站介紹 ---------- */
   var nSubs = 0;
   NAV.forEach(function (p) { nSubs += p.subs.length; });
-  $("toc-sum").innerHTML = "";
   var FC = ["var(--navy)", "var(--accent)", "var(--primary)", "var(--sel)", "var(--r-pa)"];
-  $("chapters").innerHTML = NAV.filter(function (p) { return !p.home; }).map(function (p, i) {
+  var tocCard = function (p, i) {
     var d = CH[p.id], n = (p.num < 10 ? "0" : "") + p.num;
     var row = function (go, num, label) {
       return '<li><button type="button" data-go="' + go + '">' + (num ? '<span class="n">' + num + "</span>" : "") + '<span class="t">' + label + '</span><span class="dots"></span><span class="go" aria-hidden="true">→</span></button></li>';
@@ -3864,6 +4023,26 @@
     return '<article class="folder" style="--fc:' + (p.col || FC[i % FC.length]) + ';--ch:' + (p.col || FC[i % FC.length]) + ';--ch-bg:' + (p.tint || "var(--stripe)") + ';--ch-ink:' + (p.ink || "var(--navy)") + '"><span class="ftab">' + n + '</span><span class="fbig" aria-hidden="true">' + n + "</span>" +
       '<button type="button" class="ftitle" data-go="' + p.id + '">' + B(p.zh, p.en) + "</button><p>" + B(d[0], d[1]) + "</p><ol>" +
       (p.subs.length ? p.subs.map(function (s) { return row(s[0], s.num, B(s[1], s[2])); }).join("") : row(p.id, "", B("單頁，直接閱讀", "Single page"))) + "</ol></article>";
+  };
+  $("chapters").innerHTML = NAV.filter(function (p) { return !p.home && !p.app; }).map(tocCard).join("");
+  $("appendices").innerHTML = NAV.filter(function (p) { return p.app; }).map(tocCard).join("");
+  // 章節架構：五個部分，依建議閱讀順序（虛線箭頭）
+  var IA = [["基礎", "Foundations", ["fund"]], ["企業與產業", "Companies and Industry", ["acer", "eco"]], ["組織", "Organisation", ["org"]], ["備品與營運", "Parts and Operations", ["life", "plan", "inv"]], ["系統與報表", "Systems and Reports", ["sys"]]];
+  var NAV_BY = {};
+  NAV.forEach(function (p) { NAV_BY[p.id] = p; });
+  $("home-ia").innerHTML = '<div class="ia-row">' + IA.map(function (g, i) {
+    return (i ? '<span class="ia-arr" aria-hidden="true"></span>' : "") + '<div class="ia-col"><p class="ia-h"><span class="ia-pn">' + (i + 1) + "</span>" + B(g[0], g[1]) + "</p>" + g[2].map(function (id) {
+      var p = NAV_BY[id];
+      return '<button type="button" class="ia-ch" data-go="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="n">' + chNum(p) + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button>";
+    }).join("") + "</div>";
+  }).join("") + '</div><div class="ia-app"><p class="ia-h">' + B("隨時查閱", "Use any time") + "</p>" + NAV.filter(function (p) { return p.app; }).map(function (p) {
+    return '<button type="button" class="ia-ch" data-go="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="n">' + chNum(p) + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button>";
+  }).join("") + "</div>";
+  // 常用主題
+  var HG_TOPICS = ["basics-journey", "basics-service", "corp-map", "org-pap", "ops-spl", "plan-po", "inv-alloc", "inv-hfp", "sys-kpi"];
+  $("hg-topics").innerHTML = HG_TOPICS.map(function (id) {
+    var o = ORDER[findRoute(id)];
+    return '<li><button type="button" data-go="' + id + '" style="--ch:' + o.page.col + ";--ch-ink:" + o.page.ink + '"><span class="n">' + o.sub.num + '</span><span class="tt">' + B(o.sub[1], o.sub[2]) + "</span></button></li>";
   }).join("");
   $$("[data-ico]").forEach(function (el) { el.innerHTML = ico(el.getAttribute("data-ico")); });
   // 首頁背景：淡色世界地圖
@@ -5099,6 +5278,129 @@
     if (LANG === "bi") biScan(document.body);
     if (biMO) biMO.observe(document.body, { childList: true, subtree: true });
   }
+
+  /* ---------- 全站搜尋：節、區塊（標題與內文）、縮寫 ---------- */
+  var GS = null;
+  function gsLangText(el, lang) {
+    var out = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    while (w.nextNode()) {
+      var n = w.currentNode, p = n.parentElement, l = p && p.closest(".zh, .en");
+      if (!p || p.closest("script, style, .pg-abbr, .rel-topics, .gs-out, .tl")) continue;
+      if (!l || l.classList.contains(lang)) out.push(n.nodeValue);
+    }
+    return out.join(" ").replace(/\s+/g, " ").trim();
+  }
+  function gsIndex() {
+    GS = [];
+    var own = function (el) { var c = el.cloneNode(true); $$(".block[id]", c).forEach(function (b) { if (b.querySelector(":scope > h3")) b.remove(); }); return c; };
+    NAV.forEach(function (p) {
+      p.subs.forEach(function (s) {
+        var sec = $("sub-" + s[0]); if (!sec) return;
+        GS.push({ go: s[0], p: p, s: s, title: [s[1], s[2]], el: own(sec), sec: true });
+        $$(".block[id]", sec).forEach(function (b) {
+          var h3 = b.querySelector(":scope > h3"); if (!h3) return;
+          var z = h3.querySelector(".zh"), e = h3.querySelector(".en");
+          GS.push({ go: b.id, p: p, s: s, title: [(z || h3).textContent.trim(), (e || h3).textContent.trim()], el: own(b) });
+        });
+      });
+    });
+    GS.forEach(function (g) {
+      g.en = gsLangText(g.el, "en"); g.zh = gsLangText(g.el, "zh"); g.el = null;
+      g.tl = (g.title[0] + " " + g.title[1]).toLowerCase();
+      g.all = (g.tl + " " + g.en + " " + g.zh).toLowerCase();
+    });
+  }
+  function gsRun(q) {
+    q = q.trim().toLowerCase();
+    if (!q) return [];
+    if (!GS) gsIndex();
+    var toks = q.split(/\s+/), res = [], tiny = /^[\x00-\x7f]$/.test(q);
+    AB.forEach(function (a) {
+      var code = a.code.toLowerCase(), full = ((a.full || a.en || "") + " " + (a.zh || "")).toLowerCase();
+      var sc = code === q ? 1000 : tiny ? 0 : code.indexOf(q) === 0 ? 300 : toks.every(function (t) { return full.indexOf(t) >= 0; }) ? 120 : 0;
+      if (sc) res.push({ ab: a, sc: sc });
+    });
+    if (!tiny) GS.forEach(function (g) {
+      if (!toks.every(function (t) { return g.all.indexOf(t) >= 0; })) return;
+      var sc = (g.tl.indexOf(q) >= 0 ? 200 : 0) + (g.sec ? 15 : 0);
+      toks.forEach(function (t) { sc += (g.tl.indexOf(t) >= 0 ? 40 : 0) + Math.min(6, g.all.split(t).length - 1); });
+      res.push({ g: g, sc: sc });
+    });
+    res.sort(function (a, b) { return b.sc - a.sc; });
+    return res;
+  }
+  function gsMark(s, toks) {
+    var re = new RegExp(toks.map(function (t) { return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|"), "gi"), out = "", last = 0, m;
+    while ((m = re.exec(s))) { if (!m[0]) { re.lastIndex++; continue; } out += esc(s.slice(last, m.index)) + "<mark>" + esc(m[0]) + "</mark>"; last = m.index + m[0].length; }
+    return out + esc(s.slice(last));
+  }
+  function gsSnip(g, toks) {
+    var src = LANG === "zh" ? [g.zh, g.en] : [g.en, g.zh];
+    for (var k = 0; k < 2; k++) {
+      var t = src[k], lo = t.toLowerCase(), i = -1;
+      toks.some(function (x) { i = lo.indexOf(x); return i >= 0; });
+      if (i >= 0) { var a = Math.max(0, i - 50), b = Math.min(t.length, i + 100); return (a ? "…" : "") + t.slice(a, b) + (b < t.length ? "…" : ""); }
+    }
+    return src[0].slice(0, 120);
+  }
+  function gsItem(r, toks) {
+    if (r.ab) {
+      var a = r.ab, en = a.full || a.en || "", zh = a.zh || "";
+      return '<button type="button" class="gs-r gs-ab" data-gs-ab="' + a.id + '"><span class="gs-k">' + esc(nm("縮寫", "Acronym")) + "</span><b>" + gsMark(a.code, toks) + '</b><span class="gs-snip">' + gsMark(LANG === "zh" ? zh || en : en || zh, toks) + (LANG === "bi" && zh && en ? " · " + gsMark(zh, toks) : "") + "</span></button>";
+    }
+    var g = r.g, p = g.p;
+    return '<button type="button" class="gs-r" data-go="' + g.go + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="gs-k">' + g.s.num + "</span><b>" + gsMark(nm(g.title[0], g.title[1]), toks) + (LANG === "bi" && g.title[0] !== g.title[1] ? " <small>" + gsMark(g.title[0], toks) + "</small>" : "") + '</b><span class="gs-path">' + esc(p.app ? nm("附錄 " + p.app, "Appendix " + p.app) : nm("第 " + p.num + " 章", "Chapter " + chNum(p))) + " · " + esc(nm(p.zh, p.en)) + (g.sec ? "" : " › " + esc(nm(g.s[1], g.s[2]))) + '</span><span class="gs-snip">' + gsMark(gsSnip(g, toks), toks) + "</span></button>";
+  }
+  var GS_MAX = 30;
+  function gsShow(inp) {
+    var out = inp.parentNode.querySelector(".gs-out"), q = inp.value;
+    if (!q.trim()) { out.hidden = true; out.innerHTML = ""; return; }
+    var res = gsRun(q), toks = q.trim().toLowerCase().split(/\s+/);
+    out.innerHTML = '<p class="gs-n">' + esc(res.length ? nm("找到 " + res.length + " 筆", res.length + (res.length === 1 ? " result" : " results")) + (res.length > GS_MAX ? nm("，顯示前 " + GS_MAX + " 筆", ", showing the first " + GS_MAX) : "") : nm("找不到符合的內容", "No matches")) + "</p>" + res.slice(0, GS_MAX).map(function (r) { return gsItem(r, toks); }).join("");
+    out.hidden = false;
+  }
+  function gsClose() { $$(".gs-out").forEach(function (o) { o.hidden = true; }); }
+  function gsRefresh() { $$(".gs input").forEach(function (inp) { var o = inp.parentNode.querySelector(".gs-out"); if (o && !o.hidden) gsShow(inp); }); }
+  $$(".gs input").forEach(function (inp) {
+    var t = 0;
+    inp.addEventListener("input", function () { clearTimeout(t); t = setTimeout(function () { gsShow(inp); }, 120); });
+    inp.addEventListener("focus", function () { if (inp.value.trim()) gsShow(inp); });
+    inp.addEventListener("keydown", function (e) {
+      var out = inp.parentNode.querySelector(".gs-out"), first = out.querySelector(".gs-r");
+      if (e.key === "Escape") { gsClose(); return; }
+      if (e.key === "ArrowDown" && first) { e.preventDefault(); first.focus(); }
+      if (e.key === "Enter" && first) { e.preventDefault(); first.click(); }
+    });
+  });
+  $$(".gs-out").forEach(function (out) {
+    out.addEventListener("keydown", function (e) {
+      var items = $$(".gs-r", out), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" && i < items.length - 1) { e.preventDefault(); items[i + 1].focus(); }
+      if (e.key === "ArrowUp") { e.preventDefault(); if (i > 0) items[i - 1].focus(); else out.parentNode.querySelector("input").focus(); }
+      if (e.key === "Escape") { gsClose(); out.parentNode.querySelector("input").focus(); }
+    });
+    out.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest(".gs-r") : null;
+      if (!b) return;
+      gsClose();
+      if (b.hasAttribute("data-gs-ab")) { showAbCard(b.getAttribute("data-gs-ab")); return; }
+      var id = b.getAttribute("data-go");
+      setTimeout(function () {
+        var el = $(id) || $("sub-" + id);
+        if (!el) return;
+        el.classList.remove("gs-flash"); void el.offsetWidth; el.classList.add("gs-flash");
+        setTimeout(function () { el.classList.remove("gs-flash"); }, 1800);
+      }, 300);
+    });
+  });
+  document.addEventListener("click", function (e) { if (!(e.target.closest && e.target.closest(".gs"))) gsClose(); });
+  // 首頁：縮寫快速查詢（到縮寫字典並帶入搜尋字）
+  function hgAbGo() {
+    var q = $("hg-ab-q").value.trim();
+    go("ref-terms", "push", function () { var s = $("ab-search"); if (s) { s.value = q; s.dispatchEvent(new Event("input", { bubbles: true })); if (q) s.focus(); } });
+  }
+  $("hg-ab-go").addEventListener("click", hgAbGo);
+  $("hg-ab-q").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); hgAbGo(); } });
   /* ---------- 啟動 ---------- */
   setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
