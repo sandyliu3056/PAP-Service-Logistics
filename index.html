@@ -2131,7 +2131,6 @@
   html[data-lang="bi"] .subnav .sn-row button > span.bi-blk > :is(.bi-en, .bi-zh) { display:inline; }
   html[data-lang="bi"] .subnav .sn-row button > span.bi-blk > .bi-zh { margin-left:.4em; font-size:.82em; }
   @media (max-width:1099px) { .subnav .sn-row { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; } }
-  @media (min-width:1100px) { .subnav { position:static; } }
   /* 首頁章節卡標題：英文一行、中文在下 */
   html[data-lang="bi"] .ftitle > :is(.bi-en, .bi-zh) { display:block; margin-left:0; }
   html[data-lang="bi"] .ftitle > .bi-zh { font-size:.74em; margin-top:.15em; }
@@ -3361,8 +3360,7 @@
   // 側邊欄（寬螢幕）：全部章節，目前這一章展開各節
   $("side").innerHTML = '<nav class="sd">' + NAV.map(function (p) {
     if (p.home) return '<button type="button" class="sd-home" data-go="' + p.id + '"><span class="n" aria-hidden="true">' + p.emoji + '</span><span class="tt">' + B(p.zh, p.en) + "</span></button>";
-    return (p.app === "A" ? '<p class="sd-sep">' + B("附錄", "Appendices") + "</p>" : "") + '<div class="sd-ch" data-p="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><button type="button" class="sd-t" data-go="' + p.id + '"><span class="tt">' + B(p.zh, p.en) + "</span></button><ol>" +
-      p.subs.map(function (s) { return '<li><button type="button" data-go="' + s[0] + '"><span class="tt">' + B(s[1], s[2]) + "</span></button></li>"; }).join("") + "</ol></div>";
+    return (p.app === "A" ? '<p class="sd-sep">' + B("附錄", "Appendices") + "</p>" : "") + '<div class="sd-ch" data-p="' + p.id + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><button type="button" class="sd-t" data-go="' + p.id + '"><span class="tt">' + B(p.zh, p.en) + "</span></button></div>";
   }).join("") + "</nav>";
   function sideMark(pid, sid) {
     $$("#side .sd-ch").forEach(function (c) { c.classList.toggle("on", c.getAttribute("data-p") === pid); });
