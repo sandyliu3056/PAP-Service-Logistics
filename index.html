@@ -2129,6 +2129,54 @@
   .ia-pn { margin-right:.35em; }
   html[data-lang="bi"] .tabs button .bi-en > .emo { margin-right:.45em; }
   /* <<< 導覽 */
+  /* >>> 縮寫字典、待確認、縮寫全稱 */
+  .ab-gloss { color:var(--mute); font-size:.92em; }
+  .tbc { display:inline-flex; align-items:center; gap:4px; padding:0 9px 0 7px; border:1.5px dashed #C98A1B; border-radius:999px; background:#FFF6E0; color:#8A5A00; font-size:.74rem; font-weight:700; line-height:1.75; white-space:nowrap; vertical-align:.08em; cursor:help; }
+  .tbc::before { content:"?"; display:inline-grid; place-items:center; width:1.15em; height:1.15em; border-radius:50%; background:#C98A1B; color:#fff; font-size:.85em; line-height:1; }
+  .tbc-line { margin:10px 0 0; font-size:.86rem; color:var(--mute); line-height:1.7; }
+  .tbc-line .tbc { margin-right:8px; }
+  .tbc-note { color:var(--mute); }
+  .ab-az { display:flex; flex-wrap:wrap; gap:4px; margin:0 0 14px; }
+  .ab-az button { min-width:2.1em; height:2.1em; padding:0 4px; border:1.5px solid var(--line); border-radius:8px; background:var(--panel); color:var(--ch-ink); font-family:var(--font-mono); font-weight:700; font-size:.82rem; cursor:pointer; }
+  .ab-az button:hover:not([disabled]) { background:var(--ch-bg); border-color:var(--ch); }
+  .ab-az button[disabled] { opacity:.32; cursor:default; }
+  .abt-wrap { overflow:visible; }
+  .abt { table-layout:fixed; }
+  .abt th { position:static; white-space:normal; }
+  .abt thead th:nth-child(1) { width:8.4em; }
+  .abt thead th:nth-child(2) { width:17%; }
+  .abt thead th:nth-child(3) { width:12%; }
+  .abt thead th:nth-child(5) { width:19%; }
+  .abt td { white-space:normal; vertical-align:top; overflow-wrap:anywhere; line-height:1.55; }
+  .abt tr:nth-child(even) td { background:none; }
+  .abt tr.abt-l th { position:static; background:var(--ch-bg); color:var(--ch-ink); border-top:1.5px solid var(--ch-line); font-family:var(--font-head); font-size:1.15rem; padding:4px 14px; }
+  .abt td.abt-k .ab { font-family:var(--font-mono); font-weight:700; font-size:.98rem; color:var(--ch-ink); border-bottom:0; padding:0; text-align:left; overflow-wrap:anywhere; }
+  .abt .ab-org, .abt .ab-under { display:block; margin-top:4px; color:var(--mute); font-size:.78rem; }
+  .abt td.abt-d { font-size:.88rem; }
+  .abt td.abt-s { font-size:.8rem; }
+  .abt .tbc { margin-top:3px; }
+  .ab-sec { display:flex; align-items:baseline; gap:6px; width:100%; text-align:left; margin:0 0 4px; padding:3px 8px; border:1px solid var(--ch); border-radius:8px; background:var(--ch-bg); color:var(--ch-ink); font:inherit; font-size:inherit; line-height:1.35; cursor:pointer; }
+  .ab-sec:hover { background:var(--card); }
+  .ab-sec .n { font-family:var(--font-mono); font-size:.86em; font-weight:700; flex:none; }
+  html[data-lang="bi"] .ab-sec > span.bi-blk > .bi-zh, html[data-lang="bi"] .ab-sec > span.bi-inl > .bi-zh { display:block; margin-left:0; font-size:.88em; }
+  html[data-lang="bi"] .ab-sec > span > .bi-en { display:block; }
+  @keyframes abflash { 0%, 55% { background:color-mix(in srgb, var(--gold) 50%, transparent); } 100% { background:transparent; } }
+  .abt tr.ab-flash td { animation:abflash 1.9s ease-out; }
+  @media (max-width:900px) {
+    .abt-wrap { padding:8px; }
+    .abt, .abt tbody, .abt tr { display:block; width:auto; }
+    .abt thead { display:none; }
+    .abt tr { border:1.5px solid var(--line); border-radius:12px; background:var(--panel); padding:8px 12px; margin:0 0 8px; }
+    .abt tr.abt-l { border:0; background:none; padding:6px 2px 2px; margin:6px 0 4px; }
+    .abt tr.abt-l th { display:block; border:0; background:none; padding:0; font-size:1.3rem; }
+    .abt td { display:flex; gap:10px; align-items:baseline; padding:3px 0; border:0; min-width:0; }
+    .abt td > .tl { display:block; flex:0 0 7.2em; color:var(--mute); font-size:.76rem; }
+    .abt td > .tv { display:block; flex:1; min-width:0; }
+    .abt td.abt-k { padding-bottom:6px; margin-bottom:4px; border-bottom:1px dashed var(--line); }
+    .abt td.abt-k > .tl { display:none; }
+  }
+  @media (max-width:600px) { .abt td > .tl { flex-basis:6em; } .ab-az button { min-width:1.9em; height:1.9em; font-size:.76rem; } }
+  /* <<< 縮寫字典 */
   /* >>> 中英對照 */
   /* 預設「EN + 中文」：英文在上、字較大；中文在下、字較小。行內小元件（按鈕、標籤）中英並排，中間留空。 */
   html[data-lang="bi"] .bi-dup { display:none !important; }
@@ -3046,17 +3094,17 @@
     <div class="subbody">
       <section class="sub" id="sub-ref-terms"><h2><span class="zh">縮寫字典</span><span class="en">Acronym Dictionary</span></h2>
         <p class="lead zh">全站縮寫依英文字母排序，附英文全稱、中文名稱、說明與相關章節；可用縮寫或全稱搜尋。</p><p class="lead en">Every abbreviation on the site in alphabetical order, with its full English name, Chinese name, explanation and related sections; search by abbreviation or full name.</p>
-        <div class="block" id="blk-ref-abbr"><h3><span class="zh">縮寫說明</span><span class="en">Abbreviations</span></h3>
-        <p class="lead zh">依主題查看每個縮寫的英文全稱、中文名稱與一句說明；點卡片展開完整內容，也可直接搜尋。</p>
-        <p class="lead en">Browse every abbreviation by topic with its full name, Chinese name and a one-line meaning; open a card for the full entry, or search directly.</p>
+        <div class="block" id="blk-ref-abbr"><h3><span class="zh">縮寫 A–Z</span><span class="en">Acronyms A–Z</span></h3>
+        <p class="lead zh">按字母可跳到該段；點章節可回到內文；標示「待確認」的條目，其英文全稱尚未確認。</p>
+        <p class="lead en">Click a letter to jump to it, or a section to read the term in context. Entries marked "To be confirmed" have a full name that is not yet confirmed.</p>
         <div class="ab-tools">
-          <input type="search" id="ab-search" data-ph-zh="搜尋縮寫、全稱或中文" data-ph-en="Search abbreviations or names" placeholder="搜尋縮寫、全稱或中文" style="width:min(100%, 320px)">
-          <button class="btn sm" type="button" id="ab-open"><span class="zh">全部展開</span><span class="en">Expand all</span></button>
-          <button class="btn sm" type="button" id="ab-close-all"><span class="zh">全部收合</span><span class="en">Collapse all</span></button>
+          <input type="search" id="ab-search" data-ph-zh="搜尋縮寫、英文全稱或中文名稱" data-ph-en="Search by abbreviation, full name or Chinese name" placeholder="Search by abbreviation, full name or Chinese name" style="width:min(100%, 380px)" autocomplete="off">
           <span class="count" id="ab-count"></span>
         </div>
         <div class="seg" id="ab-cats"></div>
-        <div id="ab-groups"></div>
+        <nav class="ab-az" id="ab-az" aria-label="A–Z"></nav>
+        <div class="tbl abt-wrap"><table class="abt" id="abt"><thead><tr><th><span class="zh">縮寫</span><span class="en">Abbreviation</span></th><th><span class="zh">英文全稱</span><span class="en">Full English Name</span></th><th><span class="zh">中文名稱</span><span class="en">Chinese Name</span></th><th><span class="zh">說明</span><span class="en">Explanation</span></th><th><span class="zh">相關章節</span><span class="en">Related Topics</span></th></tr></thead><tbody id="abt-body"></tbody></table></div>
+        <p class="ab-empty" id="ab-empty" hidden></p>
       </div>
       </section>
       <section class="sub" id="sub-dict-terms"><h2><span class="zh">售後服務名詞</span><span class="en">Key Service Terms</span></h2>
@@ -4440,7 +4488,7 @@
   }
   function detailHTML(a) {
     var rows = [[B("定義", "Definition"), '<div class="ab-what">' + whatIs(a) + "</div>"]];
-    if (a.full || a.en || a.zh) rows.push([B("全稱", "Full name"), '<div class="ab-full">' + fullHTML(a) + "</div>"]);
+    if (a.full || a.en || a.zh) rows.push([B("全稱", "Full name"), '<div class="ab-full">' + fullHTML(a) + (AB_TBC[a.id] ? " " + tbcChip("全稱待確認", "Full name to be confirmed") : "") + "</div>"]);
     rows.push([B("類別", "Category"), catName(a.cat)]);
     var place = placeHTML(a);
     if (place) rows.push([B("國家／地區", "Country / region"), place]);
@@ -4449,23 +4497,47 @@
     return '<dl class="kvl">' + rows.map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + r[1] + "</dd></div>"; }).join("") + "</dl>";
   }
   var firstSentence = function (t) { t = t || ""; var i = t.search(/[。；;]|\. /); return i > 0 ? t.slice(0, i) + (/[；;]/.test(t.charAt(i)) ? "…" : t.charAt(i)) : t; };
-  // 縮寫索引的小卡片：縮寫、英文全稱、中文名稱、一句說明；展開看完整內容
-  function abNode(a, parent) {
-    var full = a.full ? esc(a.full) : (a.en ? esc(a.en) : "");
-    return '<details class="abc" id="abc-' + a.id + '"><summary><span class="k">' + esc(a.code) + "</span>" + srcTag(a.src) +
-      (full ? '<span class="f">' + full + "</span>" : "") + (a.zh ? '<span class="z">' + esc(a.zh) + "</span>" : "") +
-      '<span class="d">' + B(esc(firstSentence(a.dzh)), esc(firstSentence(a.den))) + "</span>" +
-      (parent ? '<span class="u">' + B("上一層：" + esc(parent), "Under " + esc(parent)) + "</span>" : "") +
-      '</summary><div class="tin">' + detailHTML(a) + "</div></details>";
+  // 縮寫字典：A–Z 表格（縮寫、英文全稱、中文名稱、說明、相關章節）
+  // 英文全稱未在教材中載明者標示「待確認」，不自行補上
+  var AB_TBC = { css: 1, gcsd: 1, csd: 1, pls: 1, pm: 1, eos: 1, imr: 1, aap: 1 };
+  var tbcChip = function (zh, en) { return '<span class="tbc" tabindex="0">' + B(zh, en) + "</span>"; };
+  var AB_AZ = AB.slice().sort(function (x, y) { var a = x.code.toUpperCase(), b = y.code.toUpperCase(); return a < b ? -1 : a > b ? 1 : 0; });
+  var abLetter = function (a) { var c = a.code.charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; };
+  var AB_PARENT = {};
+  (function walk(nodes, par) { nodes.forEach(function (n) { if (par) AB_PARENT[n[0]] = par; if (n[1]) walk(n[1], n[0]); }); })(TREE, null);
+  // 每個縮寫出現在哪些節：出現次數最多的五節，依章節順序（附錄不列）
+  var AB_SECS = null;
+  function abSecs() {
+    if (AB_SECS) return AB_SECS;
+    AB_SECS = {};
+    ORDER.forEach(function (o, i) {
+      if (!o.sub || o.page.app) return;
+      var sec = $("sub-" + o.sub[0]);
+      if (!sec) return;
+      var t = sec.textContent, m, cnt = {};
+      AB_RE.lastIndex = 0;
+      while ((m = AB_RE.exec(t))) { var id = KEYMAP[m[2]]; cnt[id] = (cnt[id] || 0) + 1; }
+      Object.keys(cnt).forEach(function (id) { (AB_SECS[id] = AB_SECS[id] || []).push([i, cnt[id]]); });
+    });
+    Object.keys(AB_SECS).forEach(function (id) {
+      AB_SECS[id] = AB_SECS[id].sort(function (a, b) { return b[1] - a[1] || a[0] - b[0]; }).slice(0, 5).sort(function (a, b) { return a[0] - b[0]; }).map(function (x) { return x[0]; });
+    });
+    return AB_SECS;
   }
-  // 組織與區域：依上下級順序列出，卡片上標示上一層
-  function treeCards(nodes, parent) {
-    return nodes.map(function (n) {
-      var a = AB_BY[n[0]];
-      return abNode(a, parent) + (n[1] ? treeCards(n[1], a.code) : "");
+  var abEnName = function (a) { return a.full || a.en || (/[a-z]{2}/.test(a.code) ? a.code : ""); };
+  function abRow(a) {
+    var en = abEnName(a), up = AB_PARENT[a.id] ? AB_BY[AB_PARENT[a.id]] : null;
+    var c1 = (en ? esc(en) : '<span class="no">—</span>') + (AB_TBC[a.id] ? " " + tbcChip("全稱待確認", "Full name to be confirmed") : "") +
+      (a.org && a.cat === "org" && a.org !== "Acer Inc." && a.org !== en ? '<small class="ab-org">' + esc(a.org) + "</small>" : "");
+    var secs = (abSecs()[a.id] || []).map(function (i) {
+      var o = ORDER[i];
+      return '<button type="button" class="ab-sec" data-go="' + o.sub[0] + '" style="--ch:' + o.page.col + ";--ch-bg:" + o.page.tint + ";--ch-ink:" + o.page.ink + '"><span class="n">' + o.sub.num + "</span><span>" + B(esc(o.sub[1]), esc(o.sub[2])) + "</span></button>";
     }).join("");
+    return '<tr id="abc-' + a.id + '" data-l="' + abLetter(a) + '"><td class="abt-k"><button type="button" class="ab" data-ab="' + a.id + '">' + esc(a.code) + "</button></td>" +
+      '<td class="abt-en">' + c1 + '</td><td class="abt-zh">' + (a.zh ? esc(a.zh) : '<span class="no">—</span>') + '</td><td class="abt-d">' + descHTML(a) +
+      (up ? '<small class="ab-under">' + B("上一層：" + esc(up.code), "Under " + esc(up.code)) + "</small>" : "") + '</td><td class="abt-s">' + (secs || '<span class="no">—</span>') + "</td></tr>";
   }
-  var abCat = "org";
+  var abCat = "all";
   $("ab-cats").innerHTML = [["all", "全部", "All"]].concat(CATS_AB).map(function (c) {
     return '<button class="btn sm' + (c[0] === abCat ? " active" : "") + '" type="button" data-cat="' + c[0] + '">' + B(c[1], c[2]) + "</button>";
   }).join("");
@@ -4473,45 +4545,50 @@
     var b = e.target.closest ? e.target.closest("[data-cat]") : null;
     if (!b) return;
     abCat = b.getAttribute("data-cat");
-    $("ab-search").value = "";
     renderAbbr();
   });
-
+  // 搜尋：縮寫、英文全稱、中文名稱（含公司名稱）；都找不到時才找說明文字
   function renderAbbr() {
-    var q = $("ab-search").value.trim().toLowerCase(), html = "", n = 0;
-    $$("#ab-cats .btn").forEach(function (x) { x.classList.toggle("active", !q && x.getAttribute("data-cat") === abCat); });
-    if (q || abCat === "all") {
-      CATS_AB.forEach(function (c) {
-        var items = AB.filter(function (a) { return a.cat === c[0] && (!q || [a.code, a.full || "", a.zh, a.dzh, a.den, a.en || "", a.org || ""].join(" ").toLowerCase().indexOf(q) !== -1); });
-        if (!items.length) return;
-        n += items.length;
-        html += '<div class="ab-group"><h3>' + B(c[1], c[2]) + '</h3><div class="acc">' + items.map(function (a) { return abNode(a, false); }).join("") + "</div></div>";
-      });
-      if (!html) html = '<p class="ab-empty">' + B("查無「" + esc(q) + "」相關結果。", 'No results for "' + esc(q) + '".') + "</p>";
-    } else if (abCat === "org") {
-      n = AB.filter(function (a) { return a.cat === "org"; }).length;
-      html = '<div class="acc">' + treeCards(TREE, "") + "</div>";
-    } else {
-      var items = AB.filter(function (a) { return a.cat === abCat; });
-      n = items.length;
-      html = '<div class="acc">' + items.map(function (a) { return abNode(a, false); }).join("") + "</div>";
-    }
-    $("ab-groups").innerHTML = html;
-    $("ab-count").innerHTML = B(n + " 個", n + " entries");
+    var q = $("ab-search").value.trim().toLowerCase(), wide = false;
+    $$("#ab-cats .btn").forEach(function (x) { x.classList.toggle("active", x.getAttribute("data-cat") === abCat); });
+    var pool = AB_AZ.filter(function (a) { return abCat === "all" || a.cat === abCat; });
+    var items = !q ? pool : pool.filter(function (a) { return [a.code, a.keys.join(" "), a.full || "", a.en || "", a.zh || "", a.org || ""].join(" ").toLowerCase().indexOf(q) !== -1; });
+    if (q && !items.length) { wide = true; items = pool.filter(function (a) { return [a.dzh, a.den].join(" ").toLowerCase().indexOf(q) !== -1; }); }
+    var html = "", last = "", letters = {};
+    items.forEach(function (a) {
+      var l = abLetter(a);
+      if (l !== last) { html += '<tr class="abt-l" id="abl-' + (l === "#" ? "num" : l) + '"><th colspan="5">' + l + "</th></tr>"; last = l; letters[l] = 1; }
+      html += abRow(a);
+    });
+    $("abt-body").innerHTML = html;
+    $("abt").hidden = !items.length;
+    var em = $("ab-empty");
+    em.hidden = !(q && (wide || !items.length));
+    em.innerHTML = !items.length ? B("查無「" + esc(q) + "」相關的縮寫。", 'No acronyms match "' + esc(q) + '".') : B("縮寫與名稱都沒有「" + esc(q) + "」；以下是說明中提到它的條目。", 'No abbreviation or name matches "' + esc(q) + '"; these entries mention it in their explanation.');
+    $("ab-count").innerHTML = B(items.length + " 個", items.length + (items.length === 1 ? " entry" : " entries"));
+    $("ab-az").innerHTML = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split("").map(function (l) {
+      return '<button type="button" data-az="' + (l === "#" ? "num" : l) + '"' + (letters[l] ? "" : " disabled") + ">" + l + "</button>";
+    }).join("");
   }
   $("ab-search").addEventListener("input", renderAbbr);
-  $("ab-open").addEventListener("click", function () { $$("#ab-groups details").forEach(function (d) { d.open = true; }); });
-  $("ab-close-all").addEventListener("click", function () { $$("#ab-groups details").forEach(function (d) { d.open = false; }); });
-  renderAbbr();
+  $("ab-az").addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-az]") : null, t = b && $("abl-" + b.getAttribute("data-az"));
+    if (!t) return;
+    window.scrollTo(0, Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - navH($("page-dict")) - 10));
+  });
+  var abFlash = function (el) { el.classList.remove("ab-flash"); void el.offsetWidth; el.classList.add("ab-flash"); setTimeout(function () { el.classList.remove("ab-flash"); }, 1900); };
   function showAbCard(id) {
     var a = AB_BY[id];
     if (!a) return;
     $("ab-search").value = "";
-    abCat = a.cat;
+    abCat = "all";
     renderAbbr();
-    var d = $("abc-" + id);
-    if (d) d.open = true;
-    go("ref-abbr", true, function () { if (d) d.scrollIntoView({ block: "center" }); });
+    go("ref-terms", "push", function () {
+      var r = $("abc-" + id);
+      if (!r) return;
+      window.scrollTo(0, Math.max(0, r.getBoundingClientRect().top + window.pageYOffset - navH($("page-dict")) - 70));
+      abFlash(r);
+    });
   }
 
   // 角色卡片：由代碼資料庫 AB 產生（<div class="cards" data-abs="hq,ro,ns">），內容與說明視窗相同
@@ -4947,8 +5024,23 @@
 
   /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
   var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, .tl, h2, h3, .pn-segs, #cat-body, #dec-out, #blk-ref-abbr, [data-noabbr], #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
+  // 每章第一次出現的縮寫後面補上全稱；文字裡已寫出全稱、或縮寫本身在括號裡時不補；表格、標籤、粗體等短字不補
+  var GLOSS_SKIP = "td, th, .tl, .tv, b, strong, small, label, figcaption, .chip, .tbc, .tbc-note, .kvl, .facts, .kf, .steps, .legend-chips, .nst-legend, .waybill, .caption, .home-lead, .folder";
+  function abGloss(a, key, lang, s, start, end, blk) {
+    if (!a || AB_TBC[a.id] || / /.test(key) || /[a-z]{2}/.test(key) || /[\u3400-\u9fff]/.test(key)) return "";
+    var full = lang === "en" ? a.full || a.en : a.zh;
+    if (!full || full.toLowerCase() === key.toLowerCase()) return "";
+    if (/^s?\s*[（(]/.test(s.slice(end)) || /[（(]\s*$/.test(s.slice(0, start))) return "";
+    // 縮寫後面緊接著符號（例如 NT$、P/N）時不補，以免把詞拆開
+    var nx = s.slice(end).replace(/^s(?![A-Za-z0-9])/, "");
+    if (nx && !/^(\s|[,;:!?）)」』、，。；：]|\.(\s|$))/.test(nx)) return "";
+    if (blk && blk.textContent.toLowerCase().indexOf(full.toLowerCase()) >= 0) return "";
+    if (lang === "en") return /[()]/.test(full) ? "" : " (" + full + ")";
+    full = full.replace(/\s*[（(][^（）()]*[）)]\s*/g, "");
+    return full && full !== key ? "（" + full + "）" : "";
+  }
   function linkAbbr(scope) {
-    var seen = {};
+    var seen = {}, gl = {};
     var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         if (!/[A-Z0-9一-鿿]/.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
@@ -4961,6 +5053,7 @@
     nodes.forEach(function (n) {
       var langEl = n.parentElement.closest(".zh, .en");
       var langs = langEl ? [langEl.classList.contains("en") ? "en" : "zh"] : ["zh", "en"];
+      var canGloss = langEl && !n.parentElement.closest(GLOSS_SKIP), blk = canGloss ? n.parentElement.closest("p, li, dd, blockquote") || n.parentElement : null;
       var s = n.nodeValue, m, last = 0, frag = null;
       AB_RE.lastIndex = 0;
       while ((m = AB_RE.exec(s))) {
@@ -4969,6 +5062,27 @@
         langs.forEach(function (l) { seen[l + id] = 1; });
         frag = frag || document.createDocumentFragment();
         var start = m.index + m[1].length, end = start + m[2].length;
+        var gloss = "";
+        if (canGloss && !gl[langs[0] + id]) { gl[langs[0] + id] = 1; gloss = abGloss(AB_BY[id], m[2], langs[0], s, start, end, blk); }
+        if (gloss) {
+          // 補全稱：縮寫（含複數 s）＋全稱，後面的標點留在原文
+          var pre1 = start > last && /[「『]/.test(s.charAt(start - 1)) ? 1 : 0, pl = s.charAt(end) === "s" && !/[A-Za-z0-9_]/.test(s.charAt(end + 1) || "") ? 1 : 0;
+          if (start - pre1 > last) frag.appendChild(document.createTextNode(s.slice(last, start - pre1)));
+          var b1 = document.createElement("button");
+          b1.type = "button"; b1.className = "ab"; b1.setAttribute("data-ab", id); b1.textContent = m[2];
+          var w1 = document.createElement("span");
+          w1.className = "ab-wrap";
+          if (pre1) w1.appendChild(document.createTextNode(s.charAt(start - 1)));
+          w1.appendChild(b1);
+          if (pl) w1.appendChild(document.createTextNode("s"));
+          frag.appendChild(w1);
+          var gs = document.createElement("span");
+          gs.className = "ab-gloss"; gs.textContent = gloss;
+          frag.appendChild(gs);
+          last = end + pl;
+          AB_RE.lastIndex = last;
+          continue;
+        }
         // 與前後括號、標點綁在一起，避免「（NS」與「）」分在兩行
         var pre = start > last && /[（(「『]/.test(s.charAt(start - 1)) ? 1 : 0;
         var post = (/^[）)」』、，。；：,.;:]+/.exec(s.slice(end)) || [""])[0].length;
@@ -5060,7 +5174,7 @@
     $("ab-pop-key").textContent = a.code;
     $("ab-pop-src").innerHTML = "";
     var oi = officeIdx(a.code);
-    $("ab-pop-body").innerHTML = detailHTML(a) + '<div class="pop-acts"><button class="btn sm" type="button" data-ab-go="' + a.id + '">' + B("於縮寫說明中檢視 →", "View in Abbreviations →") + "</button>" +
+    $("ab-pop-body").innerHTML = detailHTML(a) + '<div class="pop-acts"><button class="btn sm" type="button" data-ab-go="' + a.id + '">' + B("在縮寫字典中查看 →", "View in the Acronym Dictionary →") + "</button>" +
       (oi >= 0 ? '<button class="btn sm" type="button" data-office-go="' + oi + '">' + B("據點資料 →", "Office details →") + "</button>" : "") +
       (window.PAP_ORG && window.PAP_ORG.byCode && window.PAP_ORG.byCode[a.code] ? '<button class="btn sm" type="button" data-org-go="' + window.PAP_ORG.byCode[a.code] + '">' + B("架構圖 →", "Architecture chart →") + "</button>" : "") + "</div>";
     pop.hidden = false;
@@ -5406,7 +5520,8 @@
   setFont(store.get("pap.font"));
   setLang(store.get("pap.lang2") || "bi");
   $$("main .page").forEach(function (pg) { if (!pg.querySelector(".subbody > .pager") || pg.id === "page-dict") return; abbrPanel(pg); relTopics(pg); });
-  $$("#page-intro, main .sub").forEach(linkAbbr);
+  $$("main .page").forEach(linkAbbr);
+  renderAbbr();
   // 公司 logo：logos/ 資料夾有檔案者顯示官方 logo；沒有的顯示公司首字並標示「尚無 logo」，不以其他圖片或表情符號代替。
   // 檔名即公司代號（見 logos/README.md）：先查 LOGOS 表，沒有時再嘗試 logos/<代號>.svg 與 .png（放入檔案即自動顯示）。
   var LOGOS = { acer: ["logos/acer.svg", "Acer"], benq: ["logos/benq.png", "BenQ"], acergadget: ["logos/acergadget.svg", "Acer Gadget 倚天酷碁"] };
