@@ -2160,9 +2160,6 @@
   .side .sd-ch ol { border-left:1.5px solid rgba(255,255,255,.16); margin-left:14px; padding:2px 0 8px 10px; }
   html[data-lang="bi"] .side .sd .tt > .bi-zh { opacity:.78; }
   .gs-part { font-style:normal; margin-left:6px; padding:0 7px; border-radius:999px; background:var(--hl); color:var(--mute); font-size:.7rem; font-weight:700; }
-  .gs-try { display:flex; flex-wrap:wrap; gap:6px; margin:2px 8px 10px; }
-  .gs-try button { font:inherit; font-size:.82rem; padding:3px 12px; border:1.5px solid var(--line); border-radius:999px; background:var(--panel); color:var(--ink); cursor:pointer; }
-  .gs-try button:hover { border-color:var(--ch); background:var(--hover); }
   ::highlight(gsq) { background:#F6D77A; color:inherit; }
   /* <<< 導覽 */
   /* >>> 縮寫字典、待確認、縮寫全稱 */
@@ -5680,14 +5677,22 @@
     GSAB.forEach(function (x) {
       var sc = 0;
       if (x.code === q) sc = 1000;
+      else if (x.code.indexOf(q) === 0) sc = tiny ? 260 : 300;
       else if (!tiny) {
-        if (x.code.indexOf(q) === 0) sc = 300;
-        else if (toks.every(function (t) { return x.head.indexOf(t) >= 0; })) sc = 150;
+        if (toks.every(function (t) { return x.head.indexOf(t) >= 0; })) sc = 150;
         else if (toks.every(function (t) { return x.head.indexOf(t) >= 0 || x.body.indexOf(t) >= 0; })) sc = 90;
       }
       if (sc) res.push({ ab: x.a, sc: sc });
     });
-    if (!tiny) GS.forEach(function (g) {
+    // 只打一個英文字母或數字也有結果：以它開頭的縮寫、標題字首與節號
+    if (tiny) {
+      GS.forEach(function (g) {
+        var sc = 0;
+        if (g.num && g.num.indexOf(q) === 0) sc = 46;
+        else if ((" " + g.tl).indexOf(" " + q) >= 0) sc = 34;
+        if (sc) res.push({ g: g, sc: sc + (g.sec ? 14 : 0) });
+      });
+    } else GS.forEach(function (g) {
       // 多個關鍵字缺一時仍列出（標示「部分符合」，排序較後）
       var hit = 0;
       toks.forEach(function (t) { if (g.all.indexOf(t) >= 0) hit++; });
@@ -5705,6 +5710,7 @@
     return res;
   }
   function gsMark(s, toks) {
+    if (!toks || !toks.length) return esc(s);
     var re = new RegExp(toks.map(function (t) { return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|"), "gi"), out = "", last = 0, m;
     while ((m = re.exec(s))) { if (!m[0]) { re.lastIndex++; continue; } out += esc(s.slice(last, m.index)) + "<mark>" + esc(m[0]) + "</mark>"; last = m.index + m[0].length; }
     return out + esc(s.slice(last));
@@ -5725,19 +5731,6 @@
     }
     var g = r.g, p = g.p;
     return '<button type="button" class="gs-r" data-go="' + g.go + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="gs-k">' + g.s.num + "</span><b>" + gsMark(nm(g.title[0], g.title[1]), toks) + (LANG === "bi" && g.title[0] !== g.title[1] ? " <small>" + gsMark(g.title[0], toks) + "</small>" : "") + '</b><span class="gs-path">' + esc(p.app ? nm("附錄 " + p.app, "Appendix " + p.app) : nm("第 " + p.num + " 章", "Chapter " + chNum(p))) + " · " + esc(nm(p.zh, p.en)) + (g.sec ? "" : " › " + esc(nm(g.s[1], g.s[2]))) + (r.partial ? ' <i class="gs-part">' + esc(nm("部分符合", "partial")) + "</i>" : "") + '</span><span class="gs-snip">' + gsMark(gsSnip(g, toks), toks) + "</span></button>";
-  }
-  // 空白時：提示可搜什麼，並列出常用主題
-  function gsQuick(inp) {
-    var out = inp.parentNode.querySelector(".gs-out");
-    GS_LAST_TOKS = [];
-    var tries = ["HFP", "SPL", "MOQ", "4-3", nm("仁寶", "Compal"), nm("待料", "hold for part"), nm("供應鏈", "supply chain")];
-    out.innerHTML = '<p class="gs-n">' + esc(nm("中文、英文、縮寫或節號（如 4-3）都可以搜尋。試試：", "Search in Chinese or English, by acronym, or by section number (e.g. 4-3). Try:")) + "</p>" +
-      '<p class="gs-try">' + tries.map(function (t) { return '<button type="button" data-gs-try="' + esc(t) + '">' + esc(t) + "</button>"; }).join("") + "</p>" +
-      '<p class="gs-n">' + esc(nm("常用主題", "Frequently used topics")) + "</p>" + HG_TOPICS.slice(0, 6).map(function (id) {
-        var o = ORDER[findRoute(id)];
-        return '<button type="button" class="gs-r" data-go="' + id + '" style="--ch:' + o.page.col + ";--ch-bg:" + o.page.tint + ";--ch-ink:" + o.page.ink + '"><span class="gs-k">' + o.sub.num + "</span><b>" + esc(nm(o.sub[1], o.sub[2])) + "</b></button>";
-      }).join("");
-    out.hidden = false;
   }
   // 點進結果後：把關鍵字在目標段落標亮（支援 CSS Custom Highlight 的瀏覽器）
   function gsPageMark(root, toks) {
@@ -5771,8 +5764,8 @@
   var GS_MAX = 30;
   function gsShow(inp) {
     var out = inp.parentNode.querySelector(".gs-out"), q = inp.value;
-    if (!q.trim()) { gsQuick(inp); return; }
-    var res = gsRun(q), toks = gsNorm(q.trim()).split(/\s+/);
+    if (!q.trim()) { out.hidden = true; out.innerHTML = ""; return; }
+    var res = gsRun(q), toks = gsNorm(q.trim()).split(/\s+/).filter(function (t) { return t.length > 1 || /[^\x20-\x7f]/.test(t); });
     GS_LAST_TOKS = toks;
     out.innerHTML = '<p class="gs-n">' + esc(res.length ? nm("找到 " + res.length + " 筆", res.length + (res.length === 1 ? " result" : " results")) + (res.length > GS_MAX ? nm("，顯示前 " + GS_MAX + " 筆", ", showing the first " + GS_MAX) : "") : nm("找不到符合的內容", "No matches")) + "</p>" + res.slice(0, GS_MAX).map(function (r) { return gsItem(r, toks); }).join("");
     out.hidden = false;
@@ -5782,7 +5775,7 @@
   $$(".gs input").forEach(function (inp) {
     var t = 0;
     inp.addEventListener("input", function () { clearTimeout(t); t = setTimeout(function () { gsShow(inp); }, 120); });
-    inp.addEventListener("focus", function () { if (inp.value.trim()) gsShow(inp); else gsQuick(inp); });
+    inp.addEventListener("focus", function () { if (inp.value.trim()) gsShow(inp); });
     inp.addEventListener("keydown", function (e) {
       var out = inp.parentNode.querySelector(".gs-out"), first = out.querySelector(".gs-r");
       if (e.key === "Escape") { gsClose(); return; }
@@ -5798,8 +5791,6 @@
       if (e.key === "Escape") { gsClose(); out.parentNode.querySelector("input").focus(); }
     });
     out.addEventListener("click", function (e) {
-      var tr = e.target.closest ? e.target.closest("[data-gs-try]") : null;
-      if (tr) { var inp2 = out.parentNode.querySelector("input"); inp2.value = tr.getAttribute("data-gs-try"); gsShow(inp2); inp2.focus(); return; }
       var b = e.target.closest ? e.target.closest(".gs-r") : null;
       if (!b) return;
       gsClose();
