@@ -915,13 +915,13 @@
   .logo-box:not(.has) { border-style:dashed; background:var(--stripe); }
   .logo-box:not(.has)::after { position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); font-size:.6rem; line-height:1.5; padding:0 6px; border-radius:999px; background:#FFF4DC; color:#7A4E12; border:1px solid #D9A95A; white-space:nowrap; }
   html[data-lang="zh"] .logo-box:not(.has)::after { content:attr(data-pz); }
-  html[data-lang="en"] .logo-box:not(.has)::after { content:attr(data-pe); }
+  html[data-lang="en"] .logo-box:not(.has)::after , html[data-lang="bi"] .logo-box:not(.has)::after { content:attr(data-pe); }
   .logo-box.hand { border:0 !important; background:transparent; padding:0; box-shadow:none; }
   .logo-box.hand .clogo { max-width:100%; max-height:100%; }
   .logo-box.sm { width:104px; height:52px; }
   .logo-box.hand::after { position:absolute; right:-6px; top:-8px; font-size:.58rem; line-height:1.5; padding:0 5px; border-radius:999px; background:var(--stripe); color:var(--mute); border:1px solid var(--line); white-space:nowrap; }
   html[data-lang="zh"] .logo-box.hand::after { content:attr(data-hz); }
-  html[data-lang="en"] .logo-box.hand::after { content:attr(data-he); }
+  html[data-lang="en"] .logo-box.hand::after , html[data-lang="bi"] .logo-box.hand::after { content:attr(data-he); }
   .logo-box:not(.has) .initial { background:var(--mute); opacity:.75; }
   .logo-box.sm .initial { width:34px; height:34px; font-size:1rem; border-radius:9px; }
   /* 資料查證 */
@@ -1000,6 +1000,10 @@
   #org-g .on.t-ro text.code { font-size:22px; letter-spacing:.08em; }
   #org-g .on.t-acer text.code { font-size:18px; }
   #org-g .on text.sub { font-size:11px; fill:var(--mute); }
+  #org-g .on text.zh2, #org-g .on tspan.zh2 { font-size:11.5px; fill:var(--mute); }
+  #org-g .on.t-ro text.zh2 { fill:#fff; opacity:.85; }
+  #org-g .on.t-acer text.zh2 { fill:var(--hdr-sub); }
+  #org-g .on.t-group tspan.zh2 { font-size:11px; font-weight:500; }
   #org-g .on.t-ro text.sub { fill:#fff; font-size:15px; font-weight:700; }
   #org-g .on.t-acer text.sub { fill:var(--hdr-sub); }
   #org-g .on:hover rect.box { filter:drop-shadow(0 2px 4px rgba(0,0,0,.18)); }
@@ -1040,7 +1044,7 @@
   /* 註解：補充說明框起來，與內文分開 */
   .subbody .remark { margin:14px 0 0; padding:9px 14px 10px; background:var(--panel); border:1px solid var(--ch-line); border-left:5px solid var(--ch); border-radius:6px 10px 10px 6px; color:var(--ink); font-size:.95rem; line-height:1.75; }
   .subbody .remark::before { content:"註解"; display:inline-block; margin-right:9px; padding:0 9px; border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); border:1px solid var(--ch-line); font-size:.76rem; font-weight:700; letter-spacing:.06em; vertical-align:.1em; }
-  html[data-lang="en"] .subbody .remark::before { content:"Note"; }
+  html[data-lang="en"] .subbody .remark::before , html[data-lang="bi"] .subbody .remark::before { content:"Note"; }
   .subbody .remark .btn { margin-left:6px; }
   .phead { display:flex; align-items:center; gap:18px; padding:14px 18px 16px; margin-bottom:14px; background:var(--ch-bg); border:1.5px solid var(--ch-line); border-left:8px solid var(--ch); border-radius:16px; }
   .phead .ph-badge { flex:none; width:58px; height:58px; border-radius:16px; display:grid; place-items:center; font-size:1.8rem; background:var(--panel); border:1.5px solid var(--ch-line); }
@@ -1419,7 +1423,7 @@
     .rtl-c:not(.on) { display:none; }
     .rtl-c { grid-column:auto !important; }
     .rtl-c.on::before { content:attr(data-pz); display:block; font-size:.74rem; font-weight:700; color:var(--ch-ink); }
-    html[data-lang="en"] .rtl-c.on::before { content:attr(data-pe); }
+    html[data-lang="en"] .rtl-c.on::before , html[data-lang="bi"] .rtl-c.on::before { content:attr(data-pe); }
     .cycle-back > span { white-space:normal; width:max-content; max-width:90%; }
   }
 
@@ -1609,7 +1613,7 @@
   #blk-ops-functions .rfb-arw svg { width:22px; height:22px; display:block; transform:rotate(90deg); }
   #blk-ops-functions .rfb-area { container:rfb-area / inline-size; position:relative; z-index:1; min-width:0; display:flex; flex-direction:column; background:var(--panel); border:1.5px solid var(--ch-line); border-top:4px solid var(--rfb-a); border-radius:12px; padding:10px 14px 12px; }
   #blk-ops-functions .rfb-ah { display:grid; grid-template-columns:auto minmax(0, 1fr) auto; grid-template-areas:"n t t" ". s m"; align-items:center; gap:0 10px; padding-bottom:8px; margin-bottom:2px; border-bottom:1.5px solid var(--ch-line); }
-  html[data-lang="en"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t m"; }
+  html[data-lang="en"] #blk-ops-functions .rfb-ah , html[data-lang="bi"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t m"; }
   #blk-ops-functions .rfb-n { grid-area:n; align-self:start; display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--rfb-a); color:#fff; font-family:var(--font-mono); font-size:.8rem; font-weight:700; }
   #blk-ops-functions .rfb-at { grid-area:t; margin:0; min-width:0; color:var(--ch-ink); font-family:var(--font-head); font-size:1.02rem; font-weight:700; line-height:1.3; letter-spacing:.03em; align-self:center; }
   html[data-font="hand"] #blk-ops-functions .rfb-at { font-size:1.15rem; }
@@ -1658,8 +1662,8 @@
     #blk-ops-functions .rfb-arw svg { transform:none; }
     #blk-ops-functions .rfb-area { container-type:normal; display:grid; grid-row:1 / span 3; grid-template-rows:subgrid; row-gap:0; }
     #blk-ops-functions .rfb-ah { align-content:start; row-gap:4px; }
-    html[data-lang="en"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". m m"; }
-    html[data-lang="en"] #blk-ops-functions .rfb-ah .rfb-more { justify-self:start; }
+    html[data-lang="en"] #blk-ops-functions .rfb-ah , html[data-lang="bi"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". m m"; }
+    html[data-lang="en"] #blk-ops-functions .rfb-ah .rfb-more , html[data-lang="bi"] #blk-ops-functions .rfb-ah .rfb-more { justify-self:start; }
     #blk-ops-functions .rfb-tip { align-self:end; }
     /* 欄寬比例 1.3／1／1 與下方 .rfb-loop 的左右邊距（.65 與 .5，總和 3.3）要一起改 */
     #blk-ops-functions .rfb-loop { position:relative; height:24px; padding-top:0; background:none; margin:0 calc((100% - 64px) * .5 / 3.3) 16px calc((100% - 64px) * .65 / 3.3); border:2px dashed var(--ch); border-top:0; border-radius:0 0 18px 18px; }
@@ -1704,11 +1708,11 @@
   /* 子領域卡片很窄：標題獨佔一行，連結移到下一行 */
   @container rfb-area (max-width:300px) {
     #blk-ops-functions .rfb-ah { row-gap:4px; }
-    html[data-lang="en"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". m m"; }
-    html[data-lang="en"] #blk-ops-functions .rfb-ah .rfb-more { justify-self:start; }
+    html[data-lang="en"] #blk-ops-functions .rfb-ah , html[data-lang="bi"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". m m"; }
+    html[data-lang="en"] #blk-ops-functions .rfb-ah .rfb-more , html[data-lang="bi"] #blk-ops-functions .rfb-ah .rfb-more { justify-self:start; }
   }
   @container rfb-area (max-width:230px) {
-    #blk-ops-functions .rfb-ah, html[data-lang="en"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". s s" ". m m"; }
+    #blk-ops-functions .rfb-ah, html[data-lang="en"] #blk-ops-functions .rfb-ah , html[data-lang="bi"] #blk-ops-functions .rfb-ah { grid-template-areas:"n t t" ". s s" ". m m"; }
     #blk-ops-functions .rfb-ah .rfb-more { justify-self:start; margin-top:3px; }
   }
   @media (max-width:760px) {
@@ -1726,8 +1730,8 @@
   }
   /* 分帶標題換行時：標籤疊在標題上方，不留下孤立的分隔線 */
   @media (max-width:560px) {
-    html[data-lang="en"] #blk-ops-functions .rfb-bt { flex-direction:column; align-items:flex-start; gap:0; }
-    html[data-lang="en"] #blk-ops-functions .rfb-tag { border-right:0; padding-right:0; }
+    html[data-lang="en"] #blk-ops-functions .rfb-bt , html[data-lang="bi"] #blk-ops-functions .rfb-bt { flex-direction:column; align-items:flex-start; gap:0; }
+    html[data-lang="en"] #blk-ops-functions .rfb-tag , html[data-lang="bi"] #blk-ops-functions .rfb-tag { border-right:0; padding-right:0; }
   }
   @media (max-width:480px) {
     #blk-ops-functions .rfb-bt { flex-direction:column; align-items:flex-start; gap:0; }
@@ -1804,6 +1808,22 @@
   .pg-abbr dd small { color:var(--mute); font-size:.76rem; }
   .pg-abbr dd small:empty, .pg-abbr dd small span:empty { display:none; }
   @media (max-width:600px) { .pg-abbr { padding:10px 12px 8px; } .pg-abbr dl > div { grid-template-columns:5.4em minmax(0, 1fr); } }
+  html[data-lang="bi"] .pg-abbr dd small { display:none; }
+  .pg-abbr h4 .cnt { padding:0 8px; border-radius:999px; background:var(--ch-bg); border:1px solid var(--ch-line); font-family:var(--font-mono); font-size:.74rem; }
+  html[data-lang="bi"] .pg-abbr h4 .t > :is(.bi-en, .bi-zh) { display:block; margin-left:0; }
+  html[data-lang="bi"] .pg-abbr h4 .t > .bi-zh { font-size:.8em; font-weight:500; }
+  .pager .pt { display:block; }
+  html[data-lang="bi"] .pager small > :is(.bi-en, .bi-zh) { display:inline; }
+  html[data-lang="bi"] .pager small > .bi-zh { margin-left:.4em; font-size:1em; }
+  .rel-topics { margin-top:22px; padding:12px 16px 14px; border:1.5px dashed var(--ch-line); border-radius:14px; }
+  .rel-topics h4 { margin:0 0 8px; font-size:.92rem; color:var(--ch-ink); }
+  .rel-topics > div { display:flex; flex-wrap:wrap; gap:8px; }
+  .rel-topics button { display:inline-flex; align-items:baseline; gap:8px; max-width:100%; padding:5px 12px; border:1.5px solid var(--ch); border-radius:999px; background:var(--ch-bg); color:var(--ch-ink); font:inherit; font-size:.86rem; text-align:left; cursor:pointer; }
+  .rel-topics button:hover { background:var(--panel); }
+  .rel-topics .rt-n { font-family:var(--font-mono); font-size:.8em; font-weight:700; color:var(--ch); flex:none; margin-right:.5em; }
+  html[data-lang="bi"] .rel-topics button.bi-blk { display:inline-flex; }
+  html[data-lang="bi"] .rel-topics button > .bi-zh { font-size:.86em; }
+  @media (max-width:600px) { .rel-topics { padding:10px 12px 12px; } .rel-topics button { font-size:.8rem; } }
   /* <<< 本頁縮寫與名詞 */
   /* >>> 顏色與框 */
   /* PAP 組織圖註記與 PAP 框：TWN、AAP 用區域顏色標示 */
@@ -1918,7 +1938,7 @@
   .life-curve .lc-tail { fill:#FDF3DF; stroke:var(--ch); stroke-width:1.5; }
   .life-curve .lc-tt { fill:var(--ch-ink); font-size:13px; font-weight:700; font-family:var(--font-head); }
   .life-curve .lc-ts { fill:var(--ink); font-size:11.5px; font-family:var(--font-head); }
-  html[data-lang="zh"] .life-curve svg .en, html[data-lang="en"] .life-curve svg .zh { display:none; }
+  html[data-lang="zh"] .life-curve svg .en, html[data-lang="en"] .life-curve svg .zh , html[data-lang="bi"] .life-curve svg .zh { display:none; }
   .life-curve figcaption { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:6px 10px; font-size:.86rem; font-weight:700; }
   .life-curve figcaption span[class^="lg-"] { display:inline-block; width:26px; height:4px; border-radius:2px; }
   .life-curve .lg-fg { background:#3D6FB0; } .life-curve .lg-sc { background:#C8553D; margin-left:10px; }
@@ -1990,6 +2010,32 @@
     .subbody > .sub > .lead, .subbody > .sub > div[data-noabbr] > .lead { font-size:1rem; line-height:1.7; }
   }
   /* <<< 手機字級 */
+  /* >>> 中英對照 */
+  /* 預設「EN + 中文」：英文在上、字較大；中文在下、字較小。行內小元件（按鈕、標籤）中英並排，中間留空。 */
+  html[data-lang="bi"] .bi-dup { display:none !important; }
+  html[data-lang="bi"] .bi-blk > .en, html[data-lang="bi"] .bi-blk > .zh { display:block; }
+  html[data-lang="bi"] .bi-blk > .zh { font-size:.86em; opacity:.9; margin-top:.12em; line-height:1.6; }
+  html[data-lang="bi"] .bi-inl > .zh { font-size:.86em; opacity:.9; margin-left:.42em; }
+  html[data-lang="bi"] :is(h1, h2, h3, h4, h5).bi-blk > .zh { font-size:.64em; font-weight:500; letter-spacing:.02em; margin-top:.2em; line-height:1.4; }
+  html[data-lang="bi"] :is(p, div, li, ul, ol, figcaption, small, dd, blockquote).zh:not(.bi-zh) { font-size:.9em; opacity:.92; }
+  html[data-lang="bi"] :is(p, div).en + :is(p, div).zh:not(.bi-zh) { margin-top:-.35em; }
+  html[data-lang="bi"] .lead.en + .lead.zh { margin-top:-.4em; }
+  html[data-lang="bi"] .nb { display:flex; flex-direction:column; align-items:center; }
+  html[data-lang="bi"] .nb .nb-en { order:-1; font-size:1em; color:inherit; }
+  html[data-lang="bi"] .nb .nb-zh { font-size:.86em; opacity:.85; }
+  html[data-lang="bi"] .sub > h2.bi-blk, html[data-lang="bi"] .block > h3.bi-blk, html[data-lang="bi"] .phead h2.bi-blk { flex-direction:column; align-items:flex-start; gap:0; }
+  html[data-lang="bi"] .subbody > .sub > .lead.en { margin-bottom:0; border-bottom:0; border-bottom-left-radius:0; border-bottom-right-radius:0; padding-bottom:6px; }
+  html[data-lang="bi"] .subbody > .sub > .lead.en + .lead.zh { margin-top:0; border-top:0; border-top-left-radius:0; border-top-right-radius:0; padding-top:0; font-size:.94rem; }
+  html[data-lang="bi"] .subbody > .sub > .lead.en + .lead.zh::before { display:none; }
+  /* 表格：格子內容另外包了一層（手機版欄名用），中英文照樣上下兩行 */
+  html[data-lang="bi"] :is(.tv, .tl) > :is(.bi-en, .bi-zh) { display:block; margin-left:0; }
+  html[data-lang="bi"] :is(.tv, .tl) > .bi-zh { font-size:.86em; opacity:.9; margin-top:.1em; line-height:1.55; }
+  html[data-lang="bi"] .tbl th.bi-blk > .zh { font-size:.84em; font-weight:500; }
+  /* 註解框：「Note」標籤放在英文那一行前面，中文接在同一個框裡 */
+  html[data-lang="bi"] .subbody .remark.bi-blk > .bi-en { display:inline; }
+  html[data-lang="bi"] .subbody .remark.bi-blk > .bi-zh { margin-top:.3em; }
+  html[data-lang="bi"] .note.bi-blk > .bi-zh { margin-top:.15em; }
+  /* <<< 中英對照 */
 </style>
 </head>
 <body>
@@ -1999,7 +2045,7 @@
       <div class="sub"><span class="zh">認識 Acer 與泛亞太區服務物流</span><span class="en">Acer and its Pan Asia Pacific service logistics</span></div>
     </div>
     <div class="ctl">
-      <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="zh" lang="zh-Hant">中文</option><option value="en" lang="en">English</option></select>
+      <select id="lang-sel" title="Language / 語言" aria-label="Language / 語言"><option value="bi">EN + 中文</option><option value="en" lang="en">English</option><option value="zh" lang="zh-Hant">中文</option></select>
       <select id="font-sel" title="Font / 字型"><option value="hand" data-zh="手寫風" data-en="Handwriting">手寫風</option><option value="sans" data-zh="正黑體" data-en="Sans">正黑體</option><option value="mono" data-zh="等寬" data-en="Mono">等寬</option></select>
       <select id="theme-sel" title="Theme / 主題"><option value="earth" data-zh="土色" data-en="Earth">土色</option><option value="green" data-zh="綠色" data-en="Green">綠色</option><option value="blue" data-zh="藍色" data-en="Blue">藍色</option></select>
     </div>
@@ -2936,7 +2982,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var $$ = function (sel, el) { return Array.prototype.slice.call((el || document).querySelectorAll(sel)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
-  var B = function (zh, en) { return '<span class="zh">' + zh + '</span><span class="en">' + en + "</span>"; };
+  var B = function (zh, en) { return '<span class="en">' + en + '</span><span class="zh">' + zh + "</span>"; };
   var NA = function (zh, en) { return '<span class="na">' + B(zh, en) + "</span>"; };
   var flag = function (cc) { return cc ? '<img class="flag" src="flags/' + cc + '.svg" alt="" loading="lazy">' : ""; };
   // 線條圖示（24×24，顏色跟隨文字）
@@ -2997,6 +3043,7 @@
     "terms-chain": ["corp-map", "blk-terms-chain"], "terms-service": ["dict-terms", "blk-terms-service"], "terms-market": ["corp-subs", "blk-terms-market"], "ref-abbr": ["ref-terms", "blk-ref-abbr"],
     "ops-context": ["basics-journey", "blk-ops-chain"], "ops-ro": ["org-ro", "blk-ops-functions"],
     basics: ["basics-logistics", "sub-basics-logistics"], corp: ["corp-acer", "sub-corp-acer"], hsn: ["corp-hsn", "sub-corp-hsn"], ops: ["ops-role", "sub-ops-role"], pn: ["pn-rule", "sub-pn-rule"], ref: ["ref-terms", "sub-ref-terms"] };
+  var chNum = function (p) { return p.app ? p.app : (p.num < 10 ? "0" : "") + p.num; };
   var ORDER = [], navN = 0;
   NAV.forEach(function (p) {
     p.num = p.home ? "" : (p.app || ++navN);
@@ -3009,7 +3056,7 @@
   });
 
   $("tabs").innerHTML = NAV.map(function (p) {
-    return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + (p.col ? ' style="--ch:' + p.col + ';--ch-bg:' + p.tint + ';--ch-ink:' + p.ink + '"' : "") + '><span class="emo" aria-hidden="true">' + p.emoji + "</span>" + B(p.tzh || p.zh, p.ten || p.en) + "</button>";
+    return '<button type="button" role="tab" data-go="' + p.id + '"' + (p.home ? ' class="home"' : "") + (p.col ? ' style="--ch:' + p.col + ';--ch-bg:' + p.tint + ';--ch-ink:' + p.ink + '"' : "") + '><span class="emo" aria-hidden="true">' + (p.home ? p.emoji : chNum(p)) + "</span>" + B(p.tzh || p.zh, p.ten || p.en) + "</button>";
   }).join("");
   $$(".subnav").forEach(function (a) {
     var p = NAV.filter(function (x) { return x.id === a.getAttribute("data-page"); })[0];
@@ -3047,7 +3094,7 @@
   $$(".phead").forEach(function (h) {
     var p = NAV.filter(function (x) { return x.id === h.getAttribute("data-page"); })[0];
     var d = CH[p.id];
-    h.innerHTML = '<span class="ph-badge" aria-hidden="true">' + p.emoji + "</span><div>" + '<p class="eyebrow">' + B("第 " + p.num + " 章", "Chapter " + p.num) + '</p><h2 class="hero-title home-title">' + B(p.zh, p.en) + "</h2>" + (d ? '<p class="home-lead">' + B(d[0], d[1]) + "</p>" : "") + "</div>";
+    h.innerHTML = '<span class="ph-badge" aria-hidden="true">' + chNum(p) + "</span><div>" + '<p class="eyebrow">' + (p.app ? B("附錄 " + p.app, "Appendix " + p.app) : B("第 " + p.num + " 章", "Chapter " + chNum(p))) + '</p><h2 class="hero-title home-title">' + B(p.zh, p.en) + "</h2>" + (d ? '<p class="home-lead">' + B(d[0], d[1]) + "</p>" : "") + "</div>";
   });
 
   function findRoute(id) {
@@ -3115,8 +3162,8 @@
     var pi = NAV.indexOf(p), prev = NAV[pi - 1], next = NAV[pi + 1];
     var pg = page.querySelector(".pager");
     if (pg) {
-      pg.innerHTML = (prev ? '<button type="button" class="prev" data-go="' + prev.id + '"><small>' + B("上一章", "Previous chapter") + "</small>← " + B(prev.zh, prev.en) + "</button>" : "") +
-        (next ? '<button type="button" class="next" data-go="' + next.id + '"><small>' + B("下一章", "Next chapter") + "</small>" + B(next.zh, next.en) + " →</button>" : "");
+      pg.innerHTML = (prev ? '<button type="button" class="prev" data-go="' + prev.id + '"><small>' + B("上一章", "Previous") + '</small><span class="pt">← ' + B(prev.zh, prev.en) + "</span></button>" : "") +
+        (next ? '<button type="button" class="next" data-go="' + next.id + '"><small>' + B("下一章", "Next") + '</small><span class="pt">' + B(next.zh, next.en) + " →</span></button>" : "");
     }
     if (fromUser) {
       var h = "#" + (al ? id : (subId || p.id));
@@ -3201,13 +3248,14 @@
   function orgPageActive() { var s = $("org-stage"), pg = s && s.closest(".page"); return !!(pg && pg.classList.contains("active")); }
   function orgShow() { if (!ORG) return; orgRender(); requestAnimationFrame(function () { orgFit(); if (orgSel) orgSelect(orgSel); }); }
   function setLang(l) {
-    LANG = l === "en" ? "en" : "zh";
+    LANG = l === "en" || l === "zh" ? l : "bi";
     root.setAttribute("data-lang", LANG);
-    root.setAttribute("lang", LANG === "en" ? "en" : "zh-Hant");
+    root.setAttribute("lang", LANG === "zh" ? "zh-Hant" : "en");
     $("lang-sel").value = LANG;
-    $$("option[data-zh]").forEach(function (o) { o.textContent = o.getAttribute("data-" + LANG); });
-    $$("[data-ph-zh]").forEach(function (el) { el.placeholder = el.getAttribute("data-ph-" + LANG); });
-    store.set("pap.lang", LANG);
+    $$("option[data-zh]").forEach(function (o) { o.textContent = LANG === "bi" ? o.getAttribute("data-en") + " · " + o.getAttribute("data-zh") : o.getAttribute("data-" + LANG); });
+    $$("[data-ph-zh]").forEach(function (el) { el.placeholder = LANG === "bi" ? el.getAttribute("data-ph-en") + " · " + el.getAttribute("data-ph-zh") : el.getAttribute("data-ph-" + LANG); });
+    store.set("pap.lang2", LANG);
+    if (LANG === "bi" && typeof biScan === "function") biScan(document.body);
     var page = document.querySelector("main .page.active"), keep = page ? sectionInView(page) : null, before = keep ? keep.getBoundingClientRect().top : 0;
     drawAllMaps();
     // 換語言後標籤長度不同：架構圖重畫並重新縮放到整張放得下
@@ -3394,7 +3442,7 @@
   window.addEventListener("hashchange", function () { setTimeout(centerScrollers, 120); });
   setTimeout(centerScrollers, 300);
   $("ns-table").innerHTML = NSC.map(function (n) {
-    var subs = n[5].length ? n[5].map(function (s) { return flag(s[1]) + B(s[2], s[3]); }).join("、") : '<span class="no">—</span>';
+    var subs = n[5].length ? n[5].map(function (s) { return flag(s[1]) + B(s[2], s[3]); }).join(B("、", ", ")) : '<span class="no">—</span>';
     if (n[0] === "AKC") subs = '<small class="caption">' + B("備註：由 AJC 管轄", "Note: comes under AJC") + "</small>";
     return '<tr><td><b class="code">' + n[0] + "</b></td><td>" + (n[1] ? flag(n[1]) + B(n[2], n[3]) : NA(n[2], n[3])) + '</td><td class="wrap">' + subs + "</td></tr>";
   }).join("");
@@ -3440,7 +3488,7 @@
     }).join("");
     svg.innerHTML = out + leads + pinOut + lab;
   }
-  var nm = function (zh, en) { return LANG === "en" ? en : zh; };
+  var nm = function (zh, en) { return LANG === "zh" ? zh : en; };
   var NS_OF = {};
   NSC.forEach(function (n) { if (n[1]) NS_OF[n[1]] = n; });
   var COVER_OF = { nz: "ACA", bd: "AIL", mm: "ATH", la: "ATH", kh: "ATH", lk: "ACS", mn: "ACS", np: "ACS", tw: "PAP" };
@@ -3553,7 +3601,7 @@
       '<div class="rk-grid">' +
       card("r-pa", "PA", "pa", nm("美洲（US）", "The Americas (US)"), "", pa, false) +
       card("r-emea", "EMEA", "emea", nm("歐洲、中東與非洲", "EU · Europe, Middle East & Africa"), "", emea, false) +
-      card("r-pap", "PAP", "pap", nm("泛亞太區", "Pan Asia Pacific"), '<div class="rk-sub"><span><i style="background:var(--r-twn)"></i>' + ab("twn", "TWN") + " " + nm("台灣", "Taiwan") + '</span><span class="rk-plus">＋</span><span><i style="background:var(--r-pap)"></i>' + ab("aap", "AAP") + " " + (LANG === "en" ? "Asia Pacific" : '<button type="button" class="ab" data-ab="aap">亞太地區</button>') + "</span></div>", papList, true) +
+      card("r-pap", "PAP", "pap", nm("泛亞太區", "Pan Asia Pacific"), '<div class="rk-sub"><span><i style="background:var(--r-twn)"></i>' + ab("twn", "TWN") + " " + nm("台灣", "Taiwan") + '</span><span class="rk-plus">＋</span><span><i style="background:var(--r-pap)"></i>' + ab("aap", "AAP") + " " + (LANG !== "zh" ? "Asia Pacific" : '<button type="button" class="ab" data-ab="aap">亞太地區</button>') + "</span></div>", papList, true) +
       card("r-accn", "ACCN", "accn", nm("China · 中國", "China"), "", accn, true) +
       "</div>" + '<p class="rk-tip">' + B("滑鼠移到國家上可看國名與所屬區域；指到上方區域卡片時，地圖只亮出該區。灰色為不屬於以上區域的國家。", "Hover a country to see its name and region; point at a region card to highlight only that region. Grey countries belong to none of these regions.") + "</p>";
     var svg = $("map-world");
@@ -4391,10 +4439,10 @@
   function orgTextW(t, px, mono) { var w = 0; for (var i = 0; i < t.length; i++) { var c = t.charAt(i); w += /[⺀-鿿＀-￯]/.test(c) ? px * 1.02 : mono ? px * .62 : /[A-Z]/.test(c) ? px * .68 : c === " " ? px * .3 : px * .54; } return w; }
   function orgSize(n) {
     var base = SZ[n.id === "acer" ? "acer" : n.type] || SZ.company, w = base[0], h = base[1];
-    if (n.type === "group") return [Math.max(w, orgTextW(nm(n.zh, n.en), 16) + 8), h];
+    if (n.type === "group") return [Math.max(w, orgTextW(nm(n.zh, n.en), 16) + (LANG === "bi" ? orgTextW(n.zh, 13) + 12 : 0) + 8), h];
     var tx = (n.cc && n.type !== "ro" && n.id !== "acer") ? 33 : (n.id === "acer" ? 80 : 11), big = n.type === "ro" || n.id === "acer";
-    var name = nm(n.zh, n.en), need = Math.max(n.code ? orgTextW(n.code, big ? (n.type === "ro" ? 22 : 18) : 16, true) : 0, orgTextW(name, 14), n.sub && big ? orgTextW(nm(n.sub[0], n.sub[1]), n.type === "ro" ? 15 : 11) : 0);
-    return [Math.max(w, Math.ceil(tx + need + 20)), h];
+    var name = nm(n.zh, n.en), need = Math.max(n.code ? orgTextW(n.code, big ? (n.type === "ro" ? 22 : 18) : 16, true) : 0, orgTextW(name, 14), n.sub && big ? orgTextW(nm(n.sub[0], n.sub[1]), n.type === "ro" ? 15 : 11) : 0, LANG === "bi" ? orgTextW(n.zh, 11.5) : 0);
+    return [Math.max(w, Math.ceil(tx + need + 20)), h + (LANG === "bi" ? 14 : 0)];
   }
   function orgMeasure(id) {
     var n = ORG.byId[id], sz = orgSize(n), spec = LAY.kids[id], m = { w: sz[0], h: sz[1], nw: sz[0], nh: sz[1] };
@@ -4461,20 +4509,21 @@
     var m = POS[n.id], w = m.nw, h = m.nh, cls = "on t-" + (n.id === "acer" ? "acer" : n.type) + (n.planned ? " planned" : "") + (orgParent[n.id] === "g-fam" ? " fam" : "");
     var out = '<g class="' + cls + '" data-id="' + n.id + '" transform="translate(' + m.x.toFixed(1) + "," + m.y.toFixed(1) + ')" tabindex="0" role="button" aria-label="' + esc(n.code || n.en) + '">';
     if (n.type === "group") {
-      out += '<text x="0" y="18">' + esc(nm(n.zh, n.en)) + "</text>" + '<line x1="0" y1="27" x2="' + w + '" y2="27"></line>';
+      out += '<text x="0" y="18">' + esc(nm(n.zh, n.en)) + (LANG === "bi" ? '<tspan class="zh2" dx="8">' + esc(n.zh) + "</tspan>" : "") + "</text>" + '<line x1="0" y1="27" x2="' + w + '" y2="27"></line>';
       return out + "</g>";
     }
     out += '<rect class="box" x="0" y="0" width="' + w + '" height="' + h + '" rx="11"></rect>';
-    var tx = 11, big = n.type === "ro" || n.id === "acer";
-    if (n.cc && n.type !== "ro" && n.id !== "acer") { out += '<image href="flags/' + n.cc + '.svg" x="9" y="' + ((h - 13) / 2 - (n.type === "country" ? 0 : 8)).toFixed(1) + '" width="19" height="13" preserveAspectRatio="xMidYMid slice"></image>'; tx = 33; }
+    var tx = 11, big = n.type === "ro" || n.id === "acer", bi = LANG === "bi", h0 = bi ? h - 14 : h;
+    if (n.cc && n.type !== "ro" && n.id !== "acer") { out += '<image href="flags/' + n.cc + '.svg" x="9" y="' + ((h0 - 13) / 2 - (n.type === "country" ? 0 : 8)).toFixed(1) + '" width="19" height="13" preserveAspectRatio="xMidYMid slice"></image>'; tx = 33; }
     if (n.id === "acer") { out += '<image href="logos/acer.svg" x="12" y="' + ((h - 22) / 2).toFixed(1) + '" width="58" height="22" preserveAspectRatio="xMidYMid meet" onerror="this.remove()"></image>'; tx = 80; }
-    var name = function (cls2, y) { return '<text class="' + cls2 + '" x="' + tx + '" y="' + y + '">' + esc(nm(n.zh, n.en)) + "</text>"; };
-    if (n.type === "country" || (!n.code)) out += name("", h / 2 + 5);
+    // 中英對照：英文名稱下面多一行中文
+    var name = function (cls2, y) { return '<text class="' + cls2 + '" x="' + tx + '" y="' + y + '">' + esc(nm(n.zh, n.en)) + "</text>" + (bi ? '<text class="zh2" x="' + tx + '" y="' + (y + 14) + '">' + esc(n.zh) + "</text>" : ""); };
+    if (n.type === "country" || (!n.code)) out += name("", bi ? h / 2 - 2 : h / 2 + 5);
     else if (big) {
       out += '<text class="code" x="' + tx + '" y="' + (n.type === "ro" ? 28 : 26) + '">' + esc(n.code) + "</text>" + name("", n.type === "ro" ? 48 : 46);
-      if (n.sub) out += '<text class="sub" x="' + tx + '" y="' + (n.type === "ro" ? 76 : 63) + '">' + esc(nm(n.sub[0], n.sub[1])) + "</text>";
+      if (n.sub) out += '<text class="sub" x="' + tx + '" y="' + ((n.type === "ro" ? 76 : 63) + (bi ? 14 : 0)) + '">' + esc(nm(n.sub[0], n.sub[1])) + "</text>";
     } else {
-      out += '<text class="code" x="' + tx + '" y="' + (h / 2 - 4) + '">' + esc(n.code) + "</text>" + name("", h / 2 + 14);
+      out += '<text class="code" x="' + tx + '" y="' + (h0 / 2 - 4) + '">' + esc(n.code) + "</text>" + name("", h0 / 2 + 14);
     }
     return out + "</g>";
   }
@@ -4767,8 +4816,9 @@
   /* ---------- 每頁底部：本頁縮寫與名詞（含標題、表格、圖中出現者） ---------- */
   var AB_IDX = {};
   AB.forEach(function (a, i) { AB_IDX[a.id] = i; });
-  function abbrPanel(scope) {
-    var text = scope.textContent, ids = [], seen = {}, m;
+  function abbrPanel(page) {
+    var subs = $$(".sub", page).filter(function (s) { return !s.hasAttribute("data-noabbr"); });
+    var text = subs.map(function (s) { return s.textContent; }).join(" "), ids = [], seen = {}, m;
     AB_RE.lastIndex = 0;
     while ((m = AB_RE.exec(text))) {
       var id = KEYMAP[m[2]];
@@ -4780,12 +4830,41 @@
     var box = document.createElement("details");
     box.className = "pg-abbr";
     if (window.innerWidth > 600) box.open = true;
-    box.innerHTML = "<summary><h4>" + B("本頁縮寫與名詞", "Abbreviations and terms on this page") + '<small>' + B(ids.length + " 個", ids.length + " terms") + "</small></h4></summary><dl>" + ids.map(function (id) {
+    box.innerHTML = '<summary><h4><span class="t">' + B("本章名詞", "Key Terms in This Chapter") + '</span><small class="cnt">' + ids.length + "</small></h4></summary><dl>" + ids.map(function (id) {
       var a = AB_BY[id], en = a.full || a.en || "", zh = a.zh || "";
       var main = B(esc(zh || en || a.code), esc(en || zh || a.code)), sub = B(esc(zh && en ? en : ""), esc(zh && en ? zh : ""));
       return '<div><dt><button type="button" class="ab" data-ab="' + id + '">' + esc(a.code) + "</button></dt><dd><b>" + main + "</b><small>" + sub + "</small></dd></div>";
     }).join("") + "</dl>";
-    scope.appendChild(box);
+    var pg = page.querySelector(".subbody > .pager");
+    pg.parentNode.insertBefore(box, pg);
+  }
+  // 相關主題：本章連到其他章的節，以及其他章連到本章的節（依章節順序）
+  function relTopics(page) {
+    var p = NAV.filter(function (x) { return "page-" + x.id === page.id; })[0], seen = {}, list = [];
+    var add = function (id) {
+      var r = ALIAS[id] ? ALIAS[id][0] : id, i = findRoute(r), o = ORDER[i];
+      if (!o || !o.sub || o.page === p || o.page.app || seen[o.sub[0]]) return;
+      seen[o.sub[0]] = 1; list.push(i);
+    };
+    $$(".sub [data-go]", page).forEach(function (b) { add(b.getAttribute("data-go")); });
+    $$("main .page").forEach(function (pg2) {
+      if (pg2 === page) return;
+      $$(".sub [data-go]", pg2).forEach(function (b) {
+        var id = b.getAttribute("data-go"), r = ALIAS[id] ? ALIAS[id][0] : id, o = ORDER[findRoute(r)], s = b.closest(".sub");
+        if (o && o.page === p && s) add(s.id.slice(4));
+      });
+    });
+    if (!list.length) return;
+    list.sort(function (a, b) { return a - b; });
+    var box = document.createElement("nav");
+    box.className = "rel-topics";
+    box.setAttribute("aria-label", "Related topics");
+    box.innerHTML = "<h4>" + B("相關主題", "Related Topics") + "</h4><div>" + list.map(function (i) {
+      var o = ORDER[i];
+      return '<button type="button" data-go="' + o.sub[0] + '" style="--ch:' + o.page.col + ";--ch-bg:" + o.page.tint + ";--ch-ink:" + o.page.ink + '"><span class="rt-n">' + o.sub.num + "</span>" + B(o.sub[1], o.sub[2]) + "</button>";
+    }).join("") + "</div>";
+    var pg = page.querySelector(".subbody > .pager");
+    pg.parentNode.insertBefore(box, pg);
   }
 
   /* ---------- 縮寫小視窗 ---------- */
@@ -4948,11 +5027,83 @@
     });
   }
 
+
+  /* ---------- 中英對照：把同一行的中英文拆成「英文一行、中文一行」 ---------- */
+  // 只處理內含行內元素的容器；含 id 的容器不複製內容（避免重複 id），只調整順序。
+  var BI_INLINE = /^(SPAN|SMALL|B|I|EM|STRONG|A|SUP|SUB|LABEL|CODE|MARK|ABBR|BUTTON|S|U|TIME|BR|IMG|WBR|Q|DFN|KBD|VAR)$/;
+  var BI_SKIP = "script, style, svg, select, option, textarea, input, [data-nobi]";
+  var CJK = /[㐀-鿿豈-﫿]/;
+  function biLangKid(k) { return k.classList.contains("zh") || k.classList.contains("en"); }
+  function biCanSplit(el) {
+    var kids = el.children, z = false, e = false;
+    for (var i = 0; i < kids.length; i++) {
+      var k = kids[i];
+      if (!BI_INLINE.test(k.tagName)) return false;
+      if (k.classList.contains("zh")) z = true; else if (k.classList.contains("en")) e = true;
+    }
+    return z && e && !el.querySelector("[id]");
+  }
+  function biSplit(el) {
+    var en = document.createElement("span"), zh = document.createElement("span");
+    en.className = "en bi-en"; zh.className = "zh bi-zh";
+    Array.prototype.slice.call(el.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) { if (/\S/.test(n.nodeValue)) en.appendChild(n); else { zh.appendChild(n.cloneNode()); en.appendChild(n); } return; }
+      if (n.nodeType !== 1) return;
+      if (n.classList.contains("zh")) { zh.appendChild(n); return; }
+      if (n.classList.contains("en")) { en.appendChild(n); return; }
+      if (n.querySelector(".zh, .en")) {
+        var c = n.cloneNode(true);
+        $$(".en", c).forEach(function (x) { x.remove(); });
+        $$(".zh", n).forEach(function (x) { x.remove(); });
+        en.appendChild(n); zh.appendChild(c); return;
+      }
+      en.appendChild(n);
+    });
+    if (!CJK.test(zh.textContent)) zh.classList.add("bi-dup");
+    el.appendChild(en); el.appendChild(zh);
+    el.setAttribute("data-bi", "1");
+  }
+  function biOrder(el) {
+    var kids = Array.prototype.slice.call(el.children);
+    kids.forEach(function (en) {
+      if (!en.classList.contains("en") || en.classList.contains("zh")) return;
+      var z = en.previousElementSibling;
+      if (z && z.classList.contains("zh") && !z.classList.contains("en")) el.insertBefore(en, z);
+    });
+  }
+  function biScan(root) {
+    if (!root || root.nodeType !== 1 || root.closest(BI_SKIP) || root.closest("[data-bi='1']")) return;
+    var split = [], order = [];
+    (function walk(el) {
+      if (el.hasAttribute("data-bi") && el.getAttribute("data-bi") === "1") return;
+      if (el.matches(BI_SKIP)) return;
+      var kids = el.children, has = false;
+      for (var i = 0; i < kids.length; i++) if (biLangKid(kids[i])) { has = true; break; }
+      if (has && biCanSplit(el)) { split.push(el); return; }
+      if (has) order.push(el);
+      for (var j = 0; j < kids.length; j++) walk(kids[j]);
+    })(root);
+    // 先讀版面（顯示方式），再一次改 DOM，避免反覆重算樣式
+    var modes = split.concat(order).map(function (el) { return /^(inline|inline-block|inline-flex|inline-grid|contents)$/.test(getComputedStyle(el).display) ? "bi-inl" : "bi-blk"; });
+    split.forEach(function (el, i) { biSplit(el); el.classList.add(modes[i]); });
+    order.forEach(function (el, i) { biOrder(el); el.classList.add(modes[split.length + i]); if (!el.hasAttribute("data-bi")) el.setAttribute("data-bi", "r"); });
+    $$(".zh:not(.bi-zh)", root).forEach(function (z) { if (z.textContent.trim() && !CJK.test(z.textContent) && z.parentElement && z.parentElement.querySelector(":scope > .en")) z.classList.add("bi-dup"); });
+  }
+  var biMO = window.MutationObserver ? new MutationObserver(function (ms) {
+    if (LANG !== "bi") return;
+    var seen = [];
+    ms.forEach(function (m) { var t = m.target; if (t.nodeType === 1 && seen.indexOf(t) < 0 && m.addedNodes.length) seen.push(t); });
+    seen.forEach(function (t) { if (!t.closest("[data-bi='1']")) { t.removeAttribute("data-bi"); biScan(t); } });
+  }) : null;
+  function biInit() {
+    if (LANG === "bi") biScan(document.body);
+    if (biMO) biMO.observe(document.body, { childList: true, subtree: true });
+  }
   /* ---------- 啟動 ---------- */
   setTheme(store.get("pap.color"));
   setFont(store.get("pap.font"));
-  setLang(store.get("pap.lang") || "zh");
-  $$("main .sub").forEach(function (s) { if (s.id !== "sub-ref-terms" && !s.hasAttribute("data-noabbr")) abbrPanel(s); });
+  setLang(store.get("pap.lang2") || "bi");
+  $$("main .page").forEach(function (pg) { if (!pg.querySelector(".subbody > .pager") || pg.id === "page-dict") return; abbrPanel(pg); relTopics(pg); });
   $$("#page-intro, main .sub").forEach(linkAbbr);
   // 公司 logo：logos/ 資料夾有檔案者顯示官方 logo；沒有的顯示公司首字並標示「尚無 logo」，不以其他圖片或表情符號代替。
   // 檔名即公司代號（見 logos/README.md）：先查 LOGOS 表，沒有時再嘗試 logos/<代號>.svg 與 .png（放入檔案即自動顯示）。
@@ -5005,6 +5156,7 @@
     else if (!el.querySelector(".ab")) el.innerHTML = linkText(el.innerHTML, null);
   }
   $$(".node > .code, .pnode > b, .pnode > small, .pap-tag").forEach(linkCodes);
+  biInit();
   skInit();
   go(location.hash.slice(1), false);
 })();
