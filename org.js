@@ -77,7 +77,7 @@ window.PAP_ORG = (function () {
     { id: "foxconn", type: "odm", code: "Foxconn", zh: "鴻海精密", en: "Hon Hai / Foxconn", official: "鴻海精密工業股份有限公司 · 2317", logo: "foxconn", cc: "tw", role: ["EMS 廠；與 Acer 的合作以桌機為主。", "An EMS provider; its work for Acer is mainly desktops."], flows: [["製造合作夥伴", "Manufacturing partners", "corp-suppliers"]] },
     // 服務夥伴
     { id: "g-svc", type: "group", zh: "服務夥伴", en: "Service partners", role: ["各國售後服務的外部夥伴。", "External partners in after-sales service."] },
-    { id: "asp", type: "partner", code: "ASP", zh: "授權服務商", en: "Authorized service providers", ab: "asp", role: ["經 Acer 授權之外部服務商，主要提供收件服務，不一定具備維修能力；PAP 全區 507 家。", "Authorised external providers that mainly take in units and may not repair them; 507 across PAP."], flows: [["據點類型", "Site types", "sites-types"]] },
+    { id: "asp", type: "partner", code: "ASP", zh: "授權服務商", en: "Authorised service providers", ab: "asp", role: ["經 Acer 授權之外部服務商，主要提供收件服務，不一定具備維修能力；PAP 全區 507 家。", "Authorised external providers that mainly take in units and may not repair them; 507 across PAP."], flows: [["據點類型", "Site types", "sites-types"]] },
     { id: "f1", type: "partner", code: "F1 Info Solutions", zh: "F1 Info Solutions（印度）", en: "F1 Info Solutions (India)", cc: "in", region: "PAP", role: ["Flipkart 旗下維修連鎖，列於 Acer 印度官方服務網絡之授權服務夥伴。", "A Flipkart-owned repair chain, listed as an authorised service partner on Acer India's official support network."] }
   ];
   var E = [
