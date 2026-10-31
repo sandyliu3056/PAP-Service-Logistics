@@ -5106,7 +5106,7 @@
   /* ---------- 內文縮寫：每次出現都可點選（同頁重複者底線較淡） ---------- */
   var SKIP = "button, input, select, textarea, option, label, a, svg, script, style, th, .tl, h2, h3, .pn-segs, #cat-body, #dec-out, #blk-ref-abbr, [data-noabbr], #ns-tree, #office-list, .ab-pop, .subnav, .crumb, .pager, .toc, .folder, .wb-meta, .ns-key, .wb-foot-t, .members, .pcard-head, .pcard-meta, .srcs, .cover-code, .site-chip, .onode, .elabel, .vc, .refs, .stag, .corp-head, .ty, .facts, .pg-abbr, .dg-tag, .line-key, .eff, .eyebrow, .hero-title, .node, .pnode, .plabel, .chip, .step-n, .lane-head, .doc";
   // 每章第一次出現的縮寫後面補上全稱；文字裡已寫出全稱、或縮寫本身在括號裡時不補；表格、標籤、粗體等短字不補
-  var GLOSS_SKIP = "td, th, .tl, .tv, b, strong, small, label, figcaption, .chip, .tbc, .tbc-note, .kvl, .facts, .kf, .steps, .legend-chips, .nst-legend, .waybill, .caption, .home-lead, .folder, .c7-who, .c7-go";
+  var GLOSS_SKIP = "td, th, .tl, .tv, b, strong, small, label, figcaption, .chip, .tbc, .tbc-note, .kvl, .facts, .kf, .steps, .legend-chips, .nst-legend, .waybill, .caption, .home-lead, .folder, .c7-who, .c7-go, .pill, .na, .tlink, .rtag, .nstag, .site-chip, .pap-tag, .pnc, .vs, .dq-k, .tagl, .hf-x, .rfb-tag, .rfb-more, .rfb-lt, .cycle-back, .bar-cell, .eff, .elabel";
   function abGloss(a, key, lang, s, start, end, blk) {
     if (!a || AB_TBC[a.id] || / /.test(key) || /[a-z]{2}/.test(key) || /[\u3400-\u9fff]/.test(key)) return "";
     var full = lang === "en" ? a.full || a.en : a.zh;
