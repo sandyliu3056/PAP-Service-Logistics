@@ -2159,6 +2159,11 @@
   .side .sd-ch ol button.active .n { color:var(--gold); }
   .side .sd-ch ol { border-left:1.5px solid rgba(255,255,255,.16); margin-left:14px; padding:2px 0 8px 10px; }
   html[data-lang="bi"] .side .sd .tt > .bi-zh { opacity:.78; }
+  .gs-part { font-style:normal; margin-left:6px; padding:0 7px; border-radius:999px; background:var(--hl); color:var(--mute); font-size:.7rem; font-weight:700; }
+  .gs-try { display:flex; flex-wrap:wrap; gap:6px; margin:2px 8px 10px; }
+  .gs-try button { font:inherit; font-size:.82rem; padding:3px 12px; border:1.5px solid var(--line); border-radius:999px; background:var(--panel); color:var(--ink); cursor:pointer; }
+  .gs-try button:hover { border-color:var(--ch); background:var(--hover); }
+  ::highlight(gsq) { background:#F6D77A; color:inherit; }
   /* <<< 導覽 */
   /* >>> 縮寫字典、待確認、縮寫全稱 */
   .ab-gloss { color:var(--mute); font-size:.92em; }
@@ -5138,7 +5143,31 @@
     ["ASP 是否提供維修服務？", "Do ASPs provide repairs?", "否。ASP 不具維修能力，提供收件（收機）服務。", "No. ASPs do not repair; they take in units."],
     ["設置 Uni-load 的主要目的為何？", "What is the main purpose of Uni-load?", "滿足當地客戶（如標案）之規格與成本要求，例如澳洲向 ODM 採購半成品，並於當地採購 SSD、HDD 組裝。", "To meet local customers' specifications and costs (e.g. tenders); Australia, for example, buys semi-finished parts from the ODM and assembles them with locally sourced SSDs and HDDs."],
     ["PAP 服務物流的核心簡碼有哪些？", "What are the core abbreviations of PAP service logistics?", "RO、NS、HSN（QSBU 屬總部）。", "RO, NS and HSN (QSBU belongs to HQ)."],
-    ["韓國（AKC）由哪個子公司管理？", "Which subsidiary manages Korea (AKC)?", "日本（AJC）。", "Japan (AJC)."]
+    ["韓國（AKC）由哪個子公司管理？", "Which subsidiary manages Korea (AKC)?", "日本（AJC）。", "Japan (AJC)."],
+    ["SPL 是什麼？對 NS 與 RO 有什麼限制？", "What is the SPL, and how does it bind the NS and the RO?", "Spare Parts List（備品清單）：每個機種售後維修可訂購零件的總表，含料號、名稱與價格。NS 只能對清單上的零件提需求，RO 也只能照清單向 ODM 下單。", "The Spare Parts List: every part that can be ordered for after-sales repair of a model, with part numbers, names and prices. The NS can only request, and the RO can only order, what is on it."],
+    ["FRU 是什麼？", "What is a FRU?", "Field Replaceable Unit（現場可更換單元）：可在現場直接更換的零件，例如鍵盤、LCD 模組。", "A Field Replaceable Unit: a part that can be replaced on site, such as a keyboard or an LCD module."],
+    ["一台筆電的生產清單約 1,200 項，SPL 大約剩多少項？", "A notebook's production list has about 1,200 items; roughly how many end up on the SPL?", "大約 120 項。", "About 120."],
+    ["SPL 草稿由誰整理？內容從哪裡來？", "Who writes up the SPL draft, and from what?", "由 ODM（如仁寶）把 FRU 會議結論整理成會議紀錄，即為不含價格的 SPL 草稿。", "The ODM (e.g. Compal) writes the FRU meeting conclusions up as minutes: the SPL draft, without prices."],
+    ["一個料號共有幾個字元？前兩碼（AA）代表什麼？", "How many characters does a part number have, and what are the first two (AA)?", "不含小數點共 10 個字元；前兩碼是子類別代碼。", "Ten characters, not counting the dots; the first two are the sub-category code."],
+    ["SPL 定義流程中，HQ PM 提供哪些資料？", "What does the HQ PM supply in the SPL definition flow?", "Matrix table、AVLC、MB/KB 料號，以及主機板殘值價格（carcass price）。", "The matrix table, the AVLC, the MB/KB part numbers, and the mainboard carcass price."],
+    ["OEM 與 ODM 的差別是什麼？", "What is the difference between OEM and ODM?", "OEM 由品牌商提供設計、代工廠依設計生產；ODM 由代工廠依規格負責設計與生產。兩者的產品都以品牌商的品牌銷售。", "In OEM the brand provides the design and the manufacturer builds to it; in ODM the manufacturer designs and builds to specification. Both sell under the brand's name."],
+    ["鴻海屬於哪種營運模式？與 Acer 的合作以什麼產品為主？", "What model does Foxconn follow, and what is its Acer work mainly?", "以 EMS（電子製造服務）為主；與 Acer 的合作以桌上型電腦為主。", "Mainly an EMS provider; its work with Acer is mainly desktops."],
+    ["Acer 總部之下有哪四大區域？", "What are the four regions under Acer headquarters?", "PA（美洲）、EMEA（歐洲、中東與非洲）、PAP（泛亞太）與 ACCN（中國）。", "PA (the Americas), EMEA (Europe, Middle East and Africa), PAP (Pan Asia Pacific) and ACCN (China)."],
+    ["中南半島（緬甸、寮國、柬埔寨）由哪個子公司代管？", "Which subsidiary covers Indochina (Myanmar, Laos and Cambodia)?", "泰國（ATH）。", "Thailand (ATH)."],
+    ["斯里蘭卡、蒙古、尼泊爾由哪個子公司代管？", "Which subsidiary covers Sri Lanka, Mongolia and Nepal?", "新加坡（ACS）。", "Singapore (ACS)."],
+    ["紐西蘭（ACNZ）歸哪個子公司管理？", "Which subsidiary does New Zealand (ACNZ) come under?", "澳洲（ACA）。", "Australia (ACA)."],
+    ["2026 年 12 月 1 日供應流程變更後，哪些事不變？", "After the supply-flow change on 1 December 2026, what stays the same?", "採購仍由 PAP 執行，組織線 HQ → PAP → NS 不變；HSN Group 只是新增的供應環節。", "PAP still does the purchasing and the organisation line HQ → PAP → NS is unchanged; HSN Group is only a new supply step."],
+    ["RO 為什麼每月固定向 ODM 下單一次？", "Why does the RO order from the ODM once a month?", "ODM 要處理的料號很多，各區零星下單反而拖慢所有人；固定節奏讓 ODM 能把各區訂單合併排產。", "The ODM handles many part numbers, and scattered orders from every region would slow everyone down; a fixed rhythm lets it combine the regions' orders in one schedule."],
+    ["中央倉不夠分時，RO 看哪三個數字決定分配？", "When central stock is short, which three numbers guide the allocation?", "中央倉存量、各國存量、各國待料案件數。", "Central stock, each country's stock and each country's HFP cases."],
+    ["RO 每月檢視各 NS 的五項指標是哪些？", "What are the five indicators the RO reviews each NS on monthly?", "庫存、採購、出貨達成、待料案件（HFP）與不良品滯留（502/503 aging）；結案後另做客戶滿意度（CSAT）調查。", "Stock, purchasing, fulfilment, HFP cases and defective parts held (502/503 aging); customer satisfaction (CSAT) is surveyed after each case."],
+    ["MOQ 與 MPQ 分別是什麼？", "What are MOQ and MPQ?", "MOQ 是供應商接受的最小訂購量，由 QSBU 議定，同一料號各 RO 的價格與 MOQ 一致；MPQ 是最小包裝數量，即一包裝幾件。", "MOQ is the smallest order quantity a supplier accepts, agreed by QSBU, with the same price and MOQ for every RO; MPQ is the minimum pack quantity, how many pieces go in one pack."],
+    ["什麼是買賣料（B/S）？", "What are Buy and Sell (B/S) parts?", "由 Acer 總部向供應商採購的關鍵零組件，例如 CPU、硬碟、SSD、記憶體與變壓器；SPL 的採購來源標示為 ACER/HQ/CSD。", "Key components Acer HQ buys from suppliers, such as CPUs, HDDs, SSDs, memory and adapters; the SPL lists the purchase source as ACER/HQ/CSD."],
+    ["維修等不到零件的五個可能原因是什麼？", "What are the five possible reasons a part is not there?", "料號沒列入 SPL、需求估太少、下單或交貨延誤、分配的先後，以及停產前買得不夠。", "Not on the SPL, demand under-forecast, a late order or delivery, the allocation order, and too little bought before end of life."],
+    ["維修中心缺料時，為什麼要往上游一環一環找原因？", "Why trace upstream, link by link, when the service centre is out of a part?", "維修中心不能自己生產或採購零件，只能向當地零件倉領料；缺貨的原因出在上游的規劃、採購與分配環節。", "A service centre cannot make or buy parts itself; it can only draw from the local store, so a shortage traces back to planning, buying and allocation upstream."],
+    ["量產鎖定（Mass Lock）、PPB1、PPB2 分別在什麼時點？", "When do Mass Lock, PPB1 and PPB2 fall?", "Mass Lock 在 EOL 前 3 個月；PPB1、PPB2 分別在 EOL 後 3 個月與 9 個月。", "Mass Lock is three months before EOL; PPB1 and PPB2 fall three and nine months after it."],
+    ["SPL 凍結（SPL Frozen）是什麼意思？", "What does SPL Frozen mean?", "產品停產（EOL）之後，零件組成不再變動，之後一律以凍結的清單為準。", "After end of life the parts make-up no longer changes, and the frozen list applies from then on."],
+    ["GLS 是什麼系統？它的結果為什麼只能參考？", "What is GLS, and why is its result only a reference?", "RO 與 NS 用於中央備品規劃的系統，依保固資料推算備品需求；但各地保固條件不同，結果僅供參考。", "The system ROs and NS use for central spare-parts planning; it plans from warranty data, but warranty terms vary, so the result is only a reference."],
+    ["備品需求有哪兩種來源？", "What are the two sources of spare-parts demand?", "例行需求：各國每月提交需求報表；計畫外需求：突發批次故障或需求高峰，以特殊支援申請提出。", "Routine demand, from each country's monthly demand report, and unplanned demand, from a sudden batch failure or spike raised as a special-support request."]
   ];
   $("quiz-count").innerHTML = B(QZ.length + " 題", QZ.length + " questions");
   $("quiz-list").innerHTML = QZ.map(function (q, i) {
@@ -5606,7 +5635,9 @@
     if (s && /^From 1 Dec(ember)? 2026/.test(s.textContent.trim()) && !n.closest(".prow.future")) n.classList.add("future-node");
   });
   /* ---------- 全站搜尋：節、區塊（標題與內文）、縮寫 ---------- */
-  var GS = null;
+  var GS = null, GSAB = null, GS_LAST_TOKS = [], gsHlT = 0;
+  // 正規化：全形轉半形、不分大小寫（ＨＦＰ 也查得到 HFP）
+  var gsNorm = function (s) { s = String(s || ""); try { s = s.normalize("NFKC"); } catch (e) { } return s.toLowerCase(); };
   function gsLangText(el, lang) {
     var out = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
     while (w.nextNode()) {
@@ -5632,25 +5663,43 @@
     });
     GS.forEach(function (g) {
       g.en = gsLangText(g.el, "en"); g.zh = gsLangText(g.el, "zh"); g.el = null;
-      g.tl = (g.title[0] + " " + g.title[1]).toLowerCase();
-      g.all = (g.tl + " " + g.en + " " + g.zh).toLowerCase();
+      g.tl = gsNorm(g.title[0] + " " + g.title[1]);
+      g.num = g.s ? gsNorm(g.s.num) : "";
+      g.all = g.tl + " " + gsNorm(g.en) + " " + gsNorm(g.zh);
+    });
+    // 縮寫：代碼與名稱優先，說明文字也可搜（排序較後）
+    GSAB = AB.map(function (a) {
+      return { a: a, code: gsNorm(a.code), head: gsNorm([a.code, a.keys.join(" "), a.full || "", a.en || "", a.zh || "", a.org || ""].join(" ")), body: gsNorm((a.dzh || "") + " " + (a.den || "")) };
     });
   }
   function gsRun(q) {
-    q = q.trim().toLowerCase();
+    q = gsNorm(q.trim());
     if (!q) return [];
     if (!GS) gsIndex();
-    var toks = q.split(/\s+/), res = [], tiny = /^[\x00-\x7f]$/.test(q);
-    AB.forEach(function (a) {
-      var code = a.code.toLowerCase(), full = ((a.full || a.en || "") + " " + (a.zh || "")).toLowerCase();
-      var sc = code === q ? 1000 : tiny ? 0 : code.indexOf(q) === 0 ? 300 : toks.every(function (t) { return full.indexOf(t) >= 0; }) ? 120 : 0;
-      if (sc) res.push({ ab: a, sc: sc });
+    var toks = q.split(/\s+/), res = [], tiny = /^[\x20-\x7f]$/.test(q);
+    GSAB.forEach(function (x) {
+      var sc = 0;
+      if (x.code === q) sc = 1000;
+      else if (!tiny) {
+        if (x.code.indexOf(q) === 0) sc = 300;
+        else if (toks.every(function (t) { return x.head.indexOf(t) >= 0; })) sc = 150;
+        else if (toks.every(function (t) { return x.head.indexOf(t) >= 0 || x.body.indexOf(t) >= 0; })) sc = 90;
+      }
+      if (sc) res.push({ ab: x.a, sc: sc });
     });
     if (!tiny) GS.forEach(function (g) {
-      if (!toks.every(function (t) { return g.all.indexOf(t) >= 0; })) return;
-      var sc = (g.tl.indexOf(q) >= 0 ? 200 : 0) + (g.sec ? 15 : 0);
+      // 多個關鍵字缺一時仍列出（標示「部分符合」，排序較後）
+      var hit = 0;
+      toks.forEach(function (t) { if (g.all.indexOf(t) >= 0) hit++; });
+      if (!hit || (toks.length === 1 && !hit)) return;
+      var full = hit === toks.length;
+      if (!full && hit === 0) return;
+      var sc = (full ? 70 : 0) + hit * 22 - (toks.length - hit) * 12 + (g.sec ? 15 : 0);
+      if (g.sec && g.num && g.num === q) sc += 600;
+      if (g.tl.indexOf(q) >= 0) sc += 200;
+      else if (full && g.all.indexOf(q) >= 0) sc += 60;
       toks.forEach(function (t) { sc += (g.tl.indexOf(t) >= 0 ? 40 : 0) + Math.min(6, g.all.split(t).length - 1); });
-      res.push({ g: g, sc: sc });
+      res.push({ g: g, sc: sc, partial: !full });
     });
     res.sort(function (a, b) { return b.sc - a.sc; });
     return res;
@@ -5675,13 +5724,56 @@
       return '<button type="button" class="gs-r gs-ab" data-gs-ab="' + a.id + '"><span class="gs-k">' + esc(nm("縮寫", "Acronym")) + "</span><b>" + gsMark(a.code, toks) + '</b><span class="gs-snip">' + gsMark(LANG === "zh" ? zh || en : en || zh, toks) + (LANG === "bi" && zh && en ? " · " + gsMark(zh, toks) : "") + "</span></button>";
     }
     var g = r.g, p = g.p;
-    return '<button type="button" class="gs-r" data-go="' + g.go + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="gs-k">' + g.s.num + "</span><b>" + gsMark(nm(g.title[0], g.title[1]), toks) + (LANG === "bi" && g.title[0] !== g.title[1] ? " <small>" + gsMark(g.title[0], toks) + "</small>" : "") + '</b><span class="gs-path">' + esc(p.app ? nm("附錄 " + p.app, "Appendix " + p.app) : nm("第 " + p.num + " 章", "Chapter " + chNum(p))) + " · " + esc(nm(p.zh, p.en)) + (g.sec ? "" : " › " + esc(nm(g.s[1], g.s[2]))) + '</span><span class="gs-snip">' + gsMark(gsSnip(g, toks), toks) + "</span></button>";
+    return '<button type="button" class="gs-r" data-go="' + g.go + '" style="--ch:' + p.col + ";--ch-bg:" + p.tint + ";--ch-ink:" + p.ink + '"><span class="gs-k">' + g.s.num + "</span><b>" + gsMark(nm(g.title[0], g.title[1]), toks) + (LANG === "bi" && g.title[0] !== g.title[1] ? " <small>" + gsMark(g.title[0], toks) + "</small>" : "") + '</b><span class="gs-path">' + esc(p.app ? nm("附錄 " + p.app, "Appendix " + p.app) : nm("第 " + p.num + " 章", "Chapter " + chNum(p))) + " · " + esc(nm(p.zh, p.en)) + (g.sec ? "" : " › " + esc(nm(g.s[1], g.s[2]))) + (r.partial ? ' <i class="gs-part">' + esc(nm("部分符合", "partial")) + "</i>" : "") + '</span><span class="gs-snip">' + gsMark(gsSnip(g, toks), toks) + "</span></button>";
+  }
+  // 空白時：提示可搜什麼，並列出常用主題
+  function gsQuick(inp) {
+    var out = inp.parentNode.querySelector(".gs-out");
+    GS_LAST_TOKS = [];
+    var tries = ["HFP", "SPL", "MOQ", "4-3", nm("仁寶", "Compal"), nm("待料", "hold for part"), nm("供應鏈", "supply chain")];
+    out.innerHTML = '<p class="gs-n">' + esc(nm("中文、英文、縮寫或節號（如 4-3）都可以搜尋。試試：", "Search in Chinese or English, by acronym, or by section number (e.g. 4-3). Try:")) + "</p>" +
+      '<p class="gs-try">' + tries.map(function (t) { return '<button type="button" data-gs-try="' + esc(t) + '">' + esc(t) + "</button>"; }).join("") + "</p>" +
+      '<p class="gs-n">' + esc(nm("常用主題", "Frequently used topics")) + "</p>" + HG_TOPICS.slice(0, 6).map(function (id) {
+        var o = ORDER[findRoute(id)];
+        return '<button type="button" class="gs-r" data-go="' + id + '" style="--ch:' + o.page.col + ";--ch-bg:" + o.page.tint + ";--ch-ink:" + o.page.ink + '"><span class="gs-k">' + o.sub.num + "</span><b>" + esc(nm(o.sub[1], o.sub[2])) + "</b></button>";
+      }).join("");
+    out.hidden = false;
+  }
+  // 點進結果後：把關鍵字在目標段落標亮（支援 CSS Custom Highlight 的瀏覽器）
+  function gsPageMark(root, toks) {
+    try {
+      if (typeof Highlight !== "function" || !CSS.highlights) return;
+      CSS.highlights.delete("gsq");
+      clearTimeout(gsHlT);
+      var words = (toks || []).filter(function (t) { return t && t.length >= 2; });
+      if (!words.length || !root) return;
+      var hl = new Highlight(), nR = 0;
+      var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
+      while ((n = w.nextNode()) && nR < 200) {
+        var pe = n.parentElement;
+        if (!pe || pe.closest("script, style, .pg-abbr, .gs-out")) continue;
+        var lw = pe.closest(".zh, .en");
+        if (lw && !lw.classList.contains(LANG === "zh" ? "zh" : "en")) continue;
+        var low = n.nodeValue.toLowerCase();
+        for (var k = 0; k < words.length && nR < 200; k++) {
+          var t = words[k], i = low.indexOf(t);
+          while (i >= 0 && nR < 200) {
+            var r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + t.length); hl.add(r); nR++;
+            i = low.indexOf(t, i + t.length);
+          }
+        }
+      }
+      if (!nR) return;
+      CSS.highlights.set("gsq", hl);
+      gsHlT = setTimeout(function () { try { CSS.highlights.delete("gsq"); } catch (e2) { } }, 9000);
+    } catch (e) { }
   }
   var GS_MAX = 30;
   function gsShow(inp) {
     var out = inp.parentNode.querySelector(".gs-out"), q = inp.value;
-    if (!q.trim()) { out.hidden = true; out.innerHTML = ""; return; }
-    var res = gsRun(q), toks = q.trim().toLowerCase().split(/\s+/);
+    if (!q.trim()) { gsQuick(inp); return; }
+    var res = gsRun(q), toks = gsNorm(q.trim()).split(/\s+/);
+    GS_LAST_TOKS = toks;
     out.innerHTML = '<p class="gs-n">' + esc(res.length ? nm("找到 " + res.length + " 筆", res.length + (res.length === 1 ? " result" : " results")) + (res.length > GS_MAX ? nm("，顯示前 " + GS_MAX + " 筆", ", showing the first " + GS_MAX) : "") : nm("找不到符合的內容", "No matches")) + "</p>" + res.slice(0, GS_MAX).map(function (r) { return gsItem(r, toks); }).join("");
     out.hidden = false;
   }
@@ -5690,7 +5782,7 @@
   $$(".gs input").forEach(function (inp) {
     var t = 0;
     inp.addEventListener("input", function () { clearTimeout(t); t = setTimeout(function () { gsShow(inp); }, 120); });
-    inp.addEventListener("focus", function () { if (inp.value.trim()) gsShow(inp); });
+    inp.addEventListener("focus", function () { if (inp.value.trim()) gsShow(inp); else gsQuick(inp); });
     inp.addEventListener("keydown", function (e) {
       var out = inp.parentNode.querySelector(".gs-out"), first = out.querySelector(".gs-r");
       if (e.key === "Escape") { gsClose(); return; }
@@ -5706,6 +5798,8 @@
       if (e.key === "Escape") { gsClose(); out.parentNode.querySelector("input").focus(); }
     });
     out.addEventListener("click", function (e) {
+      var tr = e.target.closest ? e.target.closest("[data-gs-try]") : null;
+      if (tr) { var inp2 = out.parentNode.querySelector("input"); inp2.value = tr.getAttribute("data-gs-try"); gsShow(inp2); inp2.focus(); return; }
       var b = e.target.closest ? e.target.closest(".gs-r") : null;
       if (!b) return;
       gsClose();
@@ -5715,6 +5809,7 @@
         var el = $(id) || $("sub-" + id);
         if (!el) return;
         el.classList.remove("gs-flash"); void el.offsetWidth; el.classList.add("gs-flash");
+        gsPageMark(el, GS_LAST_TOKS);
         setTimeout(function () { el.classList.remove("gs-flash"); }, 1800);
       }, 300);
     });
